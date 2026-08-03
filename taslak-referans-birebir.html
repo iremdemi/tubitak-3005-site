@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İhracat Teşvikleri Politika Araştırması | TÜBİTAK 3005</title>
+<meta name="description" content="Dış ticaret girişimciliğinin belirleyicilerini keşfeden ve ihracat teşvik politikasını yeniden yazan TÜBİTAK 3005 araştırma projesi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1c3f;
+    --navy-deep:#081530;
+    --teal:#5fc3d6;
+    --blue:#2f6fec;
+    --cream:#fdf4ea;
+    --white:#ffffff;
+    --ink:#0b1c3f;
+    --muted:#5c6478;
+
+    --head:'Poppins', sans-serif;
+    --body:'Inter', sans-serif;
+    --script:'Yellowtail', cursive;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--body); color:var(--ink); background:var(--cream); line-height:1.6;}
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:var(--head); font-weight:600; letter-spacing:-0.01em;}
+  .script{font-family:var(--script); font-weight:400; color:var(--teal); font-size:1.2em; line-height:1;}
+
+  /* ---------- HEADER ---------- */
+  header{background:var(--navy); position:sticky; top:0; z-index:60;}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:22px 0;}
+  .logo{
+    width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5);
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    font-family:var(--head); font-size:13px; font-weight:700;
+  }
+  .nav-links{display:flex; gap:34px; list-style:none;}
+  .nav-links a{
+    color:#fff; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    opacity:.85; transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1; color:var(--teal);}
+  .nav-icon{width:20px; height:20px; opacity:.85; cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(circle at 80% 10%, #142a58 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    padding:76px 0 0; position:relative; overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;}
+  .hero-copy{color:#fff; padding-bottom:70px;}
+  .hero-copy h1{font-size:clamp(32px,4vw,46px); line-height:1.18; color:#fff; margin-bottom:22px;}
+  .hero-copy p{font-size:15px; color:rgba(255,255,255,.72); max-width:46ch; margin-bottom:30px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--blue); color:#fff; font-family:var(--head); font-weight:600; font-size:13px;
+    letter-spacing:.04em; text-transform:uppercase; padding:16px 26px; border-radius:30px;
+    box-shadow:0 14px 28px rgba(47,111,236,.35); transition:transform .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+
+  .hero-figure{position:relative; display:flex; justify-content:center; align-items:flex-end;}
+  .blob{
+    position:absolute; width:290px; height:340px; right:20px; top:10px;
+    background:var(--teal); border-radius:44% 56% 62% 38% / 48% 40% 60% 52%; opacity:.9; z-index:1;
+  }
+  .photo-block{
+    position:relative; z-index:2; width:280px; aspect-ratio:3/4;
+    background:linear-gradient(160deg,#1c2f5c,#0b1c3f);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:rgba(255,255,255,.55); font-family:var(--body); font-size:12.5px; padding:20px;
+  }
+
+  /* floating stat card */
+  .statcard{
+    background:var(--white); border-radius:14px; box-shadow:0 30px 60px rgba(11,28,63,.16);
+    padding:38px 30px; margin-top:-60px; position:relative; z-index:10;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  .stat-item{display:flex; flex-direction:column; gap:10px; padding:0 14px; border-left:1px solid #eee;}
+  .stat-item:first-child{border-left:none; padding-left:0;}
+  .stat-item .ic{font-size:20px;}
+  .stat-item b{font-family:var(--head); font-size:14px; color:var(--navy); line-height:1.3;}
+  .stat-item span{font-size:12px; color:var(--muted); line-height:1.4;}
+
+  /* ---------- SECTION HEAD ---------- */
+  .section{padding:110px 0 70px;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 56px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px); color:var(--navy); line-height:1.35;}
+
+  /* ---------- AUDIENCE CARDS ---------- */
+  .audience-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .aud-card{}
+  .aud-photo{
+    position:relative; aspect-ratio:3/4; background:linear-gradient(155deg,#16264c,#0b1c3f);
+    border-radius:16px; margin-bottom:18px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .aud-photo span.ph{color:rgba(255,255,255,.4); font-size:11.5px; text-align:center; padding:16px;}
+  .aud-tag{
+    position:absolute; top:16px; left:16px; background:rgba(255,255,255,.92); color:var(--navy);
+    font-size:10.5px; font-weight:600; padding:6px 10px; border-radius:6px; transform:rotate(-4deg);
+  }
+  .aud-card h3{font-size:17px; color:var(--navy); margin-bottom:8px;}
+  .aud-card h3::before{content:"• "; color:var(--teal);}
+  .aud-card p{font-size:13px; color:var(--muted); margin-bottom:12px; min-height:60px;}
+  .aud-card a{font-size:12px; font-weight:700; color:var(--blue); letter-spacing:.03em;}
+
+  /* ---------- FEATURE / VIDEO ---------- */
+  .feature{position:relative; padding:120px 0; overflow:hidden;}
+  .ghost-text{
+    position:absolute; font-family:var(--head); font-weight:800; font-size:min(15vw,180px);
+    color:transparent; -webkit-text-stroke:1px rgba(11,28,63,.14); white-space:nowrap; user-select:none; z-index:0;
+  }
+  .ghost-1{top:6%; left:-2%;}
+  .ghost-2{bottom:2%; right:-4%; writing-mode:vertical-rl;}
+  .video-panel{
+    position:relative; z-index:2; max-width:760px; margin:0 auto; border-radius:18px; overflow:hidden;
+    background:linear-gradient(155deg,#101f42,#08132c); aspect-ratio:16/10;
+    display:flex; align-items:center; justify-content:center; padding:40px;
+    box-shadow:0 40px 80px rgba(11,28,63,.25);
+  }
+  .video-copy{position:absolute; left:44px; bottom:40px; color:#fff;}
+  .video-copy h3{font-size:clamp(24px,3.4vw,36px); line-height:1.2;}
+  .play-btn{
+    width:64px; height:64px; border-radius:50%; background:var(--blue);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px rgba(47,111,236,.45);
+    cursor:pointer;
+  }
+  .play-btn svg{width:20px; height:20px; fill:#fff; margin-left:3px;}
+
+  /* ---------- LOGOS ---------- */
+  .logos{padding:60px 0 100px; text-align:center;}
+  .logos p{font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--muted); margin-bottom:30px; text-transform:uppercase;}
+  .logo-row{display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
+  .logo-chip{
+    background:#fff; border:1px solid #ece4d6; border-radius:10px; padding:14px 22px;
+    font-family:var(--head); font-weight:600; font-size:13px; color:var(--navy);
+    display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- TESTIMONIAL INTRO ---------- */
+  .testi{background:var(--navy); padding:100px 0;}
+  .testi-head{text-align:center; color:#fff; max-width:600px; margin:0 auto 56px;}
+  .testi-head h2{color:#fff; font-size:clamp(24px,3vw,32px); line-height:1.35;}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi-card{
+    background:#fff; border-radius:14px; padding:30px; color:var(--ink);
+  }
+  .testi-card p{font-size:13.5px; color:var(--muted); margin-bottom:18px;}
+  .testi-name{font-family:var(--head); font-weight:600; font-size:13.5px; color:var(--navy);}
+  .testi-role{font-size:11.5px; color:var(--muted);}
+
+  footer{background:var(--navy-deep); color:rgba(255,255,255,.6); padding:40px 0; text-align:center; font-size:12px;}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-figure{margin-top:20px;}
+    .statcard{grid-template-columns:repeat(2,1fr); row-gap:26px;}
+    .stat-item:nth-child(3){border-left:none;}
+    .audience-grid{grid-template-columns:repeat(2,1fr);}
+    .testi-grid{grid-template-columns:1fr;}
+    .ghost-text{display:none;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">İT</div>
+    <ul class="nav-links">
+      <li><a href="#proje">Proje</a></li>
+      <li><a href="#yontem">Yöntem</a></li>
+      <li><a href="#bulgular">Bulgular</a></li>
+      <li><a href="#ekip">Ekip</a></li>
+      <li><a href="#haberler">Haberler</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>İhracat Teşviklerini <span class="script">Belirleyicilere Göre</span><br>Yeniden Yazan<br>Bir Araştırma.</h1>
+      <p>Dış ticaret girişimciliğinin gerçek belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların görüşleriyle sınıyor ve kamu teşvik mekanizmasına yönelik somut bir politika önerisi seti geliştiriyoruz.</p>
+      <a href="#proje" class="btn-primary">Proje Hakkında Bilgi Al →</a>
+    </div>
+    <div class="hero-figure">
+      <div class="blob"></div>
+      <div class="photo-block">[Proje yürütücüsü fotoğrafı<br>buraya eklenecek]</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="statcard">
+      <div class="stat-item">
+        <div class="ic">🌐</div>
+        <b>TÜBİTAK 3005 Destekli</b>
+        <span>Sosyal ve Beşeri Bilimler Araştırma Destek Programı</span>
+      </div>
+      <div class="stat-item">
+        <div class="ic">📄</div>
+        <b>Kurucu Yazar</b>
+        <span>Dış ticaret girişimciliği kavramının öncül çalışmasının yazarı</span>
+      </div>
+      <div class="stat-item">
+        <div class="ic">🏭</div>
+        <b>192+ Firma</b>
+        <span>5 ilde yürütülen nicel saha araştırmasının örneklemi</span>
+      </div>
+      <div class="stat-item">
+        <div class="ic">📍</div>
+        <b>TR42 Doğu Marmara</b>
+        <span>Bolu, Düzce, Kocaeli, Sakarya ve Yalova'yı kapsayan saha bölgesi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="proje">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Araştırma Bulgularımız Şu Kesimler İçin<br>Değer Üretiyor...</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-card">
+        <div class="aud-photo">
+          <span class="aud-tag">Politika belirleyen</span>
+          <span class="ph">[Fotoğraf eklenecek]</span>
+        </div>
+        <h3>Politika Yapıcılar</h3>
+        <p>Teşvik mekanizmasını dış ticaret girişimcilerinin gerçek ihtiyaçlarına göre revize eder.</p>
+        <a href="#">Detaylı Bilgi →</a>
+      </div>
+      <div class="aud-card">
+        <div class="aud-photo">
+          <span class="aud-tag">Sahadan öğrenen</span>
+          <span class="ph">[Fotoğraf eklenecek]</span>
+        </div>
+        <h3>İhracatçı Firmalar</h3>
+        <p>Hangi teşviklerin gerçekten işe yaradığını ve nelerin eksik kaldığını ortaya koyar.</p>
+        <a href="#">Detaylı Bilgi →</a>
+      </div>
+      <div class="aud-card">
+        <div class="aud-photo">
+          <span class="aud-tag">Literatüre katkı</span>
+          <span class="ph">[Fotoğraf eklenecek]</span>
+        </div>
+        <h3>Akademisyenler</h3>
+        <p>Dış ticaret girişimciliği alanında sınırlı olan literatüre yeni bir çerçeve kazandırır.</p>
+        <a href="#">Detaylı Bilgi →</a>
+      </div>
+      <div class="aud-card">
+        <div class="aud-photo">
+          <span class="aud-tag">Geleceğin girişimcisi</span>
+          <span class="ph">[Fotoğraf eklenecek]</span>
+        </div>
+        <h3>Öğrenciler</h3>
+        <p>Dış ticaret girişimciliğini keşfetmek isteyen öğrenciler için somut bir referans sunar.</p>
+        <a href="#">Detaylı Bilgi →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="yontem">
+  <div class="ghost-text ghost-1">belirleyici</div>
+  <div class="ghost-text ghost-2">politika</div>
+  <div class="wrap">
+    <div class="video-panel">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg>
+      </div>
+      <div class="video-copy">
+        <h3>Belirleyicilerden<br><span class="script">Politikaya</span> Dönüşen<br>Bir Araştırma.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logos">
+  <div class="wrap">
+    <p>Projeyi Destekleyen ve Takip Eden Kurumlar</p>
+    <div class="logo-row">
+      <div class="logo-chip">TÜBİTAK</div>
+      <div class="logo-chip">Sakarya Üniversitesi</div>
+      <div class="logo-chip">TR42 Doğu Marmara Kalkınma Ajansı</div>
+      <div class="logo-chip">Ticaret Bakanlığı</div>
+      <div class="logo-chip">TİM</div>
+    </div>
+  </div>
+</section>
+
+<section class="testi" id="ekip">
+  <div class="wrap">
+    <div class="testi-head">
+      <h2>Bu Araştırmadan Etkilenen <span class="script">Kurumlar</span><br>ve Girişimciler</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
+        <div class="testi-name">[İsim eklenecek]</div>
+        <div class="testi-role">İhracatçı Firma, Sakarya</div>
+      </div>
+      <div class="testi-card">
+        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
+        <div class="testi-name">[İsim eklenecek]</div>
+        <div class="testi-role">İhracatçı Firma, Kocaeli</div>
+      </div>
+      <div class="testi-card">
+        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
+        <div class="testi-name">[İsim eklenecek]</div>
+        <div class="testi-role">İhracatçı Firma, Yalova</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="iletisim">
+  <div class="wrap">
+    İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri · TÜBİTAK 3005 · 424K054 · Sakarya Üniversitesi
+  </div>
+</footer>
+
+</body>
+</html>
