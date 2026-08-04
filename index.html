@@ -23,7 +23,6 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
-  /* Pürüzsüz kaydırma ve header'ın section başlığını kapatmaması için ayar */
   html { scroll-behavior: smooth; scroll-padding-top: 100px; }
   
   body { font-family: var(--font-sans); background-color: var(--bg-main); color: var(--text-body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
@@ -33,7 +32,6 @@
   
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-  /* MOUSE EFEKTLERİ İÇİN GENEL SINIFLAR */
   .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
@@ -51,7 +49,6 @@
   .brand-text { display: flex; flex-direction: column; }
   .brand-text strong { font-family: var(--font-serif); font-size: 16px; font-weight: 900; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.2; }
 
-  /* Menü Link Altı Çizgi Efekti */
   .nav-menu { display: flex; align-items: center; gap: 32px; }
   .nav-menu a { font-size: 13px; font-weight: 600; color: var(--text-ink); position: relative; padding: 5px 0; }
   .nav-menu a::after {
@@ -67,7 +64,6 @@
   .lang-switch span:hover { color: var(--accent-teal); }
   .lang-switch span.active { color: var(--accent-navy); font-weight: 700; border-bottom: 2px solid var(--accent-navy); }
   
-  /* Politika Butonu Efekti */
   .btn-outline-header {
     border: 1px solid var(--text-ink); color: var(--text-ink);
     padding: 10px 20px; font-size: 12px; font-weight: 700; border-radius: 4px;
@@ -129,7 +125,7 @@
   .data-cell span { font-size: 12px; font-weight: 600; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.4; }
 
   /* ==========================================================================
-     HABER SLIDERI (Sürüklenebilir)
+     MODERN HABER/ANALİZ SLIDER
      ========================================================================== */
   .news-slider-section { padding: 64px 0 96px; background: var(--bg-main); }
   
@@ -137,7 +133,7 @@
     display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; padding-top: 10px;
     scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
     scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent;
-    cursor: grab; /* Mouse efekti */
+    cursor: grab;
   }
   .news-slider:active { cursor: grabbing; }
   .news-slider::-webkit-scrollbar { height: 8px; }
@@ -146,25 +142,22 @@
 
   .news-card { 
     flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start;
-    display: flex; flex-direction: column; border: 1px solid var(--border-color);
-    border-radius: 12px; background: var(--bg-alt); overflow: hidden;
-    user-select: none; /* Metin seçimini engeller ki rahat kaysın */
+    display: flex; flex-direction: column; 
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--accent-navy); 
+    border-radius: 8px; background: var(--bg-alt); overflow: hidden;
+    user-select: none;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
   
-  .nc-image { height: 200px; background-size: cover; background-position: center; position: relative; }
-  .nc-badge { 
-    position: absolute; top: 16px; left: 16px; background: var(--bg-alt); color: var(--accent-navy);
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 6px 12px; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  }
-  
-  .nc-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
-  .nc-date { font-size: 12px; color: var(--text-body); margin-bottom: 12px; font-weight: 600; }
+  .nc-content { padding: 32px; display: flex; flex-direction: column; flex-grow: 1; }
+  .nc-date { font-size: 12px; color: #94A3B8; margin-bottom: 16px; font-weight: 500; }
   .news-card h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 12px; }
-  .news-card p { font-size: 14px; color: var(--text-body); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+  .news-card p { font-size: 14px; color: var(--text-body); font-family: var(--font-sans); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
   .read-more { font-size: 13px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
   .read-more svg { transition: transform 0.2s; }
-  .news-card:hover .read-more svg { transform: translateX(4px); } /* Ok işareti sağa kayar */
+  .news-card:hover .read-more svg { transform: translateX(4px); }
 
   /* ==========================================================================
      ARAŞTIRMA BULGULARI
@@ -182,7 +175,7 @@
     border-bottom: 1px solid var(--border-color); align-items: start;
     transition: background 0.3s;
   }
-  .finding-item:hover { background-color: #F8FAFC; padding-left: 16px; border-radius: 8px; } /* Hover efekti */
+  .finding-item:hover { background-color: #F8FAFC; padding-left: 16px; border-radius: 8px; }
   .finding-stat { font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--accent-navy); display: flex; flex-direction: column; line-height: 1; }
   .finding-stat small { font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 8px; }
   .finding-content h3 { font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 12px; }
@@ -209,7 +202,6 @@
   .f-brand p { font-size: 13px; color: #94A3B8; max-width: 300px; }
   .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
 
-  /* GSAP için başlangıç durumu */
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
 
   @media (max-width: 1024px) {
@@ -350,14 +342,10 @@
   </div>
 </footer>
 
-<!-- SCRIPT DOSYALARI (GSAP Animasyon İçin) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-  // =======================================================================
-  // 1. ÇOK DİLLİ YAPI (İNGİLİZCE / TÜRKÇE ÇEVİRİ SÖZLÜĞÜ)
-  // =======================================================================
   const dict = {
     tr: {
       brandTitle: "İhracat Teşvikleri ve Girişimcilik<br>Araştırma Portalı",
@@ -410,9 +398,8 @@
   };
 
   let currentLang = 'tr';
-  let fetchedData = null; // JSON'dan gelen veriyi burada tutacağız.
+  let fetchedData = null;
 
-  // Statik HTML metinlerini değiştirme fonksiyonu
   function translateHTML() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -422,19 +409,14 @@
     });
   }
 
-  // Dinamik verileri (JSON) render etme fonksiyonu
   function renderDynamicData() {
     if (!fetchedData) return;
     
-    // Haberler Render
     const haberlerEl = document.getElementById('haberler-container');
     haberlerEl.innerHTML = '';
     fetchedData[currentLang].haberler.forEach(haber => {
       haberlerEl.insertAdjacentHTML('beforeend', `
         <article class="news-card hover-lift">
-          <div class="nc-image" style="background: ${haber.arkaplan}">
-            <span class="nc-badge">${haber.kategori}</span>
-          </div>
           <div class="nc-content">
             <span class="nc-date">${haber.tarih}</span>
             <h3>${haber.baslik}</h3>
@@ -445,7 +427,6 @@
       `);
     });
 
-    // Ekip Render
     const ekipEl = document.getElementById('ekip-container');
     ekipEl.innerHTML = '';
     fetchedData[currentLang].ekip.forEach(kisi => {
@@ -464,11 +445,9 @@
         </div>`);
     });
 
-    // Her renderdan sonra ScrollTrigger'ı yenile
     setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
   }
 
-  // Dil Değiştirme Butonu Dinleyicisi
   document.getElementById('langToggle').addEventListener('click', (e) => {
     if (e.target.tagName === 'SPAN') {
       document.querySelectorAll('#langToggle span').forEach(s => s.classList.remove('active'));
@@ -479,31 +458,24 @@
     }
   });
 
-  // =======================================================================
-  // 2. VERİ ÇEKME (FETCH) & ANİMASYONLARI BAŞLATMA
-  // =======================================================================
   fetch('data/content.json')
     .then(r => r.json())
     .then(data => {
       fetchedData = data;
       translateHTML();
       renderDynamicData();
-      initAnimations(); // Sayfa yüklendiğinde GSAP animasyonlarını kur
+      initAnimations();
     })
     .catch(err => console.warn('JSON verisi okunamadı. Veriler yerel sunucuda çalışırken gelir.', err));
 
-  // =======================================================================
-  // 3. GSAP SCROLL ANİMASYONLARI VE MOUSE SÜRÜKLEME
-  // =======================================================================
   function initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
     
-    // Her .gsap-reveal sınıfı olan eleman aşağı kaydırdıkça zarifçe belirir
     gsap.utils.toArray('.gsap-reveal').forEach(elem => {
       gsap.to(elem, {
         scrollTrigger: {
           trigger: elem,
-          start: "top 85%", // Eleman ekranın %85'ine geldiğinde başlar
+          start: "top 85%",
         },
         opacity: 1,
         y: 0,
@@ -513,7 +485,6 @@
     });
   }
 
-  // Haber Slider'ı Fare İle Kaydırma (Grab & Drag) Özelliği
   const slider = document.querySelector('.news-slider');
   let isDown = false;
   let startX;
@@ -530,7 +501,7 @@
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Kaydırma hızı
+    const walk = (x - startX) * 2;
     slider.scrollLeft = scrollLeft - walk;
   });
 
