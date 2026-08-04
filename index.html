@@ -85,53 +85,60 @@
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
   /* ==========================================================================
-     GLOBAL TRADE & MAKROEKONOMİ POLİTİKASI HERO SECTION
+     ORANTILI VE PRESTİJLİ KÜRESEL EKONOMİ HERO SECTION
      ========================================================================== */
   .hero-corporate {
     position: relative;
     width: 100%;
-    height: 560px;
-    /* Küresel ticaret ağları, veri grafikleri ve makroekonomik vizyonu simgeleyen görsel */
-    background: linear-gradient(rgba(10, 17, 35, 0.75), rgba(10, 17, 35, 0.90)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    min-height: 520px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 58, 138, 0.82)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #FFFFFF;
-    padding: 0 24px;
+    padding: 90px 24px;
   }
   
+  .hero-corporate-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .hero-corporate h1 {
     font-family: var(--font-serif);
-    font-size: clamp(38px, 4.5vw, 56px);
+    font-size: clamp(32px, 4vw, 48px);
     font-weight: 900;
     letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    line-height: 1.2;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+    line-height: 1.25;
+    color: #FFFFFF;
   }
 
   .hero-corporate p {
-    font-size: 16px;
-    max-width: 750px;
+    font-size: 15.5px;
+    max-width: 680px;
     font-weight: 400;
-    line-height: 1.6;
-    color: #CBD5E1;
-    margin-bottom: 32px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    line-height: 1.7;
+    color: #E2E8F0;
+    margin-bottom: 36px;
   }
 
   .btn-hero-view {
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     color: #FFFFFF;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
     padding: 12px 32px;
     border-radius: 30px;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
+    backdrop-filter: blur(4px);
     transition: all 0.3s ease;
   }
   .btn-hero-view:hover {
@@ -139,10 +146,11 @@
     color: var(--text-ink);
     border-color: #FFFFFF;
     transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
 
   /* ==========================================================================
-     DEV "EXPORT ECOSYSTEM" KENARDAN KENARA MASKELENMİŞ YAZI BÖLÜMÜ
+     DEV "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
@@ -155,11 +163,11 @@
   }
 
   .giant-text-subtitle {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--accent-teal);
     margin-bottom: 12px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
@@ -256,7 +264,7 @@
   @media (max-width: 1024px) {
     .header-inner { justify-content: space-between; }
     .nav-menu, .header-right { display: none; }
-    .hero-corporate { height: 420px; }
+    .hero-corporate { min-height: 400px; padding: 60px 20px; }
     .finding-item { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
     .news-card { flex: 0 0 calc(85%); } 
     .team-grid { grid-template-columns: 1fr; }
@@ -337,10 +345,10 @@
 </header>
 
 <!-- =======================================================================
-     GLOBAL TRADE & MAKROEKONOMİK STRATEJİ HERO SECTION
+     ORANTILI VE PRESTİJLİ KÜRESEL EKONOMİ HERO SECTION
      ======================================================================= -->
 <section id="proje" class="hero-corporate">
-  <div class="wrap gsap-reveal">
+  <div class="hero-corporate-inner gsap-reveal">
     <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
     <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
     <a href="#bulgular" class="btn-hero-view" data-i18n="heroBtn">İNCELE</a>
@@ -348,7 +356,7 @@
 </section>
 
 <!-- =======================================================================
-     DEV "EXPORT ECOSYSTEM" KENARDAN KENARA MASKELENMİŞ YAZI BÖLÜMÜ
+     DEV "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
      ======================================================================= -->
 <section class="giant-text-section gsap-reveal">
   <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
