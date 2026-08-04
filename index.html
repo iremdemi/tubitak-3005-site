@@ -117,7 +117,6 @@
     position: relative;
     width: 100%;
     min-height: 560px;
-    background: linear-gradient(135deg, rgba(10, 18, 38, 0.82), rgba(20, 40, 95, 0.78)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,7 +127,7 @@
     overflow: hidden;
   }
 
-  /* Sinematik Arka Plan Slaytları (Silik) */
+  /* Sinematik Arka Plan Slaytları */
   .hero-slides {
     position: absolute;
     inset: 0;
@@ -147,7 +146,6 @@
     opacity: 1;
     transform: scale(1);
   }
-  /* Okunabilirlik için koyu sinematik gradient overlay */
   .hero-corporate::after {
     content: '';
     position: absolute;
@@ -238,4 +236,360 @@
     letter-spacing: -0.05em;
     background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     -webkit-background-clip: text;
-    -webkit-text
+    -webkit-text-fill-color: transparent;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    user-select: none;
+  }
+
+  /* ==========================================================================
+     HABER / ANALİZ SLIDER
+     ========================================================================== */
+  .news-slider-section { padding: 64px 0 96px; background: var(--bg-main); }
+  .news-slider {
+    display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; padding-top: 10px;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent; cursor: grab;
+  }
+  .news-slider:active { cursor: grabbing; }
+  .news-slider::-webkit-scrollbar { height: 8px; }
+  .news-slider::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
+
+  .news-card { 
+    flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start; display: flex; flex-direction: column; 
+    border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-alt); overflow: hidden;
+    user-select: none; transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+  
+  .nc-img-wrap { width: 100%; height: 180px; overflow: hidden; }
+  .nc-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .news-card:hover .nc-img-wrap img { transform: scale(1.05); }
+
+  .nc-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
+  .news-card h3 { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 12px; }
+  .news-card p { font-size: 13.5px; color: var(--text-body); font-family: var(--font-sans); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+  .read-more { font-size: 12px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ==========================================================================
+     EKİP BÖLÜMÜ
+     ========================================================================== */
+  .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
+  .section-alt { background-color: var(--bg-alt); }
+  
+  .section-header { margin-bottom: 64px; max-width: 600px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-teal); display: block; margin-bottom: 12px; }
+  .section-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 900; color: var(--text-ink); line-height: 1.3; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .team-member { display: flex; gap: 24px; align-items: flex-start; padding: 16px; border-radius: 12px; transition: background 0.3s; }
+  .team-member:hover { background: #F1F5F9; }
+  .tm-avatar { width: 80px; height: 80px; background: var(--border-color); flex: none; filter: grayscale(100%); object-fit: cover; border-radius: 50%; } 
+  .tm-fallback { width: 80px; height: 80px; background: var(--text-ink); color: var(--bg-alt); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 24px; font-weight: 700; flex: none; border-radius: 50%; }
+  .tm-info h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 4px; }
+  .tm-info .role { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-teal); margin-bottom: 12px; display: block; }
+  .tm-info p { font-size: 13px; color: var(--text-body); line-height: 1.6; }
+
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+  footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 40px; }
+  .f-brand h2 { font-family: var(--font-serif); font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+  .f-brand p { font-size: 13px; color: #94A3B8; max-width: 300px; }
+  .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
+
+  .gsap-reveal { opacity: 0; transform: translateY(30px); }
+
+  @media (max-width: 1024px) {
+    .header-inner { justify-content: space-between; }
+    .nav-menu, .header-right { display: none; }
+    .hero-corporate { min-height: 400px; padding: 60px 20px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 32px; }
+  }
+</style>
+</head>
+<body id="anasayfa">
+
+<header>
+  <div class="header-inner">
+    
+    <!-- SOL: Yatay Kombinasyon Logosu -->
+    <a href="#anasayfa" class="brand">
+      <div class="horizontal-logo">
+        <span class="hl-dtg">DTG</span>
+        <div class="hl-divider"></div>
+        <div class="hl-stack">
+          <span class="hl-research">RESEARCH</span>
+          <span class="hl-portal">PORTAL</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ORTA: Menü -->
+    <nav class="nav-menu">
+      <div class="nav-item"><a href="#anasayfa" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
+      
+      <div class="nav-item has-dropdown">
+        <a href="#proje" data-i18n="menuProje">Proje <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="#proje" data-i18n="dropAmac">Araştırma Amacı</a>
+          <a href="#proje" data-i18n="dropKapsam">Saha Kapsamı</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a href="#analizler" data-i18n="menuBulgular">Bulgular <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="#analizler" data-i18n="dropBelirleyiciler">Temel Belirleyiciler</a>
+          <a href="#analizler" data-i18n="dropAnalizler">Güncel Analizler</a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="#ekip" data-i18n="menuPolitika">Politika Önerileri</a></div>
+
+      <div class="nav-item has-dropdown">
+        <a href="#analizler" data-i18n="menuYayinlar">Yayınlar <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="#analizler" data-i18n="dropRaporlar">İndirilebilir Raporlar</a>
+          <a href="#analizler" data-i18n="dropMakaleler">Akademik Yayınlar</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a href="#ekip" data-i18n="menuEkip">Araştırma Ekibimiz <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="#ekip" data-i18n="dropEkipUyeleri">Ekip Üyeleri</a>
+          <a href="#iletisim" data-i18n="dropKurumlar">Destekleyen Kurumlar</a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="#iletisim" data-i18n="menuIletisim">İletişim</a></div>
+    </nav>
+
+    <!-- SAĞ: Dil ve Buton -->
+    <div class="header-right">
+      <div class="lang-switch" id="langToggle">
+        <span class="active" data-lang="tr">TR</span>
+        <span class="sep">|</span>
+        <span data-lang="en">EN</span>
+      </div>
+      <a href="#ekip" class="btn-outline-header" data-i18n="btnPolitika">Politika Önerileri</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO SECTION (SİNEMATİK SLIDESHOW) -->
+<section id="proje" class="hero-corporate">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');"></div>
+  </div>
+
+  <div class="hero-corporate-inner gsap-reveal">
+    <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
+    <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
+    <a href="#analizler" class="btn-hero-view" data-i18n="heroBtn">İNCELE</a>
+  </div>
+</section>
+
+<!-- MASKELENMİŞ DEV YAZI BÖLÜMÜ -->
+<section class="giant-text-section gsap-reveal">
+  <div class="giant-text-subtitle" data-i18n="giantSub">TÜBİTAK 3005 DESTEKLİ PROJE</div>
+  <div class="giant-masked-text">EXPORT ECOSYSTEM</div>
+</section>
+
+<!-- HABER / ANALİZ SLIDER -->
+<section id="analizler" class="news-slider-section">
+  <div class="wrap">
+    <div class="news-slider gsap-reveal" id="haberler-container"></div>
+  </div>
+</section>
+
+<!-- ARAŞTIRMA EKİBİMİZ -->
+<section id="ekip" class="section">
+  <div class="wrap">
+    <div class="section-header gsap-reveal">
+      <span class="eyebrow" data-i18n="teamEyebrow">ARAŞTIRMA KÜNYESİ</span>
+      <h2 data-i18n="teamTitle">Akademik ve Sektörel Uzmanlar</h2>
+    </div>
+    <div class="team-grid gsap-reveal" id="ekip-container"></div>
+  </div>
+</section>
+
+<!-- İLETİŞİM -->
+<footer id="iletisim">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="f-brand">
+        <h2 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h2>
+        <p style="margin-top: 16px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
+      </div>
+      <div>
+        <p style="font-size: 13px; color: #94A3B8; line-height: 2;">
+          <span data-i18n="footSupp">Destekleyen Kurumlar:</span><br>
+          <strong style="color:white;" data-i18n="footK1">T.C. Ticaret Bakanlığı</strong><br>
+          <strong style="color:white;" data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</strong><br>
+          <strong style="color:white;" data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı (MARKA)</strong>
+        </p>
+      </div>
+    </div>
+    <div class="f-bottom" data-i18n="footCopy">
+      &copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length > 0) {
+      let currentSlide = 0;
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5500);
+    }
+  });
+
+  const dict = {
+    tr: {
+      menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
+      dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
+      btnPolitika: "Politika Önerileri",
+      heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem",
+      heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
+      heroBtn: "İNCELE",
+      giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
+      teamEyebrow: "ARAŞTIRMA KÜNYESİ", teamTitle: "Akademik ve Sektörel Uzmanlar",
+      brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
+      footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
+      footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
+      footCopy: "&copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.",
+      readMoreTxt: "Detaylı İncele"
+    },
+    en: {
+      menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
+      dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
+      btnPolitika: "Policy Recommendations",
+      heroTitle: "A New Era in Foreign Trade Entrepreneurship",
+      heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
+      heroBtn: "VIEW",
+      giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
+      teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Academic and Sectoral Experts",
+      brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
+      footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
+      footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
+      footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
+      readMoreTxt: "Read Analysis"
+    }
+  };
+
+  let currentLang = 'tr';
+  let fetchedData = null;
+
+  function translateHTML() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[currentLang][key]) {
+        el.innerHTML = dict[currentLang][key];
+      }
+    });
+  }
+
+  function renderDynamicData() {
+    if (!fetchedData) return;
+    
+    const haberlerEl = document.getElementById('haberler-container');
+    haberlerEl.innerHTML = '';
+    fetchedData[currentLang].haberler.forEach(haber => {
+      haberlerEl.insertAdjacentHTML('beforeend', `
+        <article class="news-card hover-lift">
+          <div class="nc-img-wrap">
+            <img src="${haber.gorsel}" alt="Analiz Görseli">
+          </div>
+          <div class="nc-content">
+            <h3>${haber.baslik}</h3>
+            <p>${haber.ozet}</p>
+            <a href="#analizler" class="read-more">${dict[currentLang].readMoreTxt} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-left:4px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+      `);
+    });
+
+    const ekipEl = document.getElementById('ekip-container');
+    ekipEl.innerHTML = '';
+    fetchedData[currentLang].ekip.forEach(kisi => {
+      const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
+      const avatar = kisi.fotograf
+        ? `<img class="tm-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
+        : `<div class="tm-fallback">${baslar}</div>`;
+      ekipEl.insertAdjacentHTML('beforeend', `
+        <div class="team-member hover-lift">
+          ${avatar}
+          <div class="tm-info">
+            <h3>${kisi.isim}</h3>
+            <span class="role">${kisi.unvan}</span>
+            <p>${kisi.aciklama}</p>
+          </div>
+        </div>`);
+    });
+
+    setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
+  }
+
+  document.getElementById('langToggle').addEventListener('click', (e) => {
+    if (e.target.tagName === 'SPAN') {
+      document.querySelectorAll('#langToggle span').forEach(s => s.classList.remove('active'));
+      e.target.classList.add('active');
+      currentLang = e.target.getAttribute('data-lang');
+      translateHTML();
+      renderDynamicData();
+    }
+  });
+
+  fetch('data/content.json')
+    .then(r => r.json())
+    .then(data => {
+      fetchedData = data;
+      translateHTML();
+      renderDynamicData();
+      initAnimations();
+    })
+    .catch(err => console.warn('JSON verisi okunamadı.', err));
+
+  function initAnimations() {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+      gsap.to(elem, {
+        scrollTrigger: { trigger: elem, start: "top 85%" },
+        opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
+      });
+    });
+  }
+
+  const slider = document.querySelector('.news-slider');
+  let isDown = false, startX, scrollLeft;
+  slider.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+  slider.addEventListener('mouseleave', () => { isDown = false; });
+  slider.addEventListener('mouseup', () => { isDown = false; });
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return; e.preventDefault();
+    const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2;
+  });
+</script>
+
+</body>
+</html>
