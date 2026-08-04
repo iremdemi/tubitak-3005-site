@@ -105,6 +105,7 @@
   .mega-stats div{display:flex; flex-direction:column; gap:2px;}
   .mega-stats b{font-family:var(--mono); font-size:15px; color:var(--nav-ink); font-weight:600;}
   .mega-stats span{font-family:var(--mono); font-size:9.5px; color:var(--nav-slate); text-transform:uppercase; letter-spacing:.04em;}
+  .mega-note{grid-column:1/3; font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11.5px; color:var(--nav-slate); line-height:1.5;}
 
   .header-actions{display:flex; align-items:center; gap:22px;}
   .lang-switch{display:flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-family:var(--nav-font); font-size:12.5px; color:var(--nav-slate);}
@@ -129,20 +130,78 @@
   .mobile-panel a{font-family:var(--head); font-size:24px; font-weight:700; color:var(--nav-ink); padding:14px 0; border-bottom:1px solid var(--nav-border); display:block;}
 
   /* ---------- HERO ---------- */
-  .hero{padding:110px 0; border-bottom:1px solid var(--border);}
-  .hero-grid{display:grid; grid-template-columns:1fr .9fr; gap:56px; align-items:center;}
-  .hero-copy h1{font-size:clamp(38px,4.6vw,58px); line-height:1.12; max-width:14ch; font-weight:600;}
+  /* (eski basit hero kuralları kaldırıldı, aşağıda katmanlı hero CSS'i var) */
 
-  /* ---------- MAP ---------- */
-  .map-panel{background:var(--primary); border-radius:var(--radius-lg); aspect-ratio:1/1; padding:20px; border:1px solid var(--primary);}
-  .map-panel svg{width:100%; height:100%;}
-  .tr-outline{fill:none; stroke:rgba(255,255,255,.16); stroke-width:1;}
-  .route{fill:none; stroke:var(--accent); stroke-width:1; stroke-dasharray:4 5; opacity:.7; animation:dash 26s linear infinite;}
-  .route.dim{stroke:rgba(255,255,255,.16); opacity:.5; animation-duration:34s;}
-  @keyframes dash{to{stroke-dashoffset:-360;}}
-  .node{fill:var(--accent);}
-  .node-dim{fill:rgba(255,255,255,.2);}
-  .node-label{font-family:'Public Sans', sans-serif; font-size:6.4px; fill:rgba(255,255,255,.78); letter-spacing:.02em;}
+  /* ---------- LAYERED HERO ---------- */
+  .hero{background:linear-gradient(180deg,#15305A 0%,#0F2447 60%,#0D2040 100%); padding:0; overflow:hidden;}
+  .hero-stage{position:relative; max-width:900px; margin:0 auto; padding:96px 32px 140px; text-align:center;}
+
+  .hero-badge{
+    position:relative; display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+    padding:8px 16px; border-radius:20px; margin-bottom:30px;
+  }
+  .hero-badge-orbit{
+    position:absolute; left:50%; top:50%; width:190px; height:190px;
+    transform:translate(-50%,-50%); border:1px dashed rgba(255,255,255,.18); border-radius:50%;
+    animation:spin 40s linear infinite; pointer-events:none;
+  }
+  .hero-badge-orbit i{
+    position:absolute; top:-3px; left:50%; width:6px; height:6px; margin-left:-3px;
+    background:var(--accent); border-radius:50%;
+  }
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+  .hero-badge span{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:12px; color:rgba(255,255,255,.85); font-weight:500;}
+  .hero-badge b{color:var(--accent); font-weight:600;}
+
+  .hero-stage h1{color:#fff; font-size:clamp(32px,4.6vw,50px); line-height:1.15; max-width:18ch; margin:0 auto 20px;}
+  .hero-stage .hero-sub{color:rgba(255,255,255,.6); font-size:15.5px; max-width:48ch; margin:0 auto 34px; line-height:1.6;}
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#fff;
+    font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:13.5px;
+    padding:13px 22px; border-radius:8px; transition:background .18s ease, transform .18s ease;
+  }
+  .hero-cta:hover{background:#3E6BA0; transform:translateY(-2px);}
+
+  .hero-visual{position:relative; margin-top:56px; height:360px;}
+  .hero-visual-card{
+    position:absolute; left:50%; top:0; transform:translateX(-50%);
+    width:230px; height:230px; background:var(--card); border-radius:16px;
+    box-shadow:0 30px 60px rgba(8,16,36,.35); display:flex; align-items:center; justify-content:center;
+    animation:float 5s ease-in-out infinite;
+  }
+  .hero-visual-card svg{width:76%; height:76%;}
+
+  .float-card{
+    position:absolute; background:var(--card); border-radius:12px; text-align:left;
+    box-shadow:0 20px 42px rgba(8,16,36,.3); padding:16px 18px; animation:float 5s ease-in-out infinite;
+  }
+  .float-card .fc-num{font-family:var(--mono); font-size:22px; font-weight:600; color:var(--primary); line-height:1;}
+  .float-card .fc-arrow{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:10px; color:var(--muted); margin:4px 0;}
+  .float-card .fc-label{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; color:var(--muted); font-weight:500;}
+  .float-card .fc-title{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; color:var(--muted); font-weight:600; margin-bottom:8px; display:block;}
+
+  .fc-reduce{left:6%; top:36px; width:150px; animation-delay:.3s;}
+  .fc-scope{right:4%; top:64px; width:190px; animation-delay:.9s;}
+  .fc-scope .fc-chip{display:inline-flex; align-items:center; gap:6px; background:var(--bg); border-radius:14px; padding:4px 10px; font-family:var(--mono); font-size:10.5px; color:var(--primary); margin-top:10px;}
+  .fc-scope .fc-chip-dot{width:5px; height:5px; border-radius:50%; background:var(--accent);}
+  .fc-lead{right:0; top:-46px; width:200px; animation-delay:1.5s; display:flex; align-items:center; gap:10px;}
+  .fc-lead-avatar{width:34px; height:34px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:12px; flex:none;}
+  .fc-lead-name{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11.5px; font-weight:600; color:var(--text);}
+  .fc-lead-role{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:9.5px; color:var(--muted);}
+
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
+  @media (prefers-reduced-motion:reduce){
+    .hero-badge-orbit,.hero-visual-card,.float-card{animation:none;}
+  }
+
+  @media (max-width:860px){
+    .hero-stage{padding:72px 24px 64px;}
+    .hero-visual{height:auto; display:flex; flex-direction:column; align-items:center; gap:16px;}
+    .hero-visual-card{position:relative; left:auto; top:auto; transform:none;}
+    .float-card{position:relative; left:auto; right:auto; top:auto; width:100%; max-width:280px; margin:0 auto;}
+    .fc-lead{flex-direction:row;}
+  }
 
   /* ---------- SECTION SHARED ---------- */
   .eyebrow{font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--secondary); display:block; margin-bottom:18px;}
@@ -159,28 +218,11 @@
   .stat-cell b{display:block; font-family:var(--head); font-size:14px; font-weight:700; margin-bottom:6px;}
   .stat-cell span{font-size:12px; color:var(--muted); line-height:1.5;}
 
-  /* ---------- AUDIENCE ---------- */
-  .audience-row{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border);}
-  .aud-cell{padding:26px 22px 0 0; border-left:1px solid var(--border);}
-  .aud-cell:first-child{border-left:none; padding-left:0;}
-  .aud-cell svg{width:20px; height:20px; stroke:var(--primary); margin-bottom:16px;}
-  .aud-cell h3{font-size:15.5px; margin-bottom:8px;}
-  .aud-cell p{font-size:12.5px; margin-bottom:14px; min-height:52px;}
-  .aud-cell a{font-size:11.5px; font-weight:700; color:var(--primary);}
-  .aud-cell a:hover{color:var(--accent);}
-
-  /* ---------- METHOD ---------- */
-  .method-grid{display:grid; grid-template-columns:.85fr 1.4fr; gap:48px; align-items:start;}
-  .reduce-panel{background:var(--primary); border-radius:var(--radius-lg); padding:36px 30px; color:#fff;}
-  .reduce-panel .from{font-family:var(--mono); font-size:32px; font-weight:600; color:rgba(255,255,255,.32); line-height:1;}
-  .reduce-panel .arrow{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; color:rgba(255,255,255,.5); margin:8px 0;}
-  .reduce-panel .to{font-family:var(--mono); font-size:48px; font-weight:600; color:var(--accent); line-height:1;}
-  .reduce-panel p{color:rgba(255,255,255,.66); font-size:12.5px; margin-top:18px; max-width:30ch;}
-
+  /* ---------- STAGES ---------- */
   .ip-list{border-top:1px solid var(--border);}
-  .ip-row{display:grid; grid-template-columns:44px 1fr 130px; gap:18px; align-items:start; padding:22px 0; border-bottom:1px solid var(--border);}
+  .ip-row{display:grid; grid-template-columns:44px 1fr 130px; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid var(--border);}
   .ip-num{font-family:var(--mono); font-size:12px; color:var(--muted-soft); padding-top:2px;}
-  .ip-body h3{font-size:15px; margin-bottom:6px; font-weight:700;}
+  .ip-body h3{font-size:15px; margin-bottom:0; font-weight:700;}
   .ip-body p{font-size:12.5px; max-width:52ch;}
   .status{font-family:var(--mono); font-size:10.5px; display:flex; align-items:center; gap:7px; padding-top:2px; white-space:nowrap;}
   .status .dot{width:6px; height:6px; border-radius:50%; background:var(--muted-soft);}
@@ -207,19 +249,17 @@
   footer p{font-size:11.5px; color:var(--muted-soft);}
 
   @media (max-width:980px){
-    .hero-grid{grid-template-columns:1fr;}
-    .map-panel{margin-top:24px;}
-    .stat-row,.audience-row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
-    .stat-cell:nth-child(3),.aud-cell:nth-child(3){border-left:none;}
-    .method-grid{grid-template-columns:1fr;}
+    /* hero kendi mobil kurallarını yukarıda tanımlıyor */
+    .stat-row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
+    .stat-cell:nth-child(3){border-left:none;}
     .team-row{grid-template-columns:1fr; gap:10px; text-align:left;}
     .primary-nav{display:none;}
     .menu-trigger{display:flex;}
   }
   @media (max-width:600px){
-    .stat-row,.audience-row{grid-template-columns:1fr;}
-    .stat-cell,.aud-cell{border-left:none; border-top:1px solid var(--border); padding-top:22px;}
-    .stat-cell:first-child,.aud-cell:first-child{border-top:none;}
+    .stat-row{grid-template-columns:1fr;}
+    .stat-cell{border-left:none; border-top:1px solid var(--border); padding-top:22px;}
+    .stat-cell:first-child{border-top:none;}
   }
 </style>
 </head>
@@ -241,29 +281,23 @@
           <div class="mega">
             <div class="mega-links">
               <a href="#proje" data-i18n="megaProjeOzet">Proje Özeti</a>
-              <a href="#proje" data-i18n="megaProjeSorular">Araştırma Soruları</a>
               <a href="#proje" data-i18n="megaProjeKapsam">Kapsam ve Hedefler</a>
             </div>
             <div class="mega-stats">
               <div><b>15</b><span data-i18n="statAySure">Ay Süre</span></div>
-              <div><b>192</b><span data-i18n="statFirma">Firma</span></div>
               <div><b>TR42</b><span data-i18n="statBolge">Bölge</span></div>
-              <div><b>14</b><span data-i18n="statBelirleyici">Belirleyici</span></div>
             </div>
           </div>
         </li>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navArastirma">Araştırma</button>
+          <button class="nav-trigger" aria-expanded="false" data-i18n="navArastirma">Süreç</button>
           <div class="mega">
             <div class="mega-links">
-              <a href="#yontem" data-i18n="megaYontem">Yöntem</a>
-              <a href="#yontem" data-i18n="megaIsPaketleri">İş Paketleri</a>
+              <a href="#yontem" data-i18n="megaYontem">Aşamalar</a>
               <a href="#yontem" data-i18n="megaSahaBolgesi">Saha Bölgesi</a>
             </div>
             <div class="mega-stats">
-              <div><b>5</b><span data-i18n="statIl">İl</span></div>
-              <div><b>25</b><span data-i18n="statGorusme">Görüşme</span></div>
-              <div><b>4</b><span data-i18n="statIsPaketi">İş Paketi</span></div>
+              <div><b>4</b><span data-i18n="statIsPaketi">Aşama</span></div>
               <div><b>1</b><span data-i18n="statTamamlanan">Tamamlanan</span></div>
             </div>
           </div>
@@ -272,15 +306,11 @@
           <button class="nav-trigger" aria-expanded="false" data-i18n="navBulgular">Bulgular</button>
           <div class="mega">
             <div class="mega-links">
-              <a href="#yontem" data-i18n="megaBelirleyiciKumeleri">Belirleyici Kümeleri</a>
-              <a href="#yontem" data-i18n="megaIndirgeme">144 → 14 İndirgeme</a>
-              <a href="#yontem" data-i18n="megaSahaVerileri">Saha Verileri</a>
+              <a href="#yontem" data-i18n="megaBulgularDurum">Bulgu Durumu</a>
+              <a href="#haberler" data-i18n="megaGelismeRaporlari">Gelişme Raporları</a>
             </div>
             <div class="mega-stats">
-              <div><b>144</b><span data-i18n="statAltBoyut">Alt Boyut</span></div>
-              <div><b>14</b><span data-i18n="statBelirleyici2">Belirleyici</span></div>
-              <div><b>4</b><span data-i18n="statKume">Küme</span></div>
-              <div><b>2</b><span data-i18n="statYontem">Yöntem</span></div>
+              <div class="mega-note" data-i18n="megaBulgularNot">Saha araştırması tamamlandığında paylaşılacaktır.</div>
             </div>
           </div>
         </li>
@@ -339,7 +369,7 @@
   </div>
   <ul>
     <li><a href="#proje" data-i18n="navProje">Proje</a></li>
-    <li><a href="#yontem" data-i18n="navArastirma">Araştırma</a></li>
+    <li><a href="#yontem" data-i18n="navArastirma">Süreç</a></li>
     <li><a href="#yontem" data-i18n="navBulgular">Bulgular</a></li>
     <li><a href="#politika" data-i18n="navPolitika">Politika Önerileri</a></li>
     <li><a href="#haberler" data-i18n="navYayinlar">Yayınlar</a></li>
@@ -370,44 +400,47 @@
 </script>
 
 <section class="hero" id="proje">
-  <div class="wrap hero-grid">
-    <div class="hero-copy reveal">
-      <h1 data-i18n="heroTitle">İhracat teşviklerini gerçek belirleyicilere göre yeniden yazan bir araştırma</h1>
+  <div class="hero-stage reveal">
+    <div class="hero-badge">
+      <div class="hero-badge-orbit"><i></i></div>
+      <span><b>TÜBİTAK 3005</b> <span data-i18n="heroBadge">Destekli Araştırma</span></span>
     </div>
 
-    <div class="map-panel reveal">
-      <svg viewBox="0 0 460 260" aria-label="TR42 Doğu Marmara saha bölgesi haritası">
-        <path class="tr-outline" d="M40 95 L95 62 L165 52 L235 45 L310 50 L380 62 L425 85 L450 130 L430 175 L395 205 L345 225 L305 215 L325 195 L265 205 L205 215 L155 210 L105 195 L75 165 L92 138 L48 128 Z"/>
+    <h1 data-i18n="heroTitle">İhracat teşviklerini gerçek belirleyicilere göre yeniden yazan bir araştırma</h1>
+    <p class="hero-sub" data-i18n="heroSub">Dış ticaret girişimciliğinin belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, bulguları somut bir teşvik politikası önerisine dönüştürüyoruz.</p>
+    <a href="#yontem" class="hero-cta" data-i18n="heroCta">Yöntemi İncele →</a>
 
-        <circle class="node-dim" cx="220" cy="120" r="1.6"/>
-        <circle class="node-dim" cx="270" cy="150" r="1.6"/>
-        <circle class="node-dim" cx="330" cy="110" r="1.6"/>
-        <circle class="node-dim" cx="190" cy="175" r="1.6"/>
-        <circle class="node-dim" cx="380" cy="150" r="1.6"/>
+    <div class="hero-visual">
+      <div class="hero-visual-card">
+        <svg viewBox="0 0 100 100" aria-label="Belirleyicilerden politikaya dönüşüm">
+          <rect x="24" y="14" width="52" height="68" rx="4" fill="none" stroke="#11284D" stroke-width="2"/>
+          <line x1="34" y1="30" x2="66" y2="30" stroke="#11284D" stroke-width="2"/>
+          <line x1="34" y1="40" x2="66" y2="40" stroke="#C7CDD8" stroke-width="2"/>
+          <line x1="34" y1="50" x2="56" y2="50" stroke="#C7CDD8" stroke-width="2"/>
+          <circle cx="66" cy="66" r="16" fill="#FAF9F7" stroke="#4A7BB8" stroke-width="2"/>
+          <path d="M59 66l5 5 9-10" fill="none" stroke="#4A7BB8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
 
-        <path class="route dim" d="M138 72 Q200 100 250 140"/>
+      <div class="float-card fc-reduce">
+        <span class="fc-title" data-i18n="fcStageTitle">Proje Aşaması</span>
+        <div class="fc-num">1 / 4</div>
+        <div class="fc-label" data-i18n="fcStageLabel">Tamamlanan aşama</div>
+      </div>
 
-        <path class="route" d="M112 78 Q125 74 138 72"/>
-        <path class="route" d="M138 72 Q150 68 162 68"/>
-        <path class="route" d="M138 72 Q145 82 150 90"/>
-        <path class="route" d="M150 90 Q158 78 162 68"/>
-        <path class="route" d="M112 78 Q102 84 95 90"/>
+      <div class="float-card fc-scope">
+        <span class="fc-title" data-i18n="fcScopeTitle">Saha Kapsamı</span>
+        <div class="fc-num">5 <span style="font-size:13px; font-weight:500;" data-i18n="fcScopeIl">İl</span></div>
+        <div class="fc-chip"><span class="fc-chip-dot"></span><span data-i18n="fcScopeBolge">TR42 Doğu Marmara</span></div>
+      </div>
 
-        <circle class="node" cx="112" cy="78" r="2.6"/>
-        <text class="node-label" x="118" y="76" data-i18n="mapKocaeli">Kocaeli</text>
-
-        <circle class="node" cx="138" cy="72" r="2.6"/>
-        <text class="node-label" x="144" y="70" data-i18n="mapSakarya">Sakarya</text>
-
-        <circle class="node" cx="162" cy="68" r="2.6"/>
-        <text class="node-label" x="168" y="66" data-i18n="mapDuzce">Düzce</text>
-
-        <circle class="node" cx="150" cy="90" r="2.6"/>
-        <text class="node-label" x="156" y="96" data-i18n="mapBolu">Bolu</text>
-
-        <circle class="node" cx="95" cy="90" r="2.6"/>
-        <text class="node-label" x="60" y="98" data-i18n="mapYalova">Yalova</text>
-      </svg>
+      <div class="float-card fc-lead">
+        <div class="fc-lead-avatar">AY</div>
+        <div>
+          <div class="fc-lead-name">Ahmet Yağmur Ersoy</div>
+          <div class="fc-lead-role" data-i18n="fcLeadRole">Proje Yürütücüsü</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -431,8 +464,8 @@
       </div>
       <div class="stat-cell reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="12" rx="1.5"/><path d="M17 13l4-3v10l-4-3"/></svg>
-        <b data-i18n="kapsam3b">192 Firma</b>
-        <span data-i18n="kapsam3">5 ilde yürütülen nicel saha araştırmasının örneklemi</span>
+        <b data-i18n="kapsam3b">Saha Araştırması</b>
+        <span data-i18n="kapsam3">5 ilde yürütülen nicel ve nitel araştırma</span>
       </div>
       <div class="stat-cell reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
@@ -443,78 +476,34 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="eyebrowKimler">Kimler İçin Değerli</span>
-      <h2 data-i18n="kimlerTitle">Araştırma bulgularımız dört farklı kesime hitap ediyor</h2>
-    </div>
-    <div class="audience-row">
-      <div class="aud-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
-        <h3 data-i18n="audPolitikaTitle">Politika Yapıcılar</h3>
-        <p data-i18n="audPolitikaDesc">Teşvik mekanizmasını dış ticaret girişimcilerinin gerçek ihtiyaçlarına göre revize eder.</p>
-        <a href="#" data-i18n="audLink">Detaylı Bilgi →</a>
-      </div>
-      <div class="aud-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="12" height="12" rx="1.5"/><path d="M15 11l6-3v10l-6-3"/></svg>
-        <h3 data-i18n="audFirmaTitle">İhracatçı Firmalar</h3>
-        <p data-i18n="audFirmaDesc">Hangi teşviklerin gerçekten işe yaradığını ve nelerin eksik kaldığını ortaya koyar.</p>
-        <a href="#" data-i18n="audLink">Detaylı Bilgi →</a>
-      </div>
-      <div class="aud-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
-        <h3 data-i18n="audAkademikTitle">Akademisyenler</h3>
-        <p data-i18n="audAkademikDesc">Dış ticaret girişimciliği alanında sınırlı olan literatüre yeni bir çerçeve kazandırır.</p>
-        <a href="#" data-i18n="audLink">Detaylı Bilgi →</a>
-      </div>
-      <div class="aud-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-6-10 6 10 6 10-6z"/><path d="M6 12v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5"/></svg>
-        <h3 data-i18n="audOgrenciTitle">Öğrenciler</h3>
-        <p data-i18n="audOgrenciDesc">Dış ticaret girişimciliğini keşfetmek isteyen öğrenciler için somut bir referans sunar.</p>
-        <a href="#" data-i18n="audLink">Detaylı Bilgi →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="yontem">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="eyebrowYontem">Yöntem</span>
-      <h2 data-i18n="yontemTitle">144 alt boyuttan 14 belirleyiciye</h2>
-      <p data-i18n="yontemDesc">Literatür taramasıyla toplanan alt boyutlar eleştirel bir sentezle daraltıldı, ardından dört iş paketiyle sahaya taşındı.</p>
+      <span class="eyebrow" data-i18n="eyebrowYontem">Aşamalar</span>
+      <h2 data-i18n="yontemTitle">Projenin aşamaları</h2>
+      <p data-i18n="yontemDesc">Araştırma dört aşamada ilerliyor. Tamamlanan ve devam eden aşamaları burada takip edebilirsiniz.</p>
     </div>
 
-    <div class="method-grid reveal">
-      <div class="reduce-panel">
-        <div class="from num">144</div>
-        <div class="arrow" data-i18n="reduceArrow">alt boyut daraltıldı</div>
-        <div class="to num">14</div>
-        <p data-i18n="reduceDesc">Belirleyici, dört ana kümede toplandı ve BEST-WORST yöntemiyle önem sırasına konacak.</p>
+    <div class="ip-list reveal">
+      <div class="ip-row">
+        <div class="ip-num">01</div>
+        <div class="ip-body"><h3 data-i18n="ip1Title">Belirleyicilerin Keşfi</h3></div>
+        <div class="status done"><span class="dot"></span><span data-i18n="statusDone">Tamamlandı</span></div>
       </div>
-
-      <div class="ip-list">
-        <div class="ip-row">
-          <div class="ip-num">01</div>
-          <div class="ip-body"><h3 data-i18n="ip1Title">Belirleyicilerin Keşfi</h3><p data-i18n="ip1Desc">Literatür taraması ve uzman görüşüyle dış ticaret girişimciliğine özgü belirleyicilerin ortaya konması.</p></div>
-          <div class="status done"><span class="dot"></span><span data-i18n="statusDone">Tamamlandı</span></div>
-        </div>
-        <div class="ip-row">
-          <div class="ip-num">02</div>
-          <div class="ip-body"><h3 data-i18n="ip2Title">Nicel Saha Araştırması</h3><p data-i18n="ip2Desc">192 firmadan anket verisi toplanması; belirleyicilerin BEST-WORST yöntemiyle sıralanması.</p></div>
-          <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-        </div>
-        <div class="ip-row">
-          <div class="ip-num">03</div>
-          <div class="ip-body"><h3 data-i18n="ip3Title">Nitel Mülakatlar</h3><p data-i18n="ip3Desc">25 dış ticaret girişimcisiyle görüşmeler; içerik analiziyle kod-kategori-tema çıkarımı.</p></div>
-          <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-        </div>
-        <div class="ip-row">
-          <div class="ip-num">04</div>
-          <div class="ip-body"><h3 data-i18n="ip4Title">Politika Önerisi Seti</h3><p data-i18n="ip4Desc">Bulguların sentezlenip ilgili kamu kurumlarıyla paylaşılacak teşvik revizyon önerilerinin geliştirilmesi.</p></div>
-          <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-        </div>
+      <div class="ip-row">
+        <div class="ip-num">02</div>
+        <div class="ip-body"><h3 data-i18n="ip2Title">Saha Araştırması</h3></div>
+        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+      </div>
+      <div class="ip-row">
+        <div class="ip-num">03</div>
+        <div class="ip-body"><h3 data-i18n="ip3Title">Analiz ve Bulgular</h3></div>
+        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+      </div>
+      <div class="ip-row">
+        <div class="ip-num">04</div>
+        <div class="ip-body"><h3 data-i18n="ip4Title">Politika Önerisi Seti</h3></div>
+        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
       </div>
     </div>
   </div>
@@ -557,41 +546,36 @@
   var translations = {
     en: {
       brandTitle: "Export Incentives Policy Research",
-      navProje: "Project", navArastirma: "Research", navBulgular: "Findings",
+      navProje: "Project", navArastirma: "Process", navBulgular: "Findings",
       navPolitika: "Policy Recommendations", navYayinlar: "Publications", navEkip: "Team", navIletisim: "Contact",
-      megaProjeOzet: "Project Summary", megaProjeSorular: "Research Questions", megaProjeKapsam: "Scope and Objectives",
-      megaYontem: "Method", megaIsPaketleri: "Work Packages", megaSahaBolgesi: "Field Region",
-      megaBelirleyiciKumeleri: "Determinant Clusters", megaIndirgeme: "144 → 14 Reduction", megaSahaVerileri: "Field Data",
+      megaProjeOzet: "Project Summary", megaProjeKapsam: "Scope and Objectives",
+      megaYontem: "Stages", megaSahaBolgesi: "Field Region",
+      megaBulgularDurum: "Findings Status",
+      megaBulgularNot: "Will be shared once the field research is complete.",
       megaGelismeRaporlari: "Progress Reports", megaBildiriler: "Conference Papers", megaMakaleler: "Articles",
       megaYurutucu: "Principal Investigator", megaArastirmacilar: "Researchers",
-      statAySure: "Months", statFirma: "Firms", statBolge: "Region", statBelirleyici: "Determinants",
-      statIl: "Provinces", statGorusme: "Interviews", statIsPaketi: "Work Packages", statTamamlanan: "Completed",
-      statAltBoyut: "Sub-dimensions", statBelirleyici2: "Determinants", statKume: "Clusters", statYontem: "Methods",
+      statAySure: "Months", statBolge: "Region",
+      statIsPaketi: "Stages", statTamamlanan: "Completed",
       statRapor: "Report", statProjeNo: "Project No", statYurutucu: "Lead", statUniversite: "University",
       heroTitle: "A research project rewriting export incentive policy around the real determinants",
-      mapKocaeli: "Kocaeli", mapSakarya: "Sakarya", mapDuzce: "Düzce", mapBolu: "Bolu", mapYalova: "Yalova",
+      heroBadge: "Supported Research", heroSub: "We uncover the determinants of foreign trade entrepreneurship through field research and turn the findings into a concrete incentive policy proposal.",
+      heroCta: "Explore the Method →",
+      fcStageTitle: "Project Stage", fcStageLabel: "Completed stage",
+      fcScopeTitle: "Field Coverage", fcScopeIl: "Provinces", fcScopeBolge: "TR42 East Marmara",
+      fcLeadRole: "Principal Investigator",
       eyebrowKapsam: "Scope",
       kapsamTitle: "Conducted within the Social Sciences and Humanities Research Support Programme",
       kapsam1: "Social Sciences and Humanities Research Support Programme",
       kapsam2b: "Founding Author", kapsam2: "Author of the foundational study on foreign trade entrepreneurship",
-      kapsam3b: "192 Firms", kapsam3: "Sample of the quantitative field survey across 5 provinces",
+      kapsam3b: "Field Research", kapsam3: "Quantitative and qualitative research across 5 provinces",
       kapsam4b: "TR42 East Marmara", kapsam4: "Field region covering Bolu, Düzce, Kocaeli, Sakarya and Yalova",
-      eyebrowKimler: "Who It Serves",
-      kimlerTitle: "Our findings speak to four distinct audiences",
-      audPolitikaTitle: "Policymakers", audPolitikaDesc: "Revises the incentive mechanism around the real needs of foreign trade entrepreneurs.",
-      audFirmaTitle: "Exporting Firms", audFirmaDesc: "Reveals which incentives actually work and where the gaps remain.",
-      audAkademikTitle: "Academics", audAkademikDesc: "Brings a new framework to a still-limited literature on foreign trade entrepreneurship.",
-      audOgrenciTitle: "Students", audOgrenciDesc: "Offers a concrete reference for students exploring foreign trade entrepreneurship.",
-      audLink: "Learn More →",
-      eyebrowYontem: "Method",
-      yontemTitle: "From 144 sub-dimensions to 14 determinants",
-      yontemDesc: "Sub-dimensions gathered through the literature review were narrowed through critical synthesis, then carried to the field through four work packages.",
-      reduceArrow: "sub-dimensions narrowed",
-      reduceDesc: "Determinants were grouped into four main clusters and will be ranked by importance using the BEST-WORST method.",
-      ip1Title: "Discovery of Determinants", ip1Desc: "Identifying determinants specific to foreign trade entrepreneurship through literature review and expert opinion.",
-      ip2Title: "Quantitative Field Research", ip2Desc: "Collecting survey data from 192 firms; ranking determinants using the BEST-WORST method.",
-      ip3Title: "Qualitative Interviews", ip3Desc: "Interviews with 25 foreign trade entrepreneurs; code-category-theme extraction through content analysis.",
-      ip4Title: "Policy Recommendation Set", ip4Desc: "Synthesizing findings into concrete incentive revision proposals to share with relevant public institutions.",
+      eyebrowYontem: "Stages",
+      yontemTitle: "Project stages",
+      yontemDesc: "The research proceeds in four stages. Track completed and ongoing stages here.",
+      ip1Title: "Discovery of Determinants",
+      ip2Title: "Field Research",
+      ip3Title: "Analysis and Findings",
+      ip4Title: "Policy Recommendation Set",
       statusDone: "Completed", statusPending: "Planned",
       eyebrowLogos: "Institutions Supporting and Following the Project",
       logoSakarya: "Sakarya University", logoAjans: "TR42 East Marmara Development Agency", logoBakanlik: "Ministry of Trade",
