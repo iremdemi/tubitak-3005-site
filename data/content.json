@@ -2,19 +2,19 @@
   "tr": {
     "haberler": [
       {
-        "tarih": "12 Ağu 2026",
+        "gorsel": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
         "baslik": "Miktar Odaklılıktan Katma Değere: İhracat Teşviklerinde Yeni Nesil Politikalar",
-        "ozet": "Mevcut ihracat teşvikleri ölçek ekonomisine sahip büyük firmaları önceliklendirirken, yenilikçi girişimlerin yüksek riskli yatırımları nasıl desteklenmeli?"
+        "ozet": "Mevcut ihracat teşvikleri büyük firmaları önceliklendirirken, yenilikçi girişimlerin yüksek riskli yatırımları nasıl desteklenmeli?"
       },
       {
-        "tarih": "28 Tem 2026",
+        "gorsel": "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&q=80",
         "baslik": "İhracatın Şifreleri: Dış Ticaret Girişimciliğinin 9 Temel Belirleyicisi",
-        "ozet": "TR42 Bölgesi'ndeki 192 ihracatçı firma ile gerçekleştirilen 'Çok Kriterli Karar Verme Analizleri' sonucunda, ihracatı etkileyen en kritik faktörler belirlendi."
+        "ozet": "TR42 Bölgesi'ndeki 192 ihracatçı firma ile gerçekleştirilen 'Çok Kriterli Karar Verme Analizleri' sonucunda en kritik faktörler belirlendi."
       },
       {
-        "tarih": "15 Tem 2026",
+        "gorsel": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
         "baslik": "Yeni Korumacılık ve Yeşil Dönüşüm Çağında Doğu Marmara'nın Stratejik Rolü",
-        "ozet": "Pandemi ve jeopolitik krizler sonrası dünyada yükselen 'yeni korumacılık' eğilimlerine ve Avrupa Yeşil Mutabakatı'na karşı Türkiye'nin sınai hinterlandı nasıl hazırlanıyor?"
+        "ozet": "Pandemi sonrası yükselen 'yeni korumacılık' eğilimlerine ve Avrupa Yeşil Mutabakatı'na karşı Türkiye'nin sınai hinterlandı nasıl hazırlanıyor?"
       }
     ],
     "ekip": [
@@ -53,26 +53,26 @@
   "en": {
     "haberler": [
       {
-        "tarih": "Aug 12, 2026",
+        "gorsel": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
         "baslik": "From Volume to Value-Added: Next Generation Policies in Export Incentives",
-        "ozet": "While current export incentives prioritize large-scale firms, how should high-risk investments of innovative startups and SMEs be supported?"
+        "ozet": "While current export incentives prioritize large firms, how should high-risk investments of innovative startups be supported?"
       },
       {
-        "tarih": "Jul 28, 2026",
+        "gorsel": "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&q=80",
         "baslik": "Codes of Export: 9 Core Determinants of Foreign Trade Entrepreneurship",
-        "ozet": "The most critical factors affecting exports have been identified through 'Multi-Criteria Decision Making Analyses' conducted with 192 exporting firms."
+        "ozet": "Critical factors have been identified through Multi-Criteria Decision Making Analyses conducted with 192 exporting firms in TR42."
       },
       {
-        "tarih": "Jul 15, 2026",
+        "gorsel": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
         "baslik": "The Strategic Role of East Marmara in the Era of Neo-Protectionism",
-        "ozet": "How is Turkey's industrial hinterland preparing against the rising neo-protectionism trends and the European Green Deal?"
+        "ozet": "How is Turkey's industrial hinterland preparing against rising neo-protectionism trends and the European Green Deal?"
       }
     ],
     "ekip": [
       {
         "isim": "Prof. Dr. Ahmet Yagmur Ersoy",
         "unvan": "Principal Investigator",
-        "aciklama": "Sakarya University. Pioneer researcher of the Foreign Trade Entrepreneurship concept and general coordinator of the project.",
+        "aciklama": "Sakarya University. Pioneer researcher of the Foreign Trade Entrepreneurship concept and general coordinator.",
         "fotograf": ""
       },
       {
@@ -84,19 +84,19 @@
       {
         "isim": "Merve Saygili",
         "unvan": "Economic Analyst",
-        "aciklama": "Data analysis on export incentive policies and the impact of global trends on regional ecosystems.",
+        "aciklama": "Data analysis on export incentive policies and regional economic impacts.",
         "fotograf": ""
       },
       {
         "isim": "Cansu Erden",
         "unvan": "Data Analyst",
-        "aciklama": "Interpretation and reporting of quantitative datasets through Multi-Criteria Decision Making models.",
+        "aciklama": "Interpretation and reporting of quantitative datasets through MCDM models.",
         "fotograf": ""
       },
       {
         "isim": "Cagdas Ates",
         "unvan": "Field Coordinator",
-        "aciklama": "Organization of industrial network analyses and exporting firm interviews in the TR42 Region.",
+        "aciklama": "Organization of industrial network analyses and exporting firm interviews.",
         "fotograf": ""
       }
     ]
