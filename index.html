@@ -85,13 +85,12 @@
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
   /* ==========================================================================
-     PREMİUM KÜRESEL TİCARET ROTALARI + LİMAN + DÜNYA HARİTASI HERO SECTION
+     HERO SECTION
      ========================================================================== */
   .hero-corporate {
     position: relative;
     width: 100%;
     min-height: 560px;
-    /* Konteyner Limanı + Dünya Haritası Rotaları + Küresel Ticaret Altyapısı Birleşimi */
     background: linear-gradient(135deg, rgba(10, 18, 38, 0.82), rgba(20, 40, 95, 0.78)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
@@ -151,12 +150,12 @@
   }
 
   /* ==========================================================================
-     DAHA KALIN VE GÜÇLÜ "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
+     SIFIR BOŞLUKLU (KENARDAN KENARA) MASKELENMİŞ DEV YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
     width: 100%;
-    padding: 80px 0;
+    padding: 60px 0;
     background-color: var(--bg-alt);
     text-align: center;
     overflow: hidden;
@@ -164,30 +163,30 @@
   }
 
   .giant-text-subtitle {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--accent-teal);
-    margin-bottom: 12px;
-    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 8px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   .giant-masked-text {
     font-family: 'Inter', sans-serif;
-    font-size: 12.5vw;
-    font-weight: 900; /* Ultra kalın font */
+    font-size: 14.8vw; /* Kenarlara sıfır boşlukla tam oturması için optimize edildi */
+    font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    -webkit-text-stroke: 1.2px rgba(15, 23, 42, 0.15); /* Yazının dolgunluğunu artırmak için zarif kontur */
+    line-height: 0.8;
+    letter-spacing: -0.05em;
     background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
     width: 100%;
+    margin: 0;
+    padding: 0;
     text-align: center;
     user-select: none;
-    padding: 0 10px;
   }
 
   /* ==========================================================================
@@ -346,9 +345,7 @@
   </div>
 </header>
 
-<!-- =======================================================================
-     PREMİUM DÜNYA HARİTASI + TİCARET ROTALARI + LİMAN HERO SECTION
-     ======================================================================= -->
+<!-- HERO SECTION -->
 <section id="proje" class="hero-corporate">
   <div class="hero-corporate-inner gsap-reveal">
     <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
@@ -357,11 +354,9 @@
   </div>
 </section>
 
-<!-- =======================================================================
-     DAHA KALIN VE GÜÇLÜ "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
-     ======================================================================= -->
+<!-- SIFIR BOŞLUKLU (KENARDAN KENARA) MASKELENMİŞ DEV YAZI BÖLÜMÜ -->
 <section class="giant-text-section gsap-reveal">
-  <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
+  <div class="giant-text-subtitle" data-i18n="giantSub">TÜBİTAK 3005 DESTEKLİ PROJE</div>
   <div class="giant-masked-text">EXPORT ECOSYSTEM</div>
 </section>
 
@@ -489,7 +484,7 @@
       heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem",
       heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
       heroBtn: "İNCELE",
-      giantSub: "MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM",
+      giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
       findingsEyebrow: "METODOLOJİDEN ARINDIRILMIŞ NET SONUÇLAR",
       findingsTitle: "İhracatın Şifreleri: Girişimciler İçin En Kritik Belirleyiciler",
       f1Sub: "En Önemli Faktör", f1Title: "Finansal Belirleyiciler (Özkaynak ve Performans)", f1Desc: "Analiz sonuçlarına göre dış ticaret girişimciliğinin önündeki en güçlü katalizör finansman yapısıdır. %86,8 olasılıkla finansal gücün birincil belirleyici olması, desteklerin miktar odaklı değil kârlılık odaklı yapılandırılmasını zorunlu kılmaktadır.",
@@ -514,12 +509,12 @@
       heroTitle: "A New Era in Foreign Trade Entrepreneurship",
       heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
       heroBtn: "VIEW",
-      giantSub: "NATIONAL ECONOMIC DEFENSE AND DOMESTIC PRODUCTION",
+      giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
       findingsEyebrow: "METHODOLOGY-FREE CLEAR RESULTS",
       findingsTitle: "Codes of Export: Most Critical Determinants for Entrepreneurs",
       f1Sub: "Most Important Factor", f1Title: "Financial Determinants (Equity and Performance)", f1Desc: "According to analysis results, the strongest catalyst is the financial structure. With an 86.8% probability of being the primary determinant, structuring incentives based on profitability is crucial.",
       f2Sub: "Strategic Criterion", f2Title: "Competition, Opportunities, and Risk Management", f2Desc: "Exporters' perception of opportunities and risk management capacity against global fluctuations rank second. In this era of rising protectionism, market literacy stands out.",
-      f3Sub: "Managerial Capacity", f3Title: "Strategic Decisions and Innovation", f3Desc: "Not only producing but also designing innovative production processes and carrying them to the international arena with a strategic decision constitutes the backbone of sustainable exports.",
+      f3Sub: "Managerial Capacity", f3Sub: "Strategic Decisions and Innovation", f3Title: "Strategic Decisions and Innovation", f3Desc: "Not only producing but also designing innovative production processes and carrying them to the international arena with a strategic decision constitutes the backbone of sustainable exports.",
       polEyebrow: "STRATEGIC VISION", polTitle: "Policy Recommendations for the Future",
       p1Title: "Profitability & Equity-Focused Support Models", p1Desc: "Moving beyond volume-based supports, next-generation financing models that enhance firms' equity strength and value creation capacity must be implemented.",
       p2Title: "Market Intelligence Against Neo-Protectionism", p2Desc: "Regional consultancy and intelligence networks must be strengthened to enhance SMEs' risk management capacity against global supply chain disruptions.",
