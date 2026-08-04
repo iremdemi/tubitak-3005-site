@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İhracat Teşvikleri ve Girişimcilik Araştırma Portalı</title>
+<title>Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</title>
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<!-- Cormorant Garamond, Inter ve Merriweather Font Entegrasyonu -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
@@ -19,6 +20,7 @@
     --border-color: #E2E8F0;  
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
+    --font-logo: 'Cormorant Garamond', serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,43 +36,83 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE İTP HARFSEL LOGO (SEÇENEK 2)
+     HEADER & OPTİK MERKEZLEME (APPLE / MCKINSEY DÜZENİ)
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
     position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
   }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; }
   
-  /* Gönderdiğin Görseldeki İTP Logosu Tasarımı */
-  .brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-  
-  .itp-logo {
-    font-family: var(--font-serif);
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--accent-navy);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    display: flex;
-    align-items: baseline;
+  /* Grid kullanarak sol logo, mutlak merkezde menü, sağda aksiyonlar */
+  .header-inner { 
+    display: grid; 
+    grid-template-columns: auto 1fr auto; 
+    align-items: center; 
+    gap: 24px; 
+    height: 88px; 
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 32px;
   }
-  .itp-logo .dot-i::first-letter {
-    /* i harfinin üstündeki noktayı simüle eder veya serif estetiği verir */
+  
+  /* Logo Bloğu (Gereksiz genişlik yok, max 300px) */
+  .brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    max-width: 320px;
+    justify-self: start;
+  }
+  
+  /* Görseldeki Referansla Birebir Uyumlu Wordmark Logo */
+  .wordmark-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .wm-acronym {
+    font-family: var(--font-logo);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent-navy);
+    letter-spacing: 0.12em;
+    line-height: 1;
+  }
+  .wm-line {
+    width: 100%;
+    height: 1.5px;
+    background: var(--accent-navy);
+    margin: 4px 0;
+    opacity: 0.8;
+  }
+  .wm-subtitle {
+    font-family: var(--font-sans);
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--text-body);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   .brand-divider {
     width: 1px;
-    height: 36px;
+    height: 40px;
     background-color: var(--border-color);
+    flex-shrink: 0;
   }
 
   .brand-text { display: flex; flex-direction: column; }
-  .brand-text strong { font-family: var(--font-serif); font-size: 13.5px; font-weight: 700; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.25; }
-  .brand-text small { font-family: var(--font-sans); font-size: 9.5px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .brand-text strong { font-family: var(--font-serif); font-size: 11.5px; font-weight: 600; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.35; }
 
-  /* Menü */
-  .nav-menu { display: flex; align-items: center; gap: 24px; margin: 0 auto; }
+  /* Menü Grubu (Grid ile Optik Merkezde) */
+  .nav-menu { 
+    justify-self: center; 
+    display: flex; 
+    align-items: center; 
+    gap: 28px; 
+  }
   .nav-item { position: relative; }
   .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
   .nav-menu a:hover { color: var(--accent-teal); }
@@ -86,8 +128,13 @@
   .dropdown-menu a { display: block; padding: 8px 16px; font-size: 11.5px; font-weight: 500; color: var(--text-body); text-transform: none; white-space: nowrap; }
   .dropdown-menu a:hover { background: #F8FAFC; color: var(--accent-navy); }
 
-  /* Sağ Bölüm */
-  .header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  /* Sağ Bölüm (Hizalı) */
+  .header-right { 
+    justify-self: end; 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+  }
   
   .lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; }
   .lang-switch span { transition: color 0.2s; padding: 2px 4px; }
@@ -246,6 +293,7 @@
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
 
   @media (max-width: 1024px) {
+    .header-inner { grid-template-columns: auto auto; justify-content: space-between; }
     .nav-menu, .header-right { display: none; }
     .hero-inner { grid-template-columns: 1fr; gap: 48px; }
     .hero-visual-map { height: 380px; }
@@ -260,19 +308,22 @@
 <body id="anasayfa">
 
 <header>
-  <div class="wrap header-inner">
+  <div class="header-inner">
     
-    <!-- SOL: İTP Harfsel Logo (Seçenek 2) ve Portal İsmi -->
+    <!-- SOL: DTG Wordmark Logo ve Yeni Başlık -->
     <a href="#anasayfa" class="brand">
-      <div class="itp-logo">İTP</div>
+      <div class="wordmark-logo">
+        <span class="wm-acronym">DTG</span>
+        <div class="wm-line"></div>
+        <span class="wm-subtitle">RESEARCH PORTAL</span>
+      </div>
       <div class="brand-divider"></div>
       <div class="brand-text">
-        <strong data-i18n="brandTitle">İhracat Teşvikleri ve Girişimcilik</strong>
-        <small data-i18n="brandSub">Araştırma Portalı</small>
+        <strong data-i18n="brandTitle">Dış Ticaret Girişimciliği ve<br>İhracat Teşvikleri Araştırma Portalı</strong>
       </div>
     </a>
 
-    <!-- ORTA: 6 Linkli Açılır Menü -->
+    <!-- ORTA: Optik Merkezli Menü -->
     <nav class="nav-menu">
       <div class="nav-item"><a href="#anasayfa" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
       
@@ -313,7 +364,7 @@
       <div class="nav-item"><a href="#iletisim" data-i18n="menuIletisim">İletişim</a></div>
     </nav>
 
-    <!-- SAĞ: Temiz Dil Seçici ve Politika Butonu -->
+    <!-- SAĞ: Temiz Dil Seçici ve Buton -->
     <div class="header-right">
       <div class="lang-switch" id="langToggle">
         <span class="active" data-lang="tr">TR</span>
@@ -339,7 +390,7 @@
       </div>
     </div>
 
-    <!-- Harita ve Kutucuksuz Veriler -->
+    <!-- Harita ve Kutusuz Veriler -->
     <div class="hero-visual-map gsap-reveal">
       <div class="editorial-grid"></div>
       
@@ -462,7 +513,7 @@
   <div class="wrap">
     <div class="footer-inner">
       <div class="f-brand">
-        <h2 data-i18n="brandTitleFoot">İhracat Teşvikleri ve<br>Girişimcilik Araştırma Portalı</h2>
+        <h2 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h2>
         <p style="margin-top: 16px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
       <div>
@@ -496,8 +547,7 @@
 
   const dict = {
     tr: {
-      brandTitle: "İhracat Teşvikleri ve Girişimcilik",
-      brandSub: "Araştırma Portalı",
+      brandTitle: "Dış Ticaret Girişimciliği ve<br>İhracat Teşvikleri",
       menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
       dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
       btnPolitika: "Politika Önerileri",
@@ -520,15 +570,14 @@
       p2Title: "Yeni Korumacılığa Karşı Pazar İstihbaratı", p2Desc: "Küresel tedarik zincirlerindeki kırılmalara karşı KOBİ'lerin risk yönetimi kapasitesini artıracak bölgesel danışmanlık ve istihbarat ağları güçlendirilmelidir.",
       yayEyebrow: "DOKÜMANTASYON", yayTitle: "İndirilebilir Raporlar ve Yayınlar", yayDesc: "Araştırma bulgularına dayalı tam metin politika raporlarımıza ve bültenlerimize buradan erişebilirsiniz.", yayBtn: "PDF Raporu Talep Et",
       teamEyebrow: "ARAŞTIRMA KÜNYESİ", teamTitle: "Akademik ve Sektörel Uzmanlar",
-      brandTitleFoot: "İhracat Teşvikleri ve<br>Girişimcilik Araştırma Portalı",
+      brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
       footCopy: "&copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.",
       readMoreTxt: "Detaylı İncele"
     },
     en: {
-      brandTitle: "Export Incentives & Entrepreneurship",
-      brandSub: "Research Portal",
+      brandTitle: "Foreign Trade Entrepreneurship &<br>Export Incentives",
       menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
@@ -551,7 +600,7 @@
       p2Title: "Market Intelligence Against Neo-Protectionism", p2Desc: "Regional consultancy and intelligence networks must be strengthened to enhance SMEs' risk management capacity against global supply chain disruptions.",
       yayEyebrow: "DOCUMENTATION", yayTitle: "Downloadable Reports & Publications", yayDesc: "Access our full-text policy reports and bulletins based on research findings here.", yayBtn: "Request PDF Report",
       teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Academic and Sectoral Experts",
-      brandTitleFoot: "Export Incentives &<br>Entrepreneurship Research Portal",
+      brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 Doğu Marmara Development Agency (MARKA)",
       footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
