@@ -1,0 +1,36 @@
+{
+  "haberler": [
+    {
+      "baslik": "1. Gelişme Raporu TÜBİTAK'a sunuldu",
+      "aciklama": "İP1 kapsamında belirleyici keşfi tamamlandı; saha çalışmasına geçiliyor.",
+      "tarih": "Haz 2026",
+      "durum": "tamamlandi"
+    },
+    {
+      "baslik": "[Saha ziyareti başlığı]",
+      "aciklama": "[Kısa özet metni buraya gelecek.]",
+      "tarih": "[Tarih]",
+      "durum": "planlaniyor"
+    }
+  ],
+  "ekip": [
+    {
+      "isim": "Ahmet Yağmur Ersoy",
+      "unvan": "Proje Yürütücüsü · Prof. Dr.",
+      "aciklama": "Dış ticaret girişimciliği kavramının öncül çalışmalarının yazarı, Sakarya Üniversitesi.",
+      "fotograf": ""
+    },
+    {
+      "isim": "[Araştırmacı adı]",
+      "unvan": "Araştırmacı",
+      "aciklama": "Rol ve araştırma ilgi alanı eklenecek.",
+      "fotograf": ""
+    },
+    {
+      "isim": "[Araştırmacı adı]",
+      "unvan": "Araştırmacı",
+      "aciklama": "Rol ve araştırma ilgi alanı eklenecek.",
+      "fotograf": ""
+    }
+  ]
+}
