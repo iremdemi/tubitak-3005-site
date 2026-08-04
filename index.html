@@ -67,9 +67,9 @@
   header.is-scrolled .header-inner{height:72px;}
 
   .brand{display:flex; align-items:center; gap:13px;}
-  .brand-mark{width:26px; height:26px; flex:none; display:flex; align-items:center; justify-content:center;}
-  .brand-mark svg{width:100%; height:100%;}
-  .brand-mark rect{fill:var(--nav-ink);}
+  .brand-mark{width:30px; height:30px; flex:none; display:flex; align-items:center; justify-content:center; transition:width .2s ease, height .2s ease;}
+  .brand-mark img{width:100%; height:100%; object-fit:contain;}
+  header.is-scrolled .brand-mark{width:24px; height:24px;}
   .brand-text{font-family:var(--nav-font); font-weight:600; font-size:13.5px; color:var(--nav-ink); line-height:1.25; letter-spacing:-0.005em;}
   .brand-text small{display:block; font-family:var(--nav-font); font-weight:400; font-size:10.5px; color:var(--nav-slate); letter-spacing:.02em; margin-top:3px;}
 
@@ -229,7 +229,7 @@
   <div class="wrap header-inner">
     <a href="#proje" class="brand">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 28 28"><rect x="2" y="16" width="5" height="10"/><rect x="11.5" y="9" width="5" height="17"/><rect x="21" y="3" width="5" height="23"/></svg>
+        <img src="assets/tubitak-logo.png" alt="">
       </span>
       <span class="brand-text"><span data-i18n="brandTitle">İhracat Teşvikleri Politika Araştırması</span><small>TÜBİTAK 3005</small></span>
     </a>
