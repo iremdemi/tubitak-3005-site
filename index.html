@@ -7,23 +7,23 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
     --bg-alt: #FFFFFF;        
     --text-ink: #0F172A;      
     --text-body: #475569;     
-    --accent-navy: #1E3A8A;   
-    --accent-teal: #0D9488;   
+    --accent-navy: #173B7A;   /* Kurumsal Lacivert */
+    --accent-teal: #0F8B8D;   /* Turkuaz Vurgu */
     --border-color: #E2E8F0;  
-    --font-serif: 'Cormorant Garamond', serif;
+    --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-  body { font-family: var(--font-sans); background-color: var(--bg-main); color: var(--text-body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-sans); background-color: var(--bg-main); color: var(--text-body); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
   ul { list-style: none; }
   img { max-width: 100%; display: block; }
@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE GÜNCELLENMİŞ LOGO (Cormorant Garamond SemiBold + Inter Medium Siyah)
+     HEADER VE YATAY KOMBİNASYON LOGO
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -50,17 +50,18 @@
     gap: 12px;
   }
   .hl-dtg {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    font-weight: 600;
-    color: #000000;
-    letter-spacing: 0.04em;
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent-navy);
+    letter-spacing: 0.05em;
     line-height: 1;
   }
   .hl-divider {
-    width: 1px;
-    height: 28px;
-    background-color: #CBD5E1;
+    width: 1.5px;
+    height: 30px;
+    background-color: var(--accent-navy);
+    opacity: 0.3;
   }
   .hl-stack {
     display: flex;
@@ -68,11 +69,11 @@
     line-height: 1.15;
   }
   .hl-research, .hl-portal {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
     font-size: 11px;
-    font-weight: 500;
-    color: #000000;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--accent-navy);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
@@ -147,7 +148,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10, 18, 38, 0.80), rgba(20, 40, 95, 0.72));
+    background: linear-gradient(135deg, rgba(23, 59, 122, 0.82), rgba(15, 139, 141, 0.72));
     z-index: 1;
     pointer-events: none;
   }
@@ -299,14 +300,261 @@
   .f-brand p { font-size: 13px; color: #94A3B8; max-width: 300px; }
   .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
 
+  /* ==========================================================================
+     KURUMSAL AKADEMİK BİLGİ MERKEZİ WIDGET STİLLERİ
+     ========================================================================== */
+  .portal-widget-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: var(--font-sans);
+  }
+
+  .portal-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-navy);
+    color: #FFFFFF;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(23, 59, 122, 0.25);
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .portal-toggle-btn:hover {
+    background-color: var(--accent-teal);
+    transform: scale(1.06);
+  }
+  .portal-toggle-btn svg {
+    width: 26px;
+    height: 26px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .portal-welcome-bubble {
+    position: absolute;
+    bottom: 74px;
+    right: 0;
+    width: 290px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    font-size: 13px;
+    color: var(--text-ink);
+    line-height: 1.5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .portal-welcome-bubble.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .portal-welcome-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background: #FFFFFF;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transform: rotate(45deg);
+  }
+  .portal-welcome-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #94A3B8;
+  }
+  .portal-welcome-close:hover { color: var(--text-ink); }
+
+  .portal-chat-box {
+    position: absolute;
+    bottom: 76px;
+    right: 0;
+    width: 360px;
+    height: 520px;
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.98);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .portal-chat-box.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .portal-chat-header {
+    background: var(--accent-navy);
+    color: #FFFFFF;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .portal-header-titles h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-family: var(--font-serif);
+  }
+  .portal-header-titles span {
+    font-size: 10px;
+    color: #CBD5E1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .portal-header-controls {
+    display: flex;
+    gap: 10px;
+  }
+  .portal-ctrl-btn {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    padding: 0 4px;
+  }
+  .portal-ctrl-btn:hover { opacity: 1; }
+
+  .portal-chat-messages {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #FAFAFA;
+    scroll-behavior: smooth;
+  }
+
+  .portal-msg {
+    max-width: 88%;
+    padding: 11px 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .portal-msg.system {
+    background: #FFFFFF;
+    color: var(--text-ink);
+    align-self: flex-start;
+    border: 1px solid var(--border-color);
+  }
+  .portal-msg.user {
+    background: var(--accent-navy);
+    color: #FFFFFF;
+    align-self: flex-end;
+  }
+
+  .portal-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+  .portal-action-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-navy);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+  .portal-action-card:hover {
+    border-color: var(--accent-navy);
+    background-color: #F8FAFC;
+  }
+
+  .portal-chat-input-area {
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .portal-chat-input-area input {
+    flex-grow: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    color: var(--text-ink);
+    transition: border-color 0.2s;
+  }
+  .portal-chat-input-area input:focus {
+    border-color: var(--accent-navy);
+  }
+  .portal-chat-input-area input::placeholder {
+    color: #94A3B8;
+  }
+  .portal-send-btn {
+    background: var(--accent-navy);
+    color: #FFFFFF;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .portal-send-btn:hover {
+    background: var(--accent-teal);
+  }
+  .portal-send-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
 
   @media (max-width: 1024px) {
     .header-inner { justify-content: space-between; }
     .nav-menu, .header-right { display: none; }
     .hero-corporate { min-height: 400px; padding: 60px 20px; }
-    .team-grid { grid-template-columns: 1fr; }
-    .footer-inner { flex-direction: column; gap: 32px; }
+    .portal-chat-box { width: calc(100vw - 32px); right: -16px; }
   }
 </style>
 </head>
@@ -315,7 +563,7 @@
 <header>
   <div class="header-inner">
     
-    <!-- SOL: Güncellenmiş Yatay Kombinasyon Logosu -->
+    <!-- SOL: Yatay Kombinasyon Logosu -->
     <a href="#anasayfa" class="brand">
       <div class="horizontal-logo">
         <span class="hl-dtg">DTG</span>
@@ -445,6 +693,60 @@
   </div>
 </footer>
 
+<!-- KURUMLARI VE AKADEMİK STANDARTLARI YANSITAN BİLGİ MERKEZİ WIDGET -->
+<div class="portal-widget-container">
+  <div class="portal-welcome-bubble" id="portalWelcomeBubble">
+    <button class="portal-welcome-close" id="portalWelcomeClose">&times;</button>
+    Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında bilgi almak için sorularınızı iletebilirsiniz.
+  </div>
+
+  <div class="portal-chat-box" id="portalChatBox">
+    <div class="portal-chat-header">
+      <div class="portal-header-titles">
+        <h4>DTG Bilgi Merkezi</h4>
+        <span>Resmî Araştırma Portalı</span>
+      </div>
+      <div class="portal-header-controls">
+        <button class="portal-ctrl-btn" id="portalMinimizeBtn" title="Küçült">&#8211;</button>
+        <button class="portal-ctrl-btn" id="portalChatClose" title="Kapat">&times;</button>
+      </div>
+    </div>
+
+    <div class="portal-chat-messages" id="portalChatMessages">
+      <div class="portal-msg system">
+        Merhaba.<br><br>
+        Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında bilgi almak için sorularınızı iletebilirsiniz.
+      </div>
+
+      <!-- Hazır Soru Kartları (Quick Action Buttons) -->
+      <div class="portal-cards-container" id="portalQuickCards">
+        <button class="portal-action-card" data-query="Proje hakkında">Proje hakkında</button>
+        <button class="portal-action-card" data-query="Araştırma bulguları">Araştırma bulguları</button>
+        <button class="portal-action-card" data-query="Politika önerileri">Politika önerileri</button>
+        <button class="portal-action-card" data-query="Yayınlar">Yayınlar</button>
+        <button class="portal-action-card" data-query="Araştırma ekibi">Araştırma ekibi</button>
+        <button class="portal-action-card" data-query="Sık sorulan sorular">Sık sorulan sorular</button>
+      </div>
+    </div>
+
+    <div class="portal-chat-input-area">
+      <input type="text" id="portalUserInput" placeholder="Portal hakkında bir soru yazın...">
+      <button class="portal-send-btn" id="portalSendBtn" aria-label="Gönder">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <button class="portal-toggle-btn" id="portalToggleBtn" aria-label="Bilgi Merkezi">
+    <span class="qa-pulse-dot" style="position:absolute; top:4px; right:4px; width:12px; height:12px; background-color:var(--accent-teal); border:2px solid #fff; border-radius:50%;"></span>
+    <svg viewBox="0 0 24 24">
+      <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/>
+      <path d="M14 2v6h6"/>
+      <path d="M8 13h8M8 17h5"/>
+    </svg>
+  </button>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -478,7 +780,7 @@
       readMoreTxt: "Detaylı İncele"
     },
     en: {
-      menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
+      menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
       heroTitle: "A New Era in Foreign Trade Entrepreneurship",
@@ -497,6 +799,36 @@
   let currentLang = 'tr';
   let fetchedData = null;
 
+  // Dahili veri seti (Harici JSON hatası vermemesi için)
+  const siteContent = {
+    tr: {
+      haberler: [
+        { baslik: "TR42 Bölgesi İhracat Dinamikleri Raporu", ozet: "Doğu Marmara'daki 192 firmanın katılımıyla gerçekleştirilen saha araştırmasının ilk bulguları yayımlandı.", gorsel: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" },
+        { baslik: "Küresel Tedarik Zincirleri ve Yeni Korumacılık", ozet: "Neo-proteksiyonist politikaların KOBİ'lerin dış ticaret girişimciliğine etkileri üzerine kapsamlı analiz.", gorsel: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" },
+        { baslik: "Finansal Yapı ve Özkaynak Performansı", ozet: "İhracat başarısının %86,8 oranında finansal göstergelere dayandığını ortaya koyan ampirik model.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
+      ],
+      ekip: [
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Proje Yürütücüsü", aciklama: "Sakarya Üniversitesi İşletme Fakültesi Uluslararası Ticaret ve Lojistik Bölümü.", fotograf: "" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", aciklama: "Dış ticaret politikaları ve küresel rekabet stratejileri uzmanı.", fotograf: "" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", aciklama: "Finansal teknolojiler ve dış ticaret finansmanı analisti.", fotograf: "" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", aciklama: "Tedarik zinciri yönetimi ve lojistik optimizasyon.", fotograf: "" }
+      ]
+    },
+    en: {
+      haberler: [
+        { baslik: "TR42 Region Export Dynamics Report", ozet: "First findings of the field research conducted with 192 firms in East Marmara.", gorsel: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" },
+        { baslik: "Global Supply Chains & New Protectionism", ozet: "Comprehensive analysis on the effects of neo-protectionist policies on SMEs.", gorsel: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" },
+        { baslik: "Financial Structure & Equity Performance", ozet: "Empirical model showing that export success relies 86.8% on financial metrics.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
+      ],
+      ekip: [
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", aciklama: "Sakarya University, Faculty of Business Administration.", fotograf: "" },
+        { isim: "Assoc. Prof. Dr. Caner Erden", unvan: "Researcher", aciklama: "Expert in foreign trade policies and global competition.", fotograf: "" },
+        { isim: "Assoc. Prof. Dr. Metin Saygılı", unvan: "Researcher", aciklama: "Financial technologies and trade finance analyst.", fotograf: "" },
+        { isim: "Assist. Prof. Dr. Çağdaş Ateş", unvan: "Researcher", aciklama: "Supply chain management and logistics optimization.", fotograf: "" }
+      ]
+    }
+  };
+
   function translateHTML() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -507,42 +839,46 @@
   }
 
   function renderDynamicData() {
-    if (!fetchedData) return;
+    const data = siteContent[currentLang];
     
     const haberlerEl = document.getElementById('haberler-container');
-    haberlerEl.innerHTML = '';
-    fetchedData[currentLang].haberler.forEach(haber => {
-      haberlerEl.insertAdjacentHTML('beforeend', `
-        <article class="news-card hover-lift">
-          <div class="nc-img-wrap">
-            <img src="${haber.gorsel}" alt="Analiz Görseli">
-          </div>
-          <div class="nc-content">
-            <h3>${haber.baslik}</h3>
-            <p>${haber.ozet}</p>
-            <a href="#analizler" class="read-more">${dict[currentLang].readMoreTxt} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-left:4px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </article>
-      `);
-    });
+    if (haberlerEl) {
+      haberlerEl.innerHTML = '';
+      data.haberler.forEach(haber => {
+        haberlerEl.insertAdjacentHTML('beforeend', `
+          <article class="news-card hover-lift">
+            <div class="nc-img-wrap">
+              <img src="${haber.gorsel}" alt="Analiz Görseli">
+            </div>
+            <div class="nc-content">
+              <h3>${haber.baslik}</h3>
+              <p>${haber.ozet}</p>
+              <a href="#analizler" class="read-more">${dict[currentLang].readMoreTxt || "Detaylı İncele"} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-left:4px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+        `);
+      });
+    }
 
     const ekipEl = document.getElementById('ekip-container');
-    ekipEl.innerHTML = '';
-    fetchedData[currentLang].ekip.forEach(kisi => {
-      const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
-      const avatar = kisi.fotograf
-        ? `<img class="tm-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
-        : `<div class="tm-fallback">${baslar}</div>`;
-      ekipEl.insertAdjacentHTML('beforeend', `
-        <div class="team-member hover-lift">
-          ${avatar}
-          <div class="tm-info">
-            <h3>${kisi.isim}</h3>
-            <span class="role">${kisi.unvan}</span>
-            <p>${kisi.aciklama}</p>
-          </div>
-        </div>`);
-    });
+    if (ekipEl) {
+      ekipEl.innerHTML = '';
+      data.ekip.forEach(kisi => {
+        const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
+        const avatar = kisi.fotograf
+          ? `<img class="tm-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
+          : `<div class="tm-fallback">${baslar}</div>`;
+        ekipEl.insertAdjacentHTML('beforeend', `
+          <div class="team-member hover-lift">
+            ${avatar}
+            <div class="tm-info">
+              <h3>${kisi.isim}</h3>
+              <span class="role">${kisi.unvan}</span>
+              <p>${kisi.aciklama}</p>
+            </div>
+          </div>`);
+      });
+    }
 
     setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
   }
@@ -557,35 +893,158 @@
     }
   });
 
-  fetch('data/content.json')
-    .then(r => r.json())
-    .then(data => {
-      fetchedData = data;
-      translateHTML();
-      renderDynamicData();
-      initAnimations();
-    })
-    .catch(err => console.warn('JSON verisi okunamadı.', err));
-
   function initAnimations() {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.gsap-reveal').forEach(elem => {
-      gsap.to(elem, {
-        scrollTrigger: { trigger: elem, start: "top 85%" },
-        opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+        gsap.to(elem, {
+          scrollTrigger: { trigger: elem, start: "top 85%" },
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
+        });
       });
+    } else {
+      document.querySelectorAll('.gsap-reveal').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length > 0) {
+      let currentSlide = 0;
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5500);
+    }
+
+    setTimeout(() => {
+      const bubble = document.getElementById('portalWelcomeBubble');
+      const chatBox = document.getElementById('portalChatBox');
+      if (bubble && chatBox && !chatBox.classList.contains('open')) {
+        bubble.classList.add('show');
+      }
+    }, 1500);
+
+    translateHTML();
+    renderDynamicData();
+    initAnimations();
+  });
+
+  // Kurumsal Bilgi Merkezi Mantığı
+  const toggleBtn = document.getElementById('portalToggleBtn');
+  const chatBox = document.getElementById('portalChatBox');
+  const chatClose = document.getElementById('portalChatClose');
+  const minimizeBtn = document.getElementById('portalMinimizeBtn');
+  const welcomeBubble = document.getElementById('portalWelcomeBubble');
+  const welcomeClose = document.getElementById('portalWelcomeClose');
+  const sendBtn = document.getElementById('portalSendBtn');
+  const userInput = document.getElementById('portalUserInput');
+  const chatMessages = document.getElementById('portalChatMessages');
+  const quickCards = document.querySelectorAll('.portal-action-card');
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      chatBox.classList.toggle('open');
+      if (welcomeBubble) welcomeBubble.classList.remove('show');
+    });
+  }
+
+  if (chatClose) {
+    chatClose.addEventListener('click', () => {
+      chatBox.classList.remove('open');
+    });
+  }
+
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener('click', () => {
+      chatBox.classList.remove('open');
+    });
+  }
+
+  if (welcomeClose) {
+    welcomeClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (welcomeBubble) welcomeBubble.classList.remove('show');
+    });
+  }
+
+  function addMessage(text, sender) {
+    if (!chatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('portal-msg', sender);
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function processQuery(queryText) {
+    addMessage(queryText, 'user');
+
+    setTimeout(() => {
+      const q = queryText.toLowerCase();
+      let answer = "Bu konuda henüz sistemimizde ayrıntılı veri bulunmuyor veya talebiniz kapsam dışı. Resmî raporlarımıza ve politika bültenlerimize ana menü üzerinden erişebilirsiniz.";
+
+      if (q.includes('proje hakkında') || q.includes('amaç') || q.includes('nedir bu proje') || q.includes('ne inceliyor')) {
+        answer = "Bu araştırma; TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla dış ticaret girişimciliğini şekillendiren stratejik, ekonomik ve politik dinamikleri incelemektedir. TÜBİTAK 3005 desteğiyle Sakarya Üniversitesi bünyesinde yürütülmektedir.";
+      } else if (q.includes('araştırma bulguları') || q.includes('en önemli bulgu') || q.includes('bulgu')) {
+        answer = "Araştırma bulgularına göre dış ticaret girişimciliğinin önündeki en güçlü katalizör %86,8 olasılıkla finansal yapı ve özkaynak performansıdır. Bunu rekabet ve risk yönetimi izlemektedir.";
+      } else if (q.includes('politika önerileri') || q.includes('öneriler')) {
+        answer = "Politika önerileri kapsamında; miktar odaklı desteklerden kârlılık ve özsermaye odaklı yeni nesil finansman modellerine geçilmesi, ayrıca yeni korumacılığa karşı pazar istihbarat ağlarının güçlendirilmesi önerilmektedir.";
+      } else if (q.includes('yayınlar') || q.includes('makale') || q.includes('rapor')) {
+        answer = "Araştırma bulgularına dayalı tam metin politika raporlarımıza, akademik yayınlarımıza ve bültenlerimize ilgili menü sekmesinden erişebilirsiniz.";
+      } else if (q.includes('araştırma ekibi') || q.includes('ekip') || q.includes('yürütücü')) {
+        answer = "Proje Yürütücüsü Prof. Dr. Ahmet Yağmur Ersoy'dur. Araştırma ekibi, uluslararası ticaret ve ekonomi alanında uzman akademik kadrodan oluşmaktadır.";
+      } else if (q.includes('sık sorulan sorular') || q.includes('tr42') || q.includes('kaç firma')) {
+        answer = "TR42 Bölgesi (Kocaeli, Sakarya, Düzce, Bolu, Yalova) genelinde 192 ihracatçı firma örneklemeye dahil edilmiş; 9 temel belirleyici analiz edilmiştir.";
+      } else if (q.includes('dış ticaret girişimciliği nedir')) {
+        answer = "Dış ticaret girişimciliği; bireysel kâr odağının ötesinde devletlerin dış ticaret politikaları, yerli üretimi koruma vizyonu ve makroekonomik stratejilerle harmanlanmış uluslararası ticari faaliyetler bütünüdür.";
+      } else if (q.includes('teşvikler')) {
+        answer = "İhracat teşvikleri, işletmelerin uluslararası pazarlardaki rekabet gücünü artırmak amacıyla kârlılık ve özsermaye odaklı yapılandırılması gereken stratejik araçlardır.";
+      }
+
+      addMessage(answer, 'system');
+    }, 600);
+  }
+
+  quickCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const query = card.getAttribute('data-query');
+      if (welcomeBubble) welcomeBubble.classList.remove('show');
+      processQuery(query);
+    });
+  });
+
+  function handleUserInput() {
+    if (!userInput) return;
+    const query = userInput.value.trim();
+    if (!query) return;
+    if (welcomeBubble) welcomeBubble.classList.remove('show');
+    userInput.value = '';
+    processQuery(query);
+  }
+
+  if (sendBtn) sendBtn.addEventListener('click', handleUserInput);
+  if (userInput) {
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleUserInput();
     });
   }
 
   const slider = document.querySelector('.news-slider');
-  let isDown = false, startX, scrollLeft;
-  slider.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-  slider.addEventListener('mouseleave', () => { isDown = false; });
-  slider.addEventListener('mouseup', () => { isDown = false; });
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return; e.preventDefault();
-    const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2;
-  });
+  if(slider) {
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+    slider.addEventListener('mouseleave', () => { isDown = false; });
+    slider.addEventListener('mouseup', () => { isDown = false; });
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return; e.preventDefault();
+      const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2;
+    });
+  }
 </script>
 
 </body>
