@@ -7,7 +7,7 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
@@ -34,20 +34,42 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER (DÜZELTİLMİŞ ORANTILI VE ŞIK YAPI)
+     HEADER VE İTP HARFSEL LOGO (SEÇENEK 2)
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
     position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
   }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; }
   
-  /* Logo / Portal İsmi */
-  .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-  .brand-text { display: flex; flex-direction: column; }
-  .brand-text strong { font-family: var(--font-serif); font-size: 14.5px; font-weight: 900; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.25; }
+  /* Gönderdiğin Görseldeki İTP Logosu Tasarımı */
+  .brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  
+  .itp-logo {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent-navy);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+  }
+  .itp-logo .dot-i::first-letter {
+    /* i harfinin üstündeki noktayı simüle eder veya serif estetiği verir */
+  }
 
-  /* 6 Ana Menü Öğesi (Sıkışmayı Önleyen Düzen) */
+  .brand-divider {
+    width: 1px;
+    height: 36px;
+    background-color: var(--border-color);
+  }
+
+  .brand-text { display: flex; flex-direction: column; }
+  .brand-text strong { font-family: var(--font-serif); font-size: 13.5px; font-weight: 700; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.25; }
+  .brand-text small { font-family: var(--font-sans); font-size: 9.5px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  /* Menü */
   .nav-menu { display: flex; align-items: center; gap: 24px; margin: 0 auto; }
   .nav-item { position: relative; }
   .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
@@ -64,7 +86,7 @@
   .dropdown-menu a { display: block; padding: 8px 16px; font-size: 11.5px; font-weight: 500; color: var(--text-body); text-transform: none; white-space: nowrap; }
   .dropdown-menu a:hover { background: #F8FAFC; color: var(--accent-navy); }
 
-  /* Sağ Bölüm (TR/EN ve Buton) */
+  /* Sağ Bölüm */
   .header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
   
   .lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; }
@@ -239,14 +261,18 @@
 
 <header>
   <div class="wrap header-inner">
-    <!-- Sola Hizalı Portal İsmi -->
+    
+    <!-- SOL: İTP Harfsel Logo (Seçenek 2) ve Portal İsmi -->
     <a href="#anasayfa" class="brand">
+      <div class="itp-logo">İTP</div>
+      <div class="brand-divider"></div>
       <div class="brand-text">
-        <strong data-i18n="brandTitle">İhracat Teşvikleri ve Girişimcilik<br>Araştırma Portalı</strong>
+        <strong data-i18n="brandTitle">İhracat Teşvikleri ve Girişimcilik</strong>
+        <small data-i18n="brandSub">Araştırma Portalı</small>
       </div>
     </a>
 
-    <!-- 6 Linkli Açılır Menü -->
+    <!-- ORTA: 6 Linkli Açılır Menü -->
     <nav class="nav-menu">
       <div class="nav-item"><a href="#anasayfa" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
       
@@ -287,7 +313,7 @@
       <div class="nav-item"><a href="#iletisim" data-i18n="menuIletisim">İletişim</a></div>
     </nav>
 
-    <!-- Sağ Kısım: Düzeltilmiş Dil Seçici ve Buton -->
+    <!-- SAĞ: Temiz Dil Seçici ve Politika Butonu -->
     <div class="header-right">
       <div class="lang-switch" id="langToggle">
         <span class="active" data-lang="tr">TR</span>
@@ -296,6 +322,7 @@
       </div>
       <a href="#politikalar" class="btn-outline-header" data-i18n="btnPolitika">Politika Önerileri</a>
     </div>
+
   </div>
 </header>
 
@@ -312,7 +339,7 @@
       </div>
     </div>
 
-    <!-- Harita ve Kutusuz Veriler -->
+    <!-- Harita ve Kutucuksuz Veriler -->
     <div class="hero-visual-map gsap-reveal">
       <div class="editorial-grid"></div>
       
@@ -469,7 +496,8 @@
 
   const dict = {
     tr: {
-      brandTitle: "İhracat Teşvikleri ve Girişimcilik<br>Araştırma Portalı",
+      brandTitle: "İhracat Teşvikleri ve Girişimcilik",
+      brandSub: "Araştırma Portalı",
       menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
       dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
       btnPolitika: "Politika Önerileri",
@@ -499,7 +527,8 @@
       readMoreTxt: "Detaylı İncele"
     },
     en: {
-      brandTitle: "Export Incentives & Entrepreneurship<br>Research Portal",
+      brandTitle: "Export Incentives & Entrepreneurship",
+      brandSub: "Research Portal",
       menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
@@ -524,7 +553,7 @@
       teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Academic and Sectoral Experts",
       brandTitleFoot: "Export Incentives &<br>Entrepreneurship Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
-      footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
+      footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 Doğu Marmara Development Agency (MARKA)",
       footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
       readMoreTxt: "Read Analysis"
     }
