@@ -7,15 +7,15 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
     --bg-alt: #FFFFFF;        
     --text-ink: #0F172A;      
     --text-body: #475569;     
-    --accent-navy: #1E3A8A;   
-    --accent-teal: #0D9488;   
+    --accent-navy: #173B7A;   /* Kurumsal Lacivert */
+    --accent-teal: #0F8B8D;   /* Turkuaz Vurgu */
     --border-color: #E2E8F0;  
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
@@ -148,7 +148,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10, 18, 38, 0.80), rgba(20, 40, 95, 0.72));
+    background: linear-gradient(135deg, rgba(23, 59, 122, 0.82), rgba(15, 139, 141, 0.72));
     z-index: 1;
     pointer-events: none;
   }
@@ -301,9 +301,9 @@
   .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
 
   /* ==========================================================================
-     SAĞ ALT SORU & CEVAP WIDGET (BİLGİ ASİSTANI) STİLLERİ
+     KURUMSAL AKADEMİK BİLGİ MERKEZİ WIDGET (OECD / WORLD BANK STANDARD)
      ========================================================================== */
-  .qa-widget-container {
+  .portal-widget-container {
     position: fixed;
     bottom: 24px;
     right: 24px;
@@ -311,84 +311,73 @@
     font-family: var(--font-sans);
   }
 
-  .qa-toggle-btn {
+  /* Bubble Button: 60px, #173B7A, hover #0F8B8D, soft shadow, minimal document+bubble line icon */
+  .portal-toggle-btn {
     width: 60px;
     height: 60px;
     background-color: var(--accent-navy);
-    color: #fff;
+    color: #FFFFFF;
     border-radius: 50%;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 10px 25px rgba(23, 59, 122, 0.25);
     position: relative;
-    transition: transform 0.3s ease, background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .qa-toggle-btn:hover {
-    transform: scale(1.08);
-    background-color: #152B66;
+  .portal-toggle-btn:hover {
+    background-color: var(--accent-teal);
+    transform: scale(1.06);
   }
-  .qa-toggle-btn svg {
+  .portal-toggle-btn svg {
     width: 26px;
     height: 26px;
-    fill: currentColor;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .qa-pulse-dot {
+  /* İlk Açılış Konuşma Balonu */
+  .portal-welcome-bubble {
     position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 14px;
-    height: 14px;
-    background-color: var(--accent-teal);
-    border: 2px solid #fff;
-    border-radius: 50%;
-    animation: qaPulse 2s infinite;
-  }
-  @keyframes qaPulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(13, 148, 136, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(13, 148, 136, 0); }
-  }
-
-  .qa-welcome-bubble {
-    position: absolute;
-    bottom: 72px;
+    bottom: 74px;
     right: 0;
-    width: 280px;
-    background: #fff;
+    width: 290px;
+    background: #FFFFFF;
     border: 1px solid var(--border-color);
     padding: 14px 18px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
     font-size: 13px;
     color: var(--text-ink);
     line-height: 1.5;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .qa-welcome-bubble.show {
+  .portal-welcome-bubble.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-  .qa-welcome-bubble::after {
+  .portal-welcome-bubble::after {
     content: '';
     position: absolute;
     bottom: -6px;
-    right: 22px;
+    right: 24px;
     width: 12px;
     height: 12px;
-    background: #fff;
+    background: #FFFFFF;
     border-right: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     transform: rotate(45deg);
   }
-  .qa-welcome-close {
+  .portal-welcome-close {
     position: absolute;
     top: 6px;
     right: 8px;
@@ -398,117 +387,172 @@
     cursor: pointer;
     color: #94A3B8;
   }
-  .qa-welcome-close:hover { color: var(--text-ink); }
+  .portal-welcome-close:hover { color: var(--text-ink); }
 
-  .qa-chat-box {
+  /* Pencere: 360x520 px, Border Radius 18px, Soft Premium Shadow */
+  .portal-chat-box {
     position: absolute;
     bottom: 76px;
     right: 0;
     width: 360px;
-    max-height: 520px;
-    background: #fff;
-    border-radius: 16px;
+    height: 520px;
+    background: #FFFFFF;
+    border-radius: 18px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
     transform: translateY(15px) scale(0.98);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .qa-chat-box.open {
+  .portal-chat-box.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
   }
 
-  .qa-chat-header {
+  /* Header: Background #173B7A */
+  .portal-chat-header {
     background: var(--accent-navy);
-    color: #fff;
+    color: #FFFFFF;
     padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .qa-chat-header h4 {
+  .portal-header-titles h4 {
     font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+    font-family: var(--font-serif);
   }
-  .qa-chat-close {
+  .portal-header-titles span {
+    font-size: 10px;
+    color: #CBD5E1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .portal-header-controls {
+    display: flex;
+    gap: 10px;
+  }
+  .portal-ctrl-btn {
     background: none;
     border: none;
-    color: #fff;
-    font-size: 18px;
+    color: #FFFFFF;
+    font-size: 16px;
     cursor: pointer;
     opacity: 0.8;
+    transition: opacity 0.2s;
+    padding: 0 4px;
   }
-  .qa-chat-close:hover { opacity: 1; }
+  .portal-ctrl-btn:hover { opacity: 1; }
 
-  .qa-chat-messages {
+  /* Messages Area */
+  .portal-chat-messages {
     padding: 16px;
     flex-grow: 1;
     overflow-y: auto;
-    max-height: 340px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background: #F8FAFC;
+    background: #FAFAFA;
+    scroll-behavior: smooth;
   }
 
-  .qa-msg {
-    max-width: 85%;
-    padding: 10px 14px;
+  .portal-msg {
+    max-width: 88%;
+    padding: 11px 15px;
     border-radius: 12px;
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  .qa-msg.bot {
-    background: #fff;
+  .portal-msg.system {
+    background: #FFFFFF;
     color: var(--text-ink);
     align-self: flex-start;
     border: 1px solid var(--border-color);
   }
-  .qa-msg.user {
+  .portal-msg.user {
     background: var(--accent-navy);
-    color: #fff;
+    color: #FFFFFF;
     align-self: flex-end;
   }
 
-  .qa-chat-input-area {
+  /* Hazır Soru Kartları (Quick Action Cards) */
+  .portal-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+  .portal-action-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-navy);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .portal-action-card:hover {
+    border-color: var(--accent-navy);
+    background-color: #F8FAFC;
+  }
+
+  /* Input Area */
+  .portal-chat-input-area {
     padding: 12px 16px;
-    background: #fff;
+    background: #FFFFFF;
     border-top: 1px solid var(--border-color);
     display: flex;
     gap: 8px;
+    align-items: center;
   }
-  .qa-chat-input-area input {
+  .portal-chat-input-area input {
     flex-grow: 1;
     padding: 10px 14px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 13px;
     outline: none;
+    color: var(--text-ink);
     transition: border-color 0.2s;
   }
-  .qa-chat-input-area input:focus {
+  .portal-chat-input-area input:focus {
     border-color: var(--accent-navy);
   }
-  .qa-chat-input-area button {
-    background: var(--accent-teal);
-    color: #fff;
+  .portal-chat-input-area input::placeholder {
+    color: #94A3B8;
+  }
+  .portal-send-btn {
+    background: var(--accent-navy);
+    color: #FFFFFF;
     border: none;
-    padding: 0 16px;
+    width: 38px;
+    height: 38px;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: background 0.2s;
   }
-  .qa-chat-input-area button:hover {
-    background: #0B7A72;
+  .portal-send-btn:hover {
+    background: var(--accent-teal);
+  }
+  .portal-send-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
   }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
@@ -517,7 +561,7 @@
     .header-inner { justify-content: space-between; }
     .nav-menu, .header-right { display: none; }
     .hero-corporate { min-height: 400px; padding: 60px 20px; }
-    .qa-chat-box { width: calc(100vw - 32px); right: -16px; }
+    .portal-chat-box { width: calc(100vw - 32px); right: -16px; }
   }
 </style>
 </head>
@@ -645,30 +689,59 @@
   </div>
 </footer>
 
-<!-- SAĞ ALT BİLGİ ASİSTANI WIDGET (HTML) -->
-<div class="qa-widget-container">
-  <div class="qa-welcome-bubble" id="qaWelcomeBubble">
-    <button class="qa-welcome-close" id="qaWelcomeClose">&times;</button>
-    Merhaba! Araştırma, bulgular veya proje detayları hakkındaki sorularınızı buraya sorabilirsiniz.
+<!-- KURUMLARI VE AKADEMİK STANDARTLARI YANSITAN BİLGİ MERKEZİ WIDGET -->
+<div class="portal-widget-container">
+  <!-- Karşılama Balonu -->
+  <div class="portal-welcome-bubble" id="portalWelcomeBubble">
+    <button class="portal-welcome-close" id="portalWelcomeClose">&times;</button>
+    Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında bilgi almak için sorularınızı iletebilirsiniz.
   </div>
 
-  <div class="qa-chat-box" id="qaChatBox">
-    <div class="qa-chat-header">
-      <h4 id="qaHeaderTitle">Araştırma Bilgi Asistanı</h4>
-      <button class="qa-chat-close" id="qaChatClose">&times;</button>
+  <!-- Pencere (360x520px) -->
+  <div class="portal-chat-box" id="portalChatBox">
+    <div class="portal-chat-header">
+      <div class="portal-header-titles">
+        <h4>DTG Bilgi Merkezi</h4>
+        <span>Resmî Araştırma Portalı</span>
+      </div>
+      <div class="portal-header-controls">
+        <button class="portal-ctrl-btn" id="portalMinimizeBtn" title="Küçült">&#8211;</button>
+        <button class="portal-ctrl-btn" id="portalChatClose" title="Kapat">&times;</button>
+      </div>
     </div>
-    <div class="qa-chat-messages" id="qaChatMessages">
-      <div class="qa-msg bot">Merhaba! Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında merak ettiğiniz tüm soruları bana sorabilirsiniz.</div>
+
+    <div class="portal-chat-messages" id="portalChatMessages">
+      <div class="portal-msg system">
+        Merhaba.<br><br>
+        Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında bilgi almak için sorularınızı iletebilirsiniz.
+      </div>
+
+      <!-- Hazır Soru Kartları (Quick Actions) -->
+      <div class="portal-cards-container" id="portalQuickCards">
+        <button class="portal-action-card" data-query="Proje hakkında">Proje hakkında</button>
+        <button class="portal-action-card" data-query="Araştırma bulguları">Araştırma bulguları</button>
+        <button class="portal-action-card" data-query="Politika önerileri">Politika önerileri</button>
+        <button class="portal-action-card" data-query="Yayınlar">Yayınlar</button>
+        <button class="portal-action-card" data-query="Araştırma ekibi">Araştırma ekibi</button>
+        <button class="portal-action-card" data-query="Sık sorulan sorular">Sık sorulan sorular</button>
+      </div>
     </div>
-    <div class="qa-chat-input-area">
-      <input type="text" id="qaUserInput" placeholder="Sorunuzu buraya yazın...">
-      <button id="qaSendBtn">Gönder</button>
+
+    <div class="portal-chat-input-area">
+      <input type="text" id="portalUserInput" placeholder="Portal hakkında bir soru yazın...">
+      <button class="portal-send-btn" id="portalSendBtn" aria-label="Gönder">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
     </div>
   </div>
 
-  <button class="qa-toggle-btn" id="qaToggleBtn" aria-label="Soru Sor">
-    <span class="qa-pulse-dot"></span>
-    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <!-- Sabit Buton (60px, Minimalist Belge + Konuşma Balonu Çizgisel İkon) -->
+  <button class="portal-toggle-btn" id="portalToggleBtn" aria-label="Bilgi Merkezi">
+    <svg viewBox="0 0 24 24">
+      <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/>
+      <path d="M14 2v6h6"/>
+      <path d="M8 13h8M8 17h5"/>
+    </svg>
   </button>
 </div>
 
@@ -690,23 +763,25 @@
 
     // Karşılama balonu gösterimi
     setTimeout(() => {
-      const bubble = document.getElementById('qaWelcomeBubble');
-      const chatBox = document.getElementById('qaChatBox');
+      const bubble = document.getElementById('portalWelcomeBubble');
+      const chatBox = document.getElementById('portalChatBox');
       if (bubble && chatBox && !chatBox.classList.contains('open')) {
         bubble.classList.add('show');
       }
     }, 1500);
   });
 
-  // Bilgi Asistanı Mantığı
-  const toggleBtn = document.getElementById('qaToggleBtn');
-  const chatBox = document.getElementById('qaChatBox');
-  const chatClose = document.getElementById('qaChatClose');
-  const welcomeBubble = document.getElementById('qaWelcomeBubble');
-  const welcomeClose = document.getElementById('qaWelcomeClose');
-  const sendBtn = document.getElementById('qaSendBtn');
-  const userInput = document.getElementById('qaUserInput');
-  const chatMessages = document.getElementById('qaChatMessages');
+  // Kurumsal Bilgi Merkezi Mantığı
+  const toggleBtn = document.getElementById('portalToggleBtn');
+  const chatBox = document.getElementById('portalChatBox');
+  const chatClose = document.getElementById('portalChatClose');
+  const minimizeBtn = document.getElementById('portalMinimizeBtn');
+  const welcomeBubble = document.getElementById('portalWelcomeBubble');
+  const welcomeClose = document.getElementById('portalWelcomeClose');
+  const sendBtn = document.getElementById('portalSendBtn');
+  const userInput = document.getElementById('portalUserInput');
+  const chatMessages = document.getElementById('portalChatMessages');
+  const quickCards = document.querySelectorAll('.portal-action-card');
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
@@ -721,6 +796,12 @@
     });
   }
 
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener('click', () => {
+      chatBox.classList.remove('open');
+    });
+  }
+
   if (welcomeClose) {
     welcomeClose.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -731,102 +812,63 @@
   function addMessage(text, sender) {
     if (!chatMessages) return;
     const msgDiv = document.createElement('div');
-    msgDiv.classList.add('qa-msg', sender);
-    msgDiv.innerText = text;
+    msgDiv.classList.add('portal-msg', sender);
+    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function handleUserQuery() {
-    if (!userInput) return;
-    const query = userInput.value.trim();
-    if (!query) return;
-
-    addMessage(query, 'user');
-    userInput.value = '';
+  function processQuery(queryText) {
+    addMessage(queryText, 'user');
 
     setTimeout(() => {
-      const q = query.toLowerCase();
-      let answer = "Bu konuda henüz sistemimizde ayrıntılı bir veri bulunmuyor veya sorunuz kapsam dışı. Dilerseniz araştırma ekibimizle iletişime geçebilir ya da ana sayfamızdaki bölümleri inceleyebilirsiniz.";
+      const q = queryText.toLowerCase();
+      let answer = "Bu konuda henüz sistemimizde ayrıntılı veri bulunmuyor veya talebiniz kapsam dışı. Resmî raporlarımıza ve politika bültenlerimize ana menü üzerinden erişebilirsiniz.";
 
-      if (q.includes('amaç') || q.includes('amac') || q.includes('araştırmanın amacı') || q.includes('nedir bu proje')) {
-        answer = "Bu araştırmanın amacı, TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla dış ticaret girişimciliğini şekillendiren stratejik, ekonomik ve politik dinamikleri incelemektir.";
-      } else if (q.includes('neyi inceliyor') || q.includes('inceleme')) {
-        answer = "Proje; dış ticaret girişimciliğinin finansal belirleyicilerini, risk yönetimi kapasitelerini, inovasyon süreçlerini ve bölgedeki ihracat dinamiklerini incelemektedir.";
-      } else if (q.includes('kurum') || q.includes('kim yürüttü') || q.includes('hangi kurum')) {
-        answer = "Araştırma, TÜBİTAK 3005 desteğiyle Sakarya Üniversitesi bünyesinde yürütülmektedir.";
-      } else if (q.includes('sürdü') || q.includes('süre') || q.includes('ne kadar')) {
-        answer = "Proje saha çalışmaları ve analiz süreçleri dahil olmak üzere toplam 15 ay sürmüştür.";
-      } else if (q.includes('kapsam') || q.includes('kapsamı')) {
-        answer = "Araştırma TR42 Doğu Marmara Bölgesi'ni (Kocaeli, Sakarya, Düzce, Bolu, Yalova) ve bu bölgedeki 192 ihracatçı firmayı kapsamaktadır.";
-      } else if (q.includes('hedef kitle') || q.includes('kitle')) {
-        answer = "Araştırmanın hedef kitlesi; ihracatçı firmaların üst düzey karar vericileri, alanında uzman akademisyenler, kamu kurumları ve öğrencilerdir.";
-      } else if (q.includes('dış ticaret girişimciliği nedir') || q.includes('dis ticaret girisimciligi nedir')) {
-        answer = "Dış ticaret girişimciliği; sadece bireysel kâr elde etme odaklı olmayan, devletlerin dış ticaret politikaları, yerli üretimi koruma arzusu ve makroekonomik stratejileriyle harmanlanmış uluslararası ticari faaliyetler bütünüdür.";
-      } else if (q.includes('geleneksel') && q.includes('farkı')) {
-        answer = "Geleneksel girişimcilik yerel pazar odaklı ve kısıtlı ölçekliyken; dış ticaret girişimciliği makro politikalar, küresel tedarik zincirleri ve uluslararası rekabet dinamikleriyle doğrudan ilişkilidir.";
-      } else if (q.includes('uluslararası') && q.includes('farkı')) {
-        answer = "Uluslararası girişimcilik genel bir sınır ötesi ticareti ifade ederken; dış ticaret girişimciliği ekonomik milliyetçilik, devlet teşvikleri ve ülkenin dış ticaret stratejileri ekseninde şekillenir.";
-      } else if (q.includes('kim geliştirdi') || q.includes('kavramı kim')) {
-        answer = "Dış ticaret girişimciliği kavramı ve teorik altyapısı Prof. Dr. Ahmet Yağmur Ersoy tarafından literatüre kazandırılmıştır.";
-      } else if (q.includes('neden önemlidir') || q.includes('önemi')) {
-        answer = "Ülkelerin küresel rekabette güç kazanması, ihracat hacminin artırılması ve ekonomik kırılganlıklara karşı dirençli bir yapı oluşturulması açısından kritik önem taşır.";
-      } else if (q.includes('türkiye açısından') || q.includes('stratejik')) {
-        answer = "Türkiye'nin dış ticaret açığını kapatması, ihracatta katma değeri artırması ve bölgesel sanayi merkezlerinin küresel entegrasyonu açısından stratejiktir.";
-      } else if (q.includes('tr42') || q.includes('bölgesi neresidir')) {
-        answer = "TR42 Bölgesi; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan Türkiye'nin en kritik sınai ve ekonomik hinterlantlarından biridir.";
-      } else if (q.includes('neden tr42') || q.includes('neden yapıldı')) {
-        answer = "TR42 Bölgesi, Türkiye'nin ihracat ve sanayi üretiminde öncü rol oynaması ve yoğun bir dış ticaret ekosistemine sahip olması nedeniyle seçilmiştir.";
-      } else if (q.includes('hangi iller')) {
-        answer = "Araştırmaya Kocaeli, Sakarya, Düzce, Bolu ve Yalova illeri dahil edilmiştir.";
-      } else if (q.includes('kaç firma incelendi') || q.includes('kaç firma')) {
-        answer = "Bölgede toplam 192 ihracatçı firma detaylı olarak incelenmiştir.";
-      } else if (q.includes('en önemli bulgu') || q.includes('bulgu')) {
-        answer = "En önemli bulgu, dış ticaret girişimciliğinin %86,8 olasılıkla finansal yapı ve özkaynak performansına dayanmasıdır.";
-      } else if (q.includes('finans') && q.includes('ilk sırada')) {
-        answer = "Küresel pazarlardaki yüksek maliyetler ve riskler, işletmelerin özkaynak gücünü ve finansal dayanıklılığını bir numaralı katalizör haline getirmektedir.";
-      } else if (q.includes('rekabet')) {
-        answer = "Küresel pazarlardaki sert dalgalanmalara uyum sağlamak ve pazar payını korumak için rekabet gücü stratejik bir kriterdir.";
-      } else if (q.includes('risk yönetimi')) {
-        answer = "Artan korumacılık eğilimleri ve tedarik zinciri kırılmalarına karşı proaktif önlem alabilmek için risk yönetimi şarttır.";
-      } else if (q.includes('inovasyon')) {
-        answer = "Sadece mevcut ürünleri satmak değil, katma değerli üretim süreçleri tasarlamak sürdürülebilir ihracatın belkemiğidir.";
-      } else if (q.includes('devlet teşviklerinin etkisi')) {
-        answer = "Mevcut miktar odaklı desteklerin ötesine geçilerek, firmaların kârlılık ve özsermaye yapısını destekleyen modellere dönüştürülmesi gerektiği tespit edilmiştir.";
-      } else if (q.includes('belirleyiciler')) {
-        answer = "Araştırma sonucunda dış ticaret girişimciliğini şekillendiren 9 temel belirleyici saptanmıştır.";
-      } else if (q.includes('teşvikler nelerdir') || q.includes('tesvikler')) {
-        answer = "İhracat teşvikleri; devletlerin üreticileri uluslararası pazarlara yönlendirmek, maliyetlerini azaltmak ve rekabet güçlerini artırmak için sunduğu finansal ve idari desteklerdir.";
-      } else if (q.includes('nasıl yararlanabilir') || q.includes('yararlanma')) {
-        answer = "Firmalar özkaynak performanslarını güçlendirerek, kârlılık odaklı projeler geliştirip ilgili kamu kurumlarına ve ihracatçı birliklerine başvuru yaparak yararlanabilirler.";
+      if (q.includes('proje hakkında') || q.includes('amaç') || q.includes('nedir bu proje') || q.includes('ne inceliyor')) {
+        answer = "Bu araştırma; TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla dış ticaret girişimciliğini şekillendiren stratejik, ekonomik ve politik dinamikleri incelemektedir. TÜBİTAK 3005 desteğiyle Sakarya Üniversitesi bünyesinde yürütülmektedir.";
+      } else if (q.includes('araştırma bulguları') || q.includes('en önemli bulgu') || q.includes('bulgu')) {
+        answer = "Araştırma bulgularına göre dış ticaret girişimciliğinin önündeki en güçlü katalizör %86,8 olasılıkla finansal yapı ve özkaynak performansıdır. Bunu rekabet ve risk yönetimi izlemektedir.";
       } else if (q.includes('politika önerileri') || q.includes('öneriler')) {
-        answer = "Kârlılık ve özsermaye odaklı destek modellerinin hayata geçirilmesi ve yeni korumacılığa karşı bölgesel pazar istihbarat ağlarının güçlendirilmesi önerilmektedir.";
-      } else if (q.includes('kamu için')) {
-        answer = "Kamu kurumlarının miktar bazlı desteklerden vazgeçip katma değer ve özsermaye gücünü ödüllendiren yeni nesil modeller kurması beklenmektedir.";
-      } else if (q.includes('firmalar için')) {
-        answer = "Firmaların risk yönetimi kapasitelerini artırmaları, pazar okuryazarlığına yatırım yapmaları ve inovatif üretim süreçlerine geçmeleri önerilir.";
-      } else if (q.includes('yayınlar') || q.includes('makale') || q.includes('kitap') || q.includes('rapor')) {
-        answer = "Araştırma bulgularına dayalı tam metin politika raporlarına, akademik makalelere ve bültenlere web sitemizin ilgili bölümlerinden erişebilirsiniz.";
-      } else if (q.includes('yürütücü kim') || q.includes('yürütücü') || q.includes('ahmet yağmur')) {
-        answer = "Proje Yürütücüsü Sakarya Üniversitesi'nden Prof. Dr. Ahmet Yağmur Ersoy'dur.";
-      } else if (q.includes('araştırmacılar kimler') || q.includes('ekip') || q.includes('kimler')) {
-        answer = "Ekip üyelerimiz: Doç. Dr. Caner Erden, Doç. Dr. Metin Saygılı, Dr. Öğr. Üyesi Çağdaş Ateş, Öğr. Gör. Dr. Semanur Yalçın, Dr. Ömer Alperen Onay, Öğr. Gör. Bilak Torkul ve Furkan Coşgun'dur.";
-      } else if (q.includes('kaç il') || q.includes('kaç firma') || q.includes('örneklem') || q.includes('istatistik')) {
-        answer = "Araştırma kapsamında 5 ilde (Kocaeli, Sakarya, Düzce, Bolu, Yalova) toplam 192 firma incelenmiş; 9 temel belirleyici analiz edilmiştir.";
-      } else if (q.includes('nasıl kullanabilirim') || q.includes('nereden başlamalıyım')) {
-        answer = "Üst menüden Proje, Bulgular, Yayınlar veya Araştırma Ekibimiz sekmelerine tıklayarak detaylı bilgi alabilirsiniz.";
-      } else if (q.includes('iletişim')) {
-        answer = "Destekleyen kurumlar ve iletişim bilgileri sayfanın en altındaki Footer alanında yer almaktadır.";
+        answer = "Politika önerileri kapsamında; miktar odaklı desteklerden kârlılık ve özsermaye odaklı yeni nesil finansman modellerine geçilmesi, ayrıca yeni korumacılığa karşı pazar istihbarat ağlarının güçlendirilmesi önerilmektedir.";
+      } else if (q.includes('yayınlar') || q.includes('makale') || q.includes('rapor')) {
+        answer = "Araştırma bulgularına dayalı tam metin politika raporlarımıza, akademik yayınlarımıza ve bültenlerimize ilgili menü sekmesinden erişebilirsiniz.";
+      } else if (q.includes('araştırma ekibi') || q.includes('ekip') || q.includes('yürütücü')) {
+        answer = "Proje Yürütücüsü Prof. Dr. Ahmet Yağmur Ersoy'dur. Araştırma ekibi, uluslararası ticaret ve ekonomi alanında uzman akademik kadrodan oluşmaktadır.";
+      } else if (q.includes('sık sorulan sorular') || q.includes('tr42') || q.includes('kaç firma')) {
+        answer = "TR42 Bölgesi (Kocaeli, Sakarya, Düzce, Bolu, Yalova) genelinde 192 ihracatçı firma örneklemeye dahil edilmiş; 9 temel belirleyici analiz edilmiştir.";
+      } else if (q.includes('dış ticaret girişimciliği nedir')) {
+        answer = "Dış ticaret girişimciliği; bireysel kâr odağının ötesinde devletlerin dış ticaret politikaları, yerli üretimi koruma vizyonu ve makroekonomik stratejilerle harmanlanmış uluslararası ticari faaliyetler bütünüdür.";
+      } else if (q.includes('teşvikler')) {
+        answer = "İhracat teşvikleri, işletmelerin uluslararası pazarlardaki rekabet gücünü artırmak amacıyla kârlılık ve özsermaye odaklı yapılandırılması gereken stratejik araçlardır.";
       }
 
-      addMessage(answer, 'bot');
+      addMessage(answer, 'system');
     }, 600);
   }
 
-  if (sendBtn) sendBtn.addEventListener('click', handleUserQuery);
+  // Hazır Soru Kartları Tıklama Dinleyicisi
+  quickCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const query = card.getAttribute('data-query');
+      if (welcomeBubble) welcomeBubble.classList.remove('show');
+      processQuery(query);
+    });
+  });
+
+  function handleUserInput() {
+    if (!userInput) return;
+    const query = userInput.value.trim();
+    if (!query) return;
+    if (welcomeBubble) welcomeBubble.classList.remove('show');
+    userInput.value = '';
+    processQuery(query);
+  }
+
+  if (sendBtn) sendBtn.addEventListener('click', handleUserInput);
   if (userInput) {
     userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleUserQuery();
+      if (e.key === 'Enter') handleUserInput();
     });
   }
 </script>
