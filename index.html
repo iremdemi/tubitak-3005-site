@@ -7,21 +7,21 @@
 <meta name="description" content="Dış ticaret girişimciliğinin belirleyicilerini keşfeden ve ihracat teşvik politikasını yeniden yazan araştırma projesi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Tasarımdaki modern font hissiyatı için Public Sans kullanıyoruz -->
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Görselden Birebir Alınan Renk Paleti */
-    --bg-dark: #081021;      /* Arka plan en koyu lacivert */
-    --card-dark: #101B34;    /* TR42 kartının laciverti */
-    --accent: #38BDF8;       /* Turkuaz / Açık mavi vurgu */
+    --bg-dark: #081021;      
+    --bg-darker: #050B14;
+    --card-dark: #101B34;    
+    --accent: #38BDF8;       
     --accent-hover: #0284C7; 
     
     --text-white: #FFFFFF;
-    --text-muted: #94A3B8;   /* Gri / Soluk metinler */
-    --text-dark: #0F172A;    /* Beyaz kart içindeki koyu metinler */
+    --text-muted: #94A3B8;   
+    --text-dark: #0F172A;    
     
     --border-light: rgba(255, 255, 255, 0.1);
+    --border-dark: #E2E8F0;
     
     --font-main: 'Public Sans', sans-serif;
   }
@@ -30,26 +30,18 @@
   body { font-family: var(--font-main); background-color: var(--bg-dark); color: var(--text-white); -webkit-font-smoothing: antialiased; }
   a { text-decoration: none; color: inherit; }
   ul { list-style: none; }
+  img { max-width: 100%; display: block; }
   
   .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
 
   /* ==========================================================================
-     HEADER (Görseldeki gibi üst bar)
+     HEADER
      ========================================================================== */
-  header {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border-light);
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  header { padding: 24px 0; border-bottom: 1px solid var(--border-light); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; }
   
   .brand { display: flex; align-items: center; gap: 12px; }
-  .brand-icon { width: 32px; height: 32px; background: url('assets/tubitak-logo.png') center/contain no-repeat; } /* Logonuz buraya gelecek */
-  .brand-icon-placeholder { width: 40px; height: 40px; border: 2px dotted var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .brand-icon-placeholder div { width: 16px; height: 16px; background: var(--accent); border-radius: 50%; }
+  .brand-icon { width: 40px; height: 40px; } 
   
   .brand-text { display: flex; flex-direction: column; }
   .brand-text strong { font-size: 15px; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; text-transform: uppercase; }
@@ -64,17 +56,9 @@
   .lang-switch span.active { color: var(--text-white); }
   
   .btn-outline-header {
-    border: 1px solid var(--accent);
-    color: var(--text-white);
-    background: transparent;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
+    border: 1px solid var(--accent); color: var(--text-white); background: transparent;
+    padding: 10px 20px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
   }
   .btn-outline-header:hover { background: var(--accent); color: var(--bg-dark); }
 
@@ -82,104 +66,46 @@
      HERO SECTION
      ========================================================================== */
   .hero {
-    position: relative;
-    padding: 80px 0 160px; /* Alttaki beyaz kartın binebilmesi için ekstra alt boşluk */
-    overflow: hidden;
+    position: relative; padding: 80px 0 160px; overflow: hidden;
     background: radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
   }
-  
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
+  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
 
-  /* SOL: METİN ALANI */
   .hero-content { max-width: 580px; }
-  .eyebrow { 
-    color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; 
-    text-transform: uppercase; display: block; margin-bottom: 16px;
-  }
-  .hero-content h1 {
-    font-size: clamp(36px, 4vw, 48px);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-  }
+  .eyebrow { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 16px; }
+  .hero-content h1 { font-size: clamp(36px, 4vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 24px; }
   .hero-content h1 .highlight { color: var(--accent); display: block; }
-  
-  .hero-content p {
-    font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 40px;
-    max-width: 90%;
-  }
+  .hero-content p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 40px; max-width: 90%; }
 
   .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  
   .btn-primary {
-    background: var(--accent);
-    color: var(--bg-dark);
-    font-size: 14px;
-    font-weight: 700;
-    padding: 14px 28px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s;
+    background: var(--accent); color: var(--bg-dark); font-size: 14px; font-weight: 700;
+    padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;
   }
   .btn-primary:hover { background: var(--accent-hover); color: white; }
-  
   .btn-outline {
-    background: transparent;
-    color: var(--text-white);
-    border: 1px solid var(--text-white);
-    font-size: 14px;
-    font-weight: 600;
-    padding: 14px 28px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
+    background: transparent; color: var(--text-white); border: 1px solid var(--text-white); font-size: 14px; font-weight: 600;
+    padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
   }
   .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
-  /* SAĞ: HARİTA VE TR42 KARTI */
+  /* HARİTA ALANI */
   .hero-visual { position: relative; width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; }
   
-  /* Harita için placeholder alan (Tasarımcıdan görsel bekleniyor notuna istinaden) */
-  .map-svg { width: 100%; height: 100%; opacity: 0.6; position: absolute; top: 0; left: 0; }
-  .map-path { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 4 4; }
-  .map-glow { fill: rgba(56, 189, 248, 0.1); }
-  
-  /* Harita üzerindeki şehir noktaları (Temsili) */
-  .map-pin { position: absolute; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; color: #fff; }
-  .map-pin::before { content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
-  .pin-kocaeli { top: 35%; right: 40%; }
-  .pin-sakarya { top: 45%; right: 28%; }
-  .pin-duzce { top: 42%; right: 18%; }
-  .pin-yalova { top: 40%; right: 52%; }
+  .map-placeholder {
+    width: 100%; height: 100%;
+    border: 2px dashed rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-weight: 600; font-size: 14px; text-align: center;
+    background: rgba(56, 189, 248, 0.02);
+  }
 
-  /* SAĞ ALTTAKİ LACİVERT KART (TR42 DOĞU MARMARA) */
   .tr42-card {
-    position: absolute;
-    bottom: -20px;
-    right: 0;
-    background: rgba(16, 27, 52, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
-    padding: 24px;
-    width: 100%;
-    max-width: 520px;
-    box-shadow: 0 24px 48px rgba(0,0,0,0.4);
-    z-index: 10;
+    position: absolute; bottom: -20px; right: 0;
+    background: rgba(16, 27, 52, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light); border-radius: 16px; padding: 24px;
+    width: 100%; max-width: 520px; box-shadow: 0 24px 48px rgba(0,0,0,0.4); z-index: 10;
   }
   .tr42-head { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-white); margin-bottom: 8px; }
   .tr42-cities { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 24px; align-items: center; }
@@ -193,53 +119,115 @@
   .t-info b { font-size: 18px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
   .t-info span { font-size: 11px; color: var(--text-muted); }
 
-  /* ==========================================================================
-     HERO BOTTOM OVERLAP (BEYAZ ŞERİT)
-     ========================================================================== */
-  .hero-bottom-bar {
-    position: relative;
-    margin-top: -80px; /* Dark hero'nun üzerine bindirmek için */
-    z-index: 20;
-    padding: 0 32px;
-  }
+  /* BEYAZ ŞERİT */
+  .hero-bottom-bar { position: relative; margin-top: -80px; z-index: 20; padding: 0 32px; }
   .white-strip {
-    background: #FFFFFF;
-    border-radius: 100px; /* Görseldeki oval yapı */
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF; border-radius: 100px; display: flex; justify-content: space-between;
+    padding: 20px 40px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
-  .strip-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-    border-right: 1px solid #E2E8F0;
-    padding: 0 20px;
-  }
+  .strip-item { display: flex; align-items: center; gap: 16px; flex: 1; border-right: 1px solid var(--border-dark); padding: 0 20px; }
   .strip-item:first-child { padding-left: 0; }
   .strip-item:last-child { border-right: none; padding-right: 0; }
   
   .s-icon {
-    width: 48px; height: 48px; 
-    border-radius: 50%; 
-    background: #F1F5F9; 
-    display: flex; align-items: center; justify-content: center; 
-    color: var(--card-dark);
-    flex: none;
+    width: 48px; height: 48px; border-radius: 50%; background: #F1F5F9; 
+    display: flex; align-items: center; justify-content: center; color: var(--card-dark); flex: none;
   }
-  .s-icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
-  
   .s-text { display: flex; flex-direction: column; }
   .s-text b { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
   .s-text span { font-size: 11px; color: #64748B; line-height: 1.4; }
 
   /* ==========================================================================
+     SÜREÇ BÖLÜMÜ (Koyu Arkaplanlı Yol Haritası)
+     ========================================================================== */
+  .section-dark { background-color: var(--bg-darker); padding: 100px 0; border-top: 1px solid var(--border-light); }
+  .section-title { text-align: center; margin-bottom: 64px; }
+  .section-title h2 { font-size: 28px; font-weight: 700; margin-top: 8px; }
+  
+  .timeline-wrap { position: relative; max-width: 100%; overflow-x: auto; padding-bottom: 20px; }
+  .timeline { display: flex; justify-content: space-between; align-items: flex-start; position: relative; min-width: 900px; }
+  
+  /* Aradaki yatay çizgi */
+  .timeline::before {
+    content: ''; position: absolute; top: 40px; left: 4%; right: 4%; height: 2px;
+    background: linear-gradient(90deg, rgba(56,189,248,0.1) 0%, rgba(56,189,248,0.5) 50%, rgba(56,189,248,0.1) 100%);
+    z-index: 1;
+  }
+  
+  .tl-step { position: relative; z-index: 2; width: 14%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .tl-icon {
+    width: 80px; height: 80px; border-radius: 50%; background: var(--card-dark);
+    border: 2px solid rgba(56, 189, 248, 0.2);
+    display: flex; align-items: center; justify-content: center; color: var(--text-white);
+    margin-bottom: 24px; transition: all 0.3s;
+  }
+  .tl-step:hover .tl-icon { border-color: var(--accent); color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(56,189,248,0.1); }
+  .tl-icon.active { background: var(--accent); border-color: var(--accent); color: var(--bg-dark); }
+  
+  .tl-num { font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 8px; font-family: monospace; }
+  .tl-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-white); }
+  .tl-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; padding: 0 10px; }
+
+  /* ==========================================================================
+     TEMALAR BÖLÜMÜ (Beyaz Kartlar)
+     ========================================================================== */
+  .section-light { background-color: #F8FAFC; padding: 100px 0; color: var(--text-dark); }
+  .section-light .eyebrow { color: var(--accent-hover); }
+  .section-light .section-title h2 { color: var(--text-dark); }
+
+  .themes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: stretch; }
+  
+  .theme-card {
+    background: #FFFFFF; border: 1px solid var(--border-dark); border-radius: 16px;
+    padding: 32px 24px; text-align: center; display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.3s;
+  }
+  .theme-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: transparent; }
+  
+  .tc-icon {
+    width: 64px; height: 64px; border-radius: 50%; background: #F0F9FF; color: var(--accent-hover);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+  }
+  .tc-icon svg { width: 28px; height: 28px; }
+  .theme-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+  .theme-card p { font-size: 13px; color: #64748B; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+  .tc-arrow { color: var(--text-muted); transition: color 0.2s; }
+  .theme-card:hover .tc-arrow { color: var(--accent-hover); }
+
+  /* ==========================================================================
+     GLOBAL TRENDLER & PORTAL BÖLÜMÜ
+     ========================================================================== */
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  
+  .blog-card {
+    background: #FFFFFF; border: 1px solid var(--border-dark); border-radius: 16px;
+    overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column;
+  }
+  .blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+  
+  .bc-image { width: 100%; height: 200px; background: #E2E8F0; position: relative; }
+  /* Örnek resim placeholder rengi */
+  .bc-image.bg-1 { background: linear-gradient(45deg, #0F172A, #334155); }
+  .bc-image.bg-2 { background: linear-gradient(45deg, #0284C7, #38BDF8); }
+  .bc-image.bg-3 { background: linear-gradient(45deg, #166534, #22C55E); }
+  
+  .bc-category {
+    position: absolute; top: 16px; left: 16px; background: #FFFFFF; color: var(--text-dark);
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 6px 12px; border-radius: 100px;
+  }
+  
+  .bc-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+  .bc-date { font-size: 12px; color: #94A3B8; margin-bottom: 12px; font-weight: 500; }
+  .bc-content h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 1.4; margin-bottom: 12px; }
+  .bc-content p { font-size: 14px; color: #64748B; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+  .bc-readmore { font-size: 13px; font-weight: 700; color: var(--accent-hover); display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ==========================================================================
      MOBİL UYUMLULUK
      ========================================================================== */
   @media (max-width: 1024px) {
-    .nav-menu, .header-right { display: none; } /* Mobil menü butonu eklenebilir, şimdilik gizlendi */
+    .nav-menu, .header-right { display: none; }
     .hero-inner { grid-template-columns: 1fr; gap: 64px; }
     .hero-content { max-width: 100%; text-align: center; margin: 0 auto; }
     .hero-content p { margin: 0 auto 40px; }
@@ -247,10 +235,16 @@
     
     .hero-bottom-bar { margin-top: 40px; padding: 0 16px; }
     .white-strip { flex-direction: column; border-radius: 24px; padding: 24px; gap: 24px; }
-    .strip-item { border-right: none; border-bottom: 1px solid #E2E8F0; padding: 0 0 24px 0; }
+    .strip-item { border-right: none; border-bottom: 1px solid var(--border-dark); padding: 0 0 24px 0; }
     .strip-item:last-child { border-bottom: none; padding-bottom: 0; }
     .tr42-card { position: relative; bottom: 0; }
     .tr42-stats { grid-template-columns: 1fr 1fr; }
+    
+    .themes-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .themes-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -259,19 +253,14 @@
 <!-- HEADER -->
 <header>
   <div class="wrap header-inner">
-    
-    <!-- Logo Alanı -->
     <a href="#" class="brand">
-      <div class="brand-icon-placeholder">
-        <div></div>
-      </div>
+      <img src="assets/tubitak-logo.png" alt="TÜBİTAK" class="brand-icon">
       <div class="brand-text">
         <strong>İHRACAT TEŞVİKLERİ<br>POLİTİKA PROJESİ</strong>
         <span>TÜBİTAK 3005</span>
       </div>
     </a>
 
-    <!-- Navigasyon -->
     <nav class="nav-menu">
       <a href="#proje">PROJE</a>
       <a href="#yontem">YÖNTEM & SÜREÇ</a>
@@ -281,7 +270,6 @@
       <a href="#iletisim">İLETİŞİM</a>
     </nav>
 
-    <!-- Dil & Buton -->
     <div class="header-right">
       <div class="lang-switch">
         <span class="active">TR</span> | <span>EN</span>
@@ -291,7 +279,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-
   </div>
 </header>
 
@@ -299,7 +286,6 @@
 <section class="hero">
   <div class="wrap hero-inner">
     
-    <!-- Sol Metinler -->
     <div class="hero-content">
       <span class="eyebrow">TÜBİTAK 3005 DESTEKLİ</span>
       <h1>
@@ -309,34 +295,28 @@
       <p>Dış ticaret girişimciliğinin gerçek belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların görüşleriyle daha etkili teşvik mekanizmalarına yönelik somut politika önerileri geliştiriyoruz.</p>
       
       <div class="hero-actions">
-        <a href="#proje" class="btn-primary">
+        <a href="#yontem" class="btn-primary">
           Projeyi Keşfet
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#raporlar" class="btn-outline">
-          Raporlara Göz At
+        <a href="#trendler" class="btn-outline">
+          Analizlere Göz At
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- Sağ Harita ve Kart -->
+    <!-- SAĞ HARİTA VE KART -->
     <div class="hero-visual">
       
-      <!-- ÖNEMLİ NOT: Burası görseldeki kavisli/noktalı Türkiye haritasının geleceği yerdir.
-           Tasarımcıdan haritayı transparan PNG veya SVG olarak alıp <img src="harita.png"> 
-           şeklinde buraya yerleştirmelisin. Şimdilik sembolik SVG kodunuzu parlayan stile uyarladım. -->
-      <svg class="map-svg" viewBox="0 0 506.7 224.1">
-        <path class="map-glow" d="M117.2 35.5 L119.2 36.1 L129.9 39.8 L142.1 39.4 L147.2 35.5 L146.9 31.9 L170.3 18.2 L198.2 8.0 L232.0 10.7 L242.5 5.5 L257.0 21.2 L272.0 27.0 L286.0 29.7 L309.1 42.0 L324.6 44.1 L346.0 41.2 L364.7 42.7 L402.4 35.2 L422.4 27.9 L442.9 22.8 L458.8 32.5 L471.3 45.1 L467.9 60.5 L477.4 76.1 L501.4 87.7 L491.1 96.8 L488.3 131.6 L496.0 153.0 L501.1 173.6 L488.3 179.8 L471.1 170.8 L452.8 167.9 L436.6 175.0 L415.4 175.8 L370.0 187.0 L340.7 188.6 L307.7 190.9 L283.1 195.8 L273.0 219.0 L262.7 202.5 L257.0 193.5 L232.9 185.2 L214.7 204.8 L193.1 208.0 L170.6 204.7 L136.6 183.5 L124.0 201.3 L101.6 208.2 L83.8 194.2 L69.2 182.8 L57.8 193.6 L48.6 190.3 L47.6 185.1 L65.8 177.6 L37.7 179.9 L46.9 172.3 L35.8 166.7 L37.3 145.3 L19.9 141.2 L10.4 135.6 L15.3 121.5 L35.2 129.7 L23.4 122.5 L27.7 108.1 L28.9 94.2 L5.9 94.4 L14.9 70.0 L38.3 60.5 L50.8 66.3 L58.0 60.3 L85.0 64.3 L78.1 57.9 L97.1 51.5 L90.5 48.0 L83.7 42.3 L106.8 39.4 L117.2 35.5 Z"/>
-        <path class="map-path" d="M117.2 35.5 L119.2 36.1 L129.9 39.8 L142.1 39.4 L147.2 35.5 L146.9 31.9 L170.3 18.2 L198.2 8.0 L232.0 10.7 L242.5 5.5 L257.0 21.2 L272.0 27.0 L286.0 29.7 L309.1 42.0 L324.6 44.1 L346.0 41.2 L364.7 42.7 L402.4 35.2 L422.4 27.9 L442.9 22.8 L458.8 32.5 L471.3 45.1 L467.9 60.5 L477.4 76.1 L501.4 87.7 L491.1 96.8 L488.3 131.6 L496.0 153.0 L501.1 173.6 L488.3 179.8 L471.1 170.8 L452.8 167.9 L436.6 175.0 L415.4 175.8 L370.0 187.0 L340.7 188.6 L307.7 190.9 L283.1 195.8 L273.0 219.0 L262.7 202.5 L257.0 193.5 L232.9 185.2 L214.7 204.8 L193.1 208.0 L170.6 204.7 L136.6 183.5 L124.0 201.3 L101.6 208.2 L83.8 194.2 L69.2 182.8 L57.8 193.6 L48.6 190.3 L47.6 185.1 L65.8 177.6 L37.7 179.9 L46.9 172.3 L35.8 166.7 L37.3 145.3 L19.9 141.2 L10.4 135.6 L15.3 121.5 L35.2 129.7 L23.4 122.5 L27.7 108.1 L28.9 94.2 L5.9 94.4 L14.9 70.0 L38.3 60.5 L50.8 66.3 L58.0 60.3 L85.0 64.3 L78.1 57.9 L97.1 51.5 L90.5 48.0 L83.7 42.3 L106.8 39.4 L117.2 35.5 Z"/>
-      </svg>
+      <!-- DİKKAT: Figma'dan dışa aktaracağınız harita görselini (harita.png vb.) aşağıdaki img etiketine ekleyin -->
+      <!-- <img src="assets/harita.png" alt="Türkiye Haritası" style="width: 100%; height: auto; position: absolute; opacity: 0.8;"> -->
       
-      <div class="map-pin pin-yalova">Yalova</div>
-      <div class="map-pin pin-kocaeli">Kocaeli</div>
-      <div class="map-pin pin-sakarya">Sakarya</div>
-      <div class="map-pin pin-duzce">Düzce</div>
+      <!-- Görsel eklenene kadar görünecek yer tutucu: -->
+      <div class="map-placeholder">
+        [ FİGMA'DAN ALINACAK <br> HARİTA GÖRSELİ BURAYA GELECEK ]
+      </div>
 
-      <!-- Lacivert Bilgi Kartı -->
       <div class="tr42-card">
         <div class="tr42-head">TR42 DOĞU MARMARA</div>
         <div class="tr42-cities">
@@ -346,7 +326,6 @@
         <div class="tr42-stats">
           <div class="t-stat">
             <div class="t-icon">
-              <!-- Bina İkonu -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
             </div>
             <div class="t-info"><b>192</b><span>Firma</span></div>
@@ -354,7 +333,6 @@
           
           <div class="t-stat">
             <div class="t-icon">
-              <!-- Pin İkonu -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
             </div>
             <div class="t-info"><b>5</b><span>İl</span></div>
@@ -362,7 +340,6 @@
           
           <div class="t-stat">
             <div class="t-icon">
-              <!-- İnsanlar İkonu -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="t-info"><b style="font-size:12px; margin-bottom:0;">Nitel + Nicel</b><span>Araştırma</span></div>
@@ -370,7 +347,6 @@
           
           <div class="t-stat">
             <div class="t-icon">
-              <!-- Bar İkonu -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="3" width="4" height="18"/><rect x="10" y="8" width="4" height="13"/><rect x="2" y="13" width="4" height="8"/></svg>
             </div>
             <div class="t-info"><b style="font-size:13px; margin-bottom:0;">Saha</b><span>Çalışması</span></div>
@@ -382,7 +358,7 @@
   </div>
 </section>
 
-<!-- BEYAZ BİLGİ ŞERİDİ (HERO'NUN ALTINA BİNEN KISIM) -->
+<!-- BEYAZ BİLGİ ŞERİDİ -->
 <div class="wrap hero-bottom-bar">
   <div class="white-strip">
     
@@ -428,6 +404,190 @@
 
   </div>
 </div>
+
+<!-- SÜREÇ BÖLÜMÜ (KOYU) -->
+<section id="yontem" class="section-dark">
+  <div class="wrap">
+    <div class="section-title">
+      <span class="eyebrow">ARAŞTIRMA SÜRECİMİZ</span>
+      <h2>Bilimsel Bir Yol Haritası İle İlerliyoruz</h2>
+    </div>
+    
+    <div class="timeline-wrap">
+      <div class="timeline">
+        
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="tl-num">01</div>
+          <div class="tl-title">Literatür Taraması</div>
+          <div class="tl-desc">Ulusal ve uluslararası literatür incelenerek kriter seti oluşturuldu.</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="11" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="tl-num">02</div>
+          <div class="tl-title">Uzman Görüşleri</div>
+          <div class="tl-desc">Akademisyen ve sektör uzmanlarından görüşler alındı, kriterler geliştirildi.</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15L11 17L15 13"/></svg>
+          </div>
+          <div class="tl-num">03</div>
+          <div class="tl-title">Anket Çalışması</div>
+          <div class="tl-desc">Nicel veri toplama aracı oluşturuldu ve saha araştırması yapıldı.</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="tl-num">04</div>
+          <div class="tl-title">Mülakat Çalışması</div>
+          <div class="tl-desc">Uzmanlarla derinlemesine görüşmeler gerçekleştirildi, nitel veriler toplandı.</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="tl-num">05</div>
+          <div class="tl-title">Veri Analizi</div>
+          <div class="tl-desc">Nicel ve nitel veriler gelişmiş yöntemlerle analiz edildi.</div>
+        </div>
+        
+        <div class="tl-step">
+          <div class="tl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/></svg>
+          </div>
+          <div class="tl-num">06</div>
+          <div class="tl-title">Bulgular</div>
+          <div class="tl-desc">Belirleyiciler ortaya çıkarıldı, bulgular yorumlandı.</div>
+        </div>
+
+        <div class="tl-step">
+          <div class="tl-icon active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="tl-num">07</div>
+          <div class="tl-title">Politika Önerileri</div>
+          <div class="tl-desc" style="color:var(--text-white);">Elde edilen sonuçlara dayalı somut teşvik önerileri geliştirildi.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMALAR BÖLÜMÜ (AÇIK RENK) -->
+<section id="temalar" class="section-light">
+  <div class="wrap">
+    <div class="section-title">
+      <span class="eyebrow">ARAŞTIRMA TEMALARIMIZ</span>
+      <h2>Dış Ticaret Girişimciliğinin Temel Belirleyicileri</h2>
+    </div>
+    
+    <div class="themes-grid">
+      
+      <a href="#" class="theme-card">
+        <div class="tc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Girişimci Özellikleri<br>ve Deneyimi</h3>
+        <p>Risk alma, fırsatları görebilme, cesaret, deneyim ve global network kapasitesi.</p>
+        <svg class="tc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="#" class="theme-card">
+        <div class="tc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Stratejik Kararlar<br>ve İnovasyon</h3>
+        <p>Stratejik planlama, karar alma süreçleri, Ar-Ge ve yenilikçilik kapasitesi.</p>
+        <svg class="tc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="#" class="theme-card">
+        <div class="tc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Faaliyet Alanı<br>ve İş Çevresi</h3>
+        <p>Sektörel dinamikler, teknolojik altyapı, iş çevresi ve kurumsal yapı.</p>
+        <svg class="tc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="#" class="theme-card">
+        <div class="tc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Finansal<br>Belirleyiciler</h3>
+        <p>Finansman yapısı, özsermaye gücü, kârlılık ve finansal performans yönetimi.</p>
+        <svg class="tc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- YENİ: GLOBAL TRENDLER BÖLÜMÜ (PORTAL VİZYONU) -->
+<section id="trendler" class="section-light" style="padding-top: 0; padding-bottom: 120px;">
+  <div class="wrap">
+    <div class="section-title">
+      <span class="eyebrow">PORTAL & İÇGÖRÜLER</span>
+      <h2>Güncel Analizler ve Global Trendler</h2>
+    </div>
+    
+    <div class="blog-grid" id="blog-container">
+      
+      <!-- CMS'ten Gelecek Örnek Yazı 1 -->
+      <article class="blog-card">
+        <div class="bc-image bg-1">
+          <span class="bc-category">Politika Analizi</span>
+        </div>
+        <div class="bc-content">
+          <div class="bc-date">12 Ağustos 2026</div>
+          <h3>İhracatın Şifreleri: Girişimciler İçin En Kritik 9 Belirleyici</h3>
+          <p>192 ihracatçı firmanın verileriyle hazırlanan analizde, finansal özkaynakların teşviklerden bağımsız olarak büyümedeki rolü açıklandı.</p>
+          <a href="#" class="bc-readmore">Analizi İncele <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- CMS'ten Gelecek Örnek Yazı 2 -->
+      <article class="blog-card">
+        <div class="bc-image bg-2">
+          <span class="bc-category">Global Ticaret</span>
+        </div>
+        <div class="bc-content">
+          <div class="bc-date">28 Temmuz 2026</div>
+          <h3>Yeni Korumacılık ve Ticaret Savaşları Döneminde İhracat</h3>
+          <p>Jeopolitik gerginlikler sonrası dünyada yükselen yeni korumacılık eğilimlerine karşı yerli katma değer üretiminin stratejik önemi.</p>
+          <a href="#" class="bc-readmore">Analizi İncele <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- CMS'ten Gelecek Örnek Yazı 3 -->
+      <article class="blog-card">
+        <div class="bc-image bg-3">
+          <span class="bc-category">Yeşil Dönüşüm</span>
+        </div>
+        <div class="bc-content">
+          <div class="bc-date">15 Temmuz 2026</div>
+          <h3>Avrupa Yeşil Mutabakatı ve TR42 Bölgesi İhracatına Etkileri</h3>
+          <p>Karbon vergisi kapıdayken, yüksek enerji tüketen sanayi bölgelerinin yeşil ve dijital dönüşüm süreçlerini nasıl hızlandırabileceği tartışılıyor.</p>
+          <a href="#" class="bc-readmore">Analizi İncele <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Alt kısımlar (Logolar ve Ekip) aynı kalabilir, tasarım tam oturduğunda onları da koyu temaya veya portal yapısına göre şekillendirebiliriz. -->
 
 </body>
 </html>
