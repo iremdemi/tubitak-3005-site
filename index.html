@@ -85,14 +85,14 @@
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
   /* ==========================================================================
-     STRATEJİK KÜRESEL EKONOMİ & ÜRETİM HERO SECTION (Lojistik Değil)
+     GLOBAL TRADE & MAKROEKONOMİ POLİTİKASI HERO SECTION
      ========================================================================== */
   .hero-corporate {
     position: relative;
     width: 100%;
     height: 560px;
-    /* Üretim, Küresel Ticaret ve Stratejik Ekonomi Ağı Arka Planı */
-    background: linear-gradient(rgba(8, 15, 30, 0.65), rgba(8, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    /* Küresel ticaret ağları, veri grafikleri ve makroekonomik vizyonu simgeleyen görsel */
+    background: linear-gradient(rgba(10, 17, 35, 0.75), rgba(10, 17, 35, 0.90)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -142,12 +142,12 @@
   }
 
   /* ==========================================================================
-     DEV "VALUE" MASKELENMİŞ YAZI BÖLÜMÜ
+     DEV "EXPORT ECOSYSTEM" KENARDAN KENARA MASKELENMİŞ YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
     width: 100%;
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: var(--bg-alt);
     text-align: center;
     overflow: hidden;
@@ -155,27 +155,29 @@
   }
 
   .giant-text-subtitle {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--accent-teal);
-    margin-bottom: 16px;
-    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
   }
 
   .giant-masked-text {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(80px, 16vw, 220px);
+    font-size: 12.5vw;
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.9;
+    line-height: 0.85;
     letter-spacing: -0.04em;
-    background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
-    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
     user-select: none;
+    padding: 0 10px;
   }
 
   /* ==========================================================================
@@ -335,7 +337,7 @@
 </header>
 
 <!-- =======================================================================
-     STRATEJİK KÜRESEL EKONOMİ & ÜRETİM HERO SECTION (Lojistik Değil)
+     GLOBAL TRADE & MAKROEKONOMİK STRATEJİ HERO SECTION
      ======================================================================= -->
 <section id="proje" class="hero-corporate">
   <div class="wrap gsap-reveal">
@@ -346,13 +348,11 @@
 </section>
 
 <!-- =======================================================================
-     "INNOVATION" BENZERİ DEV MASKELENMİŞ "VALUE" (DEĞER) BÖLÜMÜ
+     DEV "EXPORT ECOSYSTEM" KENARDAN KENARA MASKELENMİŞ YAZI BÖLÜMÜ
      ======================================================================= -->
 <section class="giant-text-section gsap-reveal">
-  <div class="wrap">
-    <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
-    <div class="giant-masked-text">VALUE</div>
-  </div>
+  <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
+  <div class="giant-masked-text">EXPORT ECOSYSTEM</div>
 </section>
 
 <!-- HABER / ANALİZ SLIDER -->
