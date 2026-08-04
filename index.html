@@ -78,8 +78,10 @@
   .primary-nav > ul > li > a, .nav-trigger{
     font-family:var(--nav-font); font-weight:500; font-size:13.5px; color:var(--nav-slate);
     background:none; border:none; cursor:pointer; padding:8px 0; position:relative;
-    transition:color .15s ease;
+    transition:color .15s ease; display:inline-flex; align-items:center; gap:5px;
   }
+  .nav-chev{width:13px; height:13px; transition:transform .18s ease;}
+  li.has-mega:hover .nav-chev{transform:rotate(180deg);}
   .primary-nav > ul > li > a:hover, .nav-trigger:hover, li.has-mega:hover .nav-trigger{color:var(--nav-ink);}
   .primary-nav > ul > li > a::after, .nav-trigger::after{
     content:""; position:absolute; left:0; bottom:2px; width:0; height:2px; background:var(--nav-accent);
@@ -132,75 +134,84 @@
   /* ---------- HERO ---------- */
   /* (eski basit hero kuralları kaldırıldı, aşağıda katmanlı hero CSS'i var) */
 
-  /* ---------- LAYERED HERO ---------- */
-  .hero{background:linear-gradient(180deg,#15305A 0%,#0F2447 60%,#0D2040 100%); padding:0; overflow:hidden;}
-  .hero-stage{position:relative; max-width:900px; margin:0 auto; padding:96px 32px 140px; text-align:center;}
+  /* ---------- META STRIP ---------- */
+  .meta-strip{background:var(--primary); padding:14px 0;}
+  .meta-strip .wrap{display:flex; align-items:center; gap:0; flex-wrap:wrap;}
+  .meta-item{display:flex; align-items:center; gap:8px; font-family:var(--nav-font,'Public Sans',sans-serif); font-size:12px; color:rgba(255,255,255,.55); padding:0 22px; border-left:1px solid rgba(255,255,255,.14);}
+  .meta-item:first-child{padding-left:0; border-left:none;}
+  .meta-item svg{width:14px; height:14px; opacity:.7; flex:none;}
+  .meta-item b{color:#fff; font-weight:600; font-family:var(--mono);}
 
-  .hero-badge{
-    position:relative; display:inline-flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
-    padding:8px 16px; border-radius:20px; margin-bottom:30px;
-  }
-  .hero-badge-orbit{
-    position:absolute; left:50%; top:50%; width:190px; height:190px;
-    transform:translate(-50%,-50%); border:1px dashed rgba(255,255,255,.18); border-radius:50%;
-    animation:spin 40s linear infinite; pointer-events:none;
-  }
-  .hero-badge-orbit i{
-    position:absolute; top:-3px; left:50%; width:6px; height:6px; margin-left:-3px;
-    background:var(--accent); border-radius:50%;
-  }
-  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
-  .hero-badge span{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:12px; color:rgba(255,255,255,.85); font-weight:500;}
-  .hero-badge b{color:var(--accent); font-weight:600;}
+  /* ---------- SPLIT HERO ---------- */
+  .hero{background:linear-gradient(160deg,#15305A 0%,#0F2447 55%,#0B1D3C 100%); padding:0; overflow:hidden;}
+  .hero-inner{max-width:1240px; margin:0 auto; padding:76px 32px 64px; display:grid; grid-template-columns:1fr 1.05fr; gap:40px; align-items:center;}
 
-  .hero-stage h1{color:#fff; font-size:clamp(32px,4.6vw,50px); line-height:1.15; max-width:18ch; margin:0 auto 20px;}
-  .hero-stage .hero-sub{color:rgba(255,255,255,.6); font-size:15.5px; max-width:48ch; margin:0 auto 34px; line-height:1.6;}
-  .hero-cta{
-    display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#fff;
-    font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:13.5px;
-    padding:13px 22px; border-radius:8px; transition:background .18s ease, transform .18s ease;
-  }
-  .hero-cta:hover{background:#3E6BA0; transform:translateY(-2px);}
+  .hero-copy h1{color:#fff; font-size:clamp(30px,3.6vw,44px); line-height:1.18; max-width:15ch;}
+  .hero-copy h1 .accent-word{color:var(--accent);}
+  .hero-rule{width:64px; height:2px; background:var(--accent); margin:26px 0;}
+  .hero-copy .hero-sub{color:rgba(255,255,255,.6); font-size:15px; max-width:46ch; line-height:1.7; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; margin-bottom:44px; flex-wrap:wrap;}
+  .btn-fill{display:inline-flex; align-items:center; gap:9px; background:var(--accent); color:#fff; font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:13.5px; padding:13px 22px; border-radius:8px; transition:background .18s ease, transform .18s ease;}
+  .btn-fill:hover{background:#3E6BA0; transform:translateY(-2px);}
+  .btn-line{display:inline-flex; align-items:center; gap:9px; background:transparent; border:1px solid rgba(255,255,255,.22); color:#fff; font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:13.5px; padding:13px 22px; border-radius:8px; transition:border-color .18s ease, background .18s ease;}
+  .btn-line:hover{border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.06);}
+  .btn-line svg,.btn-fill svg{width:15px; height:15px;}
 
-  .hero-visual{position:relative; margin-top:56px; height:360px;}
-  .hero-visual-card{
-    position:absolute; left:50%; top:0; transform:translateX(-50%);
-    width:230px; height:230px; background:var(--card); border-radius:16px;
-    box-shadow:0 30px 60px rgba(8,16,36,.35); display:flex; align-items:center; justify-content:center;
-    animation:float 5s ease-in-out infinite;
-  }
-  .hero-visual-card svg{width:76%; height:76%;}
+  .hero-features{display:flex; gap:30px; padding-top:28px; border-top:1px solid rgba(255,255,255,.1); flex-wrap:wrap;}
+  .hf-item{display:flex; align-items:flex-start; gap:10px; max-width:170px;}
+  .hf-item svg{width:17px; height:17px; color:var(--accent); flex:none; margin-top:2px;}
+  .hf-item b{display:block; font-family:var(--nav-font,'Public Sans',sans-serif); font-size:12.5px; color:#fff; font-weight:600; margin-bottom:2px;}
+  .hf-item span{font-size:11.5px; color:rgba(255,255,255,.5); line-height:1.4;}
 
-  .float-card{
+  /* ---------- GLOWING MAP + FLOATING CARDS ---------- */
+  .hero-map-wrap{position:relative; height:400px;}
+  .hero-map{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+  .hero-map svg{width:100%; height:auto; max-width:600px;}
+  .hm-outline{fill:none; stroke:rgba(255,255,255,.18); stroke-width:1;}
+  .hm-region path{fill:var(--accent); fill-opacity:.28; stroke:var(--accent); stroke-opacity:.7; stroke-width:.8;}
+  .hm-route{fill:none; stroke:var(--accent); stroke-width:1.1; stroke-dasharray:5 6; opacity:.75; animation:dash 22s linear infinite; filter:url(#hmGlow);}
+  .hm-route.dim{stroke:rgba(255,255,255,.14); opacity:.4; animation-duration:30s;}
+  @keyframes dash{to{stroke-dashoffset:-500;}}
+  .hm-node{fill:var(--accent); filter:url(#hmGlow);}
+  .hm-node-dim{fill:rgba(255,255,255,.18);}
+  .hm-label{font-family:'Public Sans', sans-serif; font-size:6.4px; fill:rgba(255,255,255,.75); letter-spacing:.02em;}
+  .hm-pulse{fill:none; stroke:var(--accent); stroke-width:1; animation:pulse 3s ease-out infinite; transform-origin:center;}
+  @keyframes pulse{0%{r:3; opacity:.9;} 100%{r:16; opacity:0;}}
+
+  .map-card{
     position:absolute; background:var(--card); border-radius:12px; text-align:left;
-    box-shadow:0 20px 42px rgba(8,16,36,.3); padding:16px 18px; animation:float 5s ease-in-out infinite;
+    box-shadow:0 20px 42px rgba(6,14,32,.4); padding:15px 17px; animation:float 5s ease-in-out infinite;
   }
-  .float-card .fc-num{font-family:var(--mono); font-size:22px; font-weight:600; color:var(--primary); line-height:1;}
-  .float-card .fc-arrow{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:10px; color:var(--muted); margin:4px 0;}
-  .float-card .fc-label{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; color:var(--muted); font-weight:500;}
-  .float-card .fc-title{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; color:var(--muted); font-weight:600; margin-bottom:8px; display:block;}
+  .map-card .mc-title{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:10.5px; color:var(--muted); font-weight:600; margin-bottom:6px; display:block;}
+  .map-card .mc-num{font-family:var(--mono); font-size:21px; font-weight:600; color:var(--primary); line-height:1;}
+  .map-card .mc-label{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:10.5px; color:var(--muted); margin-top:3px;}
+  .map-card .mc-bar-track{width:100%; height:4px; background:var(--border); border-radius:2px; margin-top:10px; overflow:hidden;}
+  .map-card .mc-bar-fill{height:100%; width:25%; background:var(--accent); border-radius:2px;}
 
-  .fc-reduce{left:6%; top:36px; width:150px; animation-delay:.3s;}
-  .fc-scope{right:4%; top:64px; width:190px; animation-delay:.9s;}
-  .fc-scope .fc-chip{display:inline-flex; align-items:center; gap:6px; background:var(--bg); border-radius:14px; padding:4px 10px; font-family:var(--mono); font-size:10.5px; color:var(--primary); margin-top:10px;}
-  .fc-scope .fc-chip-dot{width:5px; height:5px; border-radius:50%; background:var(--accent);}
-  .fc-lead{right:0; top:-46px; width:200px; animation-delay:1.5s; display:flex; align-items:center; gap:10px;}
-  .fc-lead-avatar{width:34px; height:34px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:12px; flex:none;}
-  .fc-lead-name{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11.5px; font-weight:600; color:var(--text);}
-  .fc-lead-role{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:9.5px; color:var(--muted);}
+  .mc-duration{left:2%; top:6%; width:150px; animation-delay:.2s;}
+  .mc-scope{left:0; bottom:8%; width:170px; animation-delay:.8s;}
+  .mc-scope .mc-dot-row{display:flex; align-items:center; gap:6px; margin-top:8px; font-family:var(--mono); font-size:10.5px; color:var(--primary);}
+  .mc-scope .mc-dot{width:5px; height:5px; border-radius:50%; background:var(--accent);}
+  .mc-lead{right:0; top:2%; width:190px; animation-delay:1.4s; display:flex; align-items:center; gap:10px; padding:12px 16px;}
+  .mc-lead-avatar{width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:11px; flex:none;}
+  .mc-lead-name{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11px; font-weight:600; color:var(--text);}
+  .mc-lead-role{font-family:var(--nav-font,'Public Sans',sans-serif); font-size:9px; color:var(--muted);}
+  .mc-trend{right:2%; bottom:4%; width:190px; animation-delay:2s;}
+  .mc-trend svg{width:100%; height:36px; margin-top:8px;}
+  .mc-policy{left:32%; bottom:-4%; width:180px; animation-delay:1.1s; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .mc-policy .mc-policy-arrow{width:30px; height:30px; border-radius:50%; background:var(--bg); display:flex; align-items:center; justify-content:center; flex:none;}
+  .mc-policy .mc-policy-arrow svg{width:14px; height:14px; color:var(--primary);}
 
-  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);}}
   @media (prefers-reduced-motion:reduce){
-    .hero-badge-orbit,.hero-visual-card,.float-card{animation:none;}
+    .map-card,.hm-route,.hm-pulse{animation:none;}
   }
 
-  @media (max-width:860px){
-    .hero-stage{padding:72px 24px 64px;}
-    .hero-visual{height:auto; display:flex; flex-direction:column; align-items:center; gap:16px;}
-    .hero-visual-card{position:relative; left:auto; top:auto; transform:none;}
-    .float-card{position:relative; left:auto; right:auto; top:auto; width:100%; max-width:280px; margin:0 auto;}
-    .fc-lead{flex-direction:row;}
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr; padding:56px 24px 48px;}
+    .hero-map-wrap{height:380px; order:-1;}
+    .map-card{position:relative; inset:auto; width:auto !important; margin-bottom:10px;}
+    .hero-features{gap:20px;}
   }
 
   /* ---------- SECTION SHARED ---------- */
@@ -250,6 +261,8 @@
 
   @media (max-width:980px){
     /* hero kendi mobil kurallarını yukarıda tanımlıyor */
+    .meta-strip .wrap{gap:10px 0;}
+    .meta-item{padding:0 14px; border-left:none;}
     .stat-row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
     .stat-cell:nth-child(3){border-left:none;}
     .team-row{grid-template-columns:1fr; gap:10px; text-align:left;}
@@ -277,7 +290,7 @@
     <nav class="primary-nav" aria-label="Ana navigasyon">
       <ul>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navProje">Proje</button>
+          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navProje">Proje</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
             <div class="mega-links">
               <a href="#proje" data-i18n="megaProjeOzet">Proje Özeti</a>
@@ -290,7 +303,7 @@
           </div>
         </li>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navArastirma">Süreç</button>
+          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navArastirma">Süreç</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
             <div class="mega-links">
               <a href="#yontem" data-i18n="megaYontem">Aşamalar</a>
@@ -303,7 +316,7 @@
           </div>
         </li>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navBulgular">Bulgular</button>
+          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navBulgular">Bulgular</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
             <div class="mega-links">
               <a href="#yontem" data-i18n="megaBulgularDurum">Bulgu Durumu</a>
@@ -316,7 +329,7 @@
         </li>
         <li><a href="#politika" style="font-weight:600; color:var(--nav-ink);" data-i18n="navPolitika">Politika Önerileri</a></li>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navYayinlar">Yayınlar</button>
+          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navYayinlar">Yayınlar</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
             <div class="mega-links">
               <a href="#haberler" data-i18n="megaGelismeRaporlari">Gelişme Raporları</a>
@@ -330,7 +343,7 @@
           </div>
         </li>
         <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false" data-i18n="navEkip">Ekip</button>
+          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navEkip">Ekip</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
             <div class="mega-links">
               <a href="#ekip" data-i18n="megaYurutucu">Proje Yürütücüsü</a>
@@ -399,47 +412,143 @@
   })();
 </script>
 
+<div class="meta-strip">
+  <div class="wrap">
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+      <span data-i18n="metaProgram">Program</span>&nbsp;<b>TÜBİTAK 3005</b>
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
+      <span data-i18n="metaProjeNo">Proje No</span>&nbsp;<b>424K054</b>
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <span data-i18n="metaSure">Süre</span>&nbsp;<b>15 Ay</b>
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
+      <span data-i18n="metaBolge">Saha Bölgesi</span>&nbsp;<b>TR42 Doğu Marmara</b>
+    </div>
+  </div>
+</div>
+
 <section class="hero" id="proje">
-  <div class="hero-stage reveal">
-    <div class="hero-badge">
-      <div class="hero-badge-orbit"><i></i></div>
-      <span><b>TÜBİTAK 3005</b> <span data-i18n="heroBadge">Destekli Araştırma</span></span>
+  <div class="hero-inner">
+    <div class="hero-copy reveal">
+      <h1><span data-i18n="heroTitlePre">İhracat teşviklerini</span> <span class="accent-word" data-i18n="heroTitleAccent">gerçek belirleyicilere</span> <span data-i18n="heroTitlePost">göre yeniden yazan bir araştırma</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub" data-i18n="heroSub">Dış ticaret girişimciliğinin belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların deneyimiyle somut politika önerileri geliştiriyoruz.</p>
+      <div class="hero-actions">
+        <a href="#yontem" class="btn-fill" data-i18n="heroCtaFill">Araştırmayı Keşfet →</a>
+        <a href="#politika" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h6"/></svg>
+          <span data-i18n="heroCtaLine">Yöntemi İncele</span>
+        </a>
+      </div>
+      <div class="hero-features">
+        <div class="hf-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+          <div><b data-i18n="hfDataTitle">Veri Odaklı</b><span data-i18n="hfDataDesc">Nicel ve nitel saha araştırması</span></div>
+        </div>
+        <div class="hf-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+          <div><b data-i18n="hfScopeTitle">Bölgesel Odak</b><span data-i18n="hfScopeDesc">TR42 Doğu Marmara, 5 ilde çalışma</span></div>
+        </div>
+        <div class="hf-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <div><b data-i18n="hfPolicyTitle">Politika Etkisi</b><span data-i18n="hfPolicyDesc">Kanıta dayalı öneriler</span></div>
+        </div>
+      </div>
     </div>
 
-    <h1 data-i18n="heroTitle">İhracat teşviklerini gerçek belirleyicilere göre yeniden yazan bir araştırma</h1>
-    <p class="hero-sub" data-i18n="heroSub">Dış ticaret girişimciliğinin belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, bulguları somut bir teşvik politikası önerisine dönüştürüyoruz.</p>
-    <a href="#yontem" class="hero-cta" data-i18n="heroCta">Yöntemi İncele →</a>
+    <div class="hero-map-wrap reveal">
+      <div class="hero-map">
+        <svg viewBox="0 0 506.7 224.1" aria-label="Türkiye haritası, TR42 Doğu Marmara bölgesi işaretli">
+          <defs>
+            <filter id="hmGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="1.4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path class="hm-outline" d="M37.3 145.3 L30.3 142.2 L27.1 143.7 L24.3 137.1 L19.9 141.2 L14.6 135.8 L10.4 135.6 L11.8 131.9 L14.3 134.2 L17.9 130.1 L14.6 129.5 L15.3 121.5 L20.8 126.6 L22.1 134.1 L23.0 129.9 L25.6 132.6 L35.2 129.7 L29.3 130.0 L23.4 122.5 L23.8 119.5 L27.9 119.7 L27.9 116.6 L32.4 114.9 L25.4 112.4 L27.7 108.1 L20.4 101.4 L28.9 94.2 L28.6 90.8 L5.9 94.4 L9.0 77.1 L13.1 75.7 L14.9 70.0 L24.1 63.0 L38.3 60.5 L38.8 64.0 L45.9 67.5 L50.8 66.3 L53.9 64.0 L48.8 60.6 L50.6 58.7 L58.0 60.3 L54.4 63.4 L55.9 64.7 L85.0 64.3 L87.6 62.2 L86.0 60.5 L78.1 57.9 L97.1 51.5 L108.3 52.2 L90.3 49.4 L90.5 48.0 L90.9 48.2 L92.3 47.3 L92.7 46.4 L90.4 47.6 L83.7 42.3 L87.9 35.0 L106.8 39.4 L117.2 35.5 L129.9 39.8 L142.1 39.4 L147.2 35.5 L146.9 31.9 L170.3 18.2 L198.2 8.0 L232.0 10.7 L242.5 5.5 L247.2 7.3 L244.5 11.3 L249.4 18.3 L257.0 21.2 L267.3 17.7 L270.0 19.3 L272.0 27.0 L278.7 34.0 L286.0 29.7 L309.1 42.0 L315.7 38.7 L318.1 43.1 L324.6 44.1 L321.6 51.2 L324.6 44.2 L335.3 45.5 L346.0 41.2 L358.9 39.0 L364.7 42.7 L380.3 45.1 L402.4 35.2 L415.1 24.8 L422.4 27.9 L425.9 24.8 L440.8 27.7 L442.9 22.8 L449.1 22.9 L448.4 25.9 L458.8 32.5 L456.7 34.0 L459.4 36.7 L465.0 36.6 L465.9 41.7 L471.3 45.1 L473.3 53.5 L467.9 60.5 L471.5 67.9 L469.5 69.9 L472.3 71.0 L470.8 72.9 L477.4 76.1 L487.3 75.0 L501.4 87.7 L496.4 84.3 L493.0 87.0 L491.1 96.8 L480.7 98.0 L488.2 116.3 L488.3 131.6 L493.3 133.5 L486.2 148.5 L492.1 152.6 L495.1 152.6 L496.0 153.0 L495.8 163.6 L501.6 168.2 L501.1 173.6 L496.7 172.3 L488.3 179.8 L485.2 175.4 L487.2 170.7 L483.6 168.0 L471.1 170.8 L457.9 166.0 L452.8 167.9 L448.1 165.8 L442.7 173.7 L436.6 175.0 L433.2 167.9 L428.5 172.3 L415.4 175.8 L394.8 174.6 L370.0 187.0 L353.8 190.1 L340.7 188.6 L336.2 184.2 L326.5 181.8 L307.7 190.9 L297.3 191.5 L293.4 186.1 L286.3 183.9 L285.0 184.1 L283.1 195.8 L287.1 204.2 L279.0 205.1 L278.5 212.6 L274.1 214.3 L273.0 219.0 L266.3 215.0 L267.9 212.0 L262.7 202.5 L273.6 192.4 L273.9 186.1 L268.9 181.1 L257.0 188.5 L261.2 188.5 L257.0 193.5 L251.0 194.4 L248.7 189.6 L246.4 189.7 L250.7 193.7 L232.9 185.2 L223.0 192.8 L214.7 204.8 L212.2 201.9 L207.4 208.1 L206.3 206.1 L204.1 208.4 L193.1 208.0 L184.0 212.2 L170.6 204.7 L163.6 194.4 L136.6 183.5 L126.4 183.8 L124.0 201.3 L120.7 205.6 L120.7 203.3 L115.3 202.0 L101.6 208.2 L86.2 199.5 L86.9 194.2 L83.8 194.2 L86.3 189.9 L81.7 187.0 L79.5 192.7 L69.2 182.8 L67.6 186.0 L64.0 183.9 L65.1 187.9 L57.8 193.6 L56.0 192.2 L59.6 190.7 L56.1 189.4 L60.5 188.0 L60.3 185.4 L55.3 187.5 L50.0 186.7 L48.6 190.3 L41.4 190.2 L40.3 188.5 L47.6 185.1 L58.0 185.9 L57.7 181.2 L61.5 181.9 L65.8 177.6 L45.6 179.5 L41.9 177.5 L37.7 179.9 L37.4 174.2 L43.1 175.9 L46.9 172.3 L46.9 169.2 L44.2 170.9 L43.3 167.0 L40.9 167.5 L42.1 165.7 L41.7 164.4 L35.8 166.7 L36.4 158.6 L30.8 156.3 L36.7 154.2 L37.3 145.3 Z"/>
+          <path class="hm-outline" d="M22.7 61.2 L13.7 69.8 L14.3 71.8 L8.8 75.1 L11.6 69.4 L10.0 65.8 L24.6 58.1 L26.3 56.9 L25.9 54.7 L24.3 53.2 L25.2 54.4 L18.4 56.6 L7.6 56.6 L5.1 51.7 L7.6 51.0 L10.3 46.1 L13.6 44.2 L13.0 34.0 L21.1 30.6 L20.0 21.8 L13.2 16.9 L14.2 14.4 L18.7 14.1 L20.7 9.5 L30.0 9.3 L31.4 5.9 L36.2 6.5 L37.4 5.1 L45.3 12.1 L49.0 9.6 L51.9 10.9 L53.2 8.8 L57.9 9.1 L58.6 12.7 L56.3 13.4 L61.8 24.7 L77.8 32.4 L86.5 34.6 L84.4 41.0 L82.9 42.0 L82.1 40.5 L83.1 42.5 L78.9 44.2 L73.5 44.0 L72.7 42.1 L71.4 43.2 L63.3 40.0 L60.4 40.6 L58.6 37.6 L60.4 40.6 L57.5 41.5 L56.2 43.9 L50.9 42.2 L44.2 43.6 L38.9 52.8 L22.7 61.2 Z"/>
 
-    <div class="hero-visual">
-      <div class="hero-visual-card">
-        <svg viewBox="0 0 100 100" aria-label="Belirleyicilerden politikaya dönüşüm">
-          <rect x="24" y="14" width="52" height="68" rx="4" fill="none" stroke="#11284D" stroke-width="2"/>
-          <line x1="34" y1="30" x2="66" y2="30" stroke="#11284D" stroke-width="2"/>
-          <line x1="34" y1="40" x2="66" y2="40" stroke="#C7CDD8" stroke-width="2"/>
-          <line x1="34" y1="50" x2="56" y2="50" stroke="#C7CDD8" stroke-width="2"/>
-          <circle cx="66" cy="66" r="16" fill="#FAF9F7" stroke="#4A7BB8" stroke-width="2"/>
-          <path d="M59 66l5 5 9-10" fill="none" stroke="#4A7BB8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="hm-region">
+            <path d="M117.2 35.5 L119.2 36.1 L119.9 37.2 L119.8 38.2 L118.4 39.3 L117.6 42.0 L119.5 44.4 L119.9 47.1 L119.6 47.8 L117.6 48.8 L117.9 51.0 L116.0 55.3 L114.0 55.5 L110.5 57.0 L107.4 57.0 L103.8 55.8 L98.8 57.8 L94.9 57.6 L95.0 53.6 L97.1 51.5 L96.9 52.3 L98.4 53.3 L105.0 51.9 L108.3 52.2 L108.4 51.0 L104.2 51.5 L102.9 50.4 L99.8 50.1 L98.6 50.6 L96.5 50.2 L92.9 51.0 L92.3 48.9 L90.3 49.4 L91.3 48.4 L90.7 48.4 L90.5 48.0 L90.9 48.2 L92.7 46.4 L94.6 45.4 L94.9 43.6 L96.3 42.7 L96.6 41.5 L100.8 42.3 L103.3 40.9 L106.7 40.0 L106.4 37.9 L114.0 38.0 L115.1 37.7 L115.0 37.2 L115.9 37.2 L115.9 36.4 L116.6 36.3 L117.2 35.5 Z"/>
+            <path d="M119.7 36.6 L127.2 38.3 L129.9 39.8 L135.7 40.2 L137.3 42.1 L136.6 44.0 L133.9 46.2 L133.0 48.3 L133.5 50.2 L136.0 52.2 L135.1 53.9 L134.9 57.4 L134.0 58.4 L132.2 58.9 L127.8 59.1 L125.6 61.7 L127.0 63.6 L126.4 65.3 L120.0 63.0 L113.2 64.1 L109.3 60.6 L108.1 57.7 L108.0 57.0 L110.7 57.0 L116.4 55.1 L117.9 51.0 L117.6 48.8 L119.9 47.3 L119.5 44.4 L117.6 42.0 L118.4 39.3 L119.9 38.0 L119.7 36.6 Z"/>
+            <path d="M145.4 38.1 L148.0 40.8 L155.8 41.2 L156.4 43.1 L155.8 44.6 L152.3 46.7 L148.8 47.1 L147.8 49.3 L147.7 52.8 L145.9 54.2 L143.4 54.7 L141.4 53.5 L137.1 54.3 L135.2 53.5 L136.0 52.2 L133.5 50.2 L133.0 48.5 L133.9 46.2 L136.6 44.0 L137.3 42.5 L135.7 40.2 L142.1 39.4 L145.4 38.1 Z"/>
+            <path d="M160.5 42.0 L170.3 42.4 L170.3 44.7 L176.2 47.4 L177.1 49.2 L176.6 51.9 L174.2 54.5 L175.4 58.7 L173.1 62.3 L171.3 62.6 L166.7 62.2 L160.3 64.9 L157.4 65.4 L155.0 65.0 L151.4 66.2 L143.4 64.9 L140.2 63.1 L138.0 62.5 L137.4 63.9 L137.6 67.4 L135.2 69.1 L133.1 71.9 L129.2 70.8 L126.8 66.2 L126.4 65.3 L127.0 63.6 L125.7 61.6 L127.8 59.1 L131.9 59.0 L134.0 58.4 L135.0 57.2 L135.2 53.5 L137.1 54.3 L141.4 53.5 L143.4 54.7 L145.9 54.2 L147.7 52.8 L147.8 49.3 L148.8 47.1 L152.3 46.7 L154.6 45.6 L155.9 44.4 L156.4 43.1 L155.8 41.2 L160.5 42.0 Z"/>
+            <path d="M94.0 52.8 L95.2 53.2 L94.9 57.6 L93.1 57.0 L90.6 57.8 L84.7 57.7 L83.8 59.8 L84.4 60.4 L82.9 61.2 L80.4 60.4 L79.7 59.5 L77.7 59.1 L78.1 57.9 L81.7 56.3 L83.3 54.8 L91.0 54.2 L94.0 52.8 Z"/>
+          </g>
+
+          <circle class="hm-node-dim" cx="220" cy="90" r="1.6"/>
+          <circle class="hm-node-dim" cx="260" cy="135" r="1.6"/>
+          <circle class="hm-node-dim" cx="320" cy="80" r="1.6"/>
+          <circle class="hm-node-dim" cx="360" cy="115" r="1.6"/>
+          <circle class="hm-node-dim" cx="410" cy="150" r="1.6"/>
+          <circle class="hm-node-dim" cx="300" cy="175" r="1.6"/>
+          <circle class="hm-node-dim" cx="430" cy="85" r="1.6"/>
+          <circle class="hm-node-dim" cx="200" cy="160" r="1.6"/>
+          <circle class="hm-node-dim" cx="160" cy="130" r="1.6"/>
+
+          <path class="hm-route dim" d="M107.2 47.5 Q210 75 320 130"/>
+          <path class="hm-route" d="M107.2 47.5 Q115.7 42.5 124.2 51.5"/>
+          <path class="hm-route" d="M124.2 51.5 Q133.8 45.5 143.4 46.3"/>
+          <path class="hm-route" d="M124.2 51.5 Q139.1 53.5 154.0 56.2"/>
+          <path class="hm-route" d="M107.2 47.5 Q97.0 53.5 86.8 56.7"/>
+
+          <circle class="hm-node" cx="107.2" cy="47.5" r="2.6"/>
+          <circle class="hm-pulse" cx="107.2" cy="47.5"/>
+          <text class="hm-label" x="70.5" y="42.0" data-i18n="mapKocaeli">Kocaeli</text>
+
+          <circle class="hm-node" cx="124.2" cy="51.5" r="2.6"/>
+          <circle class="hm-pulse" cx="124.2" cy="51.5"/>
+          <text class="hm-label" x="110.0" y="66.5" data-i18n="mapSakarya">Sakarya</text>
+
+          <circle class="hm-node" cx="143.4" cy="46.3" r="2.6"/>
+          <text class="hm-label" x="148.4" y="43.3" data-i18n="mapDuzce">Düzce</text>
+
+          <circle class="hm-node" cx="154.0" cy="56.2" r="2.6"/>
+          <text class="hm-label" x="159.0" y="64.2" data-i18n="mapBolu">Bolu</text>
+
+          <circle class="hm-node" cx="86.8" cy="56.7" r="2.6"/>
+          <text class="hm-label" x="54.8" y="64.7" data-i18n="mapYalova">Yalova</text>
         </svg>
       </div>
 
-      <div class="float-card fc-reduce">
-        <span class="fc-title" data-i18n="fcStageTitle">Proje Aşaması</span>
-        <div class="fc-num">1 / 4</div>
-        <div class="fc-label" data-i18n="fcStageLabel">Tamamlanan aşama</div>
+      <div class="map-card mc-duration">
+        <span class="mc-title" data-i18n="mcDurationTitle">Araştırma Süreci</span>
+        <div class="mc-num">15 <span style="font-size:13px; font-weight:500;" data-i18n="mcDurationUnit">Ay</span></div>
+        <div class="mc-bar-track"><div class="mc-bar-fill"></div></div>
       </div>
 
-      <div class="float-card fc-scope">
-        <span class="fc-title" data-i18n="fcScopeTitle">Saha Kapsamı</span>
-        <div class="fc-num">5 <span style="font-size:13px; font-weight:500;" data-i18n="fcScopeIl">İl</span></div>
-        <div class="fc-chip"><span class="fc-chip-dot"></span><span data-i18n="fcScopeBolge">TR42 Doğu Marmara</span></div>
-      </div>
-
-      <div class="float-card fc-lead">
-        <div class="fc-lead-avatar">AY</div>
+      <div class="map-card mc-lead">
+        <div class="mc-lead-avatar">AY</div>
         <div>
-          <div class="fc-lead-name">Ahmet Yağmur Ersoy</div>
-          <div class="fc-lead-role" data-i18n="fcLeadRole">Proje Yürütücüsü</div>
+          <div class="mc-lead-name">Ahmet Yağmur Ersoy</div>
+          <div class="mc-lead-role" data-i18n="fcLeadRole">Proje Yürütücüsü</div>
         </div>
+      </div>
+
+      <div class="map-card mc-scope">
+        <span class="mc-title" data-i18n="mcScopeTitle">TR42 Bölgesi</span>
+        <div class="mc-num">5 <span style="font-size:13px; font-weight:500;" data-i18n="fcScopeIl">İl</span></div>
+        <div class="mc-dot-row"><span class="mc-dot"></span><span data-i18n="mcScopeName">Doğu Marmara</span></div>
+      </div>
+
+      <div class="map-card mc-trend">
+        <span class="mc-title" data-i18n="mcTrendTitle">Süreç Takibi</span>
+        <svg viewBox="0 0 160 40" preserveAspectRatio="none">
+          <polyline points="0,30 20,26 40,28 60,18 80,20 100,10 120,14 140,6 160,8" fill="none" stroke="#4A7BB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="map-card mc-policy">
+        <span class="mc-title" style="margin-bottom:0;" data-i18n="mcPolicyTitle">Politika Önerileri</span>
+        <a href="#politika" class="mc-policy-arrow" aria-label="Politika Önerilerine git">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -557,12 +666,20 @@
       statAySure: "Months", statBolge: "Region",
       statIsPaketi: "Stages", statTamamlanan: "Completed",
       statRapor: "Report", statProjeNo: "Project No", statYurutucu: "Lead", statUniversite: "University",
-      heroTitle: "A research project rewriting export incentive policy around the real determinants",
-      heroBadge: "Supported Research", heroSub: "We uncover the determinants of foreign trade entrepreneurship through field research and turn the findings into a concrete incentive policy proposal.",
-      heroCta: "Explore the Method →",
-      fcStageTitle: "Project Stage", fcStageLabel: "Completed stage",
-      fcScopeTitle: "Field Coverage", fcScopeIl: "Provinces", fcScopeBolge: "TR42 East Marmara",
+      metaProgram: "Program", metaProjeNo: "Project No", metaSure: "Duration", metaBolge: "Field Region",
+      heroTitlePre: "Rewriting export incentive policy around the",
+      heroTitleAccent: "real determinants", heroTitlePost: "of foreign trade entrepreneurship",
+      heroSub: "We uncover the determinants of foreign trade entrepreneurship through field research and turn the findings, together with the experience of exporting firms in East Marmara, into concrete policy recommendations.",
+      heroCtaFill: "Explore the Research →", heroCtaLine: "Explore the Method",
+      hfDataTitle: "Data-Driven", hfDataDesc: "Quantitative and qualitative field research",
+      hfScopeTitle: "Regional Focus", hfScopeDesc: "TR42 East Marmara, work across 5 provinces",
+      hfPolicyTitle: "Policy Impact", hfPolicyDesc: "Evidence-based recommendations",
+      mapKocaeli: "Kocaeli", mapSakarya: "Sakarya", mapDuzce: "Düzce", mapBolu: "Bolu", mapYalova: "Yalova",
+      mcDurationTitle: "Research Timeline", mcDurationUnit: "Months",
       fcLeadRole: "Principal Investigator",
+      mcScopeTitle: "TR42 Region", fcScopeIl: "Provinces", mcScopeName: "East Marmara",
+      mcTrendTitle: "Progress Tracking",
+      mcPolicyTitle: "Policy Recommendations",
       eyebrowKapsam: "Scope",
       kapsamTitle: "Conducted within the Social Sciences and Humanities Research Support Programme",
       kapsam1: "Social Sciences and Humanities Research Support Programme",
