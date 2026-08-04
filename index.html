@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER
+     HEADER VE KÜRELİ LOGO
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -42,16 +42,41 @@
   }
   .header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; max-width: 1360px; margin: 0 auto; padding: 0 32px; }
   
-  .brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  /* Sadece Küreli Logo Alanı */
+  .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   
-  .wordmark-logo { display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0; }
-  .wm-acronym { font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--accent-navy); letter-spacing: 0.12em; line-height: 1; }
-  .wm-line { width: 100%; height: 1.5px; background: var(--accent-navy); margin: 4px 0; opacity: 0.8; }
-  .wm-subtitle { font-family: var(--font-sans); font-size: 8px; font-weight: 700; color: var(--text-body); letter-spacing: 0.18em; text-transform: uppercase; }
-
-  .brand-divider { width: 1px; height: 40px; background-color: var(--border-color); flex-shrink: 0; }
-  .brand-text { display: flex; flex-direction: column; }
-  .brand-text strong { font-family: var(--font-serif); font-size: 11.5px; font-weight: 600; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.35; }
+  .globe-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .globe-svg {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .globe-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .globe-dtg {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--accent-navy);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+  .globe-sub {
+    font-family: var(--font-sans);
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--accent-navy);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
 
   .nav-menu { display: flex; align-items: center; gap: 28px; margin: 0 auto; }
   .nav-item { position: relative; }
@@ -150,12 +175,12 @@
   }
 
   /* ==========================================================================
-     DÜZELTİLMİŞ VE DENGELENMİŞ MASKELENMİŞ DEV YAZI BÖLÜMÜ
+     DENGELENMİŞ MASKELENMİŞ DEV YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
     width: 100%;
-    padding: 85px 0 65px 0; /* Üst ve alt boşluklar dengelendi */
+    padding: 85px 0 65px 0;
     background-color: var(--bg-alt);
     text-align: center;
     overflow: hidden;
@@ -166,7 +191,7 @@
     font-size: 11.5px;
     font-weight: 700;
     color: var(--text-body);
-    margin-bottom: 24px; /* Alttaki dev yazı ile olan mesafe estetik hale getirildi */
+    margin-bottom: 24px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
   }
@@ -278,16 +303,21 @@
 <header>
   <div class="header-inner">
     
-    <!-- SOL: DTG Logo ve Başlık -->
+    <!-- SOL: Küreli Orijinal DTG Logosu (Yanındaki uzun yazı tamamen kaldırıldı) -->
     <a href="#anasayfa" class="brand">
-      <div class="wordmark-logo">
-        <span class="wm-acronym">DTG</span>
-        <div class="wm-line"></div>
-        <span class="wm-subtitle">RESEARCH PORTAL</span>
-      </div>
-      <div class="brand-divider"></div>
-      <div class="brand-text">
-        <strong data-i18n="brandTitle">Dış Ticaret Girişimciliği ve<br>İhracat Teşvikleri</strong>
+      <div class="globe-logo-wrap">
+        <svg class="globe-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="45" cy="50" r="38" stroke="#1E3A8A" stroke-width="4"/>
+          <path d="M15 50H75" stroke="#1E3A8A" stroke-width="2.5"/>
+          <path d="M18 35H62" stroke="#1E3A8A" stroke-width="2.5"/>
+          <path d="M18 65H62" stroke="#1E3A8A" stroke-width="2.5"/>
+          <path d="M45 12C55 25 55 75 45 88" stroke="#1E3A8A" stroke-width="2.5"/>
+          <path d="M30 16C35 30 35 70 30 84" stroke="#1E3A8A" stroke-width="2"/>
+        </svg>
+        <div class="globe-text-group">
+          <span class="globe-dtg">DTG</span>
+          <span class="globe-sub">RESEARCH PORTAL</span>
+        </div>
       </div>
     </a>
 
@@ -477,7 +507,6 @@
 <script>
   const dict = {
     tr: {
-      brandTitle: "Dış Ticaret Girişimciliği ve<br>İhracat Teşvikleri",
       menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
       dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
       btnPolitika: "Politika Önerileri",
@@ -502,7 +531,6 @@
       readMoreTxt: "Detaylı İncele"
     },
     en: {
-      brandTitle: "Foreign Trade Entrepreneurship &<br>Export Incentives",
       menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
@@ -513,7 +541,7 @@
       findingsEyebrow: "METHODOLOGY-FREE CLEAR RESULTS",
       findingsTitle: "Codes of Export: Most Critical Determinants for Entrepreneurs",
       f1Sub: "Most Important Factor", f1Title: "Financial Determinants (Equity and Performance)", f1Desc: "According to analysis results, the strongest catalyst is the financial structure. With an 86.8% probability of being the primary determinant, structuring incentives based on profitability is crucial.",
-      f2Sub: "Strategic Criterion", f2Title: "Competition, Opportunities, and Risk Management", f2Desc: "Exporters' perception of opportunities and risk management capacity against global fluctuations rank second. In this era of rising protectionism, market literacy stands out.",
+      f2Sub: "Stratejik Kriter", f2Title: "Competition, Opportunities, and Risk Management", f2Desc: "Exporters' perception of opportunities and risk management capacity against global fluctuations rank second. In this era of rising protectionism, market literacy stands out.",
       f3Sub: "Managerial Capacity", f3Title: "Strategic Decisions and Innovation", f3Desc: "Not only producing but also designing innovative production processes and carrying them to the international arena with a strategic decision constitutes the backbone of sustainable exports.",
       polEyebrow: "STRATEGIC VISION", polTitle: "Policy Recommendations for the Future",
       p1Title: "Profitability & Equity-Focused Support Models", p1Desc: "Moving beyond volume-based supports, next-generation financing models that enhance firms' equity strength and value creation capacity must be implemented.",
