@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* YENİ RENK PALETİ - Aydınlık, editoryal ve vurgu lacivertli */
     --primary:#14213D;
     --secondary:#17325F;
     --accent:#2F5FA8;
@@ -108,7 +107,6 @@
   .mega-stats div{display:flex; flex-direction:column; gap:2px;}
   .mega-stats b{font-family:var(--mono); font-size:15px; color:var(--nav-ink); font-weight:600;}
   .mega-stats span{font-family:var(--mono); font-size:9.5px; color:var(--nav-slate); text-transform:uppercase; letter-spacing:.04em;}
-  .mega-note{grid-column:1/3; font-family:var(--nav-font,'Public Sans',sans-serif); font-size:11.5px; color:var(--nav-slate); line-height:1.5;}
 
   .header-actions{display:flex; align-items:center; gap:22px;}
   .lang-switch{display:flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-family:var(--nav-font); font-size:12.5px; color:var(--nav-slate);}
@@ -140,7 +138,7 @@
   .meta-item svg{width:14px; height:14px; color:var(--accent); flex:none;}
   .meta-item b{color:var(--primary); font-weight:600; font-family:var(--mono);}
 
-  /* ---------- YENİ EDİTORYAL HERO ---------- */
+  /* ---------- EDİTORYAL HERO ---------- */
   .hero{background:var(--bg); padding:0; overflow:hidden;}
   .hero-inner{max-width:1280px; margin:0 auto; padding:88px 32px 100px; display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:center;}
 
@@ -155,7 +153,6 @@
   .btn-line:hover{border-color:var(--accent); color:var(--accent);}
   .btn-line svg,.btn-fill svg{width:15px; height:15px;}
 
-  /* Yeni İstatistik Kartları (Özellik listesi yerine) */
   .hero-stats{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; border-top:1px solid var(--border); padding-top:32px;}
   .hs-item{display:flex; align-items:center; gap:16px; background:#fff; border:1px solid var(--border); padding:16px 20px; border-radius:10px; box-shadow:0 4px 12px rgba(20,33,61,.02); transition:transform .2s ease;}
   .hs-item:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(20,33,61,.05);}
@@ -224,64 +221,37 @@
     .hero-stats{grid-template-columns:1fr;}
   }
 
-  /* ---------- SECTION SHARED ---------- */
+  /* ---------- BÖLÜM (SECTION) & ESTETİK (İLK VERSİYON) ---------- */
   .eyebrow{font-family:var(--nav-font,'Public Sans',sans-serif); font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:18px;}
-  .section{padding:88px 0; border-bottom:1px solid var(--border); background:var(--card);}
+  .section{padding:88px 0; border-bottom:1px solid var(--border);}
   .section-head{max-width:560px; margin-bottom:48px;}
   .section-head h2{font-size:clamp(22px,2.6vw,28px); line-height:1.32;}
   .section-head p{font-size:14.5px; margin-top:12px; color:var(--muted);}
 
-  /* ---------- STAT ROW ---------- */
-  .stat-row{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border);}
-  .stat-cell{padding:26px 22px 0 0; border-left:1px solid var(--border);}
-  .stat-cell:first-child{border-left:none; padding-left:0;}
-  .stat-cell svg{width:20px; height:20px; stroke:var(--accent); margin-bottom:14px;}
-  .stat-cell b{display:block; font-family:var(--head); font-size:15px; font-weight:700; margin-bottom:6px; color:var(--primary);}
-  .stat-cell span{font-size:12px; color:var(--muted); line-height:1.5;}
-
-  /* ---------- STAGES ---------- */
-  .ip-list{border-top:1px solid var(--border);}
-  .ip-row{display:grid; grid-template-columns:44px 1fr 130px; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid var(--border);}
-  .ip-num{font-family:var(--mono); font-size:13px; color:var(--muted-soft); padding-top:2px; font-weight:600;}
-  .ip-body h3{font-size:15px; margin-bottom:0; font-weight:700;}
-  .ip-body p{font-size:12.5px; max-width:52ch;}
-  .status{font-family:var(--mono); font-size:10.5px; display:flex; align-items:center; gap:7px; padding-top:2px; white-space:nowrap; font-weight:500;}
-  .status .dot{width:6px; height:6px; border-radius:50%; background:var(--muted-soft);}
-  .status.done{color:var(--success);}
-  .status.done .dot{background:var(--success);}
-  .status.pending{color:var(--muted-soft);}
-
-  /* ---------- LOGOS ---------- */
-  .logos{padding:56px 0; border-bottom:1px solid var(--border); background:var(--bg);}
+  /* ---------- LOGOS (İLK VERSİYON) ---------- */
+  .logos{padding:56px 0; border-bottom:1px solid var(--border);}
   .logos .eyebrow{margin-bottom:20px;}
   .logo-line{font-size:13.5px; color:var(--muted); line-height:2;}
   .logo-line b{color:var(--primary); font-weight:600;}
 
-  /* ---------- TEAM ---------- */
+  /* ---------- TEAM (İLK VERSİYON ÖLÇÜLERİ & ESTETİĞİ) ---------- */
   .team-list{border-top:1px solid var(--border);}
   .team-row{display:grid; grid-template-columns:56px 220px 1fr; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid var(--border);}
   .team-avatar{width:52px; height:52px; border-radius:50%; object-fit:cover; background:var(--bg); border:1px solid var(--border);}
-  .team-avatar-fallback{width:52px; height:52px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:14px;}
+  .team-avatar-fallback{width:52px; height:52px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:14px;}
   .team-row h3{font-size:15.5px; margin-bottom:4px; color:var(--primary);}
-  .team-row .role{font-family:var(--mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:500;}
+  .team-row .role{font-family:var(--mono); font-size:10.5px; color:var(--secondary); text-transform:uppercase; letter-spacing:.05em;}
   .team-row p{font-size:13px; max-width:56ch;}
 
-  footer{padding:36px 0; text-align:center; background:var(--bg);}
+  footer{padding:36px 0; text-align:center;}
   footer p{font-size:11.5px; color:var(--muted-soft);}
 
   @media (max-width:980px){
     .meta-strip .wrap{gap:10px 0;}
     .meta-item{padding:0 14px; border-left:none;}
-    .stat-row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
-    .stat-cell:nth-child(3){border-left:none;}
     .team-row{grid-template-columns:1fr; gap:10px; text-align:left;}
     .primary-nav{display:none;}
     .menu-trigger{display:flex;}
-  }
-  @media (max-width:600px){
-    .stat-row{grid-template-columns:1fr;}
-    .stat-cell{border-left:none; border-top:1px solid var(--border); padding-top:22px;}
-    .stat-cell:first-child{border-top:none;}
   }
 </style>
 </head>
@@ -303,7 +273,6 @@
           <div class="mega">
             <div class="mega-links">
               <a href="#proje" data-i18n="megaProjeOzet">Proje Özeti</a>
-              <a href="#proje" data-i18n="megaProjeKapsam">Kapsam ve Hedefler</a>
             </div>
             <div class="mega-stats">
               <div><b>15</b><span data-i18n="statAySure">Ay Süre</span></div>
@@ -311,46 +280,7 @@
             </div>
           </div>
         </li>
-        <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navArastirma">Süreç</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="mega">
-            <div class="mega-links">
-              <a href="#yontem" data-i18n="megaYontem">Aşamalar</a>
-              <a href="#yontem" data-i18n="megaSahaBolgesi">Saha Bölgesi</a>
-            </div>
-            <div class="mega-stats">
-              <div><b>4</b><span data-i18n="statIsPaketi">Aşama</span></div>
-              <div><b>1</b><span data-i18n="statTamamlanan">Tamamlanan</span></div>
-            </div>
-          </div>
-        </li>
-        <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navBulgular">Bulgular</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="mega">
-            <div class="mega-links">
-              <a href="#yontem" data-i18n="megaBulgularDurum">Bulgu Durumu</a>
-              <a href="#haberler" data-i18n="megaGelismeRaporlari">Gelişme Raporları</a>
-            </div>
-            <div class="mega-stats">
-              <div class="mega-note" data-i18n="megaBulgularNot">Saha araştırması tamamlandığında paylaşılacaktır.</div>
-            </div>
-          </div>
-        </li>
         <li><a href="#politika" style="font-weight:600; color:var(--nav-ink);" data-i18n="navPolitika">Politika Önerileri</a></li>
-        <li class="has-mega">
-          <button class="nav-trigger" aria-expanded="false"><span data-i18n="navYayinlar">Yayınlar</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="mega">
-            <div class="mega-links">
-              <a href="#haberler" data-i18n="megaGelismeRaporlari">Gelişme Raporları</a>
-              <a href="#haberler" data-i18n="megaBildiriler">Bildiriler</a>
-              <a href="#haberler" data-i18n="megaMakaleler">Makaleler</a>
-            </div>
-            <div class="mega-stats">
-              <div><b>1</b><span data-i18n="statRapor">Rapor</span></div>
-              <div><b>424K054</b><span data-i18n="statProjeNo">Proje No</span></div>
-            </div>
-          </div>
-        </li>
         <li class="has-mega">
           <button class="nav-trigger" aria-expanded="false"><span data-i18n="navEkip">Ekip</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="mega">
@@ -391,10 +321,7 @@
   </div>
   <ul>
     <li><a href="#proje" data-i18n="navProje">Proje</a></li>
-    <li><a href="#yontem" data-i18n="navArastirma">Süreç</a></li>
-    <li><a href="#yontem" data-i18n="navBulgular">Bulgular</a></li>
     <li><a href="#politika" data-i18n="navPolitika">Politika Önerileri</a></li>
-    <li><a href="#haberler" data-i18n="navYayinlar">Yayınlar</a></li>
     <li><a href="#ekip" data-i18n="navEkip">Ekip</a></li>
     <li><a href="#iletisim" data-i18n="navIletisim">İletişim</a></li>
   </ul>
@@ -449,11 +376,7 @@
       <div class="hero-rule"></div>
       <p class="hero-sub" data-i18n="heroSub">Dış ticaret girişimciliğinin belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların deneyimiyle somut politika önerileri geliştiriyoruz.</p>
       <div class="hero-actions">
-        <a href="#yontem" class="btn-fill" data-i18n="heroCtaFill">Araştırmayı Keşfet →</a>
-        <a href="#politika" class="btn-line">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v5h5"/><path d="M6 3h8l5 5v13H6z"/><path d="M9 13h6M9 17h6"/></svg>
-          <span data-i18n="heroCtaLine">Yöntemi İncele</span>
-        </a>
+        <a href="#ekip" class="btn-fill" data-i18n="heroCtaFill">Araştırma Ekibi →</a>
       </div>
       <div class="hero-stats">
         <div class="hs-item">
@@ -575,70 +498,6 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="eyebrowKapsam">Kapsam</span>
-      <h2 data-i18n="kapsamTitle">Sosyal ve Beşeri Bilimler Araştırma Destek Programı çerçevesinde yürütülüyor</h2>
-    </div>
-    <div class="stat-row">
-      <div class="stat-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
-        <b>TÜBİTAK 3005</b>
-        <span data-i18n="kapsam1">Sosyal ve Beşeri Bilimler Araştırma Destek Programı</span>
-      </div>
-      <div class="stat-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
-        <b data-i18n="kapsam2b">Kurucu Yazar</b>
-        <span data-i18n="kapsam2">Dış ticaret girişimciliği kavramının öncül çalışmasının yazarı</span>
-      </div>
-      <div class="stat-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="12" rx="1.5"/><path d="M17 13l4-3v10l-4-3"/></svg>
-        <b data-i18n="kapsam3b">Saha Araştırması</b>
-        <span data-i18n="kapsam3">5 ilde yürütülen nicel ve nitel araştırma</span>
-      </div>
-      <div class="stat-cell reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
-        <b data-i18n="kapsam4b">TR42 Doğu Marmara</b>
-        <span data-i18n="kapsam4">Bolu, Düzce, Kocaeli, Sakarya ve Yalova'yı kapsayan saha bölgesi</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="yontem">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="eyebrowYontem">Aşamalar</span>
-      <h2 data-i18n="yontemTitle">Projenin aşamaları</h2>
-      <p data-i18n="yontemDesc">Araştırma dört aşamada ilerliyor. Tamamlanan ve devam eden aşamaları burada takip edebilirsiniz.</p>
-    </div>
-
-    <div class="ip-list reveal">
-      <div class="ip-row">
-        <div class="ip-num">01</div>
-        <div class="ip-body"><h3 data-i18n="ip1Title">Belirleyicilerin Keşfi</h3></div>
-        <div class="status done"><span class="dot"></span><span data-i18n="statusDone">Tamamlandı</span></div>
-      </div>
-      <div class="ip-row">
-        <div class="ip-num">02</div>
-        <div class="ip-body"><h3 data-i18n="ip2Title">Saha Araştırması</h3></div>
-        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-      </div>
-      <div class="ip-row">
-        <div class="ip-num">03</div>
-        <div class="ip-body"><h3 data-i18n="ip3Title">Analiz ve Bulgular</h3></div>
-        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-      </div>
-      <div class="ip-row">
-        <div class="ip-num">04</div>
-        <div class="ip-body"><h3 data-i18n="ip4Title">Politika Önerisi Seti</h3></div>
-        <div class="status pending"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="logos">
   <div class="wrap reveal">
     <span class="eyebrow" data-i18n="eyebrowLogos">Projeyi Destekleyen ve Takip Eden Kurumlar</span>
@@ -656,16 +515,6 @@
   </div>
 </section>
 
-<section class="section" id="haberler">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="eyebrowHaberler">Haberler</span>
-      <h2 data-i18n="haberlerTitle">Süreçten güncellemeler</h2>
-    </div>
-    <div class="ip-list reveal" id="haberler-container"></div>
-  </div>
-</section>
-
 <footer id="iletisim">
   <div class="wrap">
     <p data-i18n="footerText">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri · TÜBİTAK 3005 · 424K054 · Sakarya Üniversitesi</p>
@@ -676,22 +525,15 @@
   var translations = {
     en: {
       brandTitle: "Export Incentives Policy Research",
-      navProje: "Project", navArastirma: "Process", navBulgular: "Findings",
-      navPolitika: "Policy Recommendations", navYayinlar: "Publications", navEkip: "Team", navIletisim: "Contact",
-      megaProjeOzet: "Project Summary", megaProjeKapsam: "Scope and Objectives",
-      megaYontem: "Stages", megaSahaBolgesi: "Field Region",
-      megaBulgularDurum: "Findings Status",
-      megaBulgularNot: "Will be shared once the field research is complete.",
-      megaGelismeRaporlari: "Progress Reports", megaBildiriler: "Conference Papers", megaMakaleler: "Articles",
+      navProje: "Project", navPolitika: "Policy Recommendations", navEkip: "Team", navIletisim: "Contact",
+      megaProjeOzet: "Project Summary", 
       megaYurutucu: "Principal Investigator", megaArastirmacilar: "Researchers",
-      statAySure: "Months", statBolge: "Region",
-      statIsPaketi: "Stages", statTamamlanan: "Completed",
-      statRapor: "Report", statProjeNo: "Project No", statYurutucu: "Lead", statUniversite: "University",
+      statAySure: "Months", statBolge: "Region", statYurutucu: "Lead", statUniversite: "University",
       metaProgram: "Program", metaProjeNo: "Project No", metaSure: "Duration", metaBolge: "Field Region",
       heroTitlePre: "Rewriting export incentive policy around the",
       heroTitleAccent: "real determinants", heroTitlePost: "of foreign trade entrepreneurship",
       heroSub: "We uncover the determinants of foreign trade entrepreneurship through field research and turn the findings, together with the experience of exporting firms in East Marmara, into concrete policy recommendations.",
-      heroCtaFill: "Explore the Research →", heroCtaLine: "Explore the Method",
+      heroCtaFill: "Research Team →",
       hs1Text: "Firms", hs1Num: "192",
       hs2Text: "Months", hs2Num: "15",
       hs3Text: "Determinants", hs3Num: "14",
@@ -702,24 +544,9 @@
       mcScopeTitle: "TR42 Region", fcScopeIl: "Provinces", mcScopeName: "East Marmara",
       mcTrendTitle: "Progress Tracking",
       mcPolicyTitle: "Policy Recommendations",
-      eyebrowKapsam: "Scope",
-      kapsamTitle: "Conducted within the Social Sciences and Humanities Research Support Programme",
-      kapsam1: "Social Sciences and Humanities Research Support Programme",
-      kapsam2b: "Founding Author", kapsam2: "Author of the foundational study on foreign trade entrepreneurship",
-      kapsam3b: "Field Research", kapsam3: "Quantitative and qualitative research across 5 provinces",
-      kapsam4b: "TR42 East Marmara", kapsam4: "Field region covering Bolu, Düzce, Kocaeli, Sakarya and Yalova",
-      eyebrowYontem: "Stages",
-      yontemTitle: "Project stages",
-      yontemDesc: "The research proceeds in four stages. Track completed and ongoing stages here.",
-      ip1Title: "Discovery of Determinants",
-      ip2Title: "Field Research",
-      ip3Title: "Analysis and Findings",
-      ip4Title: "Policy Recommendation Set",
-      statusDone: "Completed", statusPending: "Planned",
       eyebrowLogos: "Institutions Supporting and Following the Project",
       logoSakarya: "Sakarya University", logoAjans: "TR42 East Marmara Development Agency", logoBakanlik: "Ministry of Trade",
       eyebrowEkip: "Team", ekipTitle: "Principal investigator and researchers",
-      eyebrowHaberler: "News", haberlerTitle: "Updates from the project",
       footerText: "Policy Recommendations for Revising Export Incentives from a Foreign Trade Entrepreneurship Perspective · TÜBİTAK 3005 · 424K054 · Sakarya University"
     }
   };
@@ -756,38 +583,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script>
-  // İçerik: haberler ve ekip, data/content.json dosyasından okunuyor.
-  // Decap CMS (admin/) bu dosyayı düzenler, kod değişmeden içerik güncellenir.
   fetch('data/content.json')
     .then(r => r.json())
     .then(data => {
       const ekipEl = document.getElementById('ekip-container');
-      data.ekip.forEach(kisi => {
-        const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
-        const avatar = kisi.fotograf
-          ? `<img class="team-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
-          : `<div class="team-avatar-fallback">${baslar}</div>`;
-        ekipEl.insertAdjacentHTML('beforeend', `
-          <div class="team-row">
-            ${avatar}
-            <div>
-              <h3>${kisi.isim}</h3>
-              <div class="role">${kisi.unvan}</div>
-            </div>
-            <p>${kisi.aciklama}</p>
-          </div>`);
-      });
-
-      const haberEl = document.getElementById('haberler-container');
-      data.haberler.forEach((haber, i) => {
-        const statusClass = haber.durum === 'tamamlandi' ? 'done' : 'pending';
-        haberEl.insertAdjacentHTML('beforeend', `
-          <div class="ip-row">
-            <div class="ip-num num">${String(i + 1).padStart(2, '0')}</div>
-            <div class="ip-body"><h3>${haber.baslik}</h3><p>${haber.aciklama}</p></div>
-            <div class="status ${statusClass}"><span class="dot"></span>${haber.tarih}</div>
-          </div>`);
-      });
+      if(ekipEl && data.ekip) {
+        data.ekip.forEach(kisi => {
+          const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
+          const avatar = kisi.fotograf
+            ? `<img class="team-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
+            : `<div class="team-avatar-fallback">${baslar}</div>`;
+          ekipEl.insertAdjacentHTML('beforeend', `
+            <div class="team-row">
+              ${avatar}
+              <div>
+                <h3>${kisi.isim}</h3>
+                <div class="role">${kisi.unvan}</div>
+              </div>
+              <p>${kisi.aciklama}</p>
+            </div>`);
+        });
+      }
     })
     .catch(() => console.warn('data/content.json okunamadı, dosyanın index.html ile aynı yerde olduğundan emin ol.'))
     .finally(() => {
