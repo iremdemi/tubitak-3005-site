@@ -7,7 +7,7 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
@@ -17,7 +17,7 @@
     --accent-navy: #1E3A8A;   
     --accent-teal: #0D9488;   
     --border-color: #E2E8F0;  
-    --font-serif: 'Merriweather', serif;
+    --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
   }
 
@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE YATAY KOMBİNASYON LOGO
+     HEADER VE GÜNCELLENMİŞ LOGO (Cormorant Garamond SemiBold + Inter Medium Siyah)
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -44,25 +44,23 @@
   
   .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
   
-  /* Yatay Kombinasyon Logo Yapısı */
   .horizontal-logo {
     display: flex;
     align-items: center;
     gap: 12px;
   }
   .hl-dtg {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent-navy);
-    letter-spacing: 0.05em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #000000;
+    letter-spacing: 0.04em;
     line-height: 1;
   }
   .hl-divider {
-    width: 1.5px;
-    height: 30px;
-    background-color: var(--accent-navy);
-    opacity: 0.3;
+    width: 1px;
+    height: 28px;
+    background-color: #CBD5E1;
   }
   .hl-stack {
     display: flex;
@@ -70,11 +68,11 @@
     line-height: 1.15;
   }
   .hl-research, .hl-portal {
-    font-family: var(--font-sans);
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
-    font-weight: 700;
-    color: var(--accent-navy);
-    letter-spacing: 0.12em;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
@@ -127,7 +125,6 @@
     overflow: hidden;
   }
 
-  /* Sinematik Arka Plan Slaytları */
   .hero-slides {
     position: absolute;
     inset: 0;
@@ -318,7 +315,7 @@
 <header>
   <div class="header-inner">
     
-    <!-- SOL: Yatay Kombinasyon Logosu -->
+    <!-- SOL: Güncellenmiş Yatay Kombinasyon Logosu -->
     <a href="#anasayfa" class="brand">
       <div class="horizontal-logo">
         <span class="hl-dtg">DTG</span>
