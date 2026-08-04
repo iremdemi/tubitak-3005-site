@@ -7,17 +7,17 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
     --bg-alt: #FFFFFF;        
     --text-ink: #0F172A;      
     --text-body: #475569;     
-    --accent-navy: #173B7A;   /* Kurumsal Lacivert */
-    --accent-teal: #0F8B8D;   /* Turkuaz Vurgu */
+    --accent-navy: #173B7A;   
+    --accent-teal: #0F8B8D;   
     --border-color: #E2E8F0;  
-    --font-serif: 'Merriweather', serif;
+    --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
   }
 
@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE YATAY KOMBİNASYON LOGO
+     HEADER VE GÜNCELLENMİŞ PRESTİJLİ LOGO (Siyah Cormorant Garamond + Inter Medium)
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -50,18 +50,17 @@
     gap: 12px;
   }
   .hl-dtg {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent-navy);
-    letter-spacing: 0.05em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #000000;
+    letter-spacing: 0.04em;
     line-height: 1;
   }
   .hl-divider {
-    width: 1.5px;
-    height: 30px;
-    background-color: var(--accent-navy);
-    opacity: 0.3;
+    width: 1px;
+    height: 28px;
+    background-color: #CBD5E1;
   }
   .hl-stack {
     display: flex;
@@ -69,11 +68,11 @@
     line-height: 1.15;
   }
   .hl-research, .hl-portal {
-    font-family: var(--font-sans);
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
-    font-weight: 700;
-    color: var(--accent-navy);
-    letter-spacing: 0.12em;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
@@ -563,7 +562,7 @@
 <header>
   <div class="header-inner">
     
-    <!-- SOL: Yatay Kombinasyon Logosu -->
+    <!-- SOL: Güncellenmiş Prestijli Logo -->
     <a href="#anasayfa" class="brand">
       <div class="horizontal-logo">
         <span class="hl-dtg">DTG</span>
@@ -797,9 +796,7 @@
   };
 
   let currentLang = 'tr';
-  let fetchedData = null;
 
-  // Dahili veri seti (Harici JSON hatası vermemesi için)
   const siteContent = {
     tr: {
       haberler: [
