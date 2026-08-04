@@ -20,32 +20,50 @@
     "ekip": [
       {
         "isim": "Prof. Dr. Ahmet Yağmur Ersoy",
-        "unvan": "Proje Yürütücüsü",
+        "unvan": "Yürütücü",
         "aciklama": "Sakarya Üniversitesi. Dış Ticaret Girişimciliği konseptinin öncül araştırmacısı ve projenin genel koordinatörü.",
         "fotograf": ""
       },
       {
-        "isim": "Dr. Semanur Yalçın",
-        "unvan": "Kıdemli Araştırmacı",
-        "aciklama": "Saha analizleri ve nitel araştırma metodolojileri süreçlerinin yönetimi.",
+        "isim": "Doç. Dr. Caner Erden",
+        "unvan": "Araştırmacı",
+        "aciklama": "Uluslararası ticaret ve ekonomik analiz süreçlerinin yönetimi.",
         "fotograf": ""
       },
       {
-        "isim": "Merve Saygılı",
-        "unvan": "Ekonomi Analisti",
-        "aciklama": "Dış ticaret teşvik politikaları ve küresel trendlerin bölgesel ekosistemlere etkisi üzerine veri analizi.",
+        "isim": "Doç. Dr. Metin Saygılı",
+        "unvan": "Araştırmacı",
+        "aciklama": "Girişimcilik ve bölgesel kalkınma politikaları üzerine akademik çalışmalar.",
         "fotograf": ""
       },
       {
-        "isim": "Cansu Erden",
-        "unvan": "Veri Analisti",
-        "aciklama": "Nicel veri setlerinin Çok Kriterli Karar Verme modelleri üzerinden anlamlandırılması ve raporlanması.",
+        "isim": "Dr. Öğr. Üyesi Çağdaş Ateş",
+        "unvan": "Araştırmacı",
+        "aciklama": "Saha araştırmaları ve çok kriterli karar verme metodolojileri.",
         "fotograf": ""
       },
       {
-        "isim": "Çağdaş Ateş",
-        "unvan": "Saha Koordinatörü",
-        "aciklama": "TR42 Bölgesi endüstriyel ağ analizleri ve ihracatçı firma görüşmelerinin organizasyonu.",
+        "isim": "Öğr. Gör. Dr. Semanur Yalçın",
+        "unvan": "Araştırmacı",
+        "aciklama": "Nitel veri analizi ve saha mülakatlarının yapılandırılması.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Dr. Ömer Alperen Onay",
+        "unvan": "Doktora Sonrası Bursiyeri",
+        "aciklama": "İleri düzey nicel modelleme ve veri optimizasyon süreçleri.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Öğr. Gör. Bilak Torkul",
+        "unvan": "Doktora Bursiyeri",
+        "aciklama": "Dış ticaret ekosistemleri ve literatür sentezi çalışmaları.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Furkan Coşgun",
+        "unvan": "Yüksek Lisans Bursiyeri",
+        "aciklama": "Veri toplama, istatistiksel hazırlık ve saha koordinasyonu.",
         "fotograf": ""
       }
     ]
@@ -76,27 +94,45 @@
         "fotograf": ""
       },
       {
-        "isim": "Dr. Semanur Yalcin",
-        "unvan": "Senior Researcher",
-        "aciklama": "Management of field analyses and qualitative research methodologies.",
+        "isim": "Doç. Dr. Caner Erden",
+        "unvan": "Researcher",
+        "aciklama": "Management of international trade and economic analysis processes.",
         "fotograf": ""
       },
       {
-        "isim": "Merve Saygili",
-        "unvan": "Economic Analyst",
-        "aciklama": "Data analysis on export incentive policies and regional economic impacts.",
+        "isim": "Doç. Dr. Metin Saygılı",
+        "unvan": "Researcher",
+        "aciklama": "Academic studies on entrepreneurship and regional development policies.",
         "fotograf": ""
       },
       {
-        "isim": "Cansu Erden",
-        "unvan": "Data Analyst",
-        "aciklama": "Interpretation and reporting of quantitative datasets through MCDM models.",
+        "isim": "Dr. Öğr. Üyesi Çağdaş Ateş",
+        "unvan": "Researcher",
+        "aciklama": "Field research and multi-criteria decision making methodologies.",
         "fotograf": ""
       },
       {
-        "isim": "Cagdas Ates",
-        "unvan": "Field Coordinator",
-        "aciklama": "Organization of industrial network analyses and exporting firm interviews.",
+        "isim": "Öğr. Gör. Dr. Semanur Yalçın",
+        "unvan": "Researcher",
+        "aciklama": "Qualitative data analysis and structuring of field interviews.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Dr. Ömer Alperen Onay",
+        "unvan": "Post-Doctoral Fellow",
+        "aciklama": "Advanced quantitative modeling and data optimization processes.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Öğr. Gör. Bilak Torkul",
+        "unvan": "Ph.D. Scholar",
+        "aciklama": "Foreign trade ecosystems and literature synthesis studies.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Furkan Coşgun",
+        "unvan": "M.Sc. Scholar",
+        "aciklama": "Data collection, statistical preparation, and field coordination.",
         "fotograf": ""
       }
     ]
