@@ -19,7 +19,6 @@
     --border-color: #E2E8F0;  
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
-    --font-logo: 'Cormorant Garamond', serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,12 +44,8 @@
   
   .brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
   
-  .wordmark-logo {
-    display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0;
-  }
-  .wm-acronym {
-    font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--accent-navy); letter-spacing: 0.12em; line-height: 1;
-  }
+  .wordmark-logo { display: flex; flex-direction: column; align-items: center; text-align: center; flex-shrink: 0; }
+  .wm-acronym { font-family: var(--font-serif); font-size: 26px; font-weight: 700; color: var(--accent-navy); letter-spacing: 0.12em; line-height: 1; }
   .wm-line { width: 100%; height: 1.5px; background: var(--accent-navy); margin: 4px 0; opacity: 0.8; }
   .wm-subtitle { font-family: var(--font-sans); font-size: 8px; font-weight: 700; color: var(--text-body); letter-spacing: 0.18em; text-transform: uppercase; }
 
@@ -90,41 +85,101 @@
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
   /* ==========================================================================
-     HERO SECTION (HARİTASIZ VE TAM ORTALANMIŞ)
+     ÖRNEK FOTOĞRAFKİ GİBİ FULL-WIDTH PREMIUM HERO SECTION
      ========================================================================== */
-  .hero { 
-    padding: 120px 0 140px; border-bottom: 1px solid var(--border-color); background-color: var(--bg-main);
-  }
-  /* Tek kolon, tam ortalanmış zarif yapı */
-  .hero-inner-centered { 
-    max-width: 840px; 
-    margin: 0 auto; 
-    text-align: center; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-  }
-
-  .hero-content h1 { 
-    font-family: var(--font-serif); font-size: clamp(36px, 4.2vw, 52px); 
-    font-weight: 900; line-height: 1.2; color: var(--text-ink); margin-bottom: 28px; letter-spacing: -0.02em;
-  }
-  .hero-content p { 
-    font-size: 17px; color: var(--text-body); line-height: 1.8; margin-bottom: 44px; 
-    max-width: 740px;
+  .hero-corporate {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0 24px;
   }
   
-  .btn-primary {
-    background: var(--accent-navy); color: var(--bg-alt); font-size: 15px; font-weight: 600;
-    padding: 16px 36px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; 
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  .hero-corporate h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 4.5vw, 56px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-  .btn-primary:hover { 
-    background: #152B66; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(30, 58, 138, 0.15); 
+
+  .hero-corporate p {
+    font-size: 16px;
+    max-width: 750px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #E2E8F0;
+    margin-bottom: 32px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .btn-hero-view {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #FFFFFF;
+    background: transparent;
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+  }
+  .btn-hero-view:hover {
+    background: #FFFFFF;
+    color: var(--text-ink);
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
   }
 
   /* ==========================================================================
-     HABER/ANALİZ SLIDER
+     DEV "VALUE" (INNOVATION BENZERİ) MASKELENMİŞ YAZI BÖLÜMÜ
+     ========================================================================== */
+  .giant-text-section {
+    position: relative;
+    width: 100%;
+    padding: 100px 0;
+    background-color: var(--bg-alt);
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .giant-text-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Tüm ekranı kaplayan (veya ortalayan) devasa maskeli yazı */
+  .giant-masked-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(80px, 16vw, 220px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    /* Fotoğrafı yazıya maskeleme büyüsü */
+    background: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin: 0 auto;
+    user-select: none;
+  }
+
+  /* ==========================================================================
+     HABER / ANALİZ SLIDER
      ========================================================================== */
   .news-slider-section { padding: 64px 0 96px; background: var(--bg-main); }
   .news-slider {
@@ -199,7 +254,7 @@
   @media (max-width: 1024px) {
     .header-inner { justify-content: space-between; }
     .nav-menu, .header-right { display: none; }
-    .hero { padding: 64px 0; }
+    .hero-corporate { height: 420px; }
     .finding-item { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
     .news-card { flex: 0 0 calc(85%); } 
     .team-grid { grid-template-columns: 1fr; }
@@ -279,18 +334,24 @@
   </div>
 </header>
 
-<!-- HERO SECTION (HARİTASIZ VE TAM ORTALANMIŞ) -->
-<section id="proje" class="hero">
+<!-- =======================================================================
+     ÖRNEK FOTOĞRAFKİ GİBİ FULL-WIDTH HERO SECTION
+     ======================================================================= -->
+<section id="proje" class="hero-corporate">
+  <div class="wrap gsap-reveal">
+    <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
+    <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
+    <a href="#bulgular" class="btn-hero-view" data-i18n="heroBtn">İNCELE</a>
+  </div>
+</section>
+
+<!-- =======================================================================
+     "INNOVATION" BENZERİ DEV MASKELENMİŞ "VALUE" (DEĞER) BÖLÜMÜ
+     ======================================================================= -->
+<section class="giant-text-section gsap-reveal">
   <div class="wrap">
-    <div class="hero-inner-centered gsap-reveal">
-      <div class="hero-content">
-        <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem:<br>Sahadan Bulgular, Gelecek İçin Politika Önerileri</h1>
-        <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı ve alanında uzman karar vericilerin katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırmasının bağımsız analiz portalı.</p>
-        <div style="display: flex; justify-content: center;">
-          <a href="#bulgular" class="btn-primary"><span data-i18n="heroBtn">Verileri İncele</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-    </div>
+    <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
+    <div class="giant-masked-text">VALUE</div>
   </div>
 </section>
 
@@ -415,9 +476,10 @@
       menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
       dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
       btnPolitika: "Politika Önerileri",
-      heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem:<br>Sahadan Bulgular, Gelecek İçin Politika Önerileri",
-      heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı ve alanında uzman karar vericilerin katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırmasının bağımsız analiz portalı.",
-      heroBtn: "Verileri İncele",
+      heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem",
+      heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
+      heroBtn: "İNCELE",
+      giantSub: "MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM",
       findingsEyebrow: "METODOLOJİDEN ARINDIRILMIŞ NET SONUÇLAR",
       findingsTitle: "İhracatın Şifreleri: Girişimciler İçin En Kritik Belirleyiciler",
       f1Sub: "En Önemli Faktör", f1Title: "Finansal Belirleyiciler (Özkaynak ve Performans)", f1Desc: "Analiz sonuçlarına göre dış ticaret girişimciliğinin önündeki en güçlü katalizör finansman yapısıdır. %86,8 olasılıkla finansal gücün birincil belirleyici olması, desteklerin miktar odaklı değil kârlılık odaklı yapılandırılmasını zorunlu kılmaktadır.",
@@ -439,9 +501,10 @@
       menuAnaSayfa: "Home", menuProje: "Project", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
-      heroTitle: "A New Era in Foreign Trade Entrepreneurship:<br>Field Findings, Future Policy Recommendations",
-      heroDesc: "Independent analysis portal of Turkey's most comprehensive foreign trade entrepreneurship field research conducted with the participation of 192 exporters and expert decision-makers in the TR42 East Marmara Region.",
-      heroBtn: "Explore Data",
+      heroTitle: "A New Era in Foreign Trade Entrepreneurship",
+      heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
+      heroBtn: "VIEW",
+      giantSub: "NATIONAL ECONOMIC DEFENSE AND DOMESTIC PRODUCTION",
       findingsEyebrow: "METHODOLOGY-FREE CLEAR RESULTS",
       findingsTitle: "Codes of Export: Most Critical Determinants for Entrepreneurs",
       f1Sub: "Most Important Factor", f1Title: "Financial Determinants (Equity and Performance)", f1Desc: "According to analysis results, the strongest catalyst is the financial structure. With an 86.8% probability of being the primary determinant, structuring incentives based on profitability is crucial.",
