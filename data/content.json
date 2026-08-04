@@ -1,39 +1,116 @@
 {
-  "haberler": [
-    {
-      "kategori": "Teşvik Rehberi",
-      "tarih": "12 Ağu 2026",
-      "baslik": "Miktar Odaklılıktan Katma Değere: İhracat Teşviklerinde Yeni Nesil Politikalar",
-      "ozet": "Mevcut ihracat teşvikleri ölçek ekonomisine sahip büyük firmaları önceliklendirirken, yenilikçi girişimlerin (KOBİ ve startup) yüksek riskli yatırımları nasıl desteklenmeli?",
-      "arkaplan": "linear-gradient(45deg, #0F172A, #1E3A8A)"
-    },
-    {
-      "kategori": "Saha Araştırması",
-      "tarih": "28 Tem 2026",
-      "baslik": "İhracatın Şifreleri: Dış Ticaret Girişimciliğinin 9 Temel Belirleyicisi",
-      "ozet": "TR42 Bölgesi'ndeki 192 ihracatçı firma ile gerçekleştirilen 'Çok Kriterli Karar Verme Analizleri' sonucunda, ihracatı etkileyen en kritik faktörler belirlendi.",
-      "arkaplan": "linear-gradient(45deg, #0D9488, #0F172A)"
-    },
-    {
-      "kategori": "Global Trendler",
-      "tarih": "15 Tem 2026",
-      "baslik": "Yeni Korumacılık ve Yeşil Dönüşüm Çağında Doğu Marmara'nın Stratejik Rolü",
-      "ozet": "Pandemi ve jeopolitik krizler sonrası dünyada yükselen 'yeni korumacılık' eğilimlerine ve Avrupa Yeşil Mutabakatı'na karşı Türkiye'nin sınai hinterlandı nasıl hazırlanıyor?",
-      "arkaplan": "linear-gradient(45deg, #B45309, #1E3A8A)"
-    }
-  ],
-  "ekip": [
-    {
-      "isim": "Doç. Dr. Ahmet Yağmur Ersoy",
-      "unvan": "Proje Yürütücüsü",
-      "aciklama": "Sakarya Üniversitesi, İşletme Fakültesi. Dış Ticaret Girişimciliği kavramının öncül çalışmasının yazarı ve araştırma koordinatörü.",
-      "fotograf": ""
-    },
-    {
-      "isim": "Araştırmacı Adı Soyadı",
-      "unvan": "Proje Araştırmacısı",
-      "aciklama": "Araştırmacıya ait akademik deneyim ve projedeki rolü hakkında kısa bir bilgi bu alana eklenecektir.",
-      "fotograf": ""
-    }
-  ]
+  "tr": {
+    "haberler": [
+      {
+        "kategori": "Teşvik Rehberi",
+        "tarih": "12 Ağu 2026",
+        "baslik": "Miktar Odaklılıktan Katma Değere: İhracat Teşviklerinde Yeni Nesil Politikalar",
+        "ozet": "Mevcut ihracat teşvikleri ölçek ekonomisine sahip büyük firmaları önceliklendirirken, yenilikçi girişimlerin yüksek riskli yatırımları nasıl desteklenmeli?",
+        "arkaplan": "linear-gradient(45deg, #0F172A, #1E3A8A)"
+      },
+      {
+        "kategori": "Saha Araştırması",
+        "tarih": "28 Tem 2026",
+        "baslik": "İhracatın Şifreleri: Dış Ticaret Girişimciliğinin 9 Temel Belirleyicisi",
+        "ozet": "TR42 Bölgesi'ndeki 192 ihracatçı firma ile gerçekleştirilen 'Çok Kriterli Karar Verme Analizleri' sonucunda, ihracatı etkileyen en kritik faktörler belirlendi.",
+        "arkaplan": "linear-gradient(45deg, #0D9488, #0F172A)"
+      },
+      {
+        "kategori": "Global Trendler",
+        "tarih": "15 Tem 2026",
+        "baslik": "Yeni Korumacılık ve Yeşil Dönüşüm Çağında Doğu Marmara'nın Stratejik Rolü",
+        "ozet": "Pandemi ve jeopolitik krizler sonrası dünyada yükselen 'yeni korumacılık' eğilimlerine ve Avrupa Yeşil Mutabakatı'na karşı Türkiye'nin sınai hinterlandı nasıl hazırlanıyor?",
+        "arkaplan": "linear-gradient(45deg, #B45309, #1E3A8A)"
+      }
+    ],
+    "ekip": [
+      {
+        "isim": "Prof. Dr. Ahmet Yağmur Ersoy",
+        "unvan": "Proje Yürütücüsü",
+        "aciklama": "Sakarya Üniversitesi. Dış Ticaret Girişimciliği konseptinin öncül araştırmacısı ve projenin genel koordinatörü.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Dr. Semanur Yalçın",
+        "unvan": "Kıdemli Araştırmacı",
+        "aciklama": "Saha analizleri ve nitel araştırma metodolojileri süreçlerinin yönetimi.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Merve Saygılı",
+        "unvan": "Ekonomi Analisti",
+        "aciklama": "Dış ticaret teşvik politikaları ve küresel trendlerin bölgesel ekosistemlere etkisi üzerine veri analizi.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Cansu Erden",
+        "unvan": "Veri Analisti",
+        "aciklama": "Nicel veri setlerinin Çok Kriterli Karar Verme modelleri üzerinden anlamlandırılması ve raporlanması.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Çağdaş Ateş",
+        "unvan": "Saha Koordinatörü",
+        "aciklama": "TR42 Bölgesi endüstriyel ağ analizleri ve ihracatçı firma görüşmelerinin organizasyonu.",
+        "fotograf": ""
+      }
+    ]
+  },
+  "en": {
+    "haberler": [
+      {
+        "kategori": "Incentive Guide",
+        "tarih": "Aug 12, 2026",
+        "baslik": "From Volume to Value-Added: Next Generation Policies in Export Incentives",
+        "ozet": "While current export incentives prioritize large-scale firms, how should high-risk investments of innovative startups and SMEs be supported?",
+        "arkaplan": "linear-gradient(45deg, #0F172A, #1E3A8A)"
+      },
+      {
+        "kategori": "Field Research",
+        "tarih": "Jul 28, 2026",
+        "baslik": "Codes of Export: 9 Core Determinants of Foreign Trade Entrepreneurship",
+        "ozet": "The most critical factors affecting exports have been identified through 'Multi-Criteria Decision Making Analyses' conducted with 192 exporting firms.",
+        "arkaplan": "linear-gradient(45deg, #0D9488, #0F172A)"
+      },
+      {
+        "kategori": "Global Trends",
+        "tarih": "Jul 15, 2026",
+        "baslik": "The Strategic Role of East Marmara in the Era of Neo-Protectionism",
+        "ozet": "How is Turkey's industrial hinterland preparing against the rising neo-protectionism trends and the European Green Deal?",
+        "arkaplan": "linear-gradient(45deg, #B45309, #1E3A8A)"
+      }
+    ],
+    "ekip": [
+      {
+        "isim": "Prof. Dr. Ahmet Yagmur Ersoy",
+        "unvan": "Principal Investigator",
+        "aciklama": "Sakarya University. Pioneer researcher of the Foreign Trade Entrepreneurship concept and general coordinator of the project.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Dr. Semanur Yalcin",
+        "unvan": "Senior Researcher",
+        "aciklama": "Management of field analyses and qualitative research methodologies.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Merve Saygili",
+        "unvan": "Economic Analyst",
+        "aciklama": "Data analysis on export incentive policies and the impact of global trends on regional ecosystems.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Cansu Erden",
+        "unvan": "Data Analyst",
+        "aciklama": "Interpretation and reporting of quantitative datasets through Multi-Criteria Decision Making models.",
+        "fotograf": ""
+      },
+      {
+        "isim": "Cagdas Ates",
+        "unvan": "Field Coordinator",
+        "aciklama": "Organization of industrial network analyses and exporting firm interviews in the TR42 Region.",
+        "fotograf": ""
+      }
+    ]
+  }
 }
