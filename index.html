@@ -7,7 +7,7 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-main: #FAFAFA;       
@@ -85,13 +85,14 @@
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
   /* ==========================================================================
-     ORANTILI VE PRESTİJLİ KÜRESEL EKONOMİ HERO SECTION
+     PREMİUM KÜRESEL TİCARET ROTALARI + LİMAN + DÜNYA HARİTASI HERO SECTION
      ========================================================================== */
   .hero-corporate {
     position: relative;
     width: 100%;
-    min-height: 520px;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 58, 138, 0.82)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    min-height: 560px;
+    /* Konteyner Limanı + Dünya Haritası Rotaları + Küresel Ticaret Altyapısı Birleşimi */
+    background: linear-gradient(135deg, rgba(10, 18, 38, 0.82), rgba(20, 40, 95, 0.78)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -150,7 +151,7 @@
   }
 
   /* ==========================================================================
-     DEV "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
+     DAHA KALIN VE GÜÇLÜ "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
@@ -164,7 +165,7 @@
 
   .giant-text-subtitle {
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--accent-teal);
     margin-bottom: 12px;
     letter-spacing: 0.18em;
@@ -174,10 +175,11 @@
   .giant-masked-text {
     font-family: 'Inter', sans-serif;
     font-size: 12.5vw;
-    font-weight: 900;
+    font-weight: 900; /* Ultra kalın font */
     text-transform: uppercase;
     line-height: 0.85;
     letter-spacing: -0.04em;
+    -webkit-text-stroke: 1.2px rgba(15, 23, 42, 0.15); /* Yazının dolgunluğunu artırmak için zarif kontur */
     background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -345,7 +347,7 @@
 </header>
 
 <!-- =======================================================================
-     ORANTILI VE PRESTİJLİ KÜRESEL EKONOMİ HERO SECTION
+     PREMİUM DÜNYA HARİTASI + TİCARET ROTALARI + LİMAN HERO SECTION
      ======================================================================= -->
 <section id="proje" class="hero-corporate">
   <div class="hero-corporate-inner gsap-reveal">
@@ -356,7 +358,7 @@
 </section>
 
 <!-- =======================================================================
-     DEV "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
+     DAHA KALIN VE GÜÇLÜ "EXPORT ECOSYSTEM" MASKELENMİŞ YAZI BÖLÜMÜ
      ======================================================================= -->
 <section class="giant-text-section gsap-reveal">
   <div class="giant-text-subtitle" data-i18n="giantSub">MİLLİ EKONOMİK SAVUNMA VE YERLİ ÜRETİM</div>
