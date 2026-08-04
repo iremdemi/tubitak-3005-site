@@ -150,12 +150,12 @@
   }
 
   /* ==========================================================================
-     SIFIR BOŞLUKLU (KENARDAN KENARA) MASKELENMİŞ DEV YAZI BÖLÜMÜ
+     DÜZELTİLMİŞ VE DENGELENMİŞ MASKELENMİŞ DEV YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
     position: relative;
     width: 100%;
-    padding: 60px 0;
+    padding: 85px 0 65px 0; /* Üst ve alt boşluklar dengelendi */
     background-color: var(--bg-alt);
     text-align: center;
     overflow: hidden;
@@ -163,17 +163,17 @@
   }
 
   .giant-text-subtitle {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 11.5px;
+    font-weight: 700;
     color: var(--text-body);
-    margin-bottom: 8px;
-    letter-spacing: 0.2em;
+    margin-bottom: 24px; /* Alttaki dev yazı ile olan mesafe estetik hale getirildi */
+    letter-spacing: 0.25em;
     text-transform: uppercase;
   }
 
   .giant-masked-text {
     font-family: 'Inter', sans-serif;
-    font-size: 14.8vw; /* Kenarlara sıfır boşlukla tam oturması için optimize edildi */
+    font-size: 14.8vw;
     font-weight: 900;
     text-transform: uppercase;
     line-height: 0.8;
@@ -354,7 +354,7 @@
   </div>
 </section>
 
-<!-- SIFIR BOŞLUKLU (KENARDAN KENARA) MASKELENMİŞ DEV YAZI BÖLÜMÜ -->
+<!-- MASKELENMİŞ DEV YAZI BÖLÜMÜ -->
 <section class="giant-text-section gsap-reveal">
   <div class="giant-text-subtitle" data-i18n="giantSub">TÜBİTAK 3005 DESTEKLİ PROJE</div>
   <div class="giant-masked-text">EXPORT ECOSYSTEM</div>
@@ -514,7 +514,7 @@
       findingsTitle: "Codes of Export: Most Critical Determinants for Entrepreneurs",
       f1Sub: "Most Important Factor", f1Title: "Financial Determinants (Equity and Performance)", f1Desc: "According to analysis results, the strongest catalyst is the financial structure. With an 86.8% probability of being the primary determinant, structuring incentives based on profitability is crucial.",
       f2Sub: "Strategic Criterion", f2Title: "Competition, Opportunities, and Risk Management", f2Desc: "Exporters' perception of opportunities and risk management capacity against global fluctuations rank second. In this era of rising protectionism, market literacy stands out.",
-      f3Sub: "Managerial Capacity", f3Sub: "Strategic Decisions and Innovation", f3Title: "Strategic Decisions and Innovation", f3Desc: "Not only producing but also designing innovative production processes and carrying them to the international arena with a strategic decision constitutes the backbone of sustainable exports.",
+      f3Sub: "Managerial Capacity", f3Title: "Strategic Decisions and Innovation", f3Desc: "Not only producing but also designing innovative production processes and carrying them to the international arena with a strategic decision constitutes the backbone of sustainable exports.",
       polEyebrow: "STRATEGIC VISION", polTitle: "Policy Recommendations for the Future",
       p1Title: "Profitability & Equity-Focused Support Models", p1Desc: "Moving beyond volume-based supports, next-generation financing models that enhance firms' equity strength and value creation capacity must be implemented.",
       p2Title: "Market Intelligence Against Neo-Protectionism", p2Desc: "Regional consultancy and intelligence networks must be strengthened to enhance SMEs' risk management capacity against global supply chain disruptions.",
