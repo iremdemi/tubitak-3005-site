@@ -22,59 +22,61 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
   body { font-family: var(--font-sans); background-color: var(--bg-main); color: var(--text-body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
   a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
   ul { list-style: none; }
   img { max-width: 100%; display: block; }
   
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
 
   .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER (SOLA HİZALI PROFESYONEL MENÜ)
+     HEADER (DÜZELTİLMİŞ ORANTILI VE ŞIK YAPI)
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
     position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
   }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
   
-  /* Sola hizalanmış logo/portal ismi */
-  .brand { display: flex; align-items: center; gap: 16px; margin-right: auto; }
+  /* Logo / Portal İsmi */
+  .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .brand-text { display: flex; flex-direction: column; }
-  .brand-text strong { font-family: var(--font-serif); font-size: 15px; font-weight: 900; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.25; }
+  .brand-text strong { font-family: var(--font-serif); font-size: 14.5px; font-weight: 900; color: var(--accent-navy); letter-spacing: -0.01em; line-height: 1.25; }
 
-  /* İstediğin 6 Ana Açılır Menü Yapısı */
-  .nav-menu { display: flex; align-items: center; gap: 28px; margin-left: 40px; }
+  /* 6 Ana Menü Öğesi (Sıkışmayı Önleyen Düzen) */
+  .nav-menu { display: flex; align-items: center; gap: 24px; margin: 0 auto; }
   .nav-item { position: relative; }
-  .nav-menu a { font-size: 12.5px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 4px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
   .nav-menu a:hover { color: var(--accent-teal); }
   
-  /* Dropdown (Açılır Menü) Ok Stili ve Paneli */
-  .has-dropdown .dropdown-icon { font-size: 9px; transition: transform 0.2s; }
+  .has-dropdown .dropdown-icon { font-size: 8px; transition: transform 0.2s; }
   .dropdown-menu {
     position: absolute; top: 100%; left: 0; background: var(--bg-alt); border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 6px; padding: 12px 0; min-width: 200px;
-    opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease; z-index: 110;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 0; min-width: 180px;
+    opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.2s ease; z-index: 110;
   }
   .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
   .has-dropdown:hover .dropdown-icon { transform: rotate(180deg); }
-  .dropdown-menu a { display: block; padding: 8px 20px; font-size: 12px; font-weight: 500; color: var(--text-body); text-transform: none; }
+  .dropdown-menu a { display: block; padding: 8px 16px; font-size: 11.5px; font-weight: 500; color: var(--text-body); text-transform: none; white-space: nowrap; }
   .dropdown-menu a:hover { background: #F8FAFC; color: var(--accent-navy); }
 
-  .header-right { display: flex; align-items: center; gap: 24px; margin-left: 32px; }
-  .lang-switch { font-size: 13px; font-weight: 600; color: var(--text-body); cursor: pointer; }
-  .lang-switch span { transition: color 0.2s; padding: 4px; }
+  /* Sağ Bölüm (TR/EN ve Buton) */
+  .header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  
+  .lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  .lang-switch span { transition: color 0.2s; padding: 2px 4px; }
   .lang-switch span:hover { color: var(--accent-teal); }
-  .lang-switch span.active { color: var(--accent-navy); font-weight: 700; border-bottom: 2px solid var(--accent-navy); }
+  .lang-switch span.active { color: var(--accent-navy); font-weight: 700; background: #F1F5F9; border-radius: 4px; }
+  .lang-switch .sep { color: #CBD5E1; font-weight: 300; }
   
   .btn-outline-header {
     border: 1px solid var(--accent-navy); color: var(--accent-navy);
-    padding: 8px 16px; font-size: 12px; font-weight: 700; border-radius: 4px;
-    transition: all 0.2s;
+    padding: 8px 16px; font-size: 11.5px; font-weight: 700; border-radius: 4px;
+    transition: all 0.2s; white-space: nowrap;
   }
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
@@ -110,7 +112,6 @@
     background: #152B66; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(30, 58, 138, 0.15); 
   }
 
-  /* Sağ Taraf: Harita ve Kutusuz Veriler */
   .hero-visual-map {
     position: relative; width: 100%; height: 520px; display: flex; align-items: center; justify-content: center;
   }
@@ -238,14 +239,14 @@
 
 <header>
   <div class="wrap header-inner">
-    <!-- SOLA HİZALI PORTAL İSMİ -->
+    <!-- Sola Hizalı Portal İsmi -->
     <a href="#anasayfa" class="brand">
       <div class="brand-text">
         <strong data-i18n="brandTitle">İhracat Teşvikleri ve Girişimcilik<br>Araştırma Portalı</strong>
       </div>
     </a>
 
-    <!-- YENİ 6 LİNKLİ AÇILIR (DROPDOWN) MENÜ -->
+    <!-- 6 Linkli Açılır Menü -->
     <nav class="nav-menu">
       <div class="nav-item"><a href="#anasayfa" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
       
@@ -286,9 +287,12 @@
       <div class="nav-item"><a href="#iletisim" data-i18n="menuIletisim">İletişim</a></div>
     </nav>
 
+    <!-- Sağ Kısım: Düzeltilmiş Dil Seçici ve Buton -->
     <div class="header-right">
       <div class="lang-switch" id="langToggle">
-        <span class="active" data-lang="tr">TR</span> | <span data-lang="en">EN</span>
+        <span class="active" data-lang="tr">TR</span>
+        <span class="sep">|</span>
+        <span data-lang="en">EN</span>
       </div>
       <a href="#politikalar" class="btn-outline-header" data-i18n="btnPolitika">Politika Önerileri</a>
     </div>
@@ -308,7 +312,7 @@
       </div>
     </div>
 
-    <!-- İnteraktif TR42 Haritası ve Kutusuz Veriler -->
+    <!-- Harita ve Kutusuz Veriler -->
     <div class="hero-visual-map gsap-reveal">
       <div class="editorial-grid"></div>
       
@@ -328,7 +332,6 @@
 
       <div id="mapTooltip" class="map-tooltip">TR42 Doğu Marmara Odak Bölgesi: Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan sınai hinterlant.</div>
 
-      <!-- Kutucuksuz Veriler -->
       <div class="stat-item si-firma"><span class="stat-val" data-i18n="stat1Num">192</span><span class="stat-lbl" data-i18n="stat1Lbl">Firma</span></div>
       <div class="stat-item si-il"><span class="stat-val" data-i18n="stat3Num">5</span><span class="stat-lbl" data-i18n="stat3Lbl">İl</span></div>
       <div class="stat-item si-ay"><span class="stat-val" data-i18n="stat2Num">15</span><span class="stat-lbl" data-i18n="stat2Lbl">Ay</span></div>
@@ -346,7 +349,7 @@
   </div>
 </section>
 
-<!-- BULGULAR & TEŞVİK REHBERİ -->
+<!-- BULGULAR -->
 <section id="bulgular" class="section section-alt">
   <div class="wrap">
     <div class="section-header gsap-reveal">
