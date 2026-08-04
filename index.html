@@ -7,219 +7,464 @@
 <meta name="description" content="Dış ticaret girişimciliğinin belirleyicilerini keşfeden ve ihracat teşvik politikasını yeniden yazan TÜBİTAK 3005 araştırma projesi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0b1c3f;
-    --navy-deep:#081530;
-    --teal:#5fc3d6;
-    --blue:#2f6fec;
-    --cream:#fdf4ea;
-    --white:#ffffff;
-    --ink:#0b1c3f;
-    --muted:#5c6478;
+    --primary:#0F1F4D;
+    --secondary:#1D356B;
+    --accent:#45C7E6;
+    --bg:#F7F8FC;
+    --card:#FFFFFF;
+    --border:#E1E5EF;
+    --muted:#5B6478;
+    --muted-soft:#8991A5;
 
-    --head:'Poppins', sans-serif;
+    --head:'Manrope', sans-serif;
     --body:'Inter', sans-serif;
-    --script:'Yellowtail', cursive;
+    --mono:'IBM Plex Mono', monospace;
+
+    --radius:10px;
+    --radius-lg:12px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{font-family:var(--body); color:var(--ink); background:var(--cream); line-height:1.6;}
+  body{font-family:var(--body); color:var(--primary); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased; font-size:15.5px;}
   img{max-width:100%; display:block;}
   a{text-decoration:none; color:inherit;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-  h1,h2,h3{font-family:var(--head); font-weight:600; letter-spacing:-0.01em;}
-  .script{font-family:var(--script); font-weight:400; color:var(--teal); font-size:1.2em; line-height:1;}
+  h1,h2,h3{font-family:var(--head); font-weight:700; letter-spacing:-0.015em; color:var(--primary);}
+  p{color:var(--muted);}
+  .num{font-variant-numeric:tabular-nums;}
+
+  .reveal{opacity:0;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;} html{scroll-behavior:auto;}}
 
   /* ---------- HEADER ---------- */
-  header{background:var(--navy); position:sticky; top:0; z-index:60;}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:22px 0;}
-  .logo{
-    width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5);
-    display:flex; align-items:center; justify-content:center; color:#fff;
-    font-family:var(--head); font-size:13px; font-weight:700;
+  /* ---------- HEADER (navbar) ---------- */
+  header{
+    --nav-ink:#101A33;
+    --nav-slate:#4A5776;
+    --nav-accent:#2C5FA8;
+    --nav-border:#E3E0D6;
+    --nav-panel:#FAF8F2;
+    --nav-font:'Public Sans', sans-serif;
+    position:sticky; top:0; z-index:80;
+    background:rgba(247,244,238,.7);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    border-bottom:1px solid transparent;
+    transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
   }
-  .nav-links{display:flex; gap:34px; list-style:none;}
-  .nav-links a{
-    color:#fff; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
-    opacity:.85; transition:opacity .2s;
+  header.is-scrolled{
+    background:#ffffff;
+    border-bottom-color:var(--nav-border);
+    box-shadow:0 12px 26px rgba(16,26,51,.05);
   }
-  .nav-links a:hover{opacity:1; color:var(--teal);}
-  .nav-icon{width:20px; height:20px; opacity:.85; cursor:pointer;}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; height:96px; transition:height .2s ease;}
+  header.is-scrolled .header-inner{height:72px;}
+
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; border-radius:6px; background:var(--nav-ink); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--nav-font); font-weight:700; font-size:12px; flex:none;}
+  .brand-text{font-family:var(--nav-font); font-weight:700; font-size:13.5px; color:var(--nav-ink); line-height:1.25;}
+  .brand-text small{display:block; font-family:var(--nav-font); font-weight:500; font-size:10.5px; color:var(--nav-slate); letter-spacing:.02em; margin-top:2px;}
+
+  .primary-nav ul{display:flex; align-items:center; gap:38px; list-style:none;}
+  .primary-nav li{position:relative;}
+  .primary-nav > ul > li > a, .nav-trigger{
+    font-family:var(--nav-font); font-weight:500; font-size:13.5px; color:var(--nav-ink);
+    background:none; border:none; cursor:pointer; padding:8px 0; position:relative;
+  }
+  .primary-nav > ul > li > a::after, .nav-trigger::after{
+    content:""; position:absolute; left:0; bottom:2px; width:0; height:2px; background:var(--nav-accent);
+    transition:width .2s ease;
+  }
+  .primary-nav > ul > li > a:hover::after, li.has-mega:hover .nav-trigger::after, .nav-trigger:focus::after{width:100%;}
+  .primary-nav a[aria-current="page"]::after{width:100%;}
+
+  .mega{
+    position:absolute; top:calc(100% + 20px); left:50%; width:440px;
+    background:#fff; border:1px solid var(--nav-border); border-radius:6px;
+    box-shadow:0 24px 48px rgba(16,26,51,.09);
+    display:grid; grid-template-columns:1.1fr .9fr;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateX(-50%) translateY(-6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  }
+  li.has-mega:hover .mega, li.has-mega:focus-within .mega{opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0);}
+  .mega-links{padding:24px 20px; display:flex; flex-direction:column; gap:2px;}
+  .mega-links a{font-family:var(--nav-font); font-size:13px; color:var(--nav-slate); padding:9px 10px; border-radius:5px; transition:background .15s, color .15s;}
+  .mega-links a:hover{background:var(--nav-panel); color:var(--nav-ink);}
+  .mega-stats{background:var(--nav-panel); padding:22px 18px; display:grid; grid-template-columns:1fr 1fr; gap:16px; border-left:1px solid var(--nav-border); border-radius:0 6px 6px 0;}
+  .mega-stats div{display:flex; flex-direction:column; gap:2px;}
+  .mega-stats b{font-family:var(--head); font-size:16px; color:var(--nav-ink); font-weight:700;}
+  .mega-stats span{font-family:var(--mono); font-size:9.5px; color:var(--nav-slate); text-transform:uppercase; letter-spacing:.04em;}
+
+  .header-actions{display:flex; align-items:center; gap:22px;}
+  .lang-switch{display:flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-family:var(--nav-font); font-size:12.5px; color:var(--nav-slate);}
+  .lang-switch .active{color:var(--nav-ink); font-weight:600;}
+  .lang-switch .sep{color:var(--nav-border);}
+  .search-trigger{background:none; border:none; cursor:pointer; padding:4px; display:flex; transition:transform .15s ease;}
+  .search-trigger:hover{transform:scale(1.14);}
+  .search-trigger svg{width:17px; height:17px; color:var(--nav-ink);}
+
+  .menu-trigger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-trigger span{width:20px; height:1.5px; background:var(--nav-ink); display:block;}
+
+  .mobile-panel{
+    position:fixed; inset:0; background:#fff; z-index:90;
+    transform:translateY(-100%); transition:transform .32s cubic-bezier(.4,0,.2,1);
+    display:flex; flex-direction:column; padding:26px 30px;
+  }
+  .mobile-panel.is-open{transform:translateY(0);}
+  .mobile-panel-top{display:flex; justify-content:flex-end;}
+  .mobile-panel-close{background:none; border:none; font-size:26px; line-height:1; color:var(--nav-ink); cursor:pointer;}
+  .mobile-panel ul{list-style:none; margin-top:36px; display:flex; flex-direction:column; gap:2px;}
+  .mobile-panel a{font-family:var(--head); font-size:24px; font-weight:700; color:var(--nav-ink); padding:14px 0; border-bottom:1px solid var(--nav-border); display:block;}
+
+  /* ---------- META STRIP ---------- */
+  .meta-strip{border-bottom:1px solid var(--border); padding:14px 0; background:var(--bg);}
+  .meta-strip .wrap{display:flex; gap:0;}
+  .meta-item{font-family:var(--mono); font-size:11px; color:var(--muted); padding:0 22px; border-left:1px solid var(--border);}
+  .meta-item:first-child{padding-left:0; border-left:none;}
+  .meta-item b{color:var(--primary); font-weight:600;}
 
   /* ---------- HERO ---------- */
-  .hero{
-    background:radial-gradient(circle at 80% 10%, #142a58 0%, var(--navy) 55%, var(--navy-deep) 100%);
-    padding:76px 0 0; position:relative; overflow:hidden;
-  }
-  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;}
-  .hero-copy{color:#fff; padding-bottom:70px;}
-  .hero-copy h1{font-size:clamp(32px,4vw,46px); line-height:1.18; color:#fff; margin-bottom:22px;}
-  .hero-copy p{font-size:15px; color:rgba(255,255,255,.72); max-width:46ch; margin-bottom:30px;}
-  .btn-primary{
-    display:inline-flex; align-items:center; gap:10px;
-    background:var(--blue); color:#fff; font-family:var(--head); font-weight:600; font-size:13px;
-    letter-spacing:.04em; text-transform:uppercase; padding:16px 26px; border-radius:30px;
-    box-shadow:0 14px 28px rgba(47,111,236,.35); transition:transform .2s ease;
-  }
-  .btn-primary:hover{transform:translateY(-2px);}
+  .hero{padding:76px 0 96px; border-bottom:1px solid var(--border);}
+  .hero-grid{display:grid; grid-template-columns:1fr .82fr; gap:64px; align-items:start;}
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-dark,#0E7A97); display:block; margin-bottom:18px;}
+  .hero-copy h1{font-size:clamp(30px,3.4vw,42px); line-height:1.2; margin-bottom:22px; max-width:16ch;}
+  .hero-copy h1 .accent-word{color:#0E7A97;}
+  .hero-copy p{font-size:15.5px; max-width:52ch; margin-bottom:30px;}
+  .cta-row{display:flex; align-items:center; gap:26px;}
+  .btn-primary{display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:#fff; font-family:var(--head); font-weight:600; font-size:13.5px; padding:12px 20px; border-radius:var(--radius); transition:background .15s;}
+  .btn-primary:hover{background:var(--secondary);}
+  .btn-secondary{font-family:var(--head); font-weight:600; font-size:13px; color:var(--primary); border-bottom:1px solid var(--border); padding-bottom:3px;}
+  .btn-secondary:hover{border-color:var(--primary);}
 
-  .hero-figure{position:relative; display:flex; justify-content:center; align-items:flex-end;}
-  .blob{
-    position:absolute; width:290px; height:340px; right:20px; top:10px;
-    background:var(--teal); border-radius:44% 56% 62% 38% / 48% 40% 60% 52%; opacity:.9; z-index:1;
-  }
-  .photo-block{
-    position:relative; z-index:2; width:280px; aspect-ratio:3/4;
-    background:linear-gradient(160deg,#1c2f5c,#0b1c3f);
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    color:rgba(255,255,255,.55); font-family:var(--body); font-size:12.5px; padding:20px;
-  }
+  .readout{display:grid; grid-template-columns:repeat(3,1fr); margin-top:40px; border-top:1px solid var(--border);}
+  .readout div{padding:16px 18px 0 0; border-left:1px solid var(--border);}
+  .readout div:first-child{border-left:none; padding-left:0;}
+  .readout b{display:block; font-family:var(--head); font-size:20px; font-weight:700;}
+  .readout span{font-size:11px; color:var(--muted-soft); font-family:var(--mono);}
 
-  /* floating stat card */
-  .statcard{
-    background:var(--white); border-radius:14px; box-shadow:0 30px 60px rgba(11,28,63,.16);
-    padding:38px 30px; margin-top:-60px; position:relative; z-index:10;
-    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
-  }
-  .stat-item{display:flex; flex-direction:column; gap:10px; padding:0 14px; border-left:1px solid #eee;}
-  .stat-item:first-child{border-left:none; padding-left:0;}
-  .stat-item .ic{font-size:20px;}
-  .stat-item b{font-family:var(--head); font-size:14px; color:var(--navy); line-height:1.3;}
-  .stat-item span{font-size:12px; color:var(--muted); line-height:1.4;}
+  /* ---------- MAP ---------- */
+  .map-panel{background:var(--primary); border-radius:var(--radius-lg); aspect-ratio:1/1; padding:20px; border:1px solid var(--primary);}
+  .map-panel svg{width:100%; height:100%;}
+  .tr-outline{fill:none; stroke:rgba(255,255,255,.16); stroke-width:1;}
+  .route{fill:none; stroke:var(--accent); stroke-width:1; stroke-dasharray:4 5; opacity:.7; animation:dash 26s linear infinite;}
+  .route.dim{stroke:rgba(255,255,255,.16); opacity:.5; animation-duration:34s;}
+  @keyframes dash{to{stroke-dashoffset:-360;}}
+  .node{fill:var(--accent);}
+  .node-dim{fill:rgba(255,255,255,.2);}
+  .node-label{font-family:var(--mono); font-size:6.4px; fill:rgba(255,255,255,.78); letter-spacing:.02em;}
 
-  /* ---------- SECTION HEAD ---------- */
-  .section{padding:110px 0 70px;}
-  .section-head{text-align:center; max-width:640px; margin:0 auto 56px;}
-  .section-head h2{font-size:clamp(24px,3vw,32px); color:var(--navy); line-height:1.35;}
+  /* ---------- SECTION SHARED ---------- */
+  .section{padding:88px 0; border-bottom:1px solid var(--border);}
+  .section-head{max-width:560px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(22px,2.6vw,28px); line-height:1.32;}
+  .section-head p{font-size:14.5px; margin-top:12px;}
 
-  /* ---------- AUDIENCE CARDS ---------- */
-  .audience-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  .aud-card{}
-  .aud-photo{
-    position:relative; aspect-ratio:3/4; background:linear-gradient(155deg,#16264c,#0b1c3f);
-    border-radius:16px; margin-bottom:18px; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .aud-photo span.ph{color:rgba(255,255,255,.4); font-size:11.5px; text-align:center; padding:16px;}
-  .aud-tag{
-    position:absolute; top:16px; left:16px; background:rgba(255,255,255,.92); color:var(--navy);
-    font-size:10.5px; font-weight:600; padding:6px 10px; border-radius:6px; transform:rotate(-4deg);
-  }
-  .aud-card h3{font-size:17px; color:var(--navy); margin-bottom:8px;}
-  .aud-card h3::before{content:"• "; color:var(--teal);}
-  .aud-card p{font-size:13px; color:var(--muted); margin-bottom:12px; min-height:60px;}
-  .aud-card a{font-size:12px; font-weight:700; color:var(--blue); letter-spacing:.03em;}
+  /* ---------- STAT ROW ---------- */
+  .stat-row{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border);}
+  .stat-cell{padding:26px 22px 0 0; border-left:1px solid var(--border);}
+  .stat-cell:first-child{border-left:none; padding-left:0;}
+  .stat-cell svg{width:18px; height:18px; stroke:var(--muted-soft); margin-bottom:14px;}
+  .stat-cell b{display:block; font-family:var(--head); font-size:14px; font-weight:700; margin-bottom:6px;}
+  .stat-cell span{font-size:12px; color:var(--muted); line-height:1.5;}
 
-  /* ---------- FEATURE / VIDEO ---------- */
-  .feature{position:relative; padding:120px 0; overflow:hidden;}
-  .ghost-text{
-    position:absolute; font-family:var(--head); font-weight:800; font-size:min(15vw,180px);
-    color:transparent; -webkit-text-stroke:1px rgba(11,28,63,.14); white-space:nowrap; user-select:none; z-index:0;
-  }
-  .ghost-1{top:6%; left:-2%;}
-  .ghost-2{bottom:2%; right:-4%; writing-mode:vertical-rl;}
-  .video-panel{
-    position:relative; z-index:2; max-width:760px; margin:0 auto; border-radius:18px; overflow:hidden;
-    background:linear-gradient(155deg,#101f42,#08132c); aspect-ratio:16/10;
-    display:flex; align-items:center; justify-content:center; padding:40px;
-    box-shadow:0 40px 80px rgba(11,28,63,.25);
-  }
-  .video-copy{position:absolute; left:44px; bottom:40px; color:#fff;}
-  .video-copy h3{font-size:clamp(24px,3.4vw,36px); line-height:1.2;}
-  .play-btn{
-    width:64px; height:64px; border-radius:50%; background:var(--blue);
-    display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px rgba(47,111,236,.45);
-    cursor:pointer;
-  }
-  .play-btn svg{width:20px; height:20px; fill:#fff; margin-left:3px;}
+  /* ---------- AUDIENCE ---------- */
+  .audience-row{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border);}
+  .aud-cell{padding:26px 22px 0 0; border-left:1px solid var(--border);}
+  .aud-cell:first-child{border-left:none; padding-left:0;}
+  .aud-cell svg{width:20px; height:20px; stroke:var(--primary); margin-bottom:16px;}
+  .aud-cell h3{font-size:15.5px; margin-bottom:8px;}
+  .aud-cell p{font-size:12.5px; margin-bottom:14px; min-height:52px;}
+  .aud-cell a{font-size:11.5px; font-weight:700; color:var(--primary);}
+  .aud-cell a:hover{color:#0E7A97;}
+
+  /* ---------- METHOD ---------- */
+  .method-grid{display:grid; grid-template-columns:.85fr 1.4fr; gap:48px; align-items:start;}
+  .reduce-panel{background:var(--primary); border-radius:var(--radius-lg); padding:36px 30px; color:#fff;}
+  .reduce-panel .from{font-family:var(--head); font-size:34px; font-weight:800; color:rgba(255,255,255,.32); line-height:1;}
+  .reduce-panel .arrow{font-family:var(--mono); font-size:11px; color:rgba(255,255,255,.5); margin:8px 0;}
+  .reduce-panel .to{font-family:var(--head); font-size:52px; font-weight:800; color:var(--accent); line-height:1;}
+  .reduce-panel p{color:rgba(255,255,255,.66); font-size:12.5px; margin-top:18px; max-width:30ch;}
+
+  .ip-list{border-top:1px solid var(--border);}
+  .ip-row{display:grid; grid-template-columns:44px 1fr 130px; gap:18px; align-items:start; padding:22px 0; border-bottom:1px solid var(--border);}
+  .ip-num{font-family:var(--mono); font-size:12px; color:var(--muted-soft); padding-top:2px;}
+  .ip-body h3{font-size:15px; margin-bottom:6px; font-weight:700;}
+  .ip-body p{font-size:12.5px; max-width:52ch;}
+  .status{font-family:var(--mono); font-size:10.5px; display:flex; align-items:center; gap:7px; padding-top:2px; white-space:nowrap;}
+  .status .dot{width:6px; height:6px; border-radius:50%; background:var(--muted-soft);}
+  .status.done{color:#0E7A97;}
+  .status.done .dot{background:#0E7A97;}
+  .status.pending{color:var(--muted-soft);}
 
   /* ---------- LOGOS ---------- */
-  .logos{padding:60px 0 100px; text-align:center;}
-  .logos p{font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--muted); margin-bottom:30px; text-transform:uppercase;}
-  .logo-row{display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
-  .logo-chip{
-    background:#fff; border:1px solid #ece4d6; border-radius:10px; padding:14px 22px;
-    font-family:var(--head); font-weight:600; font-size:13px; color:var(--navy);
-    display:flex; align-items:center; gap:8px;
-  }
+  .logos{padding:56px 0; border-bottom:1px solid var(--border);}
+  .logos .eyebrow{margin-bottom:20px;}
+  .logo-line{font-size:13.5px; color:var(--muted); line-height:2;}
+  .logo-line b{color:var(--primary); font-weight:600;}
 
-  /* ---------- TESTIMONIAL INTRO ---------- */
-  .testi{background:var(--navy); padding:100px 0;}
-  .testi-head{text-align:center; color:#fff; max-width:600px; margin:0 auto 56px;}
-  .testi-head h2{color:#fff; font-size:clamp(24px,3vw,32px); line-height:1.35;}
-  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  .testi-card{
-    background:#fff; border-radius:14px; padding:30px; color:var(--ink);
-  }
-  .testi-card p{font-size:13.5px; color:var(--muted); margin-bottom:18px;}
-  .testi-name{font-family:var(--head); font-weight:600; font-size:13.5px; color:var(--navy);}
-  .testi-role{font-size:11.5px; color:var(--muted);}
+  /* ---------- TEAM ---------- */
+  .team-list{border-top:1px solid var(--border);}
+  .team-row{display:grid; grid-template-columns:56px 220px 1fr; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid var(--border);}
+  .team-avatar{width:52px; height:52px; border-radius:50%; object-fit:cover; background:var(--bg); border:1px solid var(--border);}
+  .team-avatar-fallback{width:52px; height:52px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--head); font-weight:700; font-size:14px;}
+  .team-row h3{font-size:15.5px; margin-bottom:4px;}
+  .team-row .role{font-family:var(--mono); font-size:10.5px; color:#0E7A97; text-transform:uppercase; letter-spacing:.05em;}
+  .team-row p{font-size:13px; max-width:56ch;}
 
-  footer{background:var(--navy-deep); color:rgba(255,255,255,.6); padding:40px 0; text-align:center; font-size:12px;}
+  footer{padding:36px 0; text-align:center;}
+  footer p{font-size:11.5px; color:var(--muted-soft);}
 
   @media (max-width:980px){
     .hero-grid{grid-template-columns:1fr;}
-    .hero-figure{margin-top:20px;}
-    .statcard{grid-template-columns:repeat(2,1fr); row-gap:26px;}
-    .stat-item:nth-child(3){border-left:none;}
-    .audience-grid{grid-template-columns:repeat(2,1fr);}
-    .testi-grid{grid-template-columns:1fr;}
-    .ghost-text{display:none;}
-    .nav-links{display:none;}
+    .map-panel{margin-top:24px;}
+    .stat-row,.audience-row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
+    .stat-cell:nth-child(3),.aud-cell:nth-child(3){border-left:none;}
+    .method-grid{grid-template-columns:1fr;}
+    .team-row{grid-template-columns:1fr; gap:10px; text-align:left;}
+    .primary-nav{display:none;}
+    .menu-trigger{display:flex;}
+    .meta-strip .wrap{flex-wrap:wrap; gap:10px 0;}
+  }
+  @media (max-width:600px){
+    .stat-row,.audience-row{grid-template-columns:1fr;}
+    .stat-cell,.aud-cell{border-left:none; border-top:1px solid var(--border); padding-top:22px;}
+    .stat-cell:first-child,.aud-cell:first-child{border-top:none;}
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <div class="logo">İT</div>
-    <ul class="nav-links">
+<header id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#proje" class="brand">
+      <span class="brand-mark">İT</span>
+      <span class="brand-text">İhracat Teşvikleri Politika Araştırması<small>TÜBİTAK 3005</small></span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Ana navigasyon">
+      <ul>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false">Proje</button>
+          <div class="mega">
+            <div class="mega-links">
+              <a href="#proje">Proje Özeti</a>
+              <a href="#proje">Araştırma Soruları</a>
+              <a href="#proje">Kapsam ve Hedefler</a>
+            </div>
+            <div class="mega-stats">
+              <div><b>15</b><span>Ay Süre</span></div>
+              <div><b>192</b><span>Firma</span></div>
+              <div><b>TR42</b><span>Bölge</span></div>
+              <div><b>14</b><span>Belirleyici</span></div>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false">Araştırma</button>
+          <div class="mega">
+            <div class="mega-links">
+              <a href="#yontem">Yöntem</a>
+              <a href="#yontem">İş Paketleri</a>
+              <a href="#yontem">Saha Bölgesi</a>
+            </div>
+            <div class="mega-stats">
+              <div><b>5</b><span>İl</span></div>
+              <div><b>25</b><span>Görüşme</span></div>
+              <div><b>4</b><span>İş Paketi</span></div>
+              <div><b>1</b><span>Tamamlanan</span></div>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false">Bulgular</button>
+          <div class="mega">
+            <div class="mega-links">
+              <a href="#yontem">Belirleyici Kümeleri</a>
+              <a href="#yontem">144 → 14 İndirgeme</a>
+              <a href="#yontem">Saha Verileri</a>
+            </div>
+            <div class="mega-stats">
+              <div><b>144</b><span>Alt Boyut</span></div>
+              <div><b>14</b><span>Belirleyici</span></div>
+              <div><b>4</b><span>Küme</span></div>
+              <div><b>2</b><span>Yöntem</span></div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#politika">Politika Önerileri</a></li>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false">Yayınlar</button>
+          <div class="mega">
+            <div class="mega-links">
+              <a href="#haberler">Gelişme Raporları</a>
+              <a href="#haberler">Bildiriler</a>
+              <a href="#haberler">Makaleler</a>
+            </div>
+            <div class="mega-stats">
+              <div><b>1</b><span>Rapor</span></div>
+              <div><b>424K054</b><span>Proje No</span></div>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false">Ekip</button>
+          <div class="mega">
+            <div class="mega-links">
+              <a href="#ekip">Proje Yürütücüsü</a>
+              <a href="#ekip">Araştırmacılar</a>
+            </div>
+            <div class="mega-stats">
+              <div><b>1</b><span>Yürütücü</span></div>
+              <div><b>Sakarya</b><span>Üniversitesi</span></div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-switch" aria-label="Dil seçimi"><span class="active">TR</span><span class="sep">|</span><span>EN</span></button>
+      <button class="search-trigger" aria-label="Ara">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+      </button>
+      <button class="menu-trigger" id="menuTrigger" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <div class="mobile-panel-top">
+      <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Menüyü kapat">×</button>
+    </div>
+    <ul>
       <li><a href="#proje">Proje</a></li>
-      <li><a href="#yontem">Yöntem</a></li>
-      <li><a href="#bulgular">Bulgular</a></li>
+      <li><a href="#yontem">Araştırma</a></li>
+      <li><a href="#yontem">Bulgular</a></li>
+      <li><a href="#politika">Politika Önerileri</a></li>
+      <li><a href="#haberler">Yayınlar</a></li>
       <li><a href="#ekip">Ekip</a></li>
-      <li><a href="#haberler">Haberler</a></li>
       <li><a href="#iletisim">İletişim</a></li>
     </ul>
-    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
   </div>
 </header>
 
-<section class="hero">
+<script>
+  (function(){
+    var header = document.getElementById('siteHeader');
+    var onScroll = function(){
+      if(window.scrollY > 8){ header.classList.add('is-scrolled'); }
+      else{ header.classList.remove('is-scrolled'); }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+
+    var menuTrigger = document.getElementById('menuTrigger');
+    var mobilePanel = document.getElementById('mobilePanel');
+    var mobilePanelClose = document.getElementById('mobilePanelClose');
+    var openPanel = function(){ mobilePanel.classList.add('is-open'); menuTrigger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+    var closePanel = function(){ mobilePanel.classList.remove('is-open'); menuTrigger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+    menuTrigger.addEventListener('click', openPanel);
+    mobilePanelClose.addEventListener('click', closePanel);
+    Array.prototype.forEach.call(mobilePanel.querySelectorAll('a'), function(a){ a.addEventListener('click', closePanel); });
+  })();
+</script>
+
+<div class="meta-strip">
+  <div class="wrap">
+    <div class="meta-item">Program <b>TÜBİTAK 3005</b></div>
+    <div class="meta-item">Proje No <b>424K054</b></div>
+    <div class="meta-item">Süre <b class="num">15</b> Ay</div>
+    <div class="meta-item">Saha Bölgesi <b>TR42 Doğu Marmara</b></div>
+  </div>
+</div>
+
+<section class="hero" id="proje">
   <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1>İhracat Teşviklerini <span class="script">Belirleyicilere Göre</span><br>Yeniden Yazan<br>Bir Araştırma.</h1>
-      <p>Dış ticaret girişimciliğinin gerçek belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların görüşleriyle sınıyor ve kamu teşvik mekanizmasına yönelik somut bir politika önerisi seti geliştiriyoruz.</p>
-      <a href="#proje" class="btn-primary">Proje Hakkında Bilgi Al →</a>
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Sakarya Üniversitesi · Prof. Dr. Ahmet Yağmur Ersoy</span>
+      <h1>İhracat teşviklerini <span class="accent-word">gerçek belirleyicilere</span> göre yeniden yazan bir araştırma</h1>
+      <p>Dış ticaret girişimciliğinin belirleyicilerini saha araştırmasıyla ortaya çıkarıyor, Doğu Marmara'daki ihracatçı firmaların deneyimiyle sınıyor ve kamu teşvik mekanizmasına yönelik somut bir politika önerisi seti geliştiriyoruz.</p>
+      <div class="cta-row">
+        <a href="#yontem" class="btn-primary">Yöntemi İncele →</a>
+        <a href="#ekip" class="btn-secondary">Ekibi Tanı</a>
+      </div>
+
+      <div class="readout">
+        <div><b class="num">5</b><span>İl</span></div>
+        <div><b class="num">192</b><span>Firma</span></div>
+        <div><b class="num">25</b><span>Görüşme</span></div>
+      </div>
     </div>
-    <div class="hero-figure">
-      <div class="blob"></div>
-      <div class="photo-block">[Proje yürütücüsü fotoğrafı<br>buraya eklenecek]</div>
+
+    <div class="map-panel reveal">
+      <svg viewBox="0 0 460 260" aria-label="TR42 Doğu Marmara saha bölgesi haritası">
+        <path class="tr-outline" d="M40 95 L95 62 L165 52 L235 45 L310 50 L380 62 L425 85 L450 130 L430 175 L395 205 L345 225 L305 215 L325 195 L265 205 L205 215 L155 210 L105 195 L75 165 L92 138 L48 128 Z"/>
+
+        <circle class="node-dim" cx="220" cy="120" r="1.6"/>
+        <circle class="node-dim" cx="270" cy="150" r="1.6"/>
+        <circle class="node-dim" cx="330" cy="110" r="1.6"/>
+        <circle class="node-dim" cx="190" cy="175" r="1.6"/>
+        <circle class="node-dim" cx="380" cy="150" r="1.6"/>
+
+        <path class="route dim" d="M138 72 Q200 100 250 140"/>
+
+        <path class="route" d="M112 78 Q125 74 138 72"/>
+        <path class="route" d="M138 72 Q150 68 162 68"/>
+        <path class="route" d="M138 72 Q145 82 150 90"/>
+        <path class="route" d="M150 90 Q158 78 162 68"/>
+        <path class="route" d="M112 78 Q102 84 95 90"/>
+
+        <circle class="node" cx="112" cy="78" r="2.6"/>
+        <text class="node-label" x="118" y="76">Kocaeli</text>
+
+        <circle class="node" cx="138" cy="72" r="2.6"/>
+        <text class="node-label" x="144" y="70">Sakarya</text>
+
+        <circle class="node" cx="162" cy="68" r="2.6"/>
+        <text class="node-label" x="168" y="66">Düzce</text>
+
+        <circle class="node" cx="150" cy="90" r="2.6"/>
+        <text class="node-label" x="156" y="96">Bolu</text>
+
+        <circle class="node" cx="95" cy="90" r="2.6"/>
+        <text class="node-label" x="60" y="98">Yalova</text>
+      </svg>
     </div>
   </div>
+</section>
 
+<section class="section">
   <div class="wrap">
-    <div class="statcard">
-      <div class="stat-item">
-        <div class="ic">🌐</div>
-        <b>TÜBİTAK 3005 Destekli</b>
+    <div class="section-head reveal">
+      <span class="eyebrow">Kapsam</span>
+      <h2>Sosyal ve Beşeri Bilimler Araştırma Destek Programı çerçevesinde yürütülüyor</h2>
+    </div>
+    <div class="stat-row">
+      <div class="stat-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+        <b>TÜBİTAK 3005</b>
         <span>Sosyal ve Beşeri Bilimler Araştırma Destek Programı</span>
       </div>
-      <div class="stat-item">
-        <div class="ic">📄</div>
+      <div class="stat-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></svg>
         <b>Kurucu Yazar</b>
         <span>Dış ticaret girişimciliği kavramının öncül çalışmasının yazarı</span>
       </div>
-      <div class="stat-item">
-        <div class="ic">🏭</div>
-        <b>192+ Firma</b>
+      <div class="stat-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="12" rx="1.5"/><path d="M17 13l4-3v10l-4-3"/></svg>
+        <b>192 Firma</b>
         <span>5 ilde yürütülen nicel saha araştırmasının örneklemi</span>
       </div>
-      <div class="stat-item">
-        <div class="ic">📍</div>
+      <div class="stat-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
         <b>TR42 Doğu Marmara</b>
         <span>Bolu, Düzce, Kocaeli, Sakarya ve Yalova'yı kapsayan saha bölgesi</span>
       </div>
@@ -227,44 +472,33 @@
   </div>
 </section>
 
-<section class="section" id="proje">
+<section class="section">
   <div class="wrap">
-    <div class="section-head">
-      <h2>Araştırma Bulgularımız Şu Kesimler İçin<br>Değer Üretiyor...</h2>
+    <div class="section-head reveal">
+      <span class="eyebrow">Kimler İçin Değerli</span>
+      <h2>Araştırma bulgularımız dört farklı kesime hitap ediyor</h2>
     </div>
-    <div class="audience-grid">
-      <div class="aud-card">
-        <div class="aud-photo">
-          <span class="aud-tag">Politika belirleyen</span>
-          <span class="ph">[Fotoğraf eklenecek]</span>
-        </div>
+    <div class="audience-row">
+      <div class="aud-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
         <h3>Politika Yapıcılar</h3>
         <p>Teşvik mekanizmasını dış ticaret girişimcilerinin gerçek ihtiyaçlarına göre revize eder.</p>
         <a href="#">Detaylı Bilgi →</a>
       </div>
-      <div class="aud-card">
-        <div class="aud-photo">
-          <span class="aud-tag">Sahadan öğrenen</span>
-          <span class="ph">[Fotoğraf eklenecek]</span>
-        </div>
+      <div class="aud-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="12" height="12" rx="1.5"/><path d="M15 11l6-3v10l-6-3"/></svg>
         <h3>İhracatçı Firmalar</h3>
         <p>Hangi teşviklerin gerçekten işe yaradığını ve nelerin eksik kaldığını ortaya koyar.</p>
         <a href="#">Detaylı Bilgi →</a>
       </div>
-      <div class="aud-card">
-        <div class="aud-photo">
-          <span class="aud-tag">Literatüre katkı</span>
-          <span class="ph">[Fotoğraf eklenecek]</span>
-        </div>
+      <div class="aud-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
         <h3>Akademisyenler</h3>
         <p>Dış ticaret girişimciliği alanında sınırlı olan literatüre yeni bir çerçeve kazandırır.</p>
         <a href="#">Detaylı Bilgi →</a>
       </div>
-      <div class="aud-card">
-        <div class="aud-photo">
-          <span class="aud-tag">Geleceğin girişimcisi</span>
-          <span class="ph">[Fotoğraf eklenecek]</span>
-        </div>
+      <div class="aud-cell reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10l-10-6-10 6 10 6 10-6z"/><path d="M6 12v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5"/></svg>
         <h3>Öğrenciler</h3>
         <p>Dış ticaret girişimciliğini keşfetmek isteyen öğrenciler için somut bir referans sunar.</p>
         <a href="#">Detaylı Bilgi →</a>
@@ -273,64 +507,129 @@
   </div>
 </section>
 
-<section class="feature" id="yontem">
-  <div class="ghost-text ghost-1">belirleyici</div>
-  <div class="ghost-text ghost-2">politika</div>
+<section class="section" id="yontem">
   <div class="wrap">
-    <div class="video-panel">
-      <div class="play-btn">
-        <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg>
+    <div class="section-head reveal">
+      <span class="eyebrow">Yöntem</span>
+      <h2>144 alt boyuttan 14 belirleyiciye</h2>
+      <p>Literatür taramasıyla toplanan alt boyutlar eleştirel bir sentezle daraltıldı, ardından dört iş paketiyle sahaya taşındı.</p>
+    </div>
+
+    <div class="method-grid reveal">
+      <div class="reduce-panel">
+        <div class="from num">144</div>
+        <div class="arrow">alt boyut daraltıldı</div>
+        <div class="to num">14</div>
+        <p>Belirleyici, dört ana kümede toplandı ve BEST-WORST yöntemiyle önem sırasına konacak.</p>
       </div>
-      <div class="video-copy">
-        <h3>Belirleyicilerden<br><span class="script">Politikaya</span> Dönüşen<br>Bir Araştırma.</h3>
+
+      <div class="ip-list">
+        <div class="ip-row">
+          <div class="ip-num">01</div>
+          <div class="ip-body"><h3>Belirleyicilerin Keşfi</h3><p>Literatür taraması ve uzman görüşüyle dış ticaret girişimciliğine özgü belirleyicilerin ortaya konması.</p></div>
+          <div class="status done"><span class="dot"></span>Tamamlandı</div>
+        </div>
+        <div class="ip-row">
+          <div class="ip-num">02</div>
+          <div class="ip-body"><h3>Nicel Saha Araştırması</h3><p>192 firmadan anket verisi toplanması; belirleyicilerin BEST-WORST yöntemiyle sıralanması.</p></div>
+          <div class="status pending"><span class="dot"></span>Planlanıyor</div>
+        </div>
+        <div class="ip-row">
+          <div class="ip-num">03</div>
+          <div class="ip-body"><h3>Nitel Mülakatlar</h3><p>25 dış ticaret girişimcisiyle görüşmeler; içerik analiziyle kod-kategori-tema çıkarımı.</p></div>
+          <div class="status pending"><span class="dot"></span>Planlanıyor</div>
+        </div>
+        <div class="ip-row">
+          <div class="ip-num">04</div>
+          <div class="ip-body"><h3>Politika Önerisi Seti</h3><p>Bulguların sentezlenip ilgili kamu kurumlarıyla paylaşılacak teşvik revizyon önerilerinin geliştirilmesi.</p></div>
+          <div class="status pending"><span class="dot"></span>Planlanıyor</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="logos">
-  <div class="wrap">
-    <p>Projeyi Destekleyen ve Takip Eden Kurumlar</p>
-    <div class="logo-row">
-      <div class="logo-chip">TÜBİTAK</div>
-      <div class="logo-chip">Sakarya Üniversitesi</div>
-      <div class="logo-chip">TR42 Doğu Marmara Kalkınma Ajansı</div>
-      <div class="logo-chip">Ticaret Bakanlığı</div>
-      <div class="logo-chip">TİM</div>
-    </div>
+  <div class="wrap reveal">
+    <span class="eyebrow">Projeyi Destekleyen ve Takip Eden Kurumlar</span>
+    <p class="logo-line"><b>TÜBİTAK</b> · <b>Sakarya Üniversitesi</b> · <b>TR42 Doğu Marmara Kalkınma Ajansı</b> · <b>Ticaret Bakanlığı</b> · <b>TİM</b></p>
   </div>
 </section>
 
-<section class="testi" id="ekip">
+<section class="section" id="ekip">
   <div class="wrap">
-    <div class="testi-head">
-      <h2>Bu Araştırmadan Etkilenen <span class="script">Kurumlar</span><br>ve Girişimciler</h2>
+    <div class="section-head reveal">
+      <span class="eyebrow">Ekip</span>
+      <h2>Yürütücü ve araştırmacılar</h2>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
-        <div class="testi-name">[İsim eklenecek]</div>
-        <div class="testi-role">İhracatçı Firma, Sakarya</div>
-      </div>
-      <div class="testi-card">
-        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
-        <div class="testi-name">[İsim eklenecek]</div>
-        <div class="testi-role">İhracatçı Firma, Kocaeli</div>
-      </div>
-      <div class="testi-card">
-        <p>"[Görüşme yapılan ihracatçı firmadan alınacak gerçek bir alıntı buraya eklenecek.]"</p>
-        <div class="testi-name">[İsim eklenecek]</div>
-        <div class="testi-role">İhracatçı Firma, Yalova</div>
-      </div>
+    <div class="team-list reveal" id="ekip-container"></div>
+  </div>
+</section>
+
+<section class="section" id="haberler">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Haberler</span>
+      <h2>Süreçten güncellemeler</h2>
     </div>
+    <div class="ip-list reveal" id="haberler-container"></div>
   </div>
 </section>
 
 <footer id="iletisim">
   <div class="wrap">
-    İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri · TÜBİTAK 3005 · 424K054 · Sakarya Üniversitesi
+    <p>İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri · TÜBİTAK 3005 · 424K054 · Sakarya Üniversitesi</p>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script>
+  // İçerik: haberler ve ekip, data/content.json dosyasından okunuyor.
+  // Decap CMS (admin/) bu dosyayı düzenler, kod değişmeden içerik güncellenir.
+  fetch('data/content.json')
+    .then(r => r.json())
+    .then(data => {
+      const ekipEl = document.getElementById('ekip-container');
+      data.ekip.forEach(kisi => {
+        const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
+        const avatar = kisi.fotograf
+          ? `<img class="team-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
+          : `<div class="team-avatar-fallback">${baslar}</div>`;
+        ekipEl.insertAdjacentHTML('beforeend', `
+          <div class="team-row">
+            ${avatar}
+            <div>
+              <h3>${kisi.isim}</h3>
+              <div class="role">${kisi.unvan}</div>
+            </div>
+            <p>${kisi.aciklama}</p>
+          </div>`);
+      });
+
+      const haberEl = document.getElementById('haberler-container');
+      data.haberler.forEach((haber, i) => {
+        const statusClass = haber.durum === 'tamamlandi' ? 'done' : 'pending';
+        haberEl.insertAdjacentHTML('beforeend', `
+          <div class="ip-row">
+            <div class="ip-num num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="ip-body"><h3>${haber.baslik}</h3><p>${haber.aciklama}</p></div>
+            <div class="status ${statusClass}"><span class="dot"></span>${haber.tarih}</div>
+          </div>`);
+      });
+    })
+    .catch(() => console.warn('data/content.json okunamadı, dosyanın index.html ile aynı yerde olduğundan emin ol.'))
+    .finally(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.reveal').forEach(el => {
+        gsap.fromTo(el,
+          {opacity: 0, y: 16},
+          {opacity: 1, y: 0, duration: .7, ease: 'power2.out',
+           scrollTrigger: {trigger: el, start: 'top 88%'}}
+        );
+      });
+    });
+</script>
 
 </body>
 </html>
