@@ -7,22 +7,16 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Editoryal ve Otoriter Hissiyat İçin: Merriweather (Başlıklar) ve Inter (Gövde) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Editoryal / Otoriter Renk Paleti (OECD & Dünya Bankası Stili) */
-    --bg-main: #FAFAFA;       /* Kırık beyaz / Fildişi kağıt hissi */
-    --bg-alt: #FFFFFF;        /* Saf beyaz kartlar */
-    --text-ink: #0F172A;      /* Koyu mürekkep laciverti / Siyaha yakın */
-    --text-body: #475569;     /* Okunabilir gri */
-    
-    --accent-navy: #1E3A8A;   /* Kurumsal TİM/TOBB Laciverti */
-    --accent-teal: #0D9488;   /* Olgun Turkuaz vurgu */
-    --accent-gold: #B45309;   /* Detaylar için hafif altın/kiremit */
-    
-    --border-color: #E2E8F0;  /* İnce, zarif çizgiler */
-    
+    --bg-main: #FAFAFA;       
+    --bg-alt: #FFFFFF;        
+    --text-ink: #0F172A;      
+    --text-body: #475569;     
+    --accent-navy: #1E3A8A;   
+    --accent-teal: #0D9488;   
+    --border-color: #E2E8F0;  
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
   }
@@ -36,11 +30,10 @@
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
   /* ==========================================================================
-     HEADER (Temiz, Çizgili, Kurumsal)
+     HEADER
      ========================================================================== */
   header { 
-    background-color: var(--bg-alt); 
-    border-bottom: 1px solid var(--border-color); 
+    background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
     position: sticky; top: 0; z-index: 100;
   }
   .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
@@ -66,30 +59,25 @@
   .btn-outline-header:hover { background: var(--text-ink); color: var(--bg-alt); }
 
   /* ==========================================================================
-     HERO SECTION (Veri Gazeteciliği Odaklı)
+     HERO SECTION
      ========================================================================== */
   .hero { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
   .hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: stretch; }
 
-  /* Sol: Editoryal Metin */
   .hero-content { display: flex; flex-direction: column; justify-content: center; }
-  
   .badge { 
     display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; 
     text-transform: uppercase; color: var(--accent-teal); margin-bottom: 24px;
     border-bottom: 2px solid var(--accent-teal); padding-bottom: 4px; width: fit-content;
   }
-  
   .hero-content h1 { 
     font-family: var(--font-serif); font-size: clamp(32px, 4vw, 44px); 
-    font-weight: 900; line-height: 1.25; color: var(--text-ink); margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    font-weight: 900; line-height: 1.25; color: var(--text-ink); margin-bottom: 24px; letter-spacing: -0.02em;
   }
   .hero-content p { 
     font-size: 16px; color: var(--text-body); line-height: 1.8; margin-bottom: 40px; 
     max-width: 90%; border-left: 3px solid var(--border-color); padding-left: 20px;
   }
-
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-primary {
     background: var(--accent-navy); color: var(--bg-alt); font-size: 14px; font-weight: 600;
@@ -97,31 +85,60 @@
   }
   .btn-primary:hover { background: #152B66; }
 
-  /* Sağ: Data Dashboard (İkonsuz, Sırf Tipografi ve Çizgi) */
   .data-dashboard {
-    border: 1px solid var(--border-color);
-    background: var(--bg-alt);
+    border: 1px solid var(--border-color); background: var(--bg-alt);
     display: grid; grid-template-columns: 1fr 1fr;
-    /* Gazete tablosu hissi için iç borderlar */
   }
   .data-cell {
-    padding: 32px 24px;
-    display: flex; flex-direction: column; justify-content: center;
-    border-bottom: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
+    padding: 32px 24px; display: flex; flex-direction: column; justify-content: center;
+    border-bottom: 1px solid var(--border-color); border-right: 1px solid var(--border-color);
   }
   .data-cell:nth-child(2n) { border-right: none; }
   .data-cell:nth-last-child(1), .data-cell:nth-last-child(2) { border-bottom: none; }
-  
-  .data-cell b { 
-    font-family: var(--font-serif); font-size: 40px; font-weight: 300; 
-    color: var(--accent-navy); line-height: 1; margin-bottom: 8px;
-    letter-spacing: -0.02em;
-  }
+  .data-cell b { font-family: var(--font-serif); font-size: 40px; font-weight: 300; color: var(--accent-navy); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
   .data-cell span { font-size: 12px; font-weight: 600; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.4; }
 
   /* ==========================================================================
-     ARAŞTIRMA BULGULARI (Saf Analiz)
+     MODERN HABER/ANALİZ SLIDER (Başlıksız, Akışkan Tasarım)
+     ========================================================================== */
+  /* Bu bölüm doğrudan hero'nun altından, ayrı bir başlık olmadan başlar */
+  .news-slider-section {
+    padding: 64px 0 96px; /* Üstten ve alttan ferah boşluk */
+    background: var(--bg-main);
+  }
+  
+  .news-slider {
+    display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: var(--border-color) transparent;
+  }
+  .news-slider::-webkit-scrollbar { height: 6px; }
+  .news-slider::-webkit-scrollbar-track { background: transparent; }
+  .news-slider::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 10px; }
+
+  .news-card { 
+    flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start;
+    display: flex; flex-direction: column; border: 1px solid var(--border-color);
+    border-radius: 12px; background: var(--bg-alt); overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+  
+  .nc-image { height: 200px; background-size: cover; background-position: center; position: relative; }
+  .nc-badge { 
+    position: absolute; top: 16px; left: 16px; background: var(--bg-alt); color: var(--accent-navy);
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 6px 12px; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  
+  .nc-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+  .nc-date { font-size: 12px; color: var(--text-body); margin-bottom: 12px; font-weight: 600; }
+  .news-card h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 12px; }
+  .news-card p { font-size: 14px; color: var(--text-body); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+  .read-more { font-size: 13px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ==========================================================================
+     ARAŞTIRMA BULGULARI
      ========================================================================== */
   .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
   .section-alt { background-color: var(--bg-alt); }
@@ -131,40 +148,18 @@
   .section-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 900; color: var(--text-ink); line-height: 1.3; }
 
   .findings-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--border-color); }
-  .finding-item { 
-    display: grid; grid-template-columns: 120px 1fr; gap: 40px; 
-    padding: 32px 0; border-bottom: 1px solid var(--border-color); align-items: start;
-  }
-  .finding-stat { 
-    font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--accent-navy); 
-    display: flex; flex-direction: column; line-height: 1;
-  }
+  .finding-item { display: grid; grid-template-columns: 120px 1fr; gap: 40px; padding: 32px 0; border-bottom: 1px solid var(--border-color); align-items: start; }
+  .finding-stat { font-family: var(--font-serif); font-size: 32px; font-weight: 400; color: var(--accent-navy); display: flex; flex-direction: column; line-height: 1; }
   .finding-stat small { font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 8px; }
-  
   .finding-content h3 { font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 12px; }
   .finding-content p { font-size: 15px; color: var(--text-body); line-height: 1.6; max-width: 700px; }
 
   /* ==========================================================================
-     GLOBAL TRENDLER (Blog/Haber - Çizgili Temiz Grid)
-     ========================================================================== */
-  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .news-card { 
-    display: flex; flex-direction: column; border-top: 2px solid var(--text-ink);
-    padding-top: 24px; transition: transform 0.2s;
-  }
-  .news-card:hover { transform: translateY(-4px); }
-  .nc-meta { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-teal); margin-bottom: 16px; }
-  .nc-date { color: var(--text-body); }
-  .news-card h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 16px; }
-  .news-card p { font-size: 14px; color: var(--text-body); line-height: 1.6; flex-grow: 1; margin-bottom: 24px; }
-  .read-more { font-size: 13px; font-weight: 700; color: var(--accent-navy); border-bottom: 1px solid var(--accent-navy); padding-bottom: 2px; width: fit-content; }
-
-  /* ==========================================================================
-     EKİP BÖLÜMÜ (CMS'ten Gelecek Yapı - Temizlenmiş Hali)
+     EKİP BÖLÜMÜ
      ========================================================================== */
   .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
   .team-member { display: flex; gap: 24px; align-items: flex-start; }
-  .tm-avatar { width: 80px; height: 80px; background: var(--border-color); flex: none; filter: grayscale(100%); object-fit: cover; } /* Ciddi/Siyah Beyaz algısı için grayscale */
+  .tm-avatar { width: 80px; height: 80px; background: var(--border-color); flex: none; filter: grayscale(100%); object-fit: cover; } 
   .tm-fallback { width: 80px; height: 80px; background: var(--text-ink); color: var(--bg-alt); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 24px; font-weight: 700; flex: none; }
   .tm-info h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 4px; }
   .tm-info .role { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-teal); margin-bottom: 12px; display: block; }
@@ -183,11 +178,11 @@
      MOBİL UYUMLULUK
      ========================================================================== */
   @media (max-width: 1024px) {
-    .nav-menu, .header-right { display: none; } /* Mobil menü JS'i ile entegre edilebilir */
+    .nav-menu, .header-right { display: none; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero { padding: 56px 0; }
     .finding-item { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
-    .news-grid { grid-template-columns: 1fr; }
+    .news-card { flex: 0 0 calc(85%); } /* Mobilde slider kartları genişler */
     .team-grid { grid-template-columns: 1fr; }
     .footer-inner { flex-direction: column; gap: 32px; }
   }
@@ -195,7 +190,6 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="wrap header-inner">
     <a href="#" class="brand">
@@ -217,7 +211,6 @@
   </div>
 </header>
 
-<!-- HERO SECTION (Veri Gazeteciliği) -->
 <section class="hero">
   <div class="wrap hero-inner">
     <div class="hero-content">
@@ -229,29 +222,31 @@
       </div>
     </div>
 
-    <!-- HARİTASIZ, SAF VERİ PANOSU (DATA DASHBOARD) -->
     <div class="data-dashboard">
       <div class="data-cell">
-        <b>192</b>
-        <span>Saha Araştırmasına Katılan İhracatçı Firma</span>
+        <b>192</b><span>Saha Araştırmasına Katılan İhracatçı Firma</span>
       </div>
       <div class="data-cell">
-        <b>5</b>
-        <span>Odak İl: Kocaeli, Sakarya, Düzce, Bolu, Yalova</span>
+        <b>5</b><span>Odak İl: Kocaeli, Sakarya, Düzce, Bolu, Yalova</span>
       </div>
       <div class="data-cell">
-        <b>14</b>
-        <span>Analiz Edilen Temel Dış Ticaret Belirleyicisi</span>
+        <b>14</b><span>Analiz Edilen Temel Dış Ticaret Belirleyicisi</span>
       </div>
       <div class="data-cell">
-        <b style="color: var(--accent-teal);">%86.8</b>
-        <span>Finansal Faktörlerin Ağırlıklı Önem Derecesi</span>
+        <b style="color: var(--accent-teal);">%86.8</b><span>Finansal Faktörlerin Ağırlıklı Önem Derecesi</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- İHRACATIN ŞİFRELERİ (Araştırma Bulguları) -->
+<!-- HABER SLIDERI (BAŞLIKSIZ, DİREKT AKIŞ) -->
+<section id="analizler" class="news-slider-section">
+  <div class="wrap">
+    <!-- Veriler JSON'dan çekilip buraya yazdırılacak -->
+    <div class="news-slider" id="haberler-container"></div>
+  </div>
+</section>
+
 <section id="bulgular" class="section section-alt">
   <div class="wrap">
     <div class="section-header">
@@ -260,103 +255,43 @@
     </div>
     
     <div class="findings-list">
-      
       <div class="finding-item">
-        <div class="finding-stat">
-          01 <small>En Önemli Faktör</small>
-        </div>
+        <div class="finding-stat">01 <small>En Önemli Faktör</small></div>
         <div class="finding-content">
           <h3>Finansal Belirleyiciler (Özkaynak ve Performans)</h3>
           <p>Uzmanların %86,8'ine göre dış ticaret girişimciliğinin önündeki en büyük katalizör veya engel finansman yapısıdır. Teşviklerin miktar bazlı değil, kârlılık ve özsermaye gücünü artıracak şekilde yapılandırılması hayati önem taşımaktadır.</p>
         </div>
       </div>
-
       <div class="finding-item">
-        <div class="finding-stat">
-          02 <small>Stratejik Kriter</small>
-        </div>
+        <div class="finding-stat">02 <small>Stratejik Kriter</small></div>
         <div class="finding-content">
           <h3>Rekabet, Fırsatlar ve Risk Yönetimi</h3>
           <p>Küresel pazarlardaki dalgalanmalara karşı ihracatçıların fırsat algısı ve risk yönetimi kapasitesi ikinci sırada yer almaktadır. Korumacı politikaların arttığı bu dönemde, pazar okuryazarlığı öne çıkmaktadır.</p>
         </div>
       </div>
-
       <div class="finding-item">
-        <div class="finding-stat">
-          03 <small>Yönetsel Kapasite</small>
-        </div>
+        <div class="finding-stat">03 <small>Yönetsel Kapasite</small></div>
         <div class="finding-content">
           <h3>Stratejik Kararlar ve İnovasyon</h3>
           <p>Sadece üretmek değil, yenilikçi üretim süreçleri tasarlamak ve bunları stratejik bir kararla uluslararası arenaya taşımak, sürdürülebilir ihracatın bel kemiğini oluşturmaktadır.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- PORTAL: GLOBAL TRENDLER VE GÜNCEL ANALİZLER -->
-<section id="analizler" class="section">
-  <div class="wrap">
-    <div class="section-header">
-      <span class="eyebrow">DIŞ TİCARET VE TEŞVİK PORTALI</span>
-      <h2>Güncel Analizler ve Global Trendler</h2>
-    </div>
-
-    <div class="news-grid" id="haberler-container">
-      
-      <!-- CMS'ten de beslenebilecek manuel örnek 1 -->
-      <article class="news-card">
-        <div class="nc-meta">
-          <span>Teşvik Rehberi</span>
-          <span class="nc-date">12 Ağu 2026</span>
-        </div>
-        <h3>Yenilikçi Ürün mü, Standart Üretim mi? Teşvik Sistemindeki Açmazlar</h3>
-        <p>Mevcut ihracat teşvikleri ölçek ekonomisine sahip büyük firmaları önceliklendirirken, başlangıç aşamasındaki yenilikçi ve yüksek katma değerli girişimcilerin (startup/KOBİ) desteklenme oranları analiz ediliyor.</p>
-        <a href="#" class="read-more">Analizi Okuyun</a>
-      </article>
-
-      <!-- Örnek 2 -->
-      <article class="news-card">
-        <div class="nc-meta">
-          <span>Global Trendler</span>
-          <span class="nc-date">28 Tem 2026</span>
-        </div>
-        <h3>Yeni Korumacılık ve Bölgesel Kalkınma Köşesi: TR42 Etkisi</h3>
-        <p>Pandemi ve jeopolitik gerginlikler sonrası dünyada yükselen yeni korumacılık eğilimlerine karşı, Doğu Marmara (Kocaeli ve Sakarya) sınai hinterlandının Türkiye'nin milli ekonomik savunmasındaki yeri.</p>
-        <a href="#" class="read-more">Analizi Okuyun</a>
-      </article>
-
-      <!-- Örnek 3 -->
-      <article class="news-card">
-        <div class="nc-meta">
-          <span>Sürdürülebilirlik</span>
-          <span class="nc-date">15 Tem 2026</span>
-        </div>
-        <h3>Avrupa Yeşil Mutabakatı Işığında İhracatta Dönüşüm</h3>
-        <p>Sınırda karbon düzenlemesi yaklaşırken, dış ticaret girişimcilerinin yeşil ve dijital dönüşüm süreçlerine adaptasyon hızları ve bu alandaki yeni nesil destek modelleri.</p>
-        <a href="#" class="read-more">Analizi Okuyun</a>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- EKİP (Data JSON'dan Çekilecek Alan) -->
-<section id="ekip" class="section section-alt">
+<section id="ekip" class="section">
   <div class="wrap">
     <div class="section-header">
       <span class="eyebrow">ARAŞTIRMA KÜNYESİ</span>
       <h2>Akademik ve Sektörel Uzmanlar</h2>
     </div>
-    
     <div class="team-grid" id="ekip-container">
-      <!-- JavaScript ile content.json'dan dolacak -->
+      <!-- Veriler JSON'dan gelecek -->
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-inner">
@@ -379,11 +314,34 @@
   </div>
 </footer>
 
-<!-- SCRIPT: EKİP VERİSİNİ ÇEKME -->
+<!-- SCRIPT: JSON'DAN EKİP VE HABER/ANALİZ VERİSİNİ ÇEKME -->
 <script>
   fetch('data/content.json')
     .then(r => r.json())
     .then(data => {
+      
+      // 1. HABERLERİ SLIDER'A YÜKLE
+      const haberlerEl = document.getElementById('haberler-container');
+      if(haberlerEl && data.haberler) {
+        data.haberler.forEach(haber => {
+          haberlerEl.insertAdjacentHTML('beforeend', `
+            <article class="news-card">
+              <!-- Resim yoksa gradient arkaplan atıyoruz -->
+              <div class="nc-image" style="background: ${haber.arkaplan}">
+                <span class="nc-badge">${haber.kategori}</span>
+              </div>
+              <div class="nc-content">
+                <span class="nc-date">${haber.tarih}</span>
+                <h3>${haber.baslik}</h3>
+                <p>${haber.ozet}</p>
+                <a href="#" class="read-more">Analizi Okuyun <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-left:4px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              </div>
+            </article>
+          `);
+        });
+      }
+
+      // 2. EKİBİ YÜKLE
       const ekipEl = document.getElementById('ekip-container');
       if(ekipEl && data.ekip) {
         data.ekip.forEach(kisi => {
@@ -403,7 +361,7 @@
         });
       }
     })
-    .catch(() => console.warn('data/content.json okunamadı. Veriler yerel sunucuda (Live Server) çalışırken gelir.'));
+    .catch(err => console.warn('data/content.json okunamadı veya JSON formatında hata var.', err));
 </script>
 
 </body>
