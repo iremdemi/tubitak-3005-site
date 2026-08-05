@@ -49,7 +49,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE LOGO (ŞEFFAF / BÜTÜNLEŞİK TASARIM)
+     HEADER VE LOGO
      ========================================================================== */
   header { 
     background-color: transparent; border-bottom: 1px solid transparent; 
@@ -126,43 +126,19 @@
   }
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
-  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ (Sadece En Üstteyken) */
+  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ */
   header:not(.scrolled) .hl-dtg,
   header:not(.scrolled) .hl-research,
-  header:not(.scrolled) .hl-portal {
-    color: #FFFFFF;
-  }
-  header:not(.scrolled) .hl-divider {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a {
-    color: rgba(255, 255, 255, 0.85);
-  }
-  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a:hover {
-    color: #FFFFFF;
-  }
-  header:not(.scrolled) .lang-switch {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  header:not(.scrolled) .lang-switch span.active {
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.15);
-  }
-  header:not(.scrolled) .lang-switch .sep {
-    color: rgba(255, 255, 255, 0.3);
-  }
-  header:not(.scrolled) .btn-outline-header {
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #FFFFFF;
-  }
-  header:not(.scrolled) .btn-outline-header:hover {
-    background-color: #FFFFFF;
-    color: var(--accent-navy);
-    border-color: #FFFFFF;
-  }
-  header:not(.scrolled) .menu-toggle span {
-    background: #FFFFFF;
-  }
+  header:not(.scrolled) .hl-portal { color: #FFFFFF; }
+  header:not(.scrolled) .hl-divider { background-color: rgba(255, 255, 255, 0.3); }
+  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a { color: rgba(255, 255, 255, 0.85); }
+  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a:hover { color: #FFFFFF; }
+  header:not(.scrolled) .lang-switch { color: rgba(255, 255, 255, 0.8); }
+  header:not(.scrolled) .lang-switch span.active { color: #FFFFFF; background: rgba(255, 255, 255, 0.15); }
+  header:not(.scrolled) .lang-switch .sep { color: rgba(255, 255, 255, 0.3); }
+  header:not(.scrolled) .btn-outline-header { border-color: rgba(255, 255, 255, 0.5); color: #FFFFFF; }
+  header:not(.scrolled) .btn-outline-header:hover { background-color: #FFFFFF; color: var(--accent-navy); border-color: #FFFFFF; }
+  header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 
   /* ==========================================================================
      HERO SECTION
@@ -177,7 +153,7 @@
     color: #FFFFFF;
     padding: 0;
     overflow: hidden;
-    border-radius: 0 0 100px 100px;
+    border-radius: 0 0 100px 100px; /* ÜST KAVİS */
   }
 
   .hero-slides {
@@ -256,17 +232,17 @@
   .hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ==========================================================================
-     HİZMET/KATEGORİ ŞERİDİ (Simetrik Ortalama)
+     HİZMET/KATEGORİ ŞERİDİ (ORTALANMIŞ KARTLAR VE BÜYÜK BOŞLUK)
      ========================================================================== */
   .services-row-section { 
     background: var(--bg-main); 
-    padding: 0 0 150px 0; 
+    padding: 0; 
   }
   
   .services-row-wrap { 
     position: relative; 
     z-index: 5; 
-    margin-top: -150px; 
+    margin-top: -100px; /* Üst Kavise tam 100px girer */
   }
   
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -300,29 +276,20 @@
   }
   .service-card-team-photos img.active { opacity: 1; }
 
-  @media (max-width: 860px) {
-    .services-row { grid-template-columns: repeat(2, 1fr); }
-    .services-row-section { padding: 0 0 100px 0; }
-    .services-row-wrap { margin-top: -100px; }
-  }
-  @media (max-width: 480px) {
-    .services-row { grid-template-columns: 1fr; }
-    .hero-corporate-inner { padding: 120px 24px 0; }
-    .hero-bottom-row { padding: 0 24px 28px; }
-  }
-
   /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ / ANALİZLER
+     ÖNCELİK BÖLÜMÜ / ANALİZLER (ALT KISMI DÜZ)
      ========================================================================== */
   .priority-section { padding: 0; text-align: center; background: var(--bg-main); }
   
   .priority-photo-wrap {
     position: relative; width: 100%; z-index: 2;
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding: 160px 32px 80px; 
-    border-radius: 100px 100px 0 0; 
+    /* Kartların 100px taşıması, arkayı ferah bırakmak için 180px üst boşluk */
+    padding: 180px 32px 80px; 
+    border-radius: 100px 100px 0 0; /* Üst kavisli, alt tamamen DÜZ */
     overflow: hidden; 
-    margin-top: -260px; /* Kartları eşit derecede kavise dahil etmek için */
+    /* Alt Kavise de tam 100px girer. Kartların ardında DEV BİR BOŞLUK kalır */
+    margin-top: -100px; 
   }
   .priority-photo-wrap::before {
     content: ''; position: absolute; inset: 0;
@@ -355,26 +322,36 @@
   .priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
   @media (max-width: 900px) {
+    .services-row { grid-template-columns: repeat(2, 1fr); }
     .priority-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-row-wrap { margin-top: -80px; }
+    .priority-photo-wrap { margin-top: -80px; padding: 140px 20px 50px;}
+  }
+  @media (max-width: 480px) {
+    .services-row { grid-template-columns: 1fr; }
+    .hero-corporate-inner { padding: 120px 24px 0; }
+    .hero-bottom-row { padding: 0 24px 28px; }
+    .priority-grid { grid-template-columns: 1fr; }
+    .priority-actions { flex-direction: column; width: 100%; }
+    .priority-actions a { width: 100%; text-align: center; justify-content: center; }
   }
 
   /* ==========================================================================
-     GLOBAL NETWORK HARİTA BÖLÜMÜ (Cam Efekti, Kavis ve Yeni Renkler)
+     GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK KAVİS)
      ========================================================================== */
   .global-network-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); /* Sütlü kahve/kirli beyaz */
-    border-radius: 100px 100px 0 0; /* Üst bölümle ayrışması için 100px kavis */
-    margin-top: -60px; /* Üstteki karanlık bölümün altına hafifçe girip kavisin oturması için */
+    background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); 
+    border-radius: 100px 100px 0 0; /* Haritanın kendisi kavisli */
+    margin-top: 100px; /* ÜSTTEKİ DÜZ BÖLÜMLE ARASINDAKİ BELİRGİN KAVİS BOŞLUĞU */
     padding-top: 60px;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    box-shadow: 0 -15px 40px rgba(0,0,0,0.03); /* Kavisin belli olması için zarif gölge */
   }
   .map-layer-container {
     position: absolute;
@@ -388,7 +365,7 @@
   .map-shape {
     width: 100%;
     height: 100%;
-    background-color: #D4C5B9; /* Referans görsele uygun daha açık sütlü kahve tonu */
+    background-color: #D4C5B9; 
     -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
     -webkit-mask-size: contain;
     -webkit-mask-position: center;
@@ -400,7 +377,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-ink); /* Açık zeminde okunabilmesi için koyu renk */
+    color: var(--text-ink); 
     font-size: 13px;
     font-weight: 700;
     font-family: var(--font-sans);
@@ -411,21 +388,21 @@
   .map-dot {
     width: 6px;
     height: 6px;
-    background-color: var(--accent-teal); /* Turuncu vurgu */
+    background-color: var(--accent-teal); 
     border-radius: 50%;
     box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2);
   }
   .map-info-box {
     position: absolute;
-    right: 0; /* En sağa yapıştırıldı */
+    right: 0; 
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.65); /* Glassmorphism cam efekti */
+    background: rgba(255, 255, 255, 0.65); 
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-right: none;
-    border-radius: 30px 0 0 30px; /* Sadece sol taraftan kavis verildi */
+    border-radius: 30px 0 0 30px; 
     width: min(85%, 520px);
     padding: 60px 50px 60px 60px;
     box-shadow: -15px 20px 40px rgba(0,0,0,0.06);
@@ -435,7 +412,7 @@
     font-family: var(--font-serif);
     font-size: clamp(26px, 3.2vw, 40px);
     font-weight: 800;
-    color: var(--text-ink); /* Cam zemin üzerinde koyu yazı */
+    color: var(--text-ink); 
     line-height: 1.25;
     margin-bottom: 24px;
   }
@@ -447,7 +424,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent-teal); /* Turuncu vurgu */
+    color: var(--accent-teal); 
   }
   .map-info-subtitle::before {
     content: '';
@@ -458,32 +435,17 @@
   }
 
   @media (max-width: 1024px) {
-    .map-info-box {
-      width: 55%;
-      padding: 40px 30px 40px 40px;
-    }
+    .map-info-box { width: 55%; padding: 40px 30px 40px 40px; }
   }
   @media (max-width: 768px) {
     .global-network-section {
-      min-height: 80vh;
-      border-radius: 50px 50px 0 0;
-      margin-top: -30px;
-      padding-top: 30px;
-      align-items: flex-end;
-      padding-bottom: 40px;
+      min-height: 80vh; border-radius: 50px 50px 0 0; margin-top: 60px;
+      padding-top: 30px; align-items: flex-end; padding-bottom: 40px;
     }
-    .map-layer-container {
-      top: 40%;
-      width: 150%; 
-    }
+    .map-layer-container { top: 40%; width: 150%; }
     .map-info-box {
-      position: relative;
-      right: auto;
-      top: auto;
-      transform: none;
-      width: 90%;
-      margin: 0 auto;
-      border-radius: 20px;
+      position: relative; right: auto; top: auto; transform: none;
+      width: 90%; margin: 0 auto; border-radius: 20px;
       border-right: 1px solid rgba(255,255,255,0.8);
     }
   }
@@ -610,8 +572,6 @@
 
   @media (max-width: 1024px) {
     .footer-inner { grid-template-columns: 1fr; }
-    .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; }
-    .priority-photo-wrap { border-radius: 50px 50px 0 0; margin-top: -260px; padding: 180px 20px 50px;}
   }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
@@ -624,37 +584,6 @@
 
   .nav-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.4); opacity: 0; visibility: hidden; transition: opacity .3s ease; z-index: 140; }
   .nav-overlay.is-open { opacity: 1; visibility: visible; }
-
-  @media (max-width: 1024px) {
-    .header-inner { justify-content: space-between; }
-    .menu-toggle { display: flex; }
-    .header-right .btn-outline-header { display: none; }
-
-    .nav-menu {
-      position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 86vw);
-      background: var(--bg-alt); flex-direction: column; align-items: flex-start;
-      padding: 100px 28px 32px; gap: 0; box-shadow: -20px 0 50px rgba(15,23,42,.14);
-      transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1);
-      z-index: 150; overflow-y: auto; margin: 0;
-    }
-    .nav-menu.is-open { transform: translateX(0); }
-    .nav-item { width: 100%; }
-    .nav-menu a { padding: 14px 0; width: 100%; border-bottom: 1px solid var(--border-color); justify-content: space-between; }
-    .has-dropdown .dropdown-icon { padding: 8px; margin: -8px -8px -8px 8px; cursor: pointer; }
-    .dropdown-menu {
-      position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none;
-      max-height: 0; overflow: hidden; padding: 0; min-width: 0; transition: max-height .3s ease;
-    }
-    .has-dropdown.is-open .dropdown-menu { max-height: 200px; padding: 4px 0 12px 12px; }
-    .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
-  }
-
-  @media (max-width: 600px) {
-    .priority-grid { grid-template-columns: 1fr; }
-    .priority-actions { flex-direction: column; width: 100%; }
-    .priority-actions a { width: 100%; text-align: center; justify-content: center; }
-  }
-
 </style>
 </head>
 <body id="anasayfa">
@@ -740,7 +669,7 @@
   </div>
 </section>
 
-<!-- HİZMET / KATEGORİ ŞERİDİ -->
+<!-- HİZMET / KATEGORİ ŞERİDİ (ORTALANMIŞ) -->
 <section class="services-row-section">
   <div class="wrap">
     <div class="services-row-wrap gsap-reveal">
@@ -782,7 +711,7 @@
   </div>
 </section>
 
-<!-- ÖNCELİK BÖLÜMÜ / ANALİZLER -->
+<!-- ÖNCELİK BÖLÜMÜ / ANALİZLER (DÜZ ALT KISIM) -->
 <section id="analizler" class="priority-section">
   <div class="priority-photo-wrap gsap-reveal">
     <div class="wrap">
@@ -794,7 +723,7 @@
   </div>
 </section>
 
-<!-- GLOBAL NETWORK HARİTA BÖLÜMÜ -->
+<!-- GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK KAVİS) -->
 <section class="global-network-section gsap-reveal">
   <div class="map-layer-container">
     <div class="map-shape"></div>
@@ -1002,7 +931,7 @@ Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meseles
           gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
           full: `Birkaç yıl öncesine kadar "tedarik zinciri" kavramı, çoğu politika yapıcı için soyut bir mühendislik meselesiydi. Pandemi, bunun hiç de öyle olmadığını gösterdi: bir limandaki tıkanıklık, binlerce kilometre ötedeki bir fabrikayı durdurabiliyor. Bu kırılganlık, "reshoring" ve "friend-shoring" gibi kavramları iktisat literatürünün merkezine taşıdı; devletler artık üretimin nerede yapıldığını, sadece maliyet değil güvenlik meselesi olarak da görüyor.
 
-Bu yeni denklemde Türkiye'nin konumu hem fırsat hem risk barındırıyor. Avrupa'ya coğrafi yakınlığı ve TR42 gibi güçlü sanayi hinterlantları, ülkeyi tedarik zincirlerinin yeniden şekillendiği bu dönemde doğal bir alternatif haline getiriyor. Ancak bu fırsatın gerçek kazanıma dönüşmesi, sahada faaliyet gösteren dış ticaret girişimcilerinin doğru araçlarla desteklenmesine bağlı. On Birinci ve On İkinci Kalkınma Planları'nda tekrar eden "yerli ve milli üretim" vurgusu, bu ihtiyacın siyasi karşılığını da gösteriyor.
+Bu yeni denklemde Türkiye'nin konumu hem fırsat hem risk barındırıyor. Avrupa'ya coğrafi yakınlığı ve TR42 gibi güçlü sanayi hinterlantları, ülkeyi tedarik zincirlerinin yeniden şekillendiği bu dönemde doğal bir alternatif haline getiriyor. Ancak bu fırsatın gerçek bir kazanıma dönüşmesi, sahada faaliyet gösteren dış ticaret girişimcilerinin doğru araçlarla desteklenmesine bağlı. On Birinci ve On İkinci Kalkınma Planları'nda tekrar eden "yerli ve milli üretim" vurgusu, bu ihtiyacın siyasi karşılığını da gösteriyor.
 
 Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden konumlanırken teşvik mimarisini doğru kurmak, önümüzdeki on yılın rekabet gücünü büyük ölçüde belirleyecek. Bu araştırmanın aciliyeti de tam olarak buradan geliyor: geç kalınan her yıl, yeniden şekillenen küresel ticaret haritasında daha dezavantajlı bir konumdan başlamak anlamına gelir.`
         }
