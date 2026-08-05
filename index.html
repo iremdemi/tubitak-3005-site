@@ -49,7 +49,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE LOGO
+     HEADER VE LOGO (ŞEFFAF / BÜTÜNLEŞİK TASARIM)
      ========================================================================== */
   header { 
     background-color: transparent; border-bottom: 1px solid transparent; 
@@ -126,7 +126,7 @@
   }
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
-  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ */
+  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ (Sadece En Üstteyken) */
   header:not(.scrolled) .hl-dtg,
   header:not(.scrolled) .hl-research,
   header:not(.scrolled) .hl-portal {
@@ -256,10 +256,19 @@
   .hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ==========================================================================
-     HİZMET/KATEGORİ ŞERİDİ
+     HİZMET/KATEGORİ ŞERİDİ (Simetrik Ortalama)
      ========================================================================== */
-  .services-row-section { background: var(--bg-main); padding: 0 0 150px 0; }
-  .services-row-wrap { position: relative; z-index: 5; margin-top: -150px; }
+  .services-row-section { 
+    background: var(--bg-main); 
+    padding: 0 0 150px 0; 
+  }
+  
+  .services-row-wrap { 
+    position: relative; 
+    z-index: 5; 
+    margin-top: -150px; 
+  }
+  
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .service-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 3.7; box-shadow: 0 22px 44px rgba(20,14,9,.18); background: var(--accent-navy); }
   .service-card img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(1.3) hue-rotate(-6deg); transition: transform .5s ease; }
@@ -350,17 +359,22 @@
   }
 
   /* ==========================================================================
-     GLOBAL NETWORK HARİTA BÖLÜMÜ (Dev Yazı Yerine Eklendi)
+     GLOBAL NETWORK HARİTA BÖLÜMÜ (Cam Efekti, Kavis ve Yeni Renkler)
      ========================================================================== */
   .global-network-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: radial-gradient(circle at center, #35251C 0%, #17110B 100%);
+    background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); /* Sütlü kahve/kirli beyaz */
+    border-radius: 100px 100px 0 0; /* Üst bölümle ayrışması için 100px kavis */
+    margin-top: -60px; /* Üstteki karanlık bölümün altına hafifçe girip kavisin oturması için */
+    padding-top: 60px;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.03); /* Kavisin belli olması için zarif gölge */
   }
   .map-layer-container {
     position: absolute;
@@ -374,49 +388,54 @@
   .map-shape {
     width: 100%;
     height: 100%;
-    background-color: #8C6A53; /* Referans görsele uygun kahve tonu */
+    background-color: #D4C5B9; /* Referans görsele uygun daha açık sütlü kahve tonu */
     -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
     -webkit-mask-size: contain;
     -webkit-mask-position: center;
     -webkit-mask-repeat: no-repeat;
-    opacity: 0.35;
+    opacity: 0.9;
   }
   .map-marker {
     position: absolute;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-ink); /* Açık zeminde okunabilmesi için koyu renk */
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-sans);
     transform: translate(-50%, -50%);
     z-index: 5;
     pointer-events: none;
   }
   .map-dot {
-    width: 5px;
-    height: 5px;
-    background-color: #FFFFFF;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-teal); /* Turuncu vurgu */
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2);
   }
   .map-info-box {
     position: absolute;
-    right: 12%;
+    right: 0; /* En sağa yapıştırıldı */
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--accent-teal);
-    width: min(90%, 480px);
-    padding: 60px 50px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    background: rgba(255, 255, 255, 0.65); /* Glassmorphism cam efekti */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-right: none;
+    border-radius: 30px 0 0 30px; /* Sadece sol taraftan kavis verildi */
+    width: min(85%, 520px);
+    padding: 60px 50px 60px 60px;
+    box-shadow: -15px 20px 40px rgba(0,0,0,0.06);
     z-index: 10;
   }
   .map-info-box h2 {
     font-family: var(--font-serif);
-    font-size: clamp(24px, 3vw, 36px);
+    font-size: clamp(26px, 3.2vw, 40px);
     font-weight: 800;
-    color: #FFFFFF;
+    color: var(--text-ink); /* Cam zemin üzerinde koyu yazı */
     line-height: 1.25;
     margin-bottom: 24px;
   }
@@ -428,26 +447,28 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--accent-teal); /* Turuncu vurgu */
   }
   .map-info-subtitle::before {
     content: '';
     width: 30px;
     height: 2px;
-    background-color: #FFFFFF;
+    background-color: var(--accent-teal);
     display: block;
   }
 
   @media (max-width: 1024px) {
     .map-info-box {
-      right: 5%;
-      padding: 40px 30px;
-      width: 45%;
+      width: 55%;
+      padding: 40px 30px 40px 40px;
     }
   }
   @media (max-width: 768px) {
     .global-network-section {
       min-height: 80vh;
+      border-radius: 50px 50px 0 0;
+      margin-top: -30px;
+      padding-top: 30px;
       align-items: flex-end;
       padding-bottom: 40px;
     }
@@ -462,40 +483,10 @@
       transform: none;
       width: 90%;
       margin: 0 auto;
+      border-radius: 20px;
+      border-right: 1px solid rgba(255,255,255,0.8);
     }
   }
-
-  /* ==========================================================================
-     HABER / ANALİZ SLIDER VE KARTLARI
-     ========================================================================== */
-  .news-slider-section { padding: 64px 0 96px; background: var(--bg-main); }
-  .news-slider {
-    display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; padding-top: 10px;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent; cursor: grab;
-  }
-  .news-slider:active { cursor: grabbing; }
-  .news-slider::-webkit-scrollbar { height: 8px; }
-  .news-slider::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
-
-  .news-card { 
-    flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start; display: flex; flex-direction: column; 
-    border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-alt); overflow: hidden;
-    user-select: none; transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
-  
-  .nc-img-wrap { width: 100%; height: 180px; overflow: hidden; cursor: pointer; }
-  .nc-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease; filter: sepia(.22) saturate(1.35) hue-rotate(-6deg) contrast(1.03); }
-  .news-card:hover .nc-img-wrap img { transform: scale(1.05); filter: sepia(.1) saturate(1.35) hue-rotate(-6deg) contrast(1.03); }
-
-  .nc-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
-  .nc-content h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 12px; cursor: pointer; transition: color 0.2s;}
-  .nc-content h3:hover { color: var(--accent-navy); }
-  .nc-content p { font-size: 13.5px; color: var(--text-body); font-family: var(--font-sans); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-  
-  .read-more { font-size: 12px; font-weight: 700; color: #000000; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: opacity 0.2s;}
-  .read-more:hover { opacity: 0.6; }
 
   /* ==========================================================================
      MAKALE OKUMA POP-UP (MODAL) EKRANI
@@ -1011,7 +1002,7 @@ Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meseles
           gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
           full: `Birkaç yıl öncesine kadar "tedarik zinciri" kavramı, çoğu politika yapıcı için soyut bir mühendislik meselesiydi. Pandemi, bunun hiç de öyle olmadığını gösterdi: bir limandaki tıkanıklık, binlerce kilometre ötedeki bir fabrikayı durdurabiliyor. Bu kırılganlık, "reshoring" ve "friend-shoring" gibi kavramları iktisat literatürünün merkezine taşıdı; devletler artık üretimin nerede yapıldığını, sadece maliyet değil güvenlik meselesi olarak da görüyor.
 
-Bu yeni denklemde Türkiye'nin konumu hem fırsat hem risk barındırıyor. Avrupa'ya coğrafi yakınlığı ve TR42 gibi güçlü sanayi hinterlantları, ülkeyi tedarik zincirlerinin yeniden şekillendiği bu dönemde doğal bir alternatif haline getiriyor. Ancak bu fırsatın gerçek bir kazanıma dönüşmesi, sahada faaliyet gösteren dış ticaret girişimcilerinin doğru araçlarla desteklenmesine bağlı. On Birinci ve On İkinci Kalkınma Planları'nda tekrar eden "yerli ve milli üretim" vurgusu, bu ihtiyacın siyasi karşılığını da gösteriyor.
+Bu yeni denklemde Türkiye'nin konumu hem fırsat hem risk barındırıyor. Avrupa'ya coğrafi yakınlığı ve TR42 gibi güçlü sanayi hinterlantları, ülkeyi tedarik zincirlerinin yeniden şekillendiği bu dönemde doğal bir alternatif haline getiriyor. Ancak bu fırsatın gerçek kazanıma dönüşmesi, sahada faaliyet gösteren dış ticaret girişimcilerinin doğru araçlarla desteklenmesine bağlı. On Birinci ve On İkinci Kalkınma Planları'nda tekrar eden "yerli ve milli üretim" vurgusu, bu ihtiyacın siyasi karşılığını da gösteriyor.
 
 Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden konumlanırken teşvik mimarisini doğru kurmak, önümüzdeki on yılın rekabet gücünü büyük ölçüde belirleyecek. Bu araştırmanın aciliyeti de tam olarak buradan geliyor: geç kalınan her yıl, yeniden şekillenen küresel ticaret haritasında daha dezavantajlı bir konumdan başlamak anlamına gelir.`
         }
