@@ -285,25 +285,28 @@
   }
 
   /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ (Düz Kartlar, Yay Tasarımı ve Konteyner Arka Planı)
+     ÖNCELİK BÖLÜMÜ (Düz Kartlar, Animasyonlu Kavis ve Konteyner Arka Planı)
      ========================================================================== */
-  .priority-section { padding: 60px 0 0; text-align: center; background: var(--bg-alt); }
-  .priority-heading { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; color: var(--text-ink); max-width: 700px; margin: 0 auto 30px; line-height: 1.3; }
-  .priority-heading .hl { color: var(--accent-teal); }
-  .priority-tag { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: var(--accent-teal); margin-bottom: 16px; }
-  .priority-tag .bar { width: 3px; height: 18px; background: var(--accent-teal); border-radius: 2px; }
+  .priority-section { padding: 40px 0 0; text-align: center; background: var(--bg-alt); }
+  
+  /* Animasyonlu kavis efekti için Keyframes */
+  @keyframes archPulse {
+    0% { border-radius: 50% 50% 0 0 / 4vw 4vw 0 0; }
+    100% { border-radius: 50% 50% 0 0 / 12vw 12vw 0 0; }
+  }
 
   .priority-photo-wrap {
     position: relative; width: 100%;
-    /* Konteyner/Lojistik Görseli */
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding: 90px 32px 80px;
-    /* Yay/Arch görünümü burada veriliyor */
-    border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+    padding: 120px 32px 80px;
+    border-radius: 50% 50% 0 0 / 8vw 8vw 0 0;
+    overflow: hidden; /* Kavisin (yayın) görünmesini engelleyen degradeyi kırpar */
+    animation: archPulse 4s ease-in-out infinite alternate;
   }
   .priority-photo-wrap::before {
     content: ''; position: absolute; inset: 0;
     background: linear-gradient(150deg, rgba(20,10,5,0.7) 0%, rgba(10,5,3,0.85) 100%);
+    z-index: 0;
   }
   
   .priority-grid {
@@ -311,7 +314,6 @@
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
   
-  /* Kartlar tamamen düzeltildi, rotasyon (yamukluk) kaldırıldı */
   .priority-card {
     background: rgba(40, 30, 20, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 34px 28px; text-align: left;
@@ -719,11 +721,6 @@
 
 <!-- ÖNCELİK BÖLÜMÜ -->
 <section class="priority-section">
-  <div class="wrap">
-    <div class="hero-tag priority-tag gsap-reveal"><span class="bar"></span><span data-i18n="heroTag">TÜBİTAK 3005 Destekli Proje</span></div>
-    <h2 class="priority-heading gsap-reveal"><span data-i18n="priorityHeading">Araştırmada Bilimsel Titizlik </span><span class="hl" data-i18n="priorityHeadingHl">Önceliğimizdir</span></h2>
-  </div>
-  
   <div class="priority-photo-wrap gsap-reveal">
     <div class="wrap">
       <div class="priority-grid" id="priorityGrid"></div>
@@ -930,7 +927,7 @@ Pandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yük
 
 Projemizin çıkış noktalarından biri, bu sessiz varsayımı tersine çevirmektir. "Ticari milliyetçilik" olarak adlandırdığımız yaklaşım, bir ekonomik faaliyetin başarısını yalnızca ciro veya pazar payıyla değil, yarattığı değerin hangi ülkede sabit sermayeye, istihdama ve yenilik kapasitesine dönüştüğüyle ölçer. Bu çerçevede dış ticaret girişimciliği, yurt dışına yatırım yapmak yerine, üretimi ve katma değer yaratma sürecini bilinçli biçimde yurt içinde tutan; yalnızca dış satım yoluyla küresel pazara açılan bir modeldir. Aradaki fark kozmetik değildir: biri sermayeyi ihraç eder, diğeri sermayeyi ithal eder.
 
-Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meselesi olduğunu vurgulamak gerekir. Teşvik systems bugüne kadar çoğunlukla ihracat hacmini büyütmeyi hedefledi; hangi model üzerinden büyüdüğünü, yani yaratılan değerin nerede kaldığını sorgulamadı. Küresel korumacılığın yükseldiği, tedarik zincirlerinin yeniden ulusal sınırlara çekildiği bir dönemde, bu ayrımı gözden kaçırmanın maliyeti giderek artıyor.`
+Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meselesi olduğunu vurgulamak gerekir. Teşvik sistemleri bugüne kadar çoğunlukla ihracat hacmini büyütmeyi hedefledi; hangi model üzerinden büyüdüğünü, yani yaratılan değerin nerede kaldığını sorgulamadı. Küresel korumacılığın yükseldiği, tedarik zincirlerinin yeniden ulusal sınırlara çekildiği bir dönemde, bu ayrımı gözden kaçırmanın maliyeti giderek artıyor.`
         },
         { 
           baslik: "Neden Şimdi? Tedarik Zincirleri Kırılırken Dış Ticaret Girişimciliğinin Yükselişi", 
