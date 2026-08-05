@@ -256,17 +256,17 @@
   .hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ==========================================================================
-     HİZMET/KATEGORİ ŞERİDİ (Simetrik Ortalama)
+     HİZMET/KATEGORİ ŞERİDİ
      ========================================================================== */
   .services-row-section { 
     background: var(--bg-main); 
-    padding: 0 0 150px 0; /* Alt kavis ile eşit boşluk (150px) */
+    padding: 0 0 150px 0; 
   }
   
   .services-row-wrap { 
     position: relative; 
     z-index: 5; 
-    margin-top: -150px; /* Üst kavis ile eşit taşma (150px) */
+    margin-top: -150px; 
   }
   
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -319,10 +319,10 @@
   .priority-photo-wrap {
     position: relative; width: 100%; z-index: 2;
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding: 120px 32px 80px; 
-    border-radius: 100px 100px 0 0; /* Üst kavisle 100px birebir ayna yansıması (Simetrik) */
+    padding: 160px 32px 80px; 
+    border-radius: 100px 100px 0 0; 
     overflow: hidden; 
-    margin-top: 0; /* Kartları zincir gibi yutmaması için negatif boşluk kaldırıldı */
+    margin-top: 0; 
   }
   .priority-photo-wrap::before {
     content: ''; position: absolute; inset: 0;
@@ -381,12 +381,13 @@
   }
 
   .giant-masked-text {
-    font-family: var(--font-sans);
-    font-size: 14.8vw;
+    font-family: var(--font-serif); /* Çok daha kalın olması için League Spartan */
+    font-size: 6.5vw; /* Ekranı komple kaplayacak şekilde optimize edildi */
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.8;
-    letter-spacing: -0.05em;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    padding: 0 10px;
     background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     filter: sepia(.55) saturate(2.1) hue-rotate(-28deg) brightness(.85) contrast(1.08);
     -webkit-background-clip: text;
@@ -394,9 +395,13 @@
     display: block;
     width: 100%;
     margin: 0;
-    padding: 0;
     text-align: center;
     user-select: none;
+  }
+  @media (max-width: 768px) {
+    .giant-masked-text {
+      font-size: 8vw;
+    }
   }
 
   /* ==========================================================================
@@ -708,7 +713,7 @@
 <!-- MASKELENMİŞ DEV YAZI BÖLÜMÜ -->
 <section class="giant-text-section gsap-reveal">
   <div class="giant-text-subtitle" data-i18n="giantSub">TÜBİTAK 3005 DESTEKLİ PROJE</div>
-  <div class="giant-masked-text">EXPORT ECOSYSTEM</div>
+  <div class="giant-masked-text" data-i18n="giantMaskText">İHRACAT TEŞVİKLERİNİN<br>DIŞ TİCARET GİRİŞİMCİLİĞİ<br>PERSPEKTİFİYLE REVİZE<br>EDİLMESİNE YÖNELİK<br>POLİTİKA ÖNERİLERİ</div>
 </section>
 
 <!-- ARAŞTIRMA EKİBİMİZ -->
@@ -802,6 +807,7 @@
       svc3Title: "Politika Önerileri", svc3Desc: "Kanıta dayalı öneriler",
       svc4Desc: "Uzman akademik kadro",
       giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
+      giantMaskText: "İHRACAT TEŞVİKLERİNİN<br>DIŞ TİCARET GİRİŞİMCİLİĞİ<br>PERSPEKTİFİYLE REVİZE<br>EDİLMESİNE YÖNELİK<br>POLİTİKA ÖNERİLERİ",
       teamTitle: "Araştırma Ekibi",
       brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
@@ -821,6 +827,7 @@
       svc3Title: "Policy Recommendations", svc3Desc: "Evidence-based proposals",
       svc4Desc: "Expert academic staff",
       giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
+      giantMaskText: "POLICY RECOMMENDATIONS<br>FOR REVISING EXPORT INCENTIVES<br>FROM THE PERSPECTIVE OF<br>FOREIGN TRADE ENTREPRENEURSHIP",
       teamTitle: "Research Team",
       brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
