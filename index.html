@@ -49,21 +49,26 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE LOGO
+     HEADER VE LOGO (ŞEFFAF / BÜTÜNLEŞİK TASARIM EKLENDİ)
      ========================================================================== */
   header { 
-    background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
-    position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    background-color: transparent; border-bottom: 1px solid transparent; 
+    position: fixed; width: 100%; top: 0; left: 0; z-index: 100; 
+    transition: all 0.4s ease;
   }
+  
+  /* Scroll yapıldığındaki kırık beyaz, cam efekti (Glassmorphism) görünümü */
+  header.scrolled {
+    background-color: rgba(250, 248, 245, 0.9);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(236, 228, 218, 0.6);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
   .header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; max-width: 1360px; margin: 0 auto; padding: 0 32px; }
-  
   .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .horizontal-logo { display: flex; align-items: center; gap: 12px; }
   
-  .horizontal-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
   .hl-dtg {
     font-family: var(--font-serif);
     font-size: 34px;
@@ -71,17 +76,15 @@
     color: #000000;
     letter-spacing: 0.04em;
     line-height: 1;
+    transition: color 0.3s ease;
   }
   .hl-divider {
     width: 1px;
     height: 28px;
     background-color: #CBD5E1;
+    transition: background-color 0.3s ease;
   }
-  .hl-stack {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
+  .hl-stack { display: flex; flex-direction: column; line-height: 1.15; }
   .hl-research, .hl-portal {
     font-family: var(--font-sans);
     font-size: 11px;
@@ -89,12 +92,13 @@
     color: #000000;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    transition: color 0.3s ease;
   }
 
   /* Menü */
   .nav-menu { display: flex; align-items: center; gap: 28px; margin: 0 auto; }
   .nav-item { position: relative; }
-  .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
+  .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; transition: color 0.3s ease;}
   .nav-menu a:hover { color: var(--accent-teal); }
   
   .has-dropdown .dropdown-icon { font-size: 8px; transition: transform 0.2s; }
@@ -110,18 +114,56 @@
 
   .header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
   
-  .lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; }
-  .lang-switch span { transition: color 0.2s; padding: 2px 4px; }
-  .lang-switch span:hover { color: var(--accent-teal); }
+  .lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: color 0.3s ease; }
+  .lang-switch span { transition: all 0.2s ease; padding: 2px 4px; }
+  .lang-switch span:hover { color: var(--accent-teal) !important; }
   .lang-switch span.active { color: var(--accent-navy); font-weight: 700; background: #F1F5F9; border-radius: 4px; }
-  .lang-switch .sep { color: #CBD5E1; font-weight: 300; }
+  .lang-switch .sep { color: #CBD5E1; font-weight: 300; transition: color 0.3s ease; }
   
   .btn-outline-header {
     border: 1px solid var(--accent-navy); color: var(--accent-navy);
     padding: 8px 16px; font-size: 11.5px; font-weight: 700; border-radius: 4px;
-    transition: all 0.2s; white-space: nowrap;
+    transition: all 0.3s ease; white-space: nowrap;
   }
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
+
+  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ (Sadece En Üstteyken) */
+  header:not(.scrolled) .hl-dtg,
+  header:not(.scrolled) .hl-research,
+  header:not(.scrolled) .hl-portal {
+    color: #FFFFFF;
+  }
+  header:not(.scrolled) .hl-divider {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a:hover {
+    color: #FFFFFF;
+  }
+  header:not(.scrolled) .lang-switch {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  header:not(.scrolled) .lang-switch span.active {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.15);
+  }
+  header:not(.scrolled) .lang-switch .sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  header:not(.scrolled) .btn-outline-header {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #FFFFFF;
+  }
+  header:not(.scrolled) .btn-outline-header:hover {
+    background-color: #FFFFFF;
+    color: var(--accent-navy);
+    border-color: #FFFFFF;
+  }
+  header:not(.scrolled) .menu-toggle span {
+    background: #FFFFFF;
+  }
 
   /* ==========================================================================
      HERO SECTION
@@ -285,11 +327,10 @@
   }
 
   /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ (Düz Kartlar, Animasyonlu Kavis ve Konteyner Arka Planı)
+     ÖNCELİK BÖLÜMÜ
      ========================================================================== */
   .priority-section { padding: 40px 0 0; text-align: center; background: var(--bg-alt); }
   
-  /* Animasyonlu kavis efekti için Keyframes */
   @keyframes archPulse {
     0% { border-radius: 50% 50% 0 0 / 4vw 4vw 0 0; }
     100% { border-radius: 50% 50% 0 0 / 12vw 12vw 0 0; }
@@ -300,7 +341,7 @@
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     padding: 120px 32px 80px;
     border-radius: 50% 50% 0 0 / 8vw 8vw 0 0;
-    overflow: hidden; /* Kavisin (yayın) görünmesini engelleyen degradeyi kırpar */
+    overflow: hidden; 
     animation: archPulse 4s ease-in-out infinite alternate;
   }
   .priority-photo-wrap::before {
@@ -838,7 +879,6 @@
       svc4Desc: "Uzman akademik kadro",
       giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
       teamTitle: "Araştırma Ekibi",
-      priorityHeading: "Araştırmada Bilimsel Titizlik ", priorityHeadingHl: "Önceliğimizdir",
       brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
@@ -859,7 +899,6 @@
       svc4Desc: "Expert academic staff",
       giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
       teamTitle: "Research Team",
-      priorityHeading: "Scientific Rigor Is Our ", priorityHeadingHl: "Top Priority",
       brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
@@ -1156,6 +1195,16 @@ Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden kon
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Üst Bar Kaydırma Mantığı
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
     // Escape tuşu ile modal ve mobil menüyü kapat
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Escape'){
