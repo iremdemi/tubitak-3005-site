@@ -256,12 +256,18 @@
   .hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ==========================================================================
-     HİZMET/KATEGORİ ŞERİDİ (Kartların Ortalı Durduğu Yer)
+     HİZMET/KATEGORİ ŞERİDİ (Kusursuz Ortalama)
      ========================================================================== */
-  .services-row-section { background: var(--bg-main); padding: 0; }
+  .services-row-section { 
+    background: var(--bg-main); 
+    padding: 0 0 160px 0; /* Alttaki kavisin üstüne çıkmaması için 160px ferah beyaz alan bıraktık */
+  }
   
-  /* Üst ve alt kavislerle eşit oranda (80px) kesişmesi için margin ayarları */
-  .services-row-wrap { position: relative; z-index: 5; margin-top: -80px; }
+  .services-row-wrap { 
+    position: relative; 
+    z-index: 5; 
+    margin-top: -100px; /* Üst kavise 100px taşma sağlandı */
+  }
   
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .service-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 3.7; box-shadow: 0 22px 44px rgba(20,14,9,.18); background: var(--accent-navy); }
@@ -304,17 +310,18 @@
   }
 
   /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ / ANALİZLER (ORTALANMIŞ KARTLAR VE SİMETRİK KAVİS)
+     ÖNCELİK BÖLÜMÜ / ANALİZLER (SİMETRİK KAVİS VE ALT TAŞMA)
      ========================================================================== */
   .priority-section { padding: 0; text-align: center; background: var(--bg-main); }
   
   .priority-photo-wrap {
     position: relative; width: 100%; z-index: 2;
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding: 160px 32px 80px; /* Üstteki kavis taşmasına göre kartların değmemesi için yeterli iç boşluk */
+    /* Kartların 100px taşıp içeride ferah durması için 160px iç boşluk verdik */
+    padding: 160px 32px 80px; 
     border-radius: 90px 90px 0 0; /* Üst kavisle 90px birebir ayna yansıması */
     overflow: hidden; 
-    margin-top: -80px; /* Kartları eşit derecede kavise dahil etmek için */
+    margin-top: -260px; /* Alttaki kavisi, kartların alt kısmına tam 100px taşacak şekilde yukarı çektik */
   }
   .priority-photo-wrap::before {
     content: ''; position: absolute; inset: 0;
@@ -343,6 +350,8 @@
   .priority-card p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
   .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 50px; }
+  .priority-actions .btn-white { background: #FFFFFF; color: var(--accent-navy); font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; transition: all .3s; }
+  .priority-actions .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
   .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; transition: all .3s; }
   .priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
@@ -514,7 +523,7 @@
   @media (max-width: 1024px) {
     .footer-inner { grid-template-columns: 1fr; }
     .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; }
-    .priority-photo-wrap { border-radius: 50px 50px 0 0; }
+    .priority-photo-wrap { border-radius: 50px 50px 0 0; margin-top: -260px; padding: 180px 20px 50px;}
   }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
@@ -554,7 +563,6 @@
 
   @media (max-width: 600px) {
     .priority-grid { grid-template-columns: 1fr; }
-    .priority-photo-wrap { border-radius: 50px 50px 0 0; padding: 160px 20px 50px; }
     .priority-actions { flex-direction: column; width: 100%; }
     .priority-actions a { width: 100%; text-align: center; justify-content: center; }
   }
