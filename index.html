@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE LOGO
+     HEADER VE GÜNCELLENMİŞ PRESTİJLİ LOGO
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -272,7 +272,7 @@
   .read-more { font-size: 12px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
 
   /* ==========================================================================
-     ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / SCROLLBAR GİZLENDİ)
+     ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ÇUBUK YOK)
      ========================================================================== */
   .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
   .section-header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
@@ -300,11 +300,10 @@
     scroll-behavior: smooth;
     padding-bottom: 12px;
     padding-top: 10px;
-    /* Kaydırma çubuğu tamamen kaldırıldı (gizlendi) */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE ve Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
-  .team-slider-track::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera */ }
+  .team-slider-track::-webkit-scrollbar { display: none; }
 
   .team-card {
     flex: 0 0 280px;
@@ -335,14 +334,13 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: grayscale(100%); /* Siyah-beyaz filtre */
+    filter: grayscale(100%);
     transition: transform 0.5s ease;
   }
   .team-card:hover .tc-img-wrap img {
     transform: scale(1.04);
   }
 
-  /* Anonim Avatar Silüeti */
   .tc-avatar-fallback {
     width: 100%;
     height: 100%;
@@ -910,11 +908,11 @@
         { baslik: "Finansal Yapı ve Özkaynak Performansı", ozet: "İhracat başarısının %86,8 oranında finansal göstergelere dayandığını ortaya koyan ampirik model.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
       ],
       ekip: [
-        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", fotograf: "WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
-        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
-        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
-        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
-        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
         { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", fotograf: "" },
         { isim: "Öğr. Gör. Bilak Torkul", unvan: "Doktora Bursiyeri", fotograf: "" },
         { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", fotograf: "" }
@@ -927,11 +925,11 @@
         { baslik: "Financial Structure & Equity Performance", ozet: "Empirical model showing that export success relies 86.8% on financial metrics.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
       ],
       ekip: [
-        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", fotograf: "WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
-        { isim: "Doç. Dr. Caner Erden", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
-        { isim: "Doç. Dr. Metin Saygılı", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
-        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
-        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
         { isim: "Dr. Ömer Alperen Onay", unvan: "Post-Doctoral Fellow", fotograf: "" },
         { isim: "Öğr. Gör. Bilak Torkul", unvan: "Doctoral Scholar", fotograf: "" },
         { isim: "Furkan Coşgun", unvan: "Master's Scholar", fotograf: "" }
