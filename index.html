@@ -34,7 +34,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE GÜNCELLENMİŞ PRESTİJLİ LOGO (Siyah Cormorant Garamond + Inter Medium)
+     HEADER VE LOGO
      ========================================================================== */
   header { 
     background-color: var(--bg-alt); border-bottom: 1px solid var(--border-color); 
@@ -272,23 +272,120 @@
   .read-more { font-size: 12px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
 
   /* ==========================================================================
-     EKİP BÖLÜMÜ
+     ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ŞERİT)
      ========================================================================== */
   .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
-  .section-alt { background-color: var(--bg-alt); }
-  
-  .section-header { margin-bottom: 64px; max-width: 600px; }
+  .section-header { margin-bottom: 48px; max-width: 600px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .section-header-content { max-width: 600px; }
   .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-teal); display: block; margin-bottom: 12px; }
   .section-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 900; color: var(--text-ink); line-height: 1.3; }
 
-  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-  .team-member { display: flex; gap: 24px; align-items: flex-start; padding: 16px; border-radius: 12px; transition: background 0.3s; }
-  .team-member:hover { background: #F1F5F9; }
-  .tm-avatar { width: 80px; height: 80px; background: var(--border-color); flex: none; filter: grayscale(100%); object-fit: cover; border-radius: 50%; } 
-  .tm-fallback { width: 80px; height: 80px; background: var(--text-ink); color: var(--bg-alt); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 24px; font-weight: 700; flex: none; border-radius: 50%; }
-  .tm-info h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 4px; }
-  .tm-info .role { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-teal); margin-bottom: 12px; display: block; }
-  .tm-info p { font-size: 13px; color: var(--text-body); line-height: 1.6; }
+  /* Slider Navigasyon Okları */
+  .team-slider-nav { display: flex; gap: 12px; }
+  .team-nav-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
+    background: var(--bg-alt); color: var(--accent-navy); display: flex; align-items: center;
+    justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  .team-nav-btn:hover { background: var(--accent-navy); color: #FFF; border-color: var(--accent-navy); transform: translateY(-2px); }
+  .team-nav-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* Kaydırmalı Şerit Container */
+  .team-slider-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .team-slider-track {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 24px;
+    padding-top: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+  }
+  .team-slider-track::-webkit-scrollbar { height: 6px; }
+  .team-slider-track::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
+
+  /* Ekip Kartı Tasarımı (Referans Görsel Tarzında) */
+  .team-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: var(--bg-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(23, 59, 122, 0.1);
+  }
+
+  .tc-img-wrap {
+    width: 100%;
+    height: 320px;
+    background: #F1F5F9;
+    position: relative;
+    overflow: hidden;
+  }
+  .tc-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%); /* Siyah-beyaz zorunluluğu */
+    transition: transform 0.5s ease;
+  }
+  .team-card:hover .tc-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  /* Anonim Avatar Stil (Gri kafa ve omuzlar silüeti) */
+  .tc-avatar-fallback {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748B;
+  }
+  .tc-avatar-fallback svg {
+    width: 120px;
+    height: 120px;
+    fill: currentColor;
+    opacity: 0.85;
+  }
+
+  .tc-content {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    background: #FFFFFF;
+  }
+  .tc-content h3 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-ink);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .tc-content .tc-role {
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-teal);
+  }
 
   /* ==========================================================================
      FOOTER
@@ -300,7 +397,7 @@
   .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
 
   /* ==========================================================================
-     KURUMSAL AKADEMİK BİLGİ MERKEZİ WIDGET STİLLERİ
+     BİLGİ MERKEZİ WIDGET
      ========================================================================== */
   .portal-widget-container {
     position: fixed;
@@ -562,7 +659,6 @@
 <header>
   <div class="header-inner">
     
-    <!-- SOL: Güncellenmiş Prestijli Logo -->
     <a href="#anasayfa" class="brand">
       <div class="horizontal-logo">
         <span class="hl-dtg">DTG</span>
@@ -574,7 +670,6 @@
       </div>
     </a>
 
-    <!-- ORTA: Menü -->
     <nav class="nav-menu">
       <div class="nav-item"><a href="#anasayfa" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
       
@@ -615,7 +710,6 @@
       <div class="nav-item"><a href="#iletisim" data-i18n="menuIletisim">İletişim</a></div>
     </nav>
 
-    <!-- SAĞ: Dil ve Buton -->
     <div class="header-right">
       <div class="lang-switch" id="langToggle">
         <span class="active" data-lang="tr">TR</span>
@@ -628,7 +722,7 @@
   </div>
 </header>
 
-<!-- HERO SECTION (SİNEMATİK SLIDESHOW) -->
+<!-- HERO SECTION -->
 <section id="proje" class="hero-corporate">
   <div class="hero-slides">
     <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
@@ -658,14 +752,31 @@
   </div>
 </section>
 
-<!-- ARAŞTIRMA EKİBİMİZ -->
+<!-- ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ŞERİT) -->
 <section id="ekip" class="section">
   <div class="wrap">
     <div class="section-header gsap-reveal">
-      <span class="eyebrow" data-i18n="teamEyebrow">ARAŞTIRMA KÜNYESİ</span>
-      <h2 data-i18n="teamTitle">Akademik ve Sektörel Uzmanlar</h2>
+      <div class="section-header-content">
+        <span class="eyebrow" data-i18n="teamEyebrow">ARAŞTIRMA KÜNYESİ</span>
+        <h2 data-i18n="teamTitle">Araştırma Ekibi</h2>
+      </div>
+      <!-- Slider Okları -->
+      <div class="team-slider-nav">
+        <button class="team-nav-btn" id="teamPrev" aria-label="Önceki">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="team-nav-btn" id="teamNext" aria-label="Sonraki">
+          <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </div>
     </div>
-    <div class="team-grid gsap-reveal" id="ekip-container"></div>
+
+    <!-- Kaydırmalı Şerit -->
+    <div class="team-slider-wrapper gsap-reveal">
+      <div class="team-slider-track" id="ekip-container">
+        <!-- Dinamik olarak doldurulacak -->
+      </div>
+    </div>
   </div>
 </section>
 
@@ -692,7 +803,7 @@
   </div>
 </footer>
 
-<!-- KURUMLARI VE AKADEMİK STANDARTLARI YANSITAN BİLGİ MERKEZİ WIDGET -->
+<!-- BİLGİ MERKEZİ WIDGET -->
 <div class="portal-widget-container">
   <div class="portal-welcome-bubble" id="portalWelcomeBubble">
     <button class="portal-welcome-close" id="portalWelcomeClose">&times;</button>
@@ -717,7 +828,6 @@
         Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı hakkında bilgi almak için sorularınızı iletebilirsiniz.
       </div>
 
-      <!-- Hazır Soru Kartları (Quick Action Buttons) -->
       <div class="portal-cards-container" id="portalQuickCards">
         <button class="portal-action-card" data-query="Proje hakkında">Proje hakkında</button>
         <button class="portal-action-card" data-query="Araştırma bulguları">Araştırma bulguları</button>
@@ -771,7 +881,7 @@
       heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
       heroBtn: "İNCELE",
       giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
-      teamEyebrow: "ARAŞTIRMA KÜNYESİ", teamTitle: "Akademik ve Sektörel Uzmanlar",
+      teamEyebrow: "ARAŞTIRMA KÜNYESİ", teamTitle: "Araştırma Ekibi",
       brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
@@ -786,7 +896,7 @@
       heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
       heroBtn: "VIEW",
       giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
-      teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Academic and Sectoral Experts",
+      teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Research Team",
       brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
@@ -805,10 +915,14 @@
         { baslik: "Finansal Yapı ve Özkaynak Performansı", ozet: "İhracat başarısının %86,8 oranında finansal göstergelere dayandığını ortaya koyan ampirik model.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
       ],
       ekip: [
-        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Proje Yürütücüsü", aciklama: "Sakarya Üniversitesi İşletme Fakültesi Uluslararası Ticaret ve Lojistik Bölümü.", fotograf: "" },
-        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", aciklama: "Dış ticaret politikaları ve küresel rekabet stratejileri uzmanı.", fotograf: "" },
-        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", aciklama: "Finansal teknolojiler ve dış ticaret finansmanı analisti.", fotograf: "" },
-        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", aciklama: "Tedarik zinciri yönetimi ve lojistik optimizasyon.", fotograf: "" }
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", fotograf: "WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", fotograf: "WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", fotograf: "" },
+        { isim: "Öğr. Gör. Bilak Torkul", unvan: "Doktora Bursiyeri", fotograf: "" },
+        { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", fotograf: "" }
       ]
     },
     en: {
@@ -818,10 +932,14 @@
         { baslik: "Financial Structure & Equity Performance", ozet: "Empirical model showing that export success relies 86.8% on financial metrics.", gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" }
       ],
       ekip: [
-        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", aciklama: "Sakarya University, Faculty of Business Administration.", fotograf: "" },
-        { isim: "Assoc. Prof. Dr. Caner Erden", unvan: "Researcher", aciklama: "Expert in foreign trade policies and global competition.", fotograf: "" },
-        { isim: "Assoc. Prof. Dr. Metin Saygılı", unvan: "Researcher", aciklama: "Financial technologies and trade finance analyst.", fotograf: "" },
-        { isim: "Assist. Prof. Dr. Çağdaş Ateş", unvan: "Researcher", aciklama: "Supply chain management and logistics optimization.", fotograf: "" }
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", fotograf: "WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Researcher", fotograf: "WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Dr. Ömer Alperen Onay", unvan: "Post-Doctoral Fellow", fotograf: "" },
+        { isim: "Öğr. Gör. Bilak Torkul", unvan: "Doctoral Scholar", fotograf: "" },
+        { isim: "Furkan Coşgun", unvan: "Master's Scholar", fotograf: "" }
       ]
     }
   };
@@ -861,17 +979,19 @@
     if (ekipEl) {
       ekipEl.innerHTML = '';
       data.ekip.forEach(kisi => {
-        const baslar = kisi.isim.split(' ').map(k => k[0]).join('').slice(0, 2).toUpperCase();
         const avatar = kisi.fotograf
-          ? `<img class="tm-avatar" src="${kisi.fotograf}" alt="${kisi.isim}">`
-          : `<div class="tm-fallback">${baslar}</div>`;
+          ? `<img src="${kisi.fotograf}" alt="${kisi.isim}">`
+          : `<div class="tc-avatar-fallback">
+               <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+             </div>`;
         ekipEl.insertAdjacentHTML('beforeend', `
-          <div class="team-member hover-lift">
-            ${avatar}
-            <div class="tm-info">
+          <div class="team-card">
+            <div class="tc-img-wrap">
+              ${avatar}
+            </div>
+            <div class="tc-content">
               <h3>${kisi.isim}</h3>
-              <span class="role">${kisi.unvan}</span>
-              <p>${kisi.aciklama}</p>
+              <span class="tc-role">${kisi.unvan}</span>
             </div>
           </div>`);
       });
@@ -879,6 +999,44 @@
 
     setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
   }
+
+  // Takım Slider Ok Butonları İşlevselliği
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById('ekip-container');
+    const prevBtn = document.getElementById('teamPrev');
+    const nextBtn = document.getElementById('teamNext');
+
+    if (track && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -310, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: 310, behavior: 'smooth' });
+      });
+    }
+
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length > 0) {
+      let currentSlide = 0;
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 5500);
+    }
+
+    setTimeout(() => {
+      const bubble = document.getElementById('portalWelcomeBubble');
+      const chatBox = document.getElementById('portalChatBox');
+      if (bubble && chatBox && !chatBox.classList.contains('open')) {
+        bubble.classList.add('show');
+      }
+    }, 1500);
+
+    translateHTML();
+    renderDynamicData();
+    initAnimations();
+  });
 
   document.getElementById('langToggle').addEventListener('click', (e) => {
     if (e.target.tagName === 'SPAN') {
@@ -907,31 +1065,7 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length > 0) {
-      let currentSlide = 0;
-      setInterval(() => {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-      }, 5500);
-    }
-
-    setTimeout(() => {
-      const bubble = document.getElementById('portalWelcomeBubble');
-      const chatBox = document.getElementById('portalChatBox');
-      if (bubble && chatBox && !chatBox.classList.contains('open')) {
-        bubble.classList.add('show');
-      }
-    }, 1500);
-
-    translateHTML();
-    renderDynamicData();
-    initAnimations();
-  });
-
-  // Kurumsal Bilgi Merkezi Mantığı
+  // Bilgi Merkezi Mantığı
   const toggleBtn = document.getElementById('portalToggleBtn');
   const chatBox = document.getElementById('portalChatBox');
   const chatClose = document.getElementById('portalChatClose');
