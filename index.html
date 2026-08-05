@@ -237,7 +237,7 @@
   .services-row-section { 
     position: relative;
     background: var(--bg-main); 
-    padding: 100px 0; /* Kartların üstünde ve altında tam 100px BEYAZ BOŞLUK */
+    padding: 100px 0; 
   }
   
   /* Kaydırma Dürtüsü Sağlayan Animasyon (Scroll Indicator) */
@@ -250,6 +250,11 @@
     flex-direction: column;
     gap: 6px;
     z-index: 10;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  .scroll-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
   }
   .scroll-dot {
     width: 6px;
@@ -324,7 +329,7 @@
     position: relative; width: 100%; z-index: 2;
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     padding: 120px 32px 80px; 
-    border-radius: 100px; /* Üstü ve altı 100px kavisli */
+    border-radius: 100px; 
     overflow: hidden; 
     margin-top: 0; 
   }
@@ -363,15 +368,15 @@
   }
 
   /* ==========================================================================
-     GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK, ÜSTÜ-ALTI KAVİSLİ)
+     GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK KAVİS)
      ========================================================================== */
   .global-network-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
     background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); 
-    border-radius: 100px; /* Üstü ve altı 100px kavisli */
-    margin-top: 100px; /* Üstteki bölümle arada tam beyaz kavis boşluğu */
+    border-radius: 100px; 
+    margin-top: 100px; 
     padding-top: 60px;
     z-index: 10;
     display: flex;
@@ -435,10 +440,10 @@
     z-index: 10;
   }
   .map-info-box h2 {
-    font-family: var(--font-sans); /* İstenilen ince ve kurumsal font */
+    font-family: var(--font-sans);
     font-size: clamp(22px, 2.8vw, 34px);
-    font-weight: 500; /* İnce */
-    font-style: italic; /* İtalik */
+    font-weight: 500; 
+    font-style: italic; 
     color: var(--text-ink); 
     line-height: 1.4;
     margin-bottom: 24px;
@@ -450,7 +455,7 @@
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #6d4c41; /* TÜBİTAK yazısı Kahverengi */
+    color: #6d4c41; 
   }
 
   @media (max-width: 1024px) {
@@ -629,6 +634,13 @@
     .has-dropdown.is-open .dropdown-menu { max-height: 200px; padding: 4px 0 12px 12px; }
     .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
   }
+
+  @media (max-width: 600px) {
+    .priority-grid { grid-template-columns: 1fr; }
+    .priority-actions { flex-direction: column; width: 100%; }
+    .priority-actions a { width: 100%; text-align: center; justify-content: center; }
+  }
+
 </style>
 </head>
 <body id="anasayfa">
@@ -764,7 +776,7 @@
   </div>
 </section>
 
-<!-- ÖNCELİK BÖLÜMÜ / ANALİZLER -->
+<!-- ÖNCELİK BÖLÜMÜ / ANALİZLER (ÜSTÜ VE ALTI KAVİSLİ) -->
 <section id="analizler" class="priority-section">
   <div class="priority-photo-wrap gsap-reveal">
     <div class="wrap">
@@ -776,7 +788,7 @@
   </div>
 </section>
 
-<!-- GLOBAL NETWORK HARİTA BÖLÜMÜ -->
+<!-- GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK KAVİS) -->
 <section class="global-network-section gsap-reveal">
   <div class="map-layer-container">
     <div class="map-shape"></div>
@@ -1187,13 +1199,23 @@ Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden kon
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Üst Bar Kaydırma Mantığı
+    // Üst Bar ve Kaydırma Dürtüsü Mantığı
     const header = document.querySelector('header');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 30) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
+      }
+      
+      if (scrollIndicator) {
+        if (window.scrollY > 50) {
+          scrollIndicator.classList.add('hidden');
+        } else {
+          scrollIndicator.classList.remove('hidden');
+        }
       }
     });
 
