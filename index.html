@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İhracat Teşvikleri ve Girişimcilik Araştırma Portalı</title>
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
+<link rel="canonical" href="https://iremdemi.github.io/tubitak-3005-site/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DTG Research Portal">
+<meta property="og:title" content="İhracat Teşvikleri ve Girişimcilik Araştırma Portalı">
+<meta property="og:description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
+<meta property="og:url" content="https://iremdemi.github.io/tubitak-3005-site/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="tr_TR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="İhracat Teşvikleri ve Girişimcilik Araştırma Portalı">
+<meta name="twitter:description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -368,10 +383,30 @@
      FOOTER
      ========================================================================== */
   footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px 0; }
-  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 40px; }
+  .footer-inner { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: 40px; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 40px; }
   .f-brand h2 { font-family: var(--font-serif); font-size: 20px; font-weight: 900; margin-bottom: 8px; }
   .f-brand p { font-size: 13px; color: #94A3B8; max-width: 300px; }
   .f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
+
+  .f-contact h3 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 16px; }
+  .f-contact input, .f-contact textarea {
+    width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.15); border-radius: 6px;
+    padding: 10px 12px; font-family: var(--font-sans); font-size: 13px; color: #FFFFFF; margin-bottom: 10px;
+    outline: none; transition: border-color .2s ease;
+  }
+  .f-contact input::placeholder, .f-contact textarea::placeholder { color: #64748B; }
+  .f-contact input:focus, .f-contact textarea:focus { border-color: var(--accent-teal); }
+  .f-contact textarea { resize: vertical; min-height: 72px; }
+  .f-contact button {
+    background: var(--accent-teal); color: #FFFFFF; border: none; font-size: 12.5px; font-weight: 700;
+    letter-spacing: .04em; text-transform: uppercase; padding: 11px 20px; border-radius: 6px; cursor: pointer;
+    transition: background .2s ease;
+  }
+  .f-contact button:hover { background: #0DA3A5; }
+
+  @media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
 
@@ -549,6 +584,18 @@
           <strong style="color:white;" data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı (MARKA)</strong>
         </p>
       </div>
+      <div class="f-contact">
+        <h3 data-i18n="footContactTitle">Bize Ulaşın</h3>
+        <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
+          <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
+          <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
+          <textarea name="message" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
+          <input type="hidden" name="_subject" value="DTG Research Portal - Yeni İletişim Mesajı">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_captcha" value="true">
+          <button type="submit" data-i18n="footFormSend">Gönder</button>
+        </form>
+      </div>
     </div>
     <div class="f-bottom" data-i18n="footCopy">
       &copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.
@@ -587,7 +634,8 @@
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
       footCopy: "&copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.",
-      readMoreTxt: "Detaylı İncele"
+      readMoreTxt: "Detaylı İncele",
+      footContactTitle: "Bize Ulaşın", footFormName: "Ad Soyad", footFormEmail: "E-posta", footFormMessage: "Mesajınız", footFormSend: "Gönder"
     },
     en: {
       menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
@@ -602,7 +650,8 @@
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
       footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
-      readMoreTxt: "Read Analysis"
+      readMoreTxt: "Read Analysis",
+      footContactTitle: "Contact Us", footFormName: "Full Name", footFormEmail: "Email", footFormMessage: "Your Message", footFormSend: "Send"
     }
   };
 
@@ -713,6 +762,12 @@ Pandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yük
       const key = el.getAttribute('data-i18n');
       if (dict[currentLang][key]) {
         el.innerHTML = dict[currentLang][key];
+      }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[currentLang][key]) {
+        el.setAttribute('placeholder', dict[currentLang][key]);
       }
     });
   }
