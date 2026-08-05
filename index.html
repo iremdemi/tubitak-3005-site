@@ -272,15 +272,13 @@
   .read-more { font-size: 12px; font-weight: 700; color: var(--accent-teal); display: inline-flex; align-items: center; gap: 6px; }
 
   /* ==========================================================================
-     ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ŞERİT)
+     ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / SCROLLBAR GİZLENDİ)
      ========================================================================== */
   .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
-  .section-header { margin-bottom: 48px; max-width: 600px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .section-header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
   .section-header-content { max-width: 600px; }
-  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-teal); display: block; margin-bottom: 12px; }
   .section-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 900; color: var(--text-ink); line-height: 1.3; }
 
-  /* Slider Navigasyon Okları */
   .team-slider-nav { display: flex; gap: 12px; }
   .team-nav-btn {
     width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color);
@@ -290,7 +288,6 @@
   .team-nav-btn:hover { background: var(--accent-navy); color: #FFF; border-color: var(--accent-navy); transform: translateY(-2px); }
   .team-nav-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-  /* Kaydırmalı Şerit Container */
   .team-slider-wrapper {
     position: relative;
     width: 100%;
@@ -301,15 +298,14 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    padding-bottom: 24px;
+    padding-bottom: 12px;
     padding-top: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #CBD5E1 transparent;
+    /* Kaydırma çubuğu tamamen kaldırıldı (gizlendi) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE ve Edge */
   }
-  .team-slider-track::-webkit-scrollbar { height: 6px; }
-  .team-slider-track::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
+  .team-slider-track::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera */ }
 
-  /* Ekip Kartı Tasarımı (Referans Görsel Tarzında) */
   .team-card {
     flex: 0 0 280px;
     scroll-snap-align: start;
@@ -339,14 +335,14 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: grayscale(100%); /* Siyah-beyaz zorunluluğu */
+    filter: grayscale(100%); /* Siyah-beyaz filtre */
     transition: transform 0.5s ease;
   }
   .team-card:hover .tc-img-wrap img {
     transform: scale(1.04);
   }
 
-  /* Anonim Avatar Stil (Gri kafa ve omuzlar silüeti) */
+  /* Anonim Avatar Silüeti */
   .tc-avatar-fallback {
     width: 100%;
     height: 100%;
@@ -752,15 +748,14 @@
   </div>
 </section>
 
-<!-- ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ŞERİT) -->
+<!-- ARAŞTIRMA EKİBİMİZ (YATAY KAYDIRMALI SLIDER / ÇUBUK YOK) -->
 <section id="ekip" class="section">
   <div class="wrap">
     <div class="section-header gsap-reveal">
       <div class="section-header-content">
-        <span class="eyebrow" data-i18n="teamEyebrow">ARAŞTIRMA KÜNYESİ</span>
         <h2 data-i18n="teamTitle">Araştırma Ekibi</h2>
       </div>
-      <!-- Slider Okları -->
+      <!-- Sadece Üstte Yer Alan Ok Butonları -->
       <div class="team-slider-nav">
         <button class="team-nav-btn" id="teamPrev" aria-label="Önceki">
           <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
@@ -771,7 +766,7 @@
       </div>
     </div>
 
-    <!-- Kaydırmalı Şerit -->
+    <!-- Kaydırmalı Şerit (Scrollbar Gizlendi) -->
     <div class="team-slider-wrapper gsap-reveal">
       <div class="team-slider-track" id="ekip-container">
         <!-- Dinamik olarak doldurulacak -->
@@ -881,7 +876,7 @@
       heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
       heroBtn: "İNCELE",
       giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
-      teamEyebrow: "ARAŞTIRMA KÜNYESİ", teamTitle: "Araştırma Ekibi",
+      teamTitle: "Araştırma Ekibi",
       brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
@@ -896,7 +891,7 @@
       heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
       heroBtn: "VIEW",
       giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
-      teamEyebrow: "RESEARCH IDENTITY", teamTitle: "Research Team",
+      teamTitle: "Research Team",
       brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
@@ -1000,7 +995,6 @@
     setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
   }
 
-  // Takım Slider Ok Butonları İşlevselliği
   document.addEventListener("DOMContentLoaded", () => {
     const track = document.getElementById('ekip-container');
     const prevBtn = document.getElementById('teamPrev');
