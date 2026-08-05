@@ -412,9 +412,38 @@
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
 
+  .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+  .menu-toggle span { width: 22px; height: 2px; background: var(--text-ink); display: block; transition: transform .2s ease, opacity .2s ease; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.4); opacity: 0; visibility: hidden; transition: opacity .3s ease; z-index: 140; }
+  .nav-overlay.is-open { opacity: 1; visibility: visible; }
+
   @media (max-width: 1024px) {
     .header-inner { justify-content: space-between; }
-    .nav-menu, .header-right { display: none; }
+    .menu-toggle { display: flex; }
+    .header-right .btn-outline-header { display: none; }
+
+    .nav-menu {
+      position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 86vw);
+      background: var(--bg-alt); flex-direction: column; align-items: flex-start;
+      padding: 100px 28px 32px; gap: 0; box-shadow: -20px 0 50px rgba(15,23,42,.14);
+      transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1);
+      z-index: 150; overflow-y: auto; margin: 0;
+    }
+    .nav-menu.is-open { transform: translateX(0); }
+    .nav-item { width: 100%; }
+    .nav-menu a { padding: 14px 0; width: 100%; border-bottom: 1px solid var(--border-color); justify-content: space-between; }
+    .has-dropdown .dropdown-icon { padding: 8px; margin: -8px -8px -8px 8px; cursor: pointer; }
+    .dropdown-menu {
+      position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none;
+      max-height: 0; overflow: hidden; padding: 0; min-width: 0; transition: max-height .3s ease;
+    }
+    .has-dropdown.is-open .dropdown-menu { max-height: 200px; padding: 4px 0 12px 12px; }
+    .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
+
     .hero-corporate { min-height: 400px; padding: 60px 20px; }
     .portal-chat-box { width: calc(100vw - 32px); right: -16px; }
   }
@@ -474,8 +503,12 @@
         <span data-lang="en">EN</span>
       </div>
       <a href="#ekip" class="btn-outline-header" data-i18n="btnPolitika">Politika Önerileri</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+  <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
 <!-- HERO SECTION -->
@@ -841,6 +874,54 @@ Pandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yük
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Mobil menü aç/kapa
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMobileNav(){
+      navMenu.classList.add('is-open');
+      navOverlay.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav(){
+      navMenu.classList.remove('is-open');
+      navOverlay.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(i => i.classList.remove('is-open'));
+    }
+    if(menuToggle){
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
+      });
+    }
+    if(navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
+    // Mobilde alt menüleri aç/kapa (ok ikonuna dokununca), masaüstünde dokunmuyor (hover zaten çalışıyor)
+    document.querySelectorAll('.dropdown-icon').forEach(icon => {
+      icon.addEventListener('click', (e) => {
+        if(window.innerWidth <= 1024){
+          e.preventDefault();
+          e.stopPropagation();
+          icon.closest('.nav-item').classList.toggle('is-open');
+        }
+      });
+    });
+
+    // Mobil menüde bir bağlantıya tıklanınca paneli kapat
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        if(window.innerWidth <= 1024) closeMobileNav();
+      });
+    });
+
+    // Pencere masaüstü genişliğine dönerse mobil panel durumunu sıfırla
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 1024) closeMobileNav();
+    });
+
     // Modal Kapama Dinleyicileri
     const closeBtn = document.getElementById('modalCloseBtn');
     const overlay = document.getElementById('articleModalOverlay');
