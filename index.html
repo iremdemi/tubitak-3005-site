@@ -49,7 +49,7 @@
   .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
   /* ==========================================================================
-     HEADER VE LOGO (ŞEFFAF / BÜTÜNLEŞİK TASARIM EKLENDİ)
+     HEADER VE LOGO
      ========================================================================== */
   header { 
     background-color: transparent; border-bottom: 1px solid transparent; 
@@ -126,7 +126,7 @@
   }
   .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
-  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ (Sadece En Üstteyken) */
+  /* ŞEFFAF HEADER DURUMUNDA UYGULANACAK YAZI RENKLERİ */
   header:not(.scrolled) .hl-dtg,
   header:not(.scrolled) .hl-research,
   header:not(.scrolled) .hl-portal {
@@ -177,7 +177,7 @@
     color: #FFFFFF;
     padding: 0;
     overflow: hidden;
-    border-radius: 0 0 90px 90px;
+    border-radius: 0 0 100px 100px;
   }
 
   .hero-slides {
@@ -256,17 +256,17 @@
   .hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ==========================================================================
-     HİZMET/KATEGORİ ŞERİDİ (Kusursuz Ortalama)
+     HİZMET/KATEGORİ ŞERİDİ (Simetrik Ortalama)
      ========================================================================== */
   .services-row-section { 
     background: var(--bg-main); 
-    padding: 0 0 160px 0; /* Alttaki kavisin üstüne çıkmaması için 160px ferah beyaz alan bıraktık */
+    padding: 0 0 150px 0; /* Alt kavis ile eşit boşluk (150px) */
   }
   
   .services-row-wrap { 
     position: relative; 
     z-index: 5; 
-    margin-top: -100px; /* Üst kavise 100px taşma sağlandı */
+    margin-top: -150px; /* Üst kavis ile eşit taşma (150px) */
   }
   
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -302,6 +302,8 @@
 
   @media (max-width: 860px) {
     .services-row { grid-template-columns: repeat(2, 1fr); }
+    .services-row-section { padding: 0 0 100px 0; }
+    .services-row-wrap { margin-top: -100px; }
   }
   @media (max-width: 480px) {
     .services-row { grid-template-columns: 1fr; }
@@ -310,18 +312,17 @@
   }
 
   /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ / ANALİZLER (SİMETRİK KAVİS VE ALT TAŞMA)
+     ÖNCELİK BÖLÜMÜ / ANALİZLER
      ========================================================================== */
   .priority-section { padding: 0; text-align: center; background: var(--bg-main); }
   
   .priority-photo-wrap {
     position: relative; width: 100%; z-index: 2;
     background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    /* Kartların 100px taşıp içeride ferah durması için 160px iç boşluk verdik */
-    padding: 160px 32px 80px; 
-    border-radius: 90px 90px 0 0; /* Üst kavisle 90px birebir ayna yansıması */
+    padding: 120px 32px 80px; 
+    border-radius: 100px 100px 0 0; /* Üst kavisle 100px birebir ayna yansıması (Simetrik) */
     overflow: hidden; 
-    margin-top: -260px; /* Alttaki kavisi, kartların alt kısmına tam 100px taşacak şekilde yukarı çektik */
+    margin-top: 0; /* Kartları zincir gibi yutmaması için negatif boşluk kaldırıldı */
   }
   .priority-photo-wrap::before {
     content: ''; position: absolute; inset: 0;
@@ -350,8 +351,6 @@
   .priority-card p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
   .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 50px; }
-  .priority-actions .btn-white { background: #FFFFFF; color: var(--accent-navy); font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; transition: all .3s; }
-  .priority-actions .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
   .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; transition: all .3s; }
   .priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
@@ -523,7 +522,7 @@
   @media (max-width: 1024px) {
     .footer-inner { grid-template-columns: 1fr; }
     .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; }
-    .priority-photo-wrap { border-radius: 50px 50px 0 0; margin-top: -260px; padding: 180px 20px 50px;}
+    .priority-photo-wrap { border-radius: 50px 50px 0 0; margin-top: 0; padding: 100px 20px 50px;}
   }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
