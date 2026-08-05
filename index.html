@@ -25,13 +25,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-main: #FAFAFA;       
+    --bg-main: #FAF8F5;       
     --bg-alt: #FFFFFF;        
-    --text-ink: #0F172A;      
-    --text-body: #475569;     
-    --accent-navy: #173B7A;   
-    --accent-teal: #0F8B8D;   
-    --border-color: #E2E8F0;  
+    --text-ink: #1C1712;      
+    --text-body: #5C5349;     
+    --accent-navy: #17110B;   
+    --accent-teal: #FF6A1A;   
+    --border-color: #ECE4DA;  
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
   }
@@ -166,7 +166,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(23, 59, 122, 0.82), rgba(15, 139, 141, 0.72));
+    background: linear-gradient(135deg, rgba(255, 106, 26, 0.32) 0%, rgba(20, 12, 6, 0.72) 48%, rgba(10, 7, 4, 0.9) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -251,6 +251,7 @@
     line-height: 0.8;
     letter-spacing: -0.05em;
     background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    filter: sepia(.55) saturate(2.1) hue-rotate(-28deg) brightness(.85) contrast(1.08);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
@@ -282,8 +283,8 @@
   .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
   
   .nc-img-wrap { width: 100%; height: 180px; overflow: hidden; cursor: pointer; }
-  .nc-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .news-card:hover .nc-img-wrap img { transform: scale(1.05); }
+  .nc-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease; filter: sepia(.22) saturate(1.35) hue-rotate(-6deg) contrast(1.03); }
+  .news-card:hover .nc-img-wrap img { transform: scale(1.05); filter: sepia(.1) saturate(1.35) hue-rotate(-6deg) contrast(1.03); }
 
   .nc-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
   .nc-content h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); line-height: 1.4; margin-bottom: 12px; cursor: pointer; transition: color 0.2s;}
@@ -363,7 +364,7 @@
     display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(23, 59, 122, 0.1); }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(255, 106, 26, 0.14); }
 
   .tc-img-wrap { width: 100%; height: 320px; background: #F1F5F9; position: relative; overflow: hidden; }
   .tc-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(100%); transition: transform 0.5s ease; }
@@ -450,6 +451,58 @@
     .news-card { flex: 0 0 86%; }
     .nc-content { padding: 20px; }
   }
+
+  /* ==========================================================================
+     ÖNCELİK BÖLÜMÜ (yamuk/tilted kart ızgarası)
+     ========================================================================== */
+  .priority-section { padding: 90px 0 70px; text-align: center; background: var(--bg-alt); }
+  .priority-heading { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; color: var(--text-ink); max-width: 14ch; margin: 0 auto 48px; line-height: 1.3; }
+  .priority-heading .hl { color: var(--accent-teal); }
+
+  .priority-photo-wrap {
+    position: relative; border-radius: 20px; overflow: hidden;
+    background: url('https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 56px 32px;
+  }
+  .priority-photo-wrap::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(150deg, rgba(255,106,26,.28) 0%, rgba(15,10,6,.82) 55%, rgba(8,5,3,.92) 100%);
+  }
+  .priority-grid {
+    position: relative; z-index: 1; max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 22px;
+  }
+  .priority-card {
+    background: rgba(20,14,9,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 26px 20px; text-align: left;
+    transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s ease;
+  }
+  .priority-card:hover { transform: rotate(0deg) translateY(-4px) !important; background: rgba(255,106,26,.22); }
+  .priority-card:nth-child(1) { transform: rotate(-3deg); }
+  .priority-card:nth-child(2) { transform: rotate(2deg); }
+  .priority-card:nth-child(3) { transform: rotate(-1.5deg); }
+  .priority-card:nth-child(4) { transform: rotate(2.5deg); }
+  .priority-card:nth-child(5) { transform: rotate(-2deg); }
+  .priority-card:nth-child(6) { transform: rotate(1.5deg); }
+  .priority-card-icon {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--accent-teal);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .priority-card-icon svg { width: 18px; height: 18px; stroke: #FFFFFF; fill: none; stroke-width: 1.8; }
+  .priority-card h3 { font-size: 14.5px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+  .priority-card p { font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.68); }
+
+  .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
+  .priority-actions .btn-white { background: #FFFFFF; color: var(--accent-navy); font-size: 13px; font-weight: 700; padding: 13px 26px; border-radius: 30px; }
+  .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,.5); color: #FFFFFF; font-size: 13px; font-weight: 700; padding: 13px 26px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; }
+
+  @media (max-width: 768px) {
+    .priority-grid { grid-template-columns: 1fr 1fr; }
+    .priority-card { transform: none !important; }
+  }
+  @media (max-width: 480px) {
+    .priority-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body id="anasayfa">
@@ -534,6 +587,51 @@
     <button class="hero-dot" data-index="2" aria-label="3. görsel" role="tab" aria-selected="false"></button>
     <button class="hero-dot" data-index="3" aria-label="4. görsel" role="tab" aria-selected="false"></button>
     <button class="hero-dot" data-index="4" aria-label="5. görsel" role="tab" aria-selected="false"></button>
+  </div>
+</section>
+
+<!-- ÖNCELİK BÖLÜMÜ -->
+<section class="priority-section">
+  <div class="wrap">
+    <h2 class="priority-heading gsap-reveal"><span data-i18n="priorityHeading">Araştırmada Bilimsel Titizlik </span><span class="hl" data-i18n="priorityHeadingHl">Önceliğimizdir</span></h2>
+    <div class="priority-photo-wrap gsap-reveal">
+      <div class="priority-grid">
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <h3 data-i18n="pr1Title">Saha Araştırması</h3>
+          <p data-i18n="pr1Desc">TR42 Doğu Marmara Bölgesi'nde yürütülen kapsamlı saha çalışması.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><path d="M9 17V9m6 8V5m-11 12h16"/></svg></div>
+          <h3 data-i18n="pr2Title">Nitel ve Nicel Analiz</h3>
+          <p data-i18n="pr2Desc">Firma görüşmeleri ve anket verileriyle çok yönlü değerlendirme.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3 data-i18n="pr3Title">Politika Önerileri</h3>
+          <p data-i18n="pr3Desc">Bulgulara dayalı somut kamu politikası önerileri.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg></div>
+          <h3 data-i18n="pr4Title">Akademik Yayınlar</h3>
+          <p data-i18n="pr4Desc">Hakemli dergilerde yayımlanan bilimsel çıktılar.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 data-i18n="pr5Title">Uzman Ekip</h3>
+          <p data-i18n="pr5Desc">Uluslararası ticaret alanında deneyimli araştırmacılar.</p>
+        </div>
+        <div class="priority-card">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg></div>
+          <h3 data-i18n="pr6Title">Bölgesel Kapsam</h3>
+          <p data-i18n="pr6Desc">Kocaeli, Sakarya, Düzce, Bolu ve Yalova'yı kapsayan analiz.</p>
+        </div>
+      </div>
+      <div class="priority-actions">
+        <a href="#iletisim" class="btn-white" data-i18n="prContactBtn">İletişime Geç</a>
+        <a href="#ekip" class="btn-ghost-white" data-i18n="prDetailBtn">Detayları Gör →</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -636,6 +734,14 @@
       heroBtn: "İNCELE",
       giantSub: "TÜBİTAK 3005 DESTEKLİ PROJE",
       teamTitle: "Araştırma Ekibi",
+      priorityHeading: "Araştırmada Bilimsel Titizlik ", priorityHeadingHl: "Önceliğimizdir",
+      pr1Title: "Saha Araştırması", pr1Desc: "TR42 Doğu Marmara Bölgesi'nde yürütülen kapsamlı saha çalışması.",
+      pr2Title: "Nitel ve Nicel Analiz", pr2Desc: "Firma görüşmeleri ve anket verileriyle çok yönlü değerlendirme.",
+      pr3Title: "Politika Önerileri", pr3Desc: "Bulgulara dayalı somut kamu politikası önerileri.",
+      pr4Title: "Akademik Yayınlar", pr4Desc: "Hakemli dergilerde yayımlanan bilimsel çıktılar.",
+      pr5Title: "Uzman Ekip", pr5Desc: "Uluslararası ticaret alanında deneyimli araştırmacılar.",
+      pr6Title: "Bölgesel Kapsam", pr6Desc: "Kocaeli, Sakarya, Düzce, Bolu ve Yalova'yı kapsayan analiz.",
+      prContactBtn: "İletişime Geç", prDetailBtn: "Detayları Gör →",
       brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
       footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
       footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
@@ -652,6 +758,14 @@
       heroBtn: "VIEW",
       giantSub: "TÜBİTAK 3005 SUPPORTED PROJECT",
       teamTitle: "Research Team",
+      priorityHeading: "Scientific Rigor Is Our ", priorityHeadingHl: "Top Priority",
+      pr1Title: "Field Research", pr1Desc: "Comprehensive fieldwork carried out across the TR42 East Marmara Region.",
+      pr2Title: "Qualitative & Quantitative Analysis", pr2Desc: "Multi-faceted evaluation through firm interviews and survey data.",
+      pr3Title: "Policy Recommendations", pr3Desc: "Concrete public policy proposals grounded in the findings.",
+      pr4Title: "Academic Publications", pr4Desc: "Peer-reviewed scientific outputs published in academic journals.",
+      pr5Title: "Expert Team", pr5Desc: "Experienced researchers in international trade.",
+      pr6Title: "Regional Coverage", pr6Desc: "Analysis spanning Kocaeli, Sakarya, Düzce, Bolu and Yalova.",
+      prContactBtn: "Contact Us", prDetailBtn: "View Details →",
       brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
       footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
       footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
