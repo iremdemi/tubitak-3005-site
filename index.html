@@ -245,7 +245,7 @@
   .services-row-section { background: var(--bg-alt); padding: 0 0 96px; }
   .services-row-wrap { position: relative; z-index: 5; margin-top: -74px; }
   .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .service-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 3.7; box-shadow: 0 22px 44px rgba(20,14,9,.18); }
+  .service-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 3.7; box-shadow: 0 22px 44px rgba(20,14,9,.18); background: var(--accent-navy); }
   .service-card img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(1.3) hue-rotate(-6deg); transition: transform .5s ease; }
   .service-card:hover img { transform: scale(1.07); }
   .service-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 42%, rgba(15,10,6,.88) 100%); }
@@ -257,6 +257,23 @@
   .service-card-text { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 2; }
   .service-card-text h3 { font-size: 15.5px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px; }
   .service-card-text p { font-size: 11px; color: rgba(255,255,255,.75); line-height: 1.4; }
+
+  .service-card-map svg { width: 100%; height: 100%; display: block; transition: transform .5s ease; }
+  .service-card-map:hover svg { transform: scale(1.07); }
+
+  .service-card-list-inner {
+    position: absolute; inset: 0; padding: 22px 16px 90px; display: flex; flex-direction: column;
+    justify-content: center; gap: 14px; background: linear-gradient(160deg, rgba(255,106,26,.28), rgba(15,10,6,.92));
+  }
+  .service-card-list-item { font-size: 12.5px; font-weight: 700; color: #FFFFFF; line-height: 1.4; padding-left: 14px; position: relative; }
+  .service-card-list-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); }
+
+  .service-card-team-photos { position: absolute; inset: 0; }
+  .service-card-team-photos img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity .2s ease; filter: grayscale(35%) sepia(.15) saturate(1.2);
+  }
+  .service-card-team-photos img.active { opacity: 1; }
 
   @media (max-width: 860px) {
     .services-row { grid-template-columns: repeat(2, 1fr); }
@@ -504,6 +521,8 @@
   .priority-section { padding: 90px 0 70px; text-align: center; background: var(--bg-alt); }
   .priority-heading { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; color: var(--text-ink); max-width: 14ch; margin: 0 auto 48px; line-height: 1.3; }
   .priority-heading .hl { color: var(--accent-teal); }
+  .priority-tag { justify-content: center; color: var(--accent-teal); margin-bottom: 16px; }
+  .priority-tag .bar { background: var(--accent-teal); }
 
   .priority-photo-wrap {
     position: relative; border-radius: 20px; overflow: hidden;
@@ -626,14 +645,6 @@
     <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
     <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
     <div class="hero-badge-row">
-      <div class="hero-avatars">
-        <div class="stack">
-          <img src="img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" alt="">
-          <img src="img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" alt="">
-          <img src="img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" alt="">
-        </div>
-        <span data-i18n="heroTeamBadge">Araştırma Ekibi</span>
-      </div>
       <a href="#iletisim" class="btn-hero-view">
         <span data-i18n="heroBtnLabel">İletişim</span>
         <span class="arrow-circle"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
@@ -641,7 +652,7 @@
     </div>
   </div>
   <div class="hero-bottom-row">
-    <div class="hero-tag"><span class="bar"></span><span data-i18n="heroTag">TÜBİTAK 3005 Destekli Proje</span></div>
+    <div></div>
     <div class="hero-arrows">
       <button class="hero-arrow-btn" id="heroPrev" aria-label="Önceki görsel"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
       <button class="hero-arrow-btn" id="heroNext" aria-label="Sonraki görsel"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -654,16 +665,30 @@
   <div class="wrap">
     <div class="services-row-wrap gsap-reveal">
       <div class="services-row">
-        <a href="#proje" class="service-card">
-          <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=600&q=80" alt="">
+        <a href="#proje" class="service-card service-card-map">
+          <svg viewBox="87 4 81 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <path d="M37.3 145.3 L30.3 142.2 L27.1 143.7 L24.3 137.1 L19.9 141.2 L14.6 135.8 L10.4 135.6 L11.8 131.9 L14.3 134.2 L17.9 130.1 L14.6 129.5 L15.3 121.5 L20.8 126.6 L22.1 134.1 L23.0 129.9 L25.6 132.6 L35.2 129.7 L29.3 130.0 L23.4 122.5 L23.8 119.5 L27.9 119.7 L27.9 116.6 L32.4 114.9 L25.4 112.4 L27.7 108.1 L20.4 101.4 L28.9 94.2 L28.6 90.8 L5.9 94.4 L9.0 77.1 L13.1 75.7 L14.9 70.0 L24.1 63.0 L38.3 60.5 L38.8 64.0 L45.9 67.5 L50.8 66.3 L53.9 64.0 L48.8 60.6 L50.6 58.7 L58.0 60.3 L54.4 63.4 L55.9 64.7 L85.0 64.3 L87.6 62.2 L86.0 60.5 L78.1 57.9 L97.1 51.5 L108.3 52.2 L90.3 49.4 L90.5 48.0 L90.9 48.2 L92.3 47.3 L92.7 46.4 L90.4 47.6 L83.7 42.3 L87.9 35.0 L106.8 39.4 L117.2 35.5 L129.9 39.8 L142.1 39.4 L147.2 35.5 L146.9 31.9 L170.3 18.2 L198.2 8.0 L232.0 10.7 L242.5 5.5 L247.2 7.3 L244.5 11.3 L249.4 18.3 L257.0 21.2 L267.3 17.7 L270.0 19.3 L272.0 27.0 L278.7 34.0 L286.0 29.7 L309.1 42.0 L315.7 38.7 L318.1 43.1 L324.6 44.1 L321.6 51.2 L324.6 44.2 L335.3 45.5 L346.0 41.2 L358.9 39.0 L364.7 42.7 L380.3 45.1 L402.4 35.2 L415.1 24.8 L422.4 27.9 L425.9 24.8 L440.8 27.7 L442.9 22.8 L449.1 22.9 L448.4 25.9 L458.8 32.5 L456.7 34.0 L459.4 36.7 L465.0 36.6 L465.9 41.7 L471.3 45.1 L473.3 53.5 L467.9 60.5 L471.5 67.9 L469.5 69.9 L472.3 71.0 L470.8 72.9 L477.4 76.1 L487.3 75.0 L501.4 87.7 L496.4 84.3 L493.0 87.0 L491.1 96.8 L480.7 98.0 L488.2 116.3 L488.3 131.6 L493.3 133.5 L486.2 148.5 L492.1 152.6 L495.1 152.6 L496.0 153.0 L495.8 163.6 L501.6 168.2 L501.1 173.6 L496.7 172.3 L488.3 179.8 L485.2 175.4 L487.2 170.7 L483.6 168.0 L471.1 170.8 L457.9 166.0 L452.8 167.9 L448.1 165.8 L442.7 173.7 L436.6 175.0 L433.2 167.9 L428.5 172.3 L415.4 175.8 L394.8 174.6 L370.0 187.0 L353.8 190.1 L340.7 188.6 L336.2 184.2 L326.5 181.8 L307.7 190.9 L297.3 191.5 L293.4 186.1 L286.3 183.9 L285.0 184.1 L283.1 195.8 L287.1 204.2 L279.0 205.1 L278.5 212.6 L274.1 214.3 L273.0 219.0 L266.3 215.0 L267.9 212.0 L262.7 202.5 L273.6 192.4 L273.9 186.1 L268.9 181.1 L257.0 188.5 L261.2 188.5 L257.0 193.5 L251.0 194.4 L248.7 189.6 L246.4 189.7 L250.7 193.7 L232.9 185.2 L223.0 192.8 L214.7 204.8 L212.2 201.9 L207.4 208.1 L206.3 206.1 L204.1 208.4 L193.1 208.0 L184.0 212.2 L170.6 204.7 L163.6 194.4 L136.6 183.5 L126.4 183.8 L124.0 201.3 L120.7 205.6 L120.7 203.3 L115.3 202.0 L101.6 208.2 L86.2 199.5 L86.9 194.2 L83.8 194.2 L86.3 189.9 L81.7 187.0 L79.5 192.7 L69.2 182.8 L67.6 186.0 L64.0 183.9 L65.1 187.9 L57.8 193.6 L56.0 192.2 L59.6 190.7 L56.1 189.4 L60.5 188.0 L60.3 185.4 L55.3 187.5 L50.0 186.7 L48.6 190.3 L41.4 190.2 L40.3 188.5 L47.6 185.1 L58.0 185.9 L57.7 181.2 L61.5 181.9 L65.8 177.6 L45.6 179.5 L41.9 177.5 L37.7 179.9 L37.4 174.2 L43.1 175.9 L46.9 172.3 L46.9 169.2 L44.2 170.9 L43.3 167.0 L40.9 167.5 L42.1 165.7 L41.7 164.4 L35.8 166.7 L36.4 158.6 L30.8 156.3 L36.7 154.2 L37.3 145.3 Z" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+            <g fill="#FF6A1A" fill-opacity=".6" stroke="#FFFFFF" stroke-width=".8">
+              <path d="M117.2 35.5 L119.2 36.1 L119.9 37.2 L119.8 38.2 L118.4 39.3 L117.6 42.0 L119.5 44.4 L119.9 47.1 L119.6 47.8 L117.6 48.8 L117.9 51.0 L116.0 55.3 L114.0 55.5 L110.5 57.0 L107.4 57.0 L103.8 55.8 L98.8 57.8 L94.9 57.6 L95.0 53.6 L97.1 51.5 L96.9 52.3 L98.4 53.3 L105.0 51.9 L108.3 52.2 L108.4 51.0 L104.2 51.5 L102.9 50.4 L99.8 50.1 L98.6 50.6 L96.5 50.2 L92.9 51.0 L92.3 48.9 L90.3 49.4 L91.3 48.4 L90.7 48.4 L90.5 48.0 L90.9 48.2 L92.7 46.4 L94.6 45.4 L94.9 43.6 L96.3 42.7 L96.6 41.5 L100.8 42.3 L103.3 40.9 L106.7 40.0 L106.4 37.9 L114.0 38.0 L115.1 37.7 L115.0 37.2 L115.9 37.2 L115.9 36.4 L116.6 36.3 L117.2 35.5 Z"/>
+              <path d="M119.7 36.6 L127.2 38.3 L129.9 39.8 L135.7 40.2 L137.3 42.1 L136.6 44.0 L133.9 46.2 L133.0 48.3 L133.5 50.2 L136.0 52.2 L135.1 53.9 L134.9 57.4 L134.0 58.4 L132.2 58.9 L127.8 59.1 L125.6 61.7 L127.0 63.6 L126.4 65.3 L120.0 63.0 L113.2 64.1 L109.3 60.6 L108.1 57.7 L108.0 57.0 L110.7 57.0 L116.4 55.1 L117.9 51.0 L117.6 48.8 L119.9 47.3 L119.5 44.4 L117.6 42.0 L118.4 39.3 L119.9 38.0 L119.7 36.6 Z"/>
+              <path d="M145.4 38.1 L148.0 40.8 L155.8 41.2 L156.4 43.1 L155.8 44.6 L152.3 46.7 L148.8 47.1 L147.8 49.3 L147.7 52.8 L145.9 54.2 L143.4 54.7 L141.4 53.5 L137.1 54.3 L135.2 53.5 L136.0 52.2 L133.5 50.2 L133.0 48.5 L133.9 46.2 L136.6 44.0 L137.3 42.5 L135.7 40.2 L142.1 39.4 L145.4 38.1 Z"/>
+              <path d="M160.5 42.0 L170.3 42.4 L170.3 44.7 L176.2 47.4 L177.1 49.2 L176.6 51.9 L174.2 54.5 L175.4 58.7 L173.1 62.3 L171.3 62.6 L166.7 62.2 L160.3 64.9 L157.4 65.4 L155.0 65.0 L151.4 66.2 L143.4 64.9 L140.2 63.1 L138.0 62.5 L137.4 63.9 L137.6 67.4 L135.2 69.1 L133.1 71.9 L129.2 70.8 L126.8 66.2 L126.4 65.3 L127.0 63.6 L125.7 61.6 L127.8 59.1 L131.9 59.0 L134.0 58.4 L135.0 57.2 L135.2 53.5 L137.1 54.3 L141.4 53.5 L143.4 54.7 L145.9 54.2 L147.7 52.8 L147.8 49.3 L148.8 47.1 L152.3 46.7 L154.6 45.6 L155.9 44.4 L156.4 43.1 L155.8 41.2 L160.5 42.0 Z"/>
+              <path d="M94.0 52.8 L95.2 53.2 L94.9 57.6 L93.1 57.0 L90.6 57.8 L84.7 57.7 L83.8 59.8 L84.4 60.4 L82.9 61.2 L80.4 60.4 L79.7 59.5 L77.7 59.1 L78.1 57.9 L81.7 56.3 L83.3 54.8 L91.0 54.2 L94.0 52.8 Z"/>
+            </g>
+            <circle cx="154.0" cy="56.2" r="2.2" fill="#FFFFFF"/>
+            <circle cx="143.4" cy="46.3" r="2.2" fill="#FFFFFF"/>
+            <circle cx="107.2" cy="47.5" r="2.2" fill="#FFFFFF"/>
+            <circle cx="124.2" cy="51.5" r="2.2" fill="#FFFFFF"/>
+            <circle cx="86.8" cy="56.7" r="2.2" fill="#FFFFFF"/>
+          </svg>
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           <div class="service-card-text">
             <h3 data-i18n="svc1Title">Saha Araştırması</h3>
             <p data-i18n="svc1Desc">TR42 bölgesinde yürütülen çalışma</p>
           </div>
         </a>
-        <a href="#analizler" class="service-card">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="">
+        <a href="#analizler" class="service-card service-card-list">
+          <div class="service-card-list-inner" id="svc2-list"></div>
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           <div class="service-card-text">
             <h3 data-i18n="svc2Title">Bulgular</h3>
@@ -678,12 +703,12 @@
             <p data-i18n="svc3Desc">Kanıta dayalı öneriler</p>
           </div>
         </a>
-        <a href="#ekip" class="service-card">
-          <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="">
+        <a href="#ekip" class="service-card service-card-team" id="svc4-team">
+          <div class="service-card-team-photos" id="svc4-photos"></div>
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
           <div class="service-card-text">
-            <h3 data-i18n="svc4Title">Araştırma Ekibi</h3>
-            <p data-i18n="svc4Desc">Uzman akademik kadro</p>
+            <h3 id="svc4-name">Araştırma Ekibi</h3>
+            <p id="svc4-role" data-i18n="svc4Desc">Uzman akademik kadro</p>
           </div>
         </a>
       </div>
@@ -694,6 +719,7 @@
 <!-- ÖNCELİK BÖLÜMÜ -->
 <section class="priority-section">
   <div class="wrap">
+    <div class="hero-tag priority-tag gsap-reveal"><span class="bar"></span><span data-i18n="heroTag">TÜBİTAK 3005 Destekli Proje</span></div>
     <h2 class="priority-heading gsap-reveal"><span data-i18n="priorityHeading">Araştırmada Bilimsel Titizlik </span><span class="hl" data-i18n="priorityHeadingHl">Önceliğimizdir</span></h2>
     <div class="priority-photo-wrap gsap-reveal">
       <div class="priority-grid">
@@ -1047,7 +1073,47 @@ Pandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yük
       });
     }
 
+    // Bulgular kartı: başlık listesi
+    const svc2El = document.getElementById('svc2-list');
+    if (svc2El) {
+      svc2El.innerHTML = data.haberler.slice(0, 4).map(h =>
+        `<div class="service-card-list-item">${h.baslik}</div>`
+      ).join('');
+    }
+
+    // Araştırma Ekibi kartı: fotoğrafları olan üyeler arasında döner slayt
+    initTeamRotator(data);
+
     setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
+  }
+
+  let teamRotatorTimer = null;
+  function initTeamRotator(data) {
+    const photosEl = document.getElementById('svc4-photos');
+    const nameEl = document.getElementById('svc4-name');
+    const roleEl = document.getElementById('svc4-role');
+    if (!photosEl || !nameEl || !roleEl) return;
+
+    const withPhotos = data.ekip.filter(k => k.fotograf);
+    if (withPhotos.length === 0) return;
+
+    photosEl.innerHTML = withPhotos.map((k, i) =>
+      `<img src="${k.fotograf}" alt="${k.isim}" class="${i === 0 ? 'active' : ''}">`
+    ).join('');
+
+    const imgs = photosEl.querySelectorAll('img');
+    let idx = 0;
+    nameEl.textContent = withPhotos[0].isim;
+    roleEl.textContent = withPhotos[0].unvan;
+
+    if (teamRotatorTimer) clearInterval(teamRotatorTimer);
+    teamRotatorTimer = setInterval(() => {
+      imgs[idx].classList.remove('active');
+      idx = (idx + 1) % withPhotos.length;
+      imgs[idx].classList.add('active');
+      nameEl.textContent = withPhotos[idx].isim;
+      roleEl.textContent = withPhotos[idx].unvan;
+    }, 1800);
   }
 
   // Pop-up (Modal) Kontrol Fonksiyonları
