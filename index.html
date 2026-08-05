@@ -186,7 +186,7 @@
   .hero-corporate-inner {
     position: relative;
     z-index: 2;
-    max-width: 640px;
+    max-width: 740px;
     padding: 140px 48px 0;
     text-align: left;
     display: flex;
@@ -423,6 +423,8 @@
     border-radius: 50%;
     box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2);
   }
+  
+  /* Sadece Tübitak Yazan İnce Cam Kutu */
   .map-info-box {
     position: absolute;
     right: 0; 
@@ -434,20 +436,11 @@
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-right: none;
     border-radius: 30px 0 0 30px; 
-    width: min(85%, 520px);
-    padding: 60px 50px 60px 60px;
+    padding: 18px 40px 18px 30px;
     box-shadow: -15px 20px 40px rgba(0,0,0,0.06);
     z-index: 10;
   }
-  .map-info-box h2 {
-    font-family: var(--font-sans);
-    font-size: clamp(22px, 2.8vw, 34px);
-    font-weight: 500; 
-    font-style: italic; 
-    color: var(--text-ink); 
-    line-height: 1.4;
-    margin-bottom: 24px;
-  }
+  
   .map-info-subtitle {
     display: flex;
     align-items: center;
@@ -459,7 +452,7 @@
   }
 
   @media (max-width: 1024px) {
-    .map-info-box { width: 55%; padding: 40px 30px 40px 40px; }
+    .map-info-box { padding: 16px 30px 16px 20px; }
   }
   @media (max-width: 768px) {
     .priority-photo-wrap { border-radius: 50px; }
@@ -470,7 +463,7 @@
     .map-layer-container { top: 40%; width: 150%; }
     .map-info-box {
       position: relative; right: auto; top: auto; transform: none;
-      width: 90%; margin: 0 auto; border-radius: 20px;
+      width: max-content; margin: 0 auto; border-radius: 20px;
       border-right: 1px solid rgba(255,255,255,0.8);
     }
   }
@@ -598,6 +591,7 @@
   @media (max-width: 1024px) {
     .footer-inner { grid-template-columns: 1fr; }
     .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; }
+    .priority-photo-wrap { border-radius: 50px; margin-top: 0; padding: 100px 20px 50px;}
   }
 
   .gsap-reveal { opacity: 0; transform: translateY(30px); }
@@ -715,7 +709,7 @@
     <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"></div>
   </div>
   <div class="hero-corporate-inner gsap-reveal">
-    <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem</h1>
+    <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
     <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
   </div>
   <div class="hero-bottom-row">
@@ -803,7 +797,6 @@
   </div>
   
   <div class="map-info-box">
-    <h2 data-i18n="mapBoxTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h2>
     <div class="map-info-subtitle" data-i18n="mapBoxSub">TÜBİTAK 3005 Destekli Proje</div>
   </div>
 </section>
@@ -892,13 +885,12 @@
       menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
       dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
       btnPolitika: "Politika Önerileri",
-      heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem",
+      heroTitle: "İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri",
       heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
       svc1Title: "Saha Araştırması", svc1Desc: "TR42 bölgesinde yürütülen çalışma",
       svc2Title: "Bulgular", svc2Desc: "Güncel analiz ve sonuçlar",
       svc3Title: "Politika Önerileri", svc3Desc: "Kanıta dayalı öneriler",
       svc4Desc: "Uzman akademik kadro",
-      mapBoxTitle: "İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri",
       mapBoxSub: "TÜBİTAK 3005 Destekli Proje",
       mapGrm: "Almanya", mapUsa: "ABD", mapUk: "Birleşik Krallık", mapIta: "İtalya", mapRus: "Rusya", mapChn: "Çin", mapFra: "Fransa", mapIrq: "Irak",
       teamTitle: "Araştırma Ekibi",
@@ -913,13 +905,12 @@
       menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
       dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
       btnPolitika: "Policy Recommendations",
-      heroTitle: "A New Era in Foreign Trade Entrepreneurship",
+      heroTitle: "Policy Recommendations for Revising Export Incentives from the Perspective of Foreign Trade Entrepreneurship",
       heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
       svc1Title: "Field Research", svc1Desc: "Study conducted in the TR42 region",
       svc2Title: "Findings", svc2Desc: "Latest analysis and results",
       svc3Title: "Policy Recommendations", svc3Desc: "Evidence-based proposals",
       svc4Desc: "Expert academic staff",
-      mapBoxTitle: "Policy Recommendations for Revising Export Incentives from the Perspective of Foreign Trade Entrepreneurship",
       mapBoxSub: "TÜBİTAK 3005 Supported Project",
       mapGrm: "Germany", mapUsa: "USA", mapUk: "United Kingdom", mapIta: "Italy", mapRus: "Russia", mapChn: "China", mapFra: "France", mapIrq: "Iraq",
       teamTitle: "Research Team",
