@@ -443,6 +443,12 @@
     .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
 
     .hero-corporate { min-height: 400px; padding: 60px 20px; }
+    .news-card { flex: 0 0 70%; }
+  }
+
+  @media (max-width: 640px) {
+    .news-card { flex: 0 0 86%; }
+    .nc-content { padding: 20px; }
   }
 </style>
 </head>
@@ -586,7 +592,7 @@
       </div>
       <div class="f-contact">
         <h3 data-i18n="footContactTitle">Bize Ulaşın</h3>
-        <form action="https://formsubmit.co/msaygili@subu.edu.tr" method="POST">
+        <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
           <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
           <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
           <textarea name="message" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
