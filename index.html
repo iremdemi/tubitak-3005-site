@@ -285,6 +285,65 @@
   }
 
   /* ==========================================================================
+     ÖNCELİK BÖLÜMÜ (Düz Kartlar, Yay Tasarımı ve Konteyner Arka Planı)
+     ========================================================================== */
+  .priority-section { padding: 60px 0 0; text-align: center; background: var(--bg-alt); }
+  .priority-heading { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; color: var(--text-ink); max-width: 700px; margin: 0 auto 30px; line-height: 1.3; }
+  .priority-heading .hl { color: var(--accent-teal); }
+  .priority-tag { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: var(--accent-teal); margin-bottom: 16px; }
+  .priority-tag .bar { width: 3px; height: 18px; background: var(--accent-teal); border-radius: 2px; }
+
+  .priority-photo-wrap {
+    position: relative; width: 100%;
+    /* Konteyner/Lojistik Görseli */
+    background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 90px 32px 80px;
+    /* Yay/Arch görünümü burada veriliyor */
+    border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+  }
+  .priority-photo-wrap::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(150deg, rgba(20,10,5,0.7) 0%, rgba(10,5,3,0.85) 100%);
+  }
+  
+  .priority-grid {
+    position: relative; z-index: 1; max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  
+  /* Kartlar tamamen düzeltildi, rotasyon (yamukluk) kaldırıldı */
+  .priority-card {
+    background: rgba(40, 30, 20, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 34px 28px; text-align: left;
+    transition: transform .3s ease, background .3s ease; font-family: var(--font-sans); cursor: pointer; display: block; width: 100%;
+  }
+  .priority-card:hover { transform: translateY(-5px); background: rgba(50, 35, 20, 0.6); }
+  
+  .priority-card-icon {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+  .priority-card-icon svg { width: 20px; height: 20px; stroke: #FFFFFF; fill: none; stroke-width: 1.5; }
+  .priority-card h3 { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .priority-card p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 50px; }
+  .priority-actions .btn-white { background: #FFFFFF; color: var(--accent-navy); font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; transition: all .3s; }
+  .priority-actions .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+  .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; transition: all .3s; }
+  .priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+  @media (max-width: 900px) {
+    .priority-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .priority-grid { grid-template-columns: 1fr; }
+    .priority-photo-wrap { border-radius: 50% 50% 0 0 / 30px 30px 0 0; padding: 60px 20px 50px; }
+    .priority-actions { flex-direction: column; width: 100%; }
+    .priority-actions a { width: 100%; text-align: center; justify-content: center; }
+  }
+
+  /* ==========================================================================
      DEV MASKELENMİŞ YAZI BÖLÜMÜ
      ========================================================================== */
   .giant-text-section {
@@ -354,7 +413,6 @@
   .nc-content h3:hover { color: var(--accent-navy); }
   .nc-content p { font-size: 13.5px; color: var(--text-body); font-family: var(--font-sans); line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
   
-  /* Siyah renkli "Detaylı İncele" butonu */
   .read-more { font-size: 12px; font-weight: 700; color: #000000; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: opacity 0.2s;}
   .read-more:hover { opacity: 0.6; }
 
@@ -525,60 +583,6 @@
     .nc-content { padding: 20px; }
   }
 
-  /* ==========================================================================
-     ÖNCELİK BÖLÜMÜ (yamuk/tilted kart ızgarası)
-     ========================================================================== */
-  .priority-section { padding: 90px 0 70px; text-align: center; background: var(--bg-alt); }
-  .priority-heading { font-family: var(--font-serif); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; color: var(--text-ink); max-width: 14ch; margin: 0 auto 48px; line-height: 1.3; }
-  .priority-heading .hl { color: var(--accent-teal); }
-  .priority-tag { justify-content: center; color: var(--accent-teal); margin-bottom: 16px; }
-  .priority-tag .bar { background: var(--accent-teal); }
-
-  .priority-photo-wrap {
-    position: relative; border-radius: 20px; overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding: 56px 32px;
-  }
-  .priority-photo-wrap::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(150deg, rgba(255,106,26,.28) 0%, rgba(15,10,6,.82) 55%, rgba(8,5,3,.92) 100%);
-  }
-  .priority-grid {
-    position: relative; z-index: 1; max-width: 900px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 22px;
-  }
-  .priority-card {
-    background: rgba(20,14,9,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 26px 20px; text-align: left;
-    transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s ease;
-    font-family: var(--font-sans); cursor: pointer; display: block; width: 100%;
-  }
-  .priority-card:hover { transform: rotate(0deg) translateY(-4px) !important; background: rgba(255,106,26,.22); }
-  .priority-card:nth-child(1) { transform: rotate(-3deg); }
-  .priority-card:nth-child(2) { transform: rotate(2deg); }
-  .priority-card:nth-child(3) { transform: rotate(-1.5deg); }
-  .priority-card:nth-child(4) { transform: rotate(2.5deg); }
-  .priority-card:nth-child(5) { transform: rotate(-2deg); }
-  .priority-card:nth-child(6) { transform: rotate(1.5deg); }
-  .priority-card-icon {
-    width: 38px; height: 38px; border-radius: 50%; background: var(--accent-teal);
-    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-  }
-  .priority-card-icon svg { width: 18px; height: 18px; stroke: #FFFFFF; fill: none; stroke-width: 1.8; }
-  .priority-card h3 { font-size: 14px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .priority-card p { font-size: 11.5px; line-height: 1.55; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-  .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
-  .priority-actions .btn-white { background: #FFFFFF; color: var(--accent-navy); font-size: 13px; font-weight: 700; padding: 13px 26px; border-radius: 30px; }
-  .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,.5); color: #FFFFFF; font-size: 13px; font-weight: 700; padding: 13px 26px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; }
-
-  @media (max-width: 768px) {
-    .priority-grid { grid-template-columns: 1fr 1fr; }
-    .priority-card { transform: none !important; }
-  }
-  @media (max-width: 480px) {
-    .priority-grid { grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 <body id="anasayfa">
@@ -718,8 +722,15 @@
   <div class="wrap">
     <div class="hero-tag priority-tag gsap-reveal"><span class="bar"></span><span data-i18n="heroTag">TÜBİTAK 3005 Destekli Proje</span></div>
     <h2 class="priority-heading gsap-reveal"><span data-i18n="priorityHeading">Araştırmada Bilimsel Titizlik </span><span class="hl" data-i18n="priorityHeadingHl">Önceliğimizdir</span></h2>
-    <div class="priority-photo-wrap gsap-reveal">
+  </div>
+  
+  <div class="priority-photo-wrap gsap-reveal">
+    <div class="wrap">
       <div class="priority-grid" id="priorityGrid"></div>
+      <div class="priority-actions">
+        <a href="#iletisim" class="btn-white">Bize Ulaşın</a>
+        <a href="#analizler" class="btn-ghost-white">Detayları İncele &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -919,7 +930,7 @@ Pandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yük
 
 Projemizin çıkış noktalarından biri, bu sessiz varsayımı tersine çevirmektir. "Ticari milliyetçilik" olarak adlandırdığımız yaklaşım, bir ekonomik faaliyetin başarısını yalnızca ciro veya pazar payıyla değil, yarattığı değerin hangi ülkede sabit sermayeye, istihdama ve yenilik kapasitesine dönüştüğüyle ölçer. Bu çerçevede dış ticaret girişimciliği, yurt dışına yatırım yapmak yerine, üretimi ve katma değer yaratma sürecini bilinçli biçimde yurt içinde tutan; yalnızca dış satım yoluyla küresel pazara açılan bir modeldir. Aradaki fark kozmetik değildir: biri sermayeyi ihraç eder, diğeri sermayeyi ithal eder.
 
-Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meselesi olduğunu vurgulamak gerekir. Teşvik sistemleri bugüne kadar çoğunlukla ihracat hacmini büyütmeyi hedefledi; hangi model üzerinden büyüdüğünü, yani yaratılan değerin nerede kaldığını sorgulamadı. Küresel korumacılığın yükseldiği, tedarik zincirlerinin yeniden ulusal sınırlara çekildiği bir dönemde, bu ayrımı gözden kaçırmanın maliyeti giderek artıyor.`
+Bu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meselesi olduğunu vurgulamak gerekir. Teşvik systems bugüne kadar çoğunlukla ihracat hacmini büyütmeyi hedefledi; hangi model üzerinden büyüdüğünü, yani yaratılan değerin nerede kaldığını sorgulamadı. Küresel korumacılığın yükseldiği, tedarik zincirlerinin yeniden ulusal sınırlara çekildiği bir dönemde, bu ayrımı gözden kaçırmanın maliyeti giderek artıyor.`
         },
         { 
           baslik: "Neden Şimdi? Tedarik Zincirleri Kırılırken Dış Ticaret Girişimciliğinin Yükselişi", 
@@ -973,13 +984,13 @@ Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden kon
           baslik: "Commercial Nationalism: Which Country Does a Venture's Wealth Belong To?", 
           ozet: "A firm can be considered 'globally successful' even as the wealth it creates is added to another country's capital stock. The concept of 'commercial nationalism' puts exactly this question on the table.", 
           gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
-          full: `A venture is usually judged "international" or "global" by a single yardstick: operating across borders. But that yardstick conceals the question that actually matters: which country's capital stock does the value created ultimately join? Since the Uppsala Model, classical internationalization theories have presented direct investment, partnerships, or acquisitions abroad as a natural stage of "maturity." In that narrative, where the value-added ultimately settles is barely questioned at all.\\n\\nOne of the starting points of our project is to invert this quiet assumption. What we call "commercial nationalism" measures the success of an economic activity not merely by revenue or market share, but by where the value it creates turns into fixed capital, employment, and innovation capacity. Under this lens, foreign trade entrepreneurship is a model that deliberately keeps production and value creation at home rather than investing abroad, reaching global markets solely through exports. The difference is not cosmetic: one model exports capital, the other imports it.\\n\\nIt is worth stressing that this distinction is not an academic nicety but a direct policy matter. Incentive systems have so far mostly targeted growing export volume, without asking which model that growth follows, that is, where the value created actually stays. At a time when global protectionism is rising and supply chains are being pulled back within national borders, the cost of overlooking this distinction keeps growing.`
+          full: `A venture is usually judged "international" or "global" by a single yardstick: operating across borders. But that yardstick conceals the question that actually matters: which country's capital stock does the value created ultimately join? Since the Uppsala Model, classical internationalization theories have presented direct investment, partnerships, or acquisitions abroad as a natural stage of "maturity." In that narrative, where the value-added ultimately settles is barely questioned at all.\n\nOne of the starting points of our project is to invert this quiet assumption. What we call "commercial nationalism" measures the success of an economic activity not merely by revenue or market share, but by where the value it creates turns into fixed capital, employment, and innovation capacity. Under this lens, foreign trade entrepreneurship is a model that deliberately keeps production and value creation at home rather than investing abroad, reaching global markets solely through exports. The difference is not cosmetic: one model exports capital, the other imports it.\n\nIt is worth stressing that this distinction is not an academic nicety but a direct policy matter. Incentive systems have so far mostly targeted growing export volume, without asking which model that growth follows, that is, where the value created actually stays. At a time when global protectionism is rising and supply chains are being pulled back within national borders, the cost of overlooking this distinction keeps growing.`
         },
         { 
           baslik: "Why Now? The Rise of Foreign Trade Entrepreneurship as Supply Chains Fracture", 
           ozet: "Supply chains broken by the pandemic and rising protectionism have turned foreign trade entrepreneurship from an academic curiosity into an urgent policy agenda.", 
           gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-          full: `Until a few years ago, "supply chain" was, for most policymakers, an abstract engineering matter. The pandemic showed it was anything but: a bottleneck at a single port could halt a factory thousands of kilometers away. That fragility pushed concepts like "reshoring" and "friend-shoring" to the center of economic literature; states now treat where production happens as a matter of security, not just cost.\\n\\nIn this new equation, Turkey's position carries both opportunity and risk. Its geographic proximity to Europe and strong industrial hinterlands like TR42 make the country a natural alternative as supply chains are reshaped. But turning that opportunity into a real gain depends on supporting foreign trade entrepreneurs on the ground with the right tools. The recurring emphasis on "domestic and national production" in Turkey's Eleventh and Twelfth Development Plans reflects the political counterpart of this need.\\n\\nPolicy windows do not stay open forever. Getting the incentive architecture right while supply chains are being repositioned will largely determine competitiveness over the next decade. That is precisely where the urgency of this research comes from: every year of delay means starting from a more disadvantaged position on a global trade map that is already being redrawn.`
+          full: `Until a few years ago, "supply chain" was, for most policymakers, an abstract engineering matter. The pandemic showed it was anything but: a bottleneck at a single port could halt a factory thousands of kilometers away. That fragility pushed concepts like "reshoring" and "friend-shoring" to the center of economic literature; states now treat where production happens as a matter of security, not just cost.\n\nIn this new equation, Turkey's position carries both opportunity and risk. Its geographic proximity to Europe and strong industrial hinterlands like TR42 make the country a natural alternative as supply chains are reshaped. But turning that opportunity into a real gain depends on supporting foreign trade entrepreneurs on the ground with the right tools. The recurring emphasis on "domestic and national production" in Turkey's Eleventh and Twelfth Development Plans reflects the political counterpart of this need.\n\nPolicy windows do not stay open forever. Getting the incentive architecture right while supply chains are being repositioned will largely determine competitiveness over the next decade. That is precisely where the urgency of this research comes from: every year of delay means starting from a more disadvantaged position on a global trade map that is already being redrawn.`
         }
       ],
       ekip: [
@@ -1301,8 +1312,6 @@ Politika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden kon
       });
     }
   }
-
-  // Bilgi Merkezi kaldırıldı.
 
   const slider = document.querySelector('.news-slider');
   if(slider) {
