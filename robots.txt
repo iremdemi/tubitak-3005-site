@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iremdemi.github.io/tubitak-3005-site/sitemap.xml
