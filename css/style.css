@@ -22,37 +22,21 @@ img { max-width: 100%; display: block; }
 .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
 
-/* ==========================================================================
-   HEADER VE LOGO
-   ========================================================================== */
-header { 
-  background-color: transparent; border-bottom: 1px solid transparent; 
-  position: fixed; width: 100%; top: 0; left: 0; z-index: 100; 
-  transition: all 0.4s ease;
-}
-
-header.scrolled {
-  background-color: rgba(250, 248, 245, 0.9);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(236, 228, 218, 0.6);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-}
-
+/* HEADER */
+header { background-color: transparent; border-bottom: 1px solid transparent; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; transition: all 0.4s ease; }
+header.scrolled { background-color: rgba(250, 248, 245, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(236, 228, 218, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; max-width: 1360px; margin: 0 auto; padding: 0 32px; }
 .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .horizontal-logo { display: flex; align-items: center; gap: 12px; }
-
 .hl-dtg { font-family: var(--font-serif); font-size: 34px; font-weight: 600; color: #000000; letter-spacing: 0.04em; line-height: 1; transition: color 0.3s ease; }
 .hl-divider { width: 1px; height: 28px; background-color: #CBD5E1; transition: background-color 0.3s ease; }
 .hl-stack { display: flex; flex-direction: column; line-height: 1.15; }
 .hl-research, .hl-portal { font-family: var(--font-sans); font-size: 11px; font-weight: 500; color: #000000; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s ease; }
 
-/* Menü */
 .nav-menu { display: flex; align-items: center; gap: 28px; margin: 0 auto; }
 .nav-item { position: relative; }
 .nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; transition: color 0.3s ease;}
 .nav-menu a:hover { color: var(--accent-teal); }
-
 .has-dropdown .dropdown-icon { font-size: 8px; transition: transform 0.2s; }
 .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--bg-alt); border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 0; min-width: 180px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.2s ease; z-index: 110; }
 .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -66,7 +50,6 @@ header.scrolled {
 .lang-switch span:hover { color: var(--accent-teal) !important; }
 .lang-switch span.active { color: var(--accent-navy); font-weight: 700; background: #F1F5F9; border-radius: 4px; }
 .lang-switch .sep { color: #CBD5E1; font-weight: 300; transition: color 0.3s ease; }
-
 .btn-outline-header { border: 1px solid var(--accent-navy); color: var(--accent-navy); padding: 8px 16px; font-size: 11.5px; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; white-space: nowrap; }
 .btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
 
@@ -81,9 +64,7 @@ header:not(.scrolled) .btn-outline-header { border-color: rgba(255, 255, 255, 0.
 header:not(.scrolled) .btn-outline-header:hover { background-color: #FFFFFF; color: var(--accent-navy); border-color: #FFFFFF; }
 header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
+/* HERO SECTION */
 .hero-corporate { position: relative; width: 100%; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; color: #FFFFFF; padding: 0; overflow: hidden; border-radius: 0 0 100px 100px; }
 .hero-slides { position: absolute; inset: 0; z-index: 0; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.05); transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -91,28 +72,16 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 .hero-corporate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 106, 26, 0.32) 0%, rgba(20, 12, 6, 0.72) 48%, rgba(10, 7, 4, 0.9) 100%); z-index: 1; pointer-events: none; }
 
 .hero-corporate-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 55%; /* YAZI DARALTILDI */
-  min-width: 600px;
-  padding: 140px 48px 0;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative; z-index: 2;
+  max-width: 55%; min-width: 600px; /* Metin daraltıldı */
+  padding: 140px 48px 0; text-align: left;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
-
 .hero-corporate h1 {
   font-family: var(--font-serif);
-  font-size: clamp(28px, 3.2vw, 44px); /* PUNTO BİRAZ KÜÇÜLTÜLDÜ */
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 18px;
-  line-height: 1.15;
-  color: #FFFFFF;
-  text-align: left;
+  font-size: clamp(28px, 3.2vw, 44px); /* Punto küçültüldü */
+  font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; line-height: 1.15; color: #FFFFFF; text-align: left;
 }
-
 .hero-corporate p { font-size: 15px; max-width: 100%; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: 28px; text-align: left; }
 .hero-bottom-row { position: relative; z-index: 2; display: flex; align-items: center; justify-content: flex-end; padding: 0 48px 34px; }
 .hero-arrows { display: flex; gap: 10px; }
@@ -122,38 +91,15 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 
 @media (max-width: 900px) { .hero-corporate-inner { max-width: 100%; min-width: 0; } }
 
-/* ==========================================================================
-   HİZMET/KATEGORİ ŞERİDİ (TAMAMEN BEYAZ BOŞLUKTA)
-   ========================================================================== */
-.services-row-section { 
-  position: relative;
-  background: var(--bg-main); 
-  padding: 100px 0; 
-}
-
-/* Kaydırma Dürtüsü Sağlayan Animasyon (Scroll Indicator) */
-.scroll-indicator {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 10;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
+/* HİZMET ŞERİDİ */
+.services-row-section { position: relative; background: var(--bg-main); padding: 100px 0; }
+.scroll-indicator { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 10; transition: opacity 0.4s ease, visibility 0.4s ease; }
 .scroll-indicator.hidden { opacity: 0; visibility: hidden; }
 .scroll-dot { width: 6px; height: 6px; background-color: var(--accent-teal); border-radius: 50%; opacity: 0; animation: scrollDotsAnim 1.5s infinite ease-in-out; }
 .scroll-dot:nth-child(1) { animation-delay: 0s; }
 .scroll-dot:nth-child(2) { animation-delay: 0.2s; }
 .scroll-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes scrollDotsAnim {
-  0% { opacity: 0; transform: translateY(-5px); }
-  50% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(5px); }
-}
+@keyframes scrollDotsAnim { 0% { opacity: 0; transform: translateY(-5px); } 50% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(5px); } }
 
 .services-row-wrap { position: relative; z-index: 5; margin-top: 0; }
 .services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -178,20 +124,10 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 @media (max-width: 860px) { .services-row { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .services-row { grid-template-columns: 1fr; } .hero-corporate-inner { padding: 120px 24px 0; } .hero-bottom-row { padding: 0 24px 28px; } }
 
-/* ==========================================================================
-   ÖNCELİK BÖLÜMÜ / ANALİZLER (ÜSTÜ VE ALTI KAVİSLİ)
-   ========================================================================== */
+/* ANALİZLER (ÜSTÜ VE ALTI KAVİSLİ) */
 .priority-section { padding: 0; text-align: center; background: var(--bg-main); }
-.priority-photo-wrap {
-  position: relative; width: 100%; z-index: 2;
-  background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-  padding: 120px 32px 80px; 
-  border-radius: 100px; 
-  overflow: hidden; 
-  margin-top: 0; 
-}
+.priority-photo-wrap { position: relative; width: 100%; z-index: 2; background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 120px 32px 80px; border-radius: 100px; overflow: hidden; margin-top: 0; }
 .priority-photo-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(150deg, rgba(20,10,5,0.7) 0%, rgba(10,5,3,0.85) 100%); z-index: 0; }
-
 .priority-grid { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .priority-card { background: rgba(40, 30, 20, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 34px 28px; text-align: left; transition: transform .3s ease, background .3s ease; font-family: var(--font-sans); cursor: pointer; display: block; width: 100%; }
 .priority-card:hover { transform: translateY(-5px); background: rgba(50, 35, 20, 0.6); }
@@ -199,100 +135,22 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 .priority-card-icon svg { width: 20px; height: 20px; stroke: #FFFFFF; fill: none; stroke-width: 1.5; }
 .priority-card h3 { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .priority-card p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
 .priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 50px; }
 .priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; transition: all .3s; }
 .priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-
 @media (max-width: 900px) { .priority-grid { grid-template-columns: repeat(2, 1fr); } }
 
-/* ==========================================================================
-   GLOBAL NETWORK HARİTA BÖLÜMÜ (AYRIŞIK KAVİS, ZOOM VE NOKTA ATIŞI LOKASYON)
-   ========================================================================== */
-.global-network-section {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); 
-  border-radius: 100px; 
-  margin-top: 100px; /* ÜSTTEKİ BÖLÜMLE ARADA BEYAZ BOŞLUK */
-  padding-top: 60px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.map-layer-container {
-  position: absolute;
-  width: 130%; /* ZOOM */
-  max-width: 2000px;
-  aspect-ratio: 2 / 1;
-  top: 65%; /* ANTARKTİKA GİZLENDİ */
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.map-shape {
-  width: 100%;
-  height: 100%;
-  background-color: #D4C5B9; 
-  -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  opacity: 0.9;
-}
-.map-marker {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-ink); 
-  font-size: 13px;
-  font-weight: 700;
-  font-family: var(--font-sans);
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  pointer-events: none;
-}
-.map-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--accent-teal); 
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2);
-}
+/* GLOBAL HARİTA (AYRIŞIK KAVİS, ZOOM VE LOKASYON) */
+.global-network-section { position: relative; width: 100%; min-height: 100vh; background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); border-radius: 100px; margin-top: 100px; padding-top: 60px; z-index: 10; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.map-layer-container { position: absolute; width: 130%; max-width: 2000px; aspect-ratio: 2 / 1; top: 65%; left: 50%; transform: translate(-50%, -50%); }
+.map-shape { width: 100%; height: 100%; background-color: #D4C5B9; -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; opacity: 0.9; }
+.map-marker { position: absolute; display: flex; align-items: center; gap: 8px; color: var(--text-ink); font-size: 13px; font-weight: 700; font-family: var(--font-sans); transform: translate(-50%, -50%); z-index: 5; pointer-events: none; }
+.map-dot { width: 6px; height: 6px; background-color: var(--accent-teal); border-radius: 50%; box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2); }
 
-/* İnce ve Sağa Yapışık Cam Kutu */
-.map-info-box {
-  position: absolute;
-  right: 0; 
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.65); 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-right: none;
-  border-radius: 30px 0 0 30px; 
-  padding: 18px 40px 18px 30px;
-  box-shadow: -15px 20px 40px rgba(0,0,0,0.06);
-  z-index: 10;
-}
+.map-info-box { position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); border-right: none; border-radius: 30px 0 0 30px; padding: 18px 40px 18px 30px; box-shadow: -15px 20px 40px rgba(0,0,0,0.06); z-index: 10; }
+.map-info-subtitle { display: flex; align-items: center; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6d4c41; }
 
-.map-info-subtitle {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #6d4c41; 
-}
-
-@media (max-width: 1024px) {
-  .map-info-box { padding: 16px 30px 16px 20px; }
-}
+@media (max-width: 1024px) { .map-info-box { padding: 16px 30px 16px 20px; } }
 @media (max-width: 768px) {
   .priority-photo-wrap { border-radius: 50px; }
   .global-network-section { min-height: 80vh; border-radius: 50px; margin-top: 60px; padding-top: 30px; align-items: flex-end; padding-bottom: 40px; }
@@ -300,9 +158,7 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
   .map-info-box { position: relative; right: auto; top: auto; transform: none; width: max-content; margin: 0 auto; border-radius: 20px; border-right: 1px solid rgba(255,255,255,0.8); }
 }
 
-/* ==========================================================================
-   MAKALE OKUMA POP-UP (MODAL) EKRANI
-   ========================================================================== */
+/* MODAL */
 .article-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px; }
 .article-modal-overlay.open { opacity: 1; visibility: visible; }
 .article-modal { background: #fff; width: 100%; max-width: 800px; max-height: 85vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transform: translateY(20px); transition: transform 0.3s ease; }
@@ -320,9 +176,7 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 .article-modal-body p:last-child { margin-bottom: 0; }
 .article-modal-body p:first-of-type::first-letter { font-family: var(--font-serif); font-weight: 800; font-size: 54px; line-height: .78; float: left; padding: 4px 9px 0 0; color: var(--accent-teal); }
 
-/* ==========================================================================
-   ARAŞTIRMA EKİBİMİZ
-   ========================================================================== */
+/* ARAŞTIRMA EKİBİMİZ */
 .section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
 .section-header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
 .section-header-content { max-width: 600px; }
@@ -345,9 +199,7 @@ header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
 .tc-content h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 6px; line-height: 1.35; }
 .tc-content .tc-role { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
+/* FOOTER */
 footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px 0; }
 .footer-inner { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: 40px; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 40px; }
 .f-brand h2 { font-family: var(--font-serif); font-size: 20px; font-weight: 900; margin-bottom: 8px; }
@@ -361,17 +213,17 @@ footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px
 .f-contact button { background: var(--accent-teal); color: #FFFFFF; border: none; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 11px 20px; border-radius: 6px; cursor: pointer; transition: background .2s ease; }
 .f-contact button:hover { background: #0DA3A5; }
 
-@media (max-width: 1024px) {
-  .footer-inner { grid-template-columns: 1fr; }
-  .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; }
-}
+@media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr; } .hero-corporate { min-height: 560px; border-radius: 0 0 50px 50px; } }
 
+/* EKSİK OLAN ANİMASYON SINIFI BURADA */
 .gsap-reveal { opacity: 0; transform: translateY(30px); }
+
 .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
 .menu-toggle span { width: 22px; height: 2px; background: var(--text-ink); display: block; transition: transform .2s ease, opacity .2s ease; }
 .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 .nav-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.4); opacity: 0; visibility: hidden; transition: opacity .3s ease; z-index: 140; }
 .nav-overlay.is-open { opacity: 1; visibility: visible; }
 
@@ -387,4 +239,10 @@ footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px
   .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; max-height: 0; overflow: hidden; padding: 0; min-width: 0; transition: max-height .3s ease; }
   .has-dropdown.is-open .dropdown-menu { max-height: 200px; padding: 4px 0 12px 12px; }
   .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
+}
+
+@media (max-width: 600px) {
+  .priority-grid { grid-template-columns: 1fr; }
+  .priority-actions { flex-direction: column; width: 100%; }
+  .priority-actions a { width: 100%; text-align: center; justify-content: center; }
 }
