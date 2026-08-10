@@ -164,7 +164,6 @@ function translateHTML() {
 function renderDynamicData() {
   const data = siteContent[currentLang];
   
-  // Ekip Üyeleri Kartları
   const ekipEl = document.getElementById('ekip-container');
   if (ekipEl) {
     ekipEl.innerHTML = '';
@@ -176,29 +175,22 @@ function renderDynamicData() {
     });
   }
 
-  // Bulgular listesi
   const svc2El = document.getElementById('svc2-list');
   if (svc2El) {
     svc2El.innerHTML = data.haberler.slice(0, 4).map(h => `<div class="service-card-list-item">${h.baslik}</div>`).join('');
   }
 
-  // Öncelik / Analiz ızgarası
   const priorityGridEl = document.getElementById('priorityGrid');
   if (priorityGridEl) {
     const prIcons = [
       '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>', '<path d="M9 17V9m6 8V5m-11 12h16"/>', '<path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
       '<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/>', '<circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/>', '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'
     ];
-    priorityGridEl.innerHTML = data.haberler.slice(0, 6).map((h, i) => `
-      <button class="priority-card" onclick="openModal(${i})" type="button">
-        <div class="priority-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${prIcons[i % prIcons.length]}</svg></div>
-        <h3>${h.baslik}</h3>
-        <p>${h.ozet}</p>
-      </button>
-    `).join('');
+    priorityGridEl.innerHTML = data.haberler.slice(0, 6).map((h, i) => `<button class="priority-card" onclick="openModal(${i})" type="button"><div class="priority-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${prIcons[i % prIcons.length]}</svg></div><h3>${h.baslik}</h3><p>${h.ozet}</p></button>`).join('');
   }
 
   initTeamRotator(data);
+  
   setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
 }
 
@@ -255,24 +247,32 @@ function closeModal() {
   }
 }
 
+// BÜTÜN BOŞLUK SORUNUNU ÇÖZEN ANİMASYON FONKSİYONU
+function initAnimations() {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+      gsap.to(elem, {
+        scrollTrigger: { trigger: elem, start: "top 85%" },
+        opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
+      });
+    });
+  } else {
+    // EĞER GSAP YÜKLENMEZSE, YEDEK OLARAK HER ŞEYİ GÖRÜNÜR YAP
+    document.querySelectorAll('.gsap-reveal').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector('header');
   const scrollIndicator = document.querySelector('.scroll-indicator');
   
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-    
-    if (scrollIndicator) {
-      if (window.scrollY > 50) {
-        scrollIndicator.classList.add('hidden');
-      } else {
-        scrollIndicator.classList.remove('hidden');
-      }
-    }
+    if (window.scrollY > 30) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); }
+    if (scrollIndicator) { if (window.scrollY > 50) { scrollIndicator.classList.add('hidden'); } else { scrollIndicator.classList.remove('hidden'); } }
   });
 
   document.addEventListener('keydown', (e) => {
@@ -293,64 +293,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const navMenu = document.querySelector('.nav-menu');
   const navOverlay = document.getElementById('navOverlay');
 
-  function openMobileNav(){
-    navMenu.classList.add('is-open');
-    navOverlay.classList.add('is-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileNav(){
-    navMenu.classList.remove('is-open');
-    navOverlay.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(i => i.classList.remove('is-open'));
-  }
-  if(menuToggle){
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
-    });
-  }
+  function openMobileNav(){ navMenu.classList.add('is-open'); navOverlay.classList.add('is-open'); menuToggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+  function closeMobileNav(){ navMenu.classList.remove('is-open'); navOverlay.classList.remove('is-open'); menuToggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(i => i.classList.remove('is-open')); }
+  if(menuToggle){ menuToggle.addEventListener('click', () => { navMenu.classList.contains('is-open') ? closeMobileNav() : openMobileNav(); }); }
   if(navOverlay) navOverlay.addEventListener('click', closeMobileNav);
 
   document.querySelectorAll('.dropdown-icon').forEach(icon => {
-    icon.addEventListener('click', (e) => {
-      if(window.innerWidth <= 1024){
-        e.preventDefault();
-        e.stopPropagation();
-        icon.closest('.nav-item').classList.toggle('is-open');
-      }
-    });
+    icon.addEventListener('click', (e) => { if(window.innerWidth <= 1024){ e.preventDefault(); e.stopPropagation(); icon.closest('.nav-item').classList.toggle('is-open'); } });
   });
 
   document.querySelectorAll('.nav-menu a').forEach(a => {
-    a.addEventListener('click', () => {
-      if(window.innerWidth <= 1024) closeMobileNav();
-    });
+    a.addEventListener('click', () => { if(window.innerWidth <= 1024) closeMobileNav(); });
   });
 
-  window.addEventListener('resize', () => {
-    if(window.innerWidth > 1024) closeMobileNav();
-  });
+  window.addEventListener('resize', () => { if(window.innerWidth > 1024) closeMobileNav(); });
 
   const closeBtn = document.getElementById('modalCloseBtn');
   const overlay = document.getElementById('articleModalOverlay');
   if(closeBtn) closeBtn.addEventListener('click', closeModal);
-  if(overlay) overlay.addEventListener('click', (e) => {
-    if(e.target === overlay) closeModal();
-  });
+  if(overlay) overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
 
   const track = document.getElementById('ekip-container');
   const prevBtn = document.getElementById('teamPrev');
   const nextBtn = document.getElementById('teamNext');
 
   if (track && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -310, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: 310, behavior: 'smooth' });
-    });
+    prevBtn.addEventListener('click', () => { track.scrollBy({ left: -310, behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', () => { track.scrollBy({ left: 310, behavior: 'smooth' }); });
   }
 
   const slides = document.querySelectorAll('.hero-slide');
@@ -360,38 +329,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSlide = 0;
     let heroTimer = null;
 
-    function goToSlide(index){
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (index + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }
-    function startHeroTimer(){
-      heroTimer = setInterval(() => {
-        goToSlide(currentSlide + 1);
-      }, 5500);
-    }
+    function goToSlide(index){ slides[currentSlide].classList.remove('active'); currentSlide = (index + slides.length) % slides.length; slides[currentSlide].classList.add('active'); }
+    function startHeroTimer(){ heroTimer = setInterval(() => { goToSlide(currentSlide + 1); }, 5500); }
     startHeroTimer();
 
-    function manualNav(delta){
-      clearInterval(heroTimer);
-      goToSlide(currentSlide + delta);
-      startHeroTimer();
-    }
+    function manualNav(delta){ clearInterval(heroTimer); goToSlide(currentSlide + delta); startHeroTimer(); }
     if(heroPrev) heroPrev.addEventListener('click', () => manualNav(-1));
     if(heroNext) heroNext.addEventListener('click', () => manualNav(1));
 
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        slides.forEach(s => {
-          const bg = s.getAttribute('data-bg');
-          if(bg) s.style.backgroundImage = `url('${bg}')`;
-        });
-      }, 400);
+      setTimeout(() => { slides.forEach(s => { const bg = s.getAttribute('data-bg'); if(bg) s.style.backgroundImage = `url('${bg}')`; }); }, 400);
     });
   }
 
   translateHTML();
   renderDynamicData();
+  
+  // EKRANI BEMBEYAZ YAPAN SORUNU ÇÖZEN SATIR:
   initAnimations();
 });
 
@@ -404,20 +358,3 @@ document.getElementById('langToggle').addEventListener('click', (e) => {
     renderDynamicData();
   }
 });
-
-function initAnimations() {
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.gsap-reveal').forEach(elem => {
-      gsap.to(elem, {
-        scrollTrigger: { trigger: elem, start: "top 85%" },
-        opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
-      });
-    });
-  } else {
-    document.querySelectorAll('.gsap-reveal').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    });
-  }
-}
