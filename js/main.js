@@ -17,7 +17,48 @@ const dict = {
     footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
     footCopy: "&copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.",
     readMoreTxt: "Detaylı İncele",
-    footContactTitle: "Bize Ulaşın", footFormName: "Ad Soyad", footFormEmail: "E-posta", footFormMessage: "Mesajınız", footFormSend: "Gönder"
+    footContactTitle: "Bize Ulaşın", footFormName: "Ad Soyad", footFormEmail: "E-posta", footFormMessage: "Mesajınız", footFormSend: "Gönder",
+
+    heroEyebrow: "TÜBİTAK 3005 Destekli Araştırma Projesi",
+    heroBtnLabel: "Projeyi İncele",
+    heroMeta1: "Program <b>TÜBİTAK 3005</b>", heroMeta2: "Yürütücü <b>Prof. Dr. Ahmet Yağmur Ersoy</b>", heroMeta3: "Kurum <b>Sakarya Üniversitesi</b>",
+    scrollHint: "Kaydır",
+
+    eyebrowOverview: "Proje Özeti",
+    overviewLead: "Dış ticaret girişimciliği, klasik uluslararasılaşmadan ayrışan, <em>katma değerin yurt içinde kaldığı</em> bir ihracat modelidir.",
+    overviewP1: "Bu araştırma, dış ticaret girişimciliğini şekillendiren stratejik, ekonomik ve kurumsal dinamikleri TR42 Doğu Marmara Bölgesi özelinde inceliyor. Amaç, ihracat teşvik sisteminin miktar odaklı yapısından, girişimcilik ve katma değer odaklı bir modele evrilmesine yönelik somut politika önerileri geliştirmek.",
+    overviewP2: "Araştırma, nicel saha verileri ile nitel görüşmeleri bir araya getiren karma bir yöntemle yürütülüyor ve bulgular ilgili kamu kurumlarıyla paylaşılacak bir politika önerisi setine dönüştürülüyor.",
+
+    eyebrowScale: "Araştırmanın Ölçeği", scaleTitle: "Sahadan gelen veri, politikaya giden yol",
+    stat1: "TR42 bölgesinde saha araştırmasına dahil edilen ihracatçı firma",
+    stat2: "İl: Kocaeli, Sakarya, Düzce, Bolu ve Yalova",
+    stat3: "TÜBİTAK 3005 kapsamında yürütülen proje süresi", stat3unit: "ay",
+    stat4: "Yayımlanmış analiz ve bulgu makalesi",
+
+    eyebrowProcess: "Süreç", processTitle: "Belirleyicilerden politikaya",
+    proc1Title: "Belirleyicilerin Keşfi", proc1Desc: "Literatür taraması ve uzman görüşüyle dış ticaret girişimciliğine özgü belirleyicilerin ortaya konması.",
+    proc2Title: "Saha Araştırması", proc2Desc: "192 firmadan nicel veri toplanması ve dış ticaret girişimcileriyle nitel görüşmelerin yürütülmesi.",
+    proc3Title: "Analiz ve Bulgular", proc3Desc: "Toplanan verinin analiz edilerek belirleyicilerin önem sırasına göre değerlendirilmesi.",
+    proc4Title: "Politika Önerisi Seti", proc4Desc: "Bulguların somut, kamu kurumlarıyla paylaşılacak politika önerilerine dönüştürülmesi.",
+    statusDone: "Tamamlandı", statusOngoing: "Sürüyor", statusPending: "Planlanıyor",
+
+    eyebrowFindings: "Bulgular", findingsTitle: "Yayımlanan analizler",
+    findingsDesc: "Araştırma sürecinde yayımlanan bulgu ve analiz yazılarımız. Her biri, dış ticaret girişimciliği ve teşvik politikası tartışmasına farklı bir açıdan katkı sunuyor.",
+    findingCta: "İncele →",
+
+    eyebrowMap: "Saha Bölgesi", mapTitle: "TR42 Doğu Marmara",
+    mapDesc: "Araştırma sahası; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan TR42 Doğu Marmara Bölgesi'dir. Bölge, güçlü sanayi hinterlandı ve ihracat hacmiyle Türkiye'nin dış ticaretinde stratejik bir konuma sahip.",
+
+    eyebrowPolicy: "Politika Etkisi", policyTitle: "Bulgular somut önerilere dönüşüyor",
+    policyDesc: "Araştırmanın nihai çıktısı, ilgili kamu kurumlarıyla paylaşılacak bir politika önerisi setidir.",
+    policyBtn: "Politika Önerilerini Gör →",
+    policyItem1: "Teşvik sisteminin miktar odaklı yapıdan katma değer ve girişimcilik odaklı bir modele evrilmesi",
+    policyItem2: "Dış ticaret girişimcilerinin finansman ve özkaynak erişiminin güçlendirilmesi",
+    policyItem3: "Bölgesel sanayi hinterlandının yeşil ve dijital dönüşüme uyumunun desteklenmesi",
+    policyItem4: "Küresel korumacılık koşullarına dayanıklı, yerli üretimi önceleyen bir teşvik mimarisi",
+
+    eyebrowTeam: "Ekip",
+    eyebrowPub: "Yayınlar", pubTitle: "Araştırma çıktıları", pubMore: "Tüm Yayınları Gör →"
   },
   en: {
     menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
@@ -37,7 +78,48 @@ const dict = {
     footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
     footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
     readMoreTxt: "Read Analysis",
-    footContactTitle: "Contact Us", footFormName: "Full Name", footFormEmail: "Email", footFormMessage: "Your Message", footFormSend: "Send"
+    footContactTitle: "Contact Us", footFormName: "Full Name", footFormEmail: "Email", footFormMessage: "Your Message", footFormSend: "Send",
+
+    heroEyebrow: "TÜBİTAK 3005 Supported Research Project",
+    heroBtnLabel: "Explore the Project",
+    heroMeta1: "Program <b>TÜBİTAK 3005</b>", heroMeta2: "Principal Investigator <b>Prof. Dr. Ahmet Yağmur Ersoy</b>", heroMeta3: "Institution <b>Sakarya University</b>",
+    scrollHint: "Scroll",
+
+    eyebrowOverview: "Project Summary",
+    overviewLead: "Foreign trade entrepreneurship is an export model, distinct from classical internationalization, in which <em>value-added stays at home</em>.",
+    overviewP1: "This research examines the strategic, economic, and institutional dynamics shaping foreign trade entrepreneurship in the TR42 East Marmara Region. The aim is to develop concrete policy recommendations for evolving the export incentive system from a quantity-oriented structure toward an entrepreneurship- and value-added-oriented model.",
+    overviewP2: "The research combines quantitative field data with qualitative interviews, and the findings are being translated into a policy recommendation set to be shared with the relevant public institutions.",
+
+    eyebrowScale: "Scale of the Research", scaleTitle: "From field data to policy",
+    stat1: "Exporting firms included in the TR42 field research",
+    stat2: "Provinces: Kocaeli, Sakarya, Düzce, Bolu and Yalova",
+    stat3: "Project duration under TÜBİTAK 3005", stat3unit: "months",
+    stat4: "Published analysis and findings articles",
+
+    eyebrowProcess: "Process", processTitle: "From determinants to policy",
+    proc1Title: "Discovery of Determinants", proc1Desc: "Identifying determinants specific to foreign trade entrepreneurship through literature review and expert opinion.",
+    proc2Title: "Field Research", proc2Desc: "Collecting quantitative data from 192 firms and conducting qualitative interviews with foreign trade entrepreneurs.",
+    proc3Title: "Analysis and Findings", proc3Desc: "Analyzing the collected data and ranking determinants by importance.",
+    proc4Title: "Policy Recommendation Set", proc4Desc: "Translating findings into concrete policy recommendations to share with public institutions.",
+    statusDone: "Completed", statusOngoing: "Ongoing", statusPending: "Planned",
+
+    eyebrowFindings: "Findings", findingsTitle: "Published analyses",
+    findingsDesc: "Our findings and analysis pieces published throughout the research process. Each contributes a different perspective to the discussion on foreign trade entrepreneurship and incentive policy.",
+    findingCta: "Read →",
+
+    eyebrowMap: "Field Region", mapTitle: "TR42 East Marmara",
+    mapDesc: "The research field covers the TR42 East Marmara Region, comprising Kocaeli, Sakarya, Düzce, Bolu and Yalova. The region holds a strategic position in Turkey's foreign trade through its strong industrial hinterland and export volume.",
+
+    eyebrowPolicy: "Policy Impact", policyTitle: "Findings translate into concrete proposals",
+    policyDesc: "The ultimate output of the research is a policy recommendation set to be shared with the relevant public institutions.",
+    policyBtn: "View Policy Recommendations →",
+    policyItem1: "Evolving the incentive system from a quantity-oriented structure to a value-added and entrepreneurship-oriented model",
+    policyItem2: "Strengthening foreign trade entrepreneurs' access to financing and equity capital",
+    policyItem3: "Supporting the regional industrial hinterland's adaptation to green and digital transformation",
+    policyItem4: "An incentive architecture resilient to global protectionism that prioritizes domestic production",
+
+    eyebrowTeam: "Team",
+    eyebrowPub: "Publications", pubTitle: "Research outputs", pubMore: "View All Publications →"
   }
 };
 
@@ -163,35 +245,55 @@ function translateHTML() {
 
 function renderDynamicData() {
   const data = siteContent[currentLang];
-  
+
+  // Ekip (editorial row, .team-card / .team-avatar-wrap / .team-role)
   const ekipEl = document.getElementById('ekip-container');
   if (ekipEl) {
     ekipEl.innerHTML = '';
     data.ekip.forEach(kisi => {
       const avatar = kisi.fotograf
         ? `<img src="${kisi.fotograf}" alt="${kisi.isim}">`
-        : `<div class="tc-avatar-fallback"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>`;
-      ekipEl.insertAdjacentHTML('beforeend', `<div class="team-card"><div class="tc-img-wrap">${avatar}</div><div class="tc-content"><h3>${kisi.isim}</h3><span class="tc-role">${kisi.unvan}</span></div></div>`);
+        : `<div class="tc-avatar-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>`;
+      ekipEl.insertAdjacentHTML('beforeend', `<div class="team-card"><div class="team-avatar-wrap">${avatar}</div><h3>${kisi.isim}</h3><span class="team-role">${kisi.unvan}</span></div>`);
     });
   }
 
-  const svc2El = document.getElementById('svc2-list');
-  if (svc2El) {
-    svc2El.innerHTML = data.haberler.slice(0, 4).map(h => `<div class="service-card-list-item">${h.baslik}</div>`).join('');
+  // Bulgular / Key findings - data panel rows (rank, title+excerpt, cta), opens the article modal
+  const findingsEl = document.getElementById('findingsList');
+  if (findingsEl) {
+    findingsEl.innerHTML = data.haberler.map((h, i) => `
+      <button class="finding-row" onclick="openModal(${i})" type="button">
+        <div class="finding-rank">${String(i + 1).padStart(2, '0')}</div>
+        <div class="finding-body"><h3>${h.baslik}</h3><p>${h.ozet}</p></div>
+        <div class="finding-cta" data-i18n="findingCta">İncele →</div>
+      </button>`).join('');
+    translateHTML();
   }
 
-  const priorityGridEl = document.getElementById('priorityGrid');
-  if (priorityGridEl) {
-    const prIcons = [
-      '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>', '<path d="M9 17V9m6 8V5m-11 12h16"/>', '<path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
-      '<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/>', '<circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/>', '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'
-    ];
-    priorityGridEl.innerHTML = data.haberler.slice(0, 6).map((h, i) => `<button class="priority-card" onclick="openModal(${i})" type="button"><div class="priority-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${prIcons[i % prIcons.length]}</svg></div><h3>${h.baslik}</h3><p>${h.ozet}</p></button>`).join('');
+  // Publications teaser - first 3 outputs, report-row style
+  const pubEl = document.getElementById('pubList');
+  if (pubEl) {
+    const tags = [currentLang === 'tr' ? 'Analiz' : 'Analysis', currentLang === 'tr' ? 'Politika Notu' : 'Policy Note', currentLang === 'tr' ? 'Bulgu' : 'Finding'];
+    pubEl.innerHTML = data.haberler.slice(0, 3).map((h, i) => `
+      <div class="pub-row">
+        <div class="pub-date">2026</div>
+        <div class="pub-title">${h.baslik}</div>
+        <div class="pub-tag">${tags[i % tags.length]}</div>
+      </div>`).join('');
   }
 
   initTeamRotator(data);
-  
+
   setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
+}
+
+const TR42_MAP_SVG = `<svg viewBox="0 0 506.7 224.1" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="TR42 Doğu Marmara Bölgesi haritası"><path d="M37.3 145.3 L30.3 142.2 L27.1 143.7 L24.3 137.1 L19.9 141.2 L14.6 135.8 L10.4 135.6 L11.8 131.9 L14.3 134.2 L17.9 130.1 L14.6 129.5 L15.3 121.5 L20.8 126.6 L22.1 134.1 L23.0 129.9 L25.6 132.6 L35.2 129.7 L29.3 130.0 L23.4 122.5 L23.8 119.5 L27.9 119.7 L27.9 116.6 L32.4 114.9 L25.4 112.4 L27.7 108.1 L20.4 101.4 L28.9 94.2 L28.6 90.8 L5.9 94.4 L9.0 77.1 L13.1 75.7 L14.9 70.0 L24.1 63.0 L38.3 60.5 L38.8 64.0 L45.9 67.5 L50.8 66.3 L53.9 64.0 L48.8 60.6 L50.6 58.7 L58.0 60.3 L54.4 63.4 L55.9 64.7 L85.0 64.3 L87.6 62.2 L86.0 60.5 L78.1 57.9 L97.1 51.5 L108.3 52.2 L90.3 49.4 L90.5 48.0 L90.9 48.2 L92.3 47.3 L92.7 46.4 L90.4 47.6 L83.7 42.3 L87.9 35.0 L106.8 39.4 L117.2 35.5 L129.9 39.8 L142.1 39.4 L147.2 35.5 L146.9 31.9 L170.3 18.2 L198.2 8.0 L232.0 10.7 L242.5 5.5 L247.2 7.3 L244.5 11.3 L249.4 18.3 L257.0 21.2 L267.3 17.7 L270.0 19.3 L272.0 27.0 L278.7 34.0 L286.0 29.7 L309.1 42.0 L315.7 38.7 L318.1 43.1 L324.6 44.1 L321.6 51.2 L324.6 44.2 L335.3 45.5 L346.0 41.2 L358.9 39.0 L364.7 42.7 L380.3 45.1 L402.4 35.2 L415.1 24.8 L422.4 27.9 L425.9 24.8 L440.8 27.7 L442.9 22.8 L449.1 22.9 L448.4 25.9 L458.8 32.5 L456.7 34.0 L459.4 36.7 L465.0 36.6 L465.9 41.7 L471.3 45.1 L473.3 53.5 L467.9 60.5 L471.5 67.9 L469.5 69.9 L472.3 71.0 L470.8 72.9 L477.4 76.1 L487.3 75.0 L501.4 87.7 L496.4 84.3 L493.0 87.0 L491.1 96.8 L480.7 98.0 L488.2 116.3 L488.3 131.6 L493.3 133.5 L486.2 148.5 L492.1 152.6 L495.1 152.6 L496.0 153.0 L495.8 163.6 L501.6 168.2 L501.1 173.6 L496.7 172.3 L488.3 179.8 L485.2 175.4 L487.2 170.7 L483.6 168.0 L471.1 170.8 L457.9 166.0 L452.8 167.9 L448.1 165.8 L442.7 173.7 L436.6 175.0 L433.2 167.9 L428.5 172.3 L415.4 175.8 L394.8 174.6 L370.0 187.0 L353.8 190.1 L340.7 188.6 L336.2 184.2 L326.5 181.8 L307.7 190.9 L297.3 191.5 L293.4 186.1 L286.3 183.9 L285.0 184.1 L283.1 195.8 L287.1 204.2 L279.0 205.1 L278.5 212.6 L274.1 214.3 L273.0 219.0 L266.3 215.0 L267.9 212.0 L262.7 202.5 L273.6 192.4 L273.9 186.1 L268.9 181.1 L257.0 188.5 L261.2 188.5 L257.0 193.5 L251.0 194.4 L248.7 189.6 L246.4 189.7 L250.7 193.7 L232.9 185.2 L223.0 192.8 L214.7 204.8 L212.2 201.9 L207.4 208.1 L206.3 206.1 L204.1 208.4 L193.1 208.0 L184.0 212.2 L170.6 204.7 L163.6 194.4 L136.6 183.5 L126.4 183.8 L124.0 201.3 L120.7 205.6 L120.7 203.3 L115.3 202.0 L101.6 208.2 L86.2 199.5 L86.9 194.2 L83.8 194.2 L86.3 189.9 L81.7 187.0 L79.5 192.7 L69.2 182.8 L67.6 186.0 L64.0 183.9 L65.1 187.9 L57.8 193.6 L56.0 192.2 L59.6 190.7 L56.1 189.4 L60.5 188.0 L60.3 185.4 L55.3 187.5 L50.0 186.7 L48.6 190.3 L41.4 190.2 L40.3 188.5 L47.6 185.1 L58.0 185.9 L57.7 181.2 L61.5 181.9 L65.8 177.6 L45.6 179.5 L41.9 177.5 L37.7 179.9 L37.4 174.2 L43.1 175.9 L46.9 172.3 L46.9 169.2 L44.2 170.9 L43.3 167.0 L40.9 167.5 L42.1 165.7 L41.7 164.4 L35.8 166.7 L36.4 158.6 L30.8 156.3 L36.7 154.2 L37.3 145.3 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1"/><path d="M22.7 61.2 L13.7 69.8 L14.3 71.8 L8.8 75.1 L11.6 69.4 L10.0 65.8 L24.6 58.1 L26.3 56.9 L25.9 54.7 L24.3 53.2 L25.2 54.4 L18.4 56.6 L7.6 56.6 L5.1 51.7 L7.6 51.0 L10.3 46.1 L13.6 44.2 L13.0 34.0 L21.1 30.6 L20.0 21.8 L13.2 16.9 L14.2 14.4 L18.7 14.1 L20.7 9.5 L30.0 9.3 L31.4 5.9 L36.2 6.5 L37.4 5.1 L45.3 12.1 L49.0 9.6 L51.9 10.9 L53.2 8.8 L57.9 9.1 L58.6 12.7 L56.3 13.4 L61.8 24.7 L77.8 32.4 L86.5 34.6 L84.4 41.0 L82.9 42.0 L82.1 40.5 L83.1 42.5 L78.9 44.2 L73.5 44.0 L72.7 42.1 L71.4 43.2 L63.3 40.0 L60.4 40.6 L58.6 37.6 L60.4 40.6 L57.5 41.5 L56.2 43.9 L50.9 42.2 L44.2 43.6 L38.9 52.8 L22.7 61.2 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1"/><g fill="#B2532C" fill-opacity=".85" stroke="#F6F2EA" stroke-width=".6"><path d="M117.2 35.5 L119.2 36.1 L119.9 37.2 L119.8 38.2 L118.4 39.3 L117.6 42.0 L119.5 44.4 L119.9 47.1 L119.6 47.8 L117.6 48.8 L117.9 51.0 L116.0 55.3 L114.0 55.5 L110.5 57.0 L107.4 57.0 L103.8 55.8 L98.8 57.8 L94.9 57.6 L95.0 53.6 L97.1 51.5 L96.9 52.3 L98.4 53.3 L105.0 51.9 L108.3 52.2 L108.4 51.0 L104.2 51.5 L102.9 50.4 L99.8 50.1 L98.6 50.6 L96.5 50.2 L92.9 51.0 L92.3 48.9 L90.3 49.4 L91.3 48.4 L90.7 48.4 L90.5 48.0 L90.9 48.2 L92.7 46.4 L94.6 45.4 L94.9 43.6 L96.3 42.7 L96.6 41.5 L100.8 42.3 L103.3 40.9 L106.7 40.0 L106.4 37.9 L114.0 38.0 L115.1 37.7 L115.0 37.2 L115.9 37.2 L115.9 36.4 L116.6 36.3 L117.2 35.5 Z"/><path d="M119.7 36.6 L127.2 38.3 L129.9 39.8 L135.7 40.2 L137.3 42.1 L136.6 44.0 L133.9 46.2 L133.0 48.3 L133.5 50.2 L136.0 52.2 L135.1 53.9 L134.9 57.4 L134.0 58.4 L132.2 58.9 L127.8 59.1 L125.6 61.7 L127.0 63.6 L126.4 65.3 L120.0 63.0 L113.2 64.1 L109.3 60.6 L108.1 57.7 L108.0 57.0 L110.7 57.0 L116.4 55.1 L117.9 51.0 L117.6 48.8 L119.9 47.3 L119.5 44.4 L117.6 42.0 L118.4 39.3 L119.9 38.0 L119.7 36.6 Z"/><path d="M145.4 38.1 L148.0 40.8 L155.8 41.2 L156.4 43.1 L155.8 44.6 L152.3 46.7 L148.8 47.1 L147.8 49.3 L147.7 52.8 L145.9 54.2 L143.4 54.7 L141.4 53.5 L137.1 54.3 L135.2 53.5 L136.0 52.2 L133.5 50.2 L133.0 48.5 L133.9 46.2 L136.6 44.0 L137.3 42.5 L135.7 40.2 L142.1 39.4 L145.4 38.1 Z"/><path d="M160.5 42.0 L170.3 42.4 L170.3 44.7 L176.2 47.4 L177.1 49.2 L176.6 51.9 L174.2 54.5 L175.4 58.7 L173.1 62.3 L171.3 62.6 L166.7 62.2 L160.3 64.9 L157.4 65.4 L155.0 65.0 L151.4 66.2 L143.4 64.9 L140.2 63.1 L138.0 62.5 L137.4 63.9 L137.6 67.4 L135.2 69.1 L133.1 71.9 L129.2 70.8 L126.8 66.2 L126.4 65.3 L127.0 63.6 L125.7 61.6 L127.8 59.1 L131.9 59.0 L134.0 58.4 L135.0 57.2 L135.2 53.5 L137.1 54.3 L141.4 53.5 L143.4 54.7 L145.9 54.2 L147.7 52.8 L147.8 49.3 L148.8 47.1 L152.3 46.7 L154.6 45.6 L155.9 44.4 L156.4 43.1 L155.8 41.2 L160.5 42.0 Z"/><path d="M94.0 52.8 L95.2 53.2 L94.9 57.6 L93.1 57.0 L90.6 57.8 L84.7 57.7 L83.8 59.8 L84.4 60.4 L82.9 61.2 L80.4 60.4 L79.7 59.5 L77.7 59.1 L78.1 57.9 L81.7 56.3 L83.3 54.8 L91.0 54.2 L94.0 52.8 Z"/></g><circle cx="154.0" cy="56.2" r="2.2" fill="#F6F2EA"/><circle cx="143.4" cy="46.3" r="2.2" fill="#F6F2EA"/><circle cx="107.2" cy="47.5" r="2.2" fill="#F6F2EA"/><circle cx="124.2" cy="51.5" r="2.2" fill="#F6F2EA"/><circle cx="86.8" cy="56.7" r="2.2" fill="#F6F2EA"/></svg>`;
+function renderMap() {
+  const mapEl = document.getElementById('mapVisual');
+  if (mapEl && !mapEl.dataset.rendered) {
+    mapEl.innerHTML = TR42_MAP_SVG;
+    mapEl.dataset.rendered = 'true';
+  }
 }
 
 let teamRotatorTimer = null;
@@ -344,7 +446,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   translateHTML();
   renderDynamicData();
-  
+  renderMap();
+
   // EKRANI BEMBEYAZ YAPAN SORUNU ÇÖZEN SATIR:
   initAnimations();
 });
