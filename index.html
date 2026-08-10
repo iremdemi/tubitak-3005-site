@@ -6,12 +6,10 @@
 <title>İhracat Teşvikleri ve Girişimcilik Araştırma Portalı</title>
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
 <link rel="canonical" href="https://iremdemi.github.io/tubitak-3005-site/">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- TASARIM DOSYASI BAĞLANTISI -->
-<link rel="stylesheet" href="css/style.css"> 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body id="anasayfa">
 
@@ -75,6 +73,7 @@
   <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
+<!-- HERO -->
 <section id="proje" class="hero-corporate">
   <div class="hero-slides">
     <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
@@ -84,105 +83,195 @@
     <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"></div>
   </div>
   <div class="hero-corporate-inner gsap-reveal">
-    <h1 id="hero-title" data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
-    <p id="hero-desc" data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
+    <span class="eyebrow hero-eyebrow" data-i18n="heroEyebrow">TÜBİTAK 3005 Destekli Araştırma Projesi</span>
+    <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
+    <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
+    <a href="proje.html" class="btn btn-on-dark" data-i18n="heroBtnLabel">Projeyi İncele</a>
   </div>
   <div class="hero-bottom-row">
-    <div class="hero-arrows">
-      <button class="hero-arrow-btn" id="heroPrev" aria-label="Önceki görsel"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <button class="hero-arrow-btn" id="heroNext" aria-label="Sonraki görsel"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-  </div>
-</section>
-
-<section class="services-row-section">
-  <div class="scroll-indicator">
-    <div class="scroll-dot"></div><div class="scroll-dot"></div><div class="scroll-dot"></div>
-  </div>
-  <div class="wrap">
-    <div class="services-row-wrap gsap-reveal">
-      <div class="services-row">
-        <a href="proje.html" class="service-card">
-          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="">
-          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
-          <div class="service-card-text">
-            <h3 data-i18n="svc1Title">Saha Araştırması</h3>
-            <p data-i18n="svc1Desc">TR42 bölgesinde yürütülen çalışma</p>
-          </div>
-        </a>
-        <a href="bulgular.html" class="service-card service-card-list">
-          <div class="service-card-list-inner" id="svc2-list"></div>
-          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
-          <div class="service-card-text">
-            <h3 data-i18n="svc2Title">Bulgular</h3>
-            <p data-i18n="svc2Desc">Güncel analiz ve sonuçlar</p>
-          </div>
-        </a>
-        <a href="politika.html" class="service-card">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="">
-          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
-          <div class="service-card-text">
-            <h3 data-i18n="svc3Title">Politika Önerileri</h3>
-            <p data-i18n="svc3Desc">Kanıta dayalı öneriler</p>
-          </div>
-        </a>
-        <a href="ekip.html" class="service-card service-card-team" id="svc4-team">
-          <div class="service-card-team-photos" id="svc4-photos"></div>
-          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
-          <div class="service-card-text">
-            <h3 id="svc4-name">Araştırma Ekibi</h3>
-            <p id="svc4-role" data-i18n="svc4Desc">Uzman akademik kadro</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="analizler" class="priority-section">
-  <div class="priority-photo-wrap gsap-reveal">
     <div class="wrap">
-      <div class="priority-grid" id="priorityGrid"></div>
-      <div class="priority-actions">
-        <a href="bulgular.html" class="btn-ghost-white" data-i18n="readMoreTxt">Detayları İncele &rarr;</a>
+      <div class="hero-meta">
+        <span data-i18n="heroMeta1">Program <b>TÜBİTAK 3005</b></span>
+        <span data-i18n="heroMeta2">Yürütücü <b>Prof. Dr. Ahmet Yağmur Ersoy</b></span>
+        <span data-i18n="heroMeta3">Kurum <b>Sakarya Üniversitesi</b></span>
+      </div>
+      <div class="hero-arrows">
+        <button class="hero-arrow-btn" id="heroPrev" aria-label="Önceki görsel"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="hero-arrow-btn" id="heroNext" aria-label="Sonraki görsel"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator"><span data-i18n="scrollHint">Kaydır</span><span class="line"></span></div>
+</section>
+
+<!-- A. RESEARCH OVERVIEW -->
+<section class="section section-alt section-border-t">
+  <div class="wrap">
+    <div class="overview-grid">
+      <div class="gsap-reveal">
+        <span class="eyebrow" data-i18n="eyebrowOverview">Proje Özeti</span>
+        <p class="overview-lead" style="margin-top:20px;" data-i18n="overviewLead">Dış ticaret girişimciliği, klasik uluslararasılaşmadan ayrışan, <em>katma değerin yurt içinde kaldığı</em> bir ihracat modelidir.</p>
+      </div>
+      <div class="overview-copy gsap-reveal">
+        <p data-i18n="overviewP1">Bu araştırma, dış ticaret girişimciliğini şekillendiren stratejik, ekonomik ve kurumsal dinamikleri TR42 Doğu Marmara Bölgesi özelinde inceliyor. Amaç, ihracat teşvik sisteminin miktar odaklı yapısından, girişimcilik ve katma değer odaklı bir modele evrilmesine yönelik somut politika önerileri geliştirmek.</p>
+        <p data-i18n="overviewP2">Araştırma, nicel saha verileri ile nitel görüşmeleri bir araya getiren karma bir yöntemle yürütülüyor ve bulgular ilgili kamu kurumlarıyla paylaşılacak bir politika önerisi setine dönüştürülüyor.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="global-network-section gsap-reveal">
-  <div class="map-layer-container">
-    <div class="map-shape"></div>
-    <div class="map-marker" style="top: 21.4%; left: 50.8%;"><div class="map-dot"></div><span data-i18n="mapGrm">Almanya</span></div>
-    <div class="map-marker" style="top: 32.1%; left: 18.1%;"><div class="map-dot"></div><span data-i18n="mapUsa">ABD</span></div>
-    <div class="map-marker" style="top: 21.4%; left: 47.2%;"><div class="map-dot"></div><span data-i18n="mapUk">Birleşik Krallık</span></div>
-    <div class="map-marker" style="top: 28.6%; left: 51.9%;"><div class="map-dot"></div><span data-i18n="mapIta">İtalya</span></div>
-    <div class="map-marker" style="top: 14.3%; left: 69%;"><div class="map-dot"></div><span data-i18n="mapRus">Rusya</span></div>
-    <div class="map-marker" style="top: 35.7%; left: 76.2%;"><div class="map-dot"></div><span data-i18n="mapChn">Çin</span></div>
-    <div class="map-marker" style="top: 25.7%; left: 48.2%;"><div class="map-dot"></div><span data-i18n="mapFra">Fransa</span></div>
-    <div class="map-marker" style="top: 34.3%; left: 60.2%;"><div class="map-dot"></div><span data-i18n="mapIrq">Irak</span></div>
-  </div>
-  <div class="map-info-box">
-    <div class="map-info-subtitle" data-i18n="mapBoxSub">TÜBİTAK 3005 Destekli Proje</div>
+<!-- B. RESEARCH SCALE -->
+<section class="section section-border-t">
+  <div class="wrap">
+    <div class="section-head gsap-reveal">
+      <span class="eyebrow" data-i18n="eyebrowScale">Araştırmanın Ölçeği</span>
+      <h2 data-i18n="scaleTitle">Sahadan gelen veri, politikaya giden yol</h2>
+    </div>
+    <div class="stat-row gsap-reveal">
+      <div class="stat-cell">
+        <div class="stat-num">192</div>
+        <div class="stat-label" data-i18n="stat1">TR42 bölgesinde saha araştırmasına dahil edilen ihracatçı firma</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label" data-i18n="stat2">İl: Kocaeli, Sakarya, Düzce, Bolu ve Yalova</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">15<span class="unit" data-i18n="stat3unit">ay</span></div>
+        <div class="stat-label" data-i18n="stat3">TÜBİTAK 3005 kapsamında yürütülen proje süresi</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6</div>
+        <div class="stat-label" data-i18n="stat4">Yayımlanmış analiz ve bulgu makalesi</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="ekip" class="section">
+<!-- C. RESEARCH PROCESS -->
+<section class="section section-alt">
   <div class="wrap">
-    <div class="section-header gsap-reveal">
-      <div class="section-header-content">
+    <div class="section-head gsap-reveal">
+      <span class="eyebrow" data-i18n="eyebrowProcess">Süreç</span>
+      <h2 data-i18n="processTitle">Belirleyicilerden politikaya</h2>
+    </div>
+    <div class="process-row gsap-reveal">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3 data-i18n="proc1Title">Belirleyicilerin Keşfi</h3>
+        <p data-i18n="proc1Desc">Literatür taraması ve uzman görüşüyle dış ticaret girişimciliğine özgü belirleyicilerin ortaya konması.</p>
+        <div class="process-status done"><span class="dot"></span><span data-i18n="statusDone">Tamamlandı</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3 data-i18n="proc2Title">Saha Araştırması</h3>
+        <p data-i18n="proc2Desc">192 firmadan nicel veri toplanması ve dış ticaret girişimcileriyle nitel görüşmelerin yürütülmesi.</p>
+        <div class="process-status"><span class="dot"></span><span data-i18n="statusOngoing">Sürüyor</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3 data-i18n="proc3Title">Analiz ve Bulgular</h3>
+        <p data-i18n="proc3Desc">Toplanan verinin analiz edilerek belirleyicilerin önem sırasına göre değerlendirilmesi.</p>
+        <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3 data-i18n="proc4Title">Politika Önerisi Seti</h3>
+        <p data-i18n="proc4Desc">Bulguların somut, kamu kurumlarıyla paylaşılacak politika önerilerine dönüştürülmesi.</p>
+        <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- D. KEY FINDINGS -->
+<section class="section section-border-t" id="bulgular">
+  <div class="wrap">
+    <div class="section-head gsap-reveal">
+      <span class="eyebrow" data-i18n="eyebrowFindings">Bulgular</span>
+      <h2 data-i18n="findingsTitle">Yayımlanan analizler</h2>
+      <p data-i18n="findingsDesc">Araştırma sürecinde yayımlanan bulgu ve analiz yazılarımız. Her biri, dış ticaret girişimciliği ve teşvik politikası tartışmasına farklı bir açıdan katkı sunuyor.</p>
+    </div>
+    <div class="findings-list gsap-reveal" id="findingsList"></div>
+  </div>
+</section>
+
+<!-- E. MAP / REGIONAL VISUALIZATION -->
+<section class="section">
+  <div class="map-section gsap-reveal">
+    <div class="map-inner">
+      <div class="map-copy">
+        <span class="eyebrow" data-i18n="eyebrowMap">Saha Bölgesi</span>
+        <h2 data-i18n="mapTitle">TR42 Doğu Marmara</h2>
+        <p data-i18n="mapDesc">Araştırma sahası; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan TR42 Doğu Marmara Bölgesi'dir. Bölge, güçlü sanayi hinterlandı ve ihracat hacmiyle Türkiye'nin dış ticaretinde stratejik bir konuma sahip.</p>
+      </div>
+      <div class="map-visual" id="mapVisual"></div>
+    </div>
+  </div>
+</section>
+
+<!-- F. POLICY IMPACT -->
+<section class="section policy-band" id="politika-ozet">
+  <div class="wrap">
+    <div class="policy-band-inner">
+      <div class="gsap-reveal">
+        <span class="eyebrow" data-i18n="eyebrowPolicy">Politika Etkisi</span>
+        <h2 data-i18n="policyTitle">Bulgular somut önerilere dönüşüyor</h2>
+        <p style="margin-top:16px; font-size:15px; line-height:1.75;" data-i18n="policyDesc">Araştırmanın nihai çıktısı, ilgili kamu kurumlarıyla paylaşılacak bir politika önerisi setidir.</p>
+        <a href="politika.html" class="btn btn-outline" style="margin-top:28px;" data-i18n="policyBtn">Politika Önerilerini Gör →</a>
+      </div>
+      <div class="policy-list gsap-reveal">
+        <div class="policy-item"><span class="num">01</span><p data-i18n="policyItem1">Teşvik sisteminin miktar odaklı yapıdan katma değer ve girişimcilik odaklı bir modele evrilmesi</p></div>
+        <div class="policy-item"><span class="num">02</span><p data-i18n="policyItem2">Dış ticaret girişimcilerinin finansman ve özkaynak erişiminin güçlendirilmesi</p></div>
+        <div class="policy-item"><span class="num">03</span><p data-i18n="policyItem3">Bölgesel sanayi hinterlandının yeşil ve dijital dönüşüme uyumunun desteklenmesi</p></div>
+        <div class="policy-item"><span class="num">04</span><p data-i18n="policyItem4">Küresel korumacılık koşullarına dayanıklı, yerli üretimi önceleyen bir teşvik mimarisi</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- G. RESEARCH TEAM -->
+<section class="section section-alt team-row-section" id="ekip-ozet">
+  <div class="wrap">
+    <div class="section-head gsap-reveal">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrowTeam">Ekip</span>
         <h2 data-i18n="teamTitle">Araştırma Ekibi</h2>
       </div>
-      <div class="team-slider-nav">
-        <button class="team-nav-btn" id="teamPrev" aria-label="Önceki"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-        <button class="team-nav-btn" id="teamNext" aria-label="Sonraki"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+      <div class="team-nav">
+        <button id="teamPrev" aria-label="Önceki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button id="teamNext" aria-label="Sonraki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
     </div>
-    <div class="team-slider-wrapper gsap-reveal">
-      <div class="team-slider-track" id="ekip-container"></div>
-    </div>
+    <div class="team-track gsap-reveal" id="ekip-container"></div>
   </div>
 </section>
+
+<!-- H. PUBLICATIONS -->
+<section class="section section-border-t" id="yayinlar-ozet">
+  <div class="wrap">
+    <div class="section-head gsap-reveal">
+      <span class="eyebrow" data-i18n="eyebrowPub">Yayınlar</span>
+      <h2 data-i18n="pubTitle">Araştırma çıktıları</h2>
+    </div>
+    <div class="pub-list gsap-reveal" id="pubList"></div>
+    <a href="yayinlar.html" class="btn btn-outline" style="margin-top:32px;" data-i18n="pubMore">Tüm Yayınları Gör →</a>
+  </div>
+</section>
+
+<!-- MAKALE POP-UP / MODAL -->
+<div class="article-modal-overlay" id="articleModalOverlay">
+  <div class="article-modal">
+    <div class="article-modal-image"><img id="modalImage" src="" alt=""></div>
+    <div class="article-modal-scroll">
+      <div class="article-modal-header">
+        <h2 id="modalTitle">Makale Başlığı</h2>
+        <button class="article-modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="article-modal-body" id="modalBody"></div>
+    </div>
+  </div>
+</div>
 
 <footer id="iletisim">
   <div class="wrap">
@@ -192,7 +281,7 @@
         <p style="margin-top: 16px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
       <div>
-        <p style="font-size: 13px; color: #94A3B8; line-height: 2;">
+        <p style="font-size: 13px; color: rgba(255,255,255,.55); line-height: 2;">
           <span data-i18n="footSupp">Destekleyen Kurumlar:</span><br>
           <strong style="color:white;" data-i18n="footK1">T.C. Ticaret Bakanlığı</strong><br>
           <strong style="color:white;" data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</strong><br>
@@ -218,25 +307,8 @@
   </div>
 </footer>
 
-<div class="article-modal-overlay" id="articleModalOverlay">
-  <div class="article-modal">
-    <div class="article-modal-image"><img id="modalImage" src="" alt=""></div>
-    <div class="article-modal-scroll">
-      <div class="article-modal-header">
-        <h2 id="modalTitle">Makale Başlığı</h2>
-        <button class="article-modal-close" id="modalCloseBtn">&times;</button>
-      </div>
-      <div class="article-modal-body" id="modalBody"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ANİMASYON KÜTÜPHANELERİ EKLENDİ (BU OLMADIĞI İÇİN BEYAZ EKRAN OLUYORDU) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- İŞLEV VE VERİ DOSYASI EKLENDİ -->
 <script src="js/main.js"></script>
-
 </body>
 </html>
