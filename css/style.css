@@ -1,0 +1,911 @@
+:root {
+  --bg-main: #FAF8F5;       
+  --bg-alt: #FFFFFF;        
+  --text-ink: #1C1712;      
+  --text-body: #5C5349;     
+  --accent-navy: #17110B;   
+  --accent-teal: #FF6A1A;   
+  --border-color: #ECE4DA;  
+  --font-serif: 'League Spartan', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { font-family: var(--font-sans); background-color: var(--bg-main); color: var(--text-body); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
+
+/* HEADER */
+header { background-color: transparent; border-bottom: 1px solid transparent; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; transition: all 0.4s ease; }
+header.scrolled { background-color: rgba(250, 248, 245, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(236, 228, 218, 0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+.brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.horizontal-logo { display: flex; align-items: center; gap: 12px; }
+.hl-dtg { font-family: var(--font-serif); font-size: 34px; font-weight: 600; color: #000000; letter-spacing: 0.04em; line-height: 1; transition: color 0.3s ease; }
+.hl-divider { width: 1px; height: 28px; background-color: #CBD5E1; transition: background-color 0.3s ease; }
+.hl-stack { display: flex; flex-direction: column; line-height: 1.15; }
+.hl-research, .hl-portal { font-family: var(--font-sans); font-size: 11px; font-weight: 500; color: #000000; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s ease; }
+
+.nav-menu { display: flex; align-items: center; gap: 28px; margin: 0 auto; }
+.nav-item { position: relative; }
+.nav-menu a { font-size: 12px; font-weight: 600; color: var(--text-ink); padding: 10px 0; display: inline-flex; align-items: center; gap: 3px; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; transition: color 0.3s ease;}
+.nav-menu a:hover { color: var(--accent-teal); }
+.has-dropdown .dropdown-icon { font-size: 8px; transition: transform 0.2s; }
+.dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--bg-alt); border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 6px; padding: 10px 0; min-width: 180px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.2s ease; z-index: 110; }
+.has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.has-dropdown:hover .dropdown-icon { transform: rotate(180deg); }
+.dropdown-menu a { display: block; padding: 8px 16px; font-size: 11.5px; font-weight: 500; color: var(--text-body); text-transform: none; white-space: nowrap; }
+.dropdown-menu a:hover { background: #F8FAFC; color: var(--accent-navy); }
+
+.header-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+.lang-switch { font-size: 12px; font-weight: 600; color: var(--text-body); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: color 0.3s ease; }
+.lang-switch span { transition: all 0.2s ease; padding: 2px 4px; }
+.lang-switch span:hover { color: var(--accent-teal) !important; }
+.lang-switch span.active { color: var(--accent-navy); font-weight: 700; background: #F1F5F9; border-radius: 4px; }
+.lang-switch .sep { color: #CBD5E1; font-weight: 300; transition: color 0.3s ease; }
+.btn-outline-header { border: 1px solid var(--accent-navy); color: var(--accent-navy); padding: 8px 16px; font-size: 11.5px; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; white-space: nowrap; }
+.btn-outline-header:hover { background: var(--accent-navy); color: var(--bg-alt); }
+
+header:not(.scrolled) .hl-dtg, header:not(.scrolled) .hl-research, header:not(.scrolled) .hl-portal { color: #FFFFFF; }
+header:not(.scrolled) .hl-divider { background-color: rgba(255, 255, 255, 0.3); }
+header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a { color: rgba(255, 255, 255, 0.85); }
+header:not(.scrolled) .nav-menu:not(.is-open) > .nav-item > a:hover { color: #FFFFFF; }
+header:not(.scrolled) .lang-switch { color: rgba(255, 255, 255, 0.8); }
+header:not(.scrolled) .lang-switch span.active { color: #FFFFFF; background: rgba(255, 255, 255, 0.15); }
+header:not(.scrolled) .lang-switch .sep { color: rgba(255, 255, 255, 0.3); }
+header:not(.scrolled) .btn-outline-header { border-color: rgba(255, 255, 255, 0.5); color: #FFFFFF; }
+header:not(.scrolled) .btn-outline-header:hover { background-color: #FFFFFF; color: var(--accent-navy); border-color: #FFFFFF; }
+header:not(.scrolled) .menu-toggle span { background: #FFFFFF; }
+
+/* ALT SAYFA HERO (Subpage Header) */
+.subpage-hero { position: relative; width: 100%; min-height: 400px; display: flex; flex-direction: column; justify-content: center; color: #FFFFFF; padding: 120px 0 60px; overflow: hidden; border-radius: 0 0 80px 80px; background: linear-gradient(135deg, rgba(23, 17, 11, 0.95) 0%, rgba(255, 106, 26, 0.8) 100%); }
+.subpage-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; }
+.subpage-hero h1 { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.15; }
+.subpage-hero p { font-size: 16px; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,.8); }
+
+/* MAIN HERO SECTION */
+.hero-corporate { position: relative; width: 100%; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; color: #FFFFFF; padding: 0; overflow: hidden; border-radius: 0 0 100px 100px; }
+.hero-slides { position: absolute; inset: 0; z-index: 0; }
+.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.05); transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.4, 0, 0.2, 1); }
+.hero-slide.active { opacity: 1; transform: scale(1); }
+.hero-corporate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 106, 26, 0.32) 0%, rgba(20, 12, 6, 0.72) 48%, rgba(10, 7, 4, 0.9) 100%); z-index: 1; pointer-events: none; }
+.hero-corporate-inner { position: relative; z-index: 2; max-width: 55%; min-width: 600px; padding: 140px 48px 0; text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
+.hero-corporate h1 { font-family: var(--font-serif); font-size: clamp(28px, 3.2vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; line-height: 1.25; color: #FFFFFF; text-align: left; }
+.hero-corporate p { font-size: 15px; max-width: 100%; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,.78); margin-bottom: 28px; text-align: left; }
+.hero-bottom-row { position: relative; z-index: 2; display: flex; align-items: center; justify-content: flex-end; padding: 0 48px 34px; }
+.hero-arrows { display: flex; gap: 10px; }
+.hero-arrow-btn { width: 42px; height: 42px; border-radius: 50%; background: rgba(20,14,9,.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.28); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #FFFFFF; transition: background .2s ease; }
+.hero-arrow-btn:hover { background: var(--accent-teal); }
+.hero-arrow-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 900px) { .hero-corporate-inner { max-width: 100%; min-width: 0; } }
+
+/* HİZMETLER ŞERİDİ */
+.services-row-section { position: relative; background: var(--bg-main); padding: 100px 0; }
+.scroll-indicator { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 10; transition: opacity 0.4s ease, visibility 0.4s ease; }
+.scroll-indicator.hidden { opacity: 0; visibility: hidden; }
+.scroll-dot { width: 6px; height: 6px; background-color: var(--accent-teal); border-radius: 50%; opacity: 0; animation: scrollDotsAnim 1.5s infinite ease-in-out; }
+.scroll-dot:nth-child(1) { animation-delay: 0s; }
+.scroll-dot:nth-child(2) { animation-delay: 0.2s; }
+.scroll-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes scrollDotsAnim { 0% { opacity: 0; transform: translateY(-5px); } 50% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(5px); } }
+.services-row-wrap { position: relative; z-index: 5; margin-top: 0; }
+.services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.service-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 3.7; box-shadow: 0 22px 44px rgba(20,14,9,.18); background: var(--accent-navy); }
+.service-card img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(1.3) hue-rotate(-6deg); transition: transform .5s ease; }
+.service-card:hover img { transform: scale(1.07); }
+.service-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 42%, rgba(15,10,6,.88) 100%); }
+.service-card-icon { position: absolute; top: 14px; right: 14px; z-index: 2; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center; }
+.service-card-icon svg { width: 13px; height: 13px; stroke: var(--text-ink); fill: none; stroke-width: 2; }
+.service-card-text { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 2; }
+.service-card-text h3 { font-size: 15.5px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px; }
+.service-card-text p { font-size: 11px; color: rgba(255,255,255,.75); line-height: 1.4; }
+.service-card-list-inner { position: absolute; inset: 0; padding: 22px 16px 90px; display: flex; flex-direction: column; justify-content: center; gap: 14px; background: linear-gradient(160deg, rgba(255,106,26,.28), rgba(15,10,6,.92)); }
+.service-card-list-item { font-size: 12.5px; font-weight: 700; color: #FFFFFF; line-height: 1.4; padding-left: 14px; position: relative; }
+.service-card-list-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-teal); }
+.service-card-team-photos { position: absolute; inset: 0; }
+.service-card-team-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .2s ease; filter: grayscale(35%) sepia(.15) saturate(1.2); }
+.service-card-team-photos img.active { opacity: 1; }
+@media (max-width: 860px) { .services-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .services-row { grid-template-columns: 1fr; } .hero-corporate-inner { padding: 120px 24px 0; } .hero-bottom-row { padding: 0 24px 28px; } }
+
+/* ANALİZLER / ÖNCELİK */
+.priority-section { padding: 0; text-align: center; background: var(--bg-main); }
+.priority-photo-wrap { position: relative; width: 100%; z-index: 2; background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding: 120px 32px 80px; border-radius: 100px; overflow: hidden; margin-top: 0; }
+.priority-photo-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(150deg, rgba(20,10,5,0.7) 0%, rgba(10,5,3,0.85) 100%); z-index: 0; }
+.priority-grid { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.priority-card { background: rgba(40, 30, 20, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 34px 28px; text-align: left; transition: transform .3s ease, background .3s ease; font-family: var(--font-sans); cursor: pointer; display: block; width: 100%; }
+.priority-card:hover { transform: translateY(-5px); background: rgba(50, 35, 20, 0.6); }
+.priority-card-icon { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.priority-card-icon svg { width: 20px; height: 20px; stroke: #FFFFFF; fill: none; stroke-width: 1.5; }
+.priority-card h3 { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.priority-card p { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.68); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.priority-actions { position: relative; z-index: 1; display: flex; justify-content: center; gap: 16px; margin-top: 50px; }
+.priority-actions .btn-ghost-white { border: 1px solid rgba(255,255,255,0.4); color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 14px 32px; border-radius: 30px; display: inline-flex; align-items: center; gap: 8px; transition: all .3s; }
+.priority-actions .btn-ghost-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+@media (max-width: 900px) { .priority-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* GLOBAL HARİTA */
+.global-network-section { position: relative; width: 100%; min-height: 100vh; background: radial-gradient(circle at center, #FFFFFF 0%, #F0E8DF 100%); border-radius: 100px; margin-top: 100px; padding-top: 60px; z-index: 10; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.map-layer-container { position: absolute; width: 130%; max-width: 2000px; aspect-ratio: 2 / 1; top: 65%; left: 50%; transform: translate(-50%, -50%); }
+.map-shape { width: 100%; height: 100%; background-color: #D4C5B9; -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg'); -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; opacity: 0.9; }
+.map-marker { position: absolute; display: flex; align-items: center; gap: 8px; color: var(--text-ink); font-size: 13px; font-weight: 700; font-family: var(--font-sans); transform: translate(-50%, -50%); z-index: 5; pointer-events: none; }
+.map-dot { width: 6px; height: 6px; background-color: var(--accent-teal); border-radius: 50%; box-shadow: 0 0 0 4px rgba(255, 106, 26, 0.2); }
+.map-info-box { position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.8); border-right: none; border-radius: 30px 0 0 30px; padding: 18px 40px 18px 30px; box-shadow: -15px 20px 40px rgba(0,0,0,0.06); z-index: 10; }
+.map-info-subtitle { display: flex; align-items: center; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6d4c41; }
+@media (max-width: 768px) { .priority-photo-wrap { border-radius: 50px; } .global-network-section { min-height: 80vh; border-radius: 50px; margin-top: 60px; padding-top: 30px; align-items: flex-end; padding-bottom: 40px; } .map-layer-container { top: 60%; width: 160%; } .map-info-box { position: relative; right: auto; top: auto; transform: none; width: max-content; margin: 0 auto; border-radius: 20px; border-right: 1px solid rgba(255,255,255,0.8); } }
+
+/* ALT SAYFA İÇERİK ALANI */
+.content-section { padding: 90px 0; }
+.content-block { background: var(--bg-alt); padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 40px; }
+.content-block h2 { font-family: var(--font-serif); font-size: 28px; color: var(--text-ink); margin-bottom: 24px; }
+.content-block p { margin-bottom: 16px; font-size: 15px; color: var(--text-body); }
+
+/* EKİP & FOOTER */
+.section { padding: 96px 0; border-bottom: 1px solid var(--border-color); }
+.section-header { margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; }
+.section-header-content { max-width: 600px; }
+.section-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 900; color: var(--text-ink); line-height: 1.3; }
+.team-slider-nav { display: flex; gap: 12px; }
+.team-nav-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--bg-alt); color: var(--accent-navy); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+.team-nav-btn:hover { background: var(--accent-navy); color: #FFF; border-color: var(--accent-navy); transform: translateY(-2px); }
+.team-nav-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.team-slider-wrapper { position: relative; width: 100%; }
+.team-slider-track { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 12px; padding-top: 10px; scrollbar-width: none; -ms-overflow-style: none; }
+.team-slider-track::-webkit-scrollbar { display: none; }
+.team-card { flex: 0 0 280px; scroll-snap-align: start; background: var(--bg-alt); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(255, 106, 26, 0.14); }
+.tc-img-wrap { width: 100%; height: 320px; background: #F1F5F9; position: relative; overflow: hidden; }
+.tc-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(100%); transition: transform 0.5s ease; }
+.team-card:hover .tc-img-wrap img { transform: scale(1.04); }
+.tc-avatar-fallback { width: 100%; height: 100%; background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%); display: flex; align-items: center; justify-content: center; color: #64748B; }
+.tc-avatar-fallback svg { width: 120px; height: 120px; fill: currentColor; opacity: 0.85; }
+.tc-content { padding: 24px 20px; display: flex; flex-direction: column; justify-content: center; flex-grow: 1; background: #FFFFFF; }
+.tc-content h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-ink); margin-bottom: 6px; line-height: 1.35; }
+.tc-content .tc-role { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-teal); }
+
+footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px 0; }
+.footer-inner { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: 40px; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 40px; }
+.f-brand h2 { font-family: var(--font-serif); font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+.f-brand p { font-size: 13px; color: #94A3B8; max-width: 300px; }
+.f-bottom { font-size: 12px; color: #94A3B8; text-align: center; }
+.f-contact h3 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 16px; }
+.f-contact input, .f-contact textarea { width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; padding: 10px 12px; font-family: var(--font-sans); font-size: 13px; color: #FFFFFF; margin-bottom: 10px; outline: none; transition: border-color .2s ease; }
+.f-contact input::placeholder, .f-contact textarea::placeholder { color: #64748B; }
+.f-contact input:focus, .f-contact textarea:focus { border-color: var(--accent-teal); }
+.f-contact textarea { resize: vertical; min-height: 72px; }
+.f-contact button { background: var(--accent-teal); color: #FFFFFF; border: none; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 11px 20px; border-radius: 6px; cursor: pointer; transition: background .2s ease; }
+.f-contact button:hover { background: #0DA3A5; }
+@media (max-width: 1024px) { .footer-inner { grid-template-columns: 1fr; } }
+
+/* MODAL */
+.article-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px; }
+.article-modal-overlay.open { opacity: 1; visibility: visible; }
+.article-modal { background: #fff; width: 100%; max-width: 800px; max-height: 85vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transform: translateY(20px); transition: transform 0.3s ease; }
+.article-modal-overlay.open .article-modal { transform: translateY(0); }
+.article-modal-image { position: relative; width: 100%; height: 240px; flex: none; overflow: hidden; }
+.article-modal-image img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(1.3) hue-rotate(-6deg); }
+.article-modal-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,12,6,0) 40%, rgba(15,10,6,.55) 100%); }
+.article-modal-scroll { overflow-y: auto; flex: 1; min-height: 0; }
+.article-modal-header { padding: 24px 32px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.article-modal-header h2 { font-family: var(--font-serif); font-size: 24px; color: var(--text-ink); line-height: 1.3;}
+.article-modal-close { background: none; border: none; font-size: 32px; line-height: 1; color: #94A3B8; cursor: pointer; transition: color 0.2s; margin-top: -6px; }
+.article-modal-close:hover { color: var(--text-ink); }
+.article-modal-body { padding: 32px; font-size: 15px; line-height: 1.85; color: var(--text-body); }
+.article-modal-body p { margin-bottom: 18px; }
+.article-modal-body p:last-child { margin-bottom: 0; }
+.article-modal-body p:first-of-type::first-letter { font-family: var(--font-serif); font-weight: 800; font-size: 54px; line-height: .78; float: left; padding: 4px 9px 0 0; color: var(--accent-teal); }
+
+.gsap-reveal { opacity: 0; transform: translateY(30px); }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.menu-toggle span { width: 22px; height: 2px; background: var(--text-ink); display: block; transition: transform .2s ease, opacity .2s ease; }
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.4); opacity: 0; visibility: hidden; transition: opacity .3s ease; z-index: 140; }
+.nav-overlay.is-open { opacity: 1; visibility: visible; }
+@media (max-width: 1024px) {
+  .header-inner { justify-content: space-between; }
+  .menu-toggle { display: flex; }
+  .header-right .btn-outline-header { display: none; }
+  .nav-menu { position: fixed; top: 0; right: 0; height: 100vh; width: min(320px, 86vw); background: var(--bg-alt); flex-direction: column; align-items: flex-start; padding: 100px 28px 32px; gap: 0; box-shadow: -20px 0 50px rgba(15,23,42,.14); transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); z-index: 150; overflow-y: auto; margin: 0; }
+  .nav-menu.is-open { transform: translateX(0); }
+  .nav-item { width: 100%; }
+  .nav-menu a { padding: 14px 0; width: 100%; border-bottom: 1px solid var(--border-color); justify-content: space-between; }
+  .has-dropdown .dropdown-icon { padding: 8px; margin: -8px -8px -8px 8px; cursor: pointer; }
+  .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; max-height: 0; overflow: hidden; padding: 0; min-width: 0; transition: max-height .3s ease; }
+  .has-dropdown.is-open .dropdown-menu { max-height: 200px; padding: 4px 0 12px 12px; }
+  .has-dropdown.is-open .dropdown-icon { transform: rotate(180deg); }
+}
+</style>
+</head>
+<body id="anasayfa">
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="horizontal-logo">
+        <span class="hl-dtg">DTG</span>
+        <div class="hl-divider"></div>
+        <div class="hl-stack">
+          <span class="hl-research">RESEARCH</span>
+          <span class="hl-portal">PORTAL</span>
+        </div>
+      </div>
+    </a>
+    <nav class="nav-menu">
+      <div class="nav-item"><a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
+      <div class="nav-item has-dropdown">
+        <a href="proje.html" data-i18n="menuProje">Proje <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="proje.html#amac" data-i18n="dropAmac">Araştırma Amacı</a>
+          <a href="proje.html#kapsam" data-i18n="dropKapsam">Saha Kapsamı</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="bulgular.html" data-i18n="menuBulgular">Bulgular <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="bulgular.html#belirleyiciler" data-i18n="dropBelirleyiciler">Temel Belirleyiciler</a>
+          <a href="bulgular.html#analizler" data-i18n="dropAnalizler">Güncel Analizler</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a></div>
+      <div class="nav-item has-dropdown">
+        <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="yayinlar.html#raporlar" data-i18n="dropRaporlar">İndirilebilir Raporlar</a>
+          <a href="yayinlar.html#makaleler" data-i18n="dropMakaleler">Akademik Yayınlar</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz <span class="dropdown-icon">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="ekip.html#uyeler" data-i18n="dropEkipUyeleri">Ekip Üyeleri</a>
+          <a href="ekip.html#kurumlar" data-i18n="dropKurumlar">Destekleyen Kurumlar</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="iletisim.html" data-i18n="menuIletisim">İletişim</a></div>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switch" id="langToggle">
+        <span class="active" data-lang="tr">TR</span>
+        <span class="sep">|</span>
+        <span data-lang="en">EN</span>
+      </div>
+      <a href="politika.html" class="btn-outline-header" data-i18n="btnPolitika">Politika Önerileri</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero-corporate">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"></div>
+  </div>
+  <div class="hero-corporate-inner gsap-reveal">
+    <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
+    <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
+  </div>
+  <div class="hero-bottom-row">
+    <div class="hero-arrows">
+      <button class="hero-arrow-btn" id="heroPrev" aria-label="Önceki görsel"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="hero-arrow-btn" id="heroNext" aria-label="Sonraki görsel"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- HİZMET / KATEGORİ ŞERİDİ -->
+<section class="services-row-section">
+  <div class="scroll-indicator">
+    <div class="scroll-dot"></div>
+    <div class="scroll-dot"></div>
+    <div class="scroll-dot"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="services-row-wrap gsap-reveal">
+      <div class="services-row">
+        <a href="proje.html" class="service-card">
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="">
+          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="service-card-text">
+            <h3 data-i18n="svc1Title">Saha Araştırması</h3>
+            <p data-i18n="svc1Desc">TR42 bölgesinde yürütülen çalışma</p>
+          </div>
+        </a>
+        <a href="bulgular.html" class="service-card service-card-list">
+          <div class="service-card-list-inner" id="svc2-list"></div>
+          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="service-card-text">
+            <h3 data-i18n="svc2Title">Bulgular</h3>
+            <p data-i18n="svc2Desc">Güncel analiz ve sonuçlar</p>
+          </div>
+        </a>
+        <a href="politika.html" class="service-card">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="">
+          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="service-card-text">
+            <h3 data-i18n="svc3Title">Politika Önerileri</h3>
+            <p data-i18n="svc3Desc">Kanıta dayalı öneriler</p>
+          </div>
+        </a>
+        <a href="ekip.html" class="service-card service-card-team" id="svc4-team">
+          <div class="service-card-team-photos" id="svc4-photos"></div>
+          <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          <div class="service-card-text">
+            <h3 id="svc4-name">Araştırma Ekibi</h3>
+            <p id="svc4-role" data-i18n="svc4Desc">Uzman akademik kadro</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÖNCELİK BÖLÜMÜ / ANALİZLER -->
+<section class="priority-section">
+  <div class="priority-photo-wrap gsap-reveal">
+    <div class="wrap">
+      <div class="priority-grid" id="priorityGrid"></div>
+      <div class="priority-actions">
+        <a href="bulgular.html" class="btn-ghost-white">Detayları İncele &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL NETWORK HARİTA BÖLÜMÜ -->
+<section class="global-network-section gsap-reveal">
+  <div class="map-layer-container">
+    <div class="map-shape"></div>
+    <div class="map-marker" style="top: 21.4%; left: 50.8%;"><div class="map-dot"></div><span data-i18n="mapGrm">Almanya</span></div>
+    <div class="map-marker" style="top: 32.1%; left: 18.1%;"><div class="map-dot"></div><span data-i18n="mapUsa">ABD</span></div>
+    <div class="map-marker" style="top: 21.4%; left: 47.2%;"><div class="map-dot"></div><span data-i18n="mapUk">Birleşik Krallık</span></div>
+    <div class="map-marker" style="top: 28.6%; left: 51.9%;"><div class="map-dot"></div><span data-i18n="mapIta">İtalya</span></div>
+    <div class="map-marker" style="top: 14.3%; left: 69%;"><div class="map-dot"></div><span data-i18n="mapRus">Rusya</span></div>
+    <div class="map-marker" style="top: 35.7%; left: 76.2%;"><div class="map-dot"></div><span data-i18n="mapChn">Çin</span></div>
+    <div class="map-marker" style="top: 25.7%; left: 48.2%;"><div class="map-dot"></div><span data-i18n="mapFra">Fransa</span></div>
+    <div class="map-marker" style="top: 34.3%; left: 60.2%;"><div class="map-dot"></div><span data-i18n="mapIrq">Irak</span></div>
+  </div>
+  <div class="map-info-box">
+    <div class="map-info-subtitle" data-i18n="mapBoxSub">TÜBİTAK 3005 Destekli Proje</div>
+  </div>
+</section>
+
+<!-- ARAŞTIRMA EKİBİMİZ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header gsap-reveal">
+      <div class="section-header-content">
+        <h2 data-i18n="teamTitle">Araştırma Ekibi</h2>
+      </div>
+      <div class="team-slider-nav">
+        <button class="team-nav-btn" id="teamPrev" aria-label="Önceki"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+        <button class="team-nav-btn" id="teamNext" aria-label="Sonraki"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+      </div>
+    </div>
+    <div class="team-slider-wrapper gsap-reveal">
+      <div class="team-slider-track" id="ekip-container">
+        <!-- Dinamik eklenecek -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- İLETİŞİM -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="f-brand">
+        <h2 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h2>
+        <p style="margin-top: 16px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
+      </div>
+      <div>
+        <p style="font-size: 13px; color: #94A3B8; line-height: 2;">
+          <span data-i18n="footSupp">Destekleyen Kurumlar:</span><br>
+          <strong style="color:white;" data-i18n="footK1">T.C. Ticaret Bakanlığı</strong><br>
+          <strong style="color:white;" data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</strong><br>
+          <strong style="color:white;" data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı (MARKA)</strong>
+        </p>
+      </div>
+      <div class="f-contact">
+        <h3 data-i18n="footContactTitle">Bize Ulaşın</h3>
+        <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
+          <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
+          <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
+          <textarea name="message" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
+          <input type="hidden" name="_subject" value="DTG Research Portal - Yeni İletişim Mesajı">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_captcha" value="true">
+          <button type="submit" data-i18n="footFormSend">Gönder</button>
+        </form>
+      </div>
+    </div>
+    <div class="f-bottom" data-i18n="footCopy">
+      &copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.
+    </div>
+  </div>
+</footer>
+
+<!-- MAKALE POP-UP / MODAL EKRANI -->
+<div class="article-modal-overlay" id="articleModalOverlay">
+  <div class="article-modal">
+    <div class="article-modal-image"><img id="modalImage" src="" alt=""></div>
+    <div class="article-modal-scroll">
+      <div class="article-modal-header">
+        <h2 id="modalTitle">Makale Başlığı</h2>
+        <button class="article-modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="article-modal-body" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  const dict = {
+    tr: {
+      menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
+      dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
+      btnPolitika: "Politika Önerileri",
+      heroTitle: "İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri",
+      heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
+      svc1Title: "Saha Araştırması", svc1Desc: "TR42 bölgesinde yürütülen çalışma",
+      svc2Title: "Bulgular", svc2Desc: "Güncel analiz ve sonuçlar",
+      svc3Title: "Politika Önerileri", svc3Desc: "Kanıta dayalı öneriler",
+      svc4Desc: "Uzman akademik kadro",
+      mapBoxSub: "TÜBİTAK 3005 Destekli Proje",
+      mapGrm: "Almanya", mapUsa: "ABD", mapUk: "Birleşik Krallık", mapIta: "İtalya", mapRus: "Rusya", mapChn: "Çin", mapFra: "Fransa", mapIrq: "Irak",
+      teamTitle: "Araştırma Ekibi",
+      brandTitleFoot: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı",
+      footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
+      footSupp: "Destekleyen Kurumlar:", footK1: "T.C. Ticaret Bakanlığı", footK2: "Türkiye İhracatçılar Meclisi (TİM)", footK3: "TR42 Doğu Marmara Kalkınma Ajansı (MARKA)",
+      footCopy: "&copy; 2026 Tüm Hakları Saklıdır. Araştırma verileri kaynak gösterilmeden kullanılamaz.",
+      readMoreTxt: "Detaylı İncele",
+      footContactTitle: "Bize Ulaşın", footFormName: "Ad Soyad", footFormEmail: "E-posta", footFormMessage: "Mesajınız", footFormSend: "Gönder"
+    },
+    en: {
+      menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
+      dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
+      btnPolitika: "Policy Recommendations",
+      heroTitle: "Policy Recommendations for Revising Export Incentives from the Perspective of Foreign Trade Entrepreneurship",
+      heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
+      svc1Title: "Field Research", svc1Desc: "Study conducted in the TR42 region",
+      svc2Title: "Findings", svc2Desc: "Latest analysis and results",
+      svc3Title: "Policy Recommendations", svc3Desc: "Evidence-based proposals",
+      svc4Desc: "Expert academic staff",
+      mapBoxSub: "TÜBİTAK 3005 Supported Project",
+      mapGrm: "Germany", mapUsa: "USA", mapUk: "United Kingdom", mapIta: "Italy", mapRus: "Russia", mapChn: "China", mapFra: "France", mapIrq: "Iraq",
+      teamTitle: "Research Team",
+      brandTitleFoot: "Foreign Trade Entrepreneurship & Export Incentives Research Portal",
+      footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
+      footSupp: "Supporting Institutions:", footK1: "T.R. Ministry of Trade", footK2: "Turkish Exporters Assembly (TIM)", footK3: "TR42 East Marmara Development Agency (MARKA)",
+      footCopy: "&copy; 2026 All Rights Reserved. Research data cannot be used without citation.",
+      readMoreTxt: "Read Analysis",
+      footContactTitle: "Contact Us", footFormName: "Full Name", footFormEmail: "Email", footFormMessage: "Your Message", footFormSend: "Send"
+    }
+  };
+
+  let currentLang = 'tr';
+
+  const siteContent = {
+    tr: {
+      haberler: [
+        { 
+          baslik: "Kavramsal Çerçeve: Uluslararası Girişimcilik ile Dış Ticaret Girişimciliği Arasındaki Yapısal Ayrım ve 'Milli Değer' Ekseni", 
+          ozet: "Geleneksel 'Uluslararası Girişimcilik' kavramı ile projemizin temelini oluşturan 'Dış Ticaret Girişimciliği' arasındaki yapısal ve iktisadi ayrım.", 
+          gorsel: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+          full: `Girişimlerin küreselleşme süreçleri, iktisat ve işletme literatüründe uzun yıllardır farklı teorilerle açıklanmaktadır. Ancak mevcut yaklaşımların büyük bir kısmı, katma değerin nerede üretildiğinden ziyade pazarın nasıl genişletildiğine odaklanır. Bu noktada, geleneksel "Uluslararası Girişimcilik" kavramı ile projemizin temelini oluşturan "Dış Ticaret Girişimciliği" arasında yapısal ve iktisadi bir ayrım yapılması zorunludur.\n\nGeleneksel uluslararası girişimcilik; girişimcinin değer yaratma, kâr elde etme veya büyüme hedefleri doğrultusunda üretim ve yatırım faaliyetlerini sınır ötesine taşımasını ifade eder. Bu modelde girişimci, yabancı pazarlarda doğrudan yatırımlar yapar, ortaklıklar kurar ya da şirket satın almaları gerçekleştirir. Ancak bu durum, Uppsala Modeli gibi aşamalı uluslararasılaşma teorilerinde de görüldüğü üzere, yaratılan katma değerin ve ekonomik kazanımların hedef ülkede yatırıma dönüşmesiyle sonuçlanır. Bizim "ticari milliyetçilik" olarak adlandırdığımız bu olgu, ana ülkede bir katma değer artışı sağlamaktan ziyade, hedef pazarın sınırları içerisinde bir sermaye birikimi yaratır.\n\nBuna karşın Dış Ticaret Girişimciliği, üretimi ve katma değer yaratma sürecini tamamen kendi orijin ülkesinde (Türkiye'de) tutan bir yaklaşımdır. Dış ticaret girişimcisi, yerli sanayi tarafından üretilen katma değerleri dış satım yoluyla küresel pazarlara ulaştırır; ancak elde ettiği parasal karşılıkları yurt dışındaki faaliyetleri büyütmek için kullanmak yerine, tamamen kendi ülkesine getirerek yerli sabit sermaye yatırımlarına dönüştürür. Bu yönüyle dış ticaret girişimciliği, küresel korumacılık rüzgarlarının estiği günümüz dünyasında, "yüzde yüz yerli" değer üretimini önceleyen milli bir ekonomik savunma modelidir. Ülke içindeki üretimi besleyen, yerli yenilik kapasitesini artıran ve istihdamı doğrudan destekleyen bu model, Türkiye’nin On Birinci ve On İkinci Kalkınma Planlarında vurgulanan sürdürülebilir büyüme hedeflerinin de ana motorudur.`
+        },
+        { 
+          baslik: "Kamu Teşviklerinde Paradigma Değişimi: Miktar Odaklı Desteklerden Katma Değer ve Girişimcilik Odaklı Destek Modeline", 
+          ozet: "Mevcut ihracat teşviklerinin miktar odaklı yapısından sıyrılarak, yüksek katma değerli ve girişimcilik odaklı yeni bir modele geçiş zorunluluğu.", 
+          gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+          full: `Türkiye Cumhuriyeti, makroekonomik istikrarı ve kalkınmayı desteklemek amacıyla uzun yıllardır ihracat odaklı bir büyüme stratejisi takip etmektedir. Kamu otoritesi, Ticaret Bakanlığı, KOSGEB, TÜBİTAK ve Eximbank gibi çeşitli kurumlar aracılığıyla ihracatı özendirmek amacıyla son derece geniş ve kapsamlı bir teşvik mekanizması kurgulamıştır. Ancak yürürlükteki bu destek araçlarının küresel rekabette üstünlük sağlayacak yenilikçi yatırımlardan ziyade, doğrudan ihracat hacmini (miktar bazında) artırmaya odaklandığı görülmektedir.\n\nİhracatın miktar bazında artırılması gayreti, mikro düzeyde firmaların teknolojik derinleşmesini geciktirmekte ve yüksek katma değerli ürünlerin üretimini arka plana itmektedir. Daha da önemlisi, mevcut teşvik ve destek mekanizmaları, doğası gereği ölçek ekonomisi avantajına sahip olan büyük ölçekli işletmelerin üretim yapısını desteklemeye daha yatkındır. Bu durum, yüksek finansal risk barındıran, başlangıç aşamasındaki (startup) yenilikçi girişimlerin ve dinamik KOBİ'lerin küresel pazarlara açılırken kamu kaynaklarından yeterince faydalanamamasına yol açmaktadır. KOSGEB ve TÜBİTAK gibi kurumların sunduğu yenilikçi ürün destekleri ise çoğunlukla ithal ikamesi seviyesinde kalmakta, küresel pazarlarda yıkıcı bir rekabet avantajı yaratamamaktadır.\n\nOn İkinci Kalkınma Planı'nda açıkça ortaya konan "ileri teknolojiye dayalı, yüksek katma değer üreten ve kaliteli finansman imkanlarıyla desteklenen ekonomi modeli" hedefine ulaşılabilmesi için teşvik sisteminde radikal bir paradigma değişimine ihtiyaç vardır. Yeni nesil teşvik politikaları, bürokratik prosedürlerin sadeleştirildiği, vergi teşviklerinin etkinleştirildiği ve doğrudan "dış ticaret girişimcisini" hedef alan esnek ve dinamik modüller içermelidir. Teşviklerin verimliliğini artırmak, ancak sahadaki uygulayıcıların ve girişimcilerin gerçek beklentilerini doğru analiz eden bilimsel bir altyapı ile mümkündür.`
+        },
+        { 
+          baslik: "Sahadan Bulgularla İhracatın Yapı Taşları: Dış Ticaret Girişimciliğini Belirleyen Öncelikli Faktörler", 
+          ozet: "Kapsamlı saha araştırması sonuçlarına göre, dış ticaret girişimciliğinin başarısında en birincil rolü oynayan 9 belirleyici faktör.", 
+          gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+          full: `Dış ticaret girişimciliğinin önündeki engelleri kaldırmak ve kamu teşviklerini optimize etmek için öncelikle bu girişimcilik türünü besleyen temel belirleyicilerin ortaya konulması gerekir. Bu doğrultuda yürütülen kapsamlı saha araştırması, literatürdeki teorik yaklaşımlar ile iş dünyasının pratik deneyimlerini bir araya getirerek dış ticaret girişimciliğini şekillendiren 9 nihai belirleyiciyi ortaya koymuştur.\n\nGelişmiş olasılıksal analiz sonuçlarına göre, dış ticaret girişimciliğinin başarısında en birincil rolü %12,86'lık nihai grup ağırlığı ile "Finansal Belirleyiciler" (özkaynak yapısı, kârlılık ve genel finansal performans) üstlenmektedir. Yapılan simülasyon analizlerinde finansal faktörlerin diğer tüm kriterleri geride bırakarak birinci sırada yer alma olasılığı %86,80 olarak hesaplanmıştır. Bu çarpıcı bulgu, dış ticaret girişimcilerinin küresel pazarlara açılırken devlet desteklerinden ziyade kendi özkaynak güçlerine ve kârlılık rasyolarına güvendiklerini; finansal kırılganlıkların ise ihracat faaliyetlerinin önündeki en büyük engel olduğunu kanıtlamaktadır.\n\nFinansal belirleyicileri sırasıyla şu stratejik unsurlar takip etmektedir:\n• Rekabet, Fırsatlar ve Riskler (%11,68): Küresel pazarlardaki dalgalanmaları okuma ve risk yönetimi kapasitesi.\n• Stratejik Kararlar, Kurumsal Beceriler ve İnovasyon (%11,59): Firmaların yenilikçi süreçler tasarlama ve yönetsel olgunluk seviyeleri.\n• Girişimci Özellikleri, Deneyimi ve Networkü (%11,45): Yöneticilerin uluslararası vizyonu ve sektörel iş birlikleri.\n\nBu kriterlerin ağırlıklarının birbirine son derece yakın çıkması, uzmanların bu unsurları bir bütünün tamamlayıcı parçaları olarak gördüğünü kanıtlamaktadır. Pratik açıdan bu sonuçlar, yalnızca dışsal devlet teşviklerine odaklanmak yerine, firmaların stratejik, finansal ve yönetsel iç kapasitelerinin güçlendirilmesinin sürdürülebilir ihracat üzerinde çok daha büyük bir çarpan etkisi yaratacağına işaret etmektedir.`
+        },
+        { 
+          baslik: "Bölgesel Kalkınmanın İhracat Motoru: TR42 Doğu Marmara Sanayi Hinterlandının Stratejik Önemi ve Yeni Korumacılık", 
+          ozet: "Doğu Marmara Bölgesinin (TR42) Türkiye ekonomisindeki omurga rolü ve yeni korumacılık eğilimlerine karşı çözüm stratejileri.", 
+          gorsel: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+          full: `Bölgesel kalkınma, ülke kaynaklarının etkin kullanımı ve bölgelerarası refah farklılıklarının giderilmesi açısından iktisat politikalarının en kritik alanlarından biridir. Türkiye’nin On Birinci ve On İkinci Kalkınma Planlarında da vurgulandığı üzere, ihracat odaklı büyüme hedeflerinin yerel düzeyde hayata geçirilmesinde Kalkınma Ajansları ve bölgesel sanayi kümelenmeleri hayati bir role sahiptir.\n\nAvrupa Birliği istatistiksel sınıflandırmasına göre TR42 olarak adlandırılan Doğu Marmara Bölgesi (Kocaeli, Sakarya, Bolu, Düzce ve Yalova), üretim, ulaşım ve lojistik hatları bakımından Türkiye ekonomisinin omurgasını oluşturmaktadır. Coğrafi olarak Türkiye'nin en büyük tüketim ve ticaret merkezi olan İstanbul'a yakınlığı, ulusal ve uluslararası ulaşım koridorlarının üzerinde yer alması ve güçlü liman altyapısı, bölgeyi benzersiz bir üretim üssü haline getirmektedir. Temmuz 2024 verilerine göre Kocaeli ihracat hacminde Türkiye genelinde 4. sırada, Sakarya ise 7. sırada yer alarak bu gücü tescillemektedir. TR42 bölgesi, İstanbul’un ağır sanayi yükünü omuzlayan stratejik bir sınai hinterlant niteliğindedir.\n\nPandemi sonrasında küresel tedarik zincirlerinde yaşanan kırılmalar ve yükselen "yeni korumacılık" eğilimleri, bölgesel kalkınmanın ve yerli üretim ağlarının önemini bir kez daha ortaya koymuştur. Küresel pazarlardaki korumacı duvarları aşmanın yolu, TR42 gibi güçlü sanayi bölgelerinde faaliyet gösteren dış ticaret girişimcilerinin yeşil ve dijital dönüşüm süreçlerine adaptasyonunu hızlandırmaktan geçmektedir. Bölgedeki girişimcilerin yenilik kapasitelerini artıracak, karbon sınır düzenlemelerine uyum sağlayacak ve kaliteli finansmana erişimlerini kolaylaştıracak yerel ve ulusal politika araçlarının geliştirilmesi, Türkiye'nin küresel ticaretteki konumunu daha da sağlamlaştıracaktır.`
+        },
+        { 
+          baslik: "Ticari Milliyetçilik: Bir Girişimin Yarattığı Zenginlik Hangi Ülkeye Aittir?", 
+          ozet: "Bir firma küresel ölçekte 'başarılı' sayılabilir; ama yarattığı zenginlik başka bir ülkenin sermaye stokuna eklenmişse, bu başarı kimin lehinedir? 'Ticari milliyetçilik' kavramı tam da bu soruyu masaya yatırıyor.", 
+          gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+          full: `Bir girişimin "uluslararası" ya da "küresel" sayılması için genellikle tek bir ölçüt aranır: sınır ötesinde faaliyet göstermek. Ancak bu ölçüt, gözden kaçırdığı asıl soruyu gizler: yaratılan zenginlik nihayetinde hangi ülkenin sermaye stokuna eklenir? Uppsala Modeli'nden bu yana klasik uluslararasılaşma teorileri, bir firmanın yurt dışında doğrudan yatırım yapmasını, ortaklık kurmasını ya da şirket satın almasını "olgunlaşmanın" doğal bir aşaması olarak sunar. Bu anlatıda, katma değerin nerede biriktiği neredeyse hiç sorgulanmaz.\n\nProjemizin çıkış noktalarından biri, bu sessiz varsayımı tersine çevirmektir. "Ticari milliyetçilik" olarak adlandırdığımız yaklaşım, bir ekonomik faaliyetin başarısını yalnızca ciro veya pazar payıyla değil, yarattığı değerin hangi ülkede sabit sermayeye, istihdama ve yenilik kapasitesine dönüştüğüyle ölçer. Bu çerçevede dış ticaret girişimciliği, yurt dışına yatırım yapmak yerine, üretimi ve katma değer yaratma sürecini bilinçli biçimde yurt içinde tutan; yalnızca dış satım yoluyla küresel pazara açılan bir modeldir. Aradaki fark kozmetik değildir: biri sermayeyi ihraç eder, diğeri sermayeyi ithal eder.\n\nBu ayrımın bir akademik incelik olmadığını, doğrudan bir politika meselesi olduğunu vurgulamak gerekir. Teşvik sistemleri bugüne kadar çoğunlukla ihracat hacmini büyütmeyi hedefledi; hangi model üzerinden büyüdüğünü, yani yaratılan değerin nerede kaldığını sorgulamadı. Küresel korumacılığın yükseldiği, tedarik zincirlerinin yeniden ulusal sınırlara çekildiği bir dönemde, bu ayrımı gözden kaçırmanın maliyeti giderek artıyor.`
+        },
+        { 
+          baslik: "Neden Şimdi? Tedarik Zincirleri Kırılırken Dış Ticaret Girişimciliğinin Yükselişi", 
+          ozet: "Pandemi sonrası kırılan tedarik zincirleri ve yükselen korumacılık, dış ticaret girişimciliğini akademik bir merak konusu olmaktan çıkarıp acil bir politika gündemine dönüştürdü.", 
+          gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+          full: `Birkaç yıl öncesine kadar "tedarik zinciri" kavramı, çoğu politika yapıcı için soyut bir mühendislik meselesiydi. Pandemi, bunun hiç de öyle olmadığını gösterdi: bir limandaki tıkanıklık, binlerce kilometre ötedeki bir fabrikayı durdurabiliyor. Bu kırılganlık, "reshoring" ve "friend-shoring" gibi kavramları iktisat literatürünün merkezine taşıdı; devletler artık üretimin nerede yapıldığını, sadece maliyet değil güvenlik meselesi olarak da görüyor.\n\nBu yeni denklemde Türkiye'nin konumu hem fırsat hem risk barındırıyor. Avrupa'ya coğrafi yakınlığı ve TR42 gibi güçlü sanayi hinterlantları, ülkeyi tedarik zincirlerinin yeniden şekillendiği bu dönemde doğal bir alternatif haline getiriyor. Ancak bu fırsatın gerçek bir kazanıma dönüşmesi, sahada faaliyet gösteren dış ticaret girişimcilerinin doğru araçlarla desteklenmesine bağlı. On Birinci ve On İkinci Kalkınma Planları'nda tekrar eden "yerli ve milli üretim" vurgusu, bu ihtiyacın siyasi karşılığını da gösteriyor.\n\nPolitika pencereleri sonsuza kadar açık kalmaz. Tedarik zincirleri yeniden konumlanırken teşvik mimarisini doğru kurmak, önümüzdeki on yılın rekabet gücünü büyük ölçüde belirleyecek. Bu araştırmanın aciliyeti de tam olarak buradan geliyor: geç kalınan her yıl, yeniden şekillenen küresel ticaret haritasında daha dezavantajlı bir konumdan başlamak anlamına gelir.`
+        }
+      ],
+      ekip: [
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", fotograf: "" },
+        { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", fotograf: "" },
+        { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", fotograf: "" }
+      ]
+    },
+    en: {
+      haberler: [
+        { 
+          baslik: "Conceptual Framework: Structural Distinction Between International and Foreign Trade Entrepreneurship", 
+          ozet: "The structural and economic distinction between traditional 'International Entrepreneurship' and 'Foreign Trade Entrepreneurship'.", 
+          gorsel: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+          full: `The globalization processes of ventures have been explained by various theories in economics and business literature for many years. However, most existing approaches focus on how the market is expanded rather than where the value-added is produced. At this point, a structural and economic distinction must be made between the traditional concept of "International Entrepreneurship" and "Foreign Trade Entrepreneurship," which forms the basis of our project.\n\nTraditional international entrepreneurship refers to the entrepreneur moving production and investment activities across borders in line with value creation, profit, or growth objectives. In this model, the entrepreneur makes direct investments, forms partnerships, or acquires companies in foreign markets. However, as seen in gradual internationalization theories like the Uppsala Model, this results in the created value-added and economic gains turning into investments in the target country. This phenomenon, which we call "commercial nationalism," creates capital accumulation within the borders of the target market rather than providing a value-added increase in the home country.\n\nIn contrast, Foreign Trade Entrepreneurship is an approach that keeps the production and value creation process entirely in its country of origin (Turkey). The foreign trade entrepreneur delivers the value-added produced by the domestic industry to global markets through exports; however, instead of using the monetary returns obtained to expand operations abroad, they bring it entirely back to their own country and turn it into domestic fixed capital investments. In this respect, foreign trade entrepreneurship is a national economic defense model that prioritizes "100% domestic" value production in today's world where global protectionism winds are blowing. This model, which feeds domestic production, increases domestic innovation capacity, and directly supports employment, is also the main engine of the sustainable growth targets emphasized in Turkey's Eleventh and Twelfth Development Plans.`
+        },
+        { 
+          baslik: "Paradigm Shift in Public Incentives: From Quantity-Oriented Supports to a Value-Added Model", 
+          ozet: "The necessity of transitioning from quantity-oriented export incentives to a high value-added and entrepreneurship-oriented new model.", 
+          gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+          full: `The Republic of Turkey has been following an export-oriented growth strategy for many years to support macroeconomic stability and development. The public authority has designed a very broad and comprehensive incentive mechanism to encourage exports through various institutions such as the Ministry of Trade, KOSGEB, TÜBİTAK, and Eximbank. However, it is observed that these current support tools focus on directly increasing the export volume (in terms of quantity) rather than innovative investments that will provide superiority in global competition.\n\nThe effort to increase exports on a quantity basis delays the technological deepening of firms at the micro level and pushes the production of high value-added products into the background. More importantly, existing incentive and support mechanisms are naturally more inclined to support the production structure of large-scale enterprises that have economies of scale advantages. This situation causes innovative start-ups and dynamic SMEs with high financial risks to be unable to sufficiently benefit from public resources when expanding into global markets. Innovative product supports provided by institutions like KOSGEB and TÜBİTAK often remain at the level of import substitution and cannot create a disruptive competitive advantage in global markets.\n\nTo achieve the "economic model based on advanced technology, producing high value-added, and supported by quality financing opportunities" target clearly stated in the Twelfth Development Plan, a radical paradigm shift in the incentive system is needed. New generation incentive policies should include flexible and dynamic modules that simplify bureaucratic procedures, activate tax incentives, and directly target the "foreign trade entrepreneur." Increasing the efficiency of incentives is only possible with a scientific infrastructure that correctly analyzes the real expectations of practitioners and entrepreneurs in the field.`
+        },
+        { 
+          baslik: "Building Blocks of Exports with Field Findings: Priority Factors", 
+          ozet: "The 9 ultimate determinants shaping foreign trade entrepreneurship based on comprehensive field research results.", 
+          gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+          full: `To remove the obstacles to foreign trade entrepreneurship and optimize public incentives, the fundamental determinants feeding this type of entrepreneurship must first be revealed. The comprehensive field research conducted in this direction has brought together theoretical approaches in the literature and the practical experiences of the business world to reveal 9 ultimate determinants shaping foreign trade entrepreneurship.\n\nAccording to the results of advanced probabilistic analysis, "Financial Determinants" (equity structure, profitability, and general financial performance) play the primary role in the success of foreign trade entrepreneurship with a final group weight of 12.86%. In the simulation analyses conducted, the probability of financial factors ranking first by surpassing all other criteria was calculated as 86.80%. This striking finding proves that foreign trade entrepreneurs rely on their own equity strength and profitability ratios rather than government supports when expanding into global markets; and financial fragilities are the biggest obstacle to export activities.\n\nFinancial determinants are followed by these strategic elements respectively:\n• Competition, Opportunities, and Risks (11.68%): Capacity to read fluctuations in global markets and risk management.\n• Strategic Decisions, Corporate Skills, and Innovation (11.59%): Firms' managerial maturity levels and designing innovative processes.\n• Entrepreneur Characteristics, Experience, and Network (11.45%): Managers' international vision and sectoral collaborations.\n\nThe fact that the weights of these criteria are very close to each other proves that experts see these elements as complementary parts of a whole. Practically, these results indicate that strengthening the strategic, financial, and managerial internal capacities of firms will create a much larger multiplier effect on sustainable exports than focusing solely on external government incentives.`
+        },
+        { 
+          baslik: "Export Engine of Regional Development: Strategic Importance of TR42 East Marmara", 
+          ozet: "The strategic importance of the TR42 East Marmara Industrial Hinterland and solutions against rising new protectionism trends.", 
+          gorsel: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+          full: `Regional development is one of the most critical areas of economic policies in terms of effective use of national resources and eliminating inter-regional welfare differences. As emphasized in Turkey's Eleventh and Twelfth Development Plans, Development Agencies and regional industrial clusters play a vital role in implementing export-oriented growth targets at the local level.\n\nThe East Marmara Region (Kocaeli, Sakarya, Bolu, Düzce, and Yalova), designated as TR42 according to the European Union statistical classification, forms the backbone of the Turkish economy in terms of production, transportation, and logistics lines. Its proximity to Istanbul, geographically Turkey's largest consumption and trade center, its location on national and international transportation corridors, and its strong port infrastructure make the region a unique production base. According to July 2024 data, Kocaeli ranks 4th and Sakarya 7th in Turkey in export volume, certifying this strength. The TR42 region is a strategic industrial hinterland shouldering Istanbul's heavy industry burden.\n\nThe disruptions in global supply chains after the pandemic and the rising "new protectionism" trends have once again revealed the importance of regional development and domestic production networks. The way to overcome protectionist walls in global markets is to accelerate the adaptation of foreign trade entrepreneurs operating in strong industrial regions like TR42 to green and digital transformation processes. Developing local and national policy tools that will increase the innovation capacities of entrepreneurs in the region, ensure compliance with carbon border adjustments, and facilitate their access to quality finance will further solidify Turkey's position in global trade.`
+        },
+        { 
+          baslik: "Commercial Nationalism: Which Country Does a Venture's Wealth Belong To?", 
+          ozet: "A firm can be considered 'globally successful' even as the wealth it creates is added to another country's capital stock. The concept of 'commercial nationalism' puts exactly this question on the table.", 
+          gorsel: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+          full: `A venture is usually judged "international" or "global" by a single yardstick: operating across borders. But that yardstick conceals the question that actually matters: which country's capital stock does the value created ultimately join? Since the Uppsala Model, classical internationalization theories have presented direct investment, partnerships, or acquisitions abroad as a natural stage of "maturity." In that narrative, where the value-added ultimately settles is barely questioned at all.\n\nOne of the starting points of our project is to invert this quiet assumption. What we call "commercial nationalism" measures the success of an economic activity not merely by revenue or market share, but by where the value it creates turns into fixed capital, employment, and innovation capacity. Under this lens, foreign trade entrepreneurship is a model that deliberately keeps production and value creation at home rather than investing abroad, reaching global markets solely through exports. The difference is not cosmetic: one model exports capital, the other imports it.\n\nIt is worth stressing that this distinction is not an academic nicety but a direct policy matter. Incentive systems have so far mostly targeted growing export volume, without asking which model that growth follows, that is, where the value created actually stays. At a time when global protectionism is rising and supply chains are being pulled back within national borders, the cost of overlooking this distinction keeps growing.`
+        },
+        { 
+          baslik: "Why Now? The Rise of Foreign Trade Entrepreneurship as Supply Chains Fracture", 
+          ozet: "Supply chains broken by the pandemic and rising protectionism have turned foreign trade entrepreneurship from an academic curiosity into an urgent policy agenda.", 
+          gorsel: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+          full: `Until a few years ago, "supply chain" was, for most policymakers, an abstract engineering matter. The pandemic showed it was anything but: a bottleneck at a single port could halt a factory thousands of kilometers away. That fragility pushed concepts like "reshoring" and "friend-shoring" to the center of economic literature; states now treat where production happens as a matter of security, not just cost.\n\nIn this new equation, Turkey's position carries both opportunity and risk. Its geographic proximity to Europe and strong industrial hinterlands like TR42 make the country a natural alternative as supply chains are reshaped. But turning that opportunity into a real gain depends on supporting foreign trade entrepreneurs on the ground with the right tools. The recurring emphasis on "domestic and national production" in Turkey's Eleventh and Twelfth Development Plans reflects the political counterpart of this need.\n\nPolicy windows do not stay open forever. Getting the incentive architecture right while supply chains are being repositioned will largely determine competitiveness over the next decade. That is precisely where the urgency of this research comes from: every year of delay means starting from a more disadvantaged position on a global trade map that is already being redrawn.`
+        }
+      ],
+      ekip: [
+        { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Project Coordinator", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
+        { isim: "Doç. Dr. Caner Erden", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+        { isim: "Doç. Dr. Metin Saygılı", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
+        { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
+        { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Researcher", fotograf: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
+        { isim: "Dr. Ömer Alperen Onay", unvan: "Post-Doctoral Fellow", fotograf: "" },
+        { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doctoral Scholar", fotograf: "" },
+        { isim: "Furkan Coşgun", unvan: "Master's Scholar", fotograf: "" }
+      ]
+    }
+  };
+
+  function translateHTML() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[currentLang][key]) {
+        el.innerHTML = dict[currentLang][key];
+      }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[currentLang][key]) {
+        el.setAttribute('placeholder', dict[currentLang][key]);
+      }
+    });
+  }
+
+  function renderDynamicData() {
+    const data = siteContent[currentLang];
+    
+    // Ekip Üyeleri Kartları
+    const ekipEl = document.getElementById('ekip-container');
+    if (ekipEl) {
+      ekipEl.innerHTML = '';
+      data.ekip.forEach(kisi => {
+        const avatar = kisi.fotograf
+          ? `<img src="${kisi.fotograf}" alt="${kisi.isim}">`
+          : `<div class="tc-avatar-fallback">
+               <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+             </div>`;
+        ekipEl.insertAdjacentHTML('beforeend', `
+          <div class="team-card">
+            <div class="tc-img-wrap">
+              ${avatar}
+            </div>
+            <div class="tc-content">
+              <h3>${kisi.isim}</h3>
+              <span class="tc-role">${kisi.unvan}</span>
+            </div>
+          </div>`);
+      });
+    }
+
+    // Bulgular kartı: başlık listesi
+    const svc2El = document.getElementById('svc2-list');
+    if (svc2El) {
+      svc2El.innerHTML = data.haberler.slice(0, 4).map(h =>
+        `<div class="service-card-list-item">${h.baslik}</div>`
+      ).join('');
+    }
+
+    // Öncelik bölümü: 6 yamuk kart, gerçek makalelere tıklanabilir bağlantı
+    const priorityGridEl = document.getElementById('priorityGrid');
+    if (priorityGridEl) {
+      const prIcons = [        '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>',        '<path d="M9 17V9m6 8V5m-11 12h16"/>',        '<path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',        '<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/>',        '<circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/>',        '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'      ];
+      priorityGridEl.innerHTML = data.haberler.slice(0, 6).map((h, i) => `
+        <button class="priority-card" onclick="openModal(${i})" type="button">
+          <div class="priority-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${prIcons[i % prIcons.length]}</svg></div>
+          <h3>${h.baslik}</h3>
+          <p>${h.ozet}</p>
+        </button>
+      `).join('');
+    }
+
+    // Araştırma Ekibi kartı: fotoğrafları olan üyeler arasında döner slayt
+    initTeamRotator(data);
+
+    setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
+  }
+
+  let teamRotatorTimer = null;
+  function initTeamRotator(data) {
+    const photosEl = document.getElementById('svc4-photos');
+    const nameEl = document.getElementById('svc4-name');
+    const roleEl = document.getElementById('svc4-role');
+    if (!photosEl || !nameEl || !roleEl) return;
+
+    const withPhotos = data.ekip.filter(k => k.fotograf);
+    if (withPhotos.length === 0) return;
+
+    photosEl.innerHTML = withPhotos.map((k, i) =>
+      `<img src="${k.fotograf}" alt="${k.isim}" class="${i === 0 ? 'active' : ''}">`
+    ).join('');
+
+    const imgs = photosEl.querySelectorAll('img');
+    let idx = 0;
+    nameEl.textContent = withPhotos[0].isim;
+    roleEl.textContent = withPhotos[0].unvan;
+
+    if (teamRotatorTimer) clearInterval(teamRotatorTimer);
+    teamRotatorTimer = setInterval(() => {
+      imgs[idx].classList.remove('active');
+      idx = (idx + 1) % withPhotos.length;
+      imgs[idx].classList.add('active');
+      nameEl.textContent = withPhotos[idx].isim;
+      roleEl.textContent = withPhotos[idx].unvan;
+    }, 1800);
+  }
+
+  // Pop-up (Modal) Kontrol Fonksiyonları
+  function openModal(index) {
+    const article = siteContent[currentLang].haberler[index];
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalImage = document.getElementById('modalImage');
+    const overlay = document.getElementById('articleModalOverlay');
+
+    if(article && modalTitle && modalBody && overlay) {
+      modalTitle.innerText = article.baslik;
+      if (modalImage) { modalImage.src = article.gorsel; modalImage.alt = article.baslik; }
+      // Paragrafları ayırıp HTML'e dönüştürme
+      const paragraphs = article.full.split('\n').filter(p => p.trim() !== '');
+      modalBody.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+      
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+    }
+  }
+
+  function closeModal() {
+    const overlay = document.getElementById('articleModalOverlay');
+    if(overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = ''; // Kaydırmayı geri aç
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Üst Bar ve Kaydırma Dürtüsü Mantığı
+    const header = document.querySelector('header');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      if (scrollIndicator) {
+        if (window.scrollY > 50) {
+          scrollIndicator.classList.add('hidden');
+        } else {
+          scrollIndicator.classList.remove('hidden');
+        }
+      }
+    });
+
+    // Escape tuşu ile modal ve mobil menüyü kapat
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        const overlay = document.getElementById('articleModalOverlay');
+        if(overlay && overlay.classList.contains('open')) closeModal();
+        const navMenu = document.querySelector('.nav-menu');
+        if(navMenu && navMenu.classList.contains('is-open')){
+          navMenu.classList.remove('is-open');
+          document.getElementById('navOverlay').classList.remove('is-open');
+          document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Mobil menü aç/kapa
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMobileNav(){
+      navMenu.classList.add('is-open');
+      navOverlay.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav(){
+      navMenu.classList.remove('is-open');
+      navOverlay.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(i => i.classList.remove('is-open'));
+    }
+    if(menuToggle){
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
+      });
+    }
+    if(navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
+    // Mobilde alt menüleri aç/kapa (ok ikonuna dokununca), masaüstünde dokunmuyor (hover zaten çalışıyor)
+    document.querySelectorAll('.dropdown-icon').forEach(icon => {
+      icon.addEventListener('click', (e) => {
+        if(window.innerWidth <= 1024){
+          e.preventDefault();
+          e.stopPropagation();
+          icon.closest('.nav-item').classList.toggle('is-open');
+        }
+      });
+    });
+
+    // Mobil menüde bir bağlantıya tıklanınca paneli kapat
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        if(window.innerWidth <= 1024) closeMobileNav();
+      });
+    });
+
+    // Pencere masaüstü genişliğine dönerse mobil panel durumunu sıfırla
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 1024) closeMobileNav();
+    });
+
+    // Modal Kapama Dinleyicileri
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const overlay = document.getElementById('articleModalOverlay');
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    if(overlay) overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) closeModal();
+    });
+
+    const track = document.getElementById('ekip-container');
+    const prevBtn = document.getElementById('teamPrev');
+    const nextBtn = document.getElementById('teamNext');
+
+    if (track && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -310, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: 310, behavior: 'smooth' });
+      });
+    }
+
+    const slides = document.querySelectorAll('.hero-slide');
+    const heroPrev = document.getElementById('heroPrev');
+    const heroNext = document.getElementById('heroNext');
+    if (slides.length > 0) {
+      let currentSlide = 0;
+      let heroTimer = null;
+
+      function goToSlide(index){
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }
+      function startHeroTimer(){
+        heroTimer = setInterval(() => {
+          goToSlide(currentSlide + 1);
+        }, 5500);
+      }
+      startHeroTimer();
+
+      function manualNav(delta){
+        clearInterval(heroTimer);
+        goToSlide(currentSlide + delta);
+        startHeroTimer();
+      }
+      if(heroPrev) heroPrev.addEventListener('click', () => manualNav(-1));
+      if(heroNext) heroNext.addEventListener('click', () => manualNav(1));
+
+      // İlk slayt dışındaki hero görsellerini ilk yüklemeden hemen sonra, arka planda getir
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          slides.forEach(s => {
+            const bg = s.getAttribute('data-bg');
+            if(bg) s.style.backgroundImage = `url('${bg}')`;
+          });
+        }, 400);
+      });
+    }
+
+    translateHTML();
+    renderDynamicData();
+    initAnimations();
+  });
+
+  document.getElementById('langToggle').addEventListener('click', (e) => {
+    if (e.target.tagName === 'SPAN') {
+      document.querySelectorAll('#langToggle span').forEach(s => s.classList.remove('active'));
+      e.target.classList.add('active');
+      currentLang = e.target.getAttribute('data-lang');
+      translateHTML();
+      renderDynamicData();
+    }
+  });
+
+  function initAnimations() {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+        gsap.to(elem, {
+          scrollTrigger: { trigger: elem, start: "top 85%" },
+          opacity: 1, y: 0, duration: 0.8, ease: "power3.out"
+        });
+      });
+    } else {
+      document.querySelectorAll('.gsap-reveal').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
