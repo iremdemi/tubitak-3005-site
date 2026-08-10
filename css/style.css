@@ -246,3 +246,29 @@ footer { background-color: var(--text-ink); color: var(--bg-main); padding: 64px
   .priority-actions { flex-direction: column; width: 100%; }
   .priority-actions a { width: 100%; text-align: center; justify-content: center; }
 }
+
+/* ==========================================================================
+   ALT SAYFALAR (PROJE, BULGULAR VB.) ÖZEL TASARIMI
+   ========================================================================== */
+.subpage-hero { 
+  position: relative; width: 100%; min-height: 400px; display: flex; 
+  flex-direction: column; justify-content: center; color: #FFFFFF; 
+  padding: 120px 0 60px; overflow: hidden; border-radius: 0 0 80px 80px; 
+  background: linear-gradient(135deg, rgba(23, 17, 11, 0.95) 0%, rgba(255, 106, 26, 0.8) 100%); 
+}
+.subpage-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; }
+.subpage-hero h1 { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.15; }
+.subpage-hero p { font-size: 16px; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,.8); padding: 0 20px;}
+
+.content-section { padding: 90px 0; }
+.content-block { background: var(--bg-alt); padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 40px; }
+.content-block h2 { font-family: var(--font-serif); font-size: 28px; color: var(--text-ink); margin-bottom: 24px; }
+.content-block p { margin-bottom: 16px; font-size: 15px; color: var(--text-body); }
+
+/* Ekip sayfası Grid yapısı */
+.static-team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; margin-top: 40px; }
+/* İletişim kutuları */
+.contact-info { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+.c-box { flex: 1; min-width: 250px; background: #F8FAFC; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); }
+.c-box h4 { font-family: var(--font-serif); font-size: 20px; margin-bottom: 10px; color: var(--accent-navy); }
+.c-box p { font-size: 14px; line-height: 1.7; color: var(--text-body); }
