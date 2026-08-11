@@ -3,8 +3,22 @@ const dict = {
     menuAnaSayfa: "Ana Sayfa", menuProje: "Proje", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
     dropAmac: "Araştırma Amacı", dropKapsam: "Saha Kapsamı", dropBelirleyiciler: "Temel Belirleyiciler", dropAnalizler: "Güncel Analizler", dropRaporlar: "İndirilebilir Raporlar", dropMakaleler: "Akademik Yayınlar", dropEkipUyeleri: "Ekip Üyeleri", dropKurumlar: "Destekleyen Kurumlar",
     btnPolitika: "Politika Önerileri",
-    heroTitle: "İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri",
-    heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.",
+    heroEyebrow: "TÜBİTAK 3005 Destekli Araştırma Projesi",
+    heroTitle: "Dış Ticaret Girişimciliğinde Yeni Dönem: Politika Önerileri",
+    heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.",
+    heroBtn: "Politika Önerilerini Gör", radarCenterLbl: "İhracatçı Firma",
+    instRow: "Sakarya Üniversitesi · Sakarya Uygulamalı Bilimler Üniversitesi (SUBÜ) · TÜBİTAK 3005",
+    eyebrowFindings: "Bulgular", findingsTitle: "Bulgular ve Öneriler", findingsMore: "Tümünü Gör",
+    eyebrowReports: "Yayınlar", reportsTitle: "İndirilebilir Raporlar",
+    repDoc1: "TÜBİTAK 3005 Proje Sonuç Raporu", repDoc1sub: "Yönetici Özeti",
+    repDoc2: "Politika Önerileri Özeti", repDoc2sub: "Karar Vericiler İçin",
+    repDoc3: "Akademik Yayın Listesi", repDoc3sub: "SSCI / SCI-E İndeksli",
+    repLocked: "Hazırlanıyor",
+    eyebrowScale: "Araştırmanın Ölçeği",
+    statFirma: "İhracatçı Firma", statIl: "Stratejik İl", statSektor: "Odak Sektör", statAy: "Ay Proje Süresi",
+    footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformu.",
+    footKurumsal: "Kurumsal", footIcerik: "İçerik", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi",
+    footCopy: "&copy; 2026 Tüm Hakları Saklıdır.", footProgram: "TÜBİTAK 3005 · 424K054",
     svc1Title: "Saha Araştırması", svc1Desc: "TR42 bölgesinde yürütülen çalışma",
     svc2Title: "Bulgular", svc2Desc: "Güncel analiz ve sonuçlar",
     svc3Title: "Politika Önerileri", svc3Desc: "Kanıta dayalı öneriler",
@@ -80,6 +94,22 @@ const dict = {
     menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
     dropAmac: "Research Purpose", dropKapsam: "Field Scope", dropBelirleyiciler: "Core Determinants", dropAnalizler: "Latest Analyses", dropRaporlar: "Downloadable Reports", dropMakaleler: "Academic Publications", dropEkipUyeleri: "Team Members", dropKurumlar: "Supporting Institutions",
     btnPolitika: "Policy Recommendations",
+    heroEyebrow: "TÜBİTAK 3005 Supported Research Project",
+    heroTitle: "A New Era in Foreign Trade Entrepreneurship: Policy Recommendations",
+    heroDesc: "Findings from a comprehensive field study conducted with exporting firms in the TR42 East Marmara Region are being translated into concrete policy recommendations.",
+    heroBtn: "View Policy Recommendations", radarCenterLbl: "Exporting Firms",
+    instRow: "Sakarya University · Sakarya University of Applied Sciences (SUBÜ) · TÜBİTAK 3005",
+    eyebrowFindings: "Findings", findingsTitle: "Findings and Recommendations", findingsMore: "View All",
+    eyebrowReports: "Publications", reportsTitle: "Downloadable Reports",
+    repDoc1: "TÜBİTAK 3005 Final Project Report", repDoc1sub: "Executive Summary",
+    repDoc2: "Policy Recommendations Summary", repDoc2sub: "For Decision-Makers",
+    repDoc3: "Academic Publications List", repDoc3sub: "SSCI / SCI-E Indexed",
+    repLocked: "In Preparation",
+    eyebrowScale: "Scale of the Research",
+    statFirma: "Exporting Firms", statIl: "Strategic Provinces", statSektor: "Focus Sectors", statAy: "Month Duration",
+    footDesc: "An independent research platform for developing foreign trade entrepreneurship and revising public policy in the TR42 East Marmara Region.",
+    footKurumsal: "Institutional", footIcerik: "Content", footIletisim: "Contact", footKurumAdi: "Sakarya University",
+    footCopy: "&copy; 2026 All Rights Reserved.", footProgram: "TÜBİTAK 3005 · 424K054",
     heroTitle: "Policy Recommendations for Revising Export Incentives from the Perspective of Foreign Trade Entrepreneurship",
     heroDesc: "Turkey's most comprehensive foreign trade entrepreneurship field research conducted with 192 exporting firms in the TR42 East Marmara Region.",
     svc1Title: "Field Research", svc1Desc: "Study conducted in the TR42 region",
@@ -278,7 +308,7 @@ function translateHTML() {
 function renderDynamicData() {
   const data = siteContent[currentLang];
 
-  // Ekip
+  // Ekip (ekip.html icin, ana sayfada kullanilmiyor ama sayfa var olursa hazir)
   const ekipEl = document.getElementById('ekip-container');
   if (ekipEl) {
     ekipEl.innerHTML = '';
@@ -290,35 +320,21 @@ function renderDynamicData() {
     });
   }
 
-  // Ana içerik: makale satır listesi (Related Articles tarzı)
-  const listEl = document.getElementById('articleRowList');
-  if (listEl) {
-    listEl.innerHTML = data.haberler.map((h, i) => `
-      <button class="article-row" onclick="openModal(${i})" type="button">
-        <div class="article-row-thumb"><img src="${h.gorsel}" alt=""></div>
-        <div>
-          <div class="article-row-title">${h.baslik}</div>
-          <div class="article-row-meta">${h.ozet.slice(0, 90)}${h.ozet.length > 90 ? '…' : ''}</div>
-        </div>
-        <div class="article-row-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
-      </button>`).join('');
-  }
-
-  // Sağ widget: Related Articles (küçük liste)
-  const widgetEl = document.getElementById('relatedWidget');
-  if (widgetEl) {
-    widgetEl.innerHTML = data.haberler.slice(0, 5).map((h, i) => `
-      <div class="widget-item" onclick="openModal(${i})">
-        <div class="widget-item-thumb"><img src="${h.gorsel}" alt=""></div>
-        <div>
-          <div class="widget-item-title">${h.baslik}</div>
-          <div class="widget-item-tag">${currentLang === 'tr' ? 'Bulgu' : 'Finding'}</div>
+  // Bulgular ve Oneriler: asimetrik masonry grid (buyuk sol + 2 orta + uzun sag)
+  const masonryEl = document.getElementById('masonryGrid');
+  if (masonryEl) {
+    const items = data.haberler.slice(0, 4);
+    const cls = ['big', '', '', 'tall'];
+    masonryEl.innerHTML = items.map((h, i) => `
+      <div class="masonry-card ${cls[i] || ''}" onclick="openModal(${i})">
+        <img src="${h.gorsel}" alt="">
+        <div class="masonry-card-body">
+          <span class="masonry-card-date">2026 &middot; ${currentLang === 'tr' ? 'Bulgu' : 'Finding'}</span>
+          <h3>${h.baslik}</h3>
+          <span class="masonry-card-cta">${currentLang === 'tr' ? 'Habere Git' : 'Read More'} &rarr;</span>
         </div>
       </div>`).join('');
   }
-
-  initTeamRotator(data);
-  renderMap();
 
   setTimeout(() => { if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); }, 500);
 }
@@ -330,21 +346,41 @@ function renderMap() {
       el.insertAdjacentHTML('afterbegin', TR42_MAP_SVG_MONO);
       el.dataset.rendered = 'true';
       const tooltip = el.querySelector('.map-tooltip');
+
+      function showTooltip(path, clientX, clientY) {
+        if (!tooltip) return;
+        const rect = el.getBoundingClientRect();
+        tooltip.innerHTML = `${path.getAttribute('data-name')}<small>${currentLang === 'tr' ? 'Saha araştırması kapsamında' : 'Included in the field research'}</small>`;
+        let left = clientX - rect.left;
+        let top = clientY - rect.top;
+        left = Math.max(30, Math.min(left, rect.width - 30));
+        top = Math.max(24, top);
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+        tooltip.classList.add('show');
+        el.querySelectorAll('.region-path').forEach(p => p.classList.remove('hovered'));
+        path.classList.add('hovered');
+      }
+      function hideTooltip(path) {
+        if (tooltip) tooltip.classList.remove('show');
+        if (path) path.classList.remove('hovered');
+      }
+
       el.querySelectorAll('.region-path').forEach(path => {
-        path.addEventListener('mousemove', (e) => {
-          if (!tooltip) return;
-          const rect = el.getBoundingClientRect();
-          tooltip.innerHTML = `${path.getAttribute('data-name')}<small data-i18n-runtime="mapTooltipNote">${currentLang === 'tr' ? 'Saha araştırması kapsamında' : 'Included in the field research'}</small>`;
-          tooltip.style.left = (e.clientX - rect.left) + 'px';
-          tooltip.style.top = (e.clientY - rect.top) + 'px';
-          tooltip.classList.add('show');
-          el.querySelectorAll('.region-path').forEach(p => p.classList.remove('hovered'));
-          path.classList.add('hovered');
-        });
-        path.addEventListener('mouseleave', () => {
-          if (tooltip) tooltip.classList.remove('show');
-          path.classList.remove('hovered');
-        });
+        // Fare (masaüstü)
+        path.addEventListener('mousemove', (e) => showTooltip(path, e.clientX, e.clientY));
+        path.addEventListener('mouseleave', () => hideTooltip(path));
+        // Dokunmatik (mobil/tablet): dokununca göster, tekrar dokununca ya da dışarı dokununca kapat
+        path.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          const t = e.touches[0];
+          const alreadyOpen = path.classList.contains('hovered');
+          hideTooltip();
+          if (!alreadyOpen) showTooltip(path, t.clientX, t.clientY);
+        }, { passive: false });
+      });
+      document.addEventListener('touchstart', (e) => {
+        if (!el.contains(e.target)) hideTooltip();
       });
     }
   });
@@ -423,28 +459,34 @@ function initAnimations() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape'){
       const overlay = document.getElementById('articleModalOverlay');
       if(overlay && overlay.classList.contains('open')) closeModal();
-      const sidebar = document.querySelector('.sidebar');
-      if(sidebar && sidebar.classList.contains('is-open')) closeMobileSidebar();
+      const navMenu = document.querySelector('.nav-menu');
+      if(navMenu && navMenu.classList.contains('is-open')) closeMobileNav();
     }
   });
 
   const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.querySelector('.sidebar');
-  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const navMenu = document.querySelector('.nav-menu');
+  const navOverlay = document.getElementById('navOverlay');
 
-  function openMobileSidebar(){ sidebar.classList.add('is-open'); if(sidebarOverlay) sidebarOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-  function closeMobileSidebar(){ sidebar.classList.remove('is-open'); if(sidebarOverlay) sidebarOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
-  if(menuToggle && sidebar){ menuToggle.addEventListener('click', () => { sidebar.classList.contains('is-open') ? closeMobileSidebar() : openMobileSidebar(); }); }
-  if(sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileSidebar);
-  document.querySelectorAll('.sidebar-nav a').forEach(a => {
-    a.addEventListener('click', () => { if(window.innerWidth <= 980) closeMobileSidebar(); });
+  function openMobileNav(){ navMenu.classList.add('is-open'); if(navOverlay) navOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileNav(){ navMenu.classList.remove('is-open'); if(navOverlay) navOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+  if(menuToggle && navMenu){ menuToggle.addEventListener('click', () => { navMenu.classList.contains('is-open') ? closeMobileNav() : openMobileNav(); }); }
+  if(navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('.nav-menu a').forEach(a => {
+    a.addEventListener('click', () => { if(window.innerWidth <= 1080) closeMobileNav(); });
   });
 
-  window.addEventListener('resize', () => { if(window.innerWidth > 980) closeMobileSidebar(); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 1080) closeMobileNav(); });
 
   const closeBtn = document.getElementById('modalCloseBtn');
   const overlay = document.getElementById('articleModalOverlay');
