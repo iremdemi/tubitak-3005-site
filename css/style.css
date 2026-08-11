@@ -239,13 +239,13 @@ footer { background: #0b1c2e; padding: 60px 0 30px 0; color: #ffffff; }
 }
 .menu-toggle span { width: 22px; height: 2px; background: #ffffff; display: block; transition: transform .25s ease, opacity .2s ease; }
 .mobile-nav {
-  position: fixed; top: 0; right: 0; height: 100vh; width: min(300px, 84vw);
+  position: fixed; top: 0; left: auto; right: -320px; height: 100vh; width: min(300px, 84vw);
   background: #0b1c2e; z-index: 1090; padding: 100px 30px 30px;
   display: flex; flex-direction: column; gap: 4px;
-  transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1);
+  transform: none; transition: right .32s cubic-bezier(.4,0,.2,1);
   overflow-y: auto;
 }
-.mobile-nav.is-open { transform: translateX(0); }
+.mobile-nav.is-open { right: 0; }
 .mobile-nav a {
   color: rgba(255,255,255,.82); font-size: 14px; font-weight: 600; padding: 14px 0;
   border-bottom: 1px solid rgba(255,255,255,.1);
