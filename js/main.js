@@ -132,18 +132,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 };
 
-// SABANCI TARZI: videolar kendiliğinden, sırayla, yavaşça birbirine geçer
+// SABANCI TARZI: videolar kendiliğinden, sırayla, yavaşça birbirine geçer.
+// Kör bir sayaç yerine, sıradaki video gerçekten yeterince yüklenene kadar bekler;
+// erken geçip kasma yaratmaz, ama gereksiz yere de uzun beklemez (üst sınır var).
+function waitUntilReady(video, maxWaitMs, cb) {
+  const start = Date.now();
+  (function check() {
+    if (video.readyState >= 3 || Date.now() - start > maxWaitMs) {
+      cb();
+    } else {
+      setTimeout(check, 250);
+    }
+  })();
+}
+
 function startAutoAdvance() {
-  if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
-  autoAdvanceTimer = setInterval(() => {
+  if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+  autoAdvanceTimer = setTimeout(() => {
     const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
-    window.playVideo(nextIndex, true);
+    ensureLoaded(heroVideos[nextIndex]);
+    waitUntilReady(heroVideos[nextIndex], 4000, () => {
+      window.playVideo(nextIndex, true);
+    });
   }, 5500);
 }
 if (heroVideos.length) {
-  // ilk video zaten preload="auto" ile geliyor; ikinci videoyu hemen simdiden
-  // arka planda yuklemeye basla ki sira ona gelince hazir olsun
-  ensureLoaded(heroVideos[1]);
+  // İlk video zaten preload="auto" ile geliyor. İkinci videoyu de hemen değil,
+  // birinciye biraz tek başına bant genişliği bırakıldıktan sonra yüklemeye başla.
+  setTimeout(() => ensureLoaded(heroVideos[1]), 1200);
   startAutoAdvance();
 }
 
