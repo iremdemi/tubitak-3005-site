@@ -146,10 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextIndex = (index + 1) % heroVideos.length;
   ensureLoaded(heroVideos[nextIndex]);
 
-  // Elle bir videoya tıklanınca otomatik döngüyü sıfırla, akış bozulmasın
-  if (!isAuto) {
-    startAutoAdvance();
-  }
+  // Her geçişten sonra (ister elle tıklanmış olsun, ister otomatik ilerlemiş olsun)
+  // bir sonraki geçiş için sayacı yeniden başlat. Bu satır eskiden sadece elle
+  // tıklamada çalışıyordu, bu yüzden otomatik döngü ikinci videodan sonra duruyordu.
+  startAutoAdvance();
 };
 
 // SABANCI TARZI: videolar kendiliğinden, sırayla, yavaşça birbirine geçer.
@@ -179,8 +179,31 @@ function startAutoAdvance() {
 if (heroVideos.length) {
   // İlk video zaten preload="auto" ile geliyor. İkinci videoyu de hemen değil,
   // birinciye biraz tek başına bant genişliği bırakıldıktan sonra yüklemeye başla.
-  setTimeout(() => ensureLoaded(heroVideos[1]), 1200);
+  setTimeout(() => {
+    ensureLoaded(heroVideos[1]);
+    // Mobil tarayıcılar (özellikle iOS Safari), sayfa yüklendikten uzun süre
+    // sonra JS ile tetiklenen play() çağrılarını bazen engelliyor. İkinci videoyu
+    // erkenden, sayfa hâlâ "taze" haldeyken sessizce oynatıp arka planda
+    // (opacity: 0) bekletmek, sırası geldiğinde donmadan görünür olmasını sağlar.
+    if (heroVideos[1]) {
+      heroVideos[1].addEventListener('loadeddata', () => {
+        const p = heroVideos[1].play();
+        if (p !== undefined) p.catch(() => {});
+      }, { once: true });
+    }
+  }, 1200);
   startAutoAdvance();
+
+  // Bazı mobil tarayıcılar otomatik oynatmayı tamamen engelleyebiliyor.
+  // Kullanıcı sayfaya ilk kez dokunduğunda/tıkladığında tüm videoları
+  // bir kez daha oynatmayı deneyerek bu kısıtlamayı güvenle aşıyoruz.
+  function unlockVideosOnFirstTouch() {
+    heroVideos.forEach(v => { const p = v.play(); if (p !== undefined) p.catch(() => {}); });
+    document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
+    document.removeEventListener('click', unlockVideosOnFirstTouch);
+  }
+  document.addEventListener('touchstart', unlockVideosOnFirstTouch, { once: true, passive: true });
+  document.addEventListener('click', unlockVideosOnFirstTouch, { once: true });
 }
 
   // ANONİM İKON SVG
