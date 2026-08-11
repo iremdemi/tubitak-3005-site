@@ -3,309 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İhracat Teşvikleri ve Girişimcilik Araştırma Portalı</title>
-<meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen kapsamlı dış ticaret girişimciliği analiz portalı.">
+<title>DTG Research Portal | Dış Ticaret Girişimciliği Araştırma Portalı</title>
+<meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen dış ticaret girişimciliği araştırması ve politika önerileri.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="anasayfa">
 
-<div class="app-shell with-rail">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <a href="index.html" class="sidebar-brand">
-      <div class="sidebar-brand-mark">DTG</div>
-      <div class="sidebar-brand-text">Research Portal<small>TÜBİTAK 3005</small></div>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">DTG</div>
+      <div class="brand-text"><strong>Research Portal</strong><span>TÜBİTAK 3005</span></div>
     </a>
-
-    <div class="sidebar-group">
-      <div class="sidebar-nav">
-        <a href="index.html" class="active">
-          <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
-          <span data-i18n="menuAnaSayfa">Ana Sayfa</span>
-        </a>
-        <a href="proje.html">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-          <span data-i18n="menuProje">Proje</span>
-        </a>
-        <a href="bulgular.html">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
-          <span data-i18n="menuBulgular">Bulgular</span>
-        </a>
-        <a href="politika.html">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span data-i18n="menuPolitika">Politika Önerileri</span>
-        </a>
-        <a href="yayinlar.html">
-          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg>
-          <span data-i18n="menuYayinlar">Yayınlar</span>
-        </a>
-        <a href="ekip.html">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          <span data-i18n="menuEkip">Araştırma Ekibimiz</span>
-        </a>
-        <a href="iletisim.html">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-          <span data-i18n="menuIletisim">İletişim</span>
-        </a>
+    <nav class="nav-menu">
+      <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+      <a href="proje.html" data-i18n="menuProje">Proje</a>
+      <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
+      <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
+      <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
+      <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+      <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switch" id="langToggle">
+        <span class="active" data-lang="tr">TR</span><span class="sep">|</span><span data-lang="en">EN</span>
       </div>
-    </div>
-
-    <div class="sidebar-divider"></div>
-
-    <div class="sidebar-group">
-      <div class="sidebar-group-label" data-i18n="sidebarRegion">Saha Bölgesi</div>
-      <div class="sidebar-nav">
-        <a href="bulgular.html#kocaeli"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Kocaeli</span></a>
-        <a href="bulgular.html#sakarya"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Sakarya</span></a>
-        <a href="bulgular.html#duzce"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Düzce · Bolu · Yalova</span></a>
-      </div>
-    </div>
-
-    <div class="sidebar-footer">
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-lang" id="langToggle">
-        <span class="active" data-lang="tr">TR</span>
-        <span class="sep">|</span>
-        <span data-lang="en">EN</span>
-      </div>
-    </div>
-  </aside>
-  <div class="nav-overlay" id="sidebarOverlay"></div>
-
-  <!-- MAIN COLUMN -->
-  <div class="main-col">
-    <div class="topbar">
-      <div class="topbar-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
-        <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Bulgu, il veya konu ara…">
-      </div>
-      <div class="topbar-cta">
-        <a href="politika.html" class="btn btn-outline" data-i18n="btnPolitika">Politika Önerileri</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
-
-    <div class="content-pad">
-
-      <!-- EDITORIAL HERO -->
-      <section class="editorial-hero">
-        <div class="hero-grid">
-          <div class="gsap-reveal">
-            <div class="hero-eyebrow-row">
-              <span class="tag" data-i18n="heroTag">TÜBİTAK 3005</span>
-              <span class="eyebrow" data-i18n="heroCategory">Politika Araştırması</span>
-            </div>
-            <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
-            <p class="dek" data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki 192 ihracatçı firmanın katılımıyla gerçekleştirilen Türkiye'nin en kapsamlı dış ticaret girişimciliği saha araştırması.</p>
-            <div class="hero-meta">
-              <div class="hero-meta-author">
-                <div class="hero-meta-avatar">AY</div>
-                <span class="hero-meta-author-name">Prof. Dr. Ahmet Yağmur Ersoy</span>
-              </div>
-              <span class="hero-meta-sep">·</span>
-              <span class="hero-meta-item" data-i18n="heroMetaInst">Sakarya Üniversitesi</span>
-              <span class="hero-meta-sep">·</span>
-              <span class="hero-meta-item" data-i18n="heroMetaDuration">15 Ay</span>
-            </div>
-          </div>
-          <div class="gsap-reveal">
-            <div class="hero-media">
-              <div class="hero-media-inner">
-                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80');"></div>
-                <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"></div>
-                <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80"></div>
-                <div class="hero-media-arrows">
-                  <button id="heroPrev" aria-label="Önceki"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-                  <button id="heroNext" aria-label="Sonraki"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-                </div>
-                <div class="hero-media-caption">
-                  <span data-i18n="heroMediaCaption">TR42 Doğu Marmara sanayi bölgesi</span>
-                  <span>01 / 03</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCALE -->
-      <section class="section">
-        <div class="section-head"><h2 data-i18n="scaleTitle">Araştırmanın Ölçeği</h2></div>
-        <div class="scale-panel gsap-reveal">
-          <div class="donut-wrap">
-            <svg viewBox="0 0 160 160">
-              <circle cx="80" cy="80" r="60" stroke="var(--dv-5)" stroke-dasharray="197.62 376.99" stroke-dashoffset="-179.37"/>
-              <circle cx="80" cy="80" r="60" stroke="var(--dv-4)" stroke-dasharray="43.17 376.99" stroke-dashoffset="-136.21"/>
-              <circle cx="80" cy="80" r="60" stroke="var(--dv-3)" stroke-dasharray="43.69 376.99" stroke-dashoffset="-92.51"/>
-              <circle cx="80" cy="80" r="60" stroke="var(--dv-2)" stroke-dasharray="44.03 376.99" stroke-dashoffset="-48.48"/>
-              <circle cx="80" cy="80" r="60" stroke="var(--dv-1)" stroke-dasharray="48.48 376.99" stroke-dashoffset="0"/>
-            </svg>
-            <div class="donut-center">
-              <div class="num">9</div>
-              <div class="lbl" data-i18n="donutCenterLbl">nihai belirleyici</div>
-            </div>
-          </div>
-          <div>
-            <div class="dv-legend">
-              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-1);"></span><span class="name" data-i18n="dvName1">Finansal Belirleyiciler</span><span class="pct">%12,86</span></div>
-              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-2);"></span><span class="name" data-i18n="dvName2">Rekabet, Fırsatlar ve Riskler</span><span class="pct">%11,68</span></div>
-              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-3);"></span><span class="name" data-i18n="dvName3">Stratejik Kararlar ve İnovasyon</span><span class="pct">%11,59</span></div>
-              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-4);"></span><span class="name" data-i18n="dvName4">Girişimci Özellikleri ve Network</span><span class="pct">%11,45</span></div>
-              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-5);"></span><span class="name" data-i18n="dvName5">Diğer 5 Belirleyici</span><span class="pct">%52,42</span></div>
-            </div>
-            <div class="stat-mini-row">
-              <div class="stat-mini"><div class="stat-num">192</div><div class="stat-label" data-i18n="stat1">Firma</div><div class="bar"><span style="width:100%; background:var(--dv-2);"></span></div></div>
-              <div class="stat-mini"><div class="stat-num">5</div><div class="stat-label" data-i18n="stat2mini">İl</div><div class="bar"><span style="width:100%; background:var(--dv-3);"></span></div></div>
-              <div class="stat-mini"><div class="stat-num">15<span class="unit" data-i18n="stat3unit">ay</span></div><div class="stat-label" data-i18n="stat3mini">Süre</div><div class="bar"><span style="width:70%; background:var(--dv-4);"></span></div></div>
-              <div class="stat-mini"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat4mini">Makale</div><div class="bar"><span style="width:40%; background:var(--dv-1);"></span></div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROCESS -->
-      <section class="section">
-        <div class="section-head"><h2 data-i18n="processTitle">Süreç</h2></div>
-        <div class="timeline-row gsap-reveal">
-          <div class="timeline-step done">
-            <div class="timeline-dot"></div>
-            <h3 data-i18n="proc1Title">Belirleyicilerin Keşfi</h3>
-            <p data-i18n="proc1Desc">Literatür taraması ve uzman görüşü</p>
-            <span class="ts-status" data-i18n="statusDone">Tamamlandı</span>
-          </div>
-          <div class="timeline-step active">
-            <div class="timeline-dot"></div>
-            <h3 data-i18n="proc2Title">Saha Araştırması</h3>
-            <p data-i18n="proc2Desc">Nicel veri ve nitel görüşmeler</p>
-            <span class="ts-status" data-i18n="statusOngoing">Sürüyor</span>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-dot"></div>
-            <h3 data-i18n="proc3Title">Analiz ve Bulgular</h3>
-            <p data-i18n="proc3Desc">Belirleyicilerin önem sırasına konması</p>
-            <span class="ts-status" data-i18n="statusPending">Planlanıyor</span>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-dot"></div>
-            <h3 data-i18n="proc4Title">Politika Önerisi Seti</h3>
-            <p data-i18n="proc4Desc">Kamu kurumlarıyla paylaşım</p>
-            <span class="ts-status" data-i18n="statusPending">Planlanıyor</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- PULL QUOTE -->
-      <div class="pull-quote gsap-reveal">
-        <p data-i18n="pullQuote1">"Dış ticaret girişimciliğinin başarısında en birincil rolü %12,86'lık nihai grup ağırlığı ile Finansal Belirleyiciler üstlenmektedir."</p>
-        <cite data-i18n="pullQuoteCite">Sahadan Bulgularla İhracatın Yapı Taşları araştırma notundan</cite>
-      </div>
-
-      <!-- FINDINGS / ARTICLE ROWS -->
-      <section class="section" id="bulgular">
-        <div class="section-head">
-          <h2 data-i18n="findingsTitle">Yayımlanan Analizler</h2>
-          <a href="bulgular.html" class="btn-text" data-i18n="findingsMore">Tümünü Gör</a>
-        </div>
-        <div class="article-row-list gsap-reveal" id="articleRowList"></div>
-      </section>
-
-      <!-- MAP -->
-      <section class="section">
-        <div class="section-head"><h2 data-i18n="mapTitle">TR42 Doğu Marmara</h2></div>
-        <div class="map-panel gsap-reveal">
-          <div class="map-panel-inner">
-            <div class="map-panel-copy">
-              <span class="eyebrow" data-i18n="eyebrowMap">Saha Bölgesi</span>
-              <p style="margin-top:12px; font-size:14px; line-height:1.75;" data-i18n="mapDesc">Araştırma sahası; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan TR42 Doğu Marmara Bölgesi'dir.</p>
-              <div class="map-legend-row">
-                <span><span class="dv-swatch" style="background:var(--dv-1);"></span>Kocaeli</span>
-                <span><span class="dv-swatch" style="background:var(--dv-2);"></span>Sakarya</span>
-                <span><span class="dv-swatch" style="background:var(--dv-3);"></span>Düzce</span>
-                <span><span class="dv-swatch" style="background:var(--dv-4);"></span>Bolu</span>
-                <span><span class="dv-swatch" style="background:var(--dv-5);"></span>Yalova</span>
-              </div>
-            </div>
-            <div class="map-panel-visual"><div class="map-tooltip" id="mapTooltip"></div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TEAM -->
-      <section class="section" id="ekip">
-        <div class="section-head">
-          <h2 data-i18n="eyebrowTeam">Araştırma Ekibi</h2>
-          <a href="ekip.html" class="btn-text" data-i18n="teamMore">Tümünü Gör</a>
-        </div>
-        <div class="team-grid gsap-reveal" id="ekip-container"></div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="site-footer" id="iletisim">
-        <div class="footer-cols">
-          <div>
-            <h4 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h4>
-            <p style="margin-top:10px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesine yönelik bağımsız araştırma platformu.</p>
-          </div>
-          <div>
-            <h4 data-i18n="footSupp">Destekleyen Kurumlar</h4>
-            <p data-i18n="footK1">T.C. Ticaret Bakanlığı</p>
-            <p data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</p>
-            <p data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı</p>
-          </div>
-          <div class="footer-form">
-            <h4 data-i18n="footContactTitle">Bize Ulaşın</h4>
-            <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
-              <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
-              <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
-              <textarea name="message" rows="2" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
-              <input type="hidden" name="_subject" value="DTG Research Portal">
-              <input type="text" name="_honey" style="display:none">
-              <button type="submit" data-i18n="footFormSend">Gönder</button>
-            </form>
-          </div>
-        </div>
-        <div class="footer-bottom" data-i18n="footCopy">&copy; 2026 Tüm Hakları Saklıdır.</div>
-      </footer>
-
+      <a href="politika.html" class="btn btn-outline-white" data-i18n="btnPolitika">Politika Önerileri</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
 
-  <!-- RIGHT RAIL -->
-  <aside class="right-rail">
-    <div class="widget">
-      <div class="report-widget">
-        <div class="report-cover">
-          <div class="rc-top">TÜBİTAK 3005 · 424K054</div>
-          <div class="rc-title" data-i18n="reportCoverTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesi</div>
-          <div class="rc-bottom">Sakarya Üniversitesi</div>
+<!-- HERO -->
+<section class="hero" id="proje">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80"></div>
+  </div>
+  <div class="hero-inner wrap">
+    <div class="hero-grid">
+      <div class="gsap-reveal">
+        <span class="eyebrow hero-eyebrow" data-i18n="heroEyebrow">TÜBİTAK 3005 Destekli Araştırma Projesi</span>
+        <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem: Politika Önerileri</h1>
+        <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.</p>
+        <a href="politika.html" class="btn btn-outline-white" data-i18n="heroBtn">Politika Önerilerini Gör</a>
+      </div>
+      <div class="hero-radar gsap-reveal">
+        <svg viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="80"/>
+          <circle cx="200" cy="200" r="130"/>
+          <circle cx="200" cy="200" r="180" class="pulse"/>
+        </svg>
+        <div class="hero-radar-center">
+          <div class="n">192</div>
+          <div class="l" data-i18n="radarCenterLbl">İhracatçı Firma</div>
         </div>
-        <div class="report-widget-body">
-          <span class="report-badge" data-i18n="reportBadge">Hazırlanıyor</span>
-          <h3 data-i18n="reportTitle">Proje Sonuç Raporu</h3>
-          <p data-i18n="reportDesc">Tam metin rapor, saha araştırması tamamlandığında burada yayımlanacak.</p>
-          <a href="yayinlar.html" class="btn btn-outline" data-i18n="reportBtn">Yayınlar Sayfasına Git</a>
+        <div class="hero-radar-labels">
+          <span style="top: 8%; left: 52%;">01</span>
+          <span style="top: 46%; right: 4%;">02</span>
+          <span style="bottom: 10%; left: 46%;">03</span>
         </div>
       </div>
     </div>
-    <div class="widget">
-      <div class="widget-title" data-i18n="widgetShare">Paylaş</div>
-      <div class="widget-share">
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13c0-2 2-4 4-4s4 2 4 4v8"/></svg></a>
-        <a href="#" aria-label="E-posta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
-        <a href="#" aria-label="Link kopyala"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></a>
+  </div>
+  <div class="hero-inst-band">
+    <div class="wrap hero-inst-row">
+      <span data-i18n="instRow">Sakarya Üniversitesi · Sakarya Uygulamalı Bilimler Üniversitesi (SUBÜ) · TÜBİTAK 3005</span>
+    </div>
+  </div>
+</section>
+
+<!-- BULGULAR VE ÖNERİLER: ASİMETRİK MASONRY -->
+<section class="section" id="bulgular">
+  <div class="wrap">
+    <div class="section-head gsap-reveal">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrowFindings">Bulgular</span>
+        <h2 data-i18n="findingsTitle">Bulgular ve Öneriler</h2>
+      </div>
+      <a href="bulgular.html" class="btn btn-primary" data-i18n="findingsMore">Tümünü Gör</a>
+    </div>
+    <div class="masonry-grid gsap-reveal" id="masonryGrid"></div>
+  </div>
+</section>
+
+<!-- RAPORLAR + İSTATİSTİK -->
+<section class="section" style="background:var(--ivory);">
+  <div class="wrap">
+    <div class="reports-panel gsap-reveal">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrowReports">Yayınlar</span>
+        <h2 style="margin: 12px 0 28px;" data-i18n="reportsTitle">İndirilebilir Raporlar</h2>
+        <div class="report-row">
+          <div class="report-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <div class="report-row-body"><h4 data-i18n="repDoc1">TÜBİTAK 3005 Proje Sonuç Raporu</h4><span data-i18n="repDoc1sub">Yönetici Özeti</span></div>
+          <span class="report-lock"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span data-i18n="repLocked">Hazırlanıyor</span></span>
+        </div>
+        <div class="report-row">
+          <div class="report-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <div class="report-row-body"><h4 data-i18n="repDoc2">Politika Önerileri Özeti</h4><span data-i18n="repDoc2sub">Karar Vericiler İçin</span></div>
+          <span class="report-lock"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span data-i18n="repLocked">Hazırlanıyor</span></span>
+        </div>
+        <div class="report-row">
+          <div class="report-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg></div>
+          <div class="report-row-body"><h4 data-i18n="repDoc3">Akademik Yayın Listesi</h4><span data-i18n="repDoc3sub">SSCI / SCI-E İndeksli</span></div>
+          <span class="report-lock"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><span data-i18n="repLocked">Hazırlanıyor</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" data-i18n="eyebrowScale">Araştırmanın Ölçeği</span>
+        <div class="stat-grid" style="margin-top: 28px;">
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+            <div class="stat-num">192</div>
+            <div class="stat-label" data-i18n="statFirma">İhracatçı Firma</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg></div>
+            <div class="stat-num">5</div>
+            <div class="stat-label" data-i18n="statIl">Stratejik İl</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+            <div class="stat-num">6</div>
+            <div class="stat-label" data-i18n="statSektor">Odak Sektör</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div class="stat-num">15</div>
+            <div class="stat-label" data-i18n="statAy">Ay Proje Süresi</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="widget">
-      <div class="widget-title" data-i18n="widgetRelated">İlgili Bulgular</div>
-      <div class="widget-list" id="relatedWidget"></div>
-    </div>
-  </aside>
-
-</div>
+  </div>
+</section>
 
 <!-- MAKALE MODAL -->
 <div class="article-modal-overlay" id="articleModalOverlay">
@@ -320,6 +157,38 @@
     </div>
   </div>
 </div>
+
+<footer id="iletisim">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-mark">DTG</div>
+        <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformu.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footKurumsal">Kurumsal</h4>
+        <a href="proje.html" data-i18n="menuProje">Proje</a>
+        <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+        <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footIcerik">İçerik</h4>
+        <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
+        <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
+        <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footIletisim">İletişim</h4>
+        <p>PROJE_EPOSTASI@sakarya.edu.tr</p>
+        <p data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footCopy">&copy; 2026 Tüm Hakları Saklıdır.</span>
+      <span data-i18n="footProgram">TÜBİTAK 3005 · 424K054</span>
+    </div>
+  </div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
