@@ -1,5 +1,5 @@
 /* =========================================================
-   1. GENEL AYARLAR & APPLE-LEVEL ESTETİK
+   1. GENEL AYARLAR & HOLDING-LEVEL ESTETİK
    ========================================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
@@ -8,7 +8,6 @@ body {
   color: #333333;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -16,24 +15,23 @@ ul { list-style: none; }
 .wrap { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
 
 /* =========================================================
-   2. YAPIŞKAN (STICKY) HEADER & MİNİMAL LOGO
+   2. YAPIŞKAN (STICKY) HEADER
    ========================================================= */
 header {
-  position: fixed; /* Menü ekrana yapıştı */
+  position: fixed;
   top: 0; left: 0; width: 100%; z-index: 1000;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 30px 50px;
+  padding: 25px 50px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.4s ease; /* Kayarken yumuşak geçiş */
+  transition: all 0.4s ease;
 }
 
-/* Sayfa aşağı kaydığında Header'ın alacağı şekil */
 header.scrolled {
-  background: rgba(20, 45, 76, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 15px 50px; /* Biraz daralarak zarifleşir */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: rgba(11, 28, 46, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   border-bottom: none;
 }
 
@@ -42,19 +40,18 @@ header.scrolled {
 }
 .custom-dtg-logo .logo-main {
   font-family: 'Times New Roman', serif; 
-  font-size: 32px; 
-  font-weight: 700; letter-spacing: 1px; line-height: 1;
+  font-size: 30px; font-weight: 700; letter-spacing: 1px; line-height: 1;
 }
 .custom-dtg-logo .logo-line {
-  width: 100%; max-width: 70px; height: 1px; background-color: #ffffff; margin: 4px 0; opacity: 0.6;
+  width: 100%; max-width: 65px; height: 1px; background-color: #ffffff; margin: 4px 0; opacity: 0.6;
 }
 .custom-dtg-logo .logo-sub {
-  font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 600;
+  font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase; opacity: 0.9;
 }
 
 nav { 
-  display: flex; gap: 40px; align-items: center;
+  display: flex; gap: 35px; align-items: center;
   position: absolute; left: 50%; transform: translateX(-50%); 
 }
 nav a { color: rgba(255,255,255,0.7); font-size: 12.5px; font-weight: 600; transition: color 0.3s ease; }
@@ -66,32 +63,35 @@ nav a.active, nav a:hover { color: #ffffff; }
   font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; transition: 0.3s ease;
   text-transform: uppercase;
 }
-.btn-outline:hover { background: #ffffff; color: #1c527e; }
+.btn-outline:hover { background: #ffffff; color: #0b1c2e; }
 
 .lang-box { display: flex; gap: 8px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); }
 .lang-box span { cursor: pointer; transition: 0.3s; padding-bottom: 2px; }
 .lang-box span.active, .lang-box span:hover { color: #ffffff; }
 
 /* =========================================================
-   3. FERAH HERO BÖLÜMÜ (OKYANUS RENGİ)
+   3. ARKA PLAN VİDEO HERO BÖLÜMÜ
    ========================================================= */
 .hero {
   position: relative; width: 100%; height: 100vh; min-height: 700px;
   display: flex; flex-direction: column; justify-content: center;
-  background-color: #0b1a2a;
+  background-color: #000000;
+  overflow: hidden;
 }
 
-.hero-slider { position: absolute; inset: 0; z-index: 1; }
-.hero-slider .slide {
-  position: absolute; inset: 0; background-size: cover; background-position: center;
-  opacity: 0; transition: opacity 1.5s ease-in-out;
+/* Video Kapsayıcısı */
+.video-bg-wrapper {
+  position: absolute; inset: 0; z-index: 1; overflow: hidden;
 }
-.hero-slider .slide.active { opacity: 1; }
+.video-bg-wrapper video {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: opacity 1s ease-in-out;
+}
 
-/* Filtreyi Çook Hafiflettik. Renk Görselden Gelecek */
+/* Şeffaf Sinematik Katman */
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(90deg, rgba(20, 45, 76, 0.85) 0%, rgba(20, 45, 76, 0.4) 40%, rgba(20, 45, 76, 0) 70%);
+  background: linear-gradient(90deg, rgba(11, 28, 46, 0.85) 0%, rgba(11, 28, 46, 0.4) 50%, rgba(11, 28, 46, 0.1) 100%);
 }
 
 .hero-content {
@@ -107,72 +107,65 @@ nav a.active, nav a:hover { color: #ffffff; }
   margin-bottom: 35px; max-width: 90%;
 }
 
-.hero-btn {
-  display: inline-block; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3);
-  font-size: 12px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s;
+/* Sabancı Tarzı Mavi Dolgulu Buton */
+.sabanci-btn {
+  display: inline-block; padding: 14px 28px;
+  background: #002b66; color: #ffffff;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  border-radius: 2px; transition: all 0.3s ease;
 }
-.hero-btn:hover { border-color: #ffffff; }
+.sabanci-btn:hover { background: #004099; transform: translateY(-2px); }
 
-/* Sağ Taraftaki Gölgeli/Dolgulu Radar */
-.hero-radar {
-  position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
-  width: 500px; height: 500px; z-index: 5; pointer-events: none;
-}
-.hero-radar circle { 
-  fill: rgba(10, 25, 45, 0.35); /* İçi yarı saydam koyu dolgulu */
-  stroke: rgba(255,255,255,0.15); /* Dışı ince beyaz çizgi */
-  stroke-width: 1.5px; 
-}
-
-.hero-numbers {
+/* Video Numaratörleri */
+.video-controls {
   position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
   z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
-  border-right: 1px solid rgba(255,255,255,0.2); padding-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.3); padding-right: 20px;
 }
-.h-num { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); cursor: pointer; transition: 0.3s; position: relative; }
-.h-num.active { font-size: 24px; font-weight: 800; color: #ffffff; }
-.h-num.active::after { content: ''; position: absolute; right: -21px; top: 50%; transform: translateY(-50%); width: 2px; height: 100%; background: #ffffff; }
+.v-num { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); cursor: pointer; transition: 0.3s; position: relative; }
+.v-num.active { font-size: 24px; font-weight: 800; color: #ffffff; }
+.v-num.active::after { content: ''; position: absolute; right: -21px; top: 50%; transform: translateY(-50%); width: 2px; height: 100%; background: #ffffff; }
 
 /* =========================================================
-   4. ALT LOGO BANDI 
+   4. ALT LOGO BANDI
    ========================================================= */
 .sponsor-bar {
   position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10;
-  background: rgba(20, 45, 76, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: rgba(11, 28, 46, 0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0;
 }
 .sponsor-inner { display: flex; align-items: center; justify-content: center; gap: 80px; }
 .sponsor-title { font-size: 11px; font-weight: 700; color: #ffffff; letter-spacing: 1.5px; opacity: 0.8; }
 .sponsor-logos { display: flex; align-items: center; gap: 70px; }
-.sponsor-logos img { height: 35px; width: auto; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.3s; }
+.sponsor-logos img { height: 35px; width: auto; filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
 .sponsor-logos img:hover { opacity: 1; }
 .logo-sau { height: 42px !important; }
 .logo-subu { height: 32px !important; }
 
 /* =========================================================
-   5. BULGULAR (NEGMAR ASİMETRİK GRID)
+   5. BULGULAR (ASİMETRİK GRID)
    ========================================================= */
 .section { padding: 90px 0; background: #ffffff; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-.section-title { font-size: 24px; font-weight: 800; color: #142D4C; text-transform: uppercase; letter-spacing: -0.5px; }
-.section-link { font-size: 12px; font-weight: 700; color: #142D4C; border-bottom: 1px solid #142D4C; padding-bottom: 2px; }
+.section-title { font-size: 24px; font-weight: 800; color: #0b1c2e; text-transform: uppercase; letter-spacing: -0.5px; }
+.section-link { font-size: 12px; font-weight: 700; color: #0b1c2e; border-bottom: 1px solid #0b1c2e; padding-bottom: 2px; }
 
 .masonry-grid {
   display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 230px 230px; gap: 20px;
 }
-.m-card { position: relative; overflow: hidden; background: #142D4C; cursor: pointer; border-radius: 2px; }
+.m-card { position: relative; overflow: hidden; background: #0b1c2e; cursor: pointer; border-radius: 2px; }
 .m-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; opacity: 0.8; }
 .m-card:hover img { transform: scale(1.04); }
 
 .m-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(20, 45, 76, 0.95) 0%, rgba(20, 45, 76, 0.2) 100%);
+  background: linear-gradient(0deg, rgba(11, 28, 46, 0.95) 0%, rgba(11, 28, 46, 0.2) 100%);
 }
 
 .m-content { position: absolute; bottom: 25px; left: 25px; right: 25px; color: #ffffff; z-index: 3; }
 .m-date { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; margin-bottom: 8px; opacity: 0.8; }
 .m-content h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
-.m-btn { font-size: 10px; font-weight: 800; background: #ffffff; color: #142D4C; padding: 6px 12px; display: inline-block; letter-spacing: 0.5px; }
+.m-btn { font-size: 10px; font-weight: 800; background: #ffffff; color: #0b1c2e; padding: 6px 12px; display: inline-block; letter-spacing: 0.5px; }
 
 .m-big { grid-column: 1 / 2; grid-row: 1 / 3; }
 .m-big .m-content h3 { font-size: 22px; }
@@ -181,7 +174,7 @@ nav a.active, nav a:hover { color: #ffffff; }
 .m-tall { grid-column: 3 / 4; grid-row: 1 / 3; }
 
 /* =========================================================
-   6. EKİP KARTI (SİYAH BEYAZ & ANONİM GÖRSELLER)
+   6. EKİP MARQUEE & ANONİM KART
    ========================================================= */
 .team-section { padding: 80px 0; background: #f8fafc; overflow: hidden; }
 .marquee-container { width: 100%; overflow: hidden; display: flex; }
@@ -197,7 +190,7 @@ nav a.active, nav a:hover { color: #ffffff; }
 .anon-icon { width: 60px; height: 60px; fill: #94a3b8; opacity: 0.5; }
 
 .team-info { padding: 15px; text-align: center; }
-.team-info h4 { font-size: 14px; font-weight: 700; color: #142D4C; margin-bottom: 4px; }
+.team-info h4 { font-size: 14px; font-weight: 700; color: #0b1c2e; margin-bottom: 4px; }
 .team-info span { font-size: 11px; font-weight: 600; color: #64748b; }
 
 @keyframes scrollTeam {
@@ -212,7 +205,7 @@ nav a.active, nav a:hover { color: #ffffff; }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 40px; }
 .stat-box { display: flex; flex-direction: column; align-items: center; }
 .stat-icon { width: 40px; height: 40px; margin-bottom: 15px; opacity: 0.4; } 
-.stat-num { font-size: 42px; font-weight: 800; color: #142D4C; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+.stat-num { font-size: 42px; font-weight: 800; color: #0b1c2e; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
 .stat-text { font-size: 12px; font-weight: 600; color: #64748b; }
 
 /* =========================================================
@@ -228,7 +221,6 @@ footer { background: #0b1c2e; padding: 60px 0 30px 0; color: #ffffff; }
 @media (max-width: 1024px) {
   .hero-content { width: 100%; max-width: 100%; padding: 0 40px; text-align: center; }
   .hero-content p { max-width: 100%; margin: 0 auto 30px; }
-  .hero-radar { display: none; }
   nav { display: none; } 
   .sponsor-inner { gap: 30px; flex-wrap: wrap; }
 }
