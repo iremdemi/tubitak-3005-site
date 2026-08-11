@@ -1,6 +1,6 @@
 const dict = {
   tr: {
-    menuAnaSayfa: "Ana Sayfa", menuProje: "Kurumsal", menuBulgular: "Bulgular", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
+    menuAnaSayfa: "Ana Sayfa", menuProje: "Kurumsal", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
     heroTitle: "İHRACAT TEŞVİKLERİNİN DIŞ TİCARET GİRİŞİMCİLİĞİ PERSPEKTİFİYLE REVİZE EDİLMESİNE YÖNELİK POLİTİKA ÖNERİLERİ",
     heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.",
     heroBtn: "POLİTİKA ÖNERİLERİNİ GÖR &gt;", sponsorTitle: "YÜRÜTÜCÜ VE DESTEKLEYEN KURUMLAR",
@@ -13,7 +13,7 @@ const dict = {
     footKurumsal: "KURUMSAL", footIcerik: "İÇERİKLER", footIletisim: "İLETİŞİM", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır."
   },
   en: {
-    menuAnaSayfa: "Home", menuProje: "Corporate", menuBulgular: "Findings", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
+    menuAnaSayfa: "Home", menuProje: "Corporate", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
     heroTitle: "POLICY RECOMMENDATIONS FOR REVISING EXPORT INCENTIVES FROM A FOREIGN TRADE ENTREPRENEURSHIP PERSPECTIVE",
     heroDesc: "Findings from a comprehensive field study conducted with exporting firms in the TR42 East Marmara Region are transformed into concrete policy recommendations.",
     heroBtn: "VIEW POLICY RECOMMENDATIONS &gt;", sponsorTitle: "PROJECT STAKEHOLDERS",
@@ -69,6 +69,30 @@ document.addEventListener("DOMContentLoaded", () => {
       header.classList.remove('scrolled');
     }
   });
+
+  // MOBİL MENÜ AÇMA / KAPAMA
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  function openMobileNav() {
+    if (mobileNav) mobileNav.classList.add('is-open');
+    if (mobileNavOverlay) mobileNavOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    if (mobileNav) mobileNav.classList.remove('is-open');
+    if (mobileNavOverlay) mobileNavOverlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
+    });
+  }
+  if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', closeMobileNav));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeMobileNav(); });
 
   // VİDEO VE YEDEK FOTOĞRAF DEĞİŞTİRME MANTIĞI
   const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
@@ -190,5 +214,20 @@ if (heroVideos.length) {
         </div>`;
     });
     track.innerHTML = teamHTML + teamHTML;
+  }
+
+  // ekip.html sayfasındaki statik (kaymayan) ekip gridi
+  const ekipGrid = document.getElementById('ekipGrid');
+  if (ekipGrid) {
+    let gridHTML = '';
+    ekipData.forEach(k => {
+      let imageElement = k.img ? `<img src="${k.img}" alt="${k.isim}">` : anonSVG;
+      gridHTML += `
+        <div class="static-team-card">
+          <div class="img-wrapper">${imageElement}</div>
+          <div class="team-info"><h4>${k.isim}</h4><span>${k.unvan}</span></div>
+        </div>`;
+    });
+    ekipGrid.innerHTML = gridHTML;
   }
 });
