@@ -190,7 +190,7 @@ if (heroVideos.length) {
     { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
     { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
     { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "img/bilal torkul.jpeg" },
-    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.png" },
+    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.jpg" },
     { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "img/furkan coşgun.jpeg" }
   ];
 
