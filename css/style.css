@@ -16,13 +16,25 @@ ul { list-style: none; }
 .wrap { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
 
 /* =========================================================
-   2. HEADER & MİNİMAL LOGO
+   2. YAPIŞKAN (STICKY) HEADER & MİNİMAL LOGO
    ========================================================= */
 header {
-  position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
+  position: fixed; /* Menü ekrana yapıştı */
+  top: 0; left: 0; width: 100%; z-index: 1000;
   display: flex; justify-content: space-between; align-items: center;
   padding: 30px 50px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s ease; /* Kayarken yumuşak geçiş */
+}
+
+/* Sayfa aşağı kaydığında Header'ın alacağı şekil */
+header.scrolled {
+  background: rgba(20, 45, 76, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px 50px; /* Biraz daralarak zarifleşir */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-bottom: none;
 }
 
 .custom-dtg-logo {
@@ -30,7 +42,7 @@ header {
 }
 .custom-dtg-logo .logo-main {
   font-family: 'Times New Roman', serif; 
-  font-size: 32px; /* Küçültüldü ve zarifleştirildi */
+  font-size: 32px; 
   font-weight: 700; letter-spacing: 1px; line-height: 1;
 }
 .custom-dtg-logo .logo-line {
@@ -43,9 +55,9 @@ header {
 
 nav { 
   display: flex; gap: 40px; align-items: center;
-  position: absolute; left: 50%; transform: translateX(-50%); /* Menüyü kusursuz ortala */
+  position: absolute; left: 50%; transform: translateX(-50%); 
 }
-nav a { color: rgba(255,255,255,0.65); font-size: 12.5px; font-weight: 600; transition: color 0.3s ease; }
+nav a { color: rgba(255,255,255,0.7); font-size: 12.5px; font-weight: 600; transition: color 0.3s ease; }
 nav a.active, nav a:hover { color: #ffffff; }
 
 .header-right { display: flex; align-items: center; gap: 24px; }
@@ -61,35 +73,37 @@ nav a.active, nav a:hover { color: #ffffff; }
 .lang-box span.active, .lang-box span:hover { color: #ffffff; }
 
 /* =========================================================
-   3. FERAH HERO BÖLÜMÜ (DOĞRU ORANLAR)
+   3. FERAH HERO BÖLÜMÜ (OKYANUS RENGİ)
    ========================================================= */
 .hero {
   position: relative; width: 100%; height: 100vh; min-height: 700px;
   display: flex; flex-direction: column; justify-content: center;
+  background-color: #0b1a2a;
 }
 
-.hero-slider { position: absolute; inset: 0; z-index: 1; background-color: #0d1f33; }
+.hero-slider { position: absolute; inset: 0; z-index: 1; }
 .hero-slider .slide {
   position: absolute; inset: 0; background-size: cover; background-position: center;
   opacity: 0; transition: opacity 1.5s ease-in-out;
 }
 .hero-slider .slide.active { opacity: 1; }
 
+/* Filtreyi Çook Hafiflettik. Renk Görselden Gelecek */
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(90deg, rgba(20, 45, 76, 0.95) 0%, rgba(20, 45, 76, 0.8) 40%, rgba(20, 45, 76, 0.1) 75%, rgba(20, 45, 76, 0) 100%);
+  background: linear-gradient(90deg, rgba(20, 45, 76, 0.85) 0%, rgba(20, 45, 76, 0.4) 40%, rgba(20, 45, 76, 0) 70%);
 }
 
 .hero-content {
   position: relative; z-index: 10; width: 50%; max-width: 700px; padding-left: 50px; color: #ffffff;
 }
 .hero-content h1 {
-  font-size: clamp(28px, 3.5vw, 42px); /* Ekrana göre otomatik oranlanan zarif başlık */
+  font-size: clamp(28px, 3.5vw, 42px); 
   font-weight: 800; line-height: 1.2; text-transform: uppercase;
   margin-bottom: 20px; letter-spacing: -0.5px;
 }
 .hero-content p {
-  font-size: 14px; font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.8);
+  font-size: 14px; font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.9);
   margin-bottom: 35px; max-width: 90%;
 }
 
@@ -99,12 +113,16 @@ nav a.active, nav a:hover { color: #ffffff; }
 }
 .hero-btn:hover { border-color: #ffffff; }
 
-/* Sağ Taraftaki İnce Radar ve Numaralar */
+/* Sağ Taraftaki Gölgeli/Dolgulu Radar */
 .hero-radar {
   position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
-  width: 500px; height: 500px; z-index: 5; pointer-events: none; opacity: 0.7;
+  width: 500px; height: 500px; z-index: 5; pointer-events: none;
 }
-.hero-radar circle { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1px; }
+.hero-radar circle { 
+  fill: rgba(10, 25, 45, 0.35); /* İçi yarı saydam koyu dolgulu */
+  stroke: rgba(255,255,255,0.15); /* Dışı ince beyaz çizgi */
+  stroke-width: 1.5px; 
+}
 
 .hero-numbers {
   position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
@@ -176,7 +194,6 @@ nav a.active, nav a:hover { color: #ffffff; }
 .team-member img.real-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.4s ease; }
 .team-member:hover img.real-photo { filter: grayscale(0%); }
 
-/* Anonim İkon */
 .anon-icon { width: 60px; height: 60px; fill: #94a3b8; opacity: 0.5; }
 
 .team-info { padding: 15px; text-align: center; }
@@ -212,6 +229,6 @@ footer { background: #0b1c2e; padding: 60px 0 30px 0; color: #ffffff; }
   .hero-content { width: 100%; max-width: 100%; padding: 0 40px; text-align: center; }
   .hero-content p { max-width: 100%; margin: 0 auto 30px; }
   .hero-radar { display: none; }
-  nav { display: none; } /* Mobilde gizle */
+  nav { display: none; } 
   .sponsor-inner { gap: 30px; flex-wrap: wrap; }
 }
