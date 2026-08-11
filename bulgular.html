@@ -4,46 +4,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bulgular - DTG Research Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="TR42 Bölgesi'ndeki 192 ihracatçı firmadan elde edilen nicel ve nitel veri setlerinin bilimsel metodolojilerle incelenmesi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- HEADER AYNI (Kod kalabalığı olmasın diye sadece içerik alanlarını veriyorum, header ve footer'ı proje.html'den kopyalayabilirsin) -->
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="brand"><div class="horizontal-logo"><span class="hl-dtg">DTG</span><div class="hl-divider"></div><div class="hl-stack"><span class="hl-research">RESEARCH</span><span class="hl-portal">PORTAL</span></div></div></a>
-    <nav class="nav-menu">
-      <div class="nav-item"><a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a></div>
-      <div class="nav-item has-dropdown"><a href="proje.html" data-i18n="menuProje">Proje ▼</a></div>
-      <div class="nav-item has-dropdown"><a href="bulgular.html" data-i18n="menuBulgular">Bulgular ▼</a></div>
-      <div class="nav-item"><a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a></div>
-      <div class="nav-item has-dropdown"><a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar ▼</a></div>
-      <div class="nav-item has-dropdown"><a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz ▼</a></div>
-      <div class="nav-item"><a href="iletisim.html" data-i18n="menuIletisim">İletişim</a></div>
-    </nav>
-    <div class="header-right"><div class="lang-switch" id="langToggle"><span class="active" data-lang="tr">TR</span><span class="sep">|</span><span data-lang="en">EN</span></div></div>
-  </div>
-</header>
 
-<section class="subpage-hero">
-  <div class="subpage-hero-inner gsap-reveal">
-    <h1>Saha Bulguları ve Analizler</h1>
-    <p>TR42 Bölgesi'ndeki 192 ihracatçı firmadan elde edilen nicel ve nitel veri setlerinin bilimsel metodolojilerle incelenmesi.</p>
-  </div>
-</section>
+<div class="app-shell with-rail">
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <div class="sidebar-brand-mark">DTG</div>
+      <div class="sidebar-brand-text">Research Portal<small>TÜBİTAK 3005</small></div>
+    </a>
 
-<section class="content-section wrap" style="padding: 90px 32px;">
-  <div class="content-block gsap-reveal" id="belirleyiciler">
-    <h2>Temel Belirleyiciler</h2>
-    <p>Çok Kriterli Karar Verme (ÇKKV) metodolojileri kullanılarak, dış ticaret girişimciliğini etkileyen 9 temel belirleyici saptanmıştır. Bu belirleyiciler arasında "Finansal Performans" ve "Stratejik İnovasyon Yönetimi" en yüksek ağırlıklara sahip olmuştur.</p>
-  </div>
-  <div class="content-block gsap-reveal" id="analizler">
-    <h2>Güncel Analizler</h2>
-    <p>Firmaların demografik yapıları ile ihracat menzilleri arasındaki korelasyon analizleri, KOBİ'lerin mevcut teşvik mekanizmalarından faydalanma oranlarının büyük işletmelere kıyasla anlamlı düzeyde düşük olduğunu kanıtlamaktadır.</p>
-  </div>
-</section>
+    <div class="sidebar-group">
+      <div class="sidebar-nav">
+        <a href="index.html">
+          <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+          <span data-i18n="menuAnaSayfa">Ana Sayfa</span>
+        </a>
+        <a href="proje.html">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+          <span data-i18n="menuProje">Proje</span>
+        </a>
+        <a href="bulgular.html" class="active">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+          <span data-i18n="menuBulgular">Bulgular</span>
+        </a>
+        <a href="politika.html">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span data-i18n="menuPolitika">Politika Önerileri</span>
+        </a>
+        <a href="yayinlar.html">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg>
+          <span data-i18n="menuYayinlar">Yayınlar</span>
+        </a>
+        <a href="ekip.html">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span data-i18n="menuEkip">Araştırma Ekibimiz</span>
+        </a>
+        <a href="iletisim.html">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          <span data-i18n="menuIletisim">İletişim</span>
+        </a>
+      </div>
+    </div>
 
-<!-- FOOTER BURAYA GELECEK -->
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-label" data-i18n="sidebarRegion">Saha Bölgesi</div>
+      <div class="sidebar-nav">
+        <a href="bulgular.html#kocaeli"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Kocaeli</span></a>
+        <a href="bulgular.html#sakarya"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Sakarya</span></a>
+        <a href="bulgular.html#duzce"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Düzce · Bolu · Yalova</span></a>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-lang" id="langToggle">
+        <span data-lang="tr">TR</span>
+        <span class="sep">|</span>
+        <span data-lang="en">EN</span>
+      </div>
+    </div>
+  </aside>
+  <div class="nav-overlay" id="sidebarOverlay"></div>
+  <div class="nav-overlay" id="sidebarOverlay"></div>
+
+  <div class="main-col">
+    <div class="topbar">
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+        <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Bulgu, il veya konu ara…">
+      </div>
+      <div class="topbar-cta">
+        <a href="politika.html" class="btn btn-outline" data-i18n="btnPolitika">Politika Önerileri</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span></button>
+      </div>
+    </div>
+
+    <div class="content-pad">
+      <section class="page-hero gsap-reveal">
+        <span class="eyebrow" data-i18n="bgEyebrow">Bulgular</span>
+        <h1 data-i18n="bgH1">Saha Bulguları ve Analizler</h1>
+        <p data-i18n="bgLede">TR42 Bölgesi'ndeki 192 ihracatçı firmadan elde edilen nicel ve nitel veri setlerinin bilimsel metodolojilerle incelenmesi.</p>
+      </section>
+
+      <div class="content-block gsap-reveal" id="belirleyiciler">
+        <h2 data-i18n="bgBelTitle">Temel Belirleyiciler</h2>
+        <p data-i18n="bgBelP1">Çok Kriterli Karar Verme (ÇKKV) metodolojileri kullanılarak, dış ticaret girişimciliğini etkileyen 9 temel belirleyici saptanmıştır. Bu belirleyiciler arasında "Finansal Performans" ve "Stratejik İnovasyon Yönetimi" en yüksek ağırlıklara sahip olmuştur.</p>
+      </div>
+      <div class="content-block gsap-reveal" id="analizler">
+        <h2 data-i18n="bgAnalizTitle">Güncel Analizler</h2>
+        <p data-i18n="bgAnalizP1">Firmaların demografik yapıları ile ihracat menzilleri arasındaki korelasyon analizleri, KOBİ'lerin mevcut teşvik mekanizmalarından faydalanma oranlarının büyük işletmelere kıyasla anlamlı düzeyde düşük olduğunu kanıtlamaktadır.</p>
+      </div>
+
+      <div class="content-block gsap-reveal">
+        <h2 data-i18n="findingsTitle">Yayımlanan Analizler</h2>
+        <div class="article-row-list" id="articleRowList" style="margin-top:16px;"></div>
+      </div>
+
+            <!-- FOOTER -->
+            <footer class="site-footer" id="iletisim">
+              <div class="footer-cols">
+                <div>
+                  <h4 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h4>
+                  <p style="margin-top:10px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesine yönelik bağımsız araştırma platformu.</p>
+                </div>
+                <div>
+                  <h4 data-i18n="footSupp">Destekleyen Kurumlar</h4>
+                  <p data-i18n="footK1">T.C. Ticaret Bakanlığı</p>
+                  <p data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</p>
+                  <p data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı</p>
+                </div>
+                <div class="footer-form">
+                  <h4 data-i18n="footContactTitle">Bize Ulaşın</h4>
+                  <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
+                    <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
+                    <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
+                    <textarea name="message" rows="2" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
+                    <input type="hidden" name="_subject" value="DTG Research Portal">
+                    <input type="text" name="_honey" style="display:none">
+                    <button type="submit" data-i18n="footFormSend">Gönder</button>
+                  </form>
+                </div>
+              </div>
+              <div class="footer-bottom" data-i18n="footCopy">&copy; 2026 Tüm Hakları Saklıdır.</div>
+            </footer>
+    </div>
+  </div>
+  <aside class="right-rail">
+    <div class="widget">
+      <div class="widget-title" data-i18n="widgetRelated">İlgili Bulgular</div>
+      <div class="widget-list" id="relatedWidget"></div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- MAKALE MODAL -->
+<div class="article-modal-overlay" id="articleModalOverlay">
+  <div class="article-modal">
+    <div class="article-modal-image"><img id="modalImage" src="" alt=""></div>
+    <div class="article-modal-scroll">
+      <div class="article-modal-header">
+        <h2 id="modalTitle">Makale Başlığı</h2>
+        <button class="article-modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="article-modal-body" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
