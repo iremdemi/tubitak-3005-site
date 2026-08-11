@@ -2,10 +2,9 @@
    1. GENEL AYARLAR & TİPOGRAFİ SİSTEMİ (SABANCI DİSİPLİNİ)
    ========================================================= */
 :root {
-  /* TİPOGRAFİ DEĞİŞKENLERİ - Inter Font Ailesi */
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
-  --text-hero: clamp(44px, 4vw, 60px); /* Max 60px - Kontrollü Büyüklük */
+  --text-hero: clamp(44px, 4vw, 62px);
   --text-h2: clamp(32px, 2.6vw, 40px);
   --text-h3: 23px;
   --text-h4: 19px;
@@ -16,7 +15,6 @@
   --text-stat: clamp(36px, 4vw, 48px);
   --text-eyebrow: 13px;
   
-  /* Ağırlık Sistemi (800 ve 900 tamamen yasaklandı) */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -39,7 +37,6 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* Merkezi Konteyner (Kurumsal Sabancı Oranları: max 1340px) */
 .wrap { max-width: 1340px; margin: 0 auto; padding: 0 80px; }
 
 /* =========================================================
@@ -84,7 +81,6 @@ header.scrolled {
   opacity: 0.9;
 }
 
-/* MOBİL MENÜ HATASI DÜZELTİLDİ: Sadece Header İçindeki Nav'ı Etkiler */
 header nav { 
   display: flex; gap: 32px; align-items: center;
   position: absolute; left: 50%; transform: translateX(-50%); 
@@ -124,8 +120,7 @@ header nav a.active, header nav a:hover {
    ========================================================= */
 .hero {
   position: relative; width: 100%; height: 100vh; min-height: 700px;
-  display: flex; flex-direction: column; 
-  justify-content: flex-start; /* İÇERİĞİ AŞAĞI İTMEK İÇİN DEĞİŞTİRİLDİ */
+  display: flex; flex-direction: column; justify-content: flex-start;
   background-color: #000000;
   overflow: hidden;
 }
@@ -148,7 +143,7 @@ header nav a.active, header nav a:hover {
 
 .hero-content {
   position: relative; z-index: 10; width: 100%; max-width: 980px; 
-  padding-top: 24vh; /* NAV MENU İLE ARASINDAKİ DEV BOŞLUK (SABANCI ORANI) */
+  padding-top: 24vh;
   padding-left: clamp(40px, 5vw, 90px); 
   color: #ffffff;
 }
@@ -159,7 +154,7 @@ header nav a.active, header nav a:hover {
   letter-spacing: -0.025em;
   margin-bottom: 28px; 
   text-transform: none; 
-  max-width: 980px; /* 3-4 Satırda kalmasını sağlayan kontrollü genişlik */
+  max-width: 980px;
 }
 .hero-content p {
   font-size: var(--text-body); 
@@ -167,7 +162,7 @@ header nav a.active, header nav a:hover {
   line-height: 1.65; 
   color: rgba(255,255,255,0.9);
   margin-bottom: 32px; 
-  max-width: 650px; /* Subordinate (Alt) görünüm için daraltıldı */
+  max-width: 650px;
 }
 
 .sabanci-btn {
@@ -182,30 +177,22 @@ header nav a.active, header nav a:hover {
 }
 .sabanci-btn:hover { background: #004099; }
 
-.video-controls {
-  position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
-  z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
-  border-right: 1px solid rgba(255,255,255,0.3); padding-right: 24px;
-}
-.v-num { font-size: var(--text-small); font-weight: var(--weight-medium); color: rgba(255,255,255,0.4); cursor: pointer; transition: 0.3s; position: relative; }
-.v-num.active { font-size: 24px; font-weight: var(--weight-bold); color: #ffffff; }
-.v-num.active::after { content: ''; position: absolute; right: -25px; top: 50%; transform: translateY(-50%); width: 2px; height: 100%; background: #ffffff; }
-
 /* =========================================================
-   4. ALT LOGO BANDI
+   4. ALT LOGO BANDI (YENİDEN DÜZENLENDİ: MERKEZLENMİŞ)
    ========================================================= */
 .sponsor-bar {
   position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10;
   background: rgba(11, 28, 46, 0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0;
 }
-.sponsor-inner { display: flex; align-items: center; justify-content: center; gap: 80px; }
-.sponsor-title { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); color: #ffffff; letter-spacing: 0.04em; opacity: 0.8; text-transform: uppercase; }
-.sponsor-logos { display: flex; align-items: center; gap: 70px; }
-.sponsor-logos img { height: 35px; width: auto; filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
+.sponsor-inner { display: flex; align-items: center; justify-content: center; } 
+.sponsor-logos { display: flex; align-items: center; gap: 80px; justify-content: center; width: 100%; }
+.sponsor-logos img { width: auto; filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
 .sponsor-logos img:hover { opacity: 1; }
+/* Logoların Oranları */
+.logo-tubitak { height: 32px !important; }
 .logo-sau { height: 42px !important; }
-.logo-subu { height: 32px !important; }
+.logo-subu { height: 34px !important; }
 
 /* =========================================================
    5. BULGULAR (ASİMETRİK GRID)
@@ -305,7 +292,6 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   border-bottom: 1px solid rgba(255,255,255,.1); text-transform: none;
 }
 .mobile-nav a.active, .mobile-nav a:hover { color: #ffffff; }
-
 .mobile-nav-overlay {
   position: fixed; inset: 0; background: rgba(11,28,46,.5); z-index: 1080;
   opacity: 0; visibility: hidden; transition: opacity .3s ease;
@@ -318,12 +304,12 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 @media (max-width: 1440px) {
   .wrap { padding: 0 72px; }
   header, header.scrolled { padding-left: 72px; padding-right: 72px; }
+  .hero-content { padding-left: 72px; }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .wrap { padding: 0 48px; }
   header, header.scrolled { padding-left: 48px; padding-right: 48px; }
-  .video-controls { right: 48px; }
   .section, .team-section, .stats-section { padding: 96px 0; }
 }
 
@@ -347,7 +333,7 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   .f-col { width: 45% !important; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   :root {
     --text-hero: clamp(36px, 8vw, 40px);
     --text-h2: clamp(28px, 6vw, 32px);
@@ -361,13 +347,6 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   
   .hero-content { padding-left: 24px; padding-right: 24px; padding-top: 150px; }
   .hero-content p { font-size: 16px; margin-bottom: 24px; }
-  
-  .video-controls {
-    top: auto; bottom: 120px; right: 50%; transform: translateX(50%);
-    flex-direction: row; border-right: none; border-top: 1px solid rgba(255,255,255,0.3);
-    padding-right: 0; padding-top: 16px; gap: 16px;
-  }
-  .v-num.active::after { display: none; } 
   
   .section, .team-section, .stats-section { padding: 72px 0; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
