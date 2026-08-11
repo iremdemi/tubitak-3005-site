@@ -41,16 +41,16 @@ function translateHTML() {
 // 3 ADET KÜRESEL TİCARET VE LOJİSTİK VİDEO LİSTESİ (VE YEDEK FOTOĞRAFLARI)
 const videoList = [
   {
-    src: "https://cdn.coverr.co/videos/coverr-cargo-ship-in-the-ocean-5231/1080p.mp4", // Okyanusta Gemi
-    poster: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=1920"
+    src: "https://videos.pexels.com/video-files/3840442/3840442-uhd_2560_1440_30fps.mp4",
+    poster: "https://images.pexels.com/videos/3840442/aerial-barge-boat-business-3840442.jpeg?auto=compress&w=1920"
   },
   {
-    src: "https://cdn.coverr.co/videos/coverr-container-terminal-time-lapse-124/1080p.mp4", // Liman ve Konteyner
-    poster: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1920"
+    src: "https://videos.pexels.com/video-files/29904000/12836288_2560_1440_60fps.mp4",
+    poster: "https://images.pexels.com/videos/29904000/beverage-container-cai-mep-thi-vai-cargo-containers-container-29904000.jpeg?auto=compress&w=1920"
   },
   {
-    src: "https://cdn.coverr.co/videos/coverr-industrial-shipping-containers-127/1080p.mp4", // Lojistik ve Ticaret
-    poster: "https://images.unsplash.com/photo-1494412519320-aa313fc17eb8?q=80&w=1920"
+    src: "https://videos.pexels.com/video-files/30523154/13076531_2560_1440_60fps.mp4",
+    poster: "https://images.pexels.com/videos/30523154/cai-mep-cai-mep-port-cai-mep-thi-vai-cai-mep-thi-vai-port-30523154.jpeg?auto=compress&w=1920"
   }
 ];
 
@@ -85,35 +85,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const vNums = document.querySelectorAll('.v-num');
 
   window.playVideo = function(index) {
-    if(!heroVideo) return;
-    
-    // Aktif sayıyı değiştir
-    vNums.forEach(n => n.classList.remove('active'));
-    vNums[index].classList.add('active');
+  if(!heroVideo) return;
 
-    // Yumuşak geçiş için videoyu gizle
-    heroVideo.style.opacity = 0;
-    
-    setTimeout(() => {
-      // Hem videoyu hem de video engellenirse çıkacak resmi (poster) güncelle
-      heroVideo.src = videoList[index].src;
-      heroVideo.poster = videoList[index].poster; 
-      
-      heroVideo.load();
-      
-      // Video oynatmaya çalış (Tarayıcı engeli veya link kırık ihtimaline karşı try-catch)
-      let playPromise = heroVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          heroVideo.style.opacity = 1;
-        }).catch(error => {
-          // Eğer video hata verirse (Siyah ekran çıkmasını engeller)
-          heroVideo.style.opacity = 1;
-          console.log("Video otomatik oynatılamadı, poster resmi gösteriliyor.");
-        });
-      }
-    }, 500);
-  };
+  vNums.forEach(n => n.classList.remove('active'));
+  vNums[index].classList.add('active');
+
+  heroVideo.style.opacity = 0;
+
+  setTimeout(() => {
+    heroVideo.src = videoList[index].src;
+    heroVideo.poster = videoList[index].poster;
+
+    heroVideo.load();
+
+    let playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+        heroVideo.style.opacity = 1;
+      }).catch(error => {
+        heroVideo.style.opacity = 1;
+        console.log("Video otomatik oynatılamadı, poster resmi gösteriliyor.");
+      });
+    }
+  }, 500);
+};
 
   // ANONİM İKON SVG
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
