@@ -7,7 +7,7 @@
 <meta name="description" content="TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla gerçekleştirilen dış ticaret girişimciliği araştırması ve politika önerileri.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="anasayfa">
@@ -15,10 +15,9 @@
 <header>
   <div class="header-inner">
     <a href="index.html" class="brand">
-      <div class="brand-mark">DTG</div>
-      <div class="brand-text"><strong>Research Portal</strong><span>TÜBİTAK 3005</span></div>
+      <img src="assets/dtg-logo-white.png" alt="DTG">
     </a>
-    <nav class="nav-menu">
+    <nav class="nav-menu" id="navMenu">
       <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
       <a href="proje.html" data-i18n="menuProje">Proje</a>
       <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
@@ -31,7 +30,7 @@
       <div class="lang-switch" id="langToggle">
         <span class="active" data-lang="tr">TR</span><span class="sep">|</span><span data-lang="en">EN</span>
       </div>
-      <a href="politika.html" class="btn btn-outline-white" data-i18n="btnPolitika">Politika Önerileri</a>
+      <a href="politika.html" class="btn-outline" data-i18n="btnPolitika">Politika Önerileri</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -44,36 +43,36 @@
     <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80');"></div>
     <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80"></div>
     <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"></div>
+    <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1920&q=80"></div>
   </div>
-  <div class="hero-inner wrap">
-    <div class="hero-grid">
-      <div class="gsap-reveal">
-        <span class="eyebrow hero-eyebrow" data-i18n="heroEyebrow">TÜBİTAK 3005 Destekli Araştırma Projesi</span>
-        <h1 data-i18n="heroTitle">Dış Ticaret Girişimciliğinde Yeni Dönem: Politika Önerileri</h1>
+  <div class="hero-inner">
+    <div class="wrap hero-grid">
+      <div class="hero-text gsap-reveal">
+        <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
         <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.</p>
-        <a href="politika.html" class="btn btn-outline-white" data-i18n="heroBtn">Politika Önerilerini Gör</a>
       </div>
       <div class="hero-radar gsap-reveal">
         <svg viewBox="0 0 400 400">
-          <circle cx="200" cy="200" r="80"/>
-          <circle cx="200" cy="200" r="130"/>
-          <circle cx="200" cy="200" r="180" class="pulse"/>
+          <circle cx="200" cy="200" r="70"/>
+          <circle cx="200" cy="200" r="120"/>
+          <circle cx="200" cy="200" r="170"/>
         </svg>
-        <div class="hero-radar-center">
-          <div class="n">192</div>
-          <div class="l" data-i18n="radarCenterLbl">İhracatçı Firma</div>
-        </div>
         <div class="hero-radar-labels">
-          <span style="top: 8%; left: 52%;">01</span>
-          <span style="top: 46%; right: 4%;">02</span>
-          <span style="bottom: 10%; left: 46%;">03</span>
+          <span style="top: 6%; left: 51%;">01</span>
+          <span style="top: 47%; right: 2%;">02</span>
+          <span style="bottom: 8%; left: 45%;">03</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="hero-inst-band">
-    <div class="wrap hero-inst-row">
-      <span data-i18n="instRow">Sakarya Üniversitesi · Sakarya Uygulamalı Bilimler Üniversitesi (SUBÜ) · TÜBİTAK 3005</span>
+  <div class="sponsor-bar">
+    <div class="wrap sponsor-row">
+      <span class="sponsor-mark">Sakarya Üniversitesi</span>
+      <span class="sponsor-mark">SUBÜ</span>
+      <span class="sponsor-mark">TÜBİTAK</span>
+      <span class="sponsor-mark">TİM</span>
     </div>
   </div>
 </section>
