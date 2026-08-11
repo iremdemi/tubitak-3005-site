@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DTG Research Portal | Ana Sayfa</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- TİPOGRAFİ: Inter ve Fallback Fontlar Eklendi -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- DIŞARIDAN ÇAĞRILAN CSS DOSYAMIZ -->
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- 1. SABANCI TARZI YAPIŞKAN (STICKY) HEADER -->
 <header id="mainHeader">
   <div class="custom-dtg-logo">
     <div class="logo-main">DTG</div>
@@ -31,7 +32,7 @@
       <span class="active" data-lang="tr">TR</span>
       <span data-lang="en">EN</span>
     </div>
-    <a href="politika.html" class="btn-outline">POLİTİKA ÖNERİLERİ</a>
+    <a href="politika.html" class="btn-outline">Politika Önerileri</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -46,10 +47,8 @@
   <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
 </nav>
 
-<!-- 2. SABANCI TARZI VİDEO HERO BÖLÜMÜ -->
 <section class="hero">
   
-  <!-- ARKA PLANDA SESSİZ AKAN KÜRESEL TİCARET & LOJİSTİK VİDEOSU -->
 <div class="video-bg-wrapper">
   <video class="hero-video active" data-index="0" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="https://images.pexels.com/videos/3840442/aerial-barge-boat-business-3840442.jpeg?auto=compress&w=1920">
     <source data-src="https://videos.pexels.com/video-files/3840442/3840442-uhd_2560_1440_30fps.mp4" src="https://videos.pexels.com/video-files/3840442/3840442-uhd_2560_1440_30fps.mp4" type="video/mp4">
@@ -59,20 +58,17 @@
   </video>
 </div>
   
-  <!-- Görselin üzerine binen hafif sinematik karartma katmanı -->
   <div class="hero-overlay"></div>
 
-  <!-- Manşet Yazısı ve Sabancı Tarzı Buton -->
   <div class="hero-content">
-    <h1 data-i18n="heroTitle">İHRACAT TEŞVİKLERİNİN DIŞ TİCARET GİRİŞİMCİLİĞİ PERSPEKTİFİYLE REVİZE EDİLMESİNE YÖNELİK POLİTİKA ÖNERİLERİ</h1>
+    <h1 data-i18n="heroTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri</h1>
     <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.</p>
-    <a href="politika.html" class="sabanci-btn" data-i18n="heroBtn">POLİTİKA ÖNERİLERİNİ GÖR &gt;</a>
+    <a href="politika.html" class="sabanci-btn" data-i18n="heroBtn">Politika Önerilerini Gör &gt;</a>
   </div>
 
-  <!-- Yürütücü ve Destekleyen Kurumlar Şeridi -->
   <div class="sponsor-bar">
     <div class="wrap sponsor-inner">
-      <div class="sponsor-title" data-i18n="sponsorTitle">YÜRÜTÜCÜ VE DESTEKLEYEN KURUMLAR</div>
+      <div class="sponsor-title" data-i18n="sponsorTitle">Yürütücü ve Destekleyen Kurumlar</div>
       <div class="sponsor-logos">
         <img src="https://upload.wikimedia.org/wikipedia/tr/b/b8/Sakarya_%C3%9Cniversitesi_logosu.png" alt="SAÜ" class="logo-sau">
         <img src="https://upload.wikimedia.org/wikipedia/tr/thumb/8/87/Sakarya_Uygulamal%C4%B1_Bilimler_%C3%9Cniversitesi_logosu.svg/1200px-Sakarya_Uygulamal%C4%B1_Bilimler_%C3%9Cniversitesi_logosu.svg.png" alt="SUBÜ" class="logo-subu">
@@ -82,11 +78,10 @@
   </div>
 </section>
 
-<!-- 3. BULGULAR (ASİMETRİK GRID) -->
 <section class="section" id="bulgular">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="section-title" data-i18n="findingsTitle">ARAŞTIRMADAN BULGULAR</h2>
+      <h2 class="section-title" data-i18n="findingsTitle">Araştırmadan Bulgular</h2>
       <a href="bulgular.html" class="section-link" data-i18n="findingsMore">Tümünü Gör &gt;</a>
     </div>
 
@@ -96,8 +91,8 @@
         <div class="m-overlay"></div>
         <div class="m-content">
           <div class="m-date"><svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 11 Ağustos 2026</div>
-          <h3 data-i18n="f1Title">FİNANSAL BELİRLEYİCİLER DIŞ TİCARETTE İLK SIRADA YER ALIYOR</h3>
-          <span class="m-btn" data-i18n="readMoreTxt">İNCELE &gt;</span>
+          <h3 data-i18n="f1Title">Finansal Belirleyiciler Dış Ticarette İlk Sırada Yer Alıyor</h3>
+          <span class="m-btn" data-i18n="readMoreTxt">İncele &gt;</span>
         </div>
       </div>
       
@@ -106,7 +101,7 @@
         <div class="m-overlay"></div>
         <div class="m-content">
           <div class="m-date"><svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 10 Ağustos 2026</div>
-          <h3 data-i18n="f2Title">TEŞVİKLERDE YENİ PARADİGMA</h3>
+          <h3 data-i18n="f2Title">Teşviklerde Yeni Paradigma</h3>
         </div>
       </div>
 
@@ -115,7 +110,7 @@
         <div class="m-overlay"></div>
         <div class="m-content">
           <div class="m-date"><svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 09 Ağustos 2026</div>
-          <h3 data-i18n="f3Title">TR42 BÖLGESİ SANAYİ HİNTERLANDI</h3>
+          <h3 data-i18n="f3Title">TR42 Bölgesi Sanayi Hinterlandı</h3>
         </div>
       </div>
 
@@ -124,17 +119,16 @@
         <div class="m-overlay"></div>
         <div class="m-content">
           <div class="m-date"><svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 08 Ağustos 2026</div>
-          <h3 data-i18n="f4Title">TİCARİ MİLLİYETÇİLİK: KATMA DEĞER KİMİN?</h3>
+          <h3 data-i18n="f4Title">Ticari Milliyetçilik: Katma Değer Kimin?</h3>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. ARAŞTIRMA EKİBİ (SÜREKLİ AKAN MARQUEE) -->
 <section class="team-section" id="ekip">
-  <div class="wrap" style="margin-bottom: 40px;">
-    <h2 class="section-title" data-i18n="teamTitle">ARAŞTIRMA EKİBİ</h2>
+  <div class="wrap" style="margin-bottom: 48px;">
+    <h2 class="section-title" data-i18n="teamTitle">Araştırma Ekibi</h2>
   </div>
   
   <div class="marquee-container">
@@ -142,7 +136,6 @@
   </div>
 </section>
 
-<!-- 5. İSTATİSTİKLER (PROJE DOSYASI GERÇEK VERİLERİ) -->
 <section class="stats-section">
   <div class="wrap">
     <div class="stats-grid">
@@ -170,39 +163,38 @@
   </div>
 </section>
 
-<!-- 6. FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-flex">
       
       <div class="f-col" style="width: 28%;">
-        <div class="custom-dtg-logo" style="align-items: flex-start; margin-bottom: 20px;">
+        <div class="custom-dtg-logo" style="align-items: flex-start; margin-bottom: 24px;">
           <div class="logo-main" style="font-size: 26px;">DTG</div>
           <div class="logo-line" style="width: 60px;"></div>
           <div class="logo-sub" style="font-size: 8px;">RESEARCH PORTAL</div>
         </div>
-        <p style="font-size: 11.5px; color: rgba(255,255,255,0.6); line-height: 1.7;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
+        <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footKurumsal">KURUMSAL</h4>
+        <h4 data-i18n="footKurumsal">Kurumsal</h4>
         <a href="proje.html" data-i18n="menuProje">Proje Hakkında</a>
         <a href="#ekip" data-i18n="menuEkip">Araştırma Ekibimiz</a>
         <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIcerik">İÇERİKLER</h4>
+        <h4 data-i18n="footIcerik">İçerikler</h4>
         <a href="bulgular.html" data-i18n="menuBulgular">Saha Bulguları</a>
         <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
         <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIletisim">İLETİŞİM</h4>
-        <p style="font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 10px;">proje@sakarya.edu.tr</p>
-        <p style="font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 10px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
-        <p style="font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 10px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
+        <h4 data-i18n="footIletisim">İletişim</h4>
+        <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
+        <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
+        <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
       </div>
 
     </div>
