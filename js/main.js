@@ -38,11 +38,20 @@ function translateHTML() {
   });
 }
 
-// 3 ADET KÜRESEL TİCARET VE LOJİSTİK VİDEO LİSTESİ
+// 3 ADET KÜRESEL TİCARET VE LOJİSTİK VİDEO LİSTESİ (VE YEDEK FOTOĞRAFLARI)
 const videoList = [
-  "https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-sailing-in-the-sea-41551-large.mp4", // Okyanusta Konteyner Gemisi
-  "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-cargo-ship-in-the-sea-41552-large.mp4", // Havadan Konteyner ve Ticaret
-  "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-container-ship-41553-large.mp4"  // Lojistik ve Küresel Ağ
+  {
+    src: "https://cdn.coverr.co/videos/coverr-cargo-ship-in-the-ocean-5231/1080p.mp4", // Okyanusta Gemi
+    poster: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=1920"
+  },
+  {
+    src: "https://cdn.coverr.co/videos/coverr-container-terminal-time-lapse-124/1080p.mp4", // Liman ve Konteyner
+    poster: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1920"
+  },
+  {
+    src: "https://cdn.coverr.co/videos/coverr-industrial-shipping-containers-127/1080p.mp4", // Lojistik ve Ticaret
+    poster: "https://images.unsplash.com/photo-1494412519320-aa313fc17eb8?q=80&w=1920"
+  }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -71,21 +80,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // VİDEO DEĞİŞTİRME MANTIĞI
+  // VİDEO VE YEDEK FOTOĞRAF DEĞİŞTİRME MANTIĞI
   const heroVideo = document.getElementById('heroVideo');
   const vNums = document.querySelectorAll('.v-num');
 
   window.playVideo = function(index) {
     if(!heroVideo) return;
+    
+    // Aktif sayıyı değiştir
     vNums.forEach(n => n.classList.remove('active'));
     vNums[index].classList.add('active');
 
+    // Yumuşak geçiş için videoyu gizle
     heroVideo.style.opacity = 0;
+    
     setTimeout(() => {
-      heroVideo.src = videoList[index];
+      // Hem videoyu hem de video engellenirse çıkacak resmi (poster) güncelle
+      heroVideo.src = videoList[index].src;
+      heroVideo.poster = videoList[index].poster; 
+      
       heroVideo.load();
-      heroVideo.play();
-      heroVideo.style.opacity = 1;
+      
+      // Video oynatmaya çalış (Tarayıcı engeli veya link kırık ihtimaline karşı try-catch)
+      let playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          heroVideo.style.opacity = 1;
+        }).catch(error => {
+          // Eğer video hata verirse (Siyah ekran çıkmasını engeller)
+          heroVideo.style.opacity = 1;
+          console.log("Video otomatik oynatılamadı, poster resmi gösteriliyor.");
+        });
+      }
     }, 500);
   };
 
