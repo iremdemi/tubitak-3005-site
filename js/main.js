@@ -189,9 +189,9 @@ if (heroVideos.length) {
     { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
     { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
     { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
-    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "" },
-    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "" },
-    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "" }
+    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "img/bilal torkul.jpeg" },
+    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.png" },
+    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "furkan coşgun.jpeg" }
   ];
 
   const track = document.getElementById('teamTrack');
