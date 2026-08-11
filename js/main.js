@@ -38,34 +38,9 @@ function translateHTML() {
   });
 }
 
-// 6 ADET KÜRESEL TİCARET VE LOJİSTİK VİDEO LİSTESİ (VE YEDEK FOTOĞRAFLARI)
-const videoList = [
-  {
-    src: "https://videos.pexels.com/video-files/3840442/3840442-uhd_2560_1440_30fps.mp4",
-    poster: "https://images.pexels.com/videos/3840442/aerial-barge-boat-business-3840442.jpeg?auto=compress&w=1920"
-  },
-  {
-    src: "https://videos.pexels.com/video-files/29904000/12836288_2560_1440_60fps.mp4",
-    poster: "https://images.pexels.com/videos/29904000/beverage-container-cai-mep-thi-vai-cargo-containers-container-29904000.jpeg?auto=compress&w=1920"
-  },
-  {
-    src: "https://videos.pexels.com/video-files/30523154/13076531_2560_1440_60fps.mp4",
-    poster: "https://images.pexels.com/videos/30523154/cai-mep-cai-mep-port-cai-mep-thi-vai-cai-mep-thi-vai-port-30523154.jpeg?auto=compress&w=1920"
-  },
-  {
-    src: "https://videos.pexels.com/video-files/30522944/13076300_2560_1440_60fps.mp4",
-    poster: "https://images.pexels.com/videos/30522944/cai-mep-cai-mep-port-cai-mep-thi-vai-cai-mep-thi-vai-port-30522944.jpeg?auto=compress&w=1920"
-  },
-  {
-    src: "https://videos.pexels.com/video-files/30523151/13076563_2560_1440_60fps.mp4",
-    poster: "https://images.pexels.com/videos/30523151/cai-mep-cai-mep-port-cai-mep-thi-vai-cai-mep-thi-vai-port-30523151.jpeg?auto=compress&w=1920"
-  },
-  {
-    src: "https://videos.pexels.com/video-files/20639312/20639312-hd_1920_1080_25fps.mp4",
-    poster: "https://images.pexels.com/videos/20639312/logistics-20639312.jpeg?auto=compress&w=1920"
-  }
-];
-
+// 6 VİDEO DA SAYFA AÇILIR AÇILMAZ ARKA PLANDA YÜKLENİR VE SESSİZCE DÖNGÜDE ÇALIŞIR.
+// Geçiş sırasında ağdan yeniden indirme olmadığı için hiç takılma/kasma yaşanmaz,
+// sadece görünür olan video CSS ile (opacity) değişir.
 let currentVideoIndex = 0;
 let autoAdvanceTimer = null;
 
@@ -96,35 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // VİDEO VE YEDEK FOTOĞRAF DEĞİŞTİRME MANTIĞI
-  const heroVideo = document.getElementById('heroVideo');
+  const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
   const vNums = document.querySelectorAll('.v-num');
 
   window.playVideo = function(index, isAuto) {
-  if(!heroVideo) return;
+  if(!heroVideos.length) return;
 
   currentVideoIndex = index;
 
   vNums.forEach(n => n.classList.remove('active'));
   vNums[index].classList.add('active');
 
-  heroVideo.style.opacity = 0;
-
-  setTimeout(() => {
-    heroVideo.src = videoList[index].src;
-    heroVideo.poster = videoList[index].poster;
-
-    heroVideo.load();
-
-    let playPromise = heroVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        heroVideo.style.opacity = 1;
-      }).catch(error => {
-        heroVideo.style.opacity = 1;
-        console.log("Video otomatik oynatılamadı, poster resmi gösteriliyor.");
-      });
-    }
-  }, 500);
+  // Tüm videolar zaten arka planda çalıyor, sadece görünürlüğü (opacity) değiştiriyoruz.
+  // Bu yüzden geçiş anında hiç ağ beklemesi / kasma olmuyor.
+  heroVideos.forEach(v => v.classList.remove('active'));
+  heroVideos[index].classList.add('active');
 
   // Elle bir videoya tıklanınca otomatik döngüyü sıfırla, akış bozulmasın
   if (!isAuto) {
@@ -136,11 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function startAutoAdvance() {
   if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
   autoAdvanceTimer = setInterval(() => {
-    const nextIndex = (currentVideoIndex + 1) % videoList.length;
+    const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
     window.playVideo(nextIndex, true);
   }, 5000);
 }
-startAutoAdvance();
+if (heroVideos.length) startAutoAdvance();
 
   // ANONİM İKON SVG
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
