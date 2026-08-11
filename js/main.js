@@ -1,29 +1,29 @@
 const dict = {
   tr: {
     menuAnaSayfa: "Ana Sayfa", menuProje: "Kurumsal", menuBulgular: "Bulgular", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
-    heroTitle: "İHRACAT TEŞVİKLERİNİN DIŞ TİCARET GİRİŞİMCİLİĞİ PERSPEKTİFİYLE REVİZE EDİLMESİNE YÖNELİK POLİTİKA ÖNERİLERİ",
+    heroTitle: "İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesine Yönelik Politika Önerileri",
     heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.",
-    heroBtn: "POLİTİKA ÖNERİLERİNİ GÖR &gt;", sponsorTitle: "YÜRÜTÜCÜ VE DESTEKLEYEN KURUMLAR",
-    findingsTitle: "ARAŞTIRMADAN BULGULAR", findingsMore: "Tümünü Gör &gt;",
-    f1Title: "FİNANSAL BELİRLEYİCİLER DIŞ TİCARETTE İLK SIRADA YER ALIYOR",
-    f2Title: "TEŞVİKLERDE YENİ PARADİGMA", f3Title: "TR42 BÖLGESİ SANAYİ HİNTERLANDI", f4Title: "TİCARİ MİLLİYETÇİLİK: KATMA DEĞER KİMİN?",
-    teamTitle: "ARAŞTIRMA EKİBİ", readMoreTxt: "İNCELE &gt;",
+    heroBtn: "Politika Önerilerini Gör &gt;", sponsorTitle: "Yürütücü ve Destekleyen Kurumlar",
+    findingsTitle: "Araştırmadan Bulgular", findingsMore: "Tümünü Gör &gt;",
+    f1Title: "Finansal Belirleyiciler Dış Ticarette İlk Sırada Yer Alıyor",
+    f2Title: "Teşviklerde Yeni Paradigma", f3Title: "TR42 Bölgesi Sanayi Hinterlandı", f4Title: "Ticari Milliyetçilik: Katma Değer Kimin?",
+    teamTitle: "Araştırma Ekibi", readMoreTxt: "İncele &gt;",
     statFirma: "Saha Araştırmasına Katılan<br>İhracatçı Firma", statIl: "Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Odak<br>Sektör", statAy: "Ay<br>Proje Süresi",
     footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
-    footKurumsal: "KURUMSAL", footIcerik: "İÇERİKLER", footIletisim: "İLETİŞİM", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır."
+    footKurumsal: "Kurumsal", footIcerik: "İçerikler", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır."
   },
   en: {
     menuAnaSayfa: "Home", menuProje: "Corporate", menuBulgular: "Findings", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
-    heroTitle: "POLICY RECOMMENDATIONS FOR REVISING EXPORT INCENTIVES FROM A FOREIGN TRADE ENTREPRENEURSHIP PERSPECTIVE",
+    heroTitle: "Policy Recommendations for Revising Export Incentives from a Foreign Trade Entrepreneurship Perspective",
     heroDesc: "Findings from a comprehensive field study conducted with exporting firms in the TR42 East Marmara Region are transformed into concrete policy recommendations.",
-    heroBtn: "VIEW POLICY RECOMMENDATIONS &gt;", sponsorTitle: "PROJECT STAKEHOLDERS",
-    findingsTitle: "RESEARCH FINDINGS", findingsMore: "View All &gt;",
-    f1Title: "FINANCIAL DETERMINANTS RANK FIRST IN FOREIGN TRADE",
-    f2Title: "NEW PARADIGM IN INCENTIVES", f3Title: "TR42 REGION INDUSTRIAL HINTERLAND", f4Title: "COMMERCIAL NATIONALISM: WHO OWNS THE VALUE ADDED?",
-    teamTitle: "RESEARCH TEAM", readMoreTxt: "READ MORE &gt;",
+    heroBtn: "View Policy Recommendations &gt;", sponsorTitle: "Project Stakeholders",
+    findingsTitle: "Research Findings", findingsMore: "View All &gt;",
+    f1Title: "Financial Determinants Rank First in Foreign Trade",
+    f2Title: "New Paradigm in Incentives", f3Title: "TR42 Region Industrial Hinterland", f4Title: "Commercial Nationalism: Who Owns the Value Added?",
+    teamTitle: "Research Team", readMoreTxt: "Read More &gt;",
     statFirma: "Exporting Firms<br>Included in Field Research", statIl: "Strategic Provinces<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Focus<br>Sectors", statAy: "Months<br>Project Duration",
     footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
-    footKurumsal: "CORPORATE", footIcerik: "CONTENTS", footIletisim: "CONTACT", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Portal. All rights reserved."
+    footKurumsal: "Corporate", footIcerik: "Contents", footIletisim: "Contact", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Portal. All rights reserved."
   }
 };
 
@@ -38,16 +38,12 @@ function translateHTML() {
   });
 }
 
-// 6 VİDEO DA SAYFA AÇILIR AÇILMAZ ARKA PLANDA YÜKLENİR VE SESSİZCE DÖNGÜDE ÇALIŞIR.
-// Geçiş sırasında ağdan yeniden indirme olmadığı için hiç takılma/kasma yaşanmaz,
-// sadece görünür olan video CSS ile (opacity) değişir.
 let currentVideoIndex = 0;
 let autoAdvanceTimer = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   translateHTML();
 
-  // DİL DEĞİŞTİRİCİ
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
     langToggle.addEventListener('click', (e) => {
@@ -60,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // YAPIŞKAN (STICKY) HEADER MANTIĞI
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -70,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // MOBİL MENÜ AÇMA / KAPAMA
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -94,12 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
   window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeMobileNav(); });
 
-  // VİDEO VE YEDEK FOTOĞRAF DEĞİŞTİRME MANTIĞI
   const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
 
-  // Bir videoyu, kaynagini henuz baglamamissa (data-src) simdi baglayip
-  // yuklemeye baslatir. Ayni anda sadece 1-2 video yuklendigi icin
-  // bant genisligi bolunmuyor, hicbiri birbirini yavaslatmiyor.
   function ensureLoaded(video) {
     if (!video) return;
     const source = video.querySelector('source');
@@ -111,111 +101,87 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.playVideo = function(index, isAuto) {
-  if(!heroVideos.length) return;
+    if(!heroVideos.length) return;
 
-  currentVideoIndex = index;
+    currentVideoIndex = index;
+    const targetVideo = heroVideos[index];
+    ensureLoaded(targetVideo);
 
-  const targetVideo = heroVideos[index];
-  ensureLoaded(targetVideo);
-
-  // Gorunur olan videoyu gercekten oynattigimizdan emin ol
-  // (bazi tarayicilar gizliyken/opacity 0 iken videoyu durdurabiliyor)
-  const tryPlay = () => {
-    const playPromise = targetVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => { /* sessizce yut, poster zaten görünür kalır */ });
-    }
-  };
-  if (targetVideo.readyState >= 2) {
-    tryPlay();
-  } else {
-    targetVideo.addEventListener('loadeddata', tryPlay, { once: true });
-  }
-
-  heroVideos.forEach(v => v.classList.remove('active'));
-  targetVideo.classList.add('active');
-
-  // Kullanicinin gormeyecegi eski videoyu durdurup kaynagini boşa harcamayalim
-  heroVideos.forEach((v, i) => {
-    if (i !== index && i !== (index + 1) % heroVideos.length) {
-      v.pause();
-    }
-  });
-
-  // Sıradaki videoyu, ona gecmeden birkac saniye once arka planda yuklemeye basla
-  const nextIndex = (index + 1) % heroVideos.length;
-  ensureLoaded(heroVideos[nextIndex]);
-
-  // Her geçişten sonra (ister elle tıklanmış olsun, ister otomatik ilerlemiş olsun)
-  // bir sonraki geçiş için sayacı yeniden başlat. Bu satır eskiden sadece elle
-  // tıklamada çalışıyordu, bu yüzden otomatik döngü ikinci videodan sonra duruyordu.
-  startAutoAdvance();
-};
-
-// SABANCI TARZI: videolar kendiliğinden, sırayla, yavaşça birbirine geçer.
-// Kör bir sayaç yerine, sıradaki video gerçekten yeterince yüklenene kadar bekler;
-// erken geçip kasma yaratmaz, ama gereksiz yere de uzun beklemez (üst sınır var).
-function waitUntilReady(video, maxWaitMs, cb) {
-  const start = Date.now();
-  (function check() {
-    if (video.readyState >= 3 || Date.now() - start > maxWaitMs) {
-      cb();
+    const tryPlay = () => {
+      const playPromise = targetVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    };
+    if (targetVideo.readyState >= 2) {
+      tryPlay();
     } else {
-      setTimeout(check, 250);
+      targetVideo.addEventListener('loadeddata', tryPlay, { once: true });
     }
-  })();
-}
 
-function startAutoAdvance() {
-  if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-  autoAdvanceTimer = setTimeout(() => {
-    const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
+    heroVideos.forEach(v => v.classList.remove('active'));
+    targetVideo.classList.add('active');
+
+    heroVideos.forEach((v, i) => {
+      if (i !== index && i !== (index + 1) % heroVideos.length) {
+        v.pause();
+      }
+    });
+
+    const nextIndex = (index + 1) % heroVideos.length;
     ensureLoaded(heroVideos[nextIndex]);
-    waitUntilReady(heroVideos[nextIndex], 4000, () => {
-      window.playVideo(nextIndex, true);
-    });
-  }, 9000);
-}
-if (heroVideos.length) {
-  // İlk video zaten preload="auto" ile geliyor. İkinci videoyu de hemen değil,
-  // birinciye biraz tek başına bant genişliği bırakıldıktan sonra yüklemeye başla.
-  setTimeout(() => {
-    ensureLoaded(heroVideos[1]);
-    // Mobil tarayıcılar (özellikle iOS Safari), sayfa yüklendikten uzun süre
-    // sonra JS ile tetiklenen play() çağrılarını bazen engelliyor. İkinci videoyu
-    // erkenden, sayfa hâlâ "taze" haldeyken sessizce oynatıp arka planda
-    // (opacity: 0) bekletmek, sırası geldiğinde donmadan görünür olmasını sağlar.
-    if (heroVideos[1]) {
-      heroVideos[1].addEventListener('loadeddata', () => {
-        const p = heroVideos[1].play();
-        if (p !== undefined) p.catch(() => {});
-      }, { once: true });
-    }
-  }, 1200);
-  startAutoAdvance();
+    startAutoAdvance();
+  };
 
-  // Bazı mobil tarayıcılar otomatik oynatmayı tamamen engelleyebiliyor.
-  // Kullanıcı sayfaya ilk kez dokunduğunda/tıkladığında hem henüz yüklenmemiş
-  // videoların kaynağını hemen bağlayıp hem de tümünü oynatmayı deniyoruz.
-  // Gerçek bir dokunma/tıklama olayına bağlı olduğu için mobil tarayıcılar
-  // bu isteği çok daha güvenilir şekilde kabul ediyor.
-  function unlockVideosOnFirstTouch() {
-    heroVideos.forEach(v => {
-      ensureLoaded(v);
-      const p = v.play();
-      if (p !== undefined) p.catch(() => {});
-    });
-    document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
-    document.removeEventListener('click', unlockVideosOnFirstTouch);
+  function waitUntilReady(video, maxWaitMs, cb) {
+    const start = Date.now();
+    (function check() {
+      if (video.readyState >= 3 || Date.now() - start > maxWaitMs) {
+        cb();
+      } else {
+        setTimeout(check, 250);
+      }
+    })();
   }
-  document.addEventListener('touchstart', unlockVideosOnFirstTouch, { once: true, passive: true });
-  document.addEventListener('click', unlockVideosOnFirstTouch, { once: true });
-}
 
-  // ANONİM İKON SVG
+  function startAutoAdvance() {
+    if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = setTimeout(() => {
+      const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
+      ensureLoaded(heroVideos[nextIndex]);
+      waitUntilReady(heroVideos[nextIndex], 4000, () => {
+        window.playVideo(nextIndex, true);
+      });
+    }, 9000);
+  }
+  
+  if (heroVideos.length) {
+    setTimeout(() => {
+      ensureLoaded(heroVideos[1]);
+      if (heroVideos[1]) {
+        heroVideos[1].addEventListener('loadeddata', () => {
+          const p = heroVideos[1].play();
+          if (p !== undefined) p.catch(() => {});
+        }, { once: true });
+      }
+    }, 1200);
+    startAutoAdvance();
+
+    function unlockVideosOnFirstTouch() {
+      heroVideos.forEach(v => {
+        ensureLoaded(v);
+        const p = v.play();
+        if (p !== undefined) p.catch(() => {});
+      });
+      document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
+      document.removeEventListener('click', unlockVideosOnFirstTouch);
+    }
+    document.addEventListener('touchstart', unlockVideosOnFirstTouch, { once: true, passive: true });
+    document.addEventListener('click', unlockVideosOnFirstTouch, { once: true });
+  }
+
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
 
-  // EKİP DATASI
   const ekipData = [
     { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
     { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
