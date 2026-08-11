@@ -38,6 +38,7 @@ function translateHTML() {
   });
 }
 
+// VİDEO MANTIĞINA DOKUNULMADI
 let currentVideoIndex = 0;
 let autoAdvanceTimer = null;
 
@@ -101,84 +102,85 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.playVideo = function(index, isAuto) {
-    if(!heroVideos.length) return;
+  if(!heroVideos.length) return;
 
-    currentVideoIndex = index;
-    const targetVideo = heroVideos[index];
-    ensureLoaded(targetVideo);
+  currentVideoIndex = index;
 
-    const tryPlay = () => {
-      const playPromise = targetVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    };
-    if (targetVideo.readyState >= 2) {
-      tryPlay();
-    } else {
-      targetVideo.addEventListener('loadeddata', tryPlay, { once: true });
+  const targetVideo = heroVideos[index];
+  ensureLoaded(targetVideo);
+
+  const tryPlay = () => {
+    const playPromise = targetVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => { });
     }
-
-    heroVideos.forEach(v => v.classList.remove('active'));
-    targetVideo.classList.add('active');
-
-    heroVideos.forEach((v, i) => {
-      if (i !== index && i !== (index + 1) % heroVideos.length) {
-        v.pause();
-      }
-    });
-
-    const nextIndex = (index + 1) % heroVideos.length;
-    ensureLoaded(heroVideos[nextIndex]);
-    startAutoAdvance();
   };
-
-  function waitUntilReady(video, maxWaitMs, cb) {
-    const start = Date.now();
-    (function check() {
-      if (video.readyState >= 3 || Date.now() - start > maxWaitMs) {
-        cb();
-      } else {
-        setTimeout(check, 250);
-      }
-    })();
+  if (targetVideo.readyState >= 2) {
+    tryPlay();
+  } else {
+    targetVideo.addEventListener('loadeddata', tryPlay, { once: true });
   }
 
-  function startAutoAdvance() {
-    if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
-    autoAdvanceTimer = setTimeout(() => {
-      const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
-      ensureLoaded(heroVideos[nextIndex]);
-      waitUntilReady(heroVideos[nextIndex], 4000, () => {
-        window.playVideo(nextIndex, true);
-      });
-    }, 9000);
-  }
-  
-  if (heroVideos.length) {
-    setTimeout(() => {
-      ensureLoaded(heroVideos[1]);
-      if (heroVideos[1]) {
-        heroVideos[1].addEventListener('loadeddata', () => {
-          const p = heroVideos[1].play();
-          if (p !== undefined) p.catch(() => {});
-        }, { once: true });
-      }
-    }, 1200);
-    startAutoAdvance();
+  heroVideos.forEach(v => v.classList.remove('active'));
+  targetVideo.classList.add('active');
 
-    function unlockVideosOnFirstTouch() {
-      heroVideos.forEach(v => {
-        ensureLoaded(v);
-        const p = v.play();
-        if (p !== undefined) p.catch(() => {});
-      });
-      document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
-      document.removeEventListener('click', unlockVideosOnFirstTouch);
+  heroVideos.forEach((v, i) => {
+    if (i !== index && i !== (index + 1) % heroVideos.length) {
+      v.pause();
     }
-    document.addEventListener('touchstart', unlockVideosOnFirstTouch, { once: true, passive: true });
-    document.addEventListener('click', unlockVideosOnFirstTouch, { once: true });
+  });
+
+  const nextIndex = (index + 1) % heroVideos.length;
+  ensureLoaded(heroVideos[nextIndex]);
+
+  startAutoAdvance();
+};
+
+function waitUntilReady(video, maxWaitMs, cb) {
+  const start = Date.now();
+  (function check() {
+    if (video.readyState >= 3 || Date.now() - start > maxWaitMs) {
+      cb();
+    } else {
+      setTimeout(check, 250);
+    }
+  })();
+}
+
+function startAutoAdvance() {
+  if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+  autoAdvanceTimer = setTimeout(() => {
+    const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
+    ensureLoaded(heroVideos[nextIndex]);
+    waitUntilReady(heroVideos[nextIndex], 4000, () => {
+      window.playVideo(nextIndex, true);
+    });
+  }, 9000);
+}
+if (heroVideos.length) {
+  setTimeout(() => {
+    ensureLoaded(heroVideos[1]);
+    if (heroVideos[1]) {
+      heroVideos[1].addEventListener('loadeddata', () => {
+        const p = heroVideos[1].play();
+        if (p !== undefined) p.catch(() => {});
+      }, { once: true });
+    }
+  }, 1200);
+  startAutoAdvance();
+
+  function unlockVideosOnFirstTouch() {
+    heroVideos.forEach(v => {
+      ensureLoaded(v);
+      const p = v.play();
+      if (p !== undefined) p.catch(() => {});
+    });
+    document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
+    document.removeEventListener('click', unlockVideosOnFirstTouch);
   }
+  document.addEventListener('touchstart', unlockVideosOnFirstTouch, { once: true, passive: true });
+  document.addEventListener('click', unlockVideosOnFirstTouch, { once: true });
+}
 
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
 
