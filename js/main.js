@@ -1,7 +1,7 @@
 // ÇEVİRİ DİCTIONARY
 const dict = {
   tr: {
-    menuAnaSayfa: "Ana Sayfa", menuProje: "Kurumsal", menuBulgular: "Bulgular", menuPolitika: "Politika Önerileri", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
+    menuAnaSayfa: "Ana Sayfa", menuProje: "Kurumsal", menuBulgular: "Bulgular", menuYayinlar: "Yayınlar", menuEkip: "Araştırma Ekibimiz", menuIletisim: "İletişim",
     heroTitle: "İHRACAT TEŞVİKLERİNİN DIŞ TİCARET GİRİŞİMCİLİĞİ PERSPEKTİFİYLE REVİZE EDİLMESİNE YÖNELİK POLİTİKA ÖNERİLERİ",
     heroDesc: "TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.",
     heroBtn: "POLİTİKA ÖNERİLERİNİ GÖR &gt;", sponsorTitle: "YÜRÜTÜCÜ VE DESTEKLEYEN KURUMLAR",
@@ -14,7 +14,7 @@ const dict = {
     footKurumsal: "KURUMSAL", footIcerik: "İÇERİKLER", footIletisim: "İLETİŞİM", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır."
   },
   en: {
-    menuAnaSayfa: "Home", menuProje: "Corporate", menuBulgular: "Findings", menuPolitika: "Policy Recommendations", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
+    menuAnaSayfa: "Home", menuProje: "Corporate", menuBulgular: "Findings", menuYayinlar: "Publications", menuEkip: "Research Team", menuIletisim: "Contact",
     heroTitle: "POLICY RECOMMENDATIONS FOR REVISING EXPORT INCENTIVES FROM A FOREIGN TRADE ENTREPRENEURSHIP PERSPECTIVE",
     heroDesc: "Findings from a comprehensive field study conducted with exporting firms in the TR42 East Marmara Region are transformed into concrete policy recommendations.",
     heroBtn: "VIEW POLICY RECOMMENDATIONS &gt;", sponsorTitle: "PROJECT STAKEHOLDERS",
@@ -40,6 +40,8 @@ function translateHTML() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  translateHTML();
+
   // DİL DEĞİŞTİRİCİ
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
@@ -53,24 +55,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // EKİP DATASI (Marquee için)
+  // ANONİM İKON SVG (Fotoğrafı olmayanlar için)
+  const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+
+  // EKİP DATASI (Ömer, Bilal ve Furkan için anonim görsel kullanıldı)
   const ekipData = [
     { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
     { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
     { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
     { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
     { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
-    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" },
-    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" },
-    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" }
+    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "" },
+    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "" },
+    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "" }
   ];
 
   const track = document.getElementById('teamTrack');
   if(track) {
     let teamHTML = '';
     ekipData.forEach(k => {
-      teamHTML += `<div class="team-member"><img src="${k.img}" alt="${k.isim}"><div class="team-info"><h4>${k.isim}</h4><span>${k.unvan}</span></div></div>`;
+      // Eğer fotoğraf yoksa anonim SVG bas, varsa real-photo class'ı ile bas
+      let imageElement = k.img ? `<img src="${k.img}" alt="${k.isim}" class="real-photo">` : anonSVG;
+      teamHTML += `
+        <div class="team-member">
+          <div class="img-wrapper">${imageElement}</div>
+          <div class="team-info"><h4>${k.isim}</h4><span>${k.unvan}</span></div>
+        </div>`;
     });
+    // Sonsuz döngü için içeriği 2 kere ekle
     track.innerHTML = teamHTML + teamHTML;
   }
 
@@ -103,6 +115,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resetInterval();
   }
-
-  translateHTML();
 });
