@@ -1,5 +1,5 @@
 /* =========================================================
-   1. GENEL AYARLAR & NEGMAR RENK PALETİ
+   1. GENEL AYARLAR & APPLE-LEVEL ESTETİK
    ========================================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
@@ -7,166 +7,181 @@ body {
   background-color: #ffffff; 
   color: #333333;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-.wrap { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+.wrap { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
 
 /* =========================================================
-   2. HEADER & ÖZEL DTG LOGOSU
+   2. HEADER & MİNİMAL LOGO
    ========================================================= */
 header {
   position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 40px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 30px 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .custom-dtg-logo {
-  display: flex; flex-direction: column; align-items: center; color: #ffffff;
+  display: flex; flex-direction: column; align-items: flex-start; color: #ffffff;
 }
 .custom-dtg-logo .logo-main {
   font-family: 'Times New Roman', serif; 
-  font-size: 46px; font-weight: 700; letter-spacing: 2px; line-height: 1;
+  font-size: 32px; /* Küçültüldü ve zarifleştirildi */
+  font-weight: 700; letter-spacing: 1px; line-height: 1;
 }
 .custom-dtg-logo .logo-line {
-  width: 100%; height: 2px; background-color: #ffffff; margin: 4px 0; opacity: 0.8;
+  width: 100%; max-width: 70px; height: 1px; background-color: #ffffff; margin: 4px 0; opacity: 0.6;
 }
 .custom-dtg-logo .logo-sub {
-  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600;
-  letter-spacing: 3px; text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; opacity: 0.9;
 }
 
-nav { display: flex; gap: 35px; align-items: center; margin-top: 15px; }
-nav a { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 600; text-transform: capitalize; transition: 0.3s; }
+nav { 
+  display: flex; gap: 40px; align-items: center;
+  position: absolute; left: 50%; transform: translateX(-50%); /* Menüyü kusursuz ortala */
+}
+nav a { color: rgba(255,255,255,0.65); font-size: 12.5px; font-weight: 600; transition: color 0.3s ease; }
 nav a.active, nav a:hover { color: #ffffff; }
 
-.header-right { display: flex; align-items: center; gap: 20px; margin-top: 10px; }
+.header-right { display: flex; align-items: center; gap: 24px; }
 .btn-outline {
-  border: 1.5px solid rgba(255,255,255,0.5); padding: 10px 24px; border-radius: 4px;
-  font-size: 12px; font-weight: 700; color: #ffffff; transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.4); padding: 10px 20px; border-radius: 3px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #ffffff; transition: 0.3s ease;
+  text-transform: uppercase;
 }
 .btn-outline:hover { background: #ffffff; color: #1c527e; }
 
-.lang-box { display: flex; gap: 8px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); }
-.lang-box span { cursor: pointer; transition: 0.3s; }
+.lang-box { display: flex; gap: 8px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); }
+.lang-box span { cursor: pointer; transition: 0.3s; padding-bottom: 2px; }
 .lang-box span.active, .lang-box span:hover { color: #ffffff; }
 
 /* =========================================================
-   3. FERAH HERO BÖLÜMÜ 
+   3. FERAH HERO BÖLÜMÜ (DOĞRU ORANLAR)
    ========================================================= */
 .hero {
-  position: relative; width: 100%; height: 100vh; min-height: 800px;
+  position: relative; width: 100%; height: 100vh; min-height: 700px;
   display: flex; flex-direction: column; justify-content: center;
 }
 
-.hero-slider { position: absolute; inset: 0; z-index: 1; }
+.hero-slider { position: absolute; inset: 0; z-index: 1; background-color: #0d1f33; }
 .hero-slider .slide {
   position: absolute; inset: 0; background-size: cover; background-position: center;
-  opacity: 0; transition: opacity 1.5s ease;
+  opacity: 0; transition: opacity 1.5s ease-in-out;
 }
 .hero-slider .slide.active { opacity: 1; }
 
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(90deg, rgba(28, 82, 126, 0.95) 0%, rgba(28, 82, 126, 0.8) 35%, rgba(28, 82, 126, 0.2) 70%, rgba(28, 82, 126, 0) 100%);
+  background: linear-gradient(90deg, rgba(20, 45, 76, 0.95) 0%, rgba(20, 45, 76, 0.8) 40%, rgba(20, 45, 76, 0.1) 75%, rgba(20, 45, 76, 0) 100%);
 }
 
 .hero-content {
-  position: relative; z-index: 10; width: 55%; padding-left: 60px; color: #ffffff;
+  position: relative; z-index: 10; width: 50%; max-width: 700px; padding-left: 50px; color: #ffffff;
 }
 .hero-content h1 {
-  font-size: 52px; font-weight: 800; line-height: 1.15; text-transform: uppercase;
-  margin-bottom: 24px; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-size: clamp(28px, 3.5vw, 42px); /* Ekrana göre otomatik oranlanan zarif başlık */
+  font-weight: 800; line-height: 1.2; text-transform: uppercase;
+  margin-bottom: 20px; letter-spacing: -0.5px;
 }
 .hero-content p {
-  font-size: 16px; font-weight: 500; line-height: 1.6; color: rgba(255,255,255,0.9);
-  margin-bottom: 40px; max-width: 85%;
+  font-size: 14px; font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.8);
+  margin-bottom: 35px; max-width: 90%;
 }
 
 .hero-btn {
-  display: inline-block; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3);
-  font-size: 13px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+  display: inline-block; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3);
+  font-size: 12px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s;
 }
 .hero-btn:hover { border-color: #ffffff; }
 
-/* Sağ Taraftaki Radar ve Numaralar */
+/* Sağ Taraftaki İnce Radar ve Numaralar */
 .hero-radar {
-  position: absolute; right: 15%; top: 50%; transform: translateY(-50%);
-  width: 600px; height: 600px; z-index: 5; pointer-events: none;
+  position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+  width: 500px; height: 500px; z-index: 5; pointer-events: none; opacity: 0.7;
 }
-.hero-radar circle { fill: none; stroke: rgba(255,255,255,0.15); stroke-width: 1px; }
+.hero-radar circle { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1px; }
 
 .hero-numbers {
-  position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+  position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
   z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
-  border-right: 2px solid rgba(255,255,255,0.2); padding-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.2); padding-right: 20px;
 }
-.h-num { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; position: relative; }
-.h-num.active { font-size: 28px; font-weight: 800; color: #ffffff; }
-.h-num.active::after { content: ''; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); width: 2px; height: 100%; background: #ffffff; }
+.h-num { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); cursor: pointer; transition: 0.3s; position: relative; }
+.h-num.active { font-size: 24px; font-weight: 800; color: #ffffff; }
+.h-num.active::after { content: ''; position: absolute; right: -21px; top: 50%; transform: translateY(-50%); width: 2px; height: 100%; background: #ffffff; }
 
 /* =========================================================
-   4. ALT LOGO BANDI
+   4. ALT LOGO BANDI 
    ========================================================= */
 .sponsor-bar {
   position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10;
-  background: rgba(28, 82, 126, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  background: rgba(20, 45, 76, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0;
 }
-.sponsor-inner { display: flex; align-items: center; justify-content: center; gap: 100px; }
-.sponsor-title { font-size: 12px; font-weight: 700; color: #ffffff; letter-spacing: 1px; }
-.sponsor-logos { display: flex; align-items: center; gap: 80px; }
-.sponsor-logos img { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
-.logo-sau { height: 45px !important; }
-.logo-subu { height: 35px !important; }
+.sponsor-inner { display: flex; align-items: center; justify-content: center; gap: 80px; }
+.sponsor-title { font-size: 11px; font-weight: 700; color: #ffffff; letter-spacing: 1.5px; opacity: 0.8; }
+.sponsor-logos { display: flex; align-items: center; gap: 70px; }
+.sponsor-logos img { height: 35px; width: auto; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.3s; }
+.sponsor-logos img:hover { opacity: 1; }
+.logo-sau { height: 42px !important; }
+.logo-subu { height: 32px !important; }
 
 /* =========================================================
-   5. BULGULAR (ASİMETRİK GRID)
+   5. BULGULAR (NEGMAR ASİMETRİK GRID)
    ========================================================= */
-.section { padding: 100px 0; background: #ffffff; }
+.section { padding: 90px 0; background: #ffffff; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-.section-title { font-size: 28px; font-weight: 800; color: #1c527e; text-transform: uppercase; letter-spacing: -0.5px; }
-.section-link { font-size: 13px; font-weight: 700; color: #1c527e; border-bottom: 1px solid #1c527e; padding-bottom: 2px; }
+.section-title { font-size: 24px; font-weight: 800; color: #142D4C; text-transform: uppercase; letter-spacing: -0.5px; }
+.section-link { font-size: 12px; font-weight: 700; color: #142D4C; border-bottom: 1px solid #142D4C; padding-bottom: 2px; }
 
 .masonry-grid {
-  display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 20px;
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 230px 230px; gap: 20px;
 }
-.m-card { position: relative; overflow: hidden; background: #000; cursor: pointer; }
-.m-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; opacity: 0.8; }
-.m-card:hover img { transform: scale(1.05); }
+.m-card { position: relative; overflow: hidden; background: #142D4C; cursor: pointer; border-radius: 2px; }
+.m-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; opacity: 0.8; }
+.m-card:hover img { transform: scale(1.04); }
 
 .m-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(28, 82, 126, 0.95) 0%, rgba(28, 82, 126, 0.4) 100%);
+  background: linear-gradient(0deg, rgba(20, 45, 76, 0.95) 0%, rgba(20, 45, 76, 0.2) 100%);
 }
 
-.m-content { position: absolute; bottom: 30px; left: 30px; right: 30px; color: #ffffff; z-index: 3; }
-.m-date { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; margin-bottom: 10px; opacity: 0.8; }
-.m-content h3 { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 15px; }
-.m-btn { font-size: 12px; font-weight: 700; background: #ffffff; color: #1c527e; padding: 8px 16px; border-radius: 2px; display: inline-block; }
+.m-content { position: absolute; bottom: 25px; left: 25px; right: 25px; color: #ffffff; z-index: 3; }
+.m-date { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600; margin-bottom: 8px; opacity: 0.8; }
+.m-content h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+.m-btn { font-size: 10px; font-weight: 800; background: #ffffff; color: #142D4C; padding: 6px 12px; display: inline-block; letter-spacing: 0.5px; }
 
 .m-big { grid-column: 1 / 2; grid-row: 1 / 3; }
-.m-big .m-content h3 { font-size: 26px; }
+.m-big .m-content h3 { font-size: 22px; }
 .m-small-top { grid-column: 2 / 3; grid-row: 1 / 2; }
 .m-small-bot { grid-column: 2 / 3; grid-row: 2 / 3; }
 .m-tall { grid-column: 3 / 4; grid-row: 1 / 3; }
 
 /* =========================================================
-   6. SÜREKLİ AKAN EKİP FOTOLARI
+   6. EKİP KARTI (SİYAH BEYAZ & ANONİM GÖRSELLER)
    ========================================================= */
-.team-section { padding: 80px 0; background: #f4f7fa; overflow: hidden; }
+.team-section { padding: 80px 0; background: #f8fafc; overflow: hidden; }
 .marquee-container { width: 100%; overflow: hidden; display: flex; }
 .marquee-track {
   display: flex; gap: 20px;
-  animation: scrollTeam 25s linear infinite;
+  animation: scrollTeam 30s linear infinite;
 }
-.team-member { width: 260px; flex-shrink: 0; position: relative; }
-.team-member img { width: 100%; height: 320px; object-fit: cover; filter: grayscale(100%); transition: 0.4s; }
-.team-member:hover img { filter: grayscale(0%); }
-.team-info { background: #ffffff; padding: 15px; text-align: center; }
-.team-info h4 { font-size: 15px; font-weight: 700; color: #1c527e; }
-.team-info span { font-size: 11px; font-weight: 600; color: #666; }
+.team-member { width: 220px; flex-shrink: 0; position: relative; background: #ffffff; border: 1px solid #eeeeee; }
+.team-member .img-wrapper { width: 100%; height: 260px; background: #e2e8f0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.team-member img.real-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.4s ease; }
+.team-member:hover img.real-photo { filter: grayscale(0%); }
+
+/* Anonim İkon */
+.anon-icon { width: 60px; height: 60px; fill: #94a3b8; opacity: 0.5; }
+
+.team-info { padding: 15px; text-align: center; }
+.team-info h4 { font-size: 14px; font-weight: 700; color: #142D4C; margin-bottom: 4px; }
+.team-info span { font-size: 11px; font-weight: 600; color: #64748b; }
 
 @keyframes scrollTeam {
   0% { transform: translateX(0); }
@@ -176,20 +191,27 @@ nav a.active, nav a:hover { color: #ffffff; }
 /* =========================================================
    7. İSTATİSTİKLER
    ========================================================= */
-.stats-section { padding: 100px 0; background: #ffffff; border-top: 1px solid #eee; }
+.stats-section { padding: 80px 0; background: #ffffff; border-top: 1px solid #f1f1f1; }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 40px; }
 .stat-box { display: flex; flex-direction: column; align-items: center; }
-.stat-icon { width: 50px; height: 50px; margin-bottom: 20px; opacity: 0.3; } 
-.stat-num { font-size: 48px; font-weight: 800; color: #1c527e; line-height: 1; margin-bottom: 8px; }
-.stat-text { font-size: 13px; font-weight: 600; color: #777; }
+.stat-icon { width: 40px; height: 40px; margin-bottom: 15px; opacity: 0.4; } 
+.stat-num { font-size: 42px; font-weight: 800; color: #142D4C; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+.stat-text { font-size: 12px; font-weight: 600; color: #64748b; }
 
 /* =========================================================
    8. FOOTER
    ========================================================= */
 footer { background: #0b1c2e; padding: 60px 0 30px 0; color: #ffffff; }
 .footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px; }
-.f-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
-.f-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 12px; transition: 0.3s; }
+.f-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 20px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+.f-col a, .f-col p { display: block; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.75); margin-bottom: 10px; transition: color 0.3s; }
 .f-col a:hover { color: #ffffff; }
+.f-bottom { display: flex; justify-content: space-between; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.4); }
 
-.f-bottom { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.4); }
+@media (max-width: 1024px) {
+  .hero-content { width: 100%; max-width: 100%; padding: 0 40px; text-align: center; }
+  .hero-content p { max-width: 100%; margin: 0 auto 30px; }
+  .hero-radar { display: none; }
+  nav { display: none; } /* Mobilde gizle */
+  .sponsor-inner { gap: 30px; flex-wrap: wrap; }
+}
