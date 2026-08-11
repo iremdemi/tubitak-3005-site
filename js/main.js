@@ -38,6 +38,13 @@ function translateHTML() {
   });
 }
 
+// 3 ADET KÜRESEL TİCARET VE LOJİSTİK VİDEO LİSTESİ
+const videoList = [
+  "https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-sailing-in-the-sea-41551-large.mp4", // Okyanusta Konteyner Gemisi
+  "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-cargo-ship-in-the-sea-41552-large.mp4", // Havadan Konteyner ve Ticaret
+  "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-container-ship-41553-large.mp4"  // Lojistik ve Küresel Ağ
+];
+
 document.addEventListener("DOMContentLoaded", () => {
   translateHTML();
 
@@ -64,10 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ANONİM İKON SVG (Fotoğrafı olmayanlar için)
+  // VİDEO DEĞİŞTİRME MANTIĞI
+  const heroVideo = document.getElementById('heroVideo');
+  const vNums = document.querySelectorAll('.v-num');
+
+  window.playVideo = function(index) {
+    if(!heroVideo) return;
+    vNums.forEach(n => n.classList.remove('active'));
+    vNums[index].classList.add('active');
+
+    heroVideo.style.opacity = 0;
+    setTimeout(() => {
+      heroVideo.src = videoList[index];
+      heroVideo.load();
+      heroVideo.play();
+      heroVideo.style.opacity = 1;
+    }, 500);
+  };
+
+  // ANONİM İKON SVG
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
 
-  // EKİP DATASI (Ömer, Bilal ve Furkan için anonim görsel kullanıldı)
+  // EKİP DATASI
   const ekipData = [
     { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
     { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
@@ -83,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if(track) {
     let teamHTML = '';
     ekipData.forEach(k => {
-      // Eğer fotoğraf yoksa anonim SVG bas, varsa real-photo class'ı ile bas
       let imageElement = k.img ? `<img src="${k.img}" alt="${k.isim}" class="real-photo">` : anonSVG;
       teamHTML += `
         <div class="team-member">
@@ -91,37 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="team-info"><h4>${k.isim}</h4><span>${k.unvan}</span></div>
         </div>`;
     });
-    // Sonsuz döngü için içeriği 2 kere ekle
     track.innerHTML = teamHTML + teamHTML;
-  }
-
-  // HERO SLIDER MANTIĞI
-  const slides = document.querySelectorAll('.slide');
-  const numbers = document.querySelectorAll('.h-num');
-  
-  if (slides.length > 0 && numbers.length > 0) {
-    let currentSlide = 0;
-    let slideInterval;
-
-    window.changeSlide = function(index) {
-      slides[currentSlide].classList.remove('active');
-      numbers[currentSlide].classList.remove('active');
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      numbers[currentSlide].classList.add('active');
-      resetInterval();
-    };
-
-    function nextSlide() {
-      let nextIndex = (currentSlide + 1) % slides.length;
-      window.changeSlide(nextIndex);
-    }
-
-    function resetInterval() {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    resetInterval();
   }
 });
