@@ -74,6 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
   const vNums = document.querySelectorAll('.v-num');
 
+  // Bir videoyu, kaynagini henuz baglamamissa (data-src) simdi baglayip
+  // yuklemeye baslatir. Ayni anda sadece 1-2 video yuklendigi icin
+  // bant genisligi bolunmuyor, hicbiri birbirini yavaslatmiyor.
+  function ensureLoaded(video) {
+    if (!video) return;
+    const source = video.querySelector('source');
+    if (source && !source.src) {
+      source.src = source.getAttribute('data-src');
+      video.preload = 'auto';
+      video.load();
+    }
+  }
+
   window.playVideo = function(index, isAuto) {
   if(!heroVideos.length) return;
 
@@ -82,10 +95,36 @@ document.addEventListener("DOMContentLoaded", () => {
   vNums.forEach(n => n.classList.remove('active'));
   vNums[index].classList.add('active');
 
-  // Tüm videolar zaten arka planda çalıyor, sadece görünürlüğü (opacity) değiştiriyoruz.
-  // Bu yüzden geçiş anında hiç ağ beklemesi / kasma olmuyor.
+  const targetVideo = heroVideos[index];
+  ensureLoaded(targetVideo);
+
+  // Gorunur olan videoyu gercekten oynattigimizdan emin ol
+  // (bazi tarayicilar gizliyken/opacity 0 iken videoyu durdurabiliyor)
+  const tryPlay = () => {
+    const playPromise = targetVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => { /* sessizce yut, poster zaten görünür kalır */ });
+    }
+  };
+  if (targetVideo.readyState >= 2) {
+    tryPlay();
+  } else {
+    targetVideo.addEventListener('loadeddata', tryPlay, { once: true });
+  }
+
   heroVideos.forEach(v => v.classList.remove('active'));
-  heroVideos[index].classList.add('active');
+  targetVideo.classList.add('active');
+
+  // Kullanicinin gormeyecegi eski videoyu durdurup kaynagini boşa harcamayalim
+  heroVideos.forEach((v, i) => {
+    if (i !== index && i !== (index + 1) % heroVideos.length) {
+      v.pause();
+    }
+  });
+
+  // Sıradaki videoyu, ona gecmeden birkac saniye once arka planda yuklemeye basla
+  const nextIndex = (index + 1) % heroVideos.length;
+  ensureLoaded(heroVideos[nextIndex]);
 
   // Elle bir videoya tıklanınca otomatik döngüyü sıfırla, akış bozulmasın
   if (!isAuto) {
@@ -99,9 +138,14 @@ function startAutoAdvance() {
   autoAdvanceTimer = setInterval(() => {
     const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
     window.playVideo(nextIndex, true);
-  }, 5000);
+  }, 5500);
 }
-if (heroVideos.length) startAutoAdvance();
+if (heroVideos.length) {
+  // ilk video zaten preload="auto" ile geliyor; ikinci videoyu hemen simdiden
+  // arka planda yuklemeye basla ki sira ona gelince hazir olsun
+  ensureLoaded(heroVideos[1]);
+  startAutoAdvance();
+}
 
   // ANONİM İKON SVG
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
