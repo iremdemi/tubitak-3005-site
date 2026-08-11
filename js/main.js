@@ -174,7 +174,7 @@ function startAutoAdvance() {
     waitUntilReady(heroVideos[nextIndex], 4000, () => {
       window.playVideo(nextIndex, true);
     });
-  }, 5500);
+  }, 9000);
 }
 if (heroVideos.length) {
   // İlk video zaten preload="auto" ile geliyor. İkinci videoyu de hemen değil,
@@ -195,10 +195,16 @@ if (heroVideos.length) {
   startAutoAdvance();
 
   // Bazı mobil tarayıcılar otomatik oynatmayı tamamen engelleyebiliyor.
-  // Kullanıcı sayfaya ilk kez dokunduğunda/tıkladığında tüm videoları
-  // bir kez daha oynatmayı deneyerek bu kısıtlamayı güvenle aşıyoruz.
+  // Kullanıcı sayfaya ilk kez dokunduğunda/tıkladığında hem henüz yüklenmemiş
+  // videoların kaynağını hemen bağlayıp hem de tümünü oynatmayı deniyoruz.
+  // Gerçek bir dokunma/tıklama olayına bağlı olduğu için mobil tarayıcılar
+  // bu isteği çok daha güvenilir şekilde kabul ediyor.
   function unlockVideosOnFirstTouch() {
-    heroVideos.forEach(v => { const p = v.play(); if (p !== undefined) p.catch(() => {}); });
+    heroVideos.forEach(v => {
+      ensureLoaded(v);
+      const p = v.play();
+      if (p !== undefined) p.catch(() => {});
+    });
     document.removeEventListener('touchstart', unlockVideosOnFirstTouch);
     document.removeEventListener('click', unlockVideosOnFirstTouch);
   }
