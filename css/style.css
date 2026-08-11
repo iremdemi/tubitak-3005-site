@@ -2,10 +2,11 @@
    1. GENEL AYARLAR & TİPOGRAFİ SİSTEMİ (SABANCI DİSİPLİNİ)
    ========================================================= */
 :root {
+  /* TİPOGRAFİ DEĞİŞKENLERİ - Inter Font Ailesi */
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
-  --text-hero: clamp(44px, 4vw, 62px);
-  --text-h2: clamp(32px, 3vw, 40px);
+  --text-hero: clamp(44px, 4vw, 60px); /* Max 60px - Kontrollü Büyüklük */
+  --text-h2: clamp(32px, 2.6vw, 40px);
   --text-h3: 23px;
   --text-h4: 19px;
   --text-body: 17px;
@@ -15,6 +16,7 @@
   --text-stat: clamp(36px, 4vw, 48px);
   --text-eyebrow: 13px;
   
+  /* Ağırlık Sistemi (800 ve 900 tamamen yasaklandı) */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -37,6 +39,7 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
+/* Merkezi Konteyner (Kurumsal Sabancı Oranları: max 1340px) */
 .wrap { max-width: 1340px; margin: 0 auto; padding: 0 80px; }
 
 /* =========================================================
@@ -81,19 +84,21 @@ header.scrolled {
   opacity: 0.9;
 }
 
-nav { 
+/* MOBİL MENÜ HATASI DÜZELTİLDİ: Sadece Header İçindeki Nav'ı Etkiler */
+header nav { 
   display: flex; gap: 32px; align-items: center;
   position: absolute; left: 50%; transform: translateX(-50%); 
 }
-nav a { 
+header nav a { 
   color: rgba(255,255,255,0.75); 
   font-size: var(--text-nav); 
   font-weight: var(--weight-regular); 
   transition: color 0.3s ease; 
+  text-transform: none;
 }
-nav a.active, nav a:hover { 
+header nav a.active, header nav a:hover { 
   color: #ffffff; 
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
 }
 
 .header-right { display: flex; align-items: center; gap: 24px; }
@@ -102,11 +107,11 @@ nav a.active, nav a:hover {
   border: 1px solid rgba(255,255,255,0.4); 
   padding: 10px 20px; 
   border-radius: 2px;
-  font-size: var(--text-small); 
+  font-size: var(--text-nav); 
   font-weight: var(--weight-semibold); 
-  letter-spacing: 0.02em; 
   color: #ffffff; 
   transition: 0.3s ease;
+  text-transform: none;
 }
 .btn-outline:hover { background: #ffffff; color: #0b1c2e; }
 
@@ -119,7 +124,8 @@ nav a.active, nav a:hover {
    ========================================================= */
 .hero {
   position: relative; width: 100%; height: 100vh; min-height: 700px;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; 
+  justify-content: flex-start; /* İÇERİĞİ AŞAĞI İTMEK İÇİN DEĞİŞTİRİLDİ */
   background-color: #000000;
   overflow: hidden;
 }
@@ -141,30 +147,36 @@ nav a.active, nav a:hover {
 }
 
 .hero-content {
-  position: relative; z-index: 10; width: 55%; max-width: 850px; padding-left: 80px; color: #ffffff;
+  position: relative; z-index: 10; width: 100%; max-width: 980px; 
+  padding-top: 24vh; /* NAV MENU İLE ARASINDAKİ DEV BOŞLUK (SABANCI ORANI) */
+  padding-left: clamp(40px, 5vw, 90px); 
+  color: #ffffff;
 }
 .hero-content h1 {
   font-size: var(--text-hero); 
   font-weight: var(--weight-semibold); 
-  line-height: 1.10; 
+  line-height: 1.08; 
   letter-spacing: -0.025em;
   margin-bottom: 28px; 
+  text-transform: none; 
+  max-width: 980px; /* 3-4 Satırda kalmasını sağlayan kontrollü genişlik */
 }
 .hero-content p {
-  font-size: 18px; 
+  font-size: var(--text-body); 
   font-weight: var(--weight-regular); 
   line-height: 1.65; 
   color: rgba(255,255,255,0.9);
-  margin-bottom: 36px; 
-  max-width: 650px;
+  margin-bottom: 32px; 
+  max-width: 650px; /* Subordinate (Alt) görünüm için daraltıldı */
 }
 
 .sabanci-btn {
   display: inline-block; 
-  padding: 14px 28px;
+  padding: 14px 32px;
   background: #002b66; color: #ffffff;
   font-size: var(--text-btn); 
   font-weight: var(--weight-semibold); 
+  text-transform: none; 
   border-radius: 2px; 
   transition: all 0.3s ease;
 }
@@ -200,8 +212,8 @@ nav a.active, nav a:hover {
    ========================================================= */
 .section { padding: 120px 0; background: #ffffff; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
-.section-title { font-size: var(--text-h2); font-weight: var(--weight-semibold); color: #0b1c2e; letter-spacing: -0.02em; line-height: 1.18; }
-.section-link { font-size: var(--text-small); font-weight: var(--weight-semibold); color: #0b1c2e; border-bottom: 1px solid #0b1c2e; padding-bottom: 2px; }
+.section-title { font-size: var(--text-h2); font-weight: var(--weight-semibold); color: #0b1c2e; text-transform: none; letter-spacing: -0.02em; line-height: 1.18; }
+.section-link { font-size: var(--text-nav); font-weight: var(--weight-semibold); color: #0b1c2e; border-bottom: 1px solid #0b1c2e; padding-bottom: 2px; text-transform: none; }
 
 .masonry-grid {
   display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 24px;
@@ -217,8 +229,8 @@ nav a.active, nav a:hover {
 
 .m-content { position: absolute; bottom: 32px; left: 32px; right: 32px; color: #ffffff; z-index: 3; }
 .m-date { display: flex; align-items: center; gap: 8px; font-size: var(--text-small); font-weight: var(--weight-medium); margin-bottom: 12px; opacity: 0.8; }
-.m-content h3 { font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: 1.3; margin-bottom: 16px; }
-.m-btn { font-size: 15px; font-weight: var(--weight-semibold); background: #ffffff; color: #0b1c2e; padding: 8px 16px; display: inline-block; }
+.m-content h3 { font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: 1.3; margin-bottom: 16px; text-transform: none; }
+.m-btn { font-size: 15px; font-weight: var(--weight-semibold); background: #ffffff; color: #0b1c2e; padding: 8px 16px; display: inline-block; text-transform: none; }
 
 .m-big { grid-column: 1 / 2; grid-row: 1 / 3; }
 .m-big .m-content h3 { font-size: clamp(26px, 2.2vw, 32px); line-height: 1.25; letter-spacing: -0.015em; }
@@ -243,8 +255,8 @@ nav a.active, nav a:hover {
 .anon-icon { width: 64px; height: 64px; fill: #94a3b8; opacity: 0.5; }
 
 .team-info { padding: 20px 16px; text-align: center; }
-.team-info h4 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; }
-.team-info span { font-size: var(--text-small); font-weight: var(--weight-regular); color: #64748b; }
+.team-info h4 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; text-transform: none; line-height: 1.35; }
+.team-info span { font-size: var(--text-small); font-weight: var(--weight-regular); color: #64748b; text-transform: none; }
 
 @keyframes scrollTeam {
   0% { transform: translateX(0); }
@@ -259,7 +271,7 @@ nav a.active, nav a:hover {
 .stat-box { display: flex; flex-direction: column; align-items: center; }
 .stat-icon { width: 48px; height: 48px; margin-bottom: 20px; opacity: 0.4; } 
 .stat-num { font-size: var(--text-stat); font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.1; margin-bottom: 12px; letter-spacing: -0.02em; }
-.stat-text { font-size: var(--text-body); font-weight: var(--weight-regular); color: #475569; line-height: 1.5; }
+.stat-text { font-size: var(--text-body); font-weight: var(--weight-regular); color: #475569; line-height: 1.5; text-transform: none; }
 
 /* =========================================================
    8. FOOTER
@@ -267,12 +279,12 @@ nav a.active, nav a:hover {
 footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 .footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 48px; margin-bottom: 32px; }
 .f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
-.f-col a, .f-col p { display: block; font-size: 15px; font-weight: var(--weight-regular); color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; }
+.f-col a, .f-col p { display: block; font-size: var(--text-nav); font-weight: var(--weight-regular); color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; text-transform: none; }
 .f-col a:hover { color: #ffffff; }
 .f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: rgba(255,255,255,0.4); }
 
 /* =========================================================
-   9. MOBİL MENÜ (HAMBURGER)
+   9. MOBİL MENÜ
    ========================================================= */
 .menu-toggle {
   display: none; flex-direction: column; gap: 5px; background: none; border: none;
@@ -281,16 +293,16 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 .menu-toggle span { width: 22px; height: 2px; background: #ffffff; display: block; transition: transform .25s ease, opacity .2s ease; }
 
 .mobile-nav {
-  position: fixed; top: 0; right: -320px; height: 100vh; width: min(300px, 84vw);
+  position: fixed; top: 0; left: auto; right: -320px; height: 100vh; width: min(300px, 84vw);
   background: #0b1c2e; z-index: 1090; padding: 100px 30px 30px;
   display: flex; flex-direction: column; gap: 4px;
-  transition: right .32s cubic-bezier(.4,0,.2,1);
+  transform: none; transition: right .32s cubic-bezier(.4,0,.2,1);
   overflow-y: auto;
 }
 .mobile-nav.is-open { right: 0; }
 .mobile-nav a {
-  color: rgba(255,255,255,.8); font-size: 15px; font-weight: 500; padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.8); font-size: var(--text-nav); font-weight: var(--weight-medium); padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.1); text-transform: none;
 }
 .mobile-nav a.active, .mobile-nav a:hover { color: #ffffff; }
 
@@ -301,35 +313,29 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 .mobile-nav-overlay.is-open { opacity: 1; visibility: visible; }
 
 /* =========================================================
-   10. RESPONSIVE (TİPOGRAFİK VE DÜZEN BREAKPOINTLERİ)
+   10. RESPONSIVE (TİPOGRAFİK BREAKPOINTLER)
    ========================================================= */
-
 @media (max-width: 1440px) {
   .wrap { padding: 0 72px; }
   header, header.scrolled { padding-left: 72px; padding-right: 72px; }
-  .hero-content { padding-left: 72px; }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1280px) {
   .wrap { padding: 0 48px; }
   header, header.scrolled { padding-left: 48px; padding-right: 48px; }
-  .hero-content { padding-left: 48px; }
   .video-controls { right: 48px; }
-  .section { padding: 96px 0; }
-  .team-section { padding: 96px 0; }
-  .stats-section { padding: 96px 0; }
+  .section, .team-section, .stats-section { padding: 96px 0; }
 }
 
 @media (max-width: 1024px) {
-  .hero-content { width: 100%; max-width: 100%; text-align: center; padding: 0 48px; }
+  .hero-content { width: 100%; max-width: 100%; text-align: center; padding-left: 48px; padding-right: 48px; padding-top: 20vh; }
   .hero-content p { max-width: 100%; margin: 0 auto 36px; }
-  nav { display: none; } /* Desktop nav gizle */
+  header nav { display: none; } 
   .header-right .btn-outline { display: none; }
   .menu-toggle { display: flex; }
   .sponsor-inner { flex-direction: column; gap: 20px; }
   .sponsor-logos { flex-wrap: wrap; justify-content: center; gap: 30px; }
   
-  /* Izgaraların tablet görünümü */
   .masonry-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
   .m-big { grid-column: 1 / 3; grid-row: 1 / 2; }
   .m-small-top { grid-column: 1 / 2; grid-row: 2 / 3; }
@@ -337,27 +343,25 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   .m-tall { grid-column: 1 / 3; grid-row: 3 / 4; }
   
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-  
   .footer-flex { flex-wrap: wrap; gap: 40px; }
   .f-col { width: 45% !important; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   :root {
-    --text-hero: clamp(32px, 8vw, 42px);
-    --text-h2: clamp(26px, 6vw, 32px);
+    --text-hero: clamp(36px, 8vw, 40px);
+    --text-h2: clamp(28px, 6vw, 32px);
     --text-h3: clamp(20px, 5vw, 22px);
     --text-body: 16px;
     --text-nav: 15px;
   }
   .wrap { padding: 0 24px; }
-  header, header.scrolled { padding: 24px; }
+  header, header.scrolled { padding-left: 24px; padding-right: 24px; }
   .custom-dtg-logo .logo-main { font-size: 26px; }
   
-  .hero-content { padding: 0 24px; }
-  .hero-content p { font-size: 15px; margin-bottom: 24px; }
+  .hero-content { padding-left: 24px; padding-right: 24px; padding-top: 150px; }
+  .hero-content p { font-size: 16px; margin-bottom: 24px; }
   
-  /* Mobilde video numaralarını aşağı al */
   .video-controls {
     top: auto; bottom: 120px; right: 50%; transform: translateX(50%);
     flex-direction: row; border-right: none; border-top: 1px solid rgba(255,255,255,0.3);
@@ -368,12 +372,10 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   .section, .team-section, .stats-section { padding: 72px 0; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
   
-  /* Mobilde asimetrik gridleri alt alta diz */
   .masonry-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .m-big, .m-small-top, .m-small-bot, .m-tall { grid-column: 1 / 2 !important; grid-row: auto !important; height: 260px; }
   
   .stats-grid { grid-template-columns: 1fr; gap: 32px; }
-  
   .footer-flex { flex-direction: column; gap: 40px; }
   .f-col { width: 100% !important; }
   .f-bottom { flex-direction: column; gap: 12px; text-align: center; }
