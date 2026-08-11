@@ -135,40 +135,74 @@
       <!-- SCALE -->
       <section class="section">
         <div class="section-head"><h2 data-i18n="scaleTitle">Araştırmanın Ölçeği</h2></div>
-        <div class="stat-strip gsap-reveal">
-          <div class="stat-cell"><div class="stat-num">192</div><div class="stat-label" data-i18n="stat1">Saha araştırmasına dahil edilen ihracatçı firma</div></div>
-          <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label" data-i18n="stat2">İl: Kocaeli, Sakarya, Düzce, Bolu, Yalova</div></div>
-          <div class="stat-cell"><div class="stat-num">15<span class="unit" data-i18n="stat3unit">ay</span></div><div class="stat-label" data-i18n="stat3">TÜBİTAK 3005 proje süresi</div></div>
-          <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat4">Yayımlanmış analiz makalesi</div></div>
+        <div class="scale-panel gsap-reveal">
+          <div class="donut-wrap">
+            <svg viewBox="0 0 160 160">
+              <circle cx="80" cy="80" r="60" stroke="var(--dv-5)" stroke-dasharray="197.62 376.99" stroke-dashoffset="-179.37"/>
+              <circle cx="80" cy="80" r="60" stroke="var(--dv-4)" stroke-dasharray="43.17 376.99" stroke-dashoffset="-136.21"/>
+              <circle cx="80" cy="80" r="60" stroke="var(--dv-3)" stroke-dasharray="43.69 376.99" stroke-dashoffset="-92.51"/>
+              <circle cx="80" cy="80" r="60" stroke="var(--dv-2)" stroke-dasharray="44.03 376.99" stroke-dashoffset="-48.48"/>
+              <circle cx="80" cy="80" r="60" stroke="var(--dv-1)" stroke-dasharray="48.48 376.99" stroke-dashoffset="0"/>
+            </svg>
+            <div class="donut-center">
+              <div class="num">9</div>
+              <div class="lbl" data-i18n="donutCenterLbl">nihai belirleyici</div>
+            </div>
+          </div>
+          <div>
+            <div class="dv-legend">
+              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-1);"></span><span class="name" data-i18n="dvName1">Finansal Belirleyiciler</span><span class="pct">%12,86</span></div>
+              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-2);"></span><span class="name" data-i18n="dvName2">Rekabet, Fırsatlar ve Riskler</span><span class="pct">%11,68</span></div>
+              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-3);"></span><span class="name" data-i18n="dvName3">Stratejik Kararlar ve İnovasyon</span><span class="pct">%11,59</span></div>
+              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-4);"></span><span class="name" data-i18n="dvName4">Girişimci Özellikleri ve Network</span><span class="pct">%11,45</span></div>
+              <div class="dv-legend-row"><span class="dv-swatch" style="background:var(--dv-5);"></span><span class="name" data-i18n="dvName5">Diğer 5 Belirleyici</span><span class="pct">%52,42</span></div>
+            </div>
+            <div class="stat-mini-row">
+              <div class="stat-mini"><div class="stat-num">192</div><div class="stat-label" data-i18n="stat1">Firma</div><div class="bar"><span style="width:100%; background:var(--dv-2);"></span></div></div>
+              <div class="stat-mini"><div class="stat-num">5</div><div class="stat-label" data-i18n="stat2mini">İl</div><div class="bar"><span style="width:100%; background:var(--dv-3);"></span></div></div>
+              <div class="stat-mini"><div class="stat-num">15<span class="unit" data-i18n="stat3unit">ay</span></div><div class="stat-label" data-i18n="stat3mini">Süre</div><div class="bar"><span style="width:70%; background:var(--dv-4);"></span></div></div>
+              <div class="stat-mini"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat4mini">Makale</div><div class="bar"><span style="width:40%; background:var(--dv-1);"></span></div></div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- PROCESS -->
       <section class="section">
         <div class="section-head"><h2 data-i18n="processTitle">Süreç</h2></div>
-        <div class="process-list gsap-reveal">
-          <div class="process-row">
-            <div class="process-num">01</div>
-            <div><h3 data-i18n="proc1Title">Belirleyicilerin Keşfi</h3><p data-i18n="proc1Desc">Literatür taraması ve uzman görüşü</p></div>
-            <div class="process-status done"><span class="dot"></span><span data-i18n="statusDone">Tamamlandı</span></div>
+        <div class="timeline-row gsap-reveal">
+          <div class="timeline-step done">
+            <div class="timeline-dot"></div>
+            <h3 data-i18n="proc1Title">Belirleyicilerin Keşfi</h3>
+            <p data-i18n="proc1Desc">Literatür taraması ve uzman görüşü</p>
+            <span class="ts-status" data-i18n="statusDone">Tamamlandı</span>
           </div>
-          <div class="process-row">
-            <div class="process-num">02</div>
-            <div><h3 data-i18n="proc2Title">Saha Araştırması</h3><p data-i18n="proc2Desc">Nicel veri ve nitel görüşmeler</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusOngoing">Sürüyor</span></div>
+          <div class="timeline-step active">
+            <div class="timeline-dot"></div>
+            <h3 data-i18n="proc2Title">Saha Araştırması</h3>
+            <p data-i18n="proc2Desc">Nicel veri ve nitel görüşmeler</p>
+            <span class="ts-status" data-i18n="statusOngoing">Sürüyor</span>
           </div>
-          <div class="process-row">
-            <div class="process-num">03</div>
-            <div><h3 data-i18n="proc3Title">Analiz ve Bulgular</h3><p data-i18n="proc3Desc">Belirleyicilerin önem sırasına konması</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h3 data-i18n="proc3Title">Analiz ve Bulgular</h3>
+            <p data-i18n="proc3Desc">Belirleyicilerin önem sırasına konması</p>
+            <span class="ts-status" data-i18n="statusPending">Planlanıyor</span>
           </div>
-          <div class="process-row">
-            <div class="process-num">04</div>
-            <div><h3 data-i18n="proc4Title">Politika Önerisi Seti</h3><p data-i18n="proc4Desc">Kamu kurumlarıyla paylaşım</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <h3 data-i18n="proc4Title">Politika Önerisi Seti</h3>
+            <p data-i18n="proc4Desc">Kamu kurumlarıyla paylaşım</p>
+            <span class="ts-status" data-i18n="statusPending">Planlanıyor</span>
           </div>
         </div>
       </section>
+
+      <!-- PULL QUOTE -->
+      <div class="pull-quote gsap-reveal">
+        <p data-i18n="pullQuote1">"Dış ticaret girişimciliğinin başarısında en birincil rolü %12,86'lık nihai grup ağırlığı ile Finansal Belirleyiciler üstlenmektedir."</p>
+        <cite data-i18n="pullQuoteCite">Sahadan Bulgularla İhracatın Yapı Taşları araştırma notundan</cite>
+      </div>
 
       <!-- FINDINGS / ARTICLE ROWS -->
       <section class="section" id="bulgular">
@@ -187,8 +221,15 @@
             <div class="map-panel-copy">
               <span class="eyebrow" data-i18n="eyebrowMap">Saha Bölgesi</span>
               <p style="margin-top:12px; font-size:14px; line-height:1.75;" data-i18n="mapDesc">Araştırma sahası; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan TR42 Doğu Marmara Bölgesi'dir.</p>
+              <div class="map-legend-row">
+                <span><span class="dv-swatch" style="background:var(--dv-1);"></span>Kocaeli</span>
+                <span><span class="dv-swatch" style="background:var(--dv-2);"></span>Sakarya</span>
+                <span><span class="dv-swatch" style="background:var(--dv-3);"></span>Düzce</span>
+                <span><span class="dv-swatch" style="background:var(--dv-4);"></span>Bolu</span>
+                <span><span class="dv-swatch" style="background:var(--dv-5);"></span>Yalova</span>
+              </div>
             </div>
-            <div class="map-panel-visual"></div>
+            <div class="map-panel-visual"><div class="map-tooltip" id="mapTooltip"></div></div>
           </div>
         </div>
       </section>
@@ -235,6 +276,21 @@
 
   <!-- RIGHT RAIL -->
   <aside class="right-rail">
+    <div class="widget">
+      <div class="report-widget">
+        <div class="report-cover">
+          <div class="rc-top">TÜBİTAK 3005 · 424K054</div>
+          <div class="rc-title" data-i18n="reportCoverTitle">İhracat Teşviklerinin Dış Ticaret Girişimciliği Perspektifiyle Revize Edilmesi</div>
+          <div class="rc-bottom">Sakarya Üniversitesi</div>
+        </div>
+        <div class="report-widget-body">
+          <span class="report-badge" data-i18n="reportBadge">Hazırlanıyor</span>
+          <h3 data-i18n="reportTitle">Proje Sonuç Raporu</h3>
+          <p data-i18n="reportDesc">Tam metin rapor, saha araştırması tamamlandığında burada yayımlanacak.</p>
+          <a href="yayinlar.html" class="btn btn-outline" data-i18n="reportBtn">Yayınlar Sayfasına Git</a>
+        </div>
+      </div>
+    </div>
     <div class="widget">
       <div class="widget-title" data-i18n="widgetShare">Paylaş</div>
       <div class="widget-share">
