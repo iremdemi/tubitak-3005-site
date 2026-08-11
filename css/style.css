@@ -321,3 +321,51 @@ h1, h2, h3, h4 { color: var(--ink); font-weight: 700; letter-spacing: -0.015em; 
   .article-row { grid-template-columns: 64px 1fr; }
   .article-row-arrow { display: none; }
 }
+
+/* ==========================================================================
+   SUBPAGE HERO + CONTENT BLOCKS (proje, bulgular, politika, yayinlar, ekip, iletisim)
+   ========================================================================== */
+.page-hero { padding: var(--sp-6) 0 var(--sp-10); border-bottom: 1px solid var(--border); }
+.page-hero .eyebrow { margin-bottom: var(--sp-3); }
+.page-hero h1 { font-size: clamp(28px, 3.2vw, 40px); max-width: 20ch; margin-bottom: var(--sp-4); }
+.page-hero p { font-size: 16px; color: var(--body-text); max-width: 62ch; line-height: 1.7; }
+
+.content-block { max-width: 72ch; padding: var(--sp-10) 0; border-bottom: 1px solid var(--border); }
+.content-block:last-of-type { border-bottom: none; }
+.content-block h2 { font-size: 22px; margin-bottom: var(--sp-4); }
+.content-block p { font-size: 15px; line-height: 1.85; margin-bottom: var(--sp-4); color: var(--body-text); }
+.content-block p:last-child { margin-bottom: 0; }
+
+.doc-list { list-style: none; margin-top: var(--sp-4); display: flex; flex-direction: column; gap: 2px; }
+.doc-list li { display: flex; align-items: center; gap: 12px; padding: var(--sp-4); border: 1px solid var(--border); border-radius: var(--r-md); }
+.doc-list li + li { margin-top: var(--sp-2); }
+.doc-list .doc-icon { width: 34px; height: 34px; border-radius: var(--r-sm); background: var(--bg-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+.doc-list .doc-icon svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.8; }
+.doc-list a { font-size: 14px; font-weight: 600; color: var(--ink); }
+.doc-list .doc-status { margin-left: auto; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); background: var(--tag-bg); padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+
+.institution-list { display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-5); }
+.institution-row { display: flex; align-items: center; gap: 12px; padding: var(--sp-4); border: 1px solid var(--border); border-radius: var(--r-md); }
+.institution-row .inst-mark { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none; }
+.institution-row span { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+
+.contact-hero { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-12); padding: var(--sp-10) 0; }
+.contact-info-row { display: flex; align-items: flex-start; gap: 14px; padding: var(--sp-4) 0; border-top: 1px solid var(--border); }
+.contact-info-row:first-of-type { border-top: none; }
+.contact-info-row .ic { width: 34px; height: 34px; border-radius: var(--r-sm); background: var(--bg-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+.contact-info-row .ic svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.8; }
+.contact-info-row h3 { font-size: 13.5px; margin-bottom: 2px; }
+.contact-info-row p, .contact-info-row a { font-size: 13px; color: var(--muted); }
+.contact-form-panel { border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-8); background: var(--bg); }
+.contact-form-panel input, .contact-form-panel textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: var(--r-md); padding: 11px 14px; font-size: 14px;
+  font-family: var(--font); margin-bottom: var(--sp-3); outline: none; color: var(--ink);
+}
+.contact-form-panel input:focus, .contact-form-panel textarea:focus { border-color: var(--ink); }
+.contact-form-panel textarea { resize: vertical; min-height: 120px; }
+.contact-form-panel button { width: 100%; background: var(--ink); color: #fff; border: none; border-radius: var(--r-md); padding: 12px; font-size: 13.5px; font-weight: 700; }
+
+@media (max-width: 980px) {
+  .contact-hero { grid-template-columns: 1fr; }
+}
+.footer-cols:has(> div:nth-child(2):last-child) { grid-template-columns: 1.3fr 1fr; }
