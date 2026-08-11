@@ -35,7 +35,38 @@ const dict = {
     eyebrowMap: "Saha Bölgesi", mapTitle: "TR42 Doğu Marmara",
     mapDesc: "Araştırma sahası; Kocaeli, Sakarya, Düzce, Bolu ve Yalova illerini kapsayan TR42 Doğu Marmara Bölgesi'dir.",
     eyebrowTeam: "Araştırma Ekibi", teamMore: "Tümünü Gör",
-    widgetShare: "Paylaş", widgetRelated: "İlgili Bulgular"
+    widgetShare: "Paylaş", widgetRelated: "İlgili Bulgular", widgetScale: "Araştırmanın Ölçeği",
+
+    pjEyebrow: "Proje", pjH1: "Araştırma Amacı ve Kapsamı", pjLede: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğini şekillendiren dinamiklerin detaylı incelemesi.",
+    pjAmacTitle: "Araştırma Amacı", pjAmacP1: "Bu proje, geleneksel uluslararasılaşma teorilerinden farklı olarak katma değerin nerede üretildiğine odaklanmaktadır. Temel amaç, ihracat teşviklerinin yalnızca miktar odaklı değil, katma değer ve girişimcilik kapasitesini artıracak şekilde revize edilmesine yönelik somut politika önerileri geliştirmektir.",
+    pjKapsamTitle: "Saha Kapsamı", pjKapsamP1: "Araştırma, üretim ve lojistik açısından stratejik bir öneme sahip olan TR42 Doğu Marmara Bölgesi'nde (Kocaeli, Sakarya, Düzce, Bolu, Yalova) yürütülmüştür. Saha çalışmasına aktif olarak üretim ve ihracat yapan 192 firma katılmış olup, veriler stratejik ve finansal yetkinliklerin dış ticaret başarısına etkisini ölçmek üzere toplanmıştır.",
+    pjSureTitle: "Süreç",
+
+    bgEyebrow: "Bulgular", bgH1: "Saha Bulguları ve Analizler", bgLede: "TR42 Bölgesi'ndeki 192 ihracatçı firmadan elde edilen nicel ve nitel veri setlerinin bilimsel metodolojilerle incelenmesi.",
+    bgBelTitle: "Temel Belirleyiciler", bgBelP1: "Çok Kriterli Karar Verme (ÇKKV) metodolojileri kullanılarak, dış ticaret girişimciliğini etkileyen 9 temel belirleyici saptanmıştır. Bu belirleyiciler arasında \"Finansal Performans\" ve \"Stratejik İnovasyon Yönetimi\" en yüksek ağırlıklara sahip olmuştur.",
+    bgAnalizTitle: "Güncel Analizler", bgAnalizP1: "Firmaların demografik yapıları ile ihracat menzilleri arasındaki korelasyon analizleri, KOBİ'lerin mevcut teşvik mekanizmalarından faydalanma oranlarının büyük işletmelere kıyasla anlamlı düzeyde düşük olduğunu kanıtlamaktadır.",
+
+    plEyebrow: "Politika Önerileri", plH1: "Kanıta Dayalı Politika Önerileri", plLede: "İhracat teşvik sisteminin miktar odaklılıktan katma değer ve girişimcilik eksenine kaydırılmasına yönelik stratejik adımlar.",
+    plT1: "Teşvik Mekanizmalarının Yeniden Yapılandırılması",
+    plP1: "Araştırma bulgularımız ışığında, mevcut devlet desteklerinin başlangıç aşamasındaki yenilikçi KOBİ'ler (Start-up'lar) için bürokratik olarak sadeleştirilmesi elzemdir. Kamu otoriteleri tarafından sağlanan teşviklerin, yurt dışında doğrudan yatırımdan ziyade yurt içindeki sabit sermaye birikimini ve inovasyon kapasitesini artıracak şekilde \"Dış Ticaret Girişimciliği\" filtresinden geçirilerek verilmesi önerilmektedir.",
+    plP2: "Detaylı politika eylem planı, projenin nihai kapanış raporunda Ticaret Bakanlığı ve ilgili paydaşlara sunulacaktır.",
+    plOncelikTitle: "Öncelikli Alanlar",
+    policyItem1Title: "Finansman Erişimi", policyItem2Title: "Yeşil Dönüşüm", policyItem3Title: "Dayanıklı Teşvik Mimarisi",
+    policyItem1: "Dış ticaret girişimcilerinin finansman ve özkaynak erişiminin güçlendirilmesi",
+    policyItem3: "Bölgesel sanayi hinterlandının yeşil ve dijital dönüşüme uyumunun desteklenmesi",
+    policyItem4: "Küresel korumacılık koşullarına dayanıklı, yerli üretimi önceleyen bir teşvik mimarisi",
+
+    ylEyebrow: "Yayınlar", ylH1: "Yayınlar ve Raporlar", ylLede: "Proje kapsamında üretilen uluslararası akademik makaleler, sektörel politika notları ve nihai proje raporları.",
+    ylRaporTitle: "İndirilebilir Raporlar", ylRaporP1: "Sektörel paydaşlar için hazırlanan yönetici özetleri ve proje ara/sonuç raporları yakında bu alanda yayınlanacaktır.",
+    ylDoc1: "TÜBİTAK 3005 Proje Sonuç Raporu", ylDoc2: "Politika Önerileri ve Karar Verici Özeti", ylSoon: "Yakında",
+    ylMakaleTitle: "Akademik Yayınlar", ylMakaleP1: "Araştırma ekibimiz tarafından SSCI, SCI-E ve diğer uluslararası indeksli dergilere gönderilen/yayınlanan bilimsel çalışmalar.",
+    ylDoc3: "Dış Ticaret Girişimciliği ve İhracat Teşvikleri İlişkisi: TR42 Bölgesi Örneği", ylPrep: "Hazırlık Aşamasında",
+
+    ekEyebrow: "Araştırma Ekibimiz", ekH1: "Araştırma Ekibimiz", ekLede: "Disiplinlerarası uzmanlığa sahip, uluslararası ticaret ve girişimcilik alanında deneyimli akademik kadromuz.",
+    ekUyelerTitle: "Proje Ekibi", ekKurumTitle: "Destekleyen Kurumlar", ekKurumP1: "Bu araştırma, TÜBİTAK 3005 \"Sosyal ve Beşeri Bilimlerde Yenilikçi Çözümler\" destek programı kapsamında finanse edilmiştir.",
+
+    ilEyebrow: "İletişim", ilH1: "Bize Ulaşın", ilLede: "Araştırma hakkında sorularınız, iş birliği teklifleriniz veya basın talepleriniz için bizimle iletişime geçin.",
+    ilEposta: "E-posta", ilKurum: "Kurum", ilKurumAdi: "Sakarya Üniversitesi", ilProgram: "Program"
   },
   en: {
     menuAnaSayfa: "HOME", menuProje: "PROJECT", menuBulgular: "FINDINGS", menuPolitika: "POLICY RECOMMENDATIONS", menuYayinlar: "PUBLICATIONS", menuEkip: "RESEARCH TEAM", menuIletisim: "CONTACT",
@@ -73,7 +104,38 @@ const dict = {
     eyebrowMap: "Field Region", mapTitle: "TR42 East Marmara",
     mapDesc: "The research field covers the TR42 East Marmara Region: Kocaeli, Sakarya, Düzce, Bolu and Yalova.",
     eyebrowTeam: "Research Team", teamMore: "View All",
-    widgetShare: "Share", widgetRelated: "Related Findings"
+    widgetShare: "Share", widgetRelated: "Related Findings", widgetScale: "Scale of the Research",
+
+    pjEyebrow: "Project", pjH1: "Research Purpose and Scope", pjLede: "A detailed examination of the dynamics shaping foreign trade entrepreneurship in the TR42 East Marmara Region.",
+    pjAmacTitle: "Research Purpose", pjAmacP1: "Unlike traditional internationalization theories, this project focuses on where value-added is actually produced. The main goal is to develop concrete policy recommendations for revising export incentives so they boost value-added and entrepreneurial capacity, not just export volume.",
+    pjKapsamTitle: "Field Scope", pjKapsamP1: "The research was conducted in the TR42 East Marmara Region (Kocaeli, Sakarya, Düzce, Bolu, Yalova), a region of strategic importance for production and logistics. 192 actively producing and exporting firms participated in the field study, with data collected to measure the effect of strategic and financial competencies on foreign trade success.",
+    pjSureTitle: "Process",
+
+    bgEyebrow: "Findings", bgH1: "Field Findings and Analyses", bgLede: "A scientific examination of the quantitative and qualitative data sets obtained from 192 exporting firms in the TR42 Region.",
+    bgBelTitle: "Core Determinants", bgBelP1: "Using Multi-Criteria Decision Making (MCDM) methodologies, 9 core determinants affecting foreign trade entrepreneurship were identified. Among these, \"Financial Performance\" and \"Strategic Innovation Management\" carried the highest weights.",
+    bgAnalizTitle: "Latest Analyses", bgAnalizP1: "Correlation analyses between firms' demographic structures and export ranges show that SMEs benefit from current incentive mechanisms at a significantly lower rate compared to large enterprises.",
+
+    plEyebrow: "Policy Recommendations", plH1: "Evidence-Based Policy Recommendations", plLede: "Strategic steps for shifting the export incentive system from a quantity-oriented focus toward a value-added and entrepreneurship axis.",
+    plT1: "Restructuring Incentive Mechanisms",
+    plP1: "In light of our research findings, it is essential to bureaucratically simplify existing state support for innovative early-stage SMEs (start-ups). We recommend that incentives provided by public authorities be filtered through a \"Foreign Trade Entrepreneurship\" lens, prioritizing domestic fixed capital accumulation and innovation capacity over direct investment abroad.",
+    plP2: "The detailed policy action plan will be presented to the Ministry of Trade and relevant stakeholders in the project's final closing report.",
+    plOncelikTitle: "Priority Areas",
+    policyItem1Title: "Access to Financing", policyItem2Title: "Green Transformation", policyItem3Title: "Resilient Incentive Architecture",
+    policyItem1: "Strengthening foreign trade entrepreneurs' access to financing and equity capital",
+    policyItem3: "Supporting the regional industrial hinterland's adaptation to green and digital transformation",
+    policyItem4: "An incentive architecture resilient to global protectionism that prioritizes domestic production",
+
+    ylEyebrow: "Publications", ylH1: "Publications and Reports", ylLede: "International academic articles, sector policy notes, and final project reports produced within the project.",
+    ylRaporTitle: "Downloadable Reports", ylRaporP1: "Executive summaries and interim/final project reports prepared for sector stakeholders will be published here soon.",
+    ylDoc1: "TÜBİTAK 3005 Final Project Report", ylDoc2: "Policy Recommendations and Decision-Maker Summary", ylSoon: "Coming Soon",
+    ylMakaleTitle: "Academic Publications", ylMakaleP1: "Scientific studies submitted to or published in SSCI, SCI-E, and other internationally indexed journals by our research team.",
+    ylDoc3: "The Relationship Between Foreign Trade Entrepreneurship and Export Incentives: The TR42 Region Case", ylPrep: "In Preparation",
+
+    ekEyebrow: "Research Team", ekH1: "Research Team", ekLede: "Our academic staff with interdisciplinary expertise and experience in international trade and entrepreneurship.",
+    ekUyelerTitle: "Project Team", ekKurumTitle: "Supporting Institutions", ekKurumP1: "This research is funded under the TÜBİTAK 3005 \"Innovative Solutions in Social Sciences and Humanities\" support programme.",
+
+    ilEyebrow: "Contact", ilH1: "Contact Us", ilLede: "Get in touch for questions about the research, collaboration proposals, or press inquiries.",
+    ilEposta: "Email", ilKurum: "Institution", ilKurumAdi: "Sakarya University", ilProgram: "Program"
   }
 };
 
