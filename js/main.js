@@ -38,7 +38,6 @@ function translateHTML() {
   });
 }
 
-// VİDEO MANTIĞINA DOKUNULMADI
 let currentVideoIndex = 0;
 let autoAdvanceTimer = null;
 
