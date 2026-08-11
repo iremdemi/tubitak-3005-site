@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DTG Research Portal | Ana Sayfa</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<!-- DIŞARIDAN ÇAĞRILAN CSS DOSYAMIZ -->
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- 1. YAPIŞKAN (STICKY) HEADER & LOGO -->
+<!-- 1. SABANCI TARZI YAPIŞKAN (STICKY) HEADER -->
 <header id="mainHeader">
-  <!-- Özel Çizilen DTG Logosu -->
   <div class="custom-dtg-logo">
     <div class="logo-main">DTG</div>
     <div class="logo-line"></div>
@@ -37,44 +35,35 @@
   </div>
 </header>
 
-<!-- 2. HERO BÖLÜMÜ (1. GÖRSEL TAMAMEN OKYANUS/GEMİ) -->
+<!-- 2. SABANCI TARZI VİDEO HERO BÖLÜMÜ -->
 <section class="hero">
   
-  <div class="hero-slider" id="heroSlider">
-    <!-- 1. Görsel: Açık deniz, okyanus ve gemi (Senin istediğin ferahlık) -->
-    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?q=80&w=1920')"></div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1920')"></div> 
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1494412519320-aa313fc17eb8?q=80&w=1920')"></div> 
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504851149312-7a075b496cc7?q=80&w=1920')"></div> 
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920')"></div> 
+  <!-- ARKA PLANDA SESSİZ AKAN KÜRESEL TİCARET & LOJİSTİK VİDEOSU -->
+  <div class="video-bg-wrapper">
+    <video id="heroVideo" autoplay muted playsinline loop preload="auto">
+      <!-- 1. Video: Okyanusta giden dev konteyner gemisi & hava ticareti -->
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-sailing-in-the-sea-41551-large.mp4" type="video/mp4">
+    </video>
   </div>
   
-  <!-- Sadece sol tarafı karartan, sağ tarafı pırıl pırıl bırakan filtre -->
+  <!-- Görselin üzerine binen hafif sinematik karartma katmanı -->
   <div class="hero-overlay"></div>
 
-  <!-- Manşet Yazısı -->
+  <!-- Manşet Yazısı ve Sabancı Tarzı Buton -->
   <div class="hero-content">
     <h1 data-i18n="heroTitle">İHRACAT TEŞVİKLERİNİN DIŞ TİCARET GİRİŞİMCİLİĞİ PERSPEKTİFİYLE REVİZE EDİLMESİNE YÖNELİK POLİTİKA ÖNERİLERİ</h1>
     <p data-i18n="heroDesc">TR42 Doğu Marmara Bölgesi'ndeki ihracatçı firmaların katılımıyla yürütülen kapsamlı bir saha araştırmasının bulguları, somut politika önerilerine dönüşüyor.</p>
-    <a href="#" class="hero-btn" data-i18n="heroBtn">POLİTİKA ÖNERİLERİNİ GÖR &gt;</a>
+    <a href="#" class="sabanci-btn" data-i18n="heroBtn">POLİTİKA ÖNERİLERİNİ GÖR &gt;</a>
   </div>
 
-  <!-- Sağ Radar (Artık İçi Dolgulu / Gölgeli) -->
-  <svg class="hero-radar" viewBox="0 0 400 400">
-    <circle cx="200" cy="200" r="80"/>
-    <circle cx="200" cy="200" r="140"/>
-    <circle cx="200" cy="200" r="200"/>
-  </svg>
-
-  <div class="hero-numbers" id="slideNumbers">
-    <div class="h-num active" onclick="changeSlide(0)">01</div>
-    <div class="h-num" onclick="changeSlide(1)">02</div>
-    <div class="h-num" onclick="changeSlide(2)">03</div>
-    <div class="h-num" onclick="changeSlide(3)">04</div>
-    <div class="h-num" onclick="changeSlide(4)">05</div>
+  <!-- Sabancı Tarzı Video Değiştirici / Sayfa Göstergeleri -->
+  <div class="video-controls" id="videoControls">
+    <div class="v-num active" onclick="playVideo(0)">01</div>
+    <div class="v-num" onclick="playVideo(1)">02</div>
+    <div class="v-num" onclick="playVideo(2)">03</div>
   </div>
 
-  <!-- Sadece 3 Kurum Logosu -->
+  <!-- Yürütücü ve Destekleyen Kurumlar Şeridi -->
   <div class="sponsor-bar">
     <div class="wrap sponsor-inner">
       <div class="sponsor-title" data-i18n="sponsorTitle">YÜRÜTÜCÜ VE DESTEKLEYEN KURUMLAR</div>
@@ -87,7 +76,7 @@
   </div>
 </section>
 
-<!-- 3. BULGULAR (NEGMAR ASİMETRİK GRID) -->
+<!-- 3. BULGULAR (ASİMETRİK GRID) -->
 <section class="section" id="bulgular">
   <div class="wrap">
     <div class="section-head">
@@ -143,13 +132,11 @@
   </div>
   
   <div class="marquee-container">
-    <div class="marquee-track" id="teamTrack">
-      <!-- JS ile doldurulacak -->
-    </div>
+    <div class="marquee-track" id="teamTrack"></div>
   </div>
 </section>
 
-<!-- 5. İSTATİSTİKLER -->
+<!-- 5. İSTATİSTİKLER (PROJE DOSYASI GERÇEK VERİLERİ) -->
 <section class="stats-section">
   <div class="wrap">
     <div class="stats-grid">
@@ -220,7 +207,6 @@
   </div>
 </footer>
 
-<!-- DIŞARIDAN ÇAĞRILAN JS DOSYAMIZ -->
 <script src="js/main.js"></script>
 
 </body>
