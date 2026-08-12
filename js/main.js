@@ -11,7 +11,7 @@ const dict = {
     statFirma: "Saha Araştırmasına Katılan<br>İhracatçı Firma", statIl: "Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Odak<br>Sektör", statAy: "Ay<br>Proje Süresi",
     footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
     footKurumsal: "Kurumsal", footIcerik: "İçerikler", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.",
-    /* YENİ EKLENEN ÇEVİRİLER (ALT SAYFALAR İÇİN) */
+    /* ALT SAYFALAR İÇİN ÇEVİRİLER */
     comingSoonTitle: "Çok Yakında",
     comingSoonDesc: "Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.",
     backToHome: "Ana Sayfaya Dön"
@@ -28,7 +28,7 @@ const dict = {
     statFirma: "Exporting Firms<br>Included in Field Research", statIl: "Strategic Provinces<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Focus<br>Sectors", statAy: "Months<br>Project Duration",
     footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
     footKurumsal: "Corporate", footIcerik: "Contents", footIletisim: "Contact", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Portal. All rights reserved.",
-    /* YENİ EKLENEN ÇEVİRİLER (ALT SAYFALAR İÇİN) */
+    /* ALT SAYFALAR İÇİN ÇEVİRİLER */
     comingSoonTitle: "Coming Soon",
     comingSoonDesc: "The research data and content for this section are currently being compiled. Please visit again later.",
     backToHome: "Back to Home"
@@ -218,15 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
 
+  /* BURASI DÜZELTİLDİ: SENİN EN GÜNCEL KODUNDAKİ DOSYA YOLLARI GETİRİLDİ */
   const ekipData = [
     { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
-    { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.49.58.jpeg" },
+    { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/caner erden.jpeg" },
     { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
     { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
     { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
-    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "" },
-    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "" },
-    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "" }
+    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "img/bilal torkul.jpeg" },
+    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.jpg" },
+    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "img/furkan coşgun.jpeg" }
   ];
 
   const track = document.getElementById('teamTrack');
