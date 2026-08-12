@@ -187,7 +187,7 @@ header nav a.active, header nav a:hover {
 }
 .sponsor-inner { display: flex; align-items: center; justify-content: center; } 
 .sponsor-logos { display: flex; align-items: center; gap: 80px; justify-content: center; width: 100%; }
-.sponsor-logos img { width: auto; filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
+.sponsor-logos img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
 .sponsor-logos img:hover { opacity: 1; }
 /* Logoların Oranları */
 .logo-tubitak { height: 32px !important; }
