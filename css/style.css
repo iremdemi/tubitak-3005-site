@@ -45,41 +45,28 @@ ul { list-style: none; }
 header {
   position: fixed;
   top: 0; left: 0; width: 100%; z-index: 1200;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; 
+  justify-content: flex-end; /* Sol logo kalktığı için menü ve sağ tarafı dengeler */
+  align-items: center;
   padding: 32px 80px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: none; 
   transition: all 0.4s ease;
 }
 
 header.scrolled {
-  background: rgba(11, 28, 46, 0.98);
+  background: rgba(255, 255, 255, 0.98); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 16px 80px;
-  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
 }
 
-.custom-dtg-logo {
-  display: flex; flex-direction: column; align-items: flex-start; color: #ffffff;
-}
-.custom-dtg-logo .logo-main {
-  font-family: 'Times New Roman', serif; 
-  font-size: 32px; 
-  font-weight: var(--weight-bold); 
-  letter-spacing: -0.02em; 
-  line-height: 1;
-}
-.custom-dtg-logo .logo-line {
-  width: 100%; max-width: 65px; height: 1px; background-color: #ffffff; margin: 6px 0; opacity: 0.6;
-}
-.custom-dtg-logo .logo-sub {
-  font-family: var(--font-sans); 
-  font-size: 11px; 
-  font-weight: var(--weight-medium);
-  letter-spacing: 0.05em; 
-  text-transform: uppercase; 
-  opacity: 0.9;
-}
+/* Footer İçin Bırakılan Logo CSS'i (Header'dan silindi) */
+.custom-dtg-logo { display: flex; flex-direction: column; align-items: flex-start; color: #ffffff; }
+.custom-dtg-logo .logo-main { font-family: 'Times New Roman', serif; font-size: 32px; font-weight: var(--weight-bold); letter-spacing: -0.02em; line-height: 1; }
+.custom-dtg-logo .logo-line { width: 100%; max-width: 65px; height: 1px; background-color: #ffffff; margin: 6px 0; opacity: 0.6; }
+.custom-dtg-logo .logo-sub { font-family: var(--font-sans); font-size: 11px; font-weight: var(--weight-medium); letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.9; }
+
 
 header nav { 
   display: flex; gap: 32px; align-items: center;
@@ -97,6 +84,9 @@ header nav a.active, header nav a:hover {
   font-weight: var(--weight-semibold);
 }
 
+header.scrolled nav a { color: #4A5568; }
+header.scrolled nav a.active, header.scrolled nav a:hover { color: #002b66; }
+
 .header-right { display: flex; align-items: center; gap: 24px; }
 
 .btn-outline {
@@ -111,6 +101,9 @@ header nav a.active, header nav a:hover {
 }
 .btn-outline:hover { background: #ffffff; color: #0b1c2e; }
 
+header.scrolled .btn-outline { border-color: #4A5568; color: #4A5568; }
+header.scrolled .btn-outline:hover { background: #002b66; border-color: #002b66; color: #ffffff; }
+
 /* DİL İKONU VE AÇILIR MENÜ (SABANCI TARZI) */
 .lang-wrapper { position: relative; display: flex; align-items: center; }
 
@@ -121,6 +114,8 @@ header nav a.active, header nav a:hover {
   display: flex; align-items: center;
 }
 .lang-icon:hover { color: #ffffff; }
+header.scrolled .lang-icon { color: #4A5568; }
+header.scrolled .lang-icon:hover { color: #002b66; }
 
 .lang-dropdown {
   position: absolute;
@@ -135,7 +130,7 @@ header nav a.active, header nav a:hover {
   visibility: hidden;
   transform: translateY(15px);
   transition: all 0.3s ease;
-  margin-top: 24px; /* Header'dan mesafesi */
+  margin-top: 24px; 
 }
 .lang-dropdown.is-open {
   opacity: 1;
@@ -159,6 +154,8 @@ header nav a.active, header nav a:hover {
   color: #0b1c2e;
   font-weight: 600;
 }
+
+header.scrolled .menu-toggle span { background: #4A5568; }
 
 /* =========================================================
    3. ARKA PLAN VİDEO HERO BÖLÜMÜ
@@ -327,7 +324,20 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 .mobile-nav-overlay.is-open { opacity: 1; visibility: visible; }
 
 /* =========================================================
-   10. RESPONSIVE (TİPOGRAFİK BREAKPOINTLER)
+   10. SCROLL REVEAL (AŞAĞIDAN YUKARI SÜZÜLME EFEKTİ)
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   11. RESPONSIVE (TİPOGRAFİK BREAKPOINTLER)
    ========================================================= */
 @media (max-width: 1440px) {
   .wrap { padding: 0 72px; }
@@ -361,7 +371,7 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 
 @media (max-width: 767px) {
   :root {
-    --text-hero: clamp(36px, 8vw, 40px);
+    --text-hero: clamp(26px, 7vw, 30px);
     --text-h2: clamp(28px, 6vw, 32px);
     --text-h3: clamp(20px, 5vw, 22px);
     --text-body: 16px;
@@ -369,7 +379,6 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   }
   .wrap { padding: 0 24px; }
   header, header.scrolled { padding-left: 24px; padding-right: 24px; }
-  .custom-dtg-logo .logo-main { font-size: 26px; }
   
   .hero-content { padding-left: 24px; padding-right: 24px; padding-top: 150px; text-align: left; }
   .hero-content p { font-size: 16px; margin-bottom: 24px; }
