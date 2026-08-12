@@ -3,172 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Politika Önerileri - DTG Research Portal</title>
-<meta name="description" content="İhracat teşvik sisteminin miktar odaklılıktan katma değer ve girişimcilik eksenine kaydırılmasına yönelik stratejik adımlar.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>DTG Research Portal | Yakında</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <a href="index.html" class="sidebar-brand">
-      <div class="sidebar-brand-mark">DTG</div>
-      <div class="sidebar-brand-text">Research Portal<small>TÜBİTAK 3005</small></div>
-    </a>
+<!-- ANA SAYFA İLE BİREBİR AYNI YAPIŞKAN (STICKY) HEADER -->
+<header id="mainHeader">
+  <div class="custom-dtg-logo">
+    <div class="logo-main">DTG</div>
+    <div class="logo-line"></div>
+    <div class="logo-sub">RESEARCH PORTAL</div>
+  </div>
 
-    <div class="sidebar-group">
-      <div class="sidebar-nav">
-        <a href="index.html">
-          <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
-          <span data-i18n="menuAnaSayfa">Ana Sayfa</span>
-        </a>
-        <a href="proje.html">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-          <span data-i18n="menuProje">Proje</span>
-        </a>
-        <a href="bulgular.html">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
-          <span data-i18n="menuBulgular">Bulgular</span>
-        </a>
-        <a href="politika.html" class="active">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span data-i18n="menuPolitika">Politika Önerileri</span>
-        </a>
-        <a href="yayinlar.html">
-          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg>
-          <span data-i18n="menuYayinlar">Yayınlar</span>
-        </a>
-        <a href="ekip.html">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          <span data-i18n="menuEkip">Araştırma Ekibimiz</span>
-        </a>
-        <a href="iletisim.html">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-          <span data-i18n="menuIletisim">İletişim</span>
-        </a>
+  <nav>
+    <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+    <a href="proje.html" data-i18n="menuProje">Kurumsal</a>
+    <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
+    <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
+    <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+    <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
+  </nav>
+  
+  <div class="header-right">
+    <div class="lang-wrapper">
+      <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </div>
+      <div class="lang-dropdown" id="langDropdown">
+        <span class="active" data-lang="tr">Türkçe</span>
+        <span data-lang="en">English</span>
       </div>
     </div>
+    <a href="politika.html" class="btn-outline">Politika Önerileri</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-    <div class="sidebar-divider"></div>
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+  <a href="proje.html" data-i18n="menuProje">Kurumsal</a>
+  <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
+  <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
+  <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
+  <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+  <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
+</nav>
 
-    <div class="sidebar-group">
-      <div class="sidebar-group-label" data-i18n="sidebarRegion">Saha Bölgesi</div>
-      <div class="sidebar-nav">
-        <a href="bulgular.html#kocaeli"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Kocaeli</span></a>
-        <a href="bulgular.html#sakarya"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Sakarya</span></a>
-        <a href="bulgular.html#duzce"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg><span>Düzce · Bolu · Yalova</span></a>
-      </div>
-    </div>
+<!-- YAKINDA GELİYOR BÖLÜMÜ -->
+<section class="coming-soon-section">
+  <!-- Minimalist Saat İkonu -->
+  <svg class="coming-soon-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="12 6 12 12 16 14"></polyline>
+  </svg>
+  <h1 data-i18n="comingSoonTitle">Çok Yakında</h1>
+  <p data-i18n="comingSoonDesc">Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.</p>
+  <!-- Ana Sayfaya Dön Butonu (Zarif Sabancı Estetiğinde) -->
+  <a href="index.html" class="btn-outline" style="border-color: rgba(255,255,255,0.4);" data-i18n="backToHome">Ana Sayfaya Dön</a>
+</section>
 
-    <div class="sidebar-footer">
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-lang" id="langToggle">
-        <span data-lang="tr">TR</span>
-        <span class="sep">|</span>
-        <span data-lang="en">EN</span>
-      </div>
-    </div>
-  </aside>
-  <div class="nav-overlay" id="sidebarOverlay"></div>
-  <div class="nav-overlay" id="sidebarOverlay"></div>
-
-  <div class="main-col">
-    <div class="topbar">
-      <div class="topbar-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
-        <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Bulgu, il veya konu ara…">
-      </div>
-      <div class="topbar-cta">
-        <a href="politika.html" class="btn btn-outline" data-i18n="btnPolitika">Politika Önerileri</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
-
-    <div class="content-pad">
-      <section class="page-hero gsap-reveal">
-        <span class="eyebrow" data-i18n="plEyebrow">Politika Önerileri</span>
-        <h1 data-i18n="plH1">Kanıta Dayalı Politika Önerileri</h1>
-        <p data-i18n="plLede">İhracat teşvik sisteminin miktar odaklılıktan katma değer ve girişimcilik eksenine kaydırılmasına yönelik stratejik adımlar.</p>
-      </section>
-
-      <div class="content-block gsap-reveal">
-        <h2 data-i18n="plT1">Teşvik Mekanizmalarının Yeniden Yapılandırılması</h2>
-        <p data-i18n="plP1">Araştırma bulgularımız ışığında, mevcut devlet desteklerinin başlangıç aşamasındaki yenilikçi KOBİ'ler (Start-up'lar) için bürokratik olarak sadeleştirilmesi elzemdir. Kamu otoriteleri tarafından sağlanan teşviklerin, yurt dışında doğrudan yatırımdan ziyade yurt içindeki sabit sermaye birikimini ve inovasyon kapasitesini artıracak şekilde "Dış Ticaret Girişimciliği" filtresinden geçirilerek verilmesi önerilmektedir.</p>
-        <p data-i18n="plP2">Detaylı politika eylem planı, projenin nihai kapanış raporunda Ticaret Bakanlığı ve ilgili paydaşlara sunulacaktır.</p>
-      </div>
-
-      <div class="content-block gsap-reveal">
-        <h2 data-i18n="plOncelikTitle">Öncelikli Alanlar</h2>
-        <div class="process-list" style="margin-top:16px;">
-          <div class="process-row">
-            <div class="process-num">01</div>
-            <div><h3 data-i18n="policyItem1Title">Finansman Erişimi</h3><p data-i18n="policyItem1">Dış ticaret girişimcilerinin finansman ve özkaynak erişiminin güçlendirilmesi</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-          </div>
-          <div class="process-row">
-            <div class="process-num">02</div>
-            <div><h3 data-i18n="policyItem2Title">Yeşil Dönüşüm</h3><p data-i18n="policyItem3">Bölgesel sanayi hinterlandının yeşil ve dijital dönüşüme uyumunun desteklenmesi</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-          </div>
-          <div class="process-row">
-            <div class="process-num">03</div>
-            <div><h3 data-i18n="policyItem3Title">Dayanıklı Teşvik Mimarisi</h3><p data-i18n="policyItem4">Küresel korumacılık koşullarına dayanıklı, yerli üretimi önceleyen bir teşvik mimarisi</p></div>
-            <div class="process-status"><span class="dot"></span><span data-i18n="statusPending">Planlanıyor</span></div>
-          </div>
+<!-- ANA SAYFA İLE BİREBİR AYNI FOOTER -->
+<footer class="reveal">
+  <div class="wrap">
+    <div class="footer-flex">
+      
+      <div class="f-col" style="width: 28%;">
+        <div class="custom-dtg-logo" style="align-items: flex-start; margin-bottom: 24px;">
+          <div class="logo-main" style="font-size: 26px;">DTG</div>
+          <div class="logo-line" style="width: 60px;"></div>
+          <div class="logo-sub" style="font-size: 8px;">RESEARCH PORTAL</div>
         </div>
+        <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
 
-            <!-- FOOTER -->
-            <footer class="site-footer" id="iletisim">
-              <div class="footer-cols">
-                <div>
-                  <h4 data-i18n="brandTitleFoot">Dış Ticaret Girişimciliği ve İhracat Teşvikleri Araştırma Portalı</h4>
-                  <p style="margin-top:10px;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesine yönelik bağımsız araştırma platformu.</p>
-                </div>
-                <div>
-                  <h4 data-i18n="footSupp">Destekleyen Kurumlar</h4>
-                  <p data-i18n="footK1">T.C. Ticaret Bakanlığı</p>
-                  <p data-i18n="footK2">Türkiye İhracatçılar Meclisi (TİM)</p>
-                  <p data-i18n="footK3">TR42 Doğu Marmara Kalkınma Ajansı</p>
-                </div>
-                <div class="footer-form">
-                  <h4 data-i18n="footContactTitle">Bize Ulaşın</h4>
-                  <form action="https://formsubmit.co/PROJE_EPOSTASI@sakarya.edu.tr" method="POST">
-                    <input type="text" name="name" data-i18n-placeholder="footFormName" placeholder="Ad Soyad" required>
-                    <input type="email" name="email" data-i18n-placeholder="footFormEmail" placeholder="E-posta" required>
-                    <textarea name="message" rows="2" data-i18n-placeholder="footFormMessage" placeholder="Mesajınız" required></textarea>
-                    <input type="hidden" name="_subject" value="DTG Research Portal">
-                    <input type="text" name="_honey" style="display:none">
-                    <button type="submit" data-i18n="footFormSend">Gönder</button>
-                  </form>
-                </div>
-              </div>
-              <div class="footer-bottom" data-i18n="footCopy">&copy; 2026 Tüm Hakları Saklıdır.</div>
-            </footer>
-    </div>
-  </div>
-
-</div>
-
-<!-- MAKALE MODAL -->
-<div class="article-modal-overlay" id="articleModalOverlay">
-  <div class="article-modal">
-    <div class="article-modal-image"><img id="modalImage" src="" alt=""></div>
-    <div class="article-modal-scroll">
-      <div class="article-modal-header">
-        <h2 id="modalTitle">Makale Başlığı</h2>
-        <button class="article-modal-close" id="modalCloseBtn">&times;</button>
+      <div class="f-col">
+        <h4 data-i18n="footKurumsal">Kurumsal</h4>
+        <a href="proje.html" data-i18n="menuProje">Proje Hakkında</a>
+        <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+        <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
       </div>
-      <div class="article-modal-body" id="modalBody"></div>
+
+      <div class="f-col">
+        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <a href="bulgular.html" data-i18n="menuBulgular">Saha Bulguları</a>
+        <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
+        <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
+      </div>
+
+      <div class="f-col">
+        <h4 data-i18n="footIletisim">İletişim</h4>
+        <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
+        <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
+        <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
+      </div>
+
+    </div>
+    <div class="f-bottom">
+      <span data-i18n="footCopy">Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.</span>
+      <span>TR42 | TÜBİTAK 3005</span>
     </div>
   </div>
-</div>
+</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>
