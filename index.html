@@ -9,13 +9,9 @@
 </head>
 <body>
 
+<!-- SABANCI BEYAZ HEADER & DÜNYA İKONU EKLENDİ, LOGO SİLİNDİ -->
 <header id="mainHeader">
-  <div class="custom-dtg-logo">
-    <div class="logo-main">DTG</div>
-    <div class="logo-line"></div>
-    <div class="logo-sub">RESEARCH PORTAL</div>
-  </div>
-
+  
   <nav>
     <a href="index.html" class="active" data-i18n="menuAnaSayfa">Ana Sayfa</a>
     <a href="proje.html" data-i18n="menuProje">Kurumsal</a>
@@ -26,9 +22,13 @@
   </nav>
   
   <div class="header-right">
-    <div class="lang-box" id="langToggle">
-      <span class="active" data-lang="tr">TR</span>
-      <span data-lang="en">EN</span>
+    <!-- TR/EN yerine Sabancı tarzı minimalist Dünya İkonu -->
+    <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
     </div>
     <a href="politika.html" class="btn-outline">Politika Önerileri</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -63,26 +63,27 @@
     <a href="politika.html" class="sabanci-btn" data-i18n="heroBtn">Daha Fazla Bilgi Al</a>
   </div>
 
-  <!-- SADECE LOGOLAR VE ORTALANMIŞ HALİ (LOKAL DOSYA YOLLARIYLA) -->
   <div class="sponsor-bar">
     <div class="wrap sponsor-inner">
       <div class="sponsor-logos">
-        <img src="img/sau-logo.png.png" alt="SAÜ" class="logo-sau">
-        <img src="img/subu-logo.png.png" alt="SUBÜ" class="logo-subu">
+        <img src="img/tubitak-logo.png" alt="TÜBİTAK" class="logo-tubitak">
+        <img src="img/sau-logo.png" alt="SAÜ" class="logo-sau">
+        <img src="img/subu-logo.png" alt="SUBÜ" class="logo-subu">
       </div>
     </div>
   </div>
 </section>
 
+<!-- REVEAL EFEKTLERİ EKLENDİ -->
 <section class="section" id="bulgular">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 class="section-title" data-i18n="findingsTitle">Araştırmadan Bulgular</h2>
       <a href="bulgular.html" class="section-link" data-i18n="findingsMore">Tümünü Gör &gt;</a>
     </div>
 
     <div class="masonry-grid">
-      <div class="m-card m-big">
+      <div class="m-card m-big reveal">
         <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Grafik ve Analiz">
         <div class="m-overlay"></div>
         <div class="m-content">
@@ -92,7 +93,7 @@
         </div>
       </div>
       
-      <div class="m-card m-small-top">
+      <div class="m-card m-small-top reveal">
         <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Finans">
         <div class="m-overlay"></div>
         <div class="m-content">
@@ -101,7 +102,7 @@
         </div>
       </div>
 
-      <div class="m-card m-small-bot">
+      <div class="m-card m-small-bot reveal">
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Harita ve Veri">
         <div class="m-overlay"></div>
         <div class="m-content">
@@ -110,7 +111,7 @@
         </div>
       </div>
 
-      <div class="m-card m-tall">
+      <div class="m-card m-tall reveal">
         <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=600&q=80" alt="Konteyner ve Lojistik">
         <div class="m-overlay"></div>
         <div class="m-content">
@@ -123,11 +124,11 @@
 </section>
 
 <section class="team-section" id="ekip">
-  <div class="wrap" style="margin-bottom: 48px;">
+  <div class="wrap reveal" style="margin-bottom: 48px;">
     <h2 class="section-title" data-i18n="teamTitle">Araştırma Ekibi</h2>
   </div>
   
-  <div class="marquee-container">
+  <div class="marquee-container reveal">
     <div class="marquee-track" id="teamTrack"></div>
   </div>
 </section>
@@ -135,22 +136,22 @@
 <section class="stats-section">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat-box">
+      <div class="stat-box reveal">
         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#1c527e" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
         <div class="stat-num">192</div>
         <div class="stat-text" data-i18n="statFirma">Saha Araştırmasına Katılan<br>İhracatçı Firma</div>
       </div>
-      <div class="stat-box">
+      <div class="stat-box reveal">
         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#1c527e" stroke-width="1.5"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/></svg>
         <div class="stat-num">5</div>
         <div class="stat-text" data-i18n="statIl">Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)</div>
       </div>
-      <div class="stat-box">
+      <div class="stat-box reveal">
         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#1c527e" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         <div class="stat-num">6</div>
         <div class="stat-text" data-i18n="statSektor">Odak<br>Sektör</div>
       </div>
-      <div class="stat-box">
+      <div class="stat-box reveal">
         <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#1c527e" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <div class="stat-num">15</div>
         <div class="stat-text" data-i18n="statAy">Ay<br>Proje Süresi</div>
@@ -159,7 +160,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="reveal">
   <div class="wrap">
     <div class="footer-flex">
       
