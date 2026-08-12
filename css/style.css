@@ -100,7 +100,9 @@ header.scrolled nav a.active, header.scrolled nav a:hover { color: #002b66; }
 header.scrolled .btn-outline { border-color: #4A5568; color: #4A5568; }
 header.scrolled .btn-outline:hover { background: #002b66; border-color: #002b66; color: #ffffff; }
 
-/* Dünya İkonu */
+/* DİL İKONU VE AÇILIR MENÜ (SABANCI TARZI) */
+.lang-wrapper { position: relative; display: flex; align-items: center; }
+
 .lang-icon { 
   color: rgba(255,255,255,0.75); 
   transition: color 0.3s ease; 
@@ -111,7 +113,52 @@ header.scrolled .btn-outline:hover { background: #002b66; border-color: #002b66;
 header.scrolled .lang-icon { color: #4A5568; }
 header.scrolled .lang-icon:hover { color: #002b66; }
 
-header.scrolled .menu-toggle span { background: #4A5568; }
+/* Menü Normalde Tamamen Gizlidir */
+.lang-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0; /* İkonun sağına hizalar */
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 12px 0;
+  min-width: 140px;
+  border-radius: 2px;
+  
+  /* Görünmez ve Tıklanamaz Yapar */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; 
+  
+  transform: translateY(15px); /* Yukarıdan aşağı süzülme efekti için başlangıç */
+  transition: all 0.3s ease;
+  margin-top: 16px; /* İkonla menü arasındaki boşluk */
+}
+
+/* İkona Tıklanınca Eklenen Class İle Menü Görünür Olur */
+.lang-dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.lang-dropdown span {
+  display: block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lang-dropdown span:hover {
+  background: #f8fafc;
+  color: #0b1c2e;
+}
+.lang-dropdown span.active {
+  color: #0b1c2e;
+  font-weight: 600;
+}
 
 /* =========================================================
    3. ARKA PLAN VİDEO HERO BÖLÜMÜ
