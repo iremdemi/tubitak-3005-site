@@ -97,6 +97,54 @@ header.scrolled nav a.active, header.scrolled nav a:hover { color: #002b66; }
 header.scrolled .btn-outline { border-color: #4A5568; color: #4A5568; }
 header.scrolled .btn-outline:hover { background: #002b66; border-color: #002b66; color: #ffffff; }
 
+/* ARAMA VE DİL İKONLARI SARICISI */
+.header-icons { display: flex; align-items: center; gap: 20px; }
+
+/* YENİ: ARAMA İKONU VE KUTUSU */
+.search-wrapper { position: relative; display: flex; align-items: center; }
+.search-icon { 
+  color: rgba(255,255,255,0.75); 
+  transition: color 0.3s ease; 
+  cursor: pointer; 
+  display: flex; align-items: center;
+}
+.search-icon:hover { color: #ffffff; }
+header.scrolled .search-icon { color: #4A5568; }
+header.scrolled .search-icon:hover { color: #002b66; }
+
+.search-input-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 12px;
+  border-radius: 2px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  display: flex;
+}
+.search-input-box.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.search-input-box input {
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 2px;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  width: 220px;
+  color: #333;
+}
+
 /* DİL İKONU VE AÇILIR MENÜ (SABANCI TARZI) */
 .lang-wrapper { position: relative; display: flex; align-items: center; }
 
@@ -153,8 +201,6 @@ header.scrolled .lang-icon:hover { color: #002b66; }
   color: #0b1c2e;
   font-weight: 600;
 }
-
-header.scrolled .menu-toggle span { background: #4A5568; }
 
 /* =========================================================
    3. ARKA PLAN VİDEO HERO BÖLÜMÜ
@@ -295,22 +341,34 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 .f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: rgba(255,255,255,0.4); }
 
 /* =========================================================
-   9. MOBİL MENÜ
+   9. MOBİL MENÜ & ASİMETRİK ANİMASYONLU İKON (YENİ)
    ========================================================= */
 .menu-toggle {
-  display: none; flex-direction: column; gap: 5px; background: none; border: none;
+  display: none; flex-direction: column; align-items: flex-end; gap: 6px; background: none; border: none;
   cursor: pointer; padding: 6px; position: relative; z-index: 1300;
 }
-.menu-toggle span { width: 22px; height: 2px; background: #ffffff; display: block; transition: transform .25s ease, opacity .2s ease; }
+.menu-toggle span { 
+  height: 3px; background: #ffffff; display: block; border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Yaylanarak X olma efekti */
+}
+/* Sabancı Tarzı Asimetrik Çizgiler */
+.menu-toggle span:nth-child(1) { width: 24px; }
+.menu-toggle span:nth-child(2) { width: 32px; }
+.menu-toggle span:nth-child(3) { width: 16px; }
+
+/* Menü Açıkken X (Çarpı) Şeklini Alması */
+.menu-toggle.is-open span:nth-child(1) { transform: translateY(9px) rotate(45deg); width: 32px; }
+.menu-toggle.is-open span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.menu-toggle.is-open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); width: 32px; }
 
 .mobile-nav {
-  position: fixed; top: 0; left: auto; right: -320px; height: 100vh; width: min(300px, 84vw);
+  position: fixed; top: 0; left: -320px; right: auto; height: 100vh; width: min(300px, 84vw);
   background: #0b1c2e; z-index: 1090; padding: 100px 30px 30px;
   display: flex; flex-direction: column; gap: 4px;
-  transform: none; transition: right .32s cubic-bezier(.4,0,.2,1);
+  transition: left .32s cubic-bezier(.4,0,.2,1); /* SOLDAN AÇILMA */
   overflow-y: auto;
 }
-.mobile-nav.is-open { right: 0; }
+.mobile-nav.is-open { left: 0; }
 .mobile-nav a {
   color: rgba(255,255,255,.8); font-size: var(--text-nav); font-weight: var(--weight-medium); padding: 14px 0;
   border-bottom: 1px solid rgba(255,255,255,.1); text-transform: none;
@@ -374,7 +432,7 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
 }
 
 @media (max-width: 1024px) {
-  /* MOBİLDE HER ZAMAN BEYAZ HEADER (SABANCI TARZI) */
+  /* MOBİLDE HER ZAMAN BEYAZ HEADER */
   header, header.scrolled {
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(12px) !important;
@@ -384,8 +442,9 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
     padding-bottom: 16px !important;
   }
   
-  /* Mobilde ikonlar her zaman koyu renk kalmalı */
+  /* Mobilde ikonlar koyu renk */
   header .lang-icon { color: #4A5568 !important; }
+  header .search-icon { color: #4A5568 !important; }
   header .menu-toggle span { background: #4A5568 !important; }
 
   .hero-content { width: 100%; max-width: 100%; text-align: center; padding-left: 48px; padding-right: 48px; padding-top: 20vh; }
