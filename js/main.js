@@ -11,7 +11,6 @@ const dict = {
     statFirma: "Saha Araştırmasına Katılan<br>İhracatçı Firma", statIl: "Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Odak<br>Sektör", statAy: "Ay<br>Proje Süresi",
     footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
     footKurumsal: "Hakkımızda", footIcerik: "İçerikler", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.",
-    /* ALT SAYFALAR İÇİN ÇEVİRİLER */
     comingSoonTitle: "Çok Yakında",
     comingSoonDesc: "Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.",
     backToHome: "Ana Sayfaya Dön"
@@ -28,7 +27,6 @@ const dict = {
     statFirma: "Exporting Firms<br>Included in Field Research", statIl: "Strategic Provinces<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Focus<br>Sectors", statAy: "Months<br>Project Duration",
     footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
     footKurumsal: "About Us", footIcerik: "Contents", footIletisim: "Contact", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Portal. All rights reserved.",
-    /* ALT SAYFALAR İÇİN ÇEVİRİLER */
     comingSoonTitle: "Coming Soon",
     comingSoonDesc: "The research data and content for this section are currently being compiled. Please visit again later.",
     backToHome: "Back to Home"
@@ -52,14 +50,19 @@ let autoAdvanceTimer = null;
 document.addEventListener("DOMContentLoaded", () => {
   translateHTML();
 
+  // ARAMA VE DİL BUTONLARI
   const langToggle = document.getElementById('langToggle');
   const langDropdown = document.getElementById('langDropdown');
   const langOptions = document.querySelectorAll('.lang-dropdown span');
+  
+  const searchToggle = document.getElementById('searchToggle');
+  const searchInputBox = document.getElementById('searchInputBox');
 
   if (langToggle && langDropdown) {
     langToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       langDropdown.classList.toggle('is-open');
+      if (searchInputBox) searchInputBox.classList.remove('is-open');
     });
 
     langOptions.forEach(option => {
@@ -71,13 +74,25 @@ document.addEventListener("DOMContentLoaded", () => {
         langDropdown.classList.remove('is-open');
       });
     });
+  }
 
-    document.addEventListener('click', (e) => {
-      if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
-        langDropdown.classList.remove('is-open');
-      }
+  if (searchToggle && searchInputBox) {
+    searchToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      searchInputBox.classList.toggle('is-open');
+      if (langDropdown) langDropdown.classList.remove('is-open');
     });
   }
+
+  // DIŞARI TIKLAYINCA AÇILIR MENÜLERİ KAPATMA
+  document.addEventListener('click', (e) => {
+    if (langToggle && langDropdown && !langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('is-open');
+    }
+    if (searchToggle && searchInputBox && !searchToggle.contains(e.target) && !searchInputBox.contains(e.target)) {
+      searchInputBox.classList.remove('is-open');
+    }
+  });
 
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
@@ -100,17 +115,20 @@ document.addEventListener("DOMContentLoaded", () => {
   
   revealElements.forEach(el => revealObserver.observe(el));
 
+  // MOBİL MENÜ MANTIĞI & X ANİMASYONU EKLENDİ
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const mobileNavOverlay = document.getElementById('mobileNavOverlay');
   function openMobileNav() {
     if (mobileNav) mobileNav.classList.add('is-open');
     if (mobileNavOverlay) mobileNavOverlay.classList.add('is-open');
+    if (menuToggle) menuToggle.classList.add('is-open'); /* Çarpıya dönüşür */
     document.body.style.overflow = 'hidden';
   }
   function closeMobileNav() {
     if (mobileNav) mobileNav.classList.remove('is-open');
     if (mobileNavOverlay) mobileNavOverlay.classList.remove('is-open');
+    if (menuToggle) menuToggle.classList.remove('is-open'); /* Normale döner */
     document.body.style.overflow = '';
   }
   if (menuToggle) {
