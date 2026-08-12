@@ -44,16 +44,34 @@ let autoAdvanceTimer = null;
 document.addEventListener("DOMContentLoaded", () => {
   translateHTML();
 
-  // YENİ DÜNYA İKONLU DİL DEĞİŞTİRİCİ
+  // DÜNYA İKONLU DİL DEĞİŞTİRİCİ MANTIĞI (YENİ AÇILIR MENÜ)
   const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      currentLang = currentLang === 'tr' ? 'en' : 'tr';
-      translateHTML();
+  const langDropdown = document.getElementById('langDropdown');
+  const langOptions = document.querySelectorAll('.lang-dropdown span');
+
+  if (langToggle && langDropdown) {
+    langToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('is-open');
+    });
+
+    langOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        langOptions.forEach(opt => opt.classList.remove('active'));
+        e.target.classList.add('active');
+        currentLang = e.target.getAttribute('data-lang');
+        translateHTML();
+        langDropdown.classList.remove('is-open');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+        langDropdown.classList.remove('is-open');
+      }
     });
   }
 
-  // YAPIŞKAN (STICKY) HEADER MANTIĞI
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -63,20 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // SCROLL REVEAL (AŞAĞI KAYDIRDIKÇA BELİREN ÖĞELER)
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target); 
-      }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-  
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // MOBİL MENÜ MANTIĞI
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -100,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
   window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeMobileNav(); });
 
-  // VİDEO OYNATMA MANTIĞI (DEĞİŞTİRİLMEDİ)
   const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
 
   function ensureLoaded(video) {
