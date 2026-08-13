@@ -277,6 +277,10 @@ header.scrolled .lang-icon:hover { color: #002b66; }
    ========================================================= */
 .section { padding: 120px 0; background: #ffffff; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+/* Bulgular bölümünde başlık/buton satırı, alttaki kart bloğuyla (oklar hariç)
+   tam aynı sol-sağ kenarda dursun diye ok butonlarının kapladığı alan kadar
+   (44px genişlik + 20px boşluk = 64px) içeri alıyoruz */
+#bulgular .section-head { padding-left: 64px; padding-right: 64px; }
 .section-title { font-size: var(--text-h2); font-weight: var(--weight-semibold); color: #0b1c2e; text-transform: none; letter-spacing: -0.02em; line-height: 1.18; }
 
 .news-grid-wrap { position: relative; display: flex; align-items: center; gap: 0; }
@@ -465,6 +469,7 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   
   .news-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   .news-arrow-side { display: none; }
+  #bulgular .section-head { padding-left: 0; padding-right: 0; }
   
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
   .footer-flex { flex-wrap: wrap; gap: 40px; }
