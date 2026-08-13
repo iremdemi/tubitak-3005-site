@@ -513,13 +513,15 @@ html.fp-mode .fp-wrapper {
   transition: transform var(--fp-duration, 850ms) var(--fp-easing, cubic-bezier(.65,0,.35,1));
 }
 html.fp-mode [data-fp-section] {
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   overflow: hidden;
 }
-/* footer normalde icerigi tasabilir, tam sayfa modunda kirpilmasin diye ic scroll birakiyoruz */
-html.fp-mode footer[data-fp-section] {
+/* İçeriği bir ekrandan uzun olabilecek bölümlerde (bulgular, footer) kesilme
+   olmasın diye kendi içinde dikey kaydırmaya izin veriyoruz */
+html.fp-mode footer[data-fp-section],
+html.fp-mode #bulgular[data-fp-section] {
   overflow-y: auto;
 }
 
