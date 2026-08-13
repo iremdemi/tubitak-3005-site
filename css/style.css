@@ -55,7 +55,7 @@ header {
 
 .header-logo { display: flex; align-items: center; flex: none; }
 .header-logo img { height: 72px; width: auto; transition: height 0.4s ease, filter 0.4s ease; }
-header.scrolled .header-logo img { height: 54px; filter: invert(1); }
+header.scrolled .header-logo img { height: 54px; }
 
 header.scrolled {
   background: rgba(255, 255, 255, 0.98); 
