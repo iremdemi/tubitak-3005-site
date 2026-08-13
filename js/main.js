@@ -292,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const FP_WHEEL_DEBOUNCE_MS = 900;   // bir geçişten sonra yeni wheel'in kaç ms sonra kabul edileceği
   const FP_WHEEL_THRESHOLD = 35;      // trackpad'lerdeki ufak titreşimleri yok saymak için eşik
   const FP_TOUCH_THRESHOLD = 60;      // dokunmatik ekranlarda (masaüstü) kaydırma eşiği
-  const LIGHT_SECTION_INDEXES = [1, 2, 3]; // acik zeminli section'lar (noktalar koyulasin diye)
 
   const root = document.documentElement;
   const wrapper = document.getElementById('fpWrapper');
@@ -312,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mq = window.matchMedia(`(min-width: ${FP_MIN_WIDTH}px)`);
 
   function applyLightClass(index) {
-    const isLight = LIGHT_SECTION_INDEXES.includes(index);
+    const isLight = sections[index] && sections[index].dataset.fpLight === 'true';
     root.classList.toggle('fp-on-light', isLight);
     // Header, tam sayfa kaydirma modunda artik gercek scrollY hareket etmedigi
     // icin eski scroll dinleyicisi tetiklenmiyor; ayni "scrolled" gorunumunu
@@ -332,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function goToSection(index) {
     if (!fpActive) return;
+    const goingForward = index > currentIndex;
     index = Math.max(0, Math.min(total - 1, index));
     if (index === currentIndex || isAnimating) return;
     isAnimating = true;
@@ -341,10 +341,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // kartı içeren "Bulgular") bir ekrandan uzun olsa bile diğer section'lar
     // kaymıyor, hiçbir içerik görünmez alanda kesilip kaybolmuyor.
     const targetTop = sections[index].offsetTop;
-    wrapper.style.transform = `translateY(-${targetTop}px)`;
     updateDots(index);
     applyLightClass(index);
+    // Hedef section'a ileri yönde giriliyorsa en üstünden, geri yönde
+    // giriliyorsa en altından baslasin (dogal, beklenen kaydirma hissi icin)
+    subScroll = goingForward ? 0 : sectionOverflow(index);
+    wrapper.style.transform = `translateY(-${targetTop + subScroll}px)`;
     window.setTimeout(() => { isAnimating = false; }, FP_DURATION_MS);
+  }
+
+  let subScroll = 0; // aktif section icinde (kendi tasan kismi icinde) ne kadar asagi kayildigi
+
+  function sectionOverflow(index) {
+    const sec = sections[index];
+    if (!sec) return 0;
+    return Math.max(0, sec.offsetHeight - window.innerHeight);
+  }
+
+  function applySubScroll(animated) {
+    const base = sections[currentIndex].offsetTop;
+    wrapper.style.transition = animated ? '' : 'none';
+    wrapper.style.transform = `translateY(-${base + subScroll}px)`;
+    if (!animated) {
+      // bir sonraki frame'de tekrar normal gecis suresine don
+      requestAnimationFrame(() => { wrapper.style.transition = ''; });
+    }
   }
 
   function onWheel(e) {
@@ -352,7 +373,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Math.abs(e.deltaY) < FP_WHEEL_THRESHOLD) return;
     e.preventDefault();
     if (isAnimating) return;
-    goToSection(currentIndex + (e.deltaY > 0 ? 1 : -1));
+
+    // Aktif section tek ekrandan (viewport) uzun olabilir (ör. çok satırlı
+    // künye). Böyle durumlarda önce o fazlalık kısmı kendi içinde "sub-scroll"
+    // ile gösteriyoruz; section'ın sonuna/basina ulasilinca barbir sonraki/
+    // önceki section'a normal sekilde geciyoruz.
+    const overflow = sectionOverflow(currentIndex);
+    if (e.deltaY > 0) {
+      if (subScroll < overflow) {
+        subScroll = Math.min(overflow, subScroll + e.deltaY);
+        applySubScroll(false);
+        return;
+      }
+      goToSection(currentIndex + 1);
+    } else {
+      if (subScroll > 0) {
+        subScroll = Math.max(0, subScroll + e.deltaY);
+        applySubScroll(false);
+        return;
+      }
+      goToSection(currentIndex - 1);
+    }
   }
 
   function isTypingTarget(el) {
