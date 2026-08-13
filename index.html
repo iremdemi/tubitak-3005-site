@@ -67,7 +67,8 @@
   <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
 </nav>
 
-<section class="hero">
+<div class="fp-wrapper" id="fpWrapper">
+<section class="hero" data-fp-section="0">
   
 <div class="video-bg-wrapper">
   <video class="hero-video active" data-index="0" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="https://images.pexels.com/videos/3840442/aerial-barge-boat-business-3840442.jpeg?auto=compress&w=1920">
@@ -88,7 +89,7 @@
 
 </section>
 
-<section class="section" id="bulgular">
+<section class="section" id="bulgular" data-fp-section="1">
   <div class="wrap">
     <div class="section-head reveal">
       <h2 class="section-title" data-i18n="findingsTitle">Araştırmadan Bulgular</h2>
@@ -136,7 +137,7 @@
   </div>
 </section>
 
-<section class="team-section" id="ekip">
+<section class="team-section" id="ekip" data-fp-section="2">
   <div class="wrap reveal" style="margin-bottom: 48px;">
     <h2 class="section-title" data-i18n="teamTitle">Araştırma Ekibi</h2>
   </div>
@@ -146,7 +147,7 @@
   </div>
 </section>
 
-<section class="stats-section">
+<section class="stats-section" data-fp-section="3">
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat-box reveal">
@@ -173,7 +174,7 @@
   </div>
 </section>
 
-<footer class="reveal">
+<footer class="reveal" data-fp-section="4">
   <div class="wrap">
     <div class="footer-flex">
       
@@ -214,6 +215,16 @@
     </div>
   </div>
 </footer>
+</div>
+
+<!-- TAM SAYFA BÖLÜM GÖSTERGESİ (sadece masaüstünde JS ile görünür yapılır) -->
+<nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
+  <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1: Giriş" aria-current="true"></button>
+  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Bulgular"></button>
+  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Araştırma Ekibi"></button>
+  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: İstatistikler"></button>
+  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: İletişim ve Alt Bilgi"></button>
+</nav>
 
 <script src="js/main.js"></script>
 
