@@ -286,6 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = Array.from(wrapper.querySelectorAll('[data-fp-section]'));
   const dots = Array.from(dotsNav.querySelectorAll('.fp-dot'));
   const total = sections.length;
+  const mainHeader = document.getElementById('mainHeader');
 
   let currentIndex = 0;
   let isAnimating = false;
@@ -295,7 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const mq = window.matchMedia(`(min-width: ${FP_MIN_WIDTH}px)`);
 
   function applyLightClass(index) {
-    root.classList.toggle('fp-on-light', LIGHT_SECTION_INDEXES.includes(index));
+    const isLight = LIGHT_SECTION_INDEXES.includes(index);
+    root.classList.toggle('fp-on-light', isLight);
+    // Header, tam sayfa kaydirma modunda artik gercek scrollY hareket etmedigi
+    // icin eski scroll dinleyicisi tetiklenmiyor; ayni "scrolled" gorunumunu
+    // (beyaz zemin + koyu yazi) burada, aktif section'a gore biz tetikliyoruz.
+    if (mainHeader && fpActive) {
+      mainHeader.classList.toggle('scrolled', isLight);
+    }
   }
 
   function updateDots(index) {
