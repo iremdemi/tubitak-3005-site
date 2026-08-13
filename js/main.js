@@ -316,8 +316,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Header, tam sayfa kaydirma modunda artik gercek scrollY hareket etmedigi
     // icin eski scroll dinleyicisi tetiklenmiyor; ayni "scrolled" gorunumunu
     // (beyaz zemin + koyu yazi) burada, aktif section'a gore biz tetikliyoruz.
+    // "force-light-header" isaretli sayfalarda (ör. hakkimizda, bulgular)
+    // section'in koyu/acik olmasindan bagimsiz olarak header hep beyaz kalir.
+    const forceLight = document.body.classList.contains('force-light-header');
     if (mainHeader && fpActive) {
-      mainHeader.classList.toggle('scrolled', isLight);
+      mainHeader.classList.toggle('scrolled', isLight || forceLight);
     }
   }
 
