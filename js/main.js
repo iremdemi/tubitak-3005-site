@@ -336,7 +336,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (index === currentIndex || isAnimating) return;
     isAnimating = true;
     currentIndex = index;
-    wrapper.style.transform = `translateY(-${index * 100}vh)`;
+    // Sabit "index * 100vh" varsayımı yerine, hedef section'ın wrapper içindeki
+    // gerçek konumunu kullanıyoruz. Böylece bir section (ör. çok sayıda bulgu
+    // kartı içeren "Bulgular") bir ekrandan uzun olsa bile diğer section'lar
+    // kaymıyor, hiçbir içerik görünmez alanda kesilip kaybolmuyor.
+    const targetTop = sections[index].offsetTop;
+    wrapper.style.transform = `translateY(-${targetTop}px)`;
     updateDots(index);
     applyLightClass(index);
     window.setTimeout(() => { isAnimating = false; }, FP_DURATION_MS);
