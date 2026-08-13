@@ -109,8 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const header = document.getElementById('mainHeader');
+  const forceLight = document.body.classList.contains('force-light-header');
+  if (forceLight) header.classList.add('scrolled');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 50 || forceLight) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
