@@ -533,3 +533,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderPage(0);
 })();
+
+/* ===========================================================
+   TÜRKİYE'NİN KÜRESEL TİCARET AĞI: sayaç animasyonu + harita giriş efekti
+   Sadece section viewport'a ilk kez girdiğinde bir kez çalışır.
+   =========================================================== */
+(function () {
+  const section = document.getElementById('ticaret-agi');
+  if (!section) return;
+
+  let hasAnimated = false;
+
+  function animateCount(el, target, duration) {
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = Math.round(target * eased);
+      el.textContent = current.toLocaleString('tr-TR');
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target.toLocaleString('tr-TR');
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function runAnimation() {
+    if (hasAnimated) return;
+    hasAnimated = true;
+    section.classList.add('in-view');
+    const nums = section.querySelectorAll('.trade-metric-num[data-count-to]');
+    nums.forEach(el => {
+      const target = parseInt(el.getAttribute('data-count-to'), 10);
+      animateCount(el, target, 1500);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runAnimation();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  observer.observe(section);
+
+  // Tam sayfa kaydirma modunda section'lar transform ile geldigi icin
+  // IntersectionObserver bazen tetiklenmeyebilir; o yuzden aktif section
+  // degistiginde de kontrol ediyoruz (yedek tetikleyici).
+  const dots = document.querySelectorAll('.fp-dot');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      setTimeout(() => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.7 && rect.bottom > 0) runAnimation();
+      }, 900);
+    });
+  });
+})();
