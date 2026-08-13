@@ -426,3 +426,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   syncWithViewport();
 })();
+
+/* ===========================================================
+   ANA SAYFA BULGULAR KAYDIRMASI (SABANCI TARZI, TÜM 12 YAZI)
+   =========================================================== */
+(function () {
+  const grid = document.getElementById('newsGrid');
+  if (!grid) return;
+
+  const allFindings = [
+  { slug: "bulgu-01.html", img: "https://images.unsplash.com/photo-1759272840712-c7e5ea852367?auto=format&fit=crop&w=1200&q=80", date: "13 Ağustos 2026", title: "Ticari Milliyetçilik ve Dış Ticaret Girişimciliğinin Kavramsal Temelleri", excerpt: "Uluslararasılaşma teorilerinin çoğu katma değerin hedef pazarda üretilmesini öngörür; dış ticaret girişimciliği ise üretim ve yatırımı tamamen Türkiye'de tutan, ihracat gelirini yurt içine geri getiren bir model öneriyor." },
+  { slug: "bulgu-02.html", img: "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80", date: "12 Ağustos 2026", title: "Kamu Teşviklerinde Paradigma Değişimi: Miktar Odaklılıktan Katma Değer ve Girişimcilik Odaklı Destek Modeline", excerpt: "Ticaret Bakanlığı'nın 77 farklı destek türüne rağmen mevcut teşvikler, yenilikçi yatırımlardan çok ihracat hacmini artırmaya odaklanıyor; sistemde köklü bir paradigma değişimine ihtiyaç duyuluyor." },
+  { slug: "bulgu-03.html", img: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?auto=format&fit=crop&w=1200&q=80", date: "11 Ağustos 2026", title: "Doğu Marmara (TR42) Bölgesi: Türkiye'nin Sınai Hinterlandının İhracat Gücü ve Saha Araştırması Metodolojisi", excerpt: "Kocaeli, Sakarya, Düzce, Bolu ve Yalova'yı kapsayan TR42 bölgesi, ihracat hacminde Kocaeli'nin 4., Sakarya'nın 7. sırada yer almasıyla Türkiye'nin sınai hinterlandını oluşturuyor." },
+  { slug: "bulgu-04.html", img: "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?auto=format&fit=crop&w=1200&q=80", date: "10 Ağustos 2026", title: "Dış Ticaret Girişimciliğinin Belirleyicileri: Finansal Gücün Olasılıksal Birinciliği ve Katma Değer Tezatı", excerpt: "Bayesian BWM analizine göre dış ticaret girişimciliğinin başarısında en birincil rol, %12,86 nihai ağırlıkla finansal belirleyicilere ait; bu kriterin 1. sırada çıkma olasılığı %86,80 olarak hesaplandı." },
+  { slug: "bulgu-05.html", img: "https://images.unsplash.com/photo-1739877907105-2e578ee67bca?auto=format&fit=crop&w=1200&q=80", date: "09 Ağustos 2026", title: "Girişimcilikte İkinci Nesil Literatür: Potansiyel ve Fiili Girişimcilerin Analitik Profili", excerpt: "Dış ticaret girişimciliği literatürü küresel ölçekte henüz oluşum aşamasında; bu çalışma potansiyel ve fiili girişimcilerin analitik profilini ortaya koyuyor." },
+  { slug: "bulgu-06.html", img: "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?auto=format&fit=crop&w=1200&q=80", date: "08 Ağustos 2026", title: "Araştırma Tasarımında Metodolojik Çerçeve: Karma Araştırma Yaklaşımı ve \"Açımlayıcı Sıralı Desen\" Tasarımı", excerpt: "Sosyal ve beşeri bilimlerdeki karmaşık iktisadi fenomenleri tek boyutlu modellerle açıklamak yetersiz kalıyor; araştırma karma yöntemle, Açımlayıcı Sıralı Desen ile kurgulandı." },
+  { slug: "bulgu-07.html", img: "https://images.unsplash.com/photo-1739877907105-2e578ee67bca?auto=format&fit=crop&w=1200&q=80", date: "07 Ağustos 2026", title: "Dış Ticaret Girişimcilerinin Sınırları ve Sistemik Engelleri: Gümrüklerden Lojistik ve Kurumsal İmaj Sorunlarına", excerpt: "Dış ticaret girişimciliği, ihracat performansını artıran en kritik mekanizmalardan biri olmasına rağmen, girişimciler küresel ve yerel düzeyde ciddi sistemik engellerle karşılaşıyor." },
+  { slug: "bulgu-08.html", img: "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80", date: "06 Ağustos 2026", title: "İhracatta Kamu Teşviklerinin Yapısal Analizi: Kurumsal Çeşitlilik, Bürokratik Engeller ve Girişimci Beklentileri", excerpt: "Ticaret Bakanlığı, Eximbank, Kalkınma Ajansları, KOSGEB ve TÜBİTAK gibi kurumların sunduğu teşvikler; kurumsal çeşitlilik, bürokratik engeller ve girişimci beklentileri açısından analiz edildi." },
+  { slug: "bulgu-09.html", img: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?auto=format&fit=crop&w=1200&q=80", date: "05 Ağustos 2026", title: "Potansiyel Dış Ticaret Girişimcilerinin Perspektifinden Kavramsal Tanımlamalar ve Girişim Eğilimleri", excerpt: "Dış ticaret girişimciliği kavramının henüz gelişim aşamasında olması, bu kavramın akademik düzeyde nasıl algılandığının incelenmesini zorunlu kılıyor." },
+  { slug: "bulgu-10.html", img: "https://images.unsplash.com/photo-1759272840712-c7e5ea852367?auto=format&fit=crop&w=1200&q=80", date: "04 Ağustos 2026", title: "Küresel Yeni Korumacılık Çağında Dış Ticaret Girişimciliği ve Türkiye'nin İktisadi Sürdürülebilirliği", excerpt: "COVID-19 pandemisi, jeopolitik gerilimler ve tedarik zinciri krizleri, İkinci Dünya Savaşı sonrası kurulan küresel ekonomi politiğini radikal bir dönüşüme zorluyor." },
+  { slug: "bulgu-13.html", img: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?auto=format&fit=crop&w=1200&q=80", date: "03 Ağustos 2026", title: "Üniversite-Sanayi ve Kamu İş Birliğinde \"Sosyal ve Beşeri Bilimlerde Yenilikçilik\": Frascati Kılavuzu Perspektifi", excerpt: "TÜBİTAK'ın Frascati Kılavuzu perspektifinden, Ar-Ge faaliyetlerinin yalnızca fen ve mühendislik bilimlerine özgü olmadığı, sosyal ve beşeri bilimlerin de bu çerçevede değerlendirildiği ortaya konuyor." },
+  { slug: "bulgu-14.html", img: "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80", date: "02 Ağustos 2026", title: "İhracatta Bölgesel Kümelenmeler ve Kalkınma Dinamikleri: TÜİK Verileri Işığında İşletme Ölçekleri ve Sektörel Yapı", excerpt: "TÜİK verileri ışığında, ihracatçı firmaların yapısal özellikleri ve sektörel dağılımları, Türkiye'nin uluslararası rekabet gücü açısından hayati bir girdi olarak inceleniyor." }
+];
+
+  const PER_PAGE = 4;
+  const totalPages = Math.ceil(allFindings.length / PER_PAGE);
+  let currentPage = 0;
+
+  const prevBtn = document.getElementById('newsPrev');
+  const nextBtn = document.getElementById('newsNext');
+
+  function renderPage(page) {
+    const start = page * PER_PAGE;
+    const items = allFindings.slice(start, start + PER_PAGE);
+    grid.innerHTML = items.map(item => `
+      <div class="news-card reveal active">
+        <a href="${item.slug}" style="display:block;">
+          <div class="news-img"><img src="${item.img}" alt="${item.title}"></div>
+          <div class="news-body">
+            <div class="news-date"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> ${item.date}</div>
+            <h3>${item.title}</h3>
+            <p class="news-excerpt">${item.excerpt}</p>
+          </div>
+        </a>
+      </div>`).join('');
+
+    if (prevBtn) prevBtn.disabled = page === 0;
+    if (nextBtn) nextBtn.disabled = page >= totalPages - 1;
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) { currentPage--; renderPage(currentPage); }
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) { currentPage++; renderPage(currentPage); }
+  });
+
+  renderPage(0);
+})();
