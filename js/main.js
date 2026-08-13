@@ -261,3 +261,144 @@ document.addEventListener("DOMContentLoaded", () => {
     track.innerHTML = teamHTML + teamHTML;
   }
 });
+
+/* ===========================================================
+   TAM SAYFA BÖLÜM KAYDIRMA (FULL-PAGE SECTION SCROLL)
+   Sadece masaüstünde çalışır; FP_MIN_WIDTH altındaki
+   genişliklerde (mobil/tablet) tamamen devre dışı kalır,
+   sayfa normal, serbest kayan haliyle çalışmaya devam eder.
+   =========================================================== */
+(function () {
+  // ---- AYARLANABİLİR DEĞİŞKENLER ----
+  const FP_MIN_WIDTH = 1025;          // bu genişliğin altında efekt tamamen kapalı
+  const FP_DURATION_MS = 850;         // bölümler arası geçiş süresi
+  const FP_EASING = 'cubic-bezier(.65,0,.35,1)'; // geçiş easing'i
+  const FP_WHEEL_DEBOUNCE_MS = 900;   // bir geçişten sonra yeni wheel'in kaç ms sonra kabul edileceği
+  const FP_WHEEL_THRESHOLD = 35;      // trackpad'lerdeki ufak titreşimleri yok saymak için eşik
+  const FP_TOUCH_THRESHOLD = 60;      // dokunmatik ekranlarda (masaüstü) kaydırma eşiği
+  const LIGHT_SECTION_INDEXES = [1, 2, 3]; // acik zeminli section'lar (noktalar koyulasin diye)
+
+  const root = document.documentElement;
+  const wrapper = document.getElementById('fpWrapper');
+  const dotsNav = document.getElementById('fpDots');
+  if (!wrapper || !dotsNav) return; // sayfa yapisi yoksa sessizce cik
+
+  const sections = Array.from(wrapper.querySelectorAll('[data-fp-section]'));
+  const dots = Array.from(dotsNav.querySelectorAll('.fp-dot'));
+  const total = sections.length;
+
+  let currentIndex = 0;
+  let isAnimating = false;
+  let fpActive = false;
+  let touchStartY = null;
+
+  const mq = window.matchMedia(`(min-width: ${FP_MIN_WIDTH}px)`);
+
+  function applyLightClass(index) {
+    root.classList.toggle('fp-on-light', LIGHT_SECTION_INDEXES.includes(index));
+  }
+
+  function updateDots(index) {
+    dots.forEach((d, i) => {
+      const active = i === index;
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+
+  function goToSection(index) {
+    if (!fpActive) return;
+    index = Math.max(0, Math.min(total - 1, index));
+    if (index === currentIndex || isAnimating) return;
+    isAnimating = true;
+    currentIndex = index;
+    wrapper.style.transform = `translateY(-${index * 100}vh)`;
+    updateDots(index);
+    applyLightClass(index);
+    window.setTimeout(() => { isAnimating = false; }, FP_DURATION_MS);
+  }
+
+  function onWheel(e) {
+    if (!fpActive) return;
+    if (Math.abs(e.deltaY) < FP_WHEEL_THRESHOLD) return;
+    e.preventDefault();
+    if (isAnimating) return;
+    goToSection(currentIndex + (e.deltaY > 0 ? 1 : -1));
+  }
+
+  function isTypingTarget(el) {
+    if (!el) return false;
+    const tag = el.tagName ? el.tagName.toLowerCase() : '';
+    return tag === 'input' || tag === 'textarea' || tag === 'select' || el.isContentEditable;
+  }
+
+  function onKeydown(e) {
+    if (!fpActive) return;
+    if (isTypingTarget(document.activeElement)) return; // arama kutusu vb. yazarken engelleme
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      goToSection(currentIndex + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      goToSection(currentIndex - 1);
+    }
+  }
+
+  function onTouchStart(e) {
+    if (!fpActive) return;
+    touchStartY = e.touches[0].clientY;
+  }
+  function onTouchEnd(e) {
+    if (!fpActive || touchStartY === null) return;
+    const deltaY = touchStartY - e.changedTouches[0].clientY;
+    touchStartY = null;
+    if (Math.abs(deltaY) < FP_TOUCH_THRESHOLD) return;
+    goToSection(currentIndex + (deltaY > 0 ? 1 : -1));
+  }
+
+  function onDotClick(e) {
+    const idx = parseInt(e.currentTarget.getAttribute('data-fp-index'), 10);
+    goToSection(idx);
+  }
+
+  function enableFullPage() {
+    if (fpActive) return;
+    fpActive = true;
+    root.classList.add('fp-mode');
+    root.style.setProperty('--fp-duration', FP_DURATION_MS + 'ms');
+    root.style.setProperty('--fp-easing', FP_EASING);
+    currentIndex = 0;
+    wrapper.style.transform = 'translateY(0)';
+    updateDots(0);
+    applyLightClass(0);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('keydown', onKeydown);
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+  }
+
+  function disableFullPage() {
+    if (!fpActive) return;
+    fpActive = false;
+    root.classList.remove('fp-mode', 'fp-on-light');
+    wrapper.style.transform = '';
+    window.removeEventListener('wheel', onWheel, { passive: false });
+    window.removeEventListener('keydown', onKeydown);
+    window.removeEventListener('touchstart', onTouchStart, { passive: true });
+    window.removeEventListener('touchend', onTouchEnd, { passive: true });
+  }
+
+  function syncWithViewport() {
+    if (mq.matches) enableFullPage();
+    else disableFullPage();
+  }
+
+  dots.forEach(d => d.addEventListener('click', onDotClick));
+  mq.addEventListener ? mq.addEventListener('change', syncWithViewport) : mq.addListener(syncWithViewport);
+  window.addEventListener('resize', () => {
+    // sadece breakpoint gercekten degistiyse tepki ver (gereksiz sik tetiklenmeyi onler)
+    syncWithViewport();
+  });
+
+  syncWithViewport();
+})();
