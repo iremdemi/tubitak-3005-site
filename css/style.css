@@ -489,3 +489,57 @@ footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
   .f-col { width: 100% !important; }
   .f-bottom { flex-direction: column; gap: 12px; text-align: center; }
 }
+
+/* =========================================================
+   TAM SAYFA BÖLÜM KAYDIRMA (FULL-PAGE SECTION SCROLL)
+   Sadece masaüstünde aktif olur (bkz. js/main.js içindeki
+   matchMedia kontrolü). Mobilde js hiç devreye girmez,
+   burada da aşağıdaki .fp-mode sınıfı hiç eklenmediği için
+   section'lar normal, sırayla akan bloklar olarak kalır.
+   ========================================================= */
+html.fp-mode, html.fp-mode body {
+  height: 100%;
+  overflow: hidden;
+}
+.fp-wrapper {
+  will-change: transform;
+}
+html.fp-mode .fp-wrapper {
+  transition: transform var(--fp-duration, 850ms) var(--fp-easing, cubic-bezier(.65,0,.35,1));
+}
+html.fp-mode [data-fp-section] {
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+/* footer normalde icerigi tasabilir, tam sayfa modunda kirpilmasin diye ic scroll birakiyoruz */
+html.fp-mode footer[data-fp-section] {
+  overflow-y: auto;
+}
+
+.fp-dots {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  z-index: 1300; display: none; flex-direction: column; gap: 14px;
+}
+html.fp-mode .fp-dots { display: flex; }
+.fp-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(255,255,255,0.35); border: 1.5px solid rgba(255,255,255,0.6);
+  padding: 0; cursor: pointer; transition: all 0.3s ease;
+}
+.fp-dot:hover { background: rgba(255,255,255,0.7); }
+.fp-dot.active { background: #ffffff; transform: scale(1.25); }
+.fp-dot:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
+
+/* Koyu zeminli section'larda noktalar zaten beyaz kalsin; acik (beyaz/gri)
+   zeminli section'lara gelindiginde noktalari koyulastiriyoruz ki gorunur olsun */
+html.fp-mode.fp-on-light .fp-dot {
+  background: rgba(11,28,46,0.25); border-color: rgba(11,28,46,0.5);
+}
+html.fp-mode.fp-on-light .fp-dot:hover { background: rgba(11,28,46,0.55); }
+html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
+
+@media (max-width: 1024px) {
+  .fp-dots { display: none !important; }
+}
