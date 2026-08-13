@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DTG Research Portal | Yakında</title>
+<title>DTG Research Portal | Bulgular</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ANA SAYFA İLE BİREBİR AYNI YAPIŞKAN (STICKY) HEADER -->
 <header id="mainHeader">
-  <div class="custom-dtg-logo">
-    <div class="logo-main">DTG</div>
-    <div class="logo-line"></div>
-    <div class="logo-sub">RESEARCH PORTAL</div>
-  </div>
+
+  <a href="index.html" class="header-logo" aria-label="Ana Sayfa">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK">
+  </a>
 
   <nav>
-    <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
-    <a href="proje.html" data-i18n="menuProje">Kurumsal</a>
+    <a href="index.html" class="active" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+    <a href="hakkimizda.html" data-i18n="menuProje">Hakkımızda</a>
     <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
     <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
     <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
@@ -27,49 +25,119 @@
   </nav>
   
   <div class="header-right">
-    <div class="lang-wrapper">
-      <div class="lang-icon" id="langToggle" title="Dili Değiştir">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
+    <div class="header-icons">
+      <!-- YENİ ARAMA İKONU -->
+      <div class="search-wrapper" id="searchWrapper">
+        <div class="search-icon" id="searchToggle" title="Ara">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <div class="search-input-box" id="searchInputBox">
+          <input type="text" placeholder="Ara...">
+        </div>
       </div>
-      <div class="lang-dropdown" id="langDropdown">
-        <span class="active" data-lang="tr">Türkçe</span>
-        <span data-lang="en">English</span>
+
+      <!-- DÜNYA İKONU VE AÇILIR MENÜ -->
+      <div class="lang-wrapper">
+        <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="lang-dropdown" id="langDropdown">
+          <span class="active" data-lang="tr">Türkçe</span>
+          <span data-lang="en">English</span>
+        </div>
       </div>
     </div>
+    
     <a href="politika.html" class="btn-outline">Politika Önerileri</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="index.html" data-i18n="menuAnaSayfa">Ana Sayfa</a>
-  <a href="proje.html" data-i18n="menuProje">Kurumsal</a>
-  <a href="bulgular.html" data-i18n="menuBulgular">Bulgular</a>
-  <a href="politika.html" data-i18n="menuPolitika">Politika Önerileri</a>
-  <a href="yayinlar.html" data-i18n="menuYayinlar">Yayınlar</a>
-  <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
-  <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
-</nav>
 
-<!-- YAKINDA GELİYOR BÖLÜMÜ -->
-<section class="coming-soon-section">
-  <!-- Minimalist Saat İkonu -->
-  <svg class="coming-soon-icon" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10"></circle>
-    <polyline points="12 6 12 12 16 14"></polyline>
-  </svg>
-  <h1 data-i18n="comingSoonTitle">Çok Yakında</h1>
-  <p data-i18n="comingSoonDesc">Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.</p>
-  <!-- Ana Sayfaya Dön Butonu (Zarif Sabancı Estetiğinde) -->
-  <a href="index.html" class="btn-outline" style="border-color: rgba(255,255,255,0.4);" data-i18n="backToHome">Ana Sayfaya Dön</a>
+<!-- BULGULAR: SABANCI BASIN BÜLTENLERİ TARZI LİSTE -->
+<section class="press-list-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title" data-i18n="bulgularPageTitle">Araştırmadan Bulgular</h2>
+    </div>
+
+    <div class="press-list reveal">
+      <div class="press-row press-row-head">
+        <div class="press-date">Tarih</div>
+        <div class="press-title">Başlık</div>
+        <div></div>
+      </div>
+      <div class="press-row">
+        <div class="press-date">13 Ağustos 2026</div>
+        <div class="press-title">Ticari Milliyetçilik ve Dış Ticaret Girişimciliğinin Kavramsal Temelleri</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">12 Ağustos 2026</div>
+        <div class="press-title">Kamu Teşviklerinde Paradigma Değişimi: Miktar Odaklılıktan Katma Değer ve Girişimcilik Odaklı Destek Modeline</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">11 Ağustos 2026</div>
+        <div class="press-title">Doğu Marmara (TR42) Bölgesi: Türkiye'nin Sınai Hinterlandının İhracat Gücü ve Saha Araştırması Metodolojisi</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">10 Ağustos 2026</div>
+        <div class="press-title">Dış Ticaret Girişimciliğinin Belirleyicileri: Finansal Gücün Olasılıksal Birinciliği ve Katma Değer Tezatı</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">09 Ağustos 2026</div>
+        <div class="press-title">Girişimcilikte İkinci Nesil Literatür: Potansiyel ve Fiili Girişimcilerin Analitik Profili</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">08 Ağustos 2026</div>
+        <div class="press-title">Araştırma Tasarımında Metodolojik Çerçeve: Karma Araştırma Yaklaşımı ve "Açımlayıcı Sıralı Desen" Tasarımı</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">07 Ağustos 2026</div>
+        <div class="press-title">Dış Ticaret Girişimcilerinin Sınırları ve Sistemik Engelleri: Gümrüklerden Lojistik ve Kurumsal İmaj Sorunlarına</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">06 Ağustos 2026</div>
+        <div class="press-title">İhracatta Kamu Teşviklerinin Yapısal Analizi: Kurumsal Çeşitlilik, Bürokratik Engeller ve Girişimci Beklentileri</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">05 Ağustos 2026</div>
+        <div class="press-title">Potansiyel Dış Ticaret Girişimcilerinin Perspektifinden Kavramsal Tanımlamalar ve Girişim Eğilimleri</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">04 Ağustos 2026</div>
+        <div class="press-title">Küresel Yeni Korumacılık Çağında Dış Ticaret Girişimciliği ve Türkiye'nin İktisadi Sürdürülebilirliği</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">03 Ağustos 2026</div>
+        <div class="press-title">Üniversite-Sanayi ve Kamu İş Birliğinde "Sosyal ve Beşeri Bilimlerde Yenilikçilik": Frascati Kılavuzu Perspektifi</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="press-row">
+        <div class="press-date">02 Ağustos 2026</div>
+        <div class="press-title">İhracatta Bölgesel Kümelenmeler ve Kalkınma Dinamikleri: TÜİK Verileri Işığında İşletme Ölçekleri ve Sektörel Yapı</div>
+        <a href="bulgular.html" class="press-link">Okuyun <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ANA SAYFA İLE BİREBİR AYNI FOOTER -->
 <footer class="reveal">
   <div class="wrap">
     <div class="footer-flex">
@@ -84,8 +152,8 @@
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footKurumsal">Kurumsal</h4>
-        <a href="proje.html" data-i18n="menuProje">Proje Hakkında</a>
+        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <a href="hakkimizda.html" data-i18n="menuProje">Hakkımızda</a>
         <a href="ekip.html" data-i18n="menuEkip">Araştırma Ekibimiz</a>
         <a href="iletisim.html" data-i18n="menuIletisim">İletişim</a>
       </div>
@@ -111,6 +179,7 @@
     </div>
   </div>
 </footer>
+
 
 <script src="js/main.js"></script>
 
