@@ -688,17 +688,22 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .trade-map-title { color: #ffffff; }
 
 .trade-map-layout {
-  display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center;
+  display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center;
   margin-top: 48px;
 }
 
-/* --- sol: mevcut proje metrikleri, sayac animasyonlu --- */
-.trade-metrics { display: flex; flex-direction: column; gap: 36px; }
-.trade-metric-num {
-  font-size: clamp(34px, 3.2vw, 44px); font-weight: var(--weight-semibold);
-  color: #ffffff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 10px;
+/* --- sol: mevcut proje metrikleri, sayac animasyonlu (Sabancı'daki gibi
+   yan yana, kompakt, aralarinda ince bir ayirici cizgi ile) --- */
+.trade-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+.trade-metric {
+  padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.18);
 }
-.trade-metric-label { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 400; }
+.trade-metric:nth-child(odd) { padding-left: 0; border-left: none; }
+.trade-metric-num {
+  font-size: clamp(26px, 2.4vw, 34px); font-weight: var(--weight-semibold);
+  color: #ffffff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px;
+}
+.trade-metric-label { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; }
 
 /* --- sag: harita --- */
 .trade-map-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 520px; }
@@ -779,8 +784,6 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 @media (max-width: 1024px) {
   .trade-map-layout { grid-template-columns: 1fr; gap: 40px; }
-  .trade-metrics { flex-direction: row; flex-wrap: wrap; gap: 28px 36px; }
-  .trade-metrics .trade-metric { width: calc(50% - 18px); }
   .trade-map-wrap { aspect-ratio: 16/10; }
   .trade-label { font-size: 8.5px; }
 }
