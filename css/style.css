@@ -347,12 +347,21 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 /* =========================================================
    8. FOOTER
    ========================================================= */
-footer { background: #0b1c2e; padding: 80px 0 40px 0; color: #ffffff; }
-.footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 48px; margin-bottom: 32px; }
-.f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
-.f-col a, .f-col p { display: block; font-size: var(--text-nav); font-weight: var(--weight-regular); color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; text-transform: none; }
-.f-col a:hover { color: #ffffff; }
-.f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: rgba(255,255,255,0.4); }
+/* Footer: Sabancı'daki gibi acik/beyaz zeminli, daha kaliteli bir gorunum.
+   NOT: bu global bir degisiklik, sitedeki TUM sayfalarin footer'ini etkiler. */
+footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top: 1px solid #eef1f4; }
+.footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid #eef1f4; padding-bottom: 48px; margin-bottom: 28px; }
+.f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: #94a3b8; text-transform: uppercase; }
+.f-col a, .f-col p { display: block; font-size: var(--text-nav); font-weight: var(--weight-regular); color: #4A5568; line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; text-transform: none; }
+.f-col a:hover { color: #002b66; }
+.f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: #94a3b8; }
+
+/* Footer'daki DTG kucuk amblemi: eskiden hic stili yoktu (duz, ciplak metin
+   olarak gorunuyordu), simdi tipografi sistemine uygun sade bir amblem */
+.custom-dtg-logo { display: flex; flex-direction: column; }
+.custom-dtg-logo .logo-main { font-weight: var(--weight-semibold); color: #0b1c2e; letter-spacing: 0.04em; line-height: 1; }
+.custom-dtg-logo .logo-line { height: 2px; background: #002b66; margin: 10px 0; }
+.custom-dtg-logo .logo-sub { font-weight: var(--weight-medium); color: #94a3b8; letter-spacing: 0.12em; text-transform: uppercase; }
 
 /* =========================================================
    9. MOBİL MENÜ & ASİMETRİK ANİMASYONLU İKON (YENİ)
@@ -681,9 +690,9 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
    TÜRKİYE'NİN KÜRESEL TİCARET AĞI (harita + sayaç section'ı)
    ========================================================= */
 .trade-map-section {
-  background: radial-gradient(ellipse at 30% 25%, #24507a 0%, #16304a 45%, #0d2038 100%);
-  padding: 100px 0;
-  min-height: 680px;
+  background: radial-gradient(ellipse at 30% 25%, #2c5c8a 0%, #17324f 45%, #0d2038 100%);
+  padding: 96px 0 40px;
+  min-height: 0;
   position: relative;
 }
 /* Sabancı'daki gibi arka planda hafif, dusuk opakli noktali doku */
@@ -699,7 +708,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 .trade-map-layout {
   display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center;
-  margin-top: 48px;
+  margin-top: 28px;
 }
 
 /* --- sol: mevcut proje metrikleri, sayac animasyonlu (Sabancı'daki gibi
@@ -716,8 +725,10 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .trade-metric-label { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; }
 
 /* --- sag: harita (buyutuldu) --- */
-.trade-map-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 640px; }
-.trade-map-svg-holder { position: absolute; inset: 0; opacity: 0; transform: translateY(10px) scale(0.99); transition: opacity 0.9s ease, transform 0.9s ease; }
+.trade-map-wrap { position: relative; width: 100%; aspect-ratio: 16 / 10.5; max-height: 380px; }
+/* Harita artik wrap'in tamamini degil, ust/altta bosluk birakarak orta bandi kapliyor;
+   bu bosluklar etiketlerin haritanin GERCEKTEN disina, bos alana tasmasi icin var */
+.trade-map-svg-holder { position: absolute; top: 15%; bottom: 15%; left: 0; right: 0; opacity: 0; transform: translateY(10px) scale(0.99); transition: opacity 0.9s ease, transform 0.9s ease; }
 .trade-map-svg-holder svg { width: 100%; height: 100%; display: block; }
 .trade-map-section.in-view .trade-map-svg-holder { opacity: 1; transform: translateY(0) scale(1); }
 
@@ -726,8 +737,8 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
    diger tum ulkeler) cok hafif, sessiz bir zeminde kaliyor. */
 #tradeWorldMap path,
 #tradeWorldMap polygon {
-  fill: rgba(255,255,255,0.14) !important;
-  stroke: rgba(255,255,255,0.2) !important;
+  fill: rgba(255,255,255,0.20) !important;
+  stroke: rgba(255,255,255,0.28) !important;
   stroke-width: 0.4;
 }
 #tradeWorldMap #tr, #tradeWorldMap #tr path,
@@ -742,7 +753,8 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 #tradeWorldMap #nl, #tradeWorldMap #nl path,
 #tradeWorldMap #fr, #tradeWorldMap #fr path {
   fill: #ffffff !important;
-  stroke: rgba(255,255,255,0.6) !important;
+  stroke: #ffffff !important;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
 }
 
 /* --- baglanti cizgileri: tek bir SVG katmaninda, koseli (elbow) hatlarla ---
@@ -791,12 +803,12 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 @media (max-width: 1024px) {
   .trade-map-layout { grid-template-columns: 1fr; gap: 40px; }
-  .trade-map-wrap { aspect-ratio: 16/10; }
+  .trade-map-wrap { aspect-ratio: 16/12; }
   .trade-label { font-size: 8.5px; }
 }
 
 @media (max-width: 767px) {
-  .trade-map-section { padding: 72px 0; }
+  .trade-map-section { padding: 56px 0; }
   .trade-map-layout { margin-top: 32px; }
   .trade-metrics { gap: 20px 24px; }
   .trade-metric-num { font-size: 30px; }
