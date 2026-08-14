@@ -287,8 +287,8 @@ document.addEventListener("DOMContentLoaded", () => {
 (function () {
   // ---- AYARLANABİLİR DEĞİŞKENLER ----
   const FP_MIN_WIDTH = 1025;          // bu genişliğin altında efekt tamamen kapalı
-  const FP_DURATION_MS = 850;         // bölümler arası geçiş süresi
-  const FP_EASING = 'cubic-bezier(.65,0,.35,1)'; // geçiş easing'i
+  const FP_DURATION_MS = 680;         // bölümler arası geçiş süresi
+  const FP_EASING = 'cubic-bezier(.4,0,.2,1)'; // geçiş easing'i
   const FP_WHEEL_DEBOUNCE_MS = 900;   // bir geçişten sonra yeni wheel'in kaç ms sonra kabul edileceği
   const FP_WHEEL_THRESHOLD = 35;      // trackpad'lerdeki ufak titreşimleri yok saymak için eşik
   const FP_TOUCH_THRESHOLD = 60;      // dokunmatik ekranlarda (masaüstü) kaydırma eşiği
