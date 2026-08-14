@@ -724,93 +724,59 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 .trade-metric-label { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; }
 
-/* --- sag: harita (buyutuldu) --- */
-.trade-map-wrap { position: relative; width: 100%; aspect-ratio: 16 / 10.5; max-height: 380px; }
-/* Harita artik wrap'in tamamini degil, ust/altta bosluk birakarak orta bandi kapliyor;
-   bu bosluklar etiketlerin haritanin GERCEKTEN disina, bos alana tasmasi icin var */
-.trade-map-svg-holder { position: absolute; top: 15%; bottom: 15%; left: 0; right: 0; opacity: 0; transform: translateY(10px) scale(0.99); transition: opacity 0.9s ease, transform 0.9s ease; }
-.trade-map-svg-holder svg { width: 100%; height: 100%; display: block; }
-.trade-map-section.in-view .trade-map-svg-holder { opacity: 1; transform: translateY(0) scale(1); }
+/* --- sag: harita (gercek D3 cografi projeksiyonu, tek SVG icinde) --- */
+.trade-map-wrap { position: relative; width: 100%; height: 100%; min-height: 460px; }
+#tradeGeoMap {
+  width: 100%; height: 100%; display: block;
+  opacity: 0; transform: translateY(10px) scale(0.99);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.trade-map-section.in-view #tradeGeoMap { opacity: 1; transform: translateY(0) scale(1); }
 
-/* Turkiye VE 10 ticaret ortagi: Sabancı'daki gibi ulkenin gercek sinirlari
-   baz alinarak dolduruluyor, ama mavi degil SAF BEYAZ. Digerleri (etiketsiz
-   diger tum ulkeler) cok hafif, sessiz bir zeminde kaliyor. */
-#tradeWorldMap path,
-#tradeWorldMap polygon {
-  fill: rgba(255,255,255,0.20) !important;
-  stroke: rgba(255,255,255,0.28) !important;
-  stroke-width: 0.4;
-}
-/* Turkiye: kirmizi/turuncu vurgu, degismedi */
-#tradeWorldMap #tr, #tradeWorldMap #tr path {
-  fill: #e0432f !important;
-  stroke: #e0432f !important;
-}
-/* 10 ticaret ortagi: saf beyaz yerine soguk, buz mavisi-kirik beyaz bir ton;
-   glow minimuma indirildi */
-#tradeWorldMap #de, #tradeWorldMap #de path,
-#tradeWorldMap #gb, #tradeWorldMap #gb path,
-#tradeWorldMap #us, #tradeWorldMap #us path,
-#tradeWorldMap #it, #tradeWorldMap #it path,
-#tradeWorldMap #iq, #tradeWorldMap #iq path,
-#tradeWorldMap #cn, #tradeWorldMap #cn path,
-#tradeWorldMap #ru, #tradeWorldMap #ru path,
-#tradeWorldMap #ch, #tradeWorldMap #ch path,
-#tradeWorldMap #nl, #tradeWorldMap #nl path,
-#tradeWorldMap #fr, #tradeWorldMap #fr path {
-  fill: #E8F2FA !important;
-  stroke: #E8F2FA !important;
-  filter: drop-shadow(0 0 1px rgba(232,242,250,0.25));
-}
+/* Dunyadaki tum ulkeler: sade, sessiz zemin */
+.geo-country { fill: rgba(255,255,255,0.20); stroke: rgba(255,255,255,0.28); stroke-width: 0.5; }
+/* Turkiye: kirmizi/turuncu vurgu */
+.geo-turkey { fill: #e0432f; stroke: #e0432f; }
+/* 10 ticaret ortagi: soguk, buz mavisi-kirik beyaz (saf beyaz degil) */
+.geo-highlight { fill: #E8F2FA; stroke: #E8F2FA; filter: drop-shadow(0 0 1px rgba(232,242,250,0.25)); }
 
-/* --- baglanti cizgileri: tek bir SVG katmaninda, koseli (elbow) hatlarla ---
-   Turkiye'ye artik ozel bir nokta/etiket/nabiz yok; ayirt edicilik dogrudan
-   haritadaki beyaz ulke seklinden geliyor. */
-.trade-connector-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-.trade-connector-line {
-  fill: none; stroke: rgba(255,255,255,0.45); stroke-width: 0.35; vector-effect: non-scaling-stroke;
-  stroke-dasharray: 300; stroke-dashoffset: 300;
+/* Baglanti cizgisi: kaynak nokta -> koseli (elbow) -> etiket, ayni SVG/koordinat sistemi icinde */
+.geo-connector {
+  fill: none; stroke: rgba(255,255,255,0.45); stroke-width: 1; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 320; stroke-dashoffset: 320;
   transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-delay: var(--delay, 0s);
 }
-.trade-map-section.in-view .trade-connector-line { stroke-dashoffset: 0; }
+.trade-map-section.in-view .geo-connector { stroke-dashoffset: 0; }
 
-/* --- marker'lar (nokta + etiket) --- */
-.trade-marker {
-  position: absolute; transform: translate(-50%, -50%) scale(0);
-  display: flex; flex-direction: column; align-items: center;
-  opacity: 0; pointer-events: none; z-index: 2;
+/* Nokta: kucuk, sade, cercevesiz/golgesiz */
+.geo-dot {
+  fill: #E8F2FA; opacity: 0; transform-box: fill-box; transform-origin: center;
+  transform: scale(0);
   transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
   transition-delay: var(--delay, 0s);
 }
-.trade-map-section.in-view .trade-marker { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.trade-map-section.in-view .geo-dot { opacity: 1; transform: scale(1); }
 
-/* Sade, cercevesiz/golgesiz, kucuk duz beyaz noktalar */
-.trade-dot-only {
-  position: absolute; width: 3.5px; height: 3.5px; border-radius: 50%;
-  background: #E8F2FA;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0; z-index: 2;
-  transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transition-delay: var(--delay, 0s);
+/* Kutusuz, zarif etiket (SVG native text, ayni koordinat sistemi) */
+.geo-label {
+  font-family: var(--font-sans, Inter, sans-serif); font-size: 13px; font-weight: 600; fill: #ffffff;
+  opacity: 0; transition: opacity 0.5s ease; transition-delay: var(--delay, 0s);
+  paint-order: stroke; stroke: rgba(11,28,46,0.55); stroke-width: 3px; stroke-linejoin: round;
 }
-.trade-map-section.in-view .trade-dot-only { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
-.trade-marker-offset { pointer-events: none; }
-/* Kutusuz, zarif etiket */
-.trade-label {
-  font-size: 9.5px; font-weight: var(--weight-medium); color: #ffffff;
-  white-space: nowrap; text-align: center; line-height: 1.35;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+.geo-label-sub {
+  font-family: var(--font-sans, Inter, sans-serif); font-size: 11px; font-weight: 400; fill: rgba(255,255,255,0.7);
+  opacity: 0; transition: opacity 0.5s ease; transition-delay: var(--delay, 0s);
+  paint-order: stroke; stroke: rgba(11,28,46,0.55); stroke-width: 3px; stroke-linejoin: round;
 }
-.trade-label small { display: block; font-size: 8px; font-weight: 400; color: rgba(255,255,255,0.65); }
+.trade-map-section.in-view .geo-label,
+.trade-map-section.in-view .geo-label-sub { opacity: 1; }
 
 .trade-source-note { margin-top: 32px; font-size: 11.5px; color: rgba(255,255,255,0.35); text-align: right; }
 
 @media (max-width: 1024px) {
   .trade-map-layout { grid-template-columns: 1fr; gap: 40px; }
-  .trade-map-wrap { aspect-ratio: 16/12; }
-  .trade-label { font-size: 8.5px; }
+  .trade-map-wrap { min-height: 420px; }
 }
 
 @media (max-width: 767px) {
@@ -818,8 +784,6 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .trade-map-layout { margin-top: 32px; }
   .trade-metrics { gap: 20px 24px; }
   .trade-metric-num { font-size: 30px; }
-  .trade-map-wrap { aspect-ratio: 4/5; max-height: none; }
-  .trade-label { font-size: 7.5px; }
-  .trade-label small { font-size: 7px; }
+  .trade-map-wrap { min-height: 380px; }
   .trade-source-note { text-align: left; }
 }
