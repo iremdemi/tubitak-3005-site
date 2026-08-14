@@ -318,9 +318,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // (beyaz zemin + koyu yazi) burada, aktif section'a gore biz tetikliyoruz.
     // "force-light-header" isaretli sayfalarda (ör. hakkimizda, bulgular)
     // section'in koyu/acik olmasindan bagimsiz olarak header hep beyaz kalir.
+    // "data-fp-header-light" ise TEK BIR section icin (ör. koyu zeminli ama
+    // header'i yine de beyaz gorunmesi istenen ticaret agi section'i) ayni
+    // seyi yapar; ancak noktalarin (fp-dots) rengini etkilemez.
     const forceLight = document.body.classList.contains('force-light-header');
+    const sectionHeaderLight = sections[index] && sections[index].dataset.fpHeaderLight === 'true';
     if (mainHeader && fpActive) {
-      mainHeader.classList.toggle('scrolled', isLight || forceLight);
+      mainHeader.classList.toggle('scrolled', isLight || forceLight || sectionHeaderLight);
     }
   }
 
