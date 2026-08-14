@@ -741,7 +741,13 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   stroke: rgba(255,255,255,0.28) !important;
   stroke-width: 0.4;
 }
-#tradeWorldMap #tr, #tradeWorldMap #tr path,
+/* Turkiye: kirmizi/turuncu vurgu, degismedi */
+#tradeWorldMap #tr, #tradeWorldMap #tr path {
+  fill: #e0432f !important;
+  stroke: #e0432f !important;
+}
+/* 10 ticaret ortagi: saf beyaz yerine soguk, buz mavisi-kirik beyaz bir ton;
+   glow minimuma indirildi */
 #tradeWorldMap #de, #tradeWorldMap #de path,
 #tradeWorldMap #gb, #tradeWorldMap #gb path,
 #tradeWorldMap #us, #tradeWorldMap #us path,
@@ -752,9 +758,9 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 #tradeWorldMap #ch, #tradeWorldMap #ch path,
 #tradeWorldMap #nl, #tradeWorldMap #nl path,
 #tradeWorldMap #fr, #tradeWorldMap #fr path {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-  filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
+  fill: #E8F2FA !important;
+  stroke: #E8F2FA !important;
+  filter: drop-shadow(0 0 1px rgba(232,242,250,0.25));
 }
 
 /* --- baglanti cizgileri: tek bir SVG katmaninda, koseli (elbow) hatlarla ---
@@ -782,7 +788,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 /* Sade, cercevesiz/golgesiz, kucuk duz beyaz noktalar */
 .trade-dot-only {
   position: absolute; width: 3.5px; height: 3.5px; border-radius: 50%;
-  background: #ffffff;
+  background: #E8F2FA;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0; z-index: 2;
   transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
