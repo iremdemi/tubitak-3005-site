@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTG Research Portal | Politika Önerileri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="mainHeader">
+
+  <a href="/" class="header-logo" aria-label="Ana Sayfa">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK">
+  </a>
+
+  <nav>
+    <a href="/" class="active" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+    <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
+    <a href="/bulgular" data-i18n="menuBulgular">Bulgular</a>
+    <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar</a>
+    <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+    <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
+  </nav>
+  
+  <div class="header-right">
+    <div class="header-icons">
+      <!-- YENİ ARAMA İKONU -->
+      <div class="search-wrapper" id="searchWrapper">
+        <div class="search-icon" id="searchToggle" title="Ara">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <div class="search-input-box" id="searchInputBox">
+          <input type="text" placeholder="Ara...">
+        </div>
+      </div>
+
+      <!-- DÜNYA İKONU VE AÇILIR MENÜ -->
+      <div class="lang-wrapper">
+        <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="lang-dropdown" id="langDropdown">
+          <span class="active" data-lang="tr">Türkçe</span>
+          <span data-lang="en">English</span>
+        </div>
+      </div>
+    </div>
+    
+    <a href="/politika-onerileri" class="btn-outline">Politika Önerileri</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+
+<!-- POLİTİKA ÖNERİLERİ: ANALİZ SÜRECİ DEVAM EDİYOR -->
+<section class="coming-soon-section">
+  <svg class="coming-soon-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="12 6 12 12 16 14"></polyline>
+  </svg>
+  <h1 data-i18n="policyPageTitle">Politika Önerileri</h1>
+  <p data-i18n="policyPageDesc">TR42 Bölgesi'ndeki 25 derinlemesine mülakatın nitel analiz süreci devam etmektedir. Analiz bulguları doğrultusunda hazırlanacak nihai politika önerileri seti, gerçekleştirilecek geniş katılımlı çalıştay sonrasında burada kamuoyuyla paylaşılacaktır.</p>
+  <a href="/" class="btn-outline" style="border-color: rgba(255,255,255,0.4);" data-i18n="backToHome">Ana Sayfaya Dön</a>
+</section>
+
+<footer class="reveal">
+  <div class="wrap">
+    <div class="footer-flex">
+      
+      <div class="f-col" style="width: 28%;">
+        <div class="custom-dtg-logo" style="align-items: flex-start; margin-bottom: 24px;">
+          <div class="logo-main" style="font-size: 26px;">DTG</div>
+          <div class="logo-line" style="width: 60px;"></div>
+          <div class="logo-sub" style="font-size: 8px;">RESEARCH PORTAL</div>
+        </div>
+        <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
+      </div>
+
+      <div class="f-col">
+        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
+        <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+        <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
+      </div>
+
+      <div class="f-col">
+        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <a href="/bulgular" data-i18n="menuBulgular">Saha Bulguları</a>
+        <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
+        <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
+      </div>
+
+      <div class="f-col">
+        <h4 data-i18n="footIletisim">İletişim</h4>
+        <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
+        <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
+        <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
+      </div>
+
+    </div>
+    <div class="f-bottom">
+      <span data-i18n="footCopy">Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.</span>
+      <span>TR42 | TÜBİTAK 3005</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
