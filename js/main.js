@@ -637,6 +637,7 @@ document.addEventListener("DOMContentLoaded", () => {
       geo.features.forEach(f => {
         const p = document.createElementNS(SVG_NS, 'path');
         p.setAttribute('d', path(f));
+        p.setAttribute('data-id', f.id);
         const info = COUNTRIES[f.id];
         if (info && info.code === 'tr') p.setAttribute('class', 'geo-country geo-turkey');
         else if (info) p.setAttribute('class', 'geo-country geo-highlight');
@@ -664,6 +665,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const dot = document.createElementNS(SVG_NS, 'circle');
         dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', 3.5);
         dot.setAttribute('class', 'geo-dot');
+        dot.setAttribute('data-code', info.code);
         dot.style.setProperty('--delay', delay + 'ms');
         gMarkers.appendChild(dot);
 
