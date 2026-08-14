@@ -730,14 +730,19 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   fill: rgba(90, 190, 255, 0.5) !important;
 }
 
-/* --- marker'lar (nokta + baglanti cizgisi + etiket) --- */
+/* --- marker'lar (nokta + baglanti cizgisi + etiket) ---
+   Gemini'nin denemesinden alinan iyilestirmeler: kutusuz zarif etiket
+   tipografisi, cizgilerin süzülerek cizilmesi, noktalarin sirayla ve
+   hafif "zipla" hissiyle buyumesi, Turkiye'de cok hafif nabiz. Harita
+   kendisi (gercek, ulke path'li SVG) ve ulke/veri listesi degismedi. */
 .trade-marker {
-  position: absolute; transform: translate(-50%, -50%);
+  position: absolute; transform: translate(-50%, -50%) scale(0);
   display: flex; flex-direction: column; align-items: center;
-  opacity: 0; transition: opacity 0.5s ease;
-  pointer-events: none;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--delay, 0s);
 }
-.trade-map-section.in-view .trade-marker { opacity: 1; }
+.trade-map-section.in-view .trade-marker { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 /* Sabancı'daki gibi sade, duz beyaz noktalar (Turkiye dahil hepsi) */
 .trade-dot {
   width: 6px; height: 6px; border-radius: 50%; background: #ffffff;
@@ -749,35 +754,53 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .trade-dot-only {
   position: absolute; width: 6px; height: 6px; border-radius: 50%;
   background: #ffffff; box-shadow: 0 0 0 3px rgba(255,255,255,0.22);
-  transform: translate(-50%, -50%);
-  opacity: 0; transition: opacity 0.5s ease; z-index: 2;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0; z-index: 2;
+  transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--delay, 0s);
 }
-.trade-map-section.in-view .trade-dot-only { opacity: 1; }
+.trade-map-section.in-view .trade-dot-only { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* Cizgi, sabit bir uzunluk+aci ile gelmek yerine kaynak noktadan
+   suzulerek "cizilir" (scaleX 0 -> 1), Gemini'nin cizim animasyonuna
+   esdeger bir his, ama mevcut div tabanli baglanti sistemimizle */
 .trade-connector {
-  position: absolute; height: 1px; background: rgba(255,255,255,0.3);
+  position: absolute; height: 1px; width: var(--conn-len); background: rgba(255,255,255,0.3);
   transform-origin: 0 0; pointer-events: none;
-  opacity: 0; transition: opacity 0.6s ease 0.15s; z-index: 1;
+  transform: rotate(var(--conn-angle)) scaleX(0);
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: calc(var(--delay, 0s) + 0.1s);
 }
-.trade-map-section.in-view .trade-connector { opacity: 1; }
+.trade-map-section.in-view .trade-connector { transform: rotate(var(--conn-angle)) scaleX(1); }
 .trade-marker-offset { pointer-events: none; }
+/* Kutusuz, zarif etiket: koyu zemin/border kaldirildi, sadece
+   metnin okunurlugu icin ince bir golge birakildi */
 .trade-label {
   font-size: 9.5px; font-weight: var(--weight-medium); color: #ffffff;
-  white-space: nowrap; text-align: center; line-height: 1.3;
-  background: rgba(11,28,46,0.7); padding: 2px 6px; border-radius: 2px;
-  border: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap; text-align: center; line-height: 1.35;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.55);
 }
-.trade-label small { display: block; font-size: 8px; font-weight: 400; color: rgba(255,255,255,0.6); }
+.trade-label small { display: block; font-size: 8px; font-weight: 400; color: rgba(255,255,255,0.65); }
 
-/* Turkiye'nin noktasi da artik diger noktalarla ayni: sade beyaz.
-   Ayirt edicilik ulke seklinin kirmizi renginden ve etiketin kirmizi
-   zeminli olmasindan geliyor. */
+/* Turkiye'nin noktasi da artik diger noktalarla ayni: sade beyaz,
+   ustune cok hafif bir nabiz halkasi eklendi (dikkat cekmeden). */
 .trade-marker-turkey .trade-dot-turkey {
   width: 8px; height: 8px; background: #ffffff;
   box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+  position: relative;
+}
+.trade-marker-turkey .trade-dot-turkey::after {
+  content: ''; position: absolute; inset: -6px; border-radius: 50%;
+  border: 1px solid rgba(224,67,47,0.55);
+  animation: tradePulse 2.6s infinite ease-out;
+}
+@keyframes tradePulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.1); opacity: 0; }
 }
 .trade-label-turkey {
   font-size: 11px; font-weight: var(--weight-semibold); color: #ffffff;
-  background: #e0432f; border: none; padding: 3px 10px;
+  background: #e0432f; border: none; padding: 3px 10px; border-radius: 2px;
+  text-shadow: none;
 }
 
 .trade-source-note { margin-top: 32px; font-size: 11.5px; color: rgba(255,255,255,0.35); text-align: right; }
@@ -794,7 +817,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .trade-metrics { gap: 20px 24px; }
   .trade-metric-num { font-size: 30px; }
   .trade-map-wrap { aspect-ratio: 4/5; max-height: none; }
-  .trade-label { font-size: 7.5px; padding: 2px 5px; }
-  .trade-label small { font-size: 8px; }
+  .trade-label { font-size: 7.5px; }
+  .trade-label small { font-size: 7px; }
   .trade-source-note { text-align: left; }
 }
