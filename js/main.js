@@ -730,3 +730,61 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(() => { /* harita yuklenemezse sessizce gec, geri kalan section calismaya devam eder */ });
 })();
+
+/* ===========================================================
+   HAKKIMIZDA SAYFASI: "Amaçlarımız" donen kart yigini.
+   3 kart ust uste; biri onde (net), ikisi arkada (hafif bulanik,
+   kaydirilmis). 5 saniyede bir otomatik sirayla one gecerler;
+   tiklanan kart hemen one gecer ve otomatik donguyu sifirlar.
+   =========================================================== */
+(function () {
+  const stack = document.getElementById('amacStack');
+  if (!stack) return;
+
+  const cards = Array.from(stack.querySelectorAll('.amac-card'));
+  const dots = Array.from(stack.querySelectorAll('.amac-dot'));
+  if (cards.length < 3) return;
+
+  let order = [0, 1, 2]; // order[0] = onde, order[1] = ortada, order[2] = arkada
+  let timer = null;
+
+  function applyOrder() {
+    const posClasses = ['pos-front', 'pos-mid', 'pos-back'];
+    order.forEach((cardIndex, posIndex) => {
+      cards[cardIndex].classList.remove('pos-front', 'pos-mid', 'pos-back');
+      cards[cardIndex].classList.add(posClasses[posIndex]);
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === order[0]));
+  }
+
+  function rotate() {
+    order = [order[1], order[2], order[0]];
+    applyOrder();
+  }
+
+  function restartTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(rotate, 5000);
+  }
+
+  function bringToFront(cardIndex) {
+    if (order[0] === cardIndex) return;
+    order = [cardIndex, ...order.filter(i => i !== cardIndex)];
+    applyOrder();
+    restartTimer();
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      bringToFront(parseInt(card.dataset.index, 10));
+    });
+  });
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      bringToFront(parseInt(dot.dataset.goto, 10));
+    });
+  });
+
+  applyOrder();
+  restartTimer();
+})();
