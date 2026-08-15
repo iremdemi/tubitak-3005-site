@@ -641,7 +641,17 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .about-hero-content { position: relative; z-index: 2; max-width: 700px; color: #ffffff; padding: 140px 0 80px; }
 .about-hero-content h1 { font-size: clamp(32px, 4vw, 52px); font-weight: var(--weight-semibold); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 28px; }
 .about-hero-content p { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.9); margin-bottom: 20px; font-weight: 400; }
-.about-hero-content p:last-child { margin-bottom: 0; }
+.about-hero-content p:last-child { margin-bottom: 20px; }
+/* Metni sayfa kenarina biraz daha yaklastiriyoruz (sadece bu hero'da,
+   sitenin genel .wrap kuralina dokunmadan); sag taraf bos kalir. */
+.about-hero-intro .wrap { padding-left: 40px; padding-right: 40px; }
+.hero-team-link {
+  display: inline-block; background: #002b66; color: #ffffff;
+  font-size: 14px; font-weight: var(--weight-semibold);
+  padding: 15px 30px; border-radius: 3px; letter-spacing: 0.01em;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.hero-team-link:hover { background: #001a40; transform: translateY(-1px); }
 
 /* --- Açık zeminli içerik section'ları (Amacımız / Odak Noktamız / Künye) --- */
 .about-section { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; background: #ffffff; padding: 140px 0 80px; }
