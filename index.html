@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DTG Research Portal | Ana Sayfa</title>
+<title>DTG Araştırma Platformu | Ana Sayfa</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <!-- Ticaret ağı haritası icin gercek cografi projeksiyon (D3.js) -->
@@ -161,8 +161,12 @@
   </div>
 </section>
 
-<!-- TÜRKİYE'NİN KÜRESEL TİCARET AĞI (eski beyaz istatistik section'ının yerini alıyor) -->
-<footer class="reveal" data-fp-section="4" data-fp-light="true">
+</div>
+
+<!-- Footer artik tam sayfa kaydirma sisteminin (fp-wrapper) DISINDA, normal
+     bir block/section. Kendi icerigi kadar yukseklik alir, viewport'a
+     sikistirilmaz, sayfanin dogal (normal) scroll'uyla ulasilir. -->
+<footer class="reveal">
   <div class="wrap">
     <div class="footer-flex">
       
@@ -170,7 +174,7 @@
         <div class="custom-dtg-logo" style="align-items: flex-start; margin-bottom: 24px;">
           <div class="logo-main" style="font-size: 26px;">DTG</div>
           <div class="logo-line" style="width: 60px;"></div>
-          <div class="logo-sub" style="font-size: 8px;">RESEARCH PORTAL</div>
+          <div class="logo-sub" style="font-size: 8px;">ARAŞTIRMA PLATFORMU</div>
         </div>
         <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
@@ -198,20 +202,18 @@
 
     </div>
     <div class="f-bottom">
-      <span data-i18n="footCopy">Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.</span>
+      <span data-i18n="footCopy">Copyright &copy; 2026 DTG Araştırma Platformu. Tüm hakları saklıdır.</span>
       <span>TR42 | TÜBİTAK 3005</span>
     </div>
   </div>
 </footer>
-</div>
 
 <!-- TAM SAYFA BÖLÜM GÖSTERGESİ (sadece masaüstünde JS ile görünür yapılır) -->
 <nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
   <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1: Giriş" aria-current="true"></button>
   <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Bulgular"></button>
-  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Araştırma Ekibi"></button>
-  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Küresel Ticaret Ağı"></button>
-  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: İletişim ve Alt Bilgi"></button>
+  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Küresel Ticaret Ağı"></button>
+  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Araştırma Ekibi"></button>
 </nav>
 
 <script src="js/main.js"></script>
