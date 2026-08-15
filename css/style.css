@@ -349,7 +349,8 @@ header.scrolled .lang-icon:hover { color: #002b66; }
    ========================================================= */
 /* Footer: Sabancı'daki gibi acik/beyaz zeminli, daha kaliteli bir gorunum.
    NOT: bu global bir degisiklik, sitedeki TUM sayfalarin footer'ini etkiler. */
-footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top: 1px solid #eef1f4; }
+footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top: 1px solid #eef1f4; display: flex; align-items: center; }
+footer > .wrap { width: 100%; }
 .footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid #eef1f4; padding-bottom: 48px; margin-bottom: 28px; }
 .f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: #94a3b8; text-transform: uppercase; }
 .f-col a, .f-col p { display: block; font-size: var(--text-nav); font-weight: var(--weight-regular); color: #4A5568; line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; text-transform: none; }
