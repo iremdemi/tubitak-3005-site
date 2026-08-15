@@ -522,16 +522,27 @@ footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top
 html.fp-mode, html.fp-mode body {
   /* html/body ARTIK overflow:hidden DEGIL: footer, tam sayfa kaydirma
      sisteminin disinda, normal bir block oldugu icin sayfanin dogal
-     scroll'una ihtiyaci var. Sadece fp-wrapper'in kendisi sabit
-     yukseklikli, kirpili bir "sahne" gibi davraniyor (asagida). */
+     scroll'una ihtiyaci var. Sabit yukseklikli "pencere" gorevini
+     asagidaki .fp-stage kapsayicisi ustleniyor. */
 }
+/* .fp-stage: SABIT boyutlu, kirpili "izleme penceresi". Kendisi HİÇ
+   transform almaz, hep ayni yerde durur. İCİNDEKİ .fp-wrapper ise
+   TÜM section'lari alt alta tasiyan uzun bir kolon olup, transform ile
+   bu sabit pencerenin icinde kaydirilir. (Onceki hatali versiyonda bu
+   iki gorev yanlislikla TEK bir elemente -fp-wrapper'in kendisine-
+   yuklenmisti; bu da section degisince fp-wrapper'in KENDİSİNİN de
+   view'dan kayıp gitmesine, yani section'larin "kaybolmus" gibi
+   gorunmesine sebep oluyordu.) */
 .fp-wrapper {
   will-change: transform;
 }
-html.fp-mode .fp-wrapper {
+html.fp-mode .fp-stage {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  position: relative;
+}
+html.fp-mode .fp-wrapper {
   transition: transform var(--fp-duration, 850ms) var(--fp-easing, cubic-bezier(.65,0,.35,1));
 }
 html.fp-mode [data-fp-section] {
