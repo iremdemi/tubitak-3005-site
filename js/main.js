@@ -131,6 +131,16 @@ document.addEventListener("DOMContentLoaded", () => {
   
   revealElements.forEach(el => revealObserver.observe(el));
 
+  // YEDEK MEKANİZMA: tam sayfa kaydırma modunda gerçek scroll olmadığı için
+  // IntersectionObserver bazı elementleri hiç tetiklemeyebiliyor (ör. sayfa
+  // yüklenir yüklenmez henüz viewport dışındaki section'lardaki içerik).
+  // Böyle bir durumda içerik sonsuza dek opacity:0'da kalıp "kaybolmuş"
+  // görünmesin diye, belirli bir süre sonra hâlâ görünür olmamış TÜM
+  // reveal elementlerini burada zorla aktif ediyoruz.
+  window.setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.active)').forEach(el => el.classList.add('active'));
+  }, 2500);
+
   // MOBİL MENÜ MANTIĞI & X ANİMASYONU EKLENDİ
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
@@ -350,6 +360,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const targetTop = sections[index].offsetTop;
     updateDots(index);
     applyLightClass(index);
+    // ÖNEMLİ: tam sayfa kaydırma modunda gerçek scroll olmadığı (sadece
+    // transform ile atlama yapıldığı) için, IntersectionObserver tabanlı
+    // ".reveal" görünürlük efekti bazı section'larda hiç tetiklenmeyip
+    // içeriğin (basliklar, kartlar) opacity:0'da sonsuza dek kalmasına
+    // sebep olabiliyordu. Section'a fiilen girildiğinde, o section
+    // içindeki tüm reveal elementlerini burada DOĞRUDAN aktif ediyoruz,
+    // observer'a güvenmeden; bu, içeriğin görünmez kalma riskini tamamen
+    // ortadan kaldırıyor.
+    if (sections[index]) {
+      sections[index].querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
     // Hedef section'a ileri yönde giriliyorsa en üstünden, geri yönde
     // giriliyorsa en altından baslasin (dogal, beklenen kaydirma hissi icin)
     subScroll = goingForward ? 0 : sectionOverflow(index);
@@ -464,6 +485,9 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.style.transform = 'translateY(0)';
     updateDots(0);
     applyLightClass(0);
+    if (sections[0]) {
+      sections[0].querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('keydown', onKeydown);
     window.addEventListener('touchstart', onTouchStart, { passive: true });
