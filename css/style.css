@@ -642,9 +642,22 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .about-hero-content h1 { font-size: clamp(32px, 4vw, 52px); font-weight: var(--weight-semibold); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 28px; }
 .about-hero-content p { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.9); margin-bottom: 20px; font-weight: 400; }
 .about-hero-content p:last-child { margin-bottom: 20px; }
-/* Metni sayfa kenarina biraz daha yaklastiriyoruz (sadece bu hero'da,
-   sitenin genel .wrap kuralina dokunmadan); sag taraf bos kalir. */
-.about-hero-intro .wrap { padding-left: 40px; padding-right: 40px; }
+/* Metin blogu, Sabanci referansindaki gibi genis ekranlarda GERCEKTEN sol
+   kenara yasli dursun diye; genel .wrap'in kendi ortalayan max-width/margin
+   davranisini SADECE bu iki hero section'i icin, SADECE genis ekranlarda
+   iptal ediyoruz (mobil/tablette mevcut, ortalanmis .wrap davranisi aynen
+   koruniyor). Header'in kendi sol bosluguyla (80px) hizali kalir. Sag taraf
+   bos kalir, ust/sol bosluklar dengeli. Sadece bu iki section'i etkiler.*/
+@media (min-width: 1025px) {
+  .about-hero-intro .wrap,
+  .about-hero-vizyon .wrap {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
 .hero-team-link {
   display: inline-block; background: #002b66; color: #ffffff;
   font-size: 14px; font-weight: var(--weight-semibold);
