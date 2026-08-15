@@ -14,7 +14,7 @@ const dict = {
     teamTitle: "Araştırma Ekibi", readMoreTxt: "İncele &gt;",
     statFirma: "Saha Araştırmasına Katılan<br>İhracatçı Firma", statIl: "Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Odak<br>Sektör", statAy: "Ay<br>Proje Süresi",
     footDesc: "TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.",
-    footKurumsal: "Hakkımızda", footIcerik: "İçerikler", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Research Portal. Tüm hakları saklıdır.",
+    footKurumsal: "Hakkımızda", footIcerik: "İçerikler", footIletisim: "İletişim", footKurumAdi: "Sakarya Üniversitesi", footProgram: "TÜBİTAK 3005 Destekli", footCopy: "Copyright &copy; 2026 DTG Araştırma Platformu. Tüm hakları saklıdır.",
     comingSoonTitle: "Çok Yakında",
     comingSoonDesc: "Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.",
     policyPageTitle: "Politika Önerileri",
@@ -37,7 +37,7 @@ const dict = {
     teamTitle: "Research Team", readMoreTxt: "Read More &gt;",
     statFirma: "Exporting Firms<br>Included in Field Research", statIl: "Strategic Provinces<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)", statSektor: "Focus<br>Sectors", statAy: "Months<br>Project Duration",
     footDesc: "Independent research platform dedicated to developing foreign trade entrepreneurship and revising public policies in the TR42 East Marmara Region.",
-    footKurumsal: "About Us", footIcerik: "Contents", footIletisim: "Contact", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Portal. All rights reserved.",
+    footKurumsal: "About Us", footIcerik: "Contents", footIletisim: "Contact", footKurumAdi: "Sakarya University", footProgram: "TÜBİTAK 3005 Supported", footCopy: "Copyright &copy; 2026 DTG Research Platform. All rights reserved.",
     comingSoonTitle: "Coming Soon",
     comingSoonDesc: "The research data and content for this section are currently being compiled. Please visit again later.",
     policyPageTitle: "Policy Recommendations",
@@ -377,7 +377,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function onWheel(e) {
     if (!fpActive) return;
+    // Footer artik tam sayfa kaydirma sisteminin DISINDA, normal bir block.
+    // Sayfa footer bolgesine (scrollY > 0) kaymissa, wheel'i hic ele almiyoruz,
+    // tarayicinin kendi normal scroll'u calissin.
+    if (window.scrollY > 0) return;
     if (Math.abs(e.deltaY) < FP_WHEEL_THRESHOLD) return;
+
+    // Son section'dayken ve o section'in da tasan kismi bittiyse, asagi
+    // kaydirmaya devam edilirse artik "bir sonraki section" yok; kontrolu
+    // tarayicinin normal scroll'una birakiyoruz ki footer'a inilebilsin.
+    const overflowNow = sectionOverflow(currentIndex);
+    if (e.deltaY > 0 && currentIndex === total - 1 && subScroll >= overflowNow) {
+      return; // preventDefault YOK: native scroll footer'i acar
+    }
+
     e.preventDefault();
     if (isAnimating) return;
 
@@ -411,8 +424,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function onKeydown(e) {
     if (!fpActive) return;
+    if (window.scrollY > 0) return; // footer bolgesindeyiz, klavye de normal scroll yapsin
     if (isTypingTarget(document.activeElement)) return; // arama kutusu vb. yazarken engelleme
     if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      const overflowNow = sectionOverflow(currentIndex);
+      if (currentIndex === total - 1 && subScroll >= overflowNow) return; // native scroll'a birak
       e.preventDefault();
       goToSection(currentIndex + 1);
     } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
