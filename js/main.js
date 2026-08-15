@@ -654,7 +654,7 @@ document.addEventListener("DOMContentLoaded", () => {
     '826': { code: 'gb', lon: -0.1278, lat: 51.5074, name: 'Birleşik Krallık', sub: 'İhracat: 16,8 Milyar $', lx: 260, ly: 35 },
     '528': { code: 'nl', lon: 4.9041, lat: 52.3676, name: 'Hollanda', sub: 'İhracat: 7,2 Milyar $', lx: 420, ly: 55 },
     '840': { code: 'us', lon: -77.0369, lat: 38.9072, name: 'ABD', sub: 'İhracat: 16,3 Milyar $', lx: 120, ly: 280 },
-    '250': { code: 'fr', lon: 2.3522, lat: 48.8566, name: 'Fransa', sub: 'İhracat Ortağı', lx: 540, ly: 40 },
+    '250': { code: 'fr', lon: 2.3522, lat: 48.8566, name: 'Fransa', sub: 'İhracat: 11,2 Milyar $', lx: 540, ly: 40 },
     '756': { code: 'ch', lon: 7.4474, lat: 46.9480, name: 'İsviçre', sub: 'İthalat: 15,7 Milyar $', lx: 800, ly: 45 },
     '380': { code: 'it', lon: 12.4964, lat: 41.9028, name: 'İtalya', sub: 'İhracat: 13,2 Milyar $', lx: 690, ly: 495 },
     '368': { code: 'iq', lon: 44.3661, lat: 33.3152, name: 'Irak', sub: 'İhracat: 12,4 Milyar $', lx: 855, ly: 475 },
