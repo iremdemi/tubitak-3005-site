@@ -764,7 +764,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function restartTimer() {
     if (timer) clearInterval(timer);
-    timer = setInterval(rotate, 5000);
+    timer = setInterval(rotate, 8000);
   }
 
   function bringToFront(cardIndex) {
@@ -774,11 +774,16 @@ document.addEventListener("DOMContentLoaded", () => {
     restartTimer();
   }
 
+  // Kartlardan HERHANGI birine (onde olan dahil) tiklaninca bir sonrakine
+  // gecilir; arkadaki kartlardan birini ozellikle secmeye gerek yok.
   cards.forEach(card => {
     card.addEventListener('click', () => {
-      bringToFront(parseInt(card.dataset.index, 10));
+      rotate();
+      restartTimer();
     });
   });
+  // Alttaki noktalar ise dogrudan o karta atlamak icin (belirli bir amaci
+  // secmek istendiginde) kullanilmaya devam ediyor.
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       bringToFront(parseInt(dot.dataset.goto, 10));
