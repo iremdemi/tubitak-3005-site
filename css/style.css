@@ -636,7 +636,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 .about-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(11,28,46,0.86) 0%, rgba(11,28,46,0.55) 48%, rgba(11,28,46,0.28) 100%);
+  background: linear-gradient(100deg, rgba(11,28,46,0.92) 0%, rgba(11,28,46,0.68) 48%, rgba(11,28,46,0.42) 100%);
 }
 .about-hero-content { position: relative; z-index: 2; max-width: 700px; color: #ffffff; padding: 140px 0 80px; }
 .about-hero-content h1 { font-size: clamp(32px, 4vw, 52px); font-weight: var(--weight-semibold); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 28px; }
@@ -648,12 +648,32 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .about-section h2 { font-size: clamp(28px, 3vw, 40px); font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; max-width: 20ch; }
 .about-lead { font-size: 16px; line-height: 1.85; color: #333333; max-width: 780px; margin-bottom: 18px; }
 
-/* --- AMAÇLARIMIZ: 3 kutu yan yana (kırmızı notta istenen) --- */
-.amac-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 44px; }
-.amac-card { background: #f8fafc; border: 1px solid #eef0f2; border-radius: 3px; padding: 32px 28px; }
-.amac-num { display: block; font-size: 13px; font-weight: var(--weight-semibold); color: #94a3b8; margin-bottom: 16px; letter-spacing: 0.05em; }
-.amac-card h3 { font-size: 17px; font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.4; margin-bottom: 14px; }
-.amac-card p { font-size: 14px; line-height: 1.75; color: #4A5568; }
+/* --- AMAÇLARIMIZ: sol metin / sag donen kart yigini --- */
+.amac-layout {
+  display: grid; grid-template-columns: 0.9fr 1fr; gap: 64px; align-items: center;
+}
+.amac-text h2 { max-width: none; }
+
+.amac-stack { position: relative; height: 380px; width: 100%; }
+.amac-card {
+  position: absolute; inset: 0;
+  background: #ffffff; border-radius: 20px; padding: 36px 38px;
+  box-shadow: 0 24px 60px rgba(11,28,46,0.16);
+  cursor: pointer; user-select: none; overflow: hidden;
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.amac-card h3 { font-size: 19px; font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.4; margin-bottom: 14px; }
+.amac-card p { font-size: 14.5px; line-height: 1.75; color: #4A5568; }
+
+.amac-card.pos-front { transform: translate(0, 0) scale(1) rotate(0deg); z-index: 3; filter: blur(0); opacity: 1; box-shadow: 0 24px 60px rgba(11,28,46,0.2); }
+.amac-card.pos-mid   { transform: translate(30px, 26px) scale(0.94) rotate(3deg); z-index: 2; filter: blur(1.5px); opacity: 0.75; cursor: pointer; }
+.amac-card.pos-back  { transform: translate(54px, 46px) scale(0.89) rotate(6deg); z-index: 1; filter: blur(2.5px); opacity: 0.5; cursor: pointer; }
+
+.amac-dots { position: absolute; left: 0; bottom: -44px; z-index: 4; display: flex; gap: 8px; }
+.amac-dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dbe1e8; cursor: pointer; padding: 0; transition: background 0.3s; }
+.amac-dot.active { background: #002b66; }
 
 /* --- ODAK NOKTAMIZ: istatistik satırı --- */
 .odak-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; border-top: 1px solid #eef0f2; padding-top: 40px; }
@@ -690,14 +710,20 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 
 @media (max-width: 1024px) {
-  .amac-grid { grid-template-columns: 1fr; }
+  .amac-layout { grid-template-columns: 1fr; gap: 40px; }
+  .amac-stack { height: 340px; max-width: 480px; margin: 0 auto; }
   .odak-stats { grid-template-columns: repeat(2, 1fr); }
-  .interlude-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 110px; padding: 0 24px; }
 }
 
 @media (max-width: 767px) {
   .about-hero-content { padding: 120px 0 60px; }
   .about-section { padding: 110px 0 56px; }
+  .amac-stack { height: 460px; margin-bottom: 24px; }
+  .amac-card { padding: 22px 22px; }
+  .amac-card h3 { font-size: 16px; margin-bottom: 10px; line-height: 1.3; }
+  .amac-card p { font-size: 12.5px; line-height: 1.55; }
+  .amac-card.pos-mid  { transform: translate(14px, 12px) scale(0.95) rotate(2deg); }
+  .amac-card.pos-back { transform: translate(24px, 20px) scale(0.91) rotate(4deg); }
   .odak-stats { grid-template-columns: 1fr 1fr; gap: 24px; }
   .interlude-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 90px; padding: 0 20px; }
   .odak-cta { margin-top: 32px; }
