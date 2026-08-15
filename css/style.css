@@ -520,13 +520,18 @@ footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top
    section'lar normal, sırayla akan bloklar olarak kalır.
    ========================================================= */
 html.fp-mode, html.fp-mode body {
-  height: 100%;
-  overflow: hidden;
+  /* html/body ARTIK overflow:hidden DEGIL: footer, tam sayfa kaydirma
+     sisteminin disinda, normal bir block oldugu icin sayfanin dogal
+     scroll'una ihtiyaci var. Sadece fp-wrapper'in kendisi sabit
+     yukseklikli, kirpili bir "sahne" gibi davraniyor (asagida). */
 }
 .fp-wrapper {
   will-change: transform;
 }
 html.fp-mode .fp-wrapper {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   transition: transform var(--fp-duration, 850ms) var(--fp-easing, cubic-bezier(.65,0,.35,1));
 }
 html.fp-mode [data-fp-section] {
