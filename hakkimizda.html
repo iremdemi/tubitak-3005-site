@@ -137,13 +137,9 @@
   </div>
 </section>
 
-</div>
-</div>
-
-<!-- Footer artik tam sayfa kaydirma sisteminin (fp-wrapper) DISINDA, normal
-     bir block/section. Kendi icerigi kadar yukseklik alir, viewport'a
-     sikistirilmaz, sayfanin dogal (normal) scroll'uyla ulasilir. -->
-<footer class="reveal">
+<!-- Footer artik tam sayfa kaydirma sisteminin (fp-wrapper) parcasi, gercek
+     bir section olarak Sabancı referansindaki gibi. -->
+<footer class="reveal" data-fp-section="4" data-fp-light="true">
   <div class="wrap">
     <div class="footer-flex">
       
@@ -153,43 +149,47 @@
           <div class="logo-line" style="width: 60px;"></div>
           <div class="logo-sub" style="font-size: 8px;">ARAŞTIRMA PLATFORMU</div>
         </div>
-        <p style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7;" data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
+        <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
 
-      <div class="f-col" style="width: 18%;">
-        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); margin-bottom: 20px;" data-i18n="footKurumsal">Kurumsal</h4>
-        <a href="/hakkimizda" style="display:block; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuProje">Hakkımızda</a>
-        <a href="/ekibimiz" style="display:block; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuEkip">Araştırma Ekibimiz</a>
-        <a href="/iletisim" style="display:block; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuIletisim">İletişim</a>
+      <div class="f-col">
+        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
+        <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
+        <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
       </div>
 
-      <div class="f-col" style="width: 18%;">
-        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); margin-bottom: 20px;" data-i18n="footIcerikler">İçerikler</h4>
-        <a href="/bulgular" style="display:block; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuBulgular">Bulgular</a>
-        <a href="/politika-onerileri" style="display:block; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuPolitika">Politika Önerileri</a>
-        <a href="/yayinlar" style="display:block; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="menuYayinlar">Yayınlar</a>
+      <div class="f-col">
+        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <a href="/bulgular" data-i18n="menuBulgular">Saha Bulguları</a>
+        <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
+        <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
       </div>
 
-      <div class="f-col" style="width: 28%;">
-        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); margin-bottom: 20px;" data-i18n="menuIletisim">İletişim</h4>
-        <p style="margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);"><a href="mailto:proje@sakarya.edu.tr" style="color:inherit;">proje@sakarya.edu.tr</a></p>
-        <p style="margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
-        <p style="font-size: 14px; color: rgba(255,255,255,0.85);" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
+      <div class="f-col">
+        <h4 data-i18n="footIletisim">İletişim</h4>
+        <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
+        <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
+        <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
       </div>
 
     </div>
-    <div class="f-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 48px; padding-top: 24px; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5);">
+    <div class="f-bottom">
       <span data-i18n="footCopy">Copyright &copy; 2026 DTG Araştırma Platformu. Tüm hakları saklıdır.</span>
       <span>TR42 | TÜBİTAK 3005</span>
     </div>
   </div>
 </footer>
 
+</div>
+</div>
+
 <nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
   <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1" aria-current="true"></button>
   <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2"></button>
   <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3"></button>
   <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4"></button>
+  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5"></button>
 </nav>
 
 <script src="js/main.js"></script>
