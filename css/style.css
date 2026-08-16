@@ -880,3 +880,106 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .trade-map-wrap { min-height: 380px; }
   .trade-source-note { text-align: left; }
 }
+
+/* =========================================================
+   ARAŞTIRMA EKİBİMİZ SAYFASI (HOCA SECTION'LARI)
+   ========================================================= */
+.ekip-hero {
+  padding: 72px 0 40px;
+  border-bottom: 1px solid #e7eaee;
+}
+.ekip-hero .eyebrow-tag { margin-bottom: 14px; }
+.ekip-hero h1 {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-semibold);
+  color: #0b1c2e;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.ekip-hero p {
+  max-width: 640px;
+  font-size: var(--text-body);
+  color: #4A5568;
+  line-height: 1.7;
+}
+
+.hoca-section {
+  padding: 64px 0;
+  border-bottom: 1px solid #e7eaee;
+}
+.hoca-section:nth-child(even) { background: #f8f9fb; }
+
+.hoca-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 1fr;
+  grid-template-areas: "bio photo contact" "kurum photo pubs";
+  gap: 20px 32px;
+  align-items: stretch;
+}
+
+.hoca-photo-wrap { grid-area: photo; }
+.hoca-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eef1f5;
+  position: relative;
+}
+.hoca-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hoca-name-tag {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(0deg, rgba(11,28,46,0.88) 0%, rgba(11,28,46,0) 100%);
+  padding: 40px 18px 16px;
+}
+.hoca-name-tag h3 { color: #fff; font-size: var(--text-h4); font-weight: var(--weight-semibold); line-height: 1.3; }
+.hoca-name-tag span { color: rgba(255,255,255,0.75); font-size: var(--text-small); font-weight: var(--weight-medium); text-transform: uppercase; letter-spacing: 0.04em; }
+.hoca-name-tag .yurutucu-badge {
+  display: inline-block; margin-bottom: 8px; padding: 3px 10px;
+  background: #c8511f; color: #fff; font-size: 11px; font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em; text-transform: uppercase; border-radius: 2px;
+}
+
+.hoca-box {
+  border: 1px solid #e2e6ec;
+  border-radius: 3px;
+  padding: 22px 24px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.hoca-section:nth-child(even) .hoca-box { background: #ffffff; }
+.hoca-box h4 {
+  font-size: 12px; font-weight: var(--weight-semibold); color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.hoca-box p { font-size: 14.5px; color: #384354; line-height: 1.65; }
+.hoca-box a { color: #002b66; font-weight: var(--weight-medium); }
+.hoca-box a:hover { text-decoration: underline; }
+
+.hoca-box-bio { grid-area: bio; }
+.hoca-box-kurum { grid-area: kurum; }
+.hoca-box-contact { grid-area: contact; }
+.hoca-box-pubs { grid-area: pubs; }
+
+.pub-list { list-style: none; }
+.pub-list li { margin-bottom: 10px; }
+.pub-list li:last-child { margin-bottom: 0; }
+.pub-list a {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 14px; line-height: 1.5; color: #0b1c2e; font-weight: var(--weight-medium);
+}
+.pub-list a svg { flex: none; margin-top: 3px; opacity: 0.55; }
+.pub-list a:hover { color: #002b66; }
+.pub-empty { font-size: 14px; color: #94a3b8; font-style: italic; }
+
+@media (max-width: 900px) {
+  .hoca-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "photo" "bio" "contact" "kurum" "pubs";
+  }
+  .hoca-photo { min-height: 320px; }
+  .hoca-section { padding: 44px 0; }
+}
