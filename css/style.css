@@ -710,10 +710,20 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .amac-dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: #dbe1e8; cursor: pointer; padding: 0; transition: background 0.3s; }
 .amac-dot.active { background: #002b66; }
 
-/* --- ODAK NOKTAMIZ: istatistik satırı --- */
-.odak-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; border-top: 1px solid #eef0f2; padding-top: 40px; }
-.odak-cta { display: inline-block; margin-top: 48px; }
-.odak-stat strong { display: block; font-size: clamp(30px, 3vw, 40px); font-weight: var(--weight-semibold); color: #002b66; letter-spacing: -0.02em; margin-bottom: 8px; }
+/* --- ODAK NOKTAMIZ: sol metin / sag 2x2 beyaz kart grid (Amac section'iyla
+   ayni yerlesim mantigi) --- */
+.odak-layout { display: grid; grid-template-columns: 0.9fr 1fr; gap: 64px; align-items: center; }
+.odak-cta { display: inline-block; margin-top: 32px; }
+
+.odak-stats {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  max-width: 460px; margin: 0 auto;
+}
+.odak-stat {
+  background: #ffffff; border-radius: 20px; padding: 32px 26px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.12);
+}
+.odak-stat strong { display: block; font-size: clamp(28px, 2.6vw, 36px); font-weight: var(--weight-semibold); color: #002b66; letter-spacing: -0.02em; margin-bottom: 8px; }
 .odak-stat span { font-size: 13px; color: #4A5568; line-height: 1.5; display: block; }
 
 /* --- INTERLUDE: ekip fotoğrafları, modern mozaik, marka rengiyle harmanlanmış --- */
@@ -747,7 +757,8 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 @media (max-width: 1024px) {
   .amac-layout { grid-template-columns: 1fr; gap: 40px; }
   .amac-stack { height: 340px; max-width: 480px; margin: 0 auto; }
-  .odak-stats { grid-template-columns: repeat(2, 1fr); }
+  .odak-layout { grid-template-columns: 1fr; gap: 40px; }
+  .odak-stats { max-width: 460px; margin: 0 auto; }
 }
 
 @media (max-width: 767px) {
@@ -759,7 +770,8 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .amac-card p { font-size: 12.5px; line-height: 1.55; }
   .amac-card.pos-mid  { transform: translate(14px, 12px) scale(0.95) rotate(2deg); }
   .amac-card.pos-back { transform: translate(24px, 20px) scale(0.91) rotate(4deg); }
-  .odak-stats { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .odak-stats { gap: 16px; max-width: 340px; }
+  .odak-stat { padding: 22px 18px; }
   .interlude-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 90px; padding: 0 20px; }
   .odak-cta { margin-top: 32px; }
 }
