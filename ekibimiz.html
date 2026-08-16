@@ -9,37 +9,50 @@
 </head>
 <body>
 
-<!-- ANA SAYFA İLE BİREBİR AYNI YAPIŞKAN (STICKY) HEADER -->
 <header id="mainHeader">
-  <div class="custom-dtg-logo">
-    <div class="logo-main">DTG</div>
-    <div class="logo-line"></div>
-    <div class="logo-sub">ARAŞTIRMA PLATFORMU</div>
-  </div>
+
+  <a href="/" class="header-logo" aria-label="Ana Sayfa">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK">
+  </a>
 
   <nav>
     <a href="/" data-i18n="menuAnaSayfa">Ana Sayfa</a>
-    <a href="/hakkimizda" data-i18n="menuProje">Kurumsal</a>
+    <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
     <a href="/bulgular" data-i18n="menuBulgular">Bulgular</a>
     <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar</a>
     <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
     <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
   </nav>
-  
+
   <div class="header-right">
-    <div class="lang-wrapper">
-      <div class="lang-icon" id="langToggle" title="Dili Değiştir">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
+    <div class="header-icons">
+      <div class="search-wrapper" id="searchWrapper">
+        <div class="search-icon" id="searchToggle" title="Ara">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <div class="search-input-box" id="searchInputBox">
+          <input type="text" placeholder="Ara...">
+        </div>
       </div>
-      <div class="lang-dropdown" id="langDropdown">
-        <span class="active" data-lang="tr">Türkçe</span>
-        <span data-lang="en">English</span>
+
+      <div class="lang-wrapper">
+        <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="lang-dropdown" id="langDropdown">
+          <span class="active" data-lang="tr">Türkçe</span>
+          <span data-lang="en">English</span>
+        </div>
       </div>
     </div>
+
     <a href="/politika-onerileri" class="btn-outline">Politika Önerileri</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
@@ -48,7 +61,7 @@
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 <nav class="mobile-nav" id="mobileNav">
   <a href="/" data-i18n="menuAnaSayfa">Ana Sayfa</a>
-  <a href="/hakkimizda" data-i18n="menuProje">Kurumsal</a>
+  <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
   <a href="/bulgular" data-i18n="menuBulgular">Bulgular</a>
   <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
   <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar</a>
@@ -91,11 +104,19 @@
       <p><a href="mailto:ayersoy@sakarya.edu.tr">ayersoy@sakarya.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
       <ul class="pub-list">
-        <li><a href="https://scholar.google.com/citations?user=bYeQZyoAAAAJ&hl=tr" target="_blank" rel="noopener">
+        <li><a href="https://doi.org/10.1108/IMEFM-11-2020-0569" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          Google Scholar Profili
+          Determining Intention to Choose Islamic Financial Products Using ASE Model · Int. Journal of Islamic and Middle Eastern Finance (2022)
+        </a></li>
+        <li><a href="https://doi.org/10.3390/su14159135" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Consumer Sentiment in Turkey, From Closure to the New Normal · Sustainability (2022)
+        </a></li>
+        <li><a href="https://doi.org/10.1080/09638199.2021.1965645" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          The Impact of Digitalization on Export of High Technology Products · J. of Int. Trade & Economic Development (2021)
         </a></li>
       </ul>
     </div>
@@ -126,11 +147,19 @@
       <p><a href="mailto:cerden@subu.edu.tr">cerden@subu.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
       <ul class="pub-list">
-        <li><a href="https://scholar.google.com/citations?user=W4EALHAAAAAJ&hl=tr" target="_blank" rel="noopener">
+        <li><a href="https://doi.org/10.1016/j.cie.2020.106799" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          Google Scholar Profili
+          Dynamic Integrated Process Planning, Scheduling and Due-Date Assignment Using Ant Colony Optimization · Computers &amp; Industrial Engineering (2020)
+        </a></li>
+        <li><a href="https://doi.org/10.1155/2019/1572614" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Solving Integrated Process Planning, Dynamic Scheduling, and Due Date Assignment Using Metaheuristic Algorithms · Mathematical Problems in Engineering (2019)
+        </a></li>
+        <li><a href="https://doi.org/10.1007/s13762-023-04763-6" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Genetic Algorithm-Based Hyperparameter Optimization of Deep Learning Models for PM2.5 Time-Series Prediction · Int. J. Environ. Sci. Technol. (2023)
         </a></li>
       </ul>
     </div>
@@ -161,11 +190,19 @@
       <p><a href="mailto:msaygili@subu.edu.tr">msaygili@subu.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
       <ul class="pub-list">
-        <li><a href="https://scholar.google.com.tr/citations?user=L_Pe_jUAAAAJ&hl=tr" target="_blank" rel="noopener">
+        <li><a href="https://doi.org/10.1108/IMEFM-11-2020-0569" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          Google Scholar Profili
+          Determining Intention to Choose Islamic Financial Products Using ASE Model · Int. Journal of Islamic and Middle Eastern Finance (2022)
+        </a></li>
+        <li><a href="https://doi.org/10.3390/su14159135" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Consumer Sentiment in Turkey, From Closure to the New Normal · Sustainability (2022)
+        </a></li>
+        <li><a href="https://doi.org/10.1080/09638199.2021.1965645" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          The Impact of Digitalization on Export of High Technology Products · J. of Int. Trade & Economic Development (2021)
         </a></li>
       </ul>
     </div>
@@ -196,8 +233,17 @@
       <p><a href="mailto:cagdasates@subu.edu.tr">cagdasates@subu.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
-      <p class="pub-empty">Akademik yayın profili yakında eklenecek.</p>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
+      <ul class="pub-list">
+        <li><a href="https://doi.org/10.1515/jhsem-2022-0052" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Distribution Center Location Selection in Humanitarian Logistics Using Hybrid BWM-ARAS · J. of Homeland Security and Emergency Management (2023)
+        </a></li>
+        <li><a href="https://doi.org/10.47542/sauied.1175207" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Lojistik Üs Olma Potansiyeli Açısından Sakarya İlinin Değerlendirilmesi · Sakarya Ü. İşletme Enstitüsü Dergisi (2022)
+        </a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -226,8 +272,21 @@
       <p><a href="mailto:semanuryalcin@beykoz.edu.tr">semanuryalcin@beykoz.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
-      <p class="pub-empty">Akademik yayın profili yakında eklenecek.</p>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
+      <ul class="pub-list">
+        <li><a href="https://www.turkishstudies.net/turkishstudies?mod=makale_tr_ozet&makale_id=39482" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Dış Ticaret Girişimcilerinin Avrupa Birliği Özelinde Karşılaştıkları Engeller · Turkish Studies (2019)
+        </a></li>
+        <li><a href="https://scholar.google.com/scholar?q=Marco+Polo+Seyahatnamesinde+Uluslararasılaşma+Yaklaşımlarının+İzini+Sürmek+Ersoy+Saygılı+Yalçın" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Marco Polo Seyahatnamesinde Uluslararasılaşma Yaklaşımlarının İzini Sürmek · İnsan ve Toplum Bilimleri Araştırmaları Dergisi (2020)
+        </a></li>
+        <li><a href="https://scholar.google.com/scholar?q=Uluslararası+Tarım+Ticaretinde+Girişimcilik+Kararları+Gambiya+Yalçın+Sözüer" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Uluslararası Tarım Ticaretinde Girişimcilik Kararları: Gambiya'ya Giriş Örneği (2024)
+        </a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -256,8 +315,13 @@
       <p><a href="mailto:bilal.torkul@yalova.edu.tr">bilal.torkul@yalova.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
-      <p class="pub-empty">Akademik yayın profili yakında eklenecek.</p>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
+      <ul class="pub-list">
+        <li><a href="https://doi.org/10.32705/yorumyonetim.546959" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Lokal Bilimsel Çalışmalar Bağlamında Üniversite-Sanayi İş Birliğinin İşletme Performansı Üzerindeki Rolü · Yorum Yönetim Yöntem (2019)
+        </a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -286,8 +350,17 @@
       <p><a href="mailto:alperen.onay@ogr.sakarya.edu.tr">alperen.onay@ogr.sakarya.edu.tr</a></p>
     </div>
     <div class="hoca-box hoca-box-pubs">
-      <h4>Akademik Yayınlar</h4>
-      <p class="pub-empty">Akademik yayın profili yakında eklenecek.</p>
+      <h4>Öne Çıkan Akademik Yayınlar</h4>
+      <ul class="pub-list">
+        <li><a href="https://scholar.google.com/citations?user=l05YCgQAAAAJ&hl=tr" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          The Role of Type A Personality in Conflict Handling Styles · Bartın Ü. İİBF Dergisi (2017)
+        </a></li>
+        <li><a href="https://scholar.google.com/scholar?q=Çalışanlar+Perspektifinden+Liderlik+Stilleri+ile+Narsisizm+Onay+Latif" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Çalışanlar Perspektifinden Liderlik Stilleri ile Narsisizm Arasındaki İlişki · Journal of Business and Trade (2023)
+        </a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -296,7 +369,7 @@
 <footer class="reveal">
   <div class="wrap">
     <div class="footer-flex">
-      
+
       <div class="f-col" style="width: 28%;">
         <div class="footer-brand-text" style="font-size: 17px; font-weight: 600; color: #0b1c2e; margin-bottom: 24px; line-height: 1.4;">Dış Ticaret Girişimciliği Araştırma Platformu</div>
         <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
