@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="force-light-header">
 
 <header id="mainHeader">
 
@@ -70,7 +70,9 @@
 </nav>
 
 <!-- SAYFA BAŞLIĞI -->
-<section class="ekip-hero">
+<div class="fp-stage" id="fpStage">
+<div class="fp-wrapper" id="fpWrapper">
+<section class="ekip-hero" data-fp-section="0" data-fp-light="true">
   <div class="wrap">
     <span class="eyebrow-tag">Araştırma Ekibimiz</span>
     <h1>Proje ekibimizle tanışın</h1>
@@ -80,7 +82,7 @@
 
 <!-- HOCA SECTION'LARI -->
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="1" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -92,7 +94,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Sakarya Üniversitesi'nde Uluslararası Ticaret ve Lojistik alanında görev yapan akademisyendir. Çalışmaları dış ticaret, dış ticaret politikaları, dış ticaret girişimciliği ve uluslararası ticaret konularına odaklanmaktadır.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -123,7 +124,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="2" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -135,7 +136,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Sakarya Uygulamalı Bilimler Üniversitesi Bilgisayar Mühendisliği Bölümü öğretim üyesi ve Yapay Zekâ Araştırma ve Uygulama Merkezi kıdemli araştırmacısıdır. Çalışmaları yapay zekâ, makine öğrenmesi, veri bilimi ve optimizasyon üzerine yoğunlaşmaktadır. 2024–2025 döneminde Georgia Institute of Technology'de doktora sonrası araştırma gerçekleştirmiştir.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -166,7 +166,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="3" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -178,7 +178,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Sakarya Uygulamalı Bilimler Üniversitesi Uluslararası Ticaret ve Finansman Bölümü öğretim üyesidir. Uluslararası ticaret, dış ticaret, girişimcilik ve finansman alanlarında akademik çalışmalar yürütmekte; dış ticaret girişimciliği ve ihracat teşvikleri üzerine yürütülen araştırmalarda görev almaktadır.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -209,7 +208,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="4" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -221,7 +220,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Sakarya Uygulamalı Bilimler Üniversitesi Uluslararası Ticaret ve Lojistik Bölümü'nde görev yapmaktadır. Akademik çalışmaları uluslararası ticaret, lojistik, sürdürülebilirlik, dijitalleşme ve yenilikçilik alanlarını kapsamaktadır.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -248,7 +246,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="5" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -260,7 +258,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Beykoz Üniversitesi Dış Ticaret Programı'nda görev yapan akademisyendir. Akademik çalışmaları dış ticaret, uluslararası ticaret ve dış ticaret uygulamaları çevresinde şekillenmektedir.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -291,7 +288,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="6" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -303,7 +300,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Yalova Üniversitesi Çınarcık Meslek Yüksekokulu Büro Hizmetleri ve Sekreterlik Bölümü'nde görev yapmakta ve bölüm başkanlığını yürütmektedir. Araştırma alanları arasında yönetim ve organizasyon, girişimcilik, stratejik yönetim ile teknoloji ve yenilik yönetimi bulunmaktadır. Sakarya Üniversitesi İşletme Enstitüsü Yönetim ve Organizasyon doktora programına devam etmektedir.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -326,7 +322,7 @@
   </div>
 </section>
 
-<section class="hoca-section">
+<section class="hoca-section" data-fp-section="7" data-fp-light="true">
   <div class="wrap hoca-grid">
     <div class="hoca-photo-wrap">
       <div class="hoca-photo">
@@ -338,7 +334,6 @@
       </div>
     </div>
     <div class="hoca-box hoca-box-bio">
-      <h4>Özgeçmiş</h4>
       <p>Akademik çalışmalarında yönetim ve organizasyon, örgütsel davranış ve çatışma yönetimi konuları öne çıkmaktadır. Çalışmalarında bireysel özellikler ile örgütsel süreçler arasındaki ilişkileri inceleyen araştırmalara yer vermiştir.</p>
     </div>
     <div class="hoca-box hoca-box-kurum">
@@ -366,7 +361,7 @@
 </section>
 
 <!-- ANA SAYFA İLE BİREBİR AYNI FOOTER -->
-<footer class="reveal">
+<footer class="reveal" data-fp-section="8" data-fp-light="true">
   <div class="wrap">
     <div class="footer-flex">
 
@@ -403,6 +398,20 @@
     </div>
   </div>
 </footer>
+</div>
+</div>
+
+<nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
+  <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1: Giriş"></button>
+  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Proje Yürütücüsü"></button>
+  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Caner Erden"></button>
+  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Metin Saygılı"></button>
+  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: Çağdaş Ateş"></button>
+  <button class="fp-dot" data-fp-index="5" aria-label="Bölüm 6: Semanur Yalçın"></button>
+  <button class="fp-dot" data-fp-index="6" aria-label="Bölüm 7: Bilal Torkul"></button>
+  <button class="fp-dot" data-fp-index="7" aria-label="Bölüm 8: Ömer Alperen Onay"></button>
+  <button class="fp-dot" data-fp-index="8" aria-label="Bölüm 9: İletişim ve Alt Bilgi"></button>
+</nav>
 
 <script src="js/main.js"></script>
 
