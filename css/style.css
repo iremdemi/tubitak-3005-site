@@ -657,6 +657,18 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
     padding-left: 80px;
     padding-right: 80px;
   }
+  /* Onceki degisiklikte .wrap'in max-width'ini kaldirirken, ayni elemente
+     ait .about-hero-content'in KENDI max-width'i de (CSS onceligi
+     yuzunden) yanlislikla sinirsiz kalmisti; metin bu yuzden ekranin
+     sonuna kadar uzuyordu. Burada, basligin ("Milli Ekonomik Savunma
+     Modeli") kendi dogal genisligine gore olculmus, kontrollu bir
+     max-width geri veriyoruz; paragraf da ayni sutunu paylastigi icin
+     otomatik olarak ayni noktada bitiyor. Iki section da ayni degeri
+     kullanir. */
+  .about-hero-intro .about-hero-content,
+  .about-hero-vizyon .about-hero-content {
+    max-width: 900px;
+  }
 }
 .hero-team-link {
   display: inline-block; background: #002b66; color: #ffffff;
