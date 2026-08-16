@@ -793,3 +793,25 @@ document.addEventListener("DOMContentLoaded", () => {
   applyOrder();
   restartTimer();
 })();
+
+/* ===========================================================
+   HEADER NAV: "aktif sayfa" cercevesi artik her zaman "Ana Sayfa"da
+   sabit kalmiyor; kullanicinin GERCEKTEN bulundugu sayfaya gore
+   dinamik olarak belirleniyor (masaustu + mobil nav, her ikisi de).
+   =========================================================== */
+(function () {
+  function normalize(path) {
+    if (!path) return '/';
+    path = path.replace(/\.html$/i, '').replace(/\/index$/i, '/');
+    if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+    return path || '/';
+  }
+
+  const currentPath = normalize(window.location.pathname);
+  const navLinks = document.querySelectorAll('header nav a[href], .mobile-nav a[href]');
+
+  navLinks.forEach(link => {
+    const linkPath = normalize(link.getAttribute('href'));
+    link.classList.toggle('active', linkPath === currentPath);
+  });
+})();
