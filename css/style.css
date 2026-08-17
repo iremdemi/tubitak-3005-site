@@ -894,12 +894,16 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 .hoca-grid {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   gap: 32px;
   width: 100%;
 }
 
-.hoca-photo-wrap { flex: 0 0 36%; }
+/* Foto cercevesi artik sabit, dikdortgen (uzunlamasina) bir oranda;
+   yanindaki kartlarin toplam yuksekligi kisiden kisiye degistigi icin
+   (kimi hocada 4 yayin var kimi hocada 1) "height:100% stretch" ile
+   fotograf kare/kisa kalabiliyordu. Sabit oran, herkeste ayni gorunuyor. */
+.hoca-photo-wrap { flex: 0 0 36%; aspect-ratio: 3 / 4; }
 .hoca-photo {
   width: 100%;
   height: 100%;
@@ -935,6 +939,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 14px;
 }
 
