@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hakkımızda | DTG Araştırma Platformu</title>
 <meta name="description" content="Dış Ticaret Girişimciliği Araştırma Platformu hakkında: amacımız, vizyonumuz ve odak bölgemiz.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="force-light-header">
@@ -13,7 +17,7 @@
 <header id="mainHeader">
 
   <a href="/" class="header-logo" aria-label="Ana Sayfa">
-    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK" width="900" height="887">
   </a>
 
   <nav>
@@ -119,7 +123,7 @@
 <section class="about-hero about-hero-vizyon" data-fp-section="2" style="background-image:url('https://images.pexels.com/photos/35400916/pexels-photo-35400916.jpeg?auto=compress&fit=crop&w=2200&q=80');">
   <div class="about-hero-overlay"></div>
   <div class="wrap about-hero-content">
-    <h1>Milli Ekonomik Savunma Modeli</h1>
+    <h2>Milli Ekonomik Savunma Modeli</h2>
     <p>Modern küresel ticaret, pandemi sonrası tedarik zinciri kırılmaları, yükselen gümrük duvarları ve jeopolitik gerilimler sebebiyle "Yeni Korumacılık" eğilimlerinin ve bölgesel bloklaşmaların etkisi altındadır. Böyle bir dönemde ülkelerin ekonomik sürdürülebilirliğini korumasının yolu, yalnızca dışa açılmak değil; yaratılan katma değerin ve finansal birikimin yurt içinde kalmasını sağlamaktır.</p>
     <p>Vizyonumuz, uluslararasılaşma sürecinde katma değerin sınır ötesine sızmasına yol açan geleneksel modeller yerine; üretimi, yatırımı ve istihdamı tamamen kendi orijin ülkesinde (Türkiye'de) tutan Dış Ticaret Girişimciliği anlayışını ulusal bir kalkınma modeli olarak yaygınlaştırmaktır. İhracat gelirlerinin yurt içinde yeni sabit sermaye ve teknoloji yatırımlarına dönüşmesini sağlayan bu yaklaşım, küresel şoklara karşı sarsılmaz bir "milli ekonomik savunma" mekanizması ve sürdürülebilir refah artışı vaat etmektedir.</p>
   </div>
@@ -154,21 +158,21 @@
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <h3 data-i18n="footKurumsal">Hakkımızda</h3>
         <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
         <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
         <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <h3 data-i18n="footIcerik">İçerikler</h3>
         <a href="/bulgular" data-i18n="menuBulgular">Saha Bulguları</a>
         <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
         <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIletisim">İletişim</h4>
+        <h3 data-i18n="footIletisim">İletişim</h3>
         <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
         <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
         <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
@@ -193,7 +197,7 @@
   <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5"></button>
 </nav>
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 </body>
 </html>
