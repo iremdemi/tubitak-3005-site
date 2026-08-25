@@ -323,10 +323,10 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 .team-member img.real-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.4s ease; }
 .team-member:hover img.real-photo { filter: grayscale(0%); }
 
-.anon-icon { width: 64px; height: 64px; fill: #94a3b8; opacity: 0.5; }
+.anon-icon { width: 64px; height: 64px; fill: #64748b; opacity: 0.5; }
 
 .team-info { padding: 20px 16px; text-align: center; }
-.team-info h4 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; text-transform: none; line-height: 1.35; }
+.team-info h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; text-transform: none; line-height: 1.35; }
 .team-info span { font-size: var(--text-small); font-weight: var(--weight-regular); color: #64748b; text-transform: none; }
 
 @keyframes scrollTeam {
@@ -352,17 +352,17 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top: 1px solid #eef1f4; display: flex; align-items: center; }
 footer > .wrap { width: 100%; }
 .footer-flex { display: flex; justify-content: space-between; border-bottom: 1px solid #eef1f4; padding-bottom: 48px; margin-bottom: 28px; }
-.f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: #94a3b8; text-transform: uppercase; }
+.f-col h3, .f-col h4 { font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: 0.04em; margin-bottom: 24px; color: #64748b; text-transform: uppercase; }
 .f-col a, .f-col p { display: block; font-size: var(--text-nav); font-weight: var(--weight-regular); color: #4A5568; line-height: 1.6; margin-bottom: 12px; transition: color 0.3s; text-transform: none; }
 .f-col a:hover { color: #002b66; }
-.f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: #94a3b8; }
+.f-bottom { display: flex; justify-content: space-between; font-size: var(--text-small); font-weight: var(--weight-regular); color: #64748b; }
 
 /* Footer'daki DTG kucuk amblemi: eskiden hic stili yoktu (duz, ciplak metin
    olarak gorunuyordu), simdi tipografi sistemine uygun sade bir amblem */
 .custom-dtg-logo { display: flex; flex-direction: column; }
 .custom-dtg-logo .logo-main { font-weight: var(--weight-semibold); color: #0b1c2e; letter-spacing: 0.04em; line-height: 1; }
 .custom-dtg-logo .logo-line { height: 2px; background: #002b66; margin: 10px 0; }
-.custom-dtg-logo .logo-sub { font-weight: var(--weight-medium); color: #94a3b8; letter-spacing: 0.12em; text-transform: uppercase; }
+.custom-dtg-logo .logo-sub { font-weight: var(--weight-medium); color: #64748b; letter-spacing: 0.12em; text-transform: uppercase; }
 
 /* =========================================================
    9. MOBİL MENÜ & ASİMETRİK ANİMASYONLU İKON (YENİ)
@@ -514,20 +514,6 @@ footer > .wrap { width: 100%; }
 }
 
 /* =========================================================
-   MOBİL KAYDIRMA HİSSİ: masaüstündeki JS tabanlı tam-sayfa
-   kaydırma sistemi (fp-wrapper) mobilde hiç devreye girmiyor
-   (matchMedia ile devre dışı), section'lar burada NORMAL
-   sırayla akıyor. Ona hiç dokunmadan, dokunmatik ekranlarda
-   iyi çalışan TARAYICI-YERLİ (native) CSS scroll-snap ile
-   section'lar arasında hafif bir "yapışma" hissi ekliyoruz.
-   JS gerektirmez, masaüstünü etkilemez.
-   ========================================================= */
-@media (max-width: 1024px) {
-  html { scroll-snap-type: y proximity; }
-  [data-fp-section] { scroll-snap-align: start; scroll-snap-stop: normal; }
-}
-
-/* =========================================================
    TAM SAYFA BÖLÜM KAYDIRMA (FULL-PAGE SECTION SCROLL)
    Sadece masaüstünde aktif olur (bkz. js/main.js içindeki
    matchMedia kontrolü). Mobilde js hiç devreye girmez,
@@ -653,7 +639,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   background: linear-gradient(100deg, rgba(11,28,46,0.92) 0%, rgba(11,28,46,0.68) 48%, rgba(11,28,46,0.42) 100%);
 }
 .about-hero-content { position: relative; z-index: 2; max-width: 700px; color: #ffffff; padding: 140px 0 80px; }
-.about-hero-content h1 { font-size: clamp(32px, 4vw, 52px); font-weight: var(--weight-semibold); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 28px; }
+.about-hero-content h1, .about-hero-content h2 { font-size: clamp(32px, 4vw, 52px); font-weight: var(--weight-semibold); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 28px; }
 .about-hero-content p { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.9); margin-bottom: 20px; font-weight: 400; }
 .about-hero-content p:last-child { margin-bottom: 20px; }
 /* Metin blogu, Sabanci referansindaki gibi genis ekranlarda GERCEKTEN sol
@@ -780,7 +766,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 
 @media (max-width: 767px) {
-  .about-hero-content { padding: 120px 0 60px; }
+  .about-hero-content { padding: 120px 24px 60px; }
   .about-section { padding: 110px 0 56px; }
   .amac-stack { height: 460px; margin-bottom: 24px; }
   .amac-card { padding: 22px 22px; }
@@ -967,7 +953,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   justify-content: center;
 }
 .hoca-box h4 {
-  font-size: 12px; font-weight: var(--weight-semibold); color: #94a3b8;
+  font-size: 12px; font-weight: var(--weight-semibold); color: #64748b;
   text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
 }
 .hoca-box p { font-size: 14px; color: #384354; line-height: 1.6; }
@@ -983,7 +969,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 .pub-list a svg { flex: none; margin-top: 3px; opacity: 0.55; }
 .pub-list a:hover { color: #002b66; }
-.pub-empty { font-size: 14px; color: #94a3b8; font-style: italic; }
+.pub-empty { font-size: 14px; color: #64748b; font-style: italic; }
 
 @media (max-width: 900px) {
   .hoca-section { min-height: 0; display: block; padding: 100px 0 36px; }
