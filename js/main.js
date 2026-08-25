@@ -263,25 +263,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const anonSVG = `<svg class="anon-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
 
   const ekipData = [
-    { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg" },
-    { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg" },
-    { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/caner erden.jpeg" },
-    { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg" },
-    { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg" },
-    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "img/bilal torkul.jpeg" },
-    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.jpg" },
-    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "img/furkan coşgun.jpeg" }
+    { isim: "Prof. Dr. Ahmet Yağmur Ersoy", unvan: "Yürütücü", img: "img/WhatsApp Image 2026-08-05 at 18.49.44.jpeg", w: 1179, h: 1238 },
+    { isim: "Doç. Dr. Metin Saygılı", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.51.33.jpeg", w: 700, h: 840 },
+    { isim: "Doç. Dr. Caner Erden", unvan: "Araştırmacı", img: "img/caner erden.jpeg", w: 683, h: 738 },
+    { isim: "Dr. Öğr. Üyesi Çağdaş Ateş", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.02.jpeg", w: 700, h: 840 },
+    { isim: "Öğr. Gör. Dr. Semanur Yalçın", unvan: "Araştırmacı", img: "img/WhatsApp Image 2026-08-05 at 18.52.24.jpeg", w: 1272, h: 600 },
+    { isim: "Öğr. Gör. Bilal Torkul", unvan: "Doktora Bursiyeri", img: "img/bilal torkul.jpeg", w: 1000, h: 938 },
+    { isim: "Dr. Ömer Alperen Onay", unvan: "Doktora Sonrası Bursiyeri", img: "img/ömer alperen onay.jpg", w: 1433, h: 1098 },
+    { isim: "Furkan Coşgun", unvan: "Yüksek Lisans Bursiyeri", img: "img/furkan coşgun.jpeg", w: 1106, h: 1533 }
   ];
 
   const track = document.getElementById('teamTrack');
   if(track) {
     let teamHTML = '';
     ekipData.forEach(k => {
-      let imageElement = k.img ? `<img src="${k.img}" alt="${k.isim}" class="real-photo">` : anonSVG;
+      let imageElement = k.img ? `<img src="${k.img}" alt="${k.isim}" class="real-photo" width="${k.w}" height="${k.h}" loading="lazy" decoding="async">` : anonSVG;
       teamHTML += `
         <div class="team-member">
           <div class="img-wrapper">${imageElement}</div>
-          <div class="team-info"><h4>${k.isim}</h4><span>${k.unvan}</span></div>
+          <div class="team-info"><h3>${k.isim}</h3><span>${k.unvan}</span></div>
         </div>`;
     });
     track.innerHTML = teamHTML + teamHTML;
