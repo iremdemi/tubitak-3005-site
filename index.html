@@ -4,19 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DTG Araştırma Platformu | Ana Sayfa</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/style.css">
 <!-- Ticaret ağı haritası icin gercek cografi projeksiyon (D3.js) -->
-<script src="https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" defer></script>
 </head>
 <body>
 
 <header id="mainHeader">
 
   <a href="/" class="header-logo" aria-label="Ana Sayfa">
-    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK" width="900" height="887">
   </a>
 
   <nav>
@@ -172,21 +176,21 @@
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <h3 data-i18n="footKurumsal">Hakkımızda</h3>
         <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
         <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
         <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <h3 data-i18n="footIcerik">İçerikler</h3>
         <a href="/bulgular" data-i18n="menuBulgular">Saha Bulguları</a>
         <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
         <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIletisim">İletişim</h4>
+        <h3 data-i18n="footIletisim">İletişim</h3>
         <p style="margin-bottom: 12px;">proje@sakarya.edu.tr</p>
         <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
         <p style="margin-bottom: 12px;" data-i18n="footProgram">TÜBİTAK 3005 Destekli</p>
@@ -212,7 +216,7 @@
   <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: İletişim ve Alt Bilgi"></button>
 </nav>
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 </body>
 </html>
