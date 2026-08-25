@@ -514,6 +514,20 @@ footer > .wrap { width: 100%; }
 }
 
 /* =========================================================
+   MOBİL KAYDIRMA HİSSİ: masaüstündeki JS tabanlı tam-sayfa
+   kaydırma sistemi (fp-wrapper) mobilde hiç devreye girmiyor
+   (matchMedia ile devre dışı), section'lar burada NORMAL
+   sırayla akıyor. Ona hiç dokunmadan, dokunmatik ekranlarda
+   iyi çalışan TARAYICI-YERLİ (native) CSS scroll-snap ile
+   section'lar arasında hafif bir "yapışma" hissi ekliyoruz.
+   JS gerektirmez, masaüstünü etkilemez.
+   ========================================================= */
+@media (max-width: 1024px) {
+  html { scroll-snap-type: y proximity; }
+  [data-fp-section] { scroll-snap-align: start; scroll-snap-stop: normal; }
+}
+
+/* =========================================================
    TAM SAYFA BÖLÜM KAYDIRMA (FULL-PAGE SECTION SCROLL)
    Sadece masaüstünde aktif olur (bkz. js/main.js içindeki
    matchMedia kontrolü). Mobilde js hiç devreye girmez,
@@ -972,7 +986,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .pub-empty { font-size: 14px; color: #94a3b8; font-style: italic; }
 
 @media (max-width: 900px) {
-  .hoca-section { min-height: 0; display: block; padding: 36px 0; }
+  .hoca-section { min-height: 0; display: block; padding: 100px 0 36px; }
   .hoca-grid { flex-direction: column; }
   .hoca-photo-wrap { flex: none; height: 320px; }
 }
