@@ -643,6 +643,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /* --- GERÇEK COĞRAFİ PROJEKSİYONLU HARİTA --- */
   const svg = document.getElementById('tradeGeoMap');
   if (!svg || typeof d3 === 'undefined' || typeof topojson === 'undefined') return;
+  // Mobilde harita gizli (CSS ile), onun yerine statik kartlar gosteriliyor;
+  // bu yuzden burada da fetch/render hic calismaz, bosa network+hesaplama
+  // harcanmaz. Masaustu/tablet (768px ustu) davranisi degismedi.
+  if (window.innerWidth <= 767) return;
 
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const VB_W = 1200, VB_H = 550;
@@ -655,11 +659,11 @@ document.addEventListener("DOMContentLoaded", () => {
     '528': { code: 'nl', lon: 4.9041, lat: 52.3676, name: 'Hollanda', sub: 'İhracat: 7,2 Milyar $', lx: 420, ly: 55 },
     '840': { code: 'us', lon: -77.0369, lat: 38.9072, name: 'ABD', sub: 'İhracat: 16,3 Milyar $', lx: 120, ly: 280 },
     '250': { code: 'fr', lon: 2.3522, lat: 48.8566, name: 'Fransa', sub: 'İhracat: 11,2 Milyar $', lx: 540, ly: 40 },
-    '756': { code: 'ch', lon: 7.4474, lat: 46.9480, name: 'İsviçre', sub: 'İthalat: 15,7 Milyar $', lx: 800, ly: 45 },
+    '756': { code: 'ch', lon: 7.4474, lat: 46.9480, name: 'İsviçre', sub: 'İhracat: 1,5 Milyar $', lx: 800, ly: 45 },
     '380': { code: 'it', lon: 12.4964, lat: 41.9028, name: 'İtalya', sub: 'İhracat: 13,2 Milyar $', lx: 690, ly: 495 },
     '368': { code: 'iq', lon: 44.3661, lat: 33.3152, name: 'Irak', sub: 'İhracat: 12,4 Milyar $', lx: 855, ly: 475 },
-    '156': { code: 'cn', lon: 116.4074, lat: 39.9042, name: 'Çin', sub: 'İthalat: 49,6 Milyar $', lx: 1085, ly: 255 },
-    '643': { code: 'ru', lon: 37.6173, lat: 55.7558, name: 'Rusya', sub: 'İthalat: 42,4 Milyar $', lx: 985, ly: 25 }
+    '156': { code: 'cn', lon: 116.4074, lat: 39.9042, name: 'Çin', sub: 'İhracat: 3 Milyar $', lx: 1085, ly: 255 },
+    '643': { code: 'ru', lon: 37.6173, lat: 55.7558, name: 'Rusya', sub: 'İhracat: 6,7 Milyar $', lx: 985, ly: 25 }
   };
 
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
