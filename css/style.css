@@ -1095,7 +1095,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .contact-submit-btn:hover { background: #004099; }
 
 /* --- Alt kisim: tum ekibin kompakt iletisim listesi --- */
-.contact-team-section { padding: 36px 0 62px; }
+.contact-team-section { padding: 108px 0 58px; }
 .contact-team-section .eyebrow-tag { margin-bottom: 14px; }
 .contact-team-section h2 {
   font-size: clamp(24px, 2.6vw, 32px); font-weight: var(--weight-semibold);
