@@ -1185,3 +1185,46 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .policy-pending-card { padding: 40px 26px; border-radius: 20px; }
   .policy-pending-card p { font-size: 15.5px; line-height: 1.75; }
 }
+
+/* =========================================================
+   YAYINLAR SAYFASI: sayfa basligi + hoca basina Google Scholar
+   tarzi (baslik/yazar-dergi/ozet uc katmanli) yayin listesi,
+   sitenin kendi renk/font diline uyarlanmis.
+   ========================================================= */
+.yayinlar-hero {
+  padding: 150px 0 50px;
+  background: #ffffff;
+}
+.yayinlar-hero h1 {
+  font-size: clamp(32px, 4vw, 48px); font-weight: var(--weight-semibold);
+  color: #0b1c2e; letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.yayinlar-hero p { font-size: var(--text-body); color: #4A5568; max-width: 640px; line-height: 1.7; }
+
+.scholar-section { background: #ffffff; padding: 20px 0 90px; }
+
+.scholar-author-block { margin-bottom: 56px; }
+.scholar-author-block:last-child { margin-bottom: 0; }
+.scholar-author-block h2 {
+  font-size: 20px; font-weight: var(--weight-semibold); color: #0b1c2e;
+  padding-bottom: 14px; margin-bottom: 22px; border-bottom: 2px solid #eef1f5;
+}
+
+.scholar-results { display: flex; flex-direction: column; }
+.scholar-result {
+  padding: 18px 0; border-bottom: 1px solid #eef1f5;
+}
+.scholar-author-block .scholar-results .scholar-result:last-child { border-bottom: none; padding-bottom: 0; }
+
+.scholar-title { font-size: 17px; font-weight: var(--weight-medium); line-height: 1.4; margin-bottom: 5px; }
+.scholar-title a { color: #002b66; }
+.scholar-title a:hover { text-decoration: underline; }
+.scholar-meta { font-size: 13px; color: #2e7d4f; line-height: 1.5; margin-bottom: 7px; }
+.scholar-snippet { font-size: 13.5px; color: #4A5568; line-height: 1.6; }
+
+@media (max-width: 767px) {
+  .yayinlar-hero { padding: 120px 0 36px; }
+  .scholar-section { padding: 10px 0 60px; }
+  .scholar-author-block { margin-bottom: 40px; }
+  .scholar-title { font-size: 15.5px; }
+}
