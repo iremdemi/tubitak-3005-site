@@ -354,7 +354,7 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 /* =========================================================
    8. FOOTER
    ========================================================= */
-/* Footer: Sabancı'daki gibi acik/beyaz zeminli, daha kaliteli bir gorunum.
+/* Footer: acik/beyaz zeminli, daha kaliteli bir gorunum.
    NOT: bu global bir degisiklik, sitedeki TUM sayfalarin footer'ini etkiler. */
 footer { background: #ffffff; padding: 76px 0 32px 0; color: #0b1c2e; border-top: 1px solid #eef1f4; display: flex; align-items: center; }
 footer > .wrap { width: 100%; }
@@ -382,12 +382,12 @@ footer > .wrap { width: 100%; }
   height: 3px; background: #ffffff; display: block; border-radius: 2px;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Yaylanarak X olma efekti */
 }
-/* Sabancı Tarzı Asimetrik Çizgiler */
+/* Asimetrik Çizgiler */
 .menu-toggle span:nth-child(1) { width: 24px; }
 .menu-toggle span:nth-child(2) { width: 32px; }
 .menu-toggle span:nth-child(3) { width: 16px; }
 
-/* Menü Açıkken X (Çarpı) Şeklini Alması */
+/* Menü Açıkken X Şeklini Alması */
 .menu-toggle.is-open span:nth-child(1) { transform: translateY(9px) rotate(45deg); width: 32px; }
 .menu-toggle.is-open span:nth-child(2) { opacity: 0; transform: translateX(20px); }
 .menu-toggle.is-open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); width: 32px; }
@@ -612,7 +612,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 
 /* =========================================================
-   MAKALE DETAY SAYFASI (Sabancı basın detayı tarzı)
+   MAKALE DETAY SAYFASI
    ========================================================= */
 .article-detail-section { padding: 160px 0 100px; background: #ffffff; }
 .article-detail-wrap { max-width: 860px; }
@@ -796,7 +796,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   min-height: 0;
   position: relative;
 }
-/* Sabancı'daki gibi arka planda hafif, dusuk opakli noktali doku */
+/*  arka planda hafif, dusuk opakli noktali doku */
 .trade-map-section::before {
   content: '';
   position: absolute; inset: 0; pointer-events: none;
