@@ -3,13 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DTG Araştırma Platformu | Yakında</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>DTG Araştırma Platformu | Yayınlar</title>
+<meta name="description" content="Dış Ticaret Girişimciliği Araştırma Platformu ekibinin akademik yayınları: makaleler, dergi yazıları ve araştırma çıktıları.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="force-light-header">
 
 <header id="mainHeader">
+
+  <a href="/" class="header-logo" aria-label="Ana Sayfa">
+    <img src="img/tubitak-logo-header.png" alt="TÜBİTAK" width="900" height="887">
+  </a>
+
   <nav>
     <a href="/" data-i18n="menuAnaSayfa">Ana Sayfa</a>
     <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
@@ -18,21 +28,36 @@
     <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
     <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
   </nav>
-  
+
   <div class="header-right">
-    <div class="lang-wrapper">
-      <div class="lang-icon" id="langToggle" title="Dili Değiştir">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
+    <div class="header-icons">
+      <div class="search-wrapper" id="searchWrapper">
+        <div class="search-icon" id="searchToggle" title="Ara">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <div class="search-input-box" id="searchInputBox">
+          <input type="text" placeholder="Ara...">
+        </div>
       </div>
-      <div class="lang-dropdown" id="langDropdown">
-        <span class="active" data-lang="tr">Türkçe</span>
-        <span data-lang="en">English</span>
+
+      <div class="lang-wrapper">
+        <div class="lang-icon" id="langToggle" title="Dili Değiştir">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="lang-dropdown" id="langDropdown">
+          <span class="active" data-lang="tr">Türkçe</span>
+          <span data-lang="en">English</span>
+        </div>
       </div>
     </div>
+
     <a href="/politika-onerileri" class="btn-outline">Politika Önerileri</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
@@ -49,42 +74,203 @@
   <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
 </nav>
 
-<!-- YAKINDA GELİYOR BÖLÜMÜ -->
-<section class="coming-soon-section">
-  <svg class="coming-soon-icon" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10"></circle>
-    <polyline points="12 6 12 12 16 14"></polyline>
-  </svg>
-  <h1 data-i18n="comingSoonTitle">Çok Yakında</h1>
-  <p data-i18n="comingSoonDesc">Bu bölümdeki araştırma verileri ve içerikler şu anda derlenmektedir. Lütfen daha sonra tekrar ziyaret ediniz.</p>
-  <a href="/" class="btn-outline" style="border-color: rgba(255,255,255,0.4);" data-i18n="backToHome">Ana Sayfaya Dön</a>
+<!-- SAYFA BAŞLIĞI -->
+<section class="yayinlar-hero">
+  <div class="wrap">
+    <h1>Yayınlar</h1>
+    <p>Ekibimizin dış ticaret girişimciliği, uluslararası ticaret ve ilgili alanlardaki akademik yayınları.</p>
+  </div>
+</section>
+
+<!-- HOCA BAŞINA GOOGLE SCHOLAR TARZI YAYIN LİSTESİ -->
+<section class="scholar-section">
+  <div class="wrap">
+
+    <div class="scholar-author-block">
+      <h2>Prof. Dr. Ahmet Yağmur Ersoy</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://www.tandfonline.com/doi/abs/10.1080/09638199.2021.1965645" target="_blank" rel="noopener">The Impact of Digitalization on Export of High Technology Products: A Panel Data Approach</a></h3>
+          <div class="scholar-meta">S Özsoy, O Şehvez Ergüzel, AY Ersoy, M Saygılı · Journal of International Trade &amp; Economic Development, 2021</div>
+          <div class="scholar-snippet">Dijitalleşmenin yüksek teknolojili ürün ihracatı üzerindeki etkisini panel veri yöntemiyle inceleyen çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1108/IMEFM-11-2020-0569" target="_blank" rel="noopener">Determining Intention to Choose Islamic Financial Products Using Attitude-Social Influence-Self-Efficacy (ASE) Model: The Case of Turkey</a></h3>
+          <div class="scholar-meta">M Saygılı, S Durmuşkaya, N Sütütemiz, AY Ersoy · International Journal of Islamic and Middle Eastern Finance and Management, 2022</div>
+          <div class="scholar-snippet">İslami finansal ürün tercihinde tutum, sosyal etki ve öz yeterlilik faktörlerinin rolünü ASE modeliyle inceleyen çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.3390/su14159135" target="_blank" rel="noopener">Consumer Sentiment in Turkey, From Closure to the New Normal</a></h3>
+          <div class="scholar-meta">AY Ersoy, M Saygılı, MİYılmaz, ME Uslu, İH Selvi · Sustainability, 2022</div>
+          <div class="scholar-snippet">Kapanma döneminden yeni normale geçişte Türkiye'de tüketici duyarlılığının değişimini analiz eden çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://dergipark.org.tr/en/download/article-file/584585" target="_blank" rel="noopener">Dış Ticaret Girişimciliğini Tanımlamak: Keşfedici Bir Araştırma</a></h3>
+          <div class="scholar-meta">M Saygılı, AY Ersoy · Yönetim Bilimleri Dergisi, 2018</div>
+          <div class="scholar-snippet">Dış ticaret girişimciliği kavramını uluslararası girişimcilik yazınından ayrıştırarak keşfedici biçimde tanımlayan çalışma.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Doç. Dr. Metin Saygılı</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1108/IMEFM-11-2020-0569" target="_blank" rel="noopener">Determining Intention to Choose Islamic Financial Products Using Attitude-Social Influence-Self-Efficacy (ASE) Model: The Case of Turkey</a></h3>
+          <div class="scholar-meta">M Saygılı, S Durmuşkaya, N Sütütemiz, AY Ersoy · International Journal of Islamic and Middle Eastern Finance and Management, 2022</div>
+          <div class="scholar-snippet">İslami finansal ürün tercihinde tutum, sosyal etki ve öz yeterlilik faktörlerinin rolünü ASE modeliyle inceleyen çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.3390/su14159135" target="_blank" rel="noopener">Consumer Sentiment in Turkey, From Closure to the New Normal</a></h3>
+          <div class="scholar-meta">AY Ersoy, M Saygılı, MİYılmaz, ME Uslu, İH Selvi · Sustainability, 2022</div>
+          <div class="scholar-snippet">Kapanma döneminden yeni normale geçişte Türkiye'de tüketici duyarlılığının değişimini analiz eden çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://www.tandfonline.com/doi/abs/10.1080/09638199.2021.1965645" target="_blank" rel="noopener">The Impact of Digitalization on Export of High Technology Products: A Panel Data Approach</a></h3>
+          <div class="scholar-meta">S Özsoy, O Şehvez Ergüzel, AY Ersoy, M Saygılı · Journal of International Trade &amp; Economic Development, 2021</div>
+          <div class="scholar-snippet">Dijitalleşmenin yüksek teknolojili ürün ihracatı üzerindeki etkisini panel veri yöntemiyle inceleyen çalışma.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Doç. Dr. Caner Erden</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1016/j.cie.2020.106799" target="_blank" rel="noopener">Dynamic Integrated Process Planning, Scheduling and Due-Date Assignment Using Ant Colony Optimization</a></h3>
+          <div class="scholar-meta">C Erden, S Demir, T Kökçam · Computers &amp; Industrial Engineering, 2020</div>
+          <div class="scholar-snippet">Süreç planlama, çizelgeleme ve teslim tarihi atamasının karınca kolonisi optimizasyonu ile eşzamanlı çözümü.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1155/2019/1572614" target="_blank" rel="noopener">Solving Integrated Process Planning, Dynamic Scheduling, and Due Date Assignment Using Metaheuristic Algorithms</a></h3>
+          <div class="scholar-meta">C Erden, S Demir, T Kökçam · Mathematical Problems in Engineering, 2019</div>
+          <div class="scholar-snippet">Metasezgisel algoritmalarla entegre süreç planlama ve dinamik çizelgeleme problemine çözüm önerisi.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1007/s13762-023-04763-6" target="_blank" rel="noopener">Genetic Algorithm-Based Hyperparameter Optimization of Deep Learning Models for PM2.5 Time-Series Prediction</a></h3>
+          <div class="scholar-meta">C Erden · International Journal of Environmental Science and Technology, 2023</div>
+          <div class="scholar-snippet">Genetik algoritma ile hiperparametre optimizasyonu kullanılarak PM2.5 zaman serisi tahmini için derin öğrenme modeli.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Dr. Öğr. Üyesi Çağdaş Ateş</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.1515/jhsem-2022-0052" target="_blank" rel="noopener">Distribution Center Location Selection in Humanitarian Logistics Using Hybrid BWM-ARAS: A Case Study in Türkiye</a></h3>
+          <div class="scholar-meta">C Erden, Ç Ateş, S Esen · Journal of Homeland Security and Emergency Management, 2023</div>
+          <div class="scholar-snippet">İnsani yardım lojistiğinde dağıtım merkezi konum seçimi için hibrit BWM-ARAS yöntemiyle Türkiye vaka analizi.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.47542/sauied.1175207" target="_blank" rel="noopener">Lojistik Üs Olma Potansiyeli Açısından Sakarya İlinin Değerlendirilmesi</a></h3>
+          <div class="scholar-meta">Ç Ateş, S Esen · Sakarya Üniversitesi İşletme Enstitüsü Dergisi, 2022</div>
+          <div class="scholar-snippet">Sakarya ilinin coğrafi ve altyapısal özellikleri açısından bölgesel lojistik üs olma potansiyelinin değerlendirilmesi.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Öğr. Gör. Dr. Semanur Yalçın</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://www.turkishstudies.net/turkishstudies?mod=makale_tr_ozet&makale_id=39482" target="_blank" rel="noopener">Dış Ticaret Girişimcilerinin Avrupa Birliği Özelinde Karşılaştıkları Engeller</a></h3>
+          <div class="scholar-meta">AY Ersoy, S Yalçın · Turkish Studies, 2019</div>
+          <div class="scholar-snippet">Dış ticaret girişimcilerinin Avrupa Birliği pazarına girişte karşılaştıkları başlıca engellerin incelenmesi.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://scholar.google.com/scholar?q=Marco+Polo+Seyahatnamesinde+Uluslararasılaşma+Yaklaşımlarının+İzini+Sürmek+Ersoy+Saygılı+Yalçın" target="_blank" rel="noopener">Marco Polo Seyahatnamesinde Uluslararasılaşma Yaklaşımlarının İzini Sürmek</a></h3>
+          <div class="scholar-meta">AY Ersoy, M Saygılı, S Yalçın · İnsan ve Toplum Bilimleri Araştırmaları Dergisi, 2020</div>
+          <div class="scholar-snippet">Marco Polo'nun seyahatnamesi üzerinden tarihsel uluslararasılaşma yaklaşımlarının izinin sürüldüğü nitel bir çalışma.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://scholar.google.com/scholar?q=Uluslararası+Tarım+Ticaretinde+Girişimcilik+Kararları+Gambiya+Yalçın+Sözüer" target="_blank" rel="noopener">Uluslararası Tarım Ticaretinde Girişimcilik Kararları: Gambiya'ya Giriş Örneği</a></h3>
+          <div class="scholar-meta">S Yalçın, A Sözüer · 2024</div>
+          <div class="scholar-snippet">Bir tarım işletmesinin Gambiya pazarına giriş kararını girişimcilik teorisi çerçevesinde ele alan vaka çalışması.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Öğr. Gör. Bilal Torkul</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://doi.org/10.32705/yorumyonetim.546959" target="_blank" rel="noopener">Lokal Bilimsel Çalışmalar Bağlamında Üniversite-Sanayi İş Birliğinin İşletme Performansı Üzerindeki Rolü</a></h3>
+          <div class="scholar-meta">B Torkul · Yorum Yönetim Yöntem Uluslararası Yönetim Ekonomi ve Felsefe Dergisi, 2019</div>
+          <div class="scholar-snippet">Üniversite-sanayi iş birliğinin, yerel bilimsel çalışmalar bağlamında işletme performansına etkisinin incelenmesi.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scholar-author-block">
+      <h2>Dr. Ömer Alperen Onay</h2>
+      <div class="scholar-results">
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://scholar.google.com/citations?user=l05YCgQAAAAJ&hl=tr" target="_blank" rel="noopener">The Role of Type A Personality in Conflict Handling Styles</a></h3>
+          <div class="scholar-meta">E Özsoy, K Ardıç, Ö Balaban, ÖA Onay, B Raşitoğlu · Bartın Üniversitesi İİBF Dergisi, 2017</div>
+          <div class="scholar-snippet">A tipi kişilik özelliklerinin çalışanların çatışma yönetim stillerini ne yönde etkilediğinin araştırılması.</div>
+        </div>
+
+        <div class="scholar-result">
+          <h3 class="scholar-title"><a href="https://scholar.google.com/scholar?q=Çalışanlar+Perspektifinden+Liderlik+Stilleri+ile+Narsisizm+Onay+Latif" target="_blank" rel="noopener">Çalışanlar Perspektifinden Liderlik Stilleri ile Narsisizm Arasındaki İlişki Üzerine Bir Araştırma</a></h3>
+          <div class="scholar-meta">ÖA Onay, H Latif · Journal of Business and Trade, 2023</div>
+          <div class="scholar-snippet">Liderlik stilleri ile narsisistik kişilik eğilimleri arasındaki ilişkinin çalışan algısı üzerinden incelenmesi.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <footer class="reveal">
   <div class="wrap">
     <div class="footer-flex">
-      
+
       <div class="f-col" style="width: 28%;">
         <div class="footer-brand-text" style="font-size: 17px; font-weight: 600; color: #0b1c2e; margin-bottom: 24px; line-height: 1.4;">Dış Ticaret Girişimciliği Araştırma Platformu</div>
         <p data-i18n="footDesc">TR42 Doğu Marmara Bölgesi'ndeki dış ticaret girişimciliğinin geliştirilmesi ve kamu politikalarının revize edilmesine yönelik bağımsız araştırma platformudur.</p>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footKurumsal">Hakkımızda</h4>
+        <h3 data-i18n="footKurumsal">Hakkımızda</h3>
         <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
         <a href="/ekibimiz" data-i18n="menuEkip">Araştırma Ekibimiz</a>
         <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIcerik">İçerikler</h4>
+        <h3 data-i18n="footIcerik">İçerikler</h3>
         <a href="/bulgular" data-i18n="menuBulgular">Saha Bulguları</a>
         <a href="/politika-onerileri" data-i18n="menuPolitika">Politika Önerileri</a>
-        <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar ve Raporlar</a>
+        <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar</a>
       </div>
 
       <div class="f-col">
-        <h4 data-i18n="footIletisim">İletişim</h4>
+        <h3 data-i18n="footIletisim">İletişim</h3>
         <p style="margin-bottom: 12px;" data-i18n="footKurumAdi">Sakarya Üniversitesi</p>
         <a href="/iletisim" data-i18n="menuIletisim">İletişim</a>
       </div>
@@ -97,7 +283,7 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 </body>
 </html>
