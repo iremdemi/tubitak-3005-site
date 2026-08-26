@@ -820,6 +820,9 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 /* --- sag: harita (gercek D3 cografi projeksiyonu, tek SVG icinde) --- */
 .trade-map-wrap { position: relative; width: 100%; height: 100%; min-height: 460px; }
+/* Mobilde harita SVG'si yerine gosterilecek statik kartlar; masaustunde
+   varsayilan olarak tamamen gizli, hicbir alan kaplamiyor. */
+.trade-cards-mobile { display: none; }
 #tradeGeoMap {
   width: 100%; height: 100%; display: block;
   opacity: 0; transform: translateY(10px) scale(0.99);
@@ -877,8 +880,21 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .trade-map-layout { margin-top: 32px; }
   .trade-metrics { gap: 20px 24px; }
   .trade-metric-num { font-size: 30px; }
-  .trade-map-wrap { min-height: 380px; }
   .trade-source-note { text-align: left; }
+
+  /* Mobilde interaktif harita yerine ayni veri kart olarak: harita SVG'si
+     tamamen kaldiriliyor (yer kaplamamasi icin), kartlar 2 sutunda beyaz,
+     yuvarlak koseli, golgeli (sitenin genel kart dili ile ayni). */
+  .trade-map-wrap { display: none; }
+  .trade-cards-mobile {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .trade-card {
+    background: #ffffff; border-radius: 16px; padding: 18px 16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  }
+  .trade-card strong { display: block; font-size: 15px; font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; }
+  .trade-card span { display: block; font-size: 12.5px; color: #4A5568; line-height: 1.4; }
 }
 
 /* =========================================================
