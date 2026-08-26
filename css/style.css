@@ -811,7 +811,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
    ========================================================= */
 .trade-map-section {
   background-size: cover; background-position: center; background-repeat: no-repeat;
-  padding: 130px 0 60px;
+  padding: 116px 0 60px;
   min-height: 100vh; min-height: 100dvh;
   display: flex; align-items: center;
   position: relative;
@@ -820,6 +820,10 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(100deg, rgba(11,28,46,0.92) 0%, rgba(11,28,46,0.68) 48%, rgba(11,28,46,0.42) 100%);
 }
+/* Baslik, altindaki kart grid'i ile (max-width:1100px, kendi icinde ayrica
+   ortalanmis oldugu icin) ayni sol kenarda baslasin diye, ayni max-width +
+   auto-margin mantigini bu section'a ozel olarak burada da uyguluyoruz. */
+.trade-map-section .section-head { max-width: 1100px; margin-left: auto; margin-right: auto; }
 .trade-map-section > .wrap { position: relative; z-index: 1; width: 100%; }
 .trade-map-title { color: #ffffff; }
 
