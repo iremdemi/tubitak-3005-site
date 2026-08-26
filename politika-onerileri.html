@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="force-light-header">
 
 <header id="mainHeader">
 
@@ -16,7 +16,7 @@
   </a>
 
   <nav>
-    <a href="/" class="active" data-i18n="menuAnaSayfa">Ana Sayfa</a>
+    <a href="/" data-i18n="menuAnaSayfa">Ana Sayfa</a>
     <a href="/hakkimizda" data-i18n="menuProje">Hakkımızda</a>
     <a href="/bulgular" data-i18n="menuBulgular">Bulgular</a>
     <a href="/yayinlar" data-i18n="menuYayinlar">Yayınlar</a>
@@ -74,14 +74,13 @@
 
 
 <!-- POLİTİKA ÖNERİLERİ: ANALİZ SÜRECİ DEVAM EDİYOR -->
-<section class="coming-soon-section">
-  <svg class="coming-soon-icon" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10"></circle>
-    <polyline points="12 6 12 12 16 14"></polyline>
-  </svg>
-  <h1 data-i18n="policyPageTitle">Politika Önerileri</h1>
-  <p data-i18n="policyPageDesc">TR42 Bölgesi'ndeki 25 derinlemesine mülakatın nitel analiz süreci devam etmektedir. Analiz bulguları doğrultusunda hazırlanacak nihai politika önerileri seti, gerçekleştirilecek geniş katılımlı çalıştay sonrasında burada kamuoyuyla paylaşılacaktır.</p>
-  <a href="/" class="btn-outline" style="border-color: rgba(255,255,255,0.4);" data-i18n="backToHome">Ana Sayfaya Dön</a>
+<section class="policy-pending-section">
+  <div class="wrap">
+    <div class="policy-pending-card">
+      <p data-i18n="policyPageDesc">TR42 Bölgesi'ndeki 25 derinlemesine mülakatın nitel analiz süreci devam etmektedir. Analiz bulguları doğrultusunda hazırlanacak nihai politika önerileri seti, gerçekleştirilecek geniş katılımlı çalıştay sonrasında burada kamuoyuyla paylaşılacaktır.</p>
+      <a href="/" class="policy-pending-btn" data-i18n="backToHome">Anasayfaya Dön</a>
+    </div>
+  </div>
 </section>
 
 <footer class="reveal">
@@ -122,7 +121,7 @@
 </footer>
 
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 </body>
 </html>
