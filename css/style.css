@@ -569,6 +569,16 @@ html.fp-mode .fp-stage {
   overflow: hidden;
   position: relative;
 }
+/* Kur seridi (rate-ticker) VARSA, o normal dokuman akisinda yer
+   kapladigi icin (header'in aksine, fixed degil), fp-stage'in
+   kendi 100vh yuksekligini bu kadar azaltmamiz gerekiyor; yoksa
+   ilk section viewport'un altina taşar. Sadece rate-ticker'in
+   HEMEN ARDINDAN gelen fp-stage'i etkiler, diger fp-mode
+   sayfalarina (ticker'siz) dokunmaz. */
+html.fp-mode .rate-ticker + .fp-stage {
+  height: calc(100vh - 180px);
+  height: calc(100dvh - 180px);
+}
 html.fp-mode .fp-wrapper {
   transition: transform var(--fp-duration, 850ms) var(--fp-easing, cubic-bezier(.65,0,.35,1));
 }
@@ -1227,4 +1237,119 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .scholar-section { padding: 100px 0 60px; }
   .scholar-author-block { margin-bottom: 40px; }
   .scholar-title { font-size: 15.5px; }
+}
+
+/* =========================================================
+   DÖVİZ KURU ŞERİDİ (CNN Business piyasa bandına karşılık gelen,
+   sitenin kendi estetiğine uyarlanmış canlı kur + son bulgular
+   şeridi). Header'ın hemen altında, ince gri çizgilerle ayrılmış,
+   kompakt ve sade.
+   ========================================================= */
+.rate-ticker {
+  background: #f8fafc; border-bottom: 1px solid #e2e8f0;
+  padding: 13px 0; margin-top: 86px;
+}
+.rate-ticker-inner { display: flex; align-items: center; gap: 28px; }
+.rate-ticker-rates { display: flex; align-items: center; gap: 24px; flex: none; }
+.rate-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; white-space: nowrap; }
+.rate-item .rate-code { font-weight: var(--weight-semibold); color: #0b1c2e; }
+.rate-item .rate-value { color: #384354; }
+.rate-item .rate-change { display: flex; align-items: center; gap: 2px; font-weight: var(--weight-medium); }
+.rate-item .rate-change.up { color: #0a8a3f; }
+.rate-item .rate-change.down { color: #d92d20; }
+.rate-item.rate-loading, .rate-item.rate-error { color: #94a3b8; font-style: italic; }
+.rate-ticker-divider { width: 1px; height: 26px; background: #e2e8f0; flex: none; }
+.rate-ticker-news {
+  display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0;
+}
+.rate-ticker-news a {
+  font-size: 12px; color: #4A5568; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; transition: color 0.2s ease;
+}
+.rate-ticker-news a:hover { color: #002b66; }
+
+@media (max-width: 900px) {
+  .rate-ticker-news { display: none; }
+  .rate-ticker-divider { display: none; }
+}
+@media (max-width: 640px) {
+  .rate-ticker { padding: 11px 0; margin-top: 68px; }
+  .rate-ticker-rates { gap: 16px; overflow-x: auto; width: 100%; }
+  .rate-item { font-size: 11.5px; }
+}
+
+/* =========================================================
+   BULGULAR SAYFASI: CNN'in "ana haber akışı" formatına uyarlanmış
+   iki sütunlu bulgu listesi - solda yatay görsel, sağda başlık,
+   tarih ve kısa özet, tıklanınca kendi sayfasına gidiyor.
+   ========================================================= */
+.findings-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 44px;
+  margin-top: 40px;
+}
+.finding-card {
+  display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid #eef1f5;
+  text-decoration: none;
+}
+.finding-img {
+  flex: none; width: 136px; height: 92px; border-radius: 10px; overflow: hidden;
+  background: #eef1f5;
+}
+.finding-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.finding-card:hover .finding-img img { transform: scale(1.06); }
+.finding-body { min-width: 0; }
+.finding-body h3 {
+  font-size: 15.5px; font-weight: var(--weight-semibold); color: #0b1c2e;
+  line-height: 1.35; margin-bottom: 6px; transition: color 0.2s ease;
+}
+.finding-card:hover .finding-body h3 { color: #002b66; }
+.finding-date { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+.finding-body p {
+  font-size: 13px; color: #4A5568; line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .findings-grid { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 500px) {
+  .finding-card { gap: 14px; padding: 18px 0; }
+  .finding-img { width: 104px; height: 76px; }
+  .finding-body h3 { font-size: 14.5px; }
+}
+
+/* =========================================================
+   HEADER İÇİ KOMPAKT KUR GÖSTERGESİ (sadece anasayfa): fp-mode
+   sisteminin section boyutlarina hic dokunmadan, logo'nun hemen
+   yanina, header'in kendi (transparan/scrolled) renk mantigini
+   takip eden kucuk bir doviz kuru gostergesi. Sadece masaustunde.
+   ========================================================= */
+.header-logo-group { display: flex; align-items: center; gap: 18px; }
+.header-rate-mini {
+  display: flex; align-items: center; gap: 12px;
+  padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.3);
+  transition: border-color 0.3s ease;
+}
+.header-rate-mini .rate-item-mini {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 11.5px; color: rgba(255,255,255,0.85); white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.header-rate-mini .rate-code-mini { font-weight: var(--weight-semibold); color: #ffffff; transition: color 0.3s ease; }
+.header-rate-mini .rate-change-mini { display: flex; align-items: center; }
+.header-rate-mini .rate-change-mini.up { color: #7fe3a8; }
+.header-rate-mini .rate-change-mini.down { color: #ffa3a3; }
+.header-rate-mini .rate-loading-mini, .header-rate-mini .rate-error-mini {
+  font-size: 11px; color: rgba(255,255,255,0.6); font-style: italic;
+}
+
+header.scrolled .header-rate-mini { border-left-color: rgba(11,28,46,0.15); }
+header.scrolled .header-rate-mini .rate-item-mini { color: #4A5568; }
+header.scrolled .header-rate-mini .rate-code-mini { color: #0b1c2e; }
+header.scrolled .header-rate-mini .rate-change-mini.up { color: #0a8a3f; }
+header.scrolled .header-rate-mini .rate-change-mini.down { color: #d92d20; }
+header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-rate-mini .rate-error-mini { color: #94a3b8; }
+
+@media (max-width: 1180px) {
+  .header-rate-mini { display: none; }
 }
