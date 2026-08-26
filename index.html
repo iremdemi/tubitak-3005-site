@@ -10,10 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/style.css">
-<!-- Ticaret ağı haritası icin gercek cografi projeksiyon (D3.js) -->
-<script src="https://cdn.jsdelivr.net/npm/d3-array@3/dist/d3-array.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-geo@3/dist/d3-geo.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" defer></script>
 </head>
 <body>
 
@@ -121,40 +117,36 @@
   </div>
 </section>
 
-<section class="section trade-map-section" id="ticaret-agi" data-fp-section="2" data-fp-header-light="true">
+<section class="section trade-map-section" id="ticaret-agi" data-fp-section="2" data-fp-header-light="true" style="background-image:url('https://images.pexels.com/photos/20624924/pexels-photo-20624924.jpeg?auto=compress&fit=crop&w=2200&q=80');">
+  <div class="trade-map-section-overlay"></div>
   <div class="wrap">
     <div class="section-head reveal">
       <h2 class="section-title trade-map-title">Türkiye'nin Küresel Ticaret Ağı</h2>
     </div>
 
+    <div class="trade-metrics-top reveal">
+      <div class="trade-metric">
+        <div class="trade-metric-num" data-count-to="192">0</div>
+        <div class="trade-metric-label">Saha Araştırmasına Katılan<br>İhracatçı Firma</div>
+      </div>
+      <div class="trade-metric">
+        <div class="trade-metric-num" data-count-to="5">0</div>
+        <div class="trade-metric-label">Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)</div>
+      </div>
+      <div class="trade-metric">
+        <div class="trade-metric-num" data-count-to="6">0</div>
+        <div class="trade-metric-label">Odak<br>Sektör</div>
+      </div>
+      <div class="trade-metric">
+        <div class="trade-metric-num" data-count-to="15">0</div>
+        <div class="trade-metric-label">Ay<br>Proje Süresi</div>
+      </div>
+    </div>
+
     <div class="trade-map-layout reveal">
-      <div class="trade-metrics">
-        <div class="trade-metric">
-          <div class="trade-metric-num" data-count-to="192">0</div>
-          <div class="trade-metric-label">Saha Araştırmasına Katılan<br>İhracatçı Firma</div>
-        </div>
-        <div class="trade-metric">
-          <div class="trade-metric-num" data-count-to="5">0</div>
-          <div class="trade-metric-label">Stratejik İl<br>(Kocaeli, Sakarya, Düzce, Bolu, Yalova)</div>
-        </div>
-        <div class="trade-metric">
-          <div class="trade-metric-num" data-count-to="6">0</div>
-          <div class="trade-metric-label">Odak<br>Sektör</div>
-        </div>
-        <div class="trade-metric">
-          <div class="trade-metric-num" data-count-to="15">0</div>
-          <div class="trade-metric-label">Ay<br>Proje Süresi</div>
-        </div>
-      </div>
-
-      <div class="trade-map-wrap" id="tradeMapWrap">
-        <svg id="tradeGeoMap" viewBox="0 0 1200 550" preserveAspectRatio="xMidYMid meet" aria-label="Türkiye ve 10 ticaret ortağı ülkeyi gösteren dünya haritası"></svg>
-      </div>
-
-      <!-- SADECE MOBILDE gorunur (bkz. css: @media max-width:767px), masaustunde
-           display:none. Interaktif harita yerine ayni veri kart olarak, tumu
-           ihracat rakami, buyukten kucuge siralanmis. -->
-      <div class="trade-cards-mobile">
+      <!-- Harita kaldirildi; ayni veri hem masaustu hem mobilde kart
+           olarak gosteriliyor, tumu ihracat rakami, buyukten kucuge. -->
+      <div class="trade-cards-grid">
         <div class="trade-card"><strong>Almanya</strong><span>İhracat: 22,2 Milyar $</span></div>
         <div class="trade-card"><strong>Birleşik Krallık</strong><span>İhracat: 16,8 Milyar $</span></div>
         <div class="trade-card"><strong>ABD</strong><span>İhracat: 16,3 Milyar $</span></div>
