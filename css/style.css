@@ -1131,3 +1131,34 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   .contact-team-row { padding: 12px 16px; gap: 14px; }
   .contact-team-info span { display: block; }
 }
+
+/* =========================================================
+   POLİTİKA ÖNERİLERİ SAYFASI: "analiz süreci devam ediyor" -
+   sitenin normal (beyaz) zemininde, tek buyuk golgeli kart.
+   ========================================================= */
+.policy-pending-section {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: #ffffff; padding: 140px 24px 80px;
+}
+.policy-pending-card {
+  max-width: 680px; width: 100%;
+  background: #ffffff; border-radius: 24px; padding: 56px 48px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+  text-align: center;
+}
+.policy-pending-card p {
+  font-size: 17px; line-height: 1.8; color: #384354; margin-bottom: 32px;
+}
+.policy-pending-btn {
+  display: inline-block; background: #002b66; color: #ffffff;
+  padding: 14px 34px; border-radius: 2px; font-weight: var(--weight-semibold);
+  font-size: var(--text-btn); transition: background 0.3s ease;
+}
+.policy-pending-btn:hover { background: #004099; }
+
+@media (max-width: 767px) {
+  .policy-pending-section { padding: 120px 20px 60px; }
+  .policy-pending-card { padding: 40px 26px; border-radius: 20px; }
+  .policy-pending-card p { font-size: 15.5px; line-height: 1.75; }
+}
