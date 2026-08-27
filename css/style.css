@@ -1029,7 +1029,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
 }
 /* Sadece ekip sayfasindaki breadcrumb'a ozel: fotoyla arasinda,
    diger sayfalardaki (bulgu detay vs.) boslugla ayni hissi
