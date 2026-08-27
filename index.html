@@ -103,7 +103,31 @@
 
 </section>
 
-<section class="section" id="bulgular" data-fp-section="1" data-fp-light="true">
+<!-- SÜREÇ TAKVİMİ: interaktif, tıklanabilir yatay zaman çizelgesi.
+     Masaüstünde tıklanan/hover edilen düğüm detay panelinde açılır;
+     mobilde akordiyon (accordion) listesine dönüşür. Veri js/main.js
+     içindeki TIMELINE_DATA dizisinden (en güncelden en eskiye)
+     üretiliyor. -->
+<section class="timeline-section" data-fp-section="1" data-fp-light="true">
+  <div class="wrap">
+    <span class="eyebrow-tag">Süreç Takvimi</span>
+    <h2 class="section-title">Projenin Yolculuğu</h2>
+
+    <div class="timeline-widget" id="timelineWidget">
+      <div class="timeline-track">
+        <div class="timeline-track-line">
+          <div class="timeline-track-fill" id="timelineFill"></div>
+        </div>
+        <div class="timeline-nodes" id="timelineNodes"></div>
+      </div>
+      <div class="timeline-detail" id="timelineDetail"></div>
+    </div>
+
+    <div class="timeline-mobile-list" id="timelineMobileList"></div>
+  </div>
+</section>
+
+<section class="section" id="bulgular" data-fp-section="2" data-fp-light="true">
   <div class="wrap">
     <div class="section-head reveal">
       <h2 class="section-title" data-i18n="findingsTitle">Araştırmadan Bulgular</h2>
@@ -122,7 +146,7 @@
   </div>
 </section>
 
-<section class="section trade-map-section" id="ticaret-agi" data-fp-section="2" data-fp-header-light="true" style="background-image:url('https://images.pexels.com/photos/20624924/pexels-photo-20624924.jpeg?auto=compress&fit=crop&w=2200&q=80');">
+<section class="section trade-map-section" id="ticaret-agi" data-fp-section="3" data-fp-header-light="true" style="background-image:url('https://images.pexels.com/photos/20624924/pexels-photo-20624924.jpeg?auto=compress&fit=crop&w=2200&q=80');">
   <div class="trade-map-section-overlay"></div>
   <div class="wrap">
     <div class="section-head reveal">
@@ -169,7 +193,7 @@
   </div>
 </section>
 
-<section class="team-section" id="ekip" data-fp-section="3" data-fp-light="true">
+<section class="team-section" id="ekip" data-fp-section="4" data-fp-light="true">
   <div class="wrap reveal" style="margin-bottom: 48px;">
     <h2 class="section-title" data-i18n="teamTitle">Araştırma Ekibi</h2>
   </div>
@@ -179,7 +203,7 @@
   </div>
 </section>
 
-<footer class="reveal" data-fp-section="4" data-fp-light="true">
+<footer class="reveal" data-fp-section="5" data-fp-light="true">
   <div class="wrap">
     <div class="footer-flex">
       
@@ -222,10 +246,11 @@
 <!-- TAM SAYFA BÖLÜM GÖSTERGESİ (sadece masaüstünde JS ile görünür yapılır) -->
 <nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
   <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1: Giriş" aria-current="true"></button>
-  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Bulgular"></button>
-  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Küresel Ticaret Ağı"></button>
-  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Araştırma Ekibi"></button>
-  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: İletişim ve Alt Bilgi"></button>
+  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Süreç Takvimi"></button>
+  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Bulgular"></button>
+  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Küresel Ticaret Ağı"></button>
+  <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: Araştırma Ekibi"></button>
+  <button class="fp-dot" data-fp-index="5" aria-label="Bölüm 6: İletişim ve Alt Bilgi"></button>
 </nav>
 
 <script src="js/main.js" defer></script>
