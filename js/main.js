@@ -727,34 +727,39 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 
+
 /* ===========================================================
    DÖVİZ KURU VERİSİ: iki bağımsız, ücretsiz, anahtarsız kaynak
    sırayla denenir (biri kesintiye uğrarsa diğeri devreye girer).
-   1) open.er-api.com - 166 para birimini TEK istekte döner,
+   1) open.er-api.com  - 166 para birimini TEK istekte döner,
       çok yüksek çalışma süresine sahip, ANCAK sadece "bugünkü"
-      kuru verir (değişim yüzdesi hesaplanamaz).
+      referans kuru verir (değişim yüzdesi hesaplanamaz).
    2) api.frankfurter.dev - tarihsel veri de sunar (değişim
       yüzdesi hesaplanabilir), ama zaman zaman kesintiye uğrayabiliyor.
-   Sonuç, sayfadaki TÜM kur gösterge noktalarının (şerit + header
-   mini) paylaştığı ortak bir fonksiyondan geliyor.
+
+   NOT: Bu ücretsiz kaynaklar GÜNLÜK referans kuru veriyor (saniye
+   saniye değişen profesyonel borsa akışı DEĞİL). "Canlı" hissi
+   için sayfa açıkken periyodik olarak yeniden çekiyoruz (asagida
+   REFRESH_MS) ve nabız/parlama animasyonlarıyla bunu görsel
+   olarak belirtiyoruz; ama rakamın kendisi her yenilemede
+   DEĞİŞMEYEBİLİR, çünkü kaynak günde ~1 kez güncelleniyor.
    =========================================================== */
+const RATE_REFRESH_MS = 5 * 60 * 1000; // 5 dakikada bir yeniden dene
+
 async function fetchLiveRates() {
   const codes = ['USD', 'EUR', 'GBP'];
 
-  // 1) Birincil kaynak: open.er-api.com (tek istek, tum kurlar)
   try {
     const res = await fetch('https://open.er-api.com/v6/latest/TRY');
     if (!res.ok) throw new Error('primary failed');
     const data = await res.json();
     if (data.result !== 'success') throw new Error('primary result not success');
-    // data.rates: 1 TRY = X USD, X EUR, X GBP -> ters çevirip "1 USD = ? TRY" yapıyoruz
     return codes.map(code => ({
       code,
       rate: 1 / data.rates[code],
-      changePct: null // bu kaynakta onceki gun karsilastirmasi yok
+      changePct: null
     }));
   } catch (e) {
-    // 2) Yedek kaynak: Frankfurter (degisim yuzdesi de verir)
     try {
       const past = new Date();
       past.setDate(past.getDate() - 5);
@@ -779,58 +784,65 @@ async function fetchLiveRates() {
   }
 }
 
-/* --- Bulgular sayfasindaki genis kur seridi --- */
-(function () {
-  const container = document.getElementById('rateTickerRates');
+function renderRateItem(r, prevRate, compact) {
+  const changed = prevRate !== undefined && prevRate !== r.rate;
+  const flashCls = changed ? (r.rate > prevRate ? 'rate-flash-up' : 'rate-flash-down') : '';
+  let changeHtml = '';
+  if (r.changePct !== null) {
+    const isUp = r.changePct >= 0;
+    const cls = isUp ? 'up' : 'down';
+    const size = compact ? 8 : 10;
+    const arrow = isUp
+      ? `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 12H4z"/></svg>`
+      : `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20L4 8h16z"/></svg>`;
+    changeHtml = compact
+      ? `<span class="rate-change-mini ${cls}">${arrow}</span>`
+      : `<span class="rate-change ${cls}">${arrow}%${Math.abs(r.changePct).toFixed(2)}</span>`;
+  }
+  if (compact) {
+    return `<span class="rate-item-mini ${flashCls}">
+      <span class="rate-code-mini">${r.code}</span>
+      <span class="rate-value-mini">${r.rate.toFixed(2)}</span>
+      ${changeHtml}
+    </span>`;
+  }
+  return `<div class="rate-item ${flashCls}">
+    <span class="rate-code">${r.code}/TRY</span>
+    <span class="rate-value">${r.rate.toFixed(4)}</span>
+    ${changeHtml}
+  </div>`;
+}
+
+/* Bir kur gosterge noktasini (sarit ya da header-mini) baglar:
+   ilk yuklemede + REFRESH_MS'te bir yeniden cekip, "canli" nokta
+   ile birlikte gosterir; deger degisirse kisaca yanip soner. */
+function bindLiveRateWidget(containerId, wrapperSelector, compact) {
+  const container = document.getElementById(containerId);
   if (!container) return;
 
-  fetchLiveRates().then(results => {
-    container.innerHTML = results.map(r => {
-      if (r.changePct === null) {
-        return `<div class="rate-item">
-          <span class="rate-code">${r.code}/TRY</span>
-          <span class="rate-value">${r.rate.toFixed(4)}</span>
-        </div>`;
-      }
-      const isUp = r.changePct >= 0;
-      const cls = isUp ? 'up' : 'down';
-      const arrow = isUp
-        ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 12H4z"/></svg>'
-        : '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20L4 8h16z"/></svg>';
-      return `<div class="rate-item">
-        <span class="rate-code">${r.code}/TRY</span>
-        <span class="rate-value">${r.rate.toFixed(4)}</span>
-        <span class="rate-change ${cls}">${arrow}%${Math.abs(r.changePct).toFixed(2)}</span>
-      </div>`;
-    }).join('');
-  }).catch(() => {
-    container.innerHTML = '<div class="rate-item rate-error">Döviz kurları şu anda alınamıyor</div>';
-  });
-})();
+  let previous = {};
 
-/* --- Anasayfa header'i icindeki kompakt kur gostergesi --- */
-(function () {
-  const container = document.getElementById('headerRateMini');
-  if (!container) return;
-
-  fetchLiveRates().then(results => {
-    container.innerHTML = results.map(r => {
-      let changeHtml = '';
-      if (r.changePct !== null) {
-        const isUp = r.changePct >= 0;
-        const cls = isUp ? 'up' : 'down';
-        const arrow = isUp
-          ? '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 12H4z"/></svg>'
-          : '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20L4 8h16z"/></svg>';
-        changeHtml = `<span class="rate-change-mini ${cls}">${arrow}</span>`;
+  async function refresh() {
+    try {
+      const results = await fetchLiveRates();
+      container.innerHTML = results.map(r => renderRateItem(r, previous[r.code], compact)).join('');
+      results.forEach(r => { previous[r.code] = r.rate; });
+      const wrapper = wrapperSelector ? document.querySelector(wrapperSelector) : container.closest('.rate-ticker, .header-rate-mini');
+      if (wrapper) wrapper.classList.add('is-live');
+    } catch (e) {
+      if (Object.keys(previous).length === 0) {
+        container.innerHTML = compact
+          ? '<span class="rate-error-mini">Kurlar alınamıyor</span>'
+          : '<div class="rate-item rate-error">Döviz kurları şu anda alınamıyor</div>';
       }
-      return `<span class="rate-item-mini">
-        <span class="rate-code-mini">${r.code}</span>
-        <span class="rate-value-mini">${r.rate.toFixed(2)}</span>
-        ${changeHtml}
-      </span>`;
-    }).join('');
-  }).catch(() => {
-    container.innerHTML = '<span class="rate-error-mini">Kurlar alınamıyor</span>';
-  });
-})();
+      // onceden basarili veri varsa, gecici bir hatada ekrandaki son
+      // basarili degerleri KORUYORUZ, kullaniciya bos/hata göstermiyoruz.
+    }
+  }
+
+  refresh();
+  setInterval(refresh, RATE_REFRESH_MS);
+}
+
+bindLiveRateWidget('rateTickerRates', null, false);
+bindLiveRateWidget('headerRateMini', null, true);
