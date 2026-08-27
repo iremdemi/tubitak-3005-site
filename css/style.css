@@ -861,11 +861,15 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   max-width: 1100px; margin: 0 auto;
 }
 .trade-card {
-  background: #ffffff; border-radius: 16px; padding: 20px 18px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 16px; padding: 20px 18px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.18);
 }
-.trade-card strong { display: block; font-size: 15px; font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; }
-.trade-card span { display: block; font-size: 12.5px; color: #4A5568; line-height: 1.4; }
+.trade-card strong { display: block; font-size: 15px; font-weight: var(--weight-semibold); color: #ffffff; margin-bottom: 6px; }
+.trade-card span { display: block; font-size: 12.5px; color: rgba(255,255,255,0.78); line-height: 1.4; }
 
 /* --- sol: mevcut proje metrikleri, sayac animasyonlu (Sabancı'daki gibi
    yan yana, kompakt, aralarinda ince bir ayirici cizgi ile) --- */
@@ -938,9 +942,19 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 @media (max-width: 767px) {
   .trade-map-section { padding: 110px 0 50px; }
-  .trade-metrics-top { gap: 20px 0; margin: 24px 0 32px; row-gap: 22px; }
-  .trade-metrics-top .trade-metric { border-left: none; }
-  .trade-metrics-top .trade-metric { padding: 0 16px; }
+  /* Sayaclar mobilde DUZENLI 2x2 grid: 192 ve 5 ust satirda,
+     6 ve 15 alt satirda, birbirinin AYNI hizasinda. Onceki
+     flex-wrap yaklasimi asimetrik/"yamuk" gorunuyordu. */
+  .trade-metrics-top {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 26px 0; margin: 24px 0 32px;
+  }
+  .trade-metrics-top .trade-metric { padding: 0 16px; border-left: none; }
+  /* Her satirin 2. (sag) hucresi, diger section'lardaki gibi ince
+     bir ayirici cizgiyle 1. (sol) hucreden ayriliyor. */
+  .trade-metrics-top .trade-metric:nth-child(2n) {
+    border-left: 1px solid rgba(255,255,255,0.18);
+  }
   .trade-metric-num { font-size: 26px; }
   .trade-source-note { text-align: left; }
 
@@ -949,11 +963,15 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
     grid-template-columns: 1fr 1fr; gap: 14px;
   }
   .trade-card {
-    background: #ffffff; border-radius: 16px; padding: 18px 16px;
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 16px; padding: 18px 16px;
     box-shadow: 0 16px 40px rgba(0,0,0,0.18);
   }
-  .trade-card strong { display: block; font-size: 15px; font-weight: var(--weight-semibold); color: #0b1c2e; margin-bottom: 6px; }
-  .trade-card span { display: block; font-size: 12.5px; color: #4A5568; line-height: 1.4; }
+  .trade-card strong { display: block; font-size: 15px; font-weight: var(--weight-semibold); color: #ffffff; margin-bottom: 6px; }
+  .trade-card span { display: block; font-size: 12.5px; color: rgba(255,255,255,0.78); line-height: 1.4; }
 }
 
 /* =========================================================
