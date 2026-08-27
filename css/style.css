@@ -619,7 +619,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 /* =========================================================
    BULGULAR SAYFASI: SABANCI BASIN BÜLTENLERİ TARZI LİSTE
    ========================================================= */
-.press-list-section { padding: 160px 0 120px; background: #ffffff; min-height: 60vh; }
+.press-list-section { padding: 36px 0 120px; background: #ffffff; min-height: 60vh; }
 .press-list { border: 1px solid #E2E8F0; border-radius: 2px; overflow: hidden; }
 .press-row {
   display: grid; grid-template-columns: 160px 1fr 130px; gap: 24px; align-items: center;
@@ -634,7 +634,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .press-row:not(.press-row-head):hover .press-link { gap: 10px; }
 
 @media (max-width: 767px) {
-  .press-list-section { padding: 120px 0 72px; }
+  .press-list-section { padding: 24px 0 60px; }
   .press-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 20px; }
   .press-row-head { display: none; }
   .press-link { justify-self: start; margin-top: 6px; }
