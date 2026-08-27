@@ -726,3 +726,111 @@ document.addEventListener("DOMContentLoaded", () => {
     link.classList.toggle('active', linkPath === currentPath);
   });
 })();
+
+/* ===========================================================
+   DÖVİZ KURU VERİSİ: iki bağımsız, ücretsiz, anahtarsız kaynak
+   sırayla denenir (biri kesintiye uğrarsa diğeri devreye girer).
+   1) open.er-api.com - 166 para birimini TEK istekte döner,
+      çok yüksek çalışma süresine sahip, ANCAK sadece "bugünkü"
+      kuru verir (değişim yüzdesi hesaplanamaz).
+   2) api.frankfurter.dev - tarihsel veri de sunar (değişim
+      yüzdesi hesaplanabilir), ama zaman zaman kesintiye uğrayabiliyor.
+   Sonuç, sayfadaki TÜM kur gösterge noktalarının (şerit + header
+   mini) paylaştığı ortak bir fonksiyondan geliyor.
+   =========================================================== */
+async function fetchLiveRates() {
+  const codes = ['USD', 'EUR', 'GBP'];
+
+  // 1) Birincil kaynak: open.er-api.com (tek istek, tum kurlar)
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/TRY');
+    if (!res.ok) throw new Error('primary failed');
+    const data = await res.json();
+    if (data.result !== 'success') throw new Error('primary result not success');
+    // data.rates: 1 TRY = X USD, X EUR, X GBP -> ters çevirip "1 USD = ? TRY" yapıyoruz
+    return codes.map(code => ({
+      code,
+      rate: 1 / data.rates[code],
+      changePct: null // bu kaynakta onceki gun karsilastirmasi yok
+    }));
+  } catch (e) {
+    // 2) Yedek kaynak: Frankfurter (degisim yuzdesi de verir)
+    try {
+      const past = new Date();
+      past.setDate(past.getDate() - 5);
+      const pastStr = past.toISOString().slice(0, 10);
+      const results = await Promise.all(codes.map(async (code) => {
+        const [curRes, prevRes] = await Promise.all([
+          fetch(`https://api.frankfurter.dev/v1/latest?base=${code}&symbols=TRY`),
+          fetch(`https://api.frankfurter.dev/v1/${pastStr}?base=${code}&symbols=TRY`)
+        ]);
+        if (!curRes.ok || !prevRes.ok) throw new Error('backup failed');
+        const cur = await curRes.json();
+        const prev = await prevRes.json();
+        const curRate = cur.rates.TRY;
+        const prevRate = prev.rates.TRY;
+        const changePct = ((curRate - prevRate) / prevRate) * 100;
+        return { code, rate: curRate, changePct };
+      }));
+      return results;
+    } catch (e2) {
+      throw new Error('all rate sources failed');
+    }
+  }
+}
+
+/* --- Bulgular sayfasindaki genis kur seridi --- */
+(function () {
+  const container = document.getElementById('rateTickerRates');
+  if (!container) return;
+
+  fetchLiveRates().then(results => {
+    container.innerHTML = results.map(r => {
+      if (r.changePct === null) {
+        return `<div class="rate-item">
+          <span class="rate-code">${r.code}/TRY</span>
+          <span class="rate-value">${r.rate.toFixed(4)}</span>
+        </div>`;
+      }
+      const isUp = r.changePct >= 0;
+      const cls = isUp ? 'up' : 'down';
+      const arrow = isUp
+        ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 12H4z"/></svg>'
+        : '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20L4 8h16z"/></svg>';
+      return `<div class="rate-item">
+        <span class="rate-code">${r.code}/TRY</span>
+        <span class="rate-value">${r.rate.toFixed(4)}</span>
+        <span class="rate-change ${cls}">${arrow}%${Math.abs(r.changePct).toFixed(2)}</span>
+      </div>`;
+    }).join('');
+  }).catch(() => {
+    container.innerHTML = '<div class="rate-item rate-error">Döviz kurları şu anda alınamıyor</div>';
+  });
+})();
+
+/* --- Anasayfa header'i icindeki kompakt kur gostergesi --- */
+(function () {
+  const container = document.getElementById('headerRateMini');
+  if (!container) return;
+
+  fetchLiveRates().then(results => {
+    container.innerHTML = results.map(r => {
+      let changeHtml = '';
+      if (r.changePct !== null) {
+        const isUp = r.changePct >= 0;
+        const cls = isUp ? 'up' : 'down';
+        const arrow = isUp
+          ? '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 12H4z"/></svg>'
+          : '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20L4 8h16z"/></svg>';
+        changeHtml = `<span class="rate-change-mini ${cls}">${arrow}</span>`;
+      }
+      return `<span class="rate-item-mini">
+        <span class="rate-code-mini">${r.code}</span>
+        <span class="rate-value-mini">${r.rate.toFixed(2)}</span>
+        ${changeHtml}
+      </span>`;
+    }).join('');
+  }).catch(() => {
+    container.innerHTML = '<span class="rate-error-mini">Kurlar alınamıyor</span>';
+  });
+})();
