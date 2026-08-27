@@ -1471,3 +1471,110 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 @media (max-width: 1180px) {
   .header-rate-mini { display: none; }
 }
+
+/* =========================================================
+   SÜREÇ TAKVİMİ (Timeline) - anasayfanın 2. section-i.
+   Masaüstü: yatay, tıklanabilir/hover edilebilir düğümlü zaman
+   çizelgesi + aktif düğümün detayını gösteren kart.
+   Mobil: dikey akordiyon listesi.
+   ========================================================= */
+.timeline-section { background: #ffffff; padding: 120px 0; display: flex; align-items: center; }
+.timeline-section .eyebrow-tag { margin-bottom: 14px; }
+.timeline-section .section-title { margin-bottom: 48px; }
+
+.timeline-widget { display: flex; flex-direction: column; gap: 40px; }
+
+/* --- Yatay iz (track) --- */
+.timeline-track { position: relative; padding: 0 6px; }
+.timeline-track-line {
+  position: absolute; top: 9px; left: 6px; right: 6px; height: 2px;
+  background: #e2e8f0; border-radius: 2px;
+}
+.timeline-track-fill {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: #002b66; border-radius: 2px;
+  transition: width 0.4s cubic-bezier(.65,0,.35,1);
+}
+.timeline-nodes { position: relative; display: flex; justify-content: space-between; }
+.timeline-node {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: none; border: none; cursor: pointer; padding: 0; flex: 1;
+  font-family: var(--font-sans);
+}
+.timeline-node-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #ffffff; border: 2px solid #cbd5e1;
+  transition: all 0.25s cubic-bezier(.65,0,.35,1);
+  position: relative; z-index: 1;
+}
+.timeline-node:hover .timeline-node-dot {
+  transform: scale(1.25);
+  border-color: #002b66;
+}
+.timeline-node.active .timeline-node-dot {
+  background: #002b66; border-color: #002b66;
+  transform: scale(1.35);
+  box-shadow: 0 0 0 5px rgba(0,43,102,0.12);
+}
+.timeline-node-date {
+  font-size: 11px; font-weight: var(--weight-medium); color: #94a3b8;
+  white-space: nowrap; transition: color 0.25s ease;
+  writing-mode: horizontal-tb;
+}
+.timeline-node:hover .timeline-node-date { color: #4A5568; }
+.timeline-node.active .timeline-node-date { color: #002b66; font-weight: var(--weight-semibold); }
+
+/* --- Aktif girdinin detay karti --- */
+.timeline-detail {
+  background: #f8fafc; border-radius: 20px; padding: 36px 40px;
+  min-height: 140px; display: flex; flex-direction: column; justify-content: center;
+}
+.timeline-detail-date {
+  display: inline-block; font-size: 13px; font-weight: var(--weight-semibold);
+  color: #ffffff; background: #002b66; padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 16px; width: fit-content;
+}
+.timeline-detail-text {
+  font-size: 17px; line-height: 1.65; color: #0b1c2e; font-weight: var(--weight-medium);
+}
+.timeline-detail.fade-in { animation: timelineFadeIn 0.35s ease; }
+@keyframes timelineFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobil: dikey akordiyon (yatay iz gizlenir) --- */
+.timeline-mobile-list { display: none; }
+
+@media (max-width: 900px) {
+  .timeline-widget { display: none; }
+  .timeline-mobile-list { display: flex; flex-direction: column; gap: 10px; }
+  .timeline-mobile-item {
+    background: #f8fafc; border-radius: 14px; overflow: hidden;
+    transition: background 0.25s ease;
+  }
+  .timeline-mobile-item.open { background: #ffffff; box-shadow: 0 12px 32px rgba(11,28,46,0.08); }
+  .timeline-mobile-head {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 16px 18px; background: none; border: none; cursor: pointer;
+    font-family: var(--font-sans); text-align: left;
+  }
+  .timeline-mobile-date {
+    font-size: 13px; font-weight: var(--weight-semibold); color: #002b66; white-space: nowrap;
+  }
+  .timeline-mobile-chevron {
+    flex: none; transition: transform 0.25s ease; color: #94a3b8;
+  }
+  .timeline-mobile-item.open .timeline-mobile-chevron { transform: rotate(180deg); color: #002b66; }
+  .timeline-mobile-body {
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+  }
+  .timeline-mobile-item.open .timeline-mobile-body { max-height: 200px; }
+  .timeline-mobile-body p {
+    padding: 0 18px 18px; font-size: 14px; line-height: 1.6; color: #384354;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-section { padding: 100px 0 60px; }
+}
