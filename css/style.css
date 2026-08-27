@@ -1258,6 +1258,36 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .rate-item .rate-change.up { color: #0a8a3f; }
 .rate-item .rate-change.down { color: #d92d20; }
 .rate-item.rate-loading, .rate-item.rate-error { color: #94a3b8; font-style: italic; }
+
+/* "CANLI" nabiz noktasi: JS, veri basariyla geldiginde wrapper'a
+   .is-live class'ini ekliyor; bu, bir yesil nokta + yumusak
+   nabiz animasyonu olarak gorsellestiriliyor. Rakamin kendisi
+   her yenilemede degismeyebilir (kaynak gunluk guncelleniyor),
+   ama noktanin nabzi "surekli kontrol ediliyor" hissini verir. */
+.rate-ticker.is-live .rate-ticker-rates::before {
+  content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: #0a8a3f; margin-right: 4px; flex: none;
+  box-shadow: 0 0 0 0 rgba(10,138,63,0.6);
+  animation: rate-pulse 1.8s ease-out infinite;
+}
+@keyframes rate-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(10,138,63,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(10,138,63,0); }
+  100% { box-shadow: 0 0 0 0 rgba(10,138,63,0); }
+}
+
+/* Deger degistiginde (bir onceki yenilemeye gore) kisa bir
+   parlama ile vurgulanir: yukseldiyse yesil, dustuyse kirmizi. */
+.rate-item.rate-flash-up { animation: rate-flash-up-anim 1.6s ease; }
+.rate-item.rate-flash-down { animation: rate-flash-down-anim 1.6s ease; }
+@keyframes rate-flash-up-anim {
+  0% { background: rgba(10,138,63,0.16); border-radius: 6px; }
+  100% { background: transparent; }
+}
+@keyframes rate-flash-down-anim {
+  0% { background: rgba(217,45,32,0.14); border-radius: 6px; }
+  100% { background: transparent; }
+}
 .rate-ticker-divider { width: 1px; height: 26px; background: #e2e8f0; flex: none; }
 .rate-ticker-news {
   display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0;
@@ -1329,6 +1359,25 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
   display: flex; align-items: center; gap: 12px;
   padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.3);
   transition: border-color 0.3s ease;
+}
+.header-rate-mini.is-live::before {
+  content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: #7fe3a8; margin-right: 2px; flex: none;
+  box-shadow: 0 0 0 0 rgba(127,227,168,0.6);
+  animation: rate-pulse-mini 1.8s ease-out infinite;
+}
+header.scrolled .header-rate-mini.is-live::before { background: #0a8a3f; box-shadow: 0 0 0 0 rgba(10,138,63,0.55); animation-name: rate-pulse; }
+@keyframes rate-pulse-mini {
+  0%   { box-shadow: 0 0 0 0 rgba(127,227,168,0.55); }
+  70%  { box-shadow: 0 0 0 6px rgba(127,227,168,0); }
+  100% { box-shadow: 0 0 0 0 rgba(127,227,168,0); }
+}
+.header-rate-mini .rate-item-mini.rate-flash-up, .header-rate-mini .rate-item-mini.rate-flash-down {
+  animation: rate-flash-mini 1.6s ease; border-radius: 4px;
+}
+@keyframes rate-flash-mini {
+  0% { background: rgba(127,227,168,0.28); }
+  100% { background: transparent; }
 }
 .header-rate-mini .rate-item-mini {
   display: flex; align-items: center; gap: 3px;
