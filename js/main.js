@@ -846,3 +846,96 @@ function bindLiveRateWidget(containerId, wrapperSelector, compact) {
 
 bindLiveRateWidget('rateTickerRates', null, false);
 bindLiveRateWidget('headerRateMini', null, true);
+
+/* ===========================================================
+   SÜREÇ TAKVİMİ (Timeline) - anasayfanın interaktif zaman
+   çizelgesi bileşeni. Veri en güncelden en eskiye sıralı;
+   masaüstünde tıklanabilir/hover edilebilir yatay iz + detay
+   kartı, mobilde dikey akordiyon olarak render ediliyor.
+   =========================================================== */
+(function () {
+  const nodesContainer = document.getElementById('timelineNodes');
+  const detailContainer = document.getElementById('timelineDetail');
+  const fillEl = document.getElementById('timelineFill');
+  const mobileList = document.getElementById('timelineMobileList');
+  if (!nodesContainer || !detailContainer || !mobileList) return;
+
+  // En günceli en başta olacak şekilde sıralı (kullanıcının verdiği
+  // sıra tam tersiydi, burada ters çevrilmiş halde tanımlı).
+  const TIMELINE_DATA = [
+    { date: '27.07.2026', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.' },
+    { date: '29.06.2026', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
+    { date: '31.05.2026', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
+    { date: '06.03.2026', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
+    { date: '24.10.2025', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.' },
+    { date: '04.08.2025', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
+    { date: '11.03.2025', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
+    { date: '01.03.2025', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
+    { date: '26.02.2025', text: 'Etik kurul onayı ve ilgili yasal izinler için gerekli başvuru evraklarının hazırlanması ve nihai kontrollerinin yapılması.' },
+    { date: '18.02.2025', text: 'Nitel veri toplama aracı olan mülakat formundaki soruların tasarlanması ve amaca uygunluk kapsamında revize edilerek sadeleştirilmesi.' },
+    { date: '28.11.2024', text: 'Elektronik imza süreçlerinin tamamlanarak proje faaliyetlerinin resmi olarak başlatılması.' },
+    { date: '12.08.2024', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' }
+  ];
+
+  let activeIndex = 0;
+
+  function renderDetail(index, animate) {
+    const item = TIMELINE_DATA[index];
+    detailContainer.classList.remove('fade-in');
+    // reflow zorlayarak animasyonun her seferinde yeniden tetiklenmesini sagla
+    void detailContainer.offsetWidth;
+    detailContainer.innerHTML = `
+      <span class="timeline-detail-date">${item.date}</span>
+      <p class="timeline-detail-text">${item.text}</p>
+    `;
+    if (animate) detailContainer.classList.add('fade-in');
+  }
+
+  function setActive(index) {
+    activeIndex = index;
+    const nodeEls = nodesContainer.querySelectorAll('.timeline-node');
+    nodeEls.forEach((el, i) => el.classList.toggle('active', i === index));
+    // dolgu cizgisi: ilk (en guncel) node'da %100, son (en eski) node'da 0 civari
+    const pct = TIMELINE_DATA.length > 1 ? (index / (TIMELINE_DATA.length - 1)) * 100 : 0;
+    if (fillEl) fillEl.style.width = pct + '%';
+    renderDetail(index, true);
+  }
+
+  // --- Masaüstü: yatay iz ---
+  TIMELINE_DATA.forEach((item, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'timeline-node';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', `${item.date}: ${item.text}`);
+    btn.innerHTML = `<span class="timeline-node-dot"></span><span class="timeline-node-date">${item.date}</span>`;
+    btn.addEventListener('click', () => setActive(i));
+    nodesContainer.appendChild(btn);
+  });
+  setActive(0);
+
+  // --- Mobil: dikey akordiyon ---
+  TIMELINE_DATA.forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'timeline-mobile-item' + (i === 0 ? ' open' : '');
+    row.innerHTML = `
+      <button class="timeline-mobile-head" type="button" aria-expanded="${i === 0}">
+        <span class="timeline-mobile-date">${item.date}</span>
+        <svg class="timeline-mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="timeline-mobile-body"><p>${item.text}</p></div>
+    `;
+    const head = row.querySelector('.timeline-mobile-head');
+    head.addEventListener('click', () => {
+      const isOpen = row.classList.contains('open');
+      mobileList.querySelectorAll('.timeline-mobile-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.timeline-mobile-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        row.classList.add('open');
+        head.setAttribute('aria-expanded', 'true');
+      }
+    });
+    mobileList.appendChild(row);
+  });
+})();
