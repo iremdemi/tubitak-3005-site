@@ -653,11 +653,13 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
    (sticky) kalir, kullanici makaleyi okurken kaydirdikca. --- */
 .article-sidebar {
   position: sticky; top: 106px;
-  background: #f8fafc; border-radius: 16px; padding: 26px 22px;
+  background: #ffffff; border-radius: 16px; padding: 26px 22px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+  margin-right: -80px;
 }
 .article-sidebar h3 {
   font-size: 12.5px; font-weight: var(--weight-semibold); text-transform: uppercase;
-  letter-spacing: 0.06em; color: #94a3b8; margin-bottom: 18px;
+  letter-spacing: 0.06em; color: #0b1c2e; margin-bottom: 18px;
   padding-bottom: 14px; border-bottom: 2px solid #e2e8f0;
 }
 .article-sidebar-list { display: flex; flex-direction: column; gap: 16px; }
@@ -671,6 +673,20 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .article-sidebar-list a:hover .sidebar-title { color: #002b66; }
 .article-back-link { display: inline-block; font-size: 14px; font-weight: var(--weight-semibold); color: #4A5568; margin-bottom: 28px; transition: color 0.25s ease; }
 .article-back-link:hover { color: #002b66; }
+
+/* --- Kırıntı navigasyonu (breadcrumb): Anasayfa > Bulgular > [Başlık] --- */
+.breadcrumb {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+  font-size: 11.5px; margin-bottom: 36px;
+}
+.breadcrumb a { color: rgba(0,43,102,0.72); }
+.breadcrumb a:hover { color: #002b66; }
+.breadcrumb .sep { color: #cbd5e1; }
+.breadcrumb .current { color: rgba(0,43,102,0.72); font-weight: var(--weight-medium); }
+.breadcrumb.breadcrumb-light a { color: rgba(255,255,255,0.75); }
+.breadcrumb.breadcrumb-light a:hover { color: #ffffff; }
+.breadcrumb.breadcrumb-light .sep { color: rgba(255,255,255,0.35); }
+.breadcrumb.breadcrumb-light .current { color: #ffffff; }
 .eyebrow-tag { display: block; font-size: 13px; font-weight: var(--weight-semibold); color: #002b66; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; }
 .article-detail-title { font-size: clamp(26px, 3.4vw, 38px); font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.28; letter-spacing: -0.015em; margin-bottom: 32px; }
 .article-detail-img { width: 100%; aspect-ratio: 16/9; border-radius: 3px; overflow: hidden; margin-bottom: 40px; background: #0b1c2e; }
@@ -685,7 +701,7 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 
 @media (max-width: 1024px) {
   .article-detail-layout { grid-template-columns: 1fr; gap: 40px; }
-  .article-sidebar { position: static; }
+  .article-sidebar { position: static; margin-right: 0; }
 }
 
 /* =========================================================
@@ -1011,7 +1027,9 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 .hoca-section {
   padding: 110px 0 40px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .hoca-grid {
