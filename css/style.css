@@ -1473,81 +1473,110 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 }
 
 /* =========================================================
-   SÜREÇ TAKVİMİ (Timeline) - anasayfanın 2. section-i.
-   Masaüstü: yatay, tıklanabilir/hover edilebilir düğümlü zaman
-   çizelgesi + aktif düğümün detayını gösteren kart.
-   Mobil: dikey akordiyon listesi.
+   SÜREÇ TAKVİMİ (Timeline) - anasayfanın 2. section'ı.
+   Masaüstü: interaktif "arc" (yay) widget'ı - fare tekerleği,
+   sürükleme (drag), ok butonları ve klavye ile gezinilebilir.
+   12 madde bir yayın üzerinde dizili, aktif olan büyük bir
+   "readout" (okuma) panelinde tarih + açıklama gösteriyor.
+   Mobil: dikey akordiyon listesi (aşağıda ayrı blok).
+   Renk/font: sitenin kendi CSS değişkenleri (--font-sans,
+   --weight-*) ve #0b1c2e / #002b66 marka renkleri kullanılıyor.
    ========================================================= */
-.timeline-section { background: #ffffff; padding: 120px 0; display: flex; align-items: center; }
+.timeline-section { background: #ffffff; padding: 100px 0; display: flex; align-items: center; }
+.timeline-wrap { width: 100%; }
 .timeline-section .eyebrow-tag { margin-bottom: 14px; }
-.timeline-section .section-title { margin-bottom: 48px; }
+.timeline-section .section-title { margin-bottom: 8px; }
 
-.timeline-widget { display: flex; flex-direction: column; gap: 40px; }
-
-/* --- Yatay iz (track) --- */
-.timeline-track { position: relative; padding: 0 6px; }
-.timeline-track-line {
-  position: absolute; top: 9px; left: 6px; right: 6px; height: 2px;
-  background: #e2e8f0; border-radius: 2px;
-}
-.timeline-track-fill {
-  position: absolute; top: 0; left: 0; height: 100%;
-  background: #002b66; border-radius: 2px;
-  transition: width 0.4s cubic-bezier(.65,0,.35,1);
-}
-.timeline-nodes { position: relative; display: flex; justify-content: space-between; }
-.timeline-node {
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  background: none; border: none; cursor: pointer; padding: 0; flex: 1;
+.arc-stage {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
   font-family: var(--font-sans);
 }
-.timeline-node-dot {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: #ffffff; border: 2px solid #cbd5e1;
-  transition: all 0.25s cubic-bezier(.65,0,.35,1);
-  position: relative; z-index: 1;
-}
-.timeline-node:hover .timeline-node-dot {
-  transform: scale(1.25);
-  border-color: #002b66;
-}
-.timeline-node.active .timeline-node-dot {
-  background: #002b66; border-color: #002b66;
-  transform: scale(1.35);
-  box-shadow: 0 0 0 5px rgba(0,43,102,0.12);
-}
-.timeline-node-date {
-  font-size: 11px; font-weight: var(--weight-medium); color: #94a3b8;
-  white-space: nowrap; transition: color 0.25s ease;
-  writing-mode: horizontal-tb;
-}
-.timeline-node:hover .timeline-node-date { color: #4A5568; }
-.timeline-node.active .timeline-node-date { color: #002b66; font-weight: var(--weight-semibold); }
+.arc-stage.is-dragging { cursor: grabbing; }
 
-/* --- Aktif girdinin detay karti --- */
-.timeline-detail {
-  background: #f8fafc; border-radius: 20px; padding: 36px 40px;
-  min-height: 140px; display: flex; flex-direction: column; justify-content: center;
+.arc-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.arc-circle { fill: none; stroke: #e2e8f0; stroke-width: 1.5; }
+.arc-dot { fill: #cbd5e1; transition: fill 0.3s ease, r 0.3s ease; }
+.arc-dot.is-active { fill: #002b66; }
+
+.arc-item {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: center;
+  pointer-events: none;
+  font-weight: var(--weight-bold);
+  font-size: 26px;
+  color: #d7dce3;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: left 0.45s cubic-bezier(.65,0,.35,1), top 0.45s cubic-bezier(.65,0,.35,1), transform 0.45s cubic-bezier(.65,0,.35,1), color 0.3s ease, opacity 0.3s ease;
 }
-.timeline-detail-date {
-  display: inline-block; font-size: 13px; font-weight: var(--weight-semibold);
-  color: #ffffff; background: #002b66; padding: 5px 14px; border-radius: 20px;
-  margin-bottom: 16px; width: fit-content;
+.arc-stage.is-dragging .arc-item { transition: color 0.3s ease, opacity 0.3s ease; }
+.arc-item.is-active { opacity: 0; }
+
+.readout {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
-.timeline-detail-text {
-  font-size: 17px; line-height: 1.65; color: #0b1c2e; font-weight: var(--weight-medium);
+.readout-number {
+  font-size: 84px;
+  font-weight: var(--weight-bold);
+  color: #0b1c2e;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
-.timeline-detail.fade-in { animation: timelineFadeIn 0.35s ease; }
-@keyframes timelineFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+.readout-text { max-width: 320px; }
+.readout-title {
+  font-size: 15px; font-weight: var(--weight-bold); color: #0b1c2e;
+  margin-bottom: 6px; letter-spacing: 0.01em;
+}
+.readout-desc {
+  font-size: 14.5px; line-height: 1.6; color: #64748b; font-weight: var(--weight-regular);
 }
 
-/* --- Mobil: dikey akordiyon (yatay iz gizlenir) --- */
+.arc-nav {
+  position: absolute;
+  left: 0; right: 0;
+  display: flex; justify-content: center;
+  z-index: 5;
+}
+.arc-nav-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,43,102,0.06);
+  color: rgba(11,28,46,0.4);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+.arc-nav-btn:hover { background: rgba(0,43,102,0.1); color: #002b66; }
+.arc-nav-btn:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+.arc-nav.top { top: 8px; }
+.arc-nav.bottom { bottom: 8px; }
+
+.progress-count {
+  position: absolute;
+  bottom: 8px; left: 0;
+  font-size: 12px; font-weight: var(--weight-semibold); color: #94a3b8;
+  letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
+}
+
+/* --- Mobil: dikey akordiyon (arc widget'ı gizlenir) --- */
 .timeline-mobile-list { display: none; }
 
 @media (max-width: 900px) {
-  .timeline-widget { display: none; }
+  .arc-stage { display: none; }
   .timeline-mobile-list { display: flex; flex-direction: column; gap: 10px; }
   .timeline-mobile-item {
     background: #f8fafc; border-radius: 14px; overflow: hidden;
@@ -1577,4 +1606,8 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 
 @media (max-width: 767px) {
   .timeline-section { padding: 100px 0 60px; }
+  .arc-stage { height: 480px; }
+  .readout-number { font-size: 60px; }
+  .readout { gap: 16px; }
+  .readout-text { max-width: 200px; }
 }
