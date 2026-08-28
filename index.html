@@ -217,8 +217,11 @@
       </figure>
     </div>
 
-    <!-- Mobil: dikey liste (aynı editoryal dil ile) -->
-    <div class="timeline-mobile-list" id="timelineMobileList"></div>
+    <!-- Mobil: masaüstü tasarımın kaydırılabilir kart versiyonu -
+         tek seferde bir aşama tam ekranda, elle sürükleyerek gezilir
+         (native scroll-snap, ekstra JS drag fiziği gerekmiyor),
+         uçlara gelince döngüsel olarak başa/sona sarar. -->
+    <div class="process-mobile-swiper" id="processMobileSwiper"></div>
   </div>
 </section>
 
