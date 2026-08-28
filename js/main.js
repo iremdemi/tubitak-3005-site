@@ -858,28 +858,32 @@ bindLiveRateWidget('headerRateMini', null, true);
    kaydırma sistemiyle çakışma riskine hiç gerek kalmadı.
    =========================================================== */
 (function () {
-  // En güncelden en eskiye sıralı. "title" alanı, açıklama
-  // metninden türetilmiş kısa bir editoryal başlık.
+  // En eskiden en güncele sıralı: 01 numarası en eski aşama,
+  // 12 numarası en güncel aşama. "title" alanı, açıklama metninden
+  // türetilmiş kısa bir editoryal başlık.
   const TIMELINE_DATA = [
-    { date: '27.07.2026', title: 'Nitel Veri Analizinin Tamamlanması', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' },
-    { date: '29.06.2026', title: 'Sonuç Raporu Yazım Sürecinin Başlaması', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
-    { date: '31.05.2026', title: 'Birinci Gelişme Raporu Değerlendirmesi', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
-    { date: '06.03.2026', title: 'Nitel Mülakat Sürecinin Planlanması', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
-    { date: '24.10.2025', title: 'Nicel Verilerin Analizi ve Değerlendirilmesi', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.', image: 'img/24.10.2025.jpeg' },
-    { date: '04.08.2025', title: 'Saha Uygulama Sürecinin İzlenmesi', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
-    { date: '11.03.2025', title: 'Saha Araştırma Firmasının Belirlenmesi', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
-    { date: '01.03.2025', title: 'Veri Toplama Araçlarının Geçerlilik Değerlendirmesi', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
-    { date: '26.02.2025', title: 'Etik Kurul Onayı ve Yasal İzin Süreci', text: 'Etik kurul onayı ve ilgili yasal izinler için gerekli başvuru evraklarının hazırlanması ve nihai kontrollerinin yapılması.' },
-    { date: '18.02.2025', title: 'Mülakat Formunun Tasarlanması', text: 'Nitel veri toplama aracı olan mülakat formundaki soruların tasarlanması ve amaca uygunluk kapsamında revize edilerek sadeleştirilmesi.' },
+    { date: '12.08.2024', title: 'Proje Kabulü ve Görev Dağılımı', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' },
     { date: '28.11.2024', title: 'Projenin Resmi Olarak Başlatılması', text: 'Elektronik imza süreçlerinin tamamlanarak proje faaliyetlerinin resmi olarak başlatılması.' },
-    { date: '12.08.2024', title: 'Proje Kabulü ve Görev Dağılımı', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' }
+    { date: '18.02.2025', title: 'Mülakat Formunun Tasarlanması', text: 'Nitel veri toplama aracı olan mülakat formundaki soruların tasarlanması ve amaca uygunluk kapsamında revize edilerek sadeleştirilmesi.' },
+    { date: '26.02.2025', title: 'Etik Kurul Onayı ve Yasal İzin Süreci', text: 'Etik kurul onayı ve ilgili yasal izinler için gerekli başvuru evraklarının hazırlanması ve nihai kontrollerinin yapılması.' },
+    { date: '01.03.2025', title: 'Veri Toplama Araçlarının Geçerlilik Değerlendirmesi', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
+    { date: '11.03.2025', title: 'Saha Araştırma Firmasının Belirlenmesi', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
+    { date: '04.08.2025', title: 'Saha Uygulama Sürecinin İzlenmesi', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
+    { date: '24.10.2025', title: 'Nicel Verilerin Analizi ve Değerlendirilmesi', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.', image: 'img/24.10.2025.jpeg' },
+    { date: '06.03.2026', title: 'Nitel Mülakat Sürecinin Planlanması', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
+    { date: '31.05.2026', title: 'Birinci Gelişme Raporu Değerlendirmesi', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
+    { date: '29.06.2026', title: 'Sonuç Raporu Yazım Sürecinin Başlaması', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
+    { date: '27.07.2026', title: 'Nitel Veri Analizinin Tamamlanması', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' }
   ];
   const N = TIMELINE_DATA.length;
 
-  /* ---------- Masaüstü: bağlı çizgili tracker + iki sütunlu editoryal içerik ---------- */
+  /* ---------- Masaüstü: kaydırılabilir, bağlı çizgili tracker + iki sütunlu editoryal içerik ---------- */
   (function initTracker() {
-    const tracker = document.getElementById('processTracker');
-    if (!tracker) return;
+    const trackerBox = document.getElementById('processTracker');
+    const track = document.getElementById('processTrackerTrack');
+    if (!trackerBox || !track) return;
+    const prevBtn = document.getElementById('trackerPrev');
+    const nextBtn = document.getElementById('trackerNext');
     const indexEl = document.getElementById('processIndex');
     const dateEl = document.getElementById('processDate');
     const titleEl = document.getElementById('processTitle');
@@ -895,8 +899,14 @@ bindLiveRateWidget('headerRateMini', null, true);
       btn.className = 'process-tracker-item';
       btn.setAttribute('aria-label', `${item.date}: ${item.title}`);
       btn.innerHTML = `<span class="process-tracker-dot"></span><span class="process-tracker-num">${String(i + 1).padStart(2, '0')}</span>`;
+      // mousedown'da preventDefault: butonun focus almasını (ve
+      // tarayıcının bazı durumlarda tetiklediği otomatik
+      // scrollIntoView davranışını, bu da çizgide "zıplama" hissi
+      // yaratıyordu) engelliyor - click işlevi normal çalışmaya
+      // devam ediyor.
+      btn.addEventListener('mousedown', (e) => e.preventDefault());
       btn.addEventListener('click', () => setActive(i));
-      tracker.appendChild(btn);
+      track.appendChild(btn);
       return btn;
     });
 
@@ -928,7 +938,22 @@ bindLiveRateWidget('headerRateMini', null, true);
       }
     }
 
-    setActive(0);
+    // Ok butonları: yaklaşık 2 öğe genişliği kadar yumuşakça kaydırır.
+    function updateNavState() {
+      const max = trackerBox.scrollWidth - trackerBox.clientWidth;
+      prevBtn.disabled = trackerBox.scrollLeft <= 1;
+      nextBtn.disabled = trackerBox.scrollLeft >= max - 1;
+    }
+    prevBtn.addEventListener('click', () => trackerBox.scrollBy({ left: -300, behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => trackerBox.scrollBy({ left: 300, behavior: 'smooth' }));
+    trackerBox.addEventListener('scroll', updateNavState);
+    window.addEventListener('resize', updateNavState);
+
+    // Varsayılan: en güncel (son) aşama aktif; tracker en güncel
+    // aşama görünür olacak şekilde sağa (sona) kaydırılmış başlar.
+    setActive(N - 1);
+    trackerBox.scrollLeft = trackerBox.scrollWidth;
+    updateNavState();
   })();
 
   /* ---------- Sayfa geneli bölüm noktaları (fp-dots), SADECE bu
@@ -955,12 +980,12 @@ bindLiveRateWidget('headerRateMini', null, true);
 
   TIMELINE_DATA.forEach((item, i) => {
     const row = document.createElement('div');
-    row.className = 'timeline-mobile-item' + (i === 0 ? ' open' : '');
+    row.className = 'timeline-mobile-item' + (i === N - 1 ? ' open' : '');
     const imageHtml = item.image
       ? `<img class="timeline-mobile-image" src="${item.image}" alt="${item.title}" loading="lazy">`
       : '';
     row.innerHTML = `
-      <button class="timeline-mobile-head" type="button" aria-expanded="${i === 0}">
+      <button class="timeline-mobile-head" type="button" aria-expanded="${i === N - 1}">
         <span class="timeline-mobile-date">${item.date}</span>
         <svg class="timeline-mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
