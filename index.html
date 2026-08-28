@@ -110,14 +110,17 @@
      üretiliyor. -->
 <section class="timeline-section" data-fp-section="1" data-fp-light="true">
   <div class="wrap timeline-wrap">
-    <span class="eyebrow-tag">Süreç Takvimi</span>
-    <h2 class="section-title">Projenin Yolculuğu</h2>
 
     <!-- Masaüstü: interaktif arc (yay) widget'ı - fare tekerleği,
-         sürükleme, ok butonları ve klavye ile gezinilebilir. -->
-    <div class="arc-stage" id="arcStage">
-      <svg class="arc-svg" id="arcSvg"></svg>
-      <div id="arcItems"></div>
+         sürükleme ve klavye ile gezinilebilir. Sola yaslı, kompakt.
+         Yay (arc-stage) ve detay kartı (readout) yan yana, ayrı
+         genişliklere sahip - kart, arc'ın dar alanına sıkışmasın. -->
+    <div class="timeline-widget-row">
+      <div class="arc-stage" id="arcStage">
+        <svg class="arc-svg" id="arcSvg"></svg>
+        <div id="arcItems"></div>
+        <div class="progress-count" id="progressCount">01 / 12</div>
+      </div>
 
       <div class="readout" id="readout">
         <div class="readout-number" id="readoutNumber">01</div>
@@ -126,15 +129,6 @@
           <div class="readout-desc" id="readoutDesc"></div>
         </div>
       </div>
-
-      <div class="arc-nav top"><button class="arc-nav-btn" id="btnUp" aria-label="Önceki">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
-      </button></div>
-      <div class="arc-nav bottom"><button class="arc-nav-btn" id="btnDown" aria-label="Sonraki">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button></div>
-
-      <div class="progress-count" id="progressCount">01 / 12</div>
     </div>
 
     <!-- Mobil: dikey akordiyon listesi (arc widget'ı yerine) -->
