@@ -848,248 +848,108 @@ bindLiveRateWidget('rateTickerRates', null, false);
 bindLiveRateWidget('headerRateMini', null, true);
 
 /* ===========================================================
-   SÜREÇ TAKVİMİ (Timeline) - anasayfanın interaktif zaman
-   çizelgesi bileşeni. Veri en eskiden en güncele sıralı.
-   Masaüstü (900px üzeri): interaktif "arc" (yay) widget'ı -
-   fare tekerleği, sürükleme, ok butonları, klavye ile gezinilir.
-   Mobil: dikey akordiyon.
-
-   ÖNEMLİ: Anasayfa, tam sayfa kaydırma (fp-mode) sistemi
-   kullanıyor ve o sistem window'a GENİŞ bir 'wheel' dinleyicisi
-   ekliyor (bölüm geçişleri için). Kullanıcı bu widget'ın ÜZERİNDE
-   fare tekerleğini çevirdiğinde SADECE widget içinde gezinsin,
-   aynı anda tüm sayfa da bir sonraki bölüme KAYMASIN diye,
-   widget'ın kendi wheel/pointer olaylarında stopPropagation()
-   çağrılıyor - bu olmadan iki sistem çakışır.
+   ARAŞTIRMA SÜRECİ - anasayfa section'ı. Basit, kurumsal bir
+   aşama göstergesi: ince bir tracker (tıklanabilir aşama
+   numaraları) + editoryal detay alanı (tarih/başlık/açıklama) +
+   varsa doğal oranında görsel. Masaüstünde tracker'a tıklanarak,
+   mobilde ise dikey bir liste olarak gezinilir. Önceki "arc"
+   (yay) tasarımına göre kasıtlı olarak çok daha basit: fare
+   tekerleği/sürükleme yönetimine, dolayısıyla sayfanın tam sayfa
+   kaydırma sistemiyle çakışma riskine hiç gerek kalmadı.
    =========================================================== */
 (function () {
-  // En güncelden en eskiye sıralı - arc'ta index 0 (en güncel)
-  // başlangıç noktası olacak şekilde. Sadece gerçek ekip toplantısı
-  // görseli olan 2 tarihte "image" alanı dolu.
+  // En güncelden en eskiye sıralı. "title" alanı, açıklama
+  // metninden türetilmiş kısa bir editoryal başlık.
   const TIMELINE_DATA = [
-    { date: '27.07.2026', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' },
-    { date: '29.06.2026', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
-    { date: '31.05.2026', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
-    { date: '06.03.2026', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
-    { date: '24.10.2025', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.', image: 'img/24.10.2025.jpeg' },
-    { date: '04.08.2025', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
-    { date: '11.03.2025', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
-    { date: '01.03.2025', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
-    { date: '26.02.2025', text: 'Etik kurul onayı ve ilgili yasal izinler için gerekli başvuru evraklarının hazırlanması ve nihai kontrollerinin yapılması.' },
-    { date: '18.02.2025', text: 'Nitel veri toplama aracı olan mülakat formundaki soruların tasarlanması ve amaca uygunluk kapsamında revize edilerek sadeleştirilmesi.' },
-    { date: '28.11.2024', text: 'Elektronik imza süreçlerinin tamamlanarak proje faaliyetlerinin resmi olarak başlatılması.' },
-    { date: '12.08.2024', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' }
+    { date: '27.07.2026', title: 'Nitel Veri Analizinin Tamamlanması', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' },
+    { date: '29.06.2026', title: 'Sonuç Raporu Yazım Sürecinin Başlaması', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
+    { date: '31.05.2026', title: 'Birinci Gelişme Raporu Değerlendirmesi', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
+    { date: '06.03.2026', title: 'Nitel Mülakat Sürecinin Planlanması', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
+    { date: '24.10.2025', title: 'Nicel Verilerin Analizi ve Değerlendirilmesi', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.', image: 'img/24.10.2025.jpeg' },
+    { date: '04.08.2025', title: 'Saha Uygulama Sürecinin İzlenmesi', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
+    { date: '11.03.2025', title: 'Saha Araştırma Firmasının Belirlenmesi', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
+    { date: '01.03.2025', title: 'Veri Toplama Araçlarının Geçerlilik Değerlendirmesi', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
+    { date: '26.02.2025', title: 'Etik Kurul Onayı ve Yasal İzin Süreci', text: 'Etik kurul onayı ve ilgili yasal izinler için gerekli başvuru evraklarının hazırlanması ve nihai kontrollerinin yapılması.' },
+    { date: '18.02.2025', title: 'Mülakat Formunun Tasarlanması', text: 'Nitel veri toplama aracı olan mülakat formundaki soruların tasarlanması ve amaca uygunluk kapsamında revize edilerek sadeleştirilmesi.' },
+    { date: '28.11.2024', title: 'Projenin Resmi Olarak Başlatılması', text: 'Elektronik imza süreçlerinin tamamlanarak proje faaliyetlerinin resmi olarak başlatılması.' },
+    { date: '12.08.2024', title: 'Proje Kabulü ve Görev Dağılımı', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' }
   ];
   const N = TIMELINE_DATA.length;
 
-  /* ---------- MASAÜSTÜ: interaktif arc widget'ı ---------- */
-  (function initArc() {
-    const stage = document.getElementById('arcStage');
-    if (!stage) return;
-    const svg = document.getElementById('arcSvg');
-    const itemsWrap = document.getElementById('arcItems');
-    const readoutNumber = document.getElementById('readoutNumber');
-    const readoutTitle = document.getElementById('readoutTitle');
-    const readoutDesc = document.getElementById('readoutDesc');
-    const progressCount = document.getElementById('progressCount');
+  /* ---------- Masaüstü: bağlı çizgili tracker + iki sütunlu editoryal içerik ---------- */
+  (function initTracker() {
+    const tracker = document.getElementById('processTracker');
+    if (!tracker) return;
+    const indexEl = document.getElementById('processIndex');
+    const dateEl = document.getElementById('processDate');
+    const titleEl = document.getElementById('processTitle');
+    const descEl = document.getElementById('processDesc');
+    const textEl = document.querySelector('.process-text');
+    const contentEl = document.getElementById('processContent');
+    const imageWrap = document.getElementById('processImageWrap');
+    const imageEl = document.getElementById('processImage');
 
-    const ANGLE_STEP = 20;
-    const VISIBLE_RANGE = 110;
-
-    let R, cx, cy;
-    let indexFloat = 0;
-    let current = 0;
-    let dragging = false;
-    let dragStartY = 0;
-    let dragStartIndex = 0;
-
-    let RX, RY;
-    function layoutMetrics() {
-      const w = stage.clientWidth, h = stage.clientHeight;
-      // Sabit, kompakt (340px) stage genişliğine göre: current (0°)
-      // sağ kenara yakın (~%85), ~110° açıdaki en uzak görünür node
-      // sol kenara yakın kalacak şekilde ayarlı.
-      RX = w * 0.63;
-      RY = Math.min(RX, h * 0.5);
-      cx = w * 0.22;
-      cy = h / 2;
-      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    }
-
-    const circleEl = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
-    circleEl.setAttribute('class', 'arc-circle');
-    svg.appendChild(circleEl);
-
-    const dotEls = [];
-    const labelEls = [];
-    TIMELINE_DATA.forEach((item, i) => {
-      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('class', 'arc-dot');
-      dot.setAttribute('r', '4');
-      svg.appendChild(dot);
-      dotEls.push(dot);
-
-      const label = document.createElement('div');
-      label.className = 'arc-item';
-      label.textContent = String(i + 1).padStart(2, '0');
-      itemsWrap.appendChild(label);
-      labelEls.push(label);
+    const items = TIMELINE_DATA.map((item, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'process-tracker-item';
+      btn.setAttribute('aria-label', `${item.date}: ${item.title}`);
+      btn.innerHTML = `<span class="process-tracker-dot"></span><span class="process-tracker-num">${String(i + 1).padStart(2, '0')}</span>`;
+      btn.addEventListener('click', () => setActive(i));
+      tracker.appendChild(btn);
+      return btn;
     });
 
-    const readoutImage = document.getElementById('readoutImage');
-
-    function renderReadout(idx) {
+    function setActive(idx) {
+      items.forEach((el, i) => el.classList.toggle('active', i === idx));
       const item = TIMELINE_DATA[idx];
-      readoutNumber.textContent = String(idx + 1).padStart(2, '0');
-      readoutTitle.textContent = item.date;
-      readoutDesc.textContent = item.text;
-      progressCount.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
 
-      // Görsel: sadece bazı tarihlerde var. Kart ve (varsa) görsel,
-      // her değişimde yumuşakça (aşağıdan yukarı belirerek) açılıyor -
-      // reflow zorlayarak animasyonun her seferinde tazelenmesini
-      // sağlıyoruz.
-      readoutDesc.classList.remove('readout-fade-in');
-      void readoutDesc.offsetWidth;
-      readoutDesc.classList.add('readout-fade-in');
+      indexEl.textContent = String(idx + 1).padStart(2, '0');
+      dateEl.textContent = item.date;
+      titleEl.textContent = item.title;
+      descEl.textContent = item.text;
+
+      textEl.classList.remove('process-fade');
+      void textEl.offsetWidth;
+      textEl.classList.add('process-fade');
 
       if (item.image) {
-        readoutImage.src = item.image;
-        readoutImage.alt = item.date + ' ekip toplantısı';
-        readoutImage.hidden = false;
-        readoutImage.classList.remove('readout-fade-in');
-        void readoutImage.offsetWidth;
-        readoutImage.classList.add('readout-fade-in');
+        imageEl.src = item.image;
+        imageEl.alt = item.title;
+        imageWrap.hidden = false;
+        contentEl.classList.add('has-image');
+        imageWrap.classList.remove('process-fade');
+        void imageWrap.offsetWidth;
+        imageWrap.classList.add('process-fade');
       } else {
-        readoutImage.hidden = true;
-        readoutImage.removeAttribute('src');
+        imageWrap.hidden = true;
+        imageEl.removeAttribute('src');
+        contentEl.classList.remove('has-image');
       }
     }
 
-    function render() {
-      circleEl.setAttribute('cx', cx);
-      circleEl.setAttribute('cy', cy);
-      circleEl.setAttribute('rx', RX);
-      circleEl.setAttribute('ry', RY);
-
-      for (let i = 0; i < N; i++) {
-        const angleDeg = (i - indexFloat) * ANGLE_STEP;
-        const angleRad = angleDeg * Math.PI / 180;
-        const x = cx + RX * Math.cos(angleRad);
-        const y = cy + RY * Math.sin(angleRad);
-        const visible = Math.abs(angleDeg) <= VISIBLE_RANGE;
-        const isActive = i === current;
-
-        dotEls[i].setAttribute('cx', x);
-        dotEls[i].setAttribute('cy', y);
-        dotEls[i].setAttribute('r', isActive ? 5.5 : 3.5);
-        dotEls[i].classList.toggle('is-active', isActive);
-        dotEls[i].style.opacity = visible ? '1' : '0';
-
-        const label = labelEls[i];
-        label.style.left = x + 'px';
-        label.style.top = y + 'px';
-        label.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg)`;
-        label.style.opacity = isActive ? '0' : (visible ? String(Math.max(0.25, 1 - Math.abs(angleDeg) / VISIBLE_RANGE)) : '0');
-        label.classList.toggle('is-active', isActive);
-      }
-
-    }
-
-    function goTo(idx) {
-      idx = Math.max(0, Math.min(N - 1, idx));
-      current = idx;
-      indexFloat = idx;
-      stage.classList.remove('is-dragging');
-      render();
-      renderReadout(idx);
-    }
-
-    function init() {
-      layoutMetrics();
-      indexFloat = current;
-      render();
-      renderReadout(current);
-    }
-
-    window.addEventListener('resize', () => { layoutMetrics(); render(); });
-
-    const PX_PER_STEP = 90;
-
-    stage.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.arc-nav-btn')) return;
-      dragging = true;
-      dragStartY = e.clientY;
-      dragStartIndex = indexFloat;
-      stage.classList.add('is-dragging');
-      stage.setPointerCapture(e.pointerId);
-    });
-
-    stage.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const deltaY = e.clientY - dragStartY;
-      let next = dragStartIndex - deltaY / PX_PER_STEP;
-      next = Math.max(0, Math.min(N - 1, next));
-      indexFloat = next;
-      current = Math.round(next);
-      render();
-      renderReadout(current);
-    });
-
-    function endDrag(e) {
-      if (!dragging) return;
-      dragging = false;
-      stage.classList.remove('is-dragging');
-      goTo(Math.round(indexFloat));
-    }
-    stage.addEventListener('pointerup', endDrag);
-    stage.addEventListener('pointercancel', endDrag);
-    stage.addEventListener('pointerleave', (e) => { if (dragging && e.buttons === 0) endDrag(e); });
-
-    // Fare tekerleği: stopPropagation KRİTİK - yoksa fp-mode'un
-    // window'daki wheel dinleyicisi de tetiklenir, widget içi
-    // gezinme ile tam sayfa bölüm geçişi ÇAKIŞIR.
-    let wheelLock = false;
-    stage.addEventListener('wheel', (e) => {
-      const dir = e.deltaY > 0 ? 1 : -1;
-      const atBoundary = (dir > 0 && current >= N - 1) || (dir < 0 && current <= 0);
-      // Widget kendi son/ilk maddesindeyken VE kullanıcı aynı yönde
-      // kaydırmaya devam ediyorsa, event'i YUTMA - normal şekilde
-      // yukarı (window'daki fp-mode dinleyicisine) geçsin, böylece
-      // sayfa bir sonraki/önceki section'a geçebilsin. Bu satır
-      // olmadan kullanıcı widget'ın sonunda "sıkışıp" kalıyordu.
-      if (atBoundary) return;
-      e.preventDefault();
-      e.stopPropagation();
-      if (wheelLock) return;
-      wheelLock = true;
-      goTo(current + dir);
-      window.setTimeout(() => { wheelLock = false; }, 420);
-    }, { passive: false });
-
-
-    // Klavye: fare pozisyonuna (hover) değil, GERÇEK odak (focus)
-    // durumuna bağlı - kullanıcı widget'a tıklayınca/dokununca odak
-    // alır, ok tuşları çalışır; başka bir yere tıklayınca durur.
-    // fp-mode'un KENDİ klavye dinleyicisi de window'da ArrowUp/Down
-    // dinliyor - widget sınırında değilken stopPropagation ile onu
-    // devre dışı bırakıyoruz (wheel'deki mantığın aynısı), sınırda
-    // ise event'i serbest bırakıp sayfanın bir sonraki/önceki
-    // section'a geçmesine izin veriyoruz.
-    stage.addEventListener('keydown', (e) => {
-      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-      const dir = e.key === 'ArrowDown' ? 1 : -1;
-      const atBoundary = (dir > 0 && current >= N - 1) || (dir < 0 && current <= 0);
-      if (atBoundary) return;
-      e.preventDefault();
-      e.stopPropagation();
-      goTo(current + dir);
-    });
-
-    init();
+    setActive(0);
   })();
 
-  /* ---------- MOBİL: dikey akordiyon ---------- */
+  /* ---------- Sayfa geneli bölüm noktaları (fp-dots), SADECE bu
+     section aktifken gizlensin - diğer bölümlerde olduğu gibi
+     kalsın, fp-mode sisteminin kendi koduna dokunulmuyor. ---------- */
+  (function hideDotsOnThisSection() {
+    const dots = document.getElementById('fpDots');
+    const section = document.querySelector('.timeline-section[data-fp-section]');
+    if (!dots || !section) return;
+    const myIndex = section.getAttribute('data-fp-section');
+
+    function sync() {
+      const activeDot = dots.querySelector('.fp-dot.active');
+      const isHere = activeDot && activeDot.dataset.fpIndex === myIndex;
+      dots.style.visibility = isHere ? 'hidden' : '';
+    }
+    sync();
+    new MutationObserver(sync).observe(dots, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  })();
+
+  /* ---------- Mobil: dikey liste ---------- */
   const mobileList = document.getElementById('timelineMobileList');
   if (!mobileList) return;
 
@@ -1097,14 +957,18 @@ bindLiveRateWidget('headerRateMini', null, true);
     const row = document.createElement('div');
     row.className = 'timeline-mobile-item' + (i === 0 ? ' open' : '');
     const imageHtml = item.image
-      ? `<img class="timeline-mobile-image" src="${item.image}" alt="${item.date} ekip toplantısı" loading="lazy">`
+      ? `<img class="timeline-mobile-image" src="${item.image}" alt="${item.title}" loading="lazy">`
       : '';
     row.innerHTML = `
       <button class="timeline-mobile-head" type="button" aria-expanded="${i === 0}">
         <span class="timeline-mobile-date">${item.date}</span>
         <svg class="timeline-mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="timeline-mobile-body">${imageHtml}<p>${item.text}</p></div>
+      <div class="timeline-mobile-body">
+        <span class="timeline-mobile-title">${item.title}</span>
+        ${imageHtml}
+        <p>${item.text}</p>
+      </div>
     `;
     const head = row.querySelector('.timeline-mobile-head');
     head.addEventListener('click', () => {
