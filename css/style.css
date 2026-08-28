@@ -1492,35 +1492,53 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
    yaşanan sorunun aynısı) - width:100% ile kesin olarak sabitliyoruz. */
 .timeline-wrap { width: 100%; }
 
-.process-head { margin-bottom: 40px; }
-.process-head .section-title { margin-bottom: 0; }
+/* --- Kaydırılabilir, uçları solan aşama göstergesi --- */
+.process-tracker-row { display: flex; align-items: center; gap: 10px; margin-bottom: 48px; }
+.process-tracker-nav {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid #e2e8f0; background: #ffffff; color: #94a3b8;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  padding: 0; transition: border-color 0.2s ease, color 0.2s ease;
+}
+.process-tracker-nav:hover { border-color: #002b66; color: #002b66; }
+.process-tracker-nav:disabled { opacity: 0.28; cursor: default; pointer-events: none; }
 
-/* --- Bağlı çizgi üzerinde dizili aşama göstergesi --- */
+.process-tracker-viewport {
+  flex: 1; min-width: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
 .process-tracker {
-  position: relative; display: flex; justify-content: space-between;
-  padding-top: 6px; margin-bottom: 48px;
+  overflow-x: auto; scroll-behavior: smooth;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.process-tracker::-webkit-scrollbar { display: none; }
+.process-tracker-track {
+  position: relative; display: flex; width: max-content; padding-top: 6px;
 }
 .process-tracker-line {
-  position: absolute; top: 6px; left: 0; right: 0; height: 1px; background: #e2e8f0;
+  position: absolute; top: 6px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, #e2e8f0 6%, #e2e8f0 94%, transparent);
 }
 .process-tracker-item {
-  position: relative; z-index: 1;
+  position: relative; z-index: 1; flex: 0 0 150px; align-self: flex-start;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
-  background: none; border: none; cursor: pointer; padding: 0; flex: 1;
+  background: none; border: none; cursor: pointer; padding: 0;
   font-family: var(--font-sans);
 }
 .process-tracker-dot {
   width: 7px; height: 7px; border-radius: 50%; background: #cbd5e1;
-  transition: all 0.2s cubic-bezier(.65,0,.35,1);
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(.65,0,.35,1), background 0.2s ease, box-shadow 0.2s ease;
 }
 .process-tracker-item:hover .process-tracker-dot { background: #64748b; }
 .process-tracker-item.active .process-tracker-dot {
-  width: 11px; height: 11px; background: #002b66;
+  background: #002b66; transform: scale(1.55);
   box-shadow: 0 0 0 4px rgba(0,43,102,0.14);
 }
 .process-tracker-num {
   font-size: 11.5px; font-weight: var(--weight-medium); color: #94a3b8;
-  letter-spacing: 0.02em; transition: all 0.2s ease;
+  letter-spacing: 0.02em; transition: color 0.2s ease, font-size 0.2s ease;
 }
 .process-tracker-item:hover .process-tracker-num { color: #4A5568; }
 .process-tracker-item.active .process-tracker-num {
@@ -1531,6 +1549,11 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 .process-content {
   display: grid; grid-template-columns: 1fr; gap: 32px; align-items: stretch;
   width: 100%;
+  /* Görselli aşamalarda content daha uzun oluyordu; sabit bir
+     min-height vererek görsel olan/olmayan durumlar arasında
+     geçişte section'ın dikey ortalamasının kaymasını (tracker'ın
+     "zıplaması" hissini) önlüyoruz. */
+  min-height: 280px;
 }
 .process-content.has-image { grid-template-columns: 1.1fr 0.9fr; }
 
@@ -1571,7 +1594,7 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   display: flex; align-items: center;
 }
 .process-image-wrap[hidden] { display: none; }
-.process-image { display: block; width: 100%; height: auto; }
+.process-image { display: block; width: 100%; height: auto; border-radius: 20px; }
 
 /* İçerik değişiminde sade, kısa bir opaklık geçişi. */
 .process-fade { animation: processFade 0.25s ease; }
@@ -1586,7 +1609,7 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 }
 
 @media (max-width: 900px) {
-  .process-tracker, .process-content { display: none; }
+  .process-tracker-row, .process-content { display: none; }
   .timeline-mobile-list { display: flex; flex-direction: column; }
   .timeline-mobile-item { border-bottom: 1px solid #e2e8f0; }
   .timeline-mobile-item:first-child { border-top: 1px solid #e2e8f0; }
