@@ -111,30 +111,36 @@
 <section class="timeline-section" data-fp-section="1" data-fp-light="true">
   <div class="wrap timeline-wrap">
 
-    <!-- Masaüstü: interaktif arc (yay) widget'ı - fare tekerleği,
-         sürükleme ve klavye ile gezinilebilir. Sola yaslı, kompakt.
-         Yay (arc-stage) ve detay kartı (readout) yan yana, ayrı
-         genişliklere sahip - kart, arc'ın dar alanına sıkışmasın. -->
-    <div class="timeline-widget-row">
-      <div class="arc-stage" id="arcStage" tabindex="0" aria-label="Süreç zaman çizelgesi, ok tuşlarıyla gezinilebilir">
-        <svg class="arc-svg" id="arcSvg"></svg>
-        <div id="arcItems"></div>
-        <div class="progress-count" id="progressCount">01 / 12</div>
-      </div>
-
-      <div class="readout" id="readout">
-        <img class="readout-image" id="readoutImage" alt="" hidden>
-        <div class="readout-top">
-          <div class="readout-number" id="readoutNumber">01</div>
-          <div class="readout-text">
-            <div class="readout-title" id="readoutTitle"></div>
-            <div class="readout-desc" id="readoutDesc"></div>
-          </div>
-        </div>
-      </div>
+    <div class="process-head">
+      <h2 class="section-title">Araştırma Süreci</h2>
     </div>
 
-    <!-- Mobil: dikey akordiyon listesi (arc widget'ı yerine) -->
+    <!-- Bağlı bir çizgi üzerinde dizili aşamalar - her aşamanın kendi
+         konumu var; aktif olan nokta+numara belirgin şekilde büyür,
+         büyük daire/kart kullanılmıyor. -->
+    <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
+      <div class="process-tracker-line"></div>
+    </nav>
+
+    <!-- Editoryal içerik: iki sütun - solda tarih/başlık/açıklama,
+         sağda (varsa) araştırma görseli. Görsel yoksa sol sütun
+         tüm genişliği kullanır. -->
+    <div class="process-content" id="processContent">
+      <div class="process-text">
+        <div class="process-detail-meta">
+          <span class="process-detail-index" id="processIndex">01</span>
+          <span class="process-detail-date" id="processDate"></span>
+        </div>
+        <h3 class="process-detail-title" id="processTitle"></h3>
+        <p class="process-detail-desc" id="processDesc"></p>
+      </div>
+
+      <figure class="process-image-wrap" id="processImageWrap" hidden>
+        <img class="process-image" id="processImage" alt="">
+      </figure>
+    </div>
+
+    <!-- Mobil: dikey liste (aynı editoryal dil ile) -->
     <div class="timeline-mobile-list" id="timelineMobileList"></div>
   </div>
 </section>
