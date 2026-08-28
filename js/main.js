@@ -864,13 +864,14 @@ bindLiveRateWidget('headerRateMini', null, true);
    =========================================================== */
 (function () {
   // En güncelden en eskiye sıralı - arc'ta index 0 (en güncel)
-  // başlangıç noktası olacak şekilde.
+  // başlangıç noktası olacak şekilde. Sadece gerçek ekip toplantısı
+  // görseli olan 2 tarihte "image" alanı dolu.
   const TIMELINE_DATA = [
-    { date: '27.07.2026', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.' },
+    { date: '27.07.2026', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' },
     { date: '29.06.2026', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
     { date: '31.05.2026', text: 'Proje ilerleyişini yansıtan birinci gelişme raporunun taslak halinin incelenmesi ve ön değerlendirmesinin gerçekleştirilmesi.' },
     { date: '06.03.2026', text: 'Nitel mülakatların uygulama takviminin, örneklem grubunun ve yöntemlerinin metodolojik olarak planlanması.' },
-    { date: '24.10.2025', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.' },
+    { date: '24.10.2025', text: 'Elde edilen nicel verilerin düzenlenmesi, uygun istatistiksel yöntemlerle analiz edilmesi ve bulguların değerlendirilmesi süreci.', image: 'img/24.10.2025.jpeg' },
     { date: '04.08.2025', text: 'Saha araştırma firmaları tarafından yürütülen anket uygulama süreçlerinin izlenmesi ve ara değerlendirmelerinin yapılması.' },
     { date: '11.03.2025', text: 'Nicel veri toplama sürecini yürütecek alt yüklenici veya saha araştırma firmalarının tespit edilmesi.' },
     { date: '01.03.2025', text: 'Geliştirilen veri toplama araçlarının kapsam geçerliliğini sağlamak amacıyla alan uzmanlarının görüşlerine başvurulması.' },
@@ -935,12 +936,34 @@ bindLiveRateWidget('headerRateMini', null, true);
       labelEls.push(label);
     });
 
+    const readoutImage = document.getElementById('readoutImage');
+
     function renderReadout(idx) {
       const item = TIMELINE_DATA[idx];
       readoutNumber.textContent = String(idx + 1).padStart(2, '0');
       readoutTitle.textContent = item.date;
       readoutDesc.textContent = item.text;
       progressCount.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
+
+      // Görsel: sadece bazı tarihlerde var. Kart ve (varsa) görsel,
+      // her değişimde yumuşakça (aşağıdan yukarı belirerek) açılıyor -
+      // reflow zorlayarak animasyonun her seferinde tazelenmesini
+      // sağlıyoruz.
+      readoutDesc.classList.remove('readout-fade-in');
+      void readoutDesc.offsetWidth;
+      readoutDesc.classList.add('readout-fade-in');
+
+      if (item.image) {
+        readoutImage.src = item.image;
+        readoutImage.alt = item.date + ' ekip toplantısı';
+        readoutImage.hidden = false;
+        readoutImage.classList.remove('readout-fade-in');
+        void readoutImage.offsetWidth;
+        readoutImage.classList.add('readout-fade-in');
+      } else {
+        readoutImage.hidden = true;
+        readoutImage.removeAttribute('src');
+      }
     }
 
     function render() {
@@ -1045,15 +1068,22 @@ bindLiveRateWidget('headerRateMini', null, true);
     }, { passive: false });
 
 
-    // Klavye: sadece widget gorunur alandaysa (fokus/hover) tetiklensin
-    // diye stage'e mouseenter/leave ile bir bayrak kullanıyoruz.
-    let arcHovered = false;
-    stage.addEventListener('mouseenter', () => { arcHovered = true; });
-    stage.addEventListener('mouseleave', () => { arcHovered = false; });
-    window.addEventListener('keydown', (e) => {
-      if (!arcHovered) return;
-      if (e.key === 'ArrowDown') { e.preventDefault(); goTo(current + 1); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+    // Klavye: fare pozisyonuna (hover) değil, GERÇEK odak (focus)
+    // durumuna bağlı - kullanıcı widget'a tıklayınca/dokununca odak
+    // alır, ok tuşları çalışır; başka bir yere tıklayınca durur.
+    // fp-mode'un KENDİ klavye dinleyicisi de window'da ArrowUp/Down
+    // dinliyor - widget sınırında değilken stopPropagation ile onu
+    // devre dışı bırakıyoruz (wheel'deki mantığın aynısı), sınırda
+    // ise event'i serbest bırakıp sayfanın bir sonraki/önceki
+    // section'a geçmesine izin veriyoruz.
+    stage.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      const dir = e.key === 'ArrowDown' ? 1 : -1;
+      const atBoundary = (dir > 0 && current >= N - 1) || (dir < 0 && current <= 0);
+      if (atBoundary) return;
+      e.preventDefault();
+      e.stopPropagation();
+      goTo(current + dir);
     });
 
     init();
@@ -1066,12 +1096,15 @@ bindLiveRateWidget('headerRateMini', null, true);
   TIMELINE_DATA.forEach((item, i) => {
     const row = document.createElement('div');
     row.className = 'timeline-mobile-item' + (i === 0 ? ' open' : '');
+    const imageHtml = item.image
+      ? `<img class="timeline-mobile-image" src="${item.image}" alt="${item.date} ekip toplantısı" loading="lazy">`
+      : '';
     row.innerHTML = `
       <button class="timeline-mobile-head" type="button" aria-expanded="${i === 0}">
         <span class="timeline-mobile-date">${item.date}</span>
         <svg class="timeline-mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="timeline-mobile-body"><p>${item.text}</p></div>
+      <div class="timeline-mobile-body">${imageHtml}<p>${item.text}</p></div>
     `;
     const head = row.querySelector('.timeline-mobile-head');
     head.addEventListener('click', () => {
