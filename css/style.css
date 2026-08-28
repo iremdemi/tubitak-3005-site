@@ -1482,14 +1482,15 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
    Renk/font: sitenin kendi CSS değişkenleri (--font-sans,
    --weight-*) ve #0b1c2e / #002b66 marka renkleri kullanılıyor.
    ========================================================= */
-.timeline-section { background: #ffffff; padding: 100px 0; display: flex; align-items: center; }
+.timeline-section { background: #ffffff; padding: 0; display: flex; align-items: center; }
 .timeline-wrap { width: 100%; }
-.timeline-section .eyebrow-tag { margin-bottom: 14px; }
-.timeline-section .section-title { margin-bottom: 8px; }
+
+.timeline-widget-row { display: flex; align-items: center; gap: 32px; }
 
 .arc-stage {
   position: relative;
-  width: 100%;
+  flex: none;
+  width: 340px;
   height: 560px;
   overflow: hidden;
   cursor: grab;
@@ -1520,50 +1521,32 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 .arc-item.is-active { opacity: 0; }
 
 .readout {
-  position: absolute;
+  flex: 1 1 auto;
+  max-width: 380px;
   display: flex;
   align-items: center;
-  gap: 26px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+  gap: 22px;
 }
 .readout-number {
-  font-size: 84px;
+  font-size: 72px;
   font-weight: var(--weight-bold);
   color: #0b1c2e;
   letter-spacing: -0.03em;
   line-height: 1;
+  flex: none;
 }
-.readout-text { max-width: 320px; }
+.readout-text { min-width: 0; }
 .readout-title {
-  font-size: 15px; font-weight: var(--weight-bold); color: #0b1c2e;
-  margin-bottom: 6px; letter-spacing: 0.01em;
+  font-size: 14px; font-weight: var(--weight-bold); color: #0b1c2e;
+  margin-bottom: 10px; letter-spacing: 0.01em;
 }
+/* Açıklama artık sitenin standart kart dilinde: beyaz, yuvarlak
+   köşeli, gölgeli - diğer kartlarımızla (sidebar, ekip vb.) aynı. */
 .readout-desc {
-  font-size: 14.5px; line-height: 1.6; color: #64748b; font-weight: var(--weight-regular);
+  background: #ffffff; border-radius: 16px; padding: 18px 20px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+  font-size: 14px; line-height: 1.6; color: #4A5568; font-weight: var(--weight-regular);
 }
-
-.arc-nav {
-  position: absolute;
-  left: 0; right: 0;
-  display: flex; justify-content: center;
-  z-index: 5;
-}
-.arc-nav-btn {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(0,43,102,0.06);
-  color: rgba(11,28,46,0.4);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
-}
-.arc-nav-btn:hover { background: rgba(0,43,102,0.1); color: #002b66; }
-.arc-nav-btn:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
-.arc-nav.top { top: 8px; }
-.arc-nav.bottom { bottom: 8px; }
 
 .progress-count {
   position: absolute;
