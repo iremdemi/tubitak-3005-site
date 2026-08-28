@@ -1473,150 +1473,132 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 }
 
 /* =========================================================
-   SÜREÇ TAKVİMİ (Timeline) - anasayfanın 2. section'ı.
-   Masaüstü: interaktif "arc" (yay) widget'ı - fare tekerleği,
-   sürükleme (drag), ok butonları ve klavye ile gezinilebilir.
-   12 madde bir yayın üzerinde dizili, aktif olan büyük bir
-   "readout" (okuma) panelinde tarih + açıklama gösteriyor.
-   Mobil: dikey akordiyon listesi (aşağıda ayrı blok).
-   Renk/font: sitenin kendi CSS değişkenleri (--font-sans,
-   --weight-*) ve #0b1c2e / #002b66 marka renkleri kullanılıyor.
+   ARAŞTIRMA SÜRECİ - anasayfa section'ı.
+   Kurumsal/editoryal, geniş ekran kullanan tasarım: bağlı bir
+   çizgi üzerinde dizili ince aşama göstergesi (tracker) + iki
+   sütunlu editoryal içerik alanı (sol: tarih/başlık/açıklama,
+   sağ: varsa araştırma görseli, kendi doğal oranında). Büyük
+   gölge/gradient/glassmorphism/dairesel dekorasyon YOK, minimum
+   border-radius, beyaz zemin, koyu lacivert tipografi, ince gri
+   ayırıcılar. Section, sitenin standart .wrap genişliğini
+   (max-width:1340px, zaten ~1280-1400px aralığında) kullanır.
    ========================================================= */
-.timeline-section { background: #ffffff; padding: 0; display: flex; align-items: center; }
-.timeline-wrap { width: 100%; }
+.timeline-section {
+  background: #ffffff; display: flex; align-items: center;
+  padding: 96px 0;
+}
 
-.timeline-widget-row { display: flex; align-items: center; gap: 40px; }
+.process-head { margin-bottom: 40px; }
+.process-head .section-title { margin-bottom: 0; }
 
-.arc-stage {
-  position: relative;
-  flex: none;
-  width: 300px;
-  height: 760px;
-  overflow: hidden;
-  cursor: grab;
-  user-select: none;
-  touch-action: none;
+/* --- Bağlı çizgi üzerinde dizili aşama göstergesi --- */
+.process-tracker {
+  position: relative; display: flex; justify-content: space-between;
+  padding-top: 6px; margin-bottom: 48px;
+}
+.process-tracker-line {
+  position: absolute; top: 6px; left: 0; right: 0; height: 1px; background: #e2e8f0;
+}
+.process-tracker-item {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: none; border: none; cursor: pointer; padding: 0; flex: 1;
   font-family: var(--font-sans);
 }
-.arc-stage.is-dragging { cursor: grabbing; }
-.arc-stage:focus { outline: none; }
-.arc-stage:focus-visible {
-  outline: 2px solid #002b66; outline-offset: 6px; border-radius: 8px;
+.process-tracker-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #cbd5e1;
+  transition: all 0.2s cubic-bezier(.65,0,.35,1);
+}
+.process-tracker-item:hover .process-tracker-dot { background: #64748b; }
+.process-tracker-item.active .process-tracker-dot {
+  width: 11px; height: 11px; background: #002b66;
+  box-shadow: 0 0 0 4px rgba(0,43,102,0.14);
+}
+.process-tracker-num {
+  font-size: 11.5px; font-weight: var(--weight-medium); color: #94a3b8;
+  letter-spacing: 0.02em; transition: all 0.2s ease;
+}
+.process-tracker-item:hover .process-tracker-num { color: #4A5568; }
+.process-tracker-item.active .process-tracker-num {
+  font-size: 15px; font-weight: var(--weight-bold); color: #0b1c2e;
 }
 
-.arc-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-.arc-circle { fill: none; stroke: #e2e8f0; stroke-width: 1.5; }
-.arc-dot { fill: #cbd5e1; transition: fill 0.3s ease, r 0.3s ease; }
-.arc-dot.is-active { fill: #002b66; }
+/* --- İki sütunlu editoryal içerik: sol metin, sağ görsel --- */
+.process-content {
+  display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center;
+}
+.process-content.has-image { grid-template-columns: 1.05fr 0.95fr; }
 
-.arc-item {
-  position: absolute;
-  top: 0; left: 0;
-  transform-origin: center;
-  pointer-events: none;
-  font-weight: var(--weight-bold);
-  font-size: 26px;
-  color: #d7dce3;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition: left 0.45s cubic-bezier(.65,0,.35,1), top 0.45s cubic-bezier(.65,0,.35,1), transform 0.45s cubic-bezier(.65,0,.35,1), color 0.3s ease, opacity 0.3s ease;
+.process-detail-meta {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
 }
-.arc-stage.is-dragging .arc-item { transition: color 0.3s ease, opacity 0.3s ease; }
-.arc-item.is-active { opacity: 0; }
-
-.readout {
-  flex: 1 1 auto;
-  max-width: 440px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+.process-detail-index {
+  font-size: 13px; font-weight: var(--weight-bold); color: #002b66;
+  letter-spacing: 0.02em;
 }
-.readout-top { display: flex; align-items: center; gap: 22px; }
-/* Sadece bazı tarihlerde (gerçek toplantı görselleri) gösterilen
-   kapak fotoğrafı - kart diliyle tutarlı (yuvarlak köşe, gölge). */
-.readout-image {
-  width: 100%; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 20px 50px rgba(11,28,46,0.12);
-  aspect-ratio: 16 / 7; background: #eef1f5;
+.process-detail-date {
+  font-size: 12.5px; font-weight: var(--weight-medium); color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding-left: 12px; border-left: 1px solid #e2e8f0;
 }
-.readout-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.readout-image[hidden] { display: none; }
-.readout-number {
-  font-size: 72px;
-  font-weight: var(--weight-bold);
-  color: #0b1c2e;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  flex: none;
+.process-detail-title {
+  font-size: 28px; font-weight: var(--weight-bold); color: #0b1c2e;
+  letter-spacing: -0.01em; line-height: 1.28; margin-bottom: 16px;
 }
-.readout-text { min-width: 0; }
-.readout-title {
-  font-size: 14px; font-weight: var(--weight-bold); color: #0b1c2e;
-  margin-bottom: 10px; letter-spacing: 0.01em;
-}
-/* Açıklama artık sitenin standart kart dilinde: beyaz, yuvarlak
-   köşeli, gölgeli - diğer kartlarımızla (sidebar, ekip vb.) aynı. */
-.readout-desc {
-  background: #ffffff; border-radius: 16px; padding: 18px 20px;
-  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
-  font-size: 14px; line-height: 1.6; color: #4A5568; font-weight: var(--weight-regular);
+.process-detail-desc {
+  font-size: 15.5px; line-height: 1.75; color: #4A5568; max-width: 62ch;
 }
 
-/* Her değişimde kart ve görsel yumuşakça, aşağıdan yukarı belirir. */
-.readout-fade-in { animation: readoutFadeIn 0.5s cubic-bezier(.22,.61,.36,1); }
-@keyframes readoutFadeIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* --- Görsel: kendi doğal en-boy oranında, floating kart değil --- */
+.process-image-wrap {
+  border: 1px solid #e2e8f0; border-radius: 4px; overflow: hidden;
 }
+.process-image-wrap[hidden] { display: none; }
+.process-image { display: block; width: 100%; height: auto; }
 
-.progress-count {
-  position: absolute;
-  bottom: 8px; left: 0;
-  font-size: 12px; font-weight: var(--weight-semibold); color: #94a3b8;
-  letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
-}
+/* İçerik değişiminde sade, kısa bir opaklık geçişi. */
+.process-fade { animation: processFade 0.25s ease; }
+@keyframes processFade { from { opacity: 0.35; } to { opacity: 1; } }
 
-/* --- Mobil: dikey akordiyon (arc widget'ı gizlenir) --- */
+/* --- Mobil: dikey liste, aynı editoryal dil --- */
 .timeline-mobile-list { display: none; }
 
+@media (max-width: 1024px) {
+  .process-content.has-image { grid-template-columns: 1fr; }
+  .process-content.has-image .process-image-wrap { max-width: 520px; }
+}
+
 @media (max-width: 900px) {
-  .timeline-widget-row { display: none; }
-  .timeline-mobile-list { display: flex; flex-direction: column; gap: 10px; }
-  .timeline-mobile-item {
-    background: #f8fafc; border-radius: 14px; overflow: hidden;
-    transition: background 0.25s ease;
-  }
-  .timeline-mobile-item.open { background: #ffffff; box-shadow: 0 12px 32px rgba(11,28,46,0.08); }
+  .process-tracker, .process-content { display: none; }
+  .timeline-mobile-list { display: flex; flex-direction: column; }
+  .timeline-mobile-item { border-bottom: 1px solid #e2e8f0; }
+  .timeline-mobile-item:first-child { border-top: 1px solid #e2e8f0; }
   .timeline-mobile-head {
-    width: 100%; display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding: 16px 18px; background: none; border: none; cursor: pointer;
+    width: 100%; display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; padding: 16px 2px; background: none; border: none; cursor: pointer;
     font-family: var(--font-sans); text-align: left;
   }
   .timeline-mobile-date {
-    font-size: 13px; font-weight: var(--weight-semibold); color: #002b66; white-space: nowrap;
+    font-size: 12.5px; font-weight: var(--weight-medium); color: #94a3b8;
+    text-transform: uppercase; letter-spacing: 0.05em;
   }
-  .timeline-mobile-chevron {
-    flex: none; transition: transform 0.25s ease; color: #94a3b8;
-  }
+  .timeline-mobile-chevron { flex: none; transition: transform 0.2s ease; color: #94a3b8; }
   .timeline-mobile-item.open .timeline-mobile-chevron { transform: rotate(180deg); color: #002b66; }
-  .timeline-mobile-body {
-    max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(.22,.61,.36,1);
+  .timeline-mobile-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .timeline-mobile-item.open .timeline-mobile-body { max-height: 480px; }
+  .timeline-mobile-title {
+    display: block; font-size: 15px; font-weight: var(--weight-bold); color: #0b1c2e;
+    padding: 0 2px 8px; line-height: 1.35;
   }
-  .timeline-mobile-item.open .timeline-mobile-body { max-height: 420px; }
   .timeline-mobile-image {
-    display: block; width: calc(100% - 36px); margin: 0 18px 14px;
-    border-radius: 12px; aspect-ratio: 16 / 7; object-fit: cover;
-    box-shadow: 0 12px 28px rgba(11,28,46,0.12);
+    display: block; width: 100%; height: auto; margin-bottom: 12px;
+    border: 1px solid #e2e8f0; border-radius: 4px;
   }
   .timeline-mobile-body p {
-    padding: 0 18px 18px; font-size: 14px; line-height: 1.6; color: #384354;
+    padding: 0 2px 18px; font-size: 14px; line-height: 1.6; color: #4A5568;
   }
 }
 
 @media (max-width: 767px) {
-  .timeline-section { padding: 100px 0 60px; }
-  .arc-stage { height: 480px; }
-  .readout-number { font-size: 60px; }
-  .readout { gap: 16px; }
-  .readout-text { max-width: 200px; }
+  .timeline-section { padding: 100px 0 56px; }
 }
