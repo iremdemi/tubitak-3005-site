@@ -1487,6 +1487,10 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   background: #ffffff; display: flex; align-items: center;
   padding: 96px 0;
 }
+/* wrap, section'ın flex bağlamında margin:auto'su yüzünden
+   içeriğine göre daralabiliyordu (ekip sayfası breadcrumb'ında
+   yaşanan sorunun aynısı) - width:100% ile kesin olarak sabitliyoruz. */
+.timeline-wrap { width: 100%; }
 
 .process-head { margin-bottom: 40px; }
 .process-head .section-title { margin-bottom: 0; }
@@ -1525,10 +1529,18 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 
 /* --- İki sütunlu editoryal içerik: sol metin, sağ görsel --- */
 .process-content {
-  display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center;
+  display: grid; grid-template-columns: 1fr; gap: 32px; align-items: stretch;
+  width: 100%;
 }
-.process-content.has-image { grid-template-columns: 1.05fr 0.95fr; }
+.process-content.has-image { grid-template-columns: 1.1fr 0.9fr; }
 
+/* --- Metin: bizim standart kart dilimiz (beyaz, yuvarlak köşe,
+   gölge - trade-card/finding-card/article-sidebar ile aynı). --- */
+.process-text {
+  width: 100%;
+  background: #ffffff; border-radius: 20px; padding: 44px 48px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+}
 .process-detail-meta {
   display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
 }
@@ -1546,12 +1558,17 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   letter-spacing: -0.01em; line-height: 1.28; margin-bottom: 16px;
 }
 .process-detail-desc {
-  font-size: 15.5px; line-height: 1.75; color: #4A5568; max-width: 62ch;
+  font-size: 15.5px; line-height: 1.75; color: #4A5568;
 }
 
-/* --- Görsel: kendi doğal en-boy oranında, floating kart değil --- */
+/* --- Görsel: aynı kart dili (gölge, yuvarlak köşe), ama görselin
+   KENDİSİ hâlâ kendi doğal en-boy oranında - kırpma/gerdirme yok,
+   kart sadece görselin etrafını sarıyor. --- */
 .process-image-wrap {
-  border: 1px solid #e2e8f0; border-radius: 4px; overflow: hidden;
+  width: 100%;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+  display: flex; align-items: center;
 }
 .process-image-wrap[hidden] { display: none; }
 .process-image { display: block; width: 100%; height: auto; }
@@ -1592,7 +1609,7 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   }
   .timeline-mobile-image {
     display: block; width: 100%; height: auto; margin-bottom: 12px;
-    border: 1px solid #e2e8f0; border-radius: 4px;
+    border-radius: 14px; box-shadow: 0 12px 28px rgba(11,28,46,0.12);
   }
   .timeline-mobile-body p {
     padding: 0 2px 18px; font-size: 14px; line-height: 1.6; color: #4A5568;
