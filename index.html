@@ -111,16 +111,26 @@
 <section class="timeline-section" data-fp-section="1" data-fp-light="true">
   <div class="wrap timeline-wrap">
 
-    <div class="process-head">
-      <h2 class="section-title">Araştırma Süreci</h2>
+    <!-- Bağlı, uçları solan bir çizgi üzerinde dizili aşamalar -
+         her aşamanın kendi konumu var; aktif olan nokta+numara
+         belirgin şekilde büyür (transform:scale, merkez kaymaz).
+         12 aşama tek seferde sığdırılmıyor; ok butonlarıyla yumuşakça
+         kaydırılıyor, kenarlardaki öğeler maskeyle solarak görünür. -->
+    <div class="process-tracker-row">
+      <button class="process-tracker-nav prev" id="trackerPrev" type="button" aria-label="Önceki aşamalar" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="process-tracker-viewport">
+        <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
+          <div class="process-tracker-track" id="processTrackerTrack">
+            <div class="process-tracker-line"></div>
+          </div>
+        </nav>
+      </div>
+      <button class="process-tracker-nav next" id="trackerNext" type="button" aria-label="Sonraki aşamalar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
-
-    <!-- Bağlı bir çizgi üzerinde dizili aşamalar - her aşamanın kendi
-         konumu var; aktif olan nokta+numara belirgin şekilde büyür,
-         büyük daire/kart kullanılmıyor. -->
-    <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
-      <div class="process-tracker-line"></div>
-    </nav>
 
     <!-- Editoryal içerik: iki sütun - solda tarih/başlık/açıklama,
          sağda (varsa) araştırma görseli. Görsel yoksa sol sütun
