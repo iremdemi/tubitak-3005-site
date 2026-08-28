@@ -849,19 +849,22 @@ bindLiveRateWidget('headerRateMini', null, true);
 
 /* ===========================================================
    SÜREÇ TAKVİMİ (Timeline) - anasayfanın interaktif zaman
-   çizelgesi bileşeni. Veri en güncelden en eskiye sıralı;
-   masaüstünde tıklanabilir/hover edilebilir yatay iz + detay
-   kartı, mobilde dikey akordiyon olarak render ediliyor.
+   çizelgesi bileşeni. Veri en eskiden en güncele sıralı.
+   Masaüstü (900px üzeri): interaktif "arc" (yay) widget'ı -
+   fare tekerleği, sürükleme, ok butonları, klavye ile gezinilir.
+   Mobil: dikey akordiyon.
+
+   ÖNEMLİ: Anasayfa, tam sayfa kaydırma (fp-mode) sistemi
+   kullanıyor ve o sistem window'a GENİŞ bir 'wheel' dinleyicisi
+   ekliyor (bölüm geçişleri için). Kullanıcı bu widget'ın ÜZERİNDE
+   fare tekerleğini çevirdiğinde SADECE widget içinde gezinsin,
+   aynı anda tüm sayfa da bir sonraki bölüme KAYMASIN diye,
+   widget'ın kendi wheel/pointer olaylarında stopPropagation()
+   çağrılıyor - bu olmadan iki sistem çakışır.
    =========================================================== */
 (function () {
-  const nodesContainer = document.getElementById('timelineNodes');
-  const detailContainer = document.getElementById('timelineDetail');
-  const fillEl = document.getElementById('timelineFill');
-  const mobileList = document.getElementById('timelineMobileList');
-  if (!nodesContainer || !detailContainer || !mobileList) return;
-
-  // En günceli en başta olacak şekilde sıralı (kullanıcının verdiği
-  // sıra tam tersiydi, burada ters çevrilmiş halde tanımlı).
+  // En güncelden en eskiye sıralı - arc'ta index 0 (en güncel)
+  // başlangıç noktası olacak şekilde.
   const TIMELINE_DATA = [
     { date: '27.07.2026', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.' },
     { date: '29.06.2026', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
@@ -876,44 +879,197 @@ bindLiveRateWidget('headerRateMini', null, true);
     { date: '28.11.2024', text: 'Elektronik imza süreçlerinin tamamlanarak proje faaliyetlerinin resmi olarak başlatılması.' },
     { date: '12.08.2024', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' }
   ];
+  const N = TIMELINE_DATA.length;
 
-  let activeIndex = 0;
+  /* ---------- MASAÜSTÜ: interaktif arc widget'ı ---------- */
+  (function initArc() {
+    const stage = document.getElementById('arcStage');
+    if (!stage) return;
+    const svg = document.getElementById('arcSvg');
+    const itemsWrap = document.getElementById('arcItems');
+    const readoutNumber = document.getElementById('readoutNumber');
+    const readoutTitle = document.getElementById('readoutTitle');
+    const readoutDesc = document.getElementById('readoutDesc');
+    const progressCount = document.getElementById('progressCount');
+    const btnUp = document.getElementById('btnUp');
+    const btnDown = document.getElementById('btnDown');
 
-  function renderDetail(index, animate) {
-    const item = TIMELINE_DATA[index];
-    detailContainer.classList.remove('fade-in');
-    // reflow zorlayarak animasyonun her seferinde yeniden tetiklenmesini sagla
-    void detailContainer.offsetWidth;
-    detailContainer.innerHTML = `
-      <span class="timeline-detail-date">${item.date}</span>
-      <p class="timeline-detail-text">${item.text}</p>
-    `;
-    if (animate) detailContainer.classList.add('fade-in');
-  }
+    const ANGLE_STEP = 20;
+    const VISIBLE_RANGE = 110;
 
-  function setActive(index) {
-    activeIndex = index;
-    const nodeEls = nodesContainer.querySelectorAll('.timeline-node');
-    nodeEls.forEach((el, i) => el.classList.toggle('active', i === index));
-    // dolgu cizgisi: ilk (en guncel) node'da %100, son (en eski) node'da 0 civari
-    const pct = TIMELINE_DATA.length > 1 ? (index / (TIMELINE_DATA.length - 1)) * 100 : 0;
-    if (fillEl) fillEl.style.width = pct + '%';
-    renderDetail(index, true);
-  }
+    let R, cx, cy;
+    let indexFloat = 0;
+    let current = 0;
+    let dragging = false;
+    let dragStartY = 0;
+    let dragStartIndex = 0;
 
-  // --- Masaüstü: yatay iz ---
-  TIMELINE_DATA.forEach((item, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'timeline-node';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', `${item.date}: ${item.text}`);
-    btn.innerHTML = `<span class="timeline-node-dot"></span><span class="timeline-node-date">${item.date}</span>`;
-    btn.addEventListener('click', () => setActive(i));
-    nodesContainer.appendChild(btn);
-  });
-  setActive(0);
+    let RX, RY;
+    function layoutMetrics() {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      // Eliptik yay: yatay yarıçap (RX) genişliğe göre büyük tutulup
+      // node'ların yeterince yayılması sağlanıyor; dikey yarıçap (RY)
+      // stage'in (section'a sığdırılmış, sınırlı) yüksekliğine göre
+      // ayrıca kısıtlanıyor - aksi halde uç açılardaki node'lar
+      // dikeyde stage dışına taşıp kırpılıyordu.
+      RX = w * 0.54;
+      RY = Math.min(RX, h * 0.42);
+      cx = w * 0.18;
+      cy = h / 2;
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    }
 
-  // --- Mobil: dikey akordiyon ---
+    const circleEl = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+    circleEl.setAttribute('class', 'arc-circle');
+    svg.appendChild(circleEl);
+
+    const dotEls = [];
+    const labelEls = [];
+    TIMELINE_DATA.forEach((item, i) => {
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('class', 'arc-dot');
+      dot.setAttribute('r', '4');
+      svg.appendChild(dot);
+      dotEls.push(dot);
+
+      const label = document.createElement('div');
+      label.className = 'arc-item';
+      label.textContent = String(i + 1).padStart(2, '0');
+      itemsWrap.appendChild(label);
+      labelEls.push(label);
+    });
+
+    function renderReadout(idx) {
+      const item = TIMELINE_DATA[idx];
+      readoutNumber.textContent = String(idx + 1).padStart(2, '0');
+      readoutTitle.textContent = item.date;
+      readoutDesc.textContent = item.text;
+      progressCount.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
+    }
+
+    function render() {
+      circleEl.setAttribute('cx', cx);
+      circleEl.setAttribute('cy', cy);
+      circleEl.setAttribute('rx', RX);
+      circleEl.setAttribute('ry', RY);
+
+      for (let i = 0; i < N; i++) {
+        const angleDeg = (i - indexFloat) * ANGLE_STEP;
+        const angleRad = angleDeg * Math.PI / 180;
+        const x = cx + RX * Math.cos(angleRad);
+        const y = cy + RY * Math.sin(angleRad);
+        const visible = Math.abs(angleDeg) <= VISIBLE_RANGE;
+        const isActive = i === current;
+
+        dotEls[i].setAttribute('cx', x);
+        dotEls[i].setAttribute('cy', y);
+        dotEls[i].setAttribute('r', isActive ? 5.5 : 3.5);
+        dotEls[i].classList.toggle('is-active', isActive);
+        dotEls[i].style.opacity = visible ? '1' : '0';
+
+        const label = labelEls[i];
+        label.style.left = x + 'px';
+        label.style.top = y + 'px';
+        label.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg)`;
+        label.style.opacity = isActive ? '0' : (visible ? String(Math.max(0.25, 1 - Math.abs(angleDeg) / VISIBLE_RANGE)) : '0');
+        label.classList.toggle('is-active', isActive);
+      }
+
+      const readout = document.getElementById('readout');
+      readout.style.left = (cx + RX + 30) + 'px';
+      readout.style.top = cy + 'px';
+
+      btnUp.disabled = current <= 0;
+      btnDown.disabled = current >= N - 1;
+    }
+
+    function goTo(idx) {
+      idx = Math.max(0, Math.min(N - 1, idx));
+      current = idx;
+      indexFloat = idx;
+      stage.classList.remove('is-dragging');
+      render();
+      renderReadout(idx);
+    }
+
+    function init() {
+      layoutMetrics();
+      indexFloat = current;
+      render();
+      renderReadout(current);
+    }
+
+    window.addEventListener('resize', () => { layoutMetrics(); render(); });
+
+    const PX_PER_STEP = 90;
+
+    stage.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.arc-nav-btn')) return;
+      dragging = true;
+      dragStartY = e.clientY;
+      dragStartIndex = indexFloat;
+      stage.classList.add('is-dragging');
+      stage.setPointerCapture(e.pointerId);
+    });
+
+    stage.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const deltaY = e.clientY - dragStartY;
+      let next = dragStartIndex - deltaY / PX_PER_STEP;
+      next = Math.max(0, Math.min(N - 1, next));
+      indexFloat = next;
+      current = Math.round(next);
+      render();
+      renderReadout(current);
+    });
+
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove('is-dragging');
+      goTo(Math.round(indexFloat));
+    }
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+    stage.addEventListener('pointerleave', (e) => { if (dragging && e.buttons === 0) endDrag(e); });
+
+    // Fare tekerleği: stopPropagation KRİTİK - yoksa fp-mode'un
+    // window'daki wheel dinleyicisi de tetiklenir, widget içi
+    // gezinme ile tam sayfa bölüm geçişi ÇAKIŞIR.
+    let wheelLock = false;
+    stage.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (wheelLock) return;
+      const dir = e.deltaY > 0 ? 1 : -1;
+      if ((dir > 0 && current < N - 1) || (dir < 0 && current > 0)) {
+        wheelLock = true;
+        goTo(current + dir);
+        window.setTimeout(() => { wheelLock = false; }, 420);
+      }
+    }, { passive: false });
+
+    btnUp.addEventListener('click', () => goTo(current - 1));
+    btnDown.addEventListener('click', () => goTo(current + 1));
+
+    // Klavye: sadece widget gorunur alandaysa (fokus/hover) tetiklensin
+    // diye stage'e mouseenter/leave ile bir bayrak kullanıyoruz.
+    let arcHovered = false;
+    stage.addEventListener('mouseenter', () => { arcHovered = true; });
+    stage.addEventListener('mouseleave', () => { arcHovered = false; });
+    window.addEventListener('keydown', (e) => {
+      if (!arcHovered) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); goTo(current + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+    });
+
+    init();
+  })();
+
+  /* ---------- MOBİL: dikey akordiyon ---------- */
+  const mobileList = document.getElementById('timelineMobileList');
+  if (!mobileList) return;
+
   TIMELINE_DATA.forEach((item, i) => {
     const row = document.createElement('div');
     row.className = 'timeline-mobile-item' + (i === 0 ? ' open' : '');
