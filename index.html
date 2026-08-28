@@ -116,17 +116,20 @@
          Yay (arc-stage) ve detay kartı (readout) yan yana, ayrı
          genişliklere sahip - kart, arc'ın dar alanına sıkışmasın. -->
     <div class="timeline-widget-row">
-      <div class="arc-stage" id="arcStage">
+      <div class="arc-stage" id="arcStage" tabindex="0" aria-label="Süreç zaman çizelgesi, ok tuşlarıyla gezinilebilir">
         <svg class="arc-svg" id="arcSvg"></svg>
         <div id="arcItems"></div>
         <div class="progress-count" id="progressCount">01 / 12</div>
       </div>
 
       <div class="readout" id="readout">
-        <div class="readout-number" id="readoutNumber">01</div>
-        <div class="readout-text">
-          <div class="readout-title" id="readoutTitle"></div>
-          <div class="readout-desc" id="readoutDesc"></div>
+        <img class="readout-image" id="readoutImage" alt="" hidden>
+        <div class="readout-top">
+          <div class="readout-number" id="readoutNumber">01</div>
+          <div class="readout-text">
+            <div class="readout-title" id="readoutTitle"></div>
+            <div class="readout-desc" id="readoutDesc"></div>
+          </div>
         </div>
       </div>
     </div>
