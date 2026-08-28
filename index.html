@@ -103,59 +103,8 @@
 
 </section>
 
-<!-- SÜREÇ TAKVİMİ: interaktif, tıklanabilir yatay zaman çizelgesi.
-     Masaüstünde tıklanan/hover edilen düğüm detay panelinde açılır;
-     mobilde akordiyon (accordion) listesine dönüşür. Veri js/main.js
-     içindeki TIMELINE_DATA dizisinden (en güncelden en eskiye)
-     üretiliyor. -->
-<section class="timeline-section" data-fp-section="1" data-fp-light="true">
-  <div class="wrap timeline-wrap">
 
-    <!-- Bağlı, uçları solan bir çizgi üzerinde dizili aşamalar -
-         her aşamanın kendi konumu var; aktif olan nokta+numara
-         belirgin şekilde büyür (transform:scale, merkez kaymaz).
-         12 aşama tek seferde sığdırılmıyor; ok butonlarıyla yumuşakça
-         kaydırılıyor, kenarlardaki öğeler maskeyle solarak görünür. -->
-    <div class="process-tracker-row">
-      <button class="process-tracker-nav prev" id="trackerPrev" type="button" aria-label="Önceki aşamalar" disabled>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="process-tracker-viewport">
-        <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
-          <div class="process-tracker-track" id="processTrackerTrack">
-            <div class="process-tracker-line"></div>
-          </div>
-        </nav>
-      </div>
-      <button class="process-tracker-nav next" id="trackerNext" type="button" aria-label="Sonraki aşamalar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-
-    <!-- Editoryal içerik: iki sütun - solda tarih/başlık/açıklama,
-         sağda (varsa) araştırma görseli. Görsel yoksa sol sütun
-         tüm genişliği kullanır. -->
-    <div class="process-content" id="processContent">
-      <div class="process-text">
-        <div class="process-detail-meta">
-          <span class="process-detail-index" id="processIndex">01</span>
-          <span class="process-detail-date" id="processDate"></span>
-        </div>
-        <h3 class="process-detail-title" id="processTitle"></h3>
-        <p class="process-detail-desc" id="processDesc"></p>
-      </div>
-
-      <figure class="process-image-wrap" id="processImageWrap" hidden>
-        <img class="process-image" id="processImage" alt="">
-      </figure>
-    </div>
-
-    <!-- Mobil: dikey liste (aynı editoryal dil ile) -->
-    <div class="timeline-mobile-list" id="timelineMobileList"></div>
-  </div>
-</section>
-
-<section class="section" id="bulgular" data-fp-section="2" data-fp-light="true">
+<section class="section" id="bulgular" data-fp-section="1" data-fp-light="true">
   <div class="wrap">
     <div class="section-head reveal">
       <h2 class="section-title" data-i18n="findingsTitle">Araştırmadan Bulgular</h2>
@@ -174,7 +123,7 @@
   </div>
 </section>
 
-<section class="section trade-map-section" id="ticaret-agi" data-fp-section="3" data-fp-header-light="true" style="background-image:url('https://images.pexels.com/photos/20624924/pexels-photo-20624924.jpeg?auto=compress&fit=crop&w=2200&q=80');">
+<section class="section trade-map-section" id="ticaret-agi" data-fp-section="2" data-fp-header-light="true" style="background-image:url('https://images.pexels.com/photos/20624924/pexels-photo-20624924.jpeg?auto=compress&fit=crop&w=2200&q=80');">
   <div class="trade-map-section-overlay"></div>
   <div class="wrap">
     <div class="section-head reveal">
@@ -218,6 +167,58 @@
     </div>
 
     <div class="trade-source-note">Kaynak: TÜİK, T.C. Ticaret Bakanlığı, 2025 Genel Ticaret Sistemi, tam yıl verileri</div>
+  </div>
+</section>
+
+<!-- SÜREÇ TAKVİMİ: interaktif, tıklanabilir yatay zaman çizelgesi.
+     Masaüstünde tıklanan/hover edilen düğüm detay panelinde açılır;
+     mobilde akordiyon (accordion) listesine dönüşür. Veri js/main.js
+     içindeki TIMELINE_DATA dizisinden (en güncelden en eskiye)
+     üretiliyor. -->
+<section class="timeline-section" data-fp-section="3" data-fp-light="true">
+  <div class="wrap timeline-wrap">
+
+    <!-- Bağlı, uçları solan bir çizgi üzerinde dizili aşamalar -
+         her aşamanın kendi konumu var; aktif olan nokta+numara
+         belirgin şekilde büyür (transform:scale, merkez kaymaz).
+         12 aşama tek seferde sığdırılmıyor; ok butonlarıyla yumuşakça
+         kaydırılıyor, kenarlardaki öğeler maskeyle solarak görünür. -->
+    <div class="process-tracker-row">
+      <button class="process-tracker-nav prev" id="trackerPrev" type="button" aria-label="Önceki aşamalar" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="process-tracker-viewport">
+        <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
+          <div class="process-tracker-track" id="processTrackerTrack">
+            <div class="process-tracker-line"></div>
+          </div>
+        </nav>
+      </div>
+      <button class="process-tracker-nav next" id="trackerNext" type="button" aria-label="Sonraki aşamalar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- Editoryal içerik: iki sütun - solda tarih/başlık/açıklama,
+         sağda (varsa) araştırma görseli. Görsel yoksa sol sütun
+         tüm genişliği kullanır. -->
+    <div class="process-content" id="processContent">
+      <div class="process-text">
+        <div class="process-detail-meta">
+          <span class="process-detail-index" id="processIndex">01</span>
+          <span class="process-detail-date" id="processDate"></span>
+        </div>
+        <h3 class="process-detail-title" id="processTitle"></h3>
+        <p class="process-detail-desc" id="processDesc"></p>
+      </div>
+
+      <figure class="process-image-wrap" id="processImageWrap" hidden>
+        <img class="process-image" id="processImage" alt="">
+      </figure>
+    </div>
+
+    <!-- Mobil: dikey liste (aynı editoryal dil ile) -->
+    <div class="timeline-mobile-list" id="timelineMobileList"></div>
   </div>
 </section>
 
@@ -274,9 +275,9 @@
 <!-- TAM SAYFA BÖLÜM GÖSTERGESİ (sadece masaüstünde JS ile görünür yapılır) -->
 <nav class="fp-dots" id="fpDots" aria-label="Sayfa bölümleri arasında gezinme">
   <button class="fp-dot active" data-fp-index="0" aria-label="Bölüm 1: Giriş" aria-current="true"></button>
-  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Süreç Takvimi"></button>
-  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Bulgular"></button>
-  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Küresel Ticaret Ağı"></button>
+  <button class="fp-dot" data-fp-index="1" aria-label="Bölüm 2: Bulgular"></button>
+  <button class="fp-dot" data-fp-index="2" aria-label="Bölüm 3: Küresel Ticaret Ağı"></button>
+  <button class="fp-dot" data-fp-index="3" aria-label="Bölüm 4: Süreç Takvimi"></button>
   <button class="fp-dot" data-fp-index="4" aria-label="Bölüm 5: Araştırma Ekibi"></button>
   <button class="fp-dot" data-fp-index="5" aria-label="Bölüm 6: İletişim ve Alt Bilgi"></button>
 </nav>
