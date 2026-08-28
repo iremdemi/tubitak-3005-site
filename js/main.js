@@ -891,8 +891,6 @@ bindLiveRateWidget('headerRateMini', null, true);
     const readoutTitle = document.getElementById('readoutTitle');
     const readoutDesc = document.getElementById('readoutDesc');
     const progressCount = document.getElementById('progressCount');
-    const btnUp = document.getElementById('btnUp');
-    const btnDown = document.getElementById('btnDown');
 
     const ANGLE_STEP = 20;
     const VISIBLE_RANGE = 110;
@@ -907,14 +905,12 @@ bindLiveRateWidget('headerRateMini', null, true);
     let RX, RY;
     function layoutMetrics() {
       const w = stage.clientWidth, h = stage.clientHeight;
-      // Eliptik yay: yatay yarıçap (RX) genişliğe göre büyük tutulup
-      // node'ların yeterince yayılması sağlanıyor; dikey yarıçap (RY)
-      // stage'in (section'a sığdırılmış, sınırlı) yüksekliğine göre
-      // ayrıca kısıtlanıyor - aksi halde uç açılardaki node'lar
-      // dikeyde stage dışına taşıp kırpılıyordu.
-      RX = w * 0.54;
-      RY = Math.min(RX, h * 0.42);
-      cx = w * 0.18;
+      // Sabit, kompakt (340px) stage genişliğine göre: current (0°)
+      // sağ kenara yakın (~%85), ~110° açıdaki en uzak görünür node
+      // sol kenara yakın kalacak şekilde ayarlı.
+      RX = w * 0.63;
+      RY = Math.min(RX, h * 0.5);
+      cx = w * 0.22;
       cy = h / 2;
       svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     }
@@ -975,12 +971,6 @@ bindLiveRateWidget('headerRateMini', null, true);
         label.classList.toggle('is-active', isActive);
       }
 
-      const readout = document.getElementById('readout');
-      readout.style.left = (cx + RX + 30) + 'px';
-      readout.style.top = cy + 'px';
-
-      btnUp.disabled = current <= 0;
-      btnDown.disabled = current >= N - 1;
     }
 
     function goTo(idx) {
@@ -1038,19 +1028,22 @@ bindLiveRateWidget('headerRateMini', null, true);
     // gezinme ile tam sayfa bölüm geçişi ÇAKIŞIR.
     let wheelLock = false;
     stage.addEventListener('wheel', (e) => {
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const atBoundary = (dir > 0 && current >= N - 1) || (dir < 0 && current <= 0);
+      // Widget kendi son/ilk maddesindeyken VE kullanıcı aynı yönde
+      // kaydırmaya devam ediyorsa, event'i YUTMA - normal şekilde
+      // yukarı (window'daki fp-mode dinleyicisine) geçsin, böylece
+      // sayfa bir sonraki/önceki section'a geçebilsin. Bu satır
+      // olmadan kullanıcı widget'ın sonunda "sıkışıp" kalıyordu.
+      if (atBoundary) return;
       e.preventDefault();
       e.stopPropagation();
       if (wheelLock) return;
-      const dir = e.deltaY > 0 ? 1 : -1;
-      if ((dir > 0 && current < N - 1) || (dir < 0 && current > 0)) {
-        wheelLock = true;
-        goTo(current + dir);
-        window.setTimeout(() => { wheelLock = false; }, 420);
-      }
+      wheelLock = true;
+      goTo(current + dir);
+      window.setTimeout(() => { wheelLock = false; }, 420);
     }, { passive: false });
 
-    btnUp.addEventListener('click', () => goTo(current - 1));
-    btnDown.addEventListener('click', () => goTo(current + 1));
 
     // Klavye: sadece widget gorunur alandaysa (fokus/hover) tetiklensin
     // diye stage'e mouseenter/leave ile bir bayrak kullanıyoruz.
