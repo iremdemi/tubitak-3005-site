@@ -652,7 +652,6 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 /* --- SAĞDA "Daha Fazlası" sidebar'ı: header'in altinda sabit
    (sticky) kalir, kullanici makaleyi okurken kaydirdikca. --- */
 .article-sidebar {
-  position: sticky; top: 106px;
   background: #ffffff; border-radius: 16px; padding: 26px 22px;
   box-shadow: 0 20px 50px rgba(11,28,46,0.1);
   margin-right: -80px;
