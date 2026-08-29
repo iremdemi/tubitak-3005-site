@@ -900,35 +900,55 @@ bindLiveRateWidget('headerRateMini', null, true);
     return el;
   });
 
-  // Bir öğe göründükçe kendisi ve öncesindeki tüm öğeler "aktif"
-  // olur (nokta parlar); çizgi dolgusu en son aktif öğenin
-  // konumuna kadar uzar - doğal bir "ilerleme" hissi verir.
-  function updateFill() {
-    let lastActiveIndex = -1;
-    items.forEach((el, i) => { if (el.classList.contains('is-active')) lastActiveIndex = i; });
-    if (lastActiveIndex === -1) { fill.style.height = '0'; return; }
-    const target = items[lastActiveIndex];
-    // dot'un kendi offsetTop'u kendi .vtimeline-item'ına göre (CSS
-    // breakpoint'lerine göre değişebildiği için sabit sayı yerine
-    // dinamik okuyoruz) - item'ın KENDİ offsetTop'una (vtimeline
-    // konteynerine göre) ekleyerek gerçek konumu buluyoruz.
-    const dot = target.querySelector('.vtimeline-dot');
-    const fillHeight = target.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+  // İlerleme çizgisi, sürekli olarak (her karede) geçerli scroll
+  // konumuna göre yeniden hesaplanır - aşağı kaydırdıkça dolar,
+  // yukarı çıktıkça geri çekilir. fp-mode masaüstünde gerçek
+  // scroll yerine transform kullandığı için (native "scroll"
+  // event'i tetiklenmiyor), native scroll (mobil) ve transform
+  // tabanlı hareket (masaüstü fp-mode) ile aynı şekilde çalışması
+  // için requestAnimationFrame ile sürekli konum okunuyor - bu,
+  // hangi mekanizmanın hareket ettirdiğinden bağımsız, her zaman
+  // doğru sonucu verir.
+  const REFERENCE_RATIO = 0.5; // viewport'un dikey ortası "okuma çizgisi"
+
+  function updateProgress() {
+    const referenceY = window.innerHeight * REFERENCE_RATIO;
+    let lastPassedIndex = -1;
+    items.forEach((el, i) => {
+      const dot = el.querySelector('.vtimeline-dot');
+      const dotY = dot.getBoundingClientRect().top + dot.offsetHeight / 2;
+      const passed = dotY <= referenceY;
+      el.classList.toggle('is-active', passed);
+      if (passed) lastPassedIndex = i;
+    });
+
+    if (lastPassedIndex === -1) { fill.style.height = '0px'; return; }
+
+    const dot = items[lastPassedIndex].querySelector('.vtimeline-dot');
+    let fillHeight = items[lastPassedIndex].offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+
+    // Bir sonraki noktaya doğru da kısmi (oransal) ilerleme
+    // ekleyerek, çizginin nokta nokta değil pürüzsüz aktığı
+    // hissini veriyoruz.
+    if (lastPassedIndex < items.length - 1) {
+      const nextEl = items[lastPassedIndex + 1];
+      const nextDot = nextEl.querySelector('.vtimeline-dot');
+      const curTop = dot.getBoundingClientRect().top;
+      const nextTop = nextDot.getBoundingClientRect().top;
+      const totalDist = nextTop - curTop;
+      if (totalDist > 0) {
+        const ratio = Math.min(1, Math.max(0, (referenceY - curTop) / totalDist));
+        const nextFillHeight = nextEl.offsetTop + nextDot.offsetTop + nextDot.offsetHeight / 2;
+        fillHeight += (nextFillHeight - fillHeight) * ratio;
+      }
+    }
     fill.style.height = Math.max(0, fillHeight) + 'px';
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const idx = items.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        for (let i = 0; i <= idx; i++) items[i].classList.add('is-active');
-      }
-    });
-    updateFill();
-  }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
-
-  items.forEach(el => observer.observe(el));
-  window.addEventListener('resize', updateFill);
+  (function loop() {
+    updateProgress();
+    requestAnimationFrame(loop);
+  })();
 })();
 
 /* ===========================================================
