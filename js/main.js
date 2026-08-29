@@ -978,7 +978,15 @@ bindLiveRateWidget('headerRateMini', null, true);
     slide.scrollIntoView({ inline: 'center', block: 'nearest', behavior: smooth ? 'smooth' : 'instant' });
   }
 
-  jumpTo(realSlides[N - 1], false);
+  // Sayfa/CSS tam oturmadan (layout hesaplanmadan) scrollIntoView
+  // çağrılırsa yanlış konuma atlayabiliyordu - çift
+  // requestAnimationFrame ile tarayıcının bir render turunu
+  // tamamlamasını bekliyoruz.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      jumpTo(realSlides[N - 1], false);
+    });
+  });
 
   const allSlides = Array.from(swiper.children);
   function closestIndex() {
