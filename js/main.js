@@ -848,18 +848,14 @@ bindLiveRateWidget('rateTickerRates', null, false);
 bindLiveRateWidget('headerRateMini', null, true);
 
 /* ===========================================================
-   ARAŞTIRMA SÜRECİ - anasayfa section'ı. Basit, kurumsal bir
-   aşama göstergesi: ince bir tracker (tıklanabilir aşama
-   numaraları) + editoryal detay alanı (tarih/başlık/açıklama) +
-   varsa doğal oranında görsel. Masaüstünde tracker'a tıklanarak,
-   mobilde ise dikey bir liste olarak gezinilir. Önceki "arc"
-   (yay) tasarımına göre kasıtlı olarak çok daha basit: fare
-   tekerleği/sürükleme yönetimine, dolayısıyla sayfanın tam sayfa
-   kaydırma sistemiyle çakışma riskine hiç gerek kalmadı.
+   ARAŞTIRMA SÜRECİ - anasayfa section'ı. Aşama göstergesinde
+   sayı yerine doğrudan tarih kullanılıyor. Masaüstü: kaydırılabilir
+   tarih-tracker + iki sütunlu editoryal içerik. Mobil: tek seferde
+   bir "haber kutusu" kart, native scroll-snap ile kaydırılır,
+   uçlarda klon kart tekniğiyle döngüsel sarar.
    =========================================================== */
 (function () {
-  // En eskiden en güncele sıralı: 01 numarası en eski aşama,
-  // 12 numarası en güncel aşama. "title" alanı, açıklama metninden
+  // En eskiden en güncele sıralı. "title" alanı, açıklama metninden
   // türetilmiş kısa bir editoryal başlık.
   const TIMELINE_DATA = [
     { date: '12.08.2024', title: 'Proje Kabulü ve Görev Dağılımı', text: 'Proje kabulü ve hakem dönütleri doğrultusunda proje ekibi içi görev dağılımının gerçekleştirilmesi.' },
@@ -877,14 +873,13 @@ bindLiveRateWidget('headerRateMini', null, true);
   ];
   const N = TIMELINE_DATA.length;
 
-  /* ---------- Masaüstü: kaydırılabilir, bağlı çizgili tracker + iki sütunlu editoryal içerik ---------- */
+  /* ---------- Masaüstü: kaydırılabilir tarih-tracker + iki sütunlu editoryal içerik ---------- */
   (function initTracker() {
     const trackerBox = document.getElementById('processTracker');
     const track = document.getElementById('processTrackerTrack');
     if (!trackerBox || !track) return;
     const prevBtn = document.getElementById('trackerPrev');
     const nextBtn = document.getElementById('trackerNext');
-    const indexEl = document.getElementById('processIndex');
     const dateEl = document.getElementById('processDate');
     const titleEl = document.getElementById('processTitle');
     const descEl = document.getElementById('processDesc');
@@ -898,13 +893,7 @@ bindLiveRateWidget('headerRateMini', null, true);
       btn.type = 'button';
       btn.className = 'process-tracker-item';
       btn.setAttribute('aria-label', `${item.date}: ${item.title}`);
-      btn.innerHTML = `<span class="process-tracker-dot"></span><span class="process-tracker-num">${String(i + 1).padStart(2, '0')}</span>`;
-      // mousedown'da preventDefault: butonun focus almasını (ve
-      // tarayıcının bazı durumlarda tetiklediği otomatik
-      // scrollIntoView davranışını, bu da çizgide "zıplama" hissi
-      // yaratıyordu) engelliyor - click işlevi normal çalışmaya
-      // devam ediyor.
-      btn.addEventListener('mousedown', (e) => e.preventDefault());
+      btn.innerHTML = `<span class="process-tracker-dot"></span><span class="process-tracker-date">${item.date}</span>`;
       btn.addEventListener('click', () => setActive(i));
       track.appendChild(btn);
       return btn;
@@ -914,7 +903,6 @@ bindLiveRateWidget('headerRateMini', null, true);
       items.forEach((el, i) => el.classList.toggle('active', i === idx));
       const item = TIMELINE_DATA[idx];
 
-      indexEl.textContent = String(idx + 1).padStart(2, '0');
       dateEl.textContent = item.date;
       titleEl.textContent = item.title;
       descEl.textContent = item.text;
@@ -938,7 +926,6 @@ bindLiveRateWidget('headerRateMini', null, true);
       }
     }
 
-    // Ok butonları: yaklaşık 2 öğe genişliği kadar yumuşakça kaydırır.
     function updateNavState() {
       const max = trackerBox.scrollWidth - trackerBox.clientWidth;
       prevBtn.disabled = trackerBox.scrollLeft <= 1;
@@ -949,64 +936,72 @@ bindLiveRateWidget('headerRateMini', null, true);
     trackerBox.addEventListener('scroll', updateNavState);
     window.addEventListener('resize', updateNavState);
 
-    // Varsayılan: en güncel (son) aşama aktif; tracker en güncel
-    // aşama görünür olacak şekilde sağa (sona) kaydırılmış başlar.
     setActive(N - 1);
     trackerBox.scrollLeft = trackerBox.scrollWidth;
     updateNavState();
   })();
 
-  /* ---------- Sayfa geneli bölüm noktaları (fp-dots), SADECE bu
-     section aktifken gizlensin - diğer bölümlerde olduğu gibi
-     kalsın, fp-mode sisteminin kendi koduna dokunulmuyor. ---------- */
-  (function hideDotsOnThisSection() {
-    const dots = document.getElementById('fpDots');
-    const section = document.querySelector('.timeline-section[data-fp-section]');
-    if (!dots || !section) return;
-    const myIndex = section.getAttribute('data-fp-section');
+  /* ---------- Mobil: kaydırılabilir (swipe) "haber kutusu" kart görünümü ---------- */
+  const swiper = document.getElementById('processMobileSwiper');
+  if (!swiper) return;
 
-    function sync() {
-      const activeDot = dots.querySelector('.fp-dot.active');
-      const isHere = activeDot && activeDot.dataset.fpIndex === myIndex;
-      dots.style.visibility = isHere ? 'hidden' : '';
-    }
-    sync();
-    new MutationObserver(sync).observe(dots, { subtree: true, attributes: true, attributeFilter: ['class'] });
-  })();
-
-  /* ---------- Mobil: dikey liste ---------- */
-  const mobileList = document.getElementById('timelineMobileList');
-  if (!mobileList) return;
-
-  TIMELINE_DATA.forEach((item, i) => {
-    const row = document.createElement('div');
-    row.className = 'timeline-mobile-item' + (i === N - 1 ? ' open' : '');
+  function renderSlide(item) {
+    const slide = document.createElement('div');
+    slide.className = 'process-mobile-slide';
     const imageHtml = item.image
-      ? `<img class="timeline-mobile-image" src="${item.image}" alt="${item.title}" loading="lazy">`
+      ? `<img class="process-mobile-image" src="${item.image}" alt="${item.title}" loading="lazy">`
       : '';
-    row.innerHTML = `
-      <button class="timeline-mobile-head" type="button" aria-expanded="${i === N - 1}">
-        <span class="timeline-mobile-date">${item.date}</span>
-        <svg class="timeline-mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="timeline-mobile-body">
-        <span class="timeline-mobile-title">${item.title}</span>
-        ${imageHtml}
-        <p>${item.text}</p>
+    slide.innerHTML = `
+      ${imageHtml}
+      <div class="process-mobile-body">
+        <span class="process-mobile-date">${item.date}</span>
+        <h3 class="process-mobile-title">${item.title}</h3>
+        <p class="process-mobile-desc">${item.text}</p>
       </div>
     `;
-    const head = row.querySelector('.timeline-mobile-head');
-    head.addEventListener('click', () => {
-      const isOpen = row.classList.contains('open');
-      mobileList.querySelectorAll('.timeline-mobile-item').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.timeline-mobile-head').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        row.classList.add('open');
-        head.setAttribute('aria-expanded', 'true');
-      }
-    });
-    mobileList.appendChild(row);
+    return slide;
+  }
+
+  const lastClone = renderSlide(TIMELINE_DATA[N - 1]);
+  swiper.appendChild(lastClone);
+
+  const realSlides = TIMELINE_DATA.map((item) => {
+    const slide = renderSlide(item);
+    swiper.appendChild(slide);
+    return slide;
   });
+
+  const firstClone = renderSlide(TIMELINE_DATA[0]);
+  swiper.appendChild(firstClone);
+
+  function jumpTo(slide, smooth) {
+    slide.scrollIntoView({ inline: 'center', block: 'nearest', behavior: smooth ? 'smooth' : 'instant' });
+  }
+
+  jumpTo(realSlides[N - 1], false);
+
+  const allSlides = Array.from(swiper.children);
+  function closestIndex() {
+    const center = swiper.scrollLeft + swiper.clientWidth / 2;
+    let best = 0, bestDist = Infinity;
+    allSlides.forEach((el, i) => {
+      const elCenter = el.offsetLeft + el.offsetWidth / 2;
+      const dist = Math.abs(elCenter - center);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    return best;
+  }
+
+  let scrollTimer = null;
+  swiper.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const idx = closestIndex();
+      if (idx === 0) {
+        jumpTo(realSlides[N - 1], false);
+      } else if (idx === allSlides.length - 1) {
+        jumpTo(realSlides[0], false);
+      }
+    }, 120);
+  }, { passive: true });
 })();
