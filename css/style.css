@@ -300,39 +300,44 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 /* Bulgular bölümünde başlık/buton satırı, alttaki kart bloğuyla (oklar hariç)
    tam aynı sol-sağ kenarda dursun diye ok butonlarının kapladığı alan kadar
    (44px genişlik + 20px boşluk = 64px) içeri alıyoruz */
-#bulgular .section-head { padding-left: 64px; padding-right: 64px; }
 .section-title { font-size: var(--text-h2); font-weight: var(--weight-semibold); color: #0b1c2e; text-transform: none; letter-spacing: -0.02em; line-height: 1.18; }
 
-.news-grid-wrap { position: relative; display: flex; align-items: center; gap: 0; }
-.news-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; flex: 1; min-width: 0;
+/* Bulgular - Saha Ziyaretlerimizden tarzında "bento" düzeni: 1
+   büyük öne çıkan kart (2x2, sol üst) + 5 destekleyici küçük kart,
+   kalan L şeklindeki alanı grid'in kendi otomatik yerleşimiyle
+   dolduruyor. Görsel arka plan tam kart, altta koyu gradyanla
+   okunur metin - field-visit-card ile aynı dil. */
+.findings-bento {
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 165px);
+  gap: 18px;
 }
-/* Kartlar artik sitenin geri kalaniyla ayni dilde: beyaz, cercevesiz,
-   yuvarlak kose, yumusak golge (bkz. .amac-card / .odak-stat / .hoca-box) */
-.news-card {
-  cursor: pointer; background: #ffffff; border-radius: 12px; overflow: hidden;
-  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.bento-card {
+  position: relative; display: block; border-radius: 12px; overflow: hidden;
+  text-decoration: none; box-shadow: 0 16px 40px rgba(11,28,46,0.12);
 }
-.news-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(11,28,46,0.16); }
-.news-img { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #0b1c2e; }
-.news-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.news-card:hover .news-img img { transform: scale(1.05); }
-.news-body { padding: 20px 22px 24px; }
-.news-date { display: flex; align-items: center; gap: 8px; font-size: var(--text-small); font-weight: var(--weight-regular); color: #4A5568; margin-bottom: 12px; }
-.news-body h3 { font-size: 18px; font-weight: var(--weight-semibold); color: #0b1c2e; line-height: 1.4; text-transform: none; }
-.news-excerpt { font-size: 14.5px; font-weight: var(--weight-regular); color: #4A5568; line-height: 1.65; margin-top: 10px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-.news-arrow {
-  width: 44px; height: 44px; border-radius: 50%; border: 1px solid #E2E8F0; background: #ffffff;
-  display: flex; align-items: center; justify-content: center; color: #0b1c2e; cursor: pointer; transition: all 0.25s ease;
-  flex: none;
+.bento-card.bento-large { grid-column: 1 / 3; grid-row: 1 / 3; }
+.bento-card img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.4s ease;
 }
-.news-arrow:hover:not(:disabled) { background: #f8fafc; border-color: #0b1c2e; }
-.news-arrow:disabled { color: #cbd5e1; border-color: #f1f5f9; cursor: default; }
-.news-arrow-side { margin-top: -30px; }
-.news-arrow-left { margin-right: 20px; }
-.news-arrow-right { margin-left: 20px; }
+.bento-card:hover img { transform: scale(1.06); }
+.bento-overlay {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 18px 14px;
+  background: linear-gradient(to top, rgba(11,28,46,0.92) 0%, rgba(11,28,46,0.5) 60%, transparent 100%);
+}
+.bento-date { display: block; font-size: 11px; color: rgba(255,255,255,0.75); margin-bottom: 5px; }
+.bento-title {
+  color: #ffffff; font-size: 13.5px; font-weight: var(--weight-bold); line-height: 1.35;
+  text-transform: none; margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.bento-large .bento-overlay { padding: 28px 26px 22px; }
+.bento-large .bento-date { font-size: 12.5px; margin-bottom: 8px; }
+.bento-large .bento-title { font-size: 19px; -webkit-line-clamp: 3; margin-bottom: 8px; }
+.bento-excerpt {
+  color: rgba(255,255,255,0.85); font-size: 13.5px; line-height: 1.55; margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
 .news-cta { background: #002b66; color: #ffffff; padding: 14px 32px; font-size: var(--text-btn); font-weight: var(--weight-semibold); border-radius: 2px; text-transform: none; transition: background 0.3s ease; flex: none; }
 .news-cta:hover { background: #004099; }
 
@@ -504,9 +509,8 @@ footer > .wrap { width: 100%; }
   .header-right .btn-outline { display: none; }
   .menu-toggle { display: flex; }
   
-  .news-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
-  .news-arrow-side { display: none; }
-  #bulgular .section-head { padding-left: 0; padding-right: 0; }
+  .findings-bento { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 140px; }
+  .bento-card.bento-large { grid-column: 1 / 3; grid-row: 1 / 3; }
   
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
   .footer-flex { flex-wrap: wrap; gap: 40px; }
@@ -532,7 +536,9 @@ footer > .wrap { width: 100%; }
   .section, .team-section, .stats-section { padding: 72px 0; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
   
-  .news-grid { grid-template-columns: 1fr; gap: 32px; }
+  .findings-bento { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: auto; gap: 14px; }
+  .bento-card.bento-large { grid-column: 1; grid-row: auto; height: 260px; }
+  .bento-card:not(.bento-large) { height: 130px; }
   
   .stats-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-flex { flex-direction: column; gap: 40px; }
