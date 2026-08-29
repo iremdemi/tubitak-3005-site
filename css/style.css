@@ -1730,7 +1730,20 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   }
   .field-visit-large { height: 320px; flex: none; }
   .field-visit-stack { flex-direction: row; height: 260px; flex: none; }
-  .field-visit-stack .field-visit-overlay p { -webkit-line-clamp: 5; }
+
+  /* Mobilde metin, görseli tamamen kapatmasın diye varsayılan
+     olarak kısa (2 satır + "…") gösteriliyor. Yazının üstüne
+     dokununca genişleyip tam metni gösteriyor, tekrar dokununca
+     tekrar kısalıyor (js/main.js: .is-expanded class toggle). */
+  .field-visit-overlay { cursor: pointer; transition: padding 0.2s ease; }
+  .field-visit-overlay p {
+    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+    -webkit-line-clamp: 2;
+    transition: -webkit-line-clamp 0.15s ease;
+  }
+  .field-visit-card.is-expanded .field-visit-overlay p {
+    -webkit-line-clamp: 12;
+  }
 }
 
 @media (max-width: 640px) {
