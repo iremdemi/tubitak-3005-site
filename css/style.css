@@ -1164,6 +1164,10 @@ html.fp-mode.fp-on-light .fp-dot.active { background: #0b1c2e; }
 }
 .contact-info .about-lead { margin-bottom: 24px; }
 
+.contact-info-card {
+  background: #ffffff; border-radius: 20px; padding: 32px 36px 10px;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+}
 .contact-director {
   display: flex; flex-direction: column; gap: 3px;
   margin-bottom: 30px;
