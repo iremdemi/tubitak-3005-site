@@ -23,6 +23,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html { overflow-x: hidden; }
 body { 
   font-family: var(--font-sans); 
   background-color: #ffffff; 
@@ -309,7 +310,7 @@ header.scrolled .lang-icon:hover { color: #002b66; }
 /* Kartlar artik sitenin geri kalaniyla ayni dilde: beyaz, cercevesiz,
    yuvarlak kose, yumusak golge (bkz. .amac-card / .odak-stat / .hoca-box) */
 .news-card {
-  cursor: pointer; background: #ffffff; border-radius: 20px; overflow: hidden;
+  cursor: pointer; background: #ffffff; border-radius: 12px; overflow: hidden;
   box-shadow: 0 20px 50px rgba(11,28,46,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1495,258 +1496,76 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   .header-rate-mini { display: none; }
 }
 /* =========================================================
-   ARAŞTIRMA SÜRECİ - anasayfa section'ı.
-   Kurumsal/editoryal, geniş ekran kullanan tasarım. Aşama
-   göstergesinde (tracker) sayı DEĞİL, doğrudan tarih kullanılıyor.
-   Masaüstünde: bağlı, uçları solan çizgi üzerinde tıklanabilir
-   tarih etiketleri (kaydırılabilir, ok butonlu). Mobilde: tek
-   seferde bir "haber kutusu" tarzı kart (görsel varsa üstte,
-   yoksa düz metin kutusu), elle kaydırılarak (native swipe)
-   gezinilir, uçlarda döngüsel sarar.
-   ========================================================= */
-.timeline-section {
-  background: #ffffff; display: flex; align-items: center;
-  padding: 96px 0;
-}
-.timeline-wrap { width: 100%; }
-.process-tracker-row { margin-top: 36px; }
-
-/* --- Bağlı, uçları solan çizgi üzerinde tarih etiketleri --- */
-.process-tracker-row { display: flex; align-items: center; gap: 10px; margin-bottom: 48px; }
-.process-tracker-nav {
-  flex: none; width: 28px; height: 28px; border-radius: 50%;
-  border: 1px solid #e2e8f0; background: #ffffff; color: #94a3b8;
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
-  padding: 0; transition: border-color 0.2s ease, color 0.2s ease;
-}
-.process-tracker-nav:hover { border-color: #002b66; color: #002b66; }
-.process-tracker-nav:disabled { opacity: 0.28; cursor: default; pointer-events: none; }
-
-.process-tracker-viewport {
-  flex: 1; min-width: 0; overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-}
-.process-tracker {
-  overflow-x: auto; scroll-behavior: smooth;
-  scrollbar-width: none; -ms-overflow-style: none;
-}
-.process-tracker::-webkit-scrollbar { display: none; }
-.process-tracker-track {
-  position: relative; display: flex; width: max-content; padding-top: 6px;
-}
-.process-tracker-line {
-  position: absolute; top: 6px; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, #e2e8f0 6%, #e2e8f0 94%, transparent);
-}
-.process-tracker-item {
-  position: relative; z-index: 1; flex: 0 0 130px; align-self: flex-start;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  background: none; border: none; cursor: pointer; padding: 0;
-  font-family: var(--font-sans);
-}
-/* Noktalar her zaman koyu/siyah - gri versiyon yeterince görünmüyordu. */
-.process-tracker-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: #0b1c2e;
-  transform: scale(1);
-  transition: transform 0.2s cubic-bezier(.65,0,.35,1), box-shadow 0.2s ease;
-}
-.process-tracker-item.active .process-tracker-dot {
-  background: #002b66; transform: scale(1.55);
-  box-shadow: 0 0 0 4px rgba(0,43,102,0.14);
-}
-.process-tracker-date {
-  font-size: 12px; font-weight: var(--weight-regular); color: #94a3b8;
-  letter-spacing: normal; white-space: nowrap; transition: color 0.2s ease;
-}
-.process-tracker-item:hover .process-tracker-date { color: #4A5568; }
-.process-tracker-item.active .process-tracker-date {
-  font-weight: var(--weight-semibold); color: #0b1c2e;
-}
-
-/* --- İçerik: görsel yoksa tam genişlik metin kartı; görsel
-   varsa TEK, kaynaşık "haber kutusu" - görsel üstte (kendi ayrı
-   kartı yok), metin hemen altına yapışık, kenarları tam eşleşir. --- */
-.process-content {
-  display: grid; grid-template-columns: 1fr; gap: 32px; align-items: stretch;
-  width: 100%; min-height: 420px;
-}
-.process-content.has-image {
-  display: flex; flex-direction: column; gap: 0;
-  max-width: 500px; margin: 0 auto; min-height: 420px;
-  background: #ffffff; border-radius: 18px; overflow: hidden;
-  box-shadow: 0 16px 40px rgba(11,28,46,0.1);
-}
-
-.process-detail-meta { margin-bottom: 14px; }
-.process-detail-date {
-  font-size: 12px; color: #94a3b8;
-}
-.process-detail-title {
-  font-size: 23px; font-weight: var(--weight-bold); color: #0b1c2e;
-  letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 14px;
-}
-.process-detail-desc { font-size: 14.5px; line-height: 1.7; color: #4A5568; }
-
-/* --- Metin: bizim standart kart dilimiz (görselsiz durumda) --- */
-.process-text {
-  width: 100%;
-  background: #ffffff; border-radius: 18px; padding: 34px 38px;
-  box-shadow: 0 16px 40px rgba(11,28,46,0.1);
-  display: flex; flex-direction: column; justify-content: center;
-}
-/* Görselli durumda: metin kartı artık haber kutusunun alt parçası -
-   kendi ayrı radius/gölgesi yok, üst kapsayıcı zaten sağlıyor. */
-.process-content.has-image .process-text {
-  border-radius: 0; box-shadow: none; padding: 20px 24px 24px;
-  flex: 1; order: 2;
-}
-
-/* --- Görsel: görselsiz metinle aynı bağımsız kart dili yerine,
-   görselli durumda haber kutusunun ÜST parçası - kendi radius/
-   gölgesi yok, üst kapsayıcının overflow:hidden'ı kırpıyor. --- */
-.process-image-wrap {
-  width: 100%;
-  border-radius: 20px; overflow: hidden;
-  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
-  display: flex; align-items: center;
-}
-.process-image-wrap[hidden] { display: none; }
-.process-image { display: block; width: 100%; height: auto; border-radius: 20px; }
-.process-content.has-image .process-image-wrap {
-  border-radius: 0; box-shadow: none; order: 1;
-}
-.process-content.has-image .process-image { border-radius: 0; }
-
-.process-fade { animation: processFade 0.25s ease; }
-@keyframes processFade { from { opacity: 0.35; } to { opacity: 1; } }
-
-@media (max-width: 1024px) {
-  .process-content.has-image { max-width: 460px; }
-}
-
 /* =========================================================
-   MOBİL: kaydırılabilir (swipe), "haber kutusu" tarzı kart.
-   Görsel varsa üstte (tam genişlik, kartın üst köşeleriyle aynı
-   yuvarlaklıkta), metin altta - bulgular sayfamızdaki kart
-   diliyle aynı. Görsel yoksa düz, tek parça metin kutusu.
-   Native CSS scroll-snap ile tarayıcının kendi dokunmatik
-   fiziği kullanılıyor; uçlara ulaşınca (js/main.js'teki klon
-   kart tekniğiyle) döngüsel olarak sarıyor.
+   ARAŞTIRMA SÜRECİ - Dikey Akademik Günce.
+   İnce lacivert bir çizgi üzerinde, tarih sırasına dizilmiş
+   asimetrik geniş kartlar - solda görsel/ikon, sağda başlık ve
+   açıklama nefes alıyor. Minimalist: ağır gölge yok, ince
+   kenarlık (border) var. Zemin saf beyaz değil, hafif buz grisi
+   (#f8fafc) - kartlar bu sayede kendiliğinden öne çıkıyor.
+   Section, fp-mode'un "section overflow" mekanizmasıyla (bkz.
+   js/main.js sectionOverflow/subScroll) kendi taşan içeriğini
+   kaydırıyor; bir ekrandan uzun olması sorun değil - Bulgular
+   section'ı da aynı mekanizmayla çalışıyor.
    ========================================================= */
-.process-mobile-swiper { display: none; }
+.timeline-section { background: #f8fafc; padding: 100px 0; }
+.timeline-section .section-head { margin-bottom: 48px; }
+.timeline-wrap { width: 100%; }
 
-@media (max-width: 900px) {
-  .process-tracker-row, .process-content, .process-content.has-image { display: none; }
-  .process-mobile-swiper {
-    display: flex; gap: 16px;
-    overflow-x: auto; scroll-snap-type: x mandatory;
-    scrollbar-width: none; -ms-overflow-style: none;
-    margin: 0 -48px; padding: 0 48px;
-  }
-  .process-mobile-swiper::-webkit-scrollbar { display: none; }
-  .process-mobile-slide {
-    flex: 0 0 calc(100% - 56px); min-width: 0;
-    scroll-snap-align: center; scroll-snap-stop: always;
-    background: #ffffff; border-radius: 20px; overflow: hidden;
-    box-shadow: 0 20px 50px rgba(11,28,46,0.1);
-  }
-  .process-mobile-image {
-    display: block; width: 100%; height: auto;
-  }
-  .process-mobile-body { padding: 22px 22px 26px; }
-  .process-mobile-date {
-    display: block; font-size: 12.5px; font-weight: var(--weight-bold); color: #002b66;
-    margin-bottom: 10px;
-  }
-  .process-mobile-title {
-    display: block; font-size: 18px; font-weight: var(--weight-bold); color: #0b1c2e;
-    line-height: 1.32; margin-bottom: 10px;
-  }
-  .process-mobile-desc { font-size: 14px; line-height: 1.65; color: #4A5568; }
+.vtimeline { position: relative; max-width: 880px; margin: 0 auto; padding-left: 64px; }
+.vtimeline-line {
+  position: absolute; left: 21px; top: 6px; bottom: 6px; width: 2px;
+  background: #e2e8f0; border-radius: 1px;
 }
+.vtimeline-line-fill {
+  position: absolute; left: 21px; top: 6px; width: 2px; height: 0;
+  background: #002b66; border-radius: 1px;
+  transition: height 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.vtimeline-item { position: relative; margin-bottom: 28px; }
+.vtimeline-item:last-child { margin-bottom: 0; }
+.vtimeline-dot {
+  position: absolute; left: -50px; top: 28px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: #ffffff; border: 2px solid #cbd5e1;
+  transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+.vtimeline-item.is-active .vtimeline-dot {
+  border-color: #002b66; background: #002b66;
+  box-shadow: 0 0 0 5px rgba(0,43,102,0.14);
+}
+
+.vtimeline-card {
+  display: flex; align-items: stretch; background: #ffffff;
+  border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;
+}
+.vtimeline-card-media {
+  flex: 0 0 38%; min-height: 168px; background: #eef1f5; position: relative;
+}
+.vtimeline-card-media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.vtimeline-card-media.is-icon { display: flex; align-items: center; justify-content: center; background: #f1f5f9; }
+.vtimeline-card-media.is-icon svg { width: 34px; height: 34px; color: #94a3b8; }
+.vtimeline-card-body { flex: 1; padding: 24px 28px; min-width: 0; }
+.vtimeline-date {
+  display: block; font-size: 12.5px; font-weight: var(--weight-bold); color: #002b66;
+  letter-spacing: 0.02em; margin-bottom: 8px;
+}
+.vtimeline-title {
+  font-size: 18px; font-weight: var(--weight-bold); color: #0b1c2e;
+  letter-spacing: -0.005em; line-height: 1.32; margin-bottom: 8px;
+}
+.vtimeline-desc { font-size: 14px; line-height: 1.65; color: #4A5568; }
 
 @media (max-width: 767px) {
-  .timeline-section { padding: 100px 0 56px; }
-  .process-mobile-swiper { margin: 0 -24px; padding: 0 24px; }
-  .process-mobile-slide { flex-basis: calc(100% - 32px); }
-}
-
-/* =========================================================
-   SAHA ZİYARETLERİMİZDEN - anasayfa section'ı.
-   1 büyük öne çıkan kart (sol, ~%40 genişlik, tam yükseklik) +
-   2 destekleyici kart (sağ, üst-alt istiflenmiş). Görsel arka
-   planlar tam kart alanını kaplıyor, alt kısımda koyu (site
-   lacivertimize yakın) gradyanla okunur metin overlay'i - kart
-   dilimizle tutarlı minimum border-radius, ince gölge.
-   ========================================================= */
-.field-visits-section { padding: 90px 0; display: flex; align-items: center; }
-.field-visits-section > .wrap { width: 100%; }
-.field-visits-section .section-head { margin-bottom: 32px; }
-
-.field-visits-grid {
-  display: grid; grid-template-columns: 0.72fr 1fr; gap: 18px;
-  height: 490px;
-}
-.field-visit-stack {
-  display: flex; flex-direction: column; gap: 18px; height: 100%;
-}
-.field-visit-card {
-  position: relative; border-radius: 18px; overflow: hidden;
-  box-shadow: 0 16px 40px rgba(11,28,46,0.12);
-  flex: 1; min-height: 0;
-}
-.field-visit-large { height: 100%; }
-.field-visit-card img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.field-visit-card:hover img { transform: scale(1.06); }
-.field-visit-overlay {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 28px 26px 22px;
-  background: linear-gradient(to top, rgba(11,28,46,0.92) 0%, rgba(11,28,46,0.55) 55%, transparent 100%);
-}
-.field-visit-overlay p {
-  color: #ffffff; font-size: 14px; line-height: 1.6; margin: 0;
-  font-weight: var(--weight-regular);
-}
-.field-visit-large .field-visit-overlay p { font-size: 15px; line-height: 1.65; }
-.field-visit-stack .field-visit-overlay { padding: 20px 22px 18px; }
-.field-visit-stack .field-visit-overlay p {
-  font-size: 13px; line-height: 1.55;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-}
-
-@media (max-width: 1024px) {
-  .field-visits-grid { height: 620px; }
-  .field-visit-stack .field-visit-overlay p { -webkit-line-clamp: 4; }
-}
-
-@media (max-width: 900px) {
-  .field-visits-section { padding: 72px 0; }
-  .field-visits-grid {
-    display: flex; flex-direction: column; height: auto; gap: 16px;
-  }
-  .field-visit-large { height: 320px; flex: none; }
-  .field-visit-stack { flex-direction: row; height: 260px; flex: none; }
-
-  /* Mobilde metin, görseli tamamen kapatmasın diye varsayılan
-     olarak kısa (2 satır + "…") gösteriliyor. Yazının üstüne
-     dokununca genişleyip tam metni gösteriyor, tekrar dokununca
-     tekrar kısalıyor (js/main.js: .is-expanded class toggle). */
-  .field-visit-overlay { cursor: pointer; transition: padding 0.2s ease; }
-  .field-visit-overlay p {
-    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
-    -webkit-line-clamp: 2;
-    transition: -webkit-line-clamp 0.15s ease;
-  }
-  .field-visit-card.is-expanded .field-visit-overlay p {
-    -webkit-line-clamp: 12;
-  }
-}
-
-@media (max-width: 640px) {
-  .field-visit-stack { flex-direction: column; height: auto; }
-  .field-visit-stack .field-visit-card { height: 240px; flex: none; }
+  .timeline-section { padding: 88px 0 72px; }
+  .vtimeline { padding-left: 44px; }
+  .vtimeline-line, .vtimeline-line-fill { left: 13px; }
+  .vtimeline-dot { left: -36px; width: 11px; height: 11px; top: 22px; }
+  .vtimeline-card { flex-direction: column; }
+  .vtimeline-card-media { flex: none; width: 100%; height: 150px; min-height: 0; }
+  .vtimeline-card-body { padding: 18px 20px 20px; }
+  .vtimeline-title { font-size: 16.5px; }
 }
