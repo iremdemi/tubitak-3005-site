@@ -975,7 +975,16 @@ bindLiveRateWidget('headerRateMini', null, true);
   swiper.appendChild(firstClone);
 
   function jumpTo(slide, smooth) {
+    // scrollIntoView, swiper'ı YATAY olarak konumlandırmak içindi,
+    // ama "block:'nearest'" element henüz sayfa görünür alanında
+    // değilken (örn. sayfa ilk yüklenirken) tüm SAYFAYI da DİKEY
+    // olarak o bölüme kaydırıyordu - bu yüzden sayfa en üstte değil,
+    // doğrudan bu section'da açılıyordu. Sayfanın kendi dikey
+    // scroll konumunu koruyarak (öncesi/sonrası aynı tutarak) bunu
+    // engelliyoruz; swiper'ın kendi yatay kaydırması etkilenmez.
+    const pageScrollY = window.scrollY;
     slide.scrollIntoView({ inline: 'center', block: 'nearest', behavior: smooth ? 'smooth' : 'instant' });
+    if (window.scrollY !== pageScrollY) window.scrollTo(window.scrollX, pageScrollY);
   }
 
   // Sayfa/CSS tam oturmadan (layout hesaplanmadan) scrollIntoView
