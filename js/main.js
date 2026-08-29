@@ -848,11 +848,12 @@ bindLiveRateWidget('rateTickerRates', null, false);
 bindLiveRateWidget('headerRateMini', null, true);
 
 /* ===========================================================
-   ARAŞTIRMA SÜRECİ - anasayfa section'ı. Aşama göstergesinde
-   sayı yerine doğrudan tarih kullanılıyor. Masaüstü: kaydırılabilir
-   tarih-tracker + iki sütunlu editoryal içerik. Mobil: tek seferde
-   bir "haber kutusu" kart, native scroll-snap ile kaydırılır,
-   uçlarda klon kart tekniğiyle döngüsel sarar.
+   ARAŞTIRMA SÜRECİ - Dikey Akademik Günce. İnce çizgi üzerinde
+   tarih sırasına dizilmiş kartlar; ekranda göründükçe
+   (IntersectionObserver) nokta parlıyor ve çizgi o noktaya kadar
+   doluyor. Aynı yapı masaüstü/mobilde çalışıyor (kart içi düzeni
+   sadece CSS ile responsive değişiyor) - ayrı bir mobil bileşene
+   gerek kalmadı.
    =========================================================== */
 (function () {
   // En eskiden en güncele sıralı. "title" alanı, açıklama metninden
@@ -871,156 +872,63 @@ bindLiveRateWidget('headerRateMini', null, true);
     { date: '29.06.2026', title: 'Sonuç Raporu Yazım Sürecinin Başlaması', text: 'Proje sonuç raporunun yazım aşamasına geçilmesi ve ilgili rapor bölümleri için araştırmacılar arası iş bölümünün yapılması.' },
     { date: '27.07.2026', title: 'Nitel Veri Analizinin Tamamlanması', text: 'Nitel veri toplama sürecinin sonlandırılması ve elde edilen verilerin analiz süreçlerinin metodolojik açıdan değerlendirilmesi.', image: 'img/27.07.2026.jpeg' }
   ];
-  const N = TIMELINE_DATA.length;
 
-  /* ---------- Masaüstü: kaydırılabilir tarih-tracker + iki sütunlu editoryal içerik ---------- */
-  (function initTracker() {
-    const trackerBox = document.getElementById('processTracker');
-    const track = document.getElementById('processTrackerTrack');
-    if (!trackerBox || !track) return;
-    const prevBtn = document.getElementById('trackerPrev');
-    const nextBtn = document.getElementById('trackerNext');
-    const dateEl = document.getElementById('processDate');
-    const titleEl = document.getElementById('processTitle');
-    const descEl = document.getElementById('processDesc');
-    const textEl = document.querySelector('.process-text');
-    const contentEl = document.getElementById('processContent');
-    const imageWrap = document.getElementById('processImageWrap');
-    const imageEl = document.getElementById('processImage');
+  const vtimeline = document.getElementById('vtimeline');
+  const fill = document.getElementById('vtimelineFill');
+  if (!vtimeline || !fill) return;
 
-    const items = TIMELINE_DATA.map((item, i) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'process-tracker-item';
-      btn.setAttribute('aria-label', `${item.date}: ${item.title}`);
-      btn.innerHTML = `<span class="process-tracker-dot"></span><span class="process-tracker-date">${item.date}</span>`;
-      btn.addEventListener('click', () => setActive(i));
-      track.appendChild(btn);
-      return btn;
-    });
+  const CALENDAR_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>';
 
-    function setActive(idx) {
-      items.forEach((el, i) => el.classList.toggle('active', i === idx));
-      const item = TIMELINE_DATA[idx];
-
-      dateEl.textContent = item.date;
-      titleEl.textContent = item.title;
-      descEl.textContent = item.text;
-
-      textEl.classList.remove('process-fade');
-      void textEl.offsetWidth;
-      textEl.classList.add('process-fade');
-
-      if (item.image) {
-        imageEl.src = item.image;
-        imageEl.alt = item.title;
-        imageWrap.hidden = false;
-        contentEl.classList.add('has-image');
-        imageWrap.classList.remove('process-fade');
-        void imageWrap.offsetWidth;
-        imageWrap.classList.add('process-fade');
-      } else {
-        imageWrap.hidden = true;
-        imageEl.removeAttribute('src');
-        contentEl.classList.remove('has-image');
-      }
-    }
-
-    function updateNavState() {
-      const max = trackerBox.scrollWidth - trackerBox.clientWidth;
-      prevBtn.disabled = trackerBox.scrollLeft <= 1;
-      nextBtn.disabled = trackerBox.scrollLeft >= max - 1;
-    }
-    prevBtn.addEventListener('click', () => trackerBox.scrollBy({ left: -300, behavior: 'smooth' }));
-    nextBtn.addEventListener('click', () => trackerBox.scrollBy({ left: 300, behavior: 'smooth' }));
-    trackerBox.addEventListener('scroll', updateNavState);
-    window.addEventListener('resize', updateNavState);
-
-    setActive(N - 1);
-    trackerBox.scrollLeft = trackerBox.scrollWidth;
-    updateNavState();
-  })();
-
-  /* ---------- Mobil: kaydırılabilir (swipe) "haber kutusu" kart görünümü ---------- */
-  const swiper = document.getElementById('processMobileSwiper');
-  if (!swiper) return;
-
-  function renderSlide(item) {
-    const slide = document.createElement('div');
-    slide.className = 'process-mobile-slide';
-    const imageHtml = item.image
-      ? `<img class="process-mobile-image" src="${item.image}" alt="${item.title}" loading="lazy">`
-      : '';
-    slide.innerHTML = `
-      ${imageHtml}
-      <div class="process-mobile-body">
-        <span class="process-mobile-date">${item.date}</span>
-        <h3 class="process-mobile-title">${item.title}</h3>
-        <p class="process-mobile-desc">${item.text}</p>
+  const items = TIMELINE_DATA.map(item => {
+    const el = document.createElement('div');
+    el.className = 'vtimeline-item';
+    const mediaHtml = item.image
+      ? `<div class="vtimeline-card-media"><img src="${item.image}" alt="${item.title}" loading="lazy"></div>`
+      : `<div class="vtimeline-card-media is-icon">${CALENDAR_ICON}</div>`;
+    el.innerHTML = `
+      <div class="vtimeline-dot"></div>
+      <div class="vtimeline-card">
+        ${mediaHtml}
+        <div class="vtimeline-card-body">
+          <span class="vtimeline-date">${item.date}</span>
+          <h3 class="vtimeline-title">${item.title}</h3>
+          <p class="vtimeline-desc">${item.text}</p>
+        </div>
       </div>
     `;
-    return slide;
-  }
-
-  const lastClone = renderSlide(TIMELINE_DATA[N - 1]);
-  swiper.appendChild(lastClone);
-
-  const realSlides = TIMELINE_DATA.map((item) => {
-    const slide = renderSlide(item);
-    swiper.appendChild(slide);
-    return slide;
+    vtimeline.appendChild(el);
+    return el;
   });
 
-  const firstClone = renderSlide(TIMELINE_DATA[0]);
-  swiper.appendChild(firstClone);
-
-  function jumpTo(slide, smooth) {
-    // scrollIntoView, swiper'ı YATAY olarak konumlandırmak içindi,
-    // ama "block:'nearest'" element henüz sayfa görünür alanında
-    // değilken (örn. sayfa ilk yüklenirken) tüm SAYFAYI da DİKEY
-    // olarak o bölüme kaydırıyordu - bu yüzden sayfa en üstte değil,
-    // doğrudan bu section'da açılıyordu. Sayfanın kendi dikey
-    // scroll konumunu koruyarak (öncesi/sonrası aynı tutarak) bunu
-    // engelliyoruz; swiper'ın kendi yatay kaydırması etkilenmez.
-    const pageScrollY = window.scrollY;
-    slide.scrollIntoView({ inline: 'center', block: 'nearest', behavior: smooth ? 'smooth' : 'instant' });
-    if (window.scrollY !== pageScrollY) window.scrollTo(window.scrollX, pageScrollY);
+  // Bir öğe göründükçe kendisi ve öncesindeki tüm öğeler "aktif"
+  // olur (nokta parlar); çizgi dolgusu en son aktif öğenin
+  // konumuna kadar uzar - doğal bir "ilerleme" hissi verir.
+  function updateFill() {
+    let lastActiveIndex = -1;
+    items.forEach((el, i) => { if (el.classList.contains('is-active')) lastActiveIndex = i; });
+    if (lastActiveIndex === -1) { fill.style.height = '0'; return; }
+    const target = items[lastActiveIndex];
+    // dot'un kendi offsetTop'u kendi .vtimeline-item'ına göre (CSS
+    // breakpoint'lerine göre değişebildiği için sabit sayı yerine
+    // dinamik okuyoruz) - item'ın KENDİ offsetTop'una (vtimeline
+    // konteynerine göre) ekleyerek gerçek konumu buluyoruz.
+    const dot = target.querySelector('.vtimeline-dot');
+    const fillHeight = target.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+    fill.style.height = Math.max(0, fillHeight) + 'px';
   }
 
-  // Sayfa/CSS tam oturmadan (layout hesaplanmadan) scrollIntoView
-  // çağrılırsa yanlış konuma atlayabiliyordu - çift
-  // requestAnimationFrame ile tarayıcının bir render turunu
-  // tamamlamasını bekliyoruz.
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      jumpTo(realSlides[N - 1], false);
-    });
-  });
-
-  const allSlides = Array.from(swiper.children);
-  function closestIndex() {
-    const center = swiper.scrollLeft + swiper.clientWidth / 2;
-    let best = 0, bestDist = Infinity;
-    allSlides.forEach((el, i) => {
-      const elCenter = el.offsetLeft + el.offsetWidth / 2;
-      const dist = Math.abs(elCenter - center);
-      if (dist < bestDist) { bestDist = dist; best = i; }
-    });
-    return best;
-  }
-
-  let scrollTimer = null;
-  swiper.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      const idx = closestIndex();
-      if (idx === 0) {
-        jumpTo(realSlides[N - 1], false);
-      } else if (idx === allSlides.length - 1) {
-        jumpTo(realSlides[0], false);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = items.indexOf(entry.target);
+      if (entry.isIntersecting) {
+        for (let i = 0; i <= idx; i++) items[i].classList.add('is-active');
       }
-    }, 120);
-  }, { passive: true });
+    });
+    updateFill();
+  }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
+
+  items.forEach(el => observer.observe(el));
+  window.addEventListener('resize', updateFill);
 })();
 
 /* ===========================================================
