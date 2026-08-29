@@ -206,57 +206,21 @@
 </section>
 
 
-<!-- SÜREÇ TAKVİMİ: interaktif, tıklanabilir yatay zaman çizelgesi.
-     Masaüstünde tıklanan/hover edilen düğüm detay panelinde açılır;
-     mobilde akordiyon (accordion) listesine dönüşür. Veri js/main.js
-     içindeki TIMELINE_DATA dizisinden (en güncelden en eskiye)
-     üretiliyor. -->
+<!-- SÜREÇ TAKVİMİ: dikey akademik günce. İnce lacivert bir çizgi
+     üzerinde, tarih sırasına göre dizilmiş asimetrik geniş kartlar -
+     her biri solda görsel/ikon, sağda başlık+açıklama. Ekranda
+     göründükçe (IntersectionObserver) nokta parlıyor ve çizgi o
+     noktaya kadar doluyor. Aynı yapı mobilde de (kart içi dikey
+     istiflenerek) çalışıyor - ayrı bir mobil bileşene gerek yok. -->
 <section class="timeline-section" data-fp-section="4" data-fp-light="true">
   <div class="wrap timeline-wrap">
-
-    <!-- Bağlı, uçları solan bir çizgi üzerinde dizili aşamalar -
-         her aşamanın kendi konumu var; aktif olan nokta+numara
-         belirgin şekilde büyür (transform:scale, merkez kaymaz).
-         12 aşama tek seferde sığdırılmıyor; ok butonlarıyla yumuşakça
-         kaydırılıyor, kenarlardaki öğeler maskeyle solarak görünür. -->
-    <div class="process-tracker-row">
-      <button class="process-tracker-nav prev" id="trackerPrev" type="button" aria-label="Önceki aşamalar" disabled>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="process-tracker-viewport">
-        <nav class="process-tracker" id="processTracker" aria-label="Araştırma süreci aşamaları">
-          <div class="process-tracker-track" id="processTrackerTrack">
-            <div class="process-tracker-line"></div>
-          </div>
-        </nav>
-      </div>
-      <button class="process-tracker-nav next" id="trackerNext" type="button" aria-label="Sonraki aşamalar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
+    <div class="section-head">
+      <h2 class="section-title">Araştırma Süreci</h2>
     </div>
-
-    <!-- Editoryal içerik: iki sütun - solda tarih/başlık/açıklama,
-         sağda (varsa) araştırma görseli. Görsel yoksa sol sütun
-         tüm genişliği kullanır. -->
-    <div class="process-content" id="processContent">
-      <div class="process-text">
-        <div class="process-detail-meta">
-          <span class="process-detail-date" id="processDate"></span>
-        </div>
-        <h3 class="process-detail-title" id="processTitle"></h3>
-        <p class="process-detail-desc" id="processDesc"></p>
-      </div>
-
-      <figure class="process-image-wrap" id="processImageWrap" hidden>
-        <img class="process-image" id="processImage" alt="">
-      </figure>
+    <div class="vtimeline" id="vtimeline">
+      <div class="vtimeline-line"></div>
+      <div class="vtimeline-line-fill" id="vtimelineFill"></div>
     </div>
-
-    <!-- Mobil: masaüstü tasarımın kaydırılabilir kart versiyonu -
-         tek seferde bir aşama tam ekranda, elle sürükleyerek gezilir
-         (native scroll-snap, ekstra JS drag fiziği gerekmiyor),
-         uçlara gelince döngüsel olarak başa/sona sarar. -->
-    <div class="process-mobile-swiper" id="processMobileSwiper"></div>
   </div>
 </section>
 
