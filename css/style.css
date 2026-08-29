@@ -1550,8 +1550,7 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 .vtimeline-card-media.is-icon svg { width: 34px; height: 34px; color: #94a3b8; }
 .vtimeline-card-body { flex: 1; padding: 24px 28px; min-width: 0; }
 .vtimeline-date {
-  display: block; font-size: 12.5px; font-weight: var(--weight-bold); color: #002b66;
-  letter-spacing: 0.02em; margin-bottom: 8px;
+  display: block; font-size: 12px; color: #94a3b8; margin-bottom: 6px;
 }
 .vtimeline-title {
   font-size: 18px; font-weight: var(--weight-bold); color: #0b1c2e;
