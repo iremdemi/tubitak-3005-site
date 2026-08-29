@@ -1013,3 +1013,18 @@ bindLiveRateWidget('headerRateMini', null, true);
     }, 120);
   }, { passive: true });
 })();
+
+/* ===========================================================
+   SAHA ZİYARETLERİMİZDEN - mobilde metin genişletme.
+   Mobilde overlay metni varsayılan olarak kısa (CSS: 2 satır +
+   "…") gösteriliyor, görseli tam kapatmasın diye. Yazının
+   üstüne dokununca .is-expanded class'ı eklenip tam metin
+   gösteriliyor; tekrar dokununca kaldırılıp tekrar kısalıyor.
+   Masaüstünde bu davranış devre dışı (CSS zaten sadece 900px
+   altında kısaltıyor).
+   =========================================================== */
+document.querySelectorAll('.field-visit-overlay').forEach(overlay => {
+  overlay.addEventListener('click', () => {
+    overlay.closest('.field-visit-card').classList.toggle('is-expanded');
+  });
+});
