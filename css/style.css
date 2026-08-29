@@ -1563,12 +1563,19 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
   font-size: 13px; font-weight: var(--weight-bold); color: #0b1c2e;
 }
 
-/* --- İki sütunlu editoryal içerik: sol metin, sağ görsel --- */
+/* --- İçerik: görsel yoksa tam genişlik metin kartı; görsel
+   varsa TEK, kaynaşık "haber kutusu" - görsel üstte (kendi ayrı
+   kartı yok), metin hemen altına yapışık, kenarları tam eşleşir. --- */
 .process-content {
   display: grid; grid-template-columns: 1fr; gap: 32px; align-items: stretch;
-  width: 100%; min-height: 280px;
+  width: 100%; min-height: 540px;
 }
-.process-content.has-image { grid-template-columns: 1.1fr 0.9fr; }
+.process-content.has-image {
+  display: flex; flex-direction: column; gap: 0;
+  max-width: 640px; margin: 0 auto; min-height: 540px;
+  background: #ffffff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+}
 
 .process-detail-meta { margin-bottom: 16px; }
 .process-detail-date {
@@ -1581,14 +1588,23 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 }
 .process-detail-desc { font-size: 15.5px; line-height: 1.75; color: #4A5568; }
 
-/* --- Metin: bizim standart kart dilimiz --- */
+/* --- Metin: bizim standart kart dilimiz (görselsiz durumda) --- */
 .process-text {
   width: 100%;
   background: #ffffff; border-radius: 20px; padding: 44px 48px;
   box-shadow: 0 20px 50px rgba(11,28,46,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+/* Görselli durumda: metin kartı artık haber kutusunun alt parçası -
+   kendi ayrı radius/gölgesi yok, üst kapsayıcı zaten sağlıyor. */
+.process-content.has-image .process-text {
+  border-radius: 0; box-shadow: none; padding: 28px 32px 34px;
+  flex: 1; order: 2;
 }
 
-/* --- Görsel: aynı kart dili, kendi doğal en-boy oranında --- */
+/* --- Görsel: görselsiz metinle aynı bağımsız kart dili yerine,
+   görselli durumda haber kutusunun ÜST parçası - kendi radius/
+   gölgesi yok, üst kapsayıcının overflow:hidden'ı kırpıyor. --- */
 .process-image-wrap {
   width: 100%;
   border-radius: 20px; overflow: hidden;
@@ -1597,13 +1613,16 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 }
 .process-image-wrap[hidden] { display: none; }
 .process-image { display: block; width: 100%; height: auto; border-radius: 20px; }
+.process-content.has-image .process-image-wrap {
+  border-radius: 0; box-shadow: none; order: 1;
+}
+.process-content.has-image .process-image { border-radius: 0; }
 
 .process-fade { animation: processFade 0.25s ease; }
 @keyframes processFade { from { opacity: 0.35; } to { opacity: 1; } }
 
 @media (max-width: 1024px) {
-  .process-content.has-image { grid-template-columns: 1fr; }
-  .process-content.has-image .process-image-wrap { max-width: 520px; }
+  .process-content.has-image { max-width: 560px; }
 }
 
 /* =========================================================
@@ -1618,7 +1637,7 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
 .process-mobile-swiper { display: none; }
 
 @media (max-width: 900px) {
-  .process-tracker-row, .process-content { display: none; }
+  .process-tracker-row, .process-content, .process-content.has-image { display: none; }
   .process-mobile-swiper {
     display: flex; gap: 16px;
     overflow-x: auto; scroll-snap-type: x mandatory;
