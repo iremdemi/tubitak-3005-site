@@ -12,10 +12,13 @@
 <script>
   // Güvenlik ağı: main.js (defer) herhangi bir nedenle
   // çalışmaz/gecikirse, fp-preload kalıcı olarak overflow'u
-  // kilitli bırakmasın diye 2.5sn sonra zorla kaldırıyoruz.
+  // kilitli bırakmasın diye belirli bir süre sonra zorla
+  // kaldırıyoruz. Süre, yavaş bağlantılarda main.js'in (ve
+  // gerekli DOM/section'ların) rahatça yüklenebilmesi için
+  // yeterince uzun tutuldu.
   setTimeout(function () {
     document.documentElement.classList.remove('fp-preload');
-  }, 2500);
+  }, 8000);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
