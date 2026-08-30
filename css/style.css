@@ -307,9 +307,11 @@ header.scrolled .lang-icon:hover { color: #002b66; }
    kalan L şeklindeki alanı grid'in kendi otomatik yerleşimiyle
    dolduruyor. Görsel arka plan tam kart, altta koyu gradyanla
    okunur metin - field-visit-card ile aynı dil. */
+#bulgular { padding: 56px 0; display: flex; align-items: center; }
+#bulgular > .wrap { width: 100%; }
 .findings-bento {
-  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 165px);
-  gap: 18px;
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 145px);
+  gap: 16px;
 }
 .bento-card {
   position: relative; display: block; border-radius: 12px; overflow: hidden;
@@ -1581,13 +1583,13 @@ header.scrolled .header-rate-mini .rate-loading-mini, header.scrolled .header-ra
    lacivertimize yakın) gradyanla okunur metin overlay'i - kart
    dilimizle tutarlı minimum border-radius, ince gölge.
    ========================================================= */
-.field-visits-section { padding: 90px 0; display: flex; align-items: center; }
+#saha-ziyaretleri { padding: 56px 0 !important; display: flex; align-items: center; }
 .field-visits-section > .wrap { width: 100%; }
 .field-visits-section .section-head { margin-bottom: 32px; }
 
 .field-visits-grid {
-  display: grid; grid-template-columns: 0.72fr 1fr; gap: 18px;
-  height: 490px;
+  display: grid; grid-template-columns: 0.72fr 1fr; gap: 16px;
+  height: 430px;
 }
 .field-visit-stack {
   display: flex; flex-direction: column; gap: 18px; height: 100%;
