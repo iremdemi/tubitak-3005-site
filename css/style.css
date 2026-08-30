@@ -24,6 +24,19 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { overflow-x: hidden; }
+@media (min-width: 1025px) {
+  html { scrollbar-gutter: stable; }
+}
+/* fp-preload: main.js (defer) henüz çalışıp fp-mode'u devreye
+   sokmadan önceki kısa an için, section'ların normal akışta
+   (alt alta, tam yükseklikte) görünüp geçici bir kaydırma
+   çubuğu yaratmasını engeller. Sadece masaüstü genişliğinde -
+   mobilde fp-mode zaten kullanılmıyor, normal scroll gerekiyor,
+   bu yüzden orada kilitlenme riski oluşturmuyoruz. main.js
+   (enableFullPage/disableFullPage) bu class'ı her koşulda kaldırır. */
+@media (min-width: 1025px) {
+  html.fp-preload { overflow: hidden; }
+}
 body { 
   font-family: var(--font-sans); 
   background-color: #ffffff; 
