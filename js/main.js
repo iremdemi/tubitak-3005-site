@@ -479,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (fpActive) return;
     fpActive = true;
     root.classList.add('fp-mode');
+    root.classList.remove('fp-preload');
     root.style.setProperty('--fp-duration', FP_DURATION_MS + 'ms');
     root.style.setProperty('--fp-easing', FP_EASING);
     currentIndex = 0;
@@ -495,9 +496,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function disableFullPage() {
-    if (!fpActive) return;
+    if (!fpActive) { root.classList.remove('fp-preload'); return; }
     fpActive = false;
-    root.classList.remove('fp-mode', 'fp-on-light');
+    root.classList.remove('fp-mode', 'fp-on-light', 'fp-preload');
     wrapper.style.transform = '';
     window.removeEventListener('wheel', onWheel, { passive: false });
     window.removeEventListener('keydown', onKeydown);
