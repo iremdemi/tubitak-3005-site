@@ -948,3 +948,26 @@ document.querySelectorAll('.field-visit-overlay').forEach(overlay => {
     overlay.closest('.field-visit-card').classList.toggle('is-expanded');
   });
 });
+
+/* CSS'teki #saha-ziyaretleri / #bulgular padding kuralı, nedeni
+   tespit edilemeyen bir tarayıcı/parse tuhaflığı yüzünden bazı
+   ortamlarda uygulanmıyordu (section 900px sınırını aşıp section
+   içi ekstra kaydırmaya sebep oluyordu) - garanti olması için
+   burada doğrudan (inline) atıyoruz; inline style CSS'teki her
+   türlü çakışmadan bağımsız olarak her zaman geçerli olur. */
+(function () {
+  const saha = document.getElementById('saha-ziyaretleri');
+  if (saha) {
+    saha.style.paddingTop = '56px';
+    saha.style.paddingBottom = '56px';
+    saha.style.display = 'flex';
+    saha.style.alignItems = 'center';
+  }
+  const bulgular = document.getElementById('bulgular');
+  if (bulgular) {
+    bulgular.style.paddingTop = '56px';
+    bulgular.style.paddingBottom = '56px';
+    bulgular.style.display = 'flex';
+    bulgular.style.alignItems = 'center';
+  }
+})();
