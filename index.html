@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- Sayfa yüklenirken (main.js defer olduğu için henüz çalışmadan
+     önce) tüm section'lar bir an için normal akışta (alt alta,
+     tam yükseklikte) görünüyor, bu da geçici bir kaydırma çubuğu
+     ve "takılma" hissi yaratıyordu. Bu satır, HTML parse edilir
+     edilmez (mümkün olan en erken anda, senkron olarak) çalışıp
+     overflow'u kapatıyor; main.js normal şekilde (fp-mode
+     etkinleşince ya da mobilde devre dışı kalınca) bunu kaldırıyor. -->
+<script>document.documentElement.classList.add('fp-preload');</script>
+<script>
+  // Güvenlik ağı: main.js (defer) herhangi bir nedenle
+  // çalışmaz/gecikirse, fp-preload kalıcı olarak overflow'u
+  // kilitli bırakmasın diye 2.5sn sonra zorla kaldırıyoruz.
+  setTimeout(function () {
+    document.documentElement.classList.remove('fp-preload');
+  }, 2500);
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DTG Araştırma Platformu | Ana Sayfa</title>
